@@ -60,9 +60,7 @@
             padding: 1rem;
             text-align: center;
             border-bottom: 2px solid var(--primary);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            position: relative;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -145,7 +143,7 @@
         .tabs {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
             margin-bottom: 2rem;
             flex-wrap: wrap;
         }
@@ -154,12 +152,20 @@
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             color: var(--text-muted);
-            padding: 0.8rem 2rem;
+            padding: 1rem 0.5rem;
             border-radius: 8px;
             font-size: 1rem;
             cursor: pointer;
             transition: all 0.2s;
-            font-weight: 500;
+            font-weight: 600;
+            flex: 1;
+            /* Grow to fill space */
+            min-width: 140px;
+            /* Ensure 2 per row on small phones, 4 per row on desktop if space allows */
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .tab-btn:hover {
@@ -253,6 +259,18 @@
         .ticker-info h3 {
             margin: 0;
             font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stock-logo {
+            width: 32px;
+            height: 32px;
+            border-radius: 4px;
+            object-fit: contain;
+            background: white;
+            padding: 2px;
         }
 
         .ticker-info span {
@@ -279,7 +297,7 @@
         }
 
         .badge {
-            background: #29292e;
+            background: var(--card-hover);
             padding: 2px 8px;
             border-radius: 4px;
             font-size: 0.75rem;
@@ -292,23 +310,16 @@
             display: none;
         }
 
-        /* Floating Refresh Button */
-        .fab {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--primary);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-            font-size: 1.5rem;
-            cursor: pointer;
-            border: none;
+        .arrow-up {
+            color: var(--success);
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .arrow-down {
+            color: var(--danger);
+            font-weight: bold;
+            display: inline-block;
         }
     </style>
 </head>
@@ -361,8 +372,7 @@
 
     </div>
 
-    <!-- This button would trigger a reload in a real web context -->
-    <button class="fab" onclick="window.location.reload()">↻</button>
+
 
     <script>
         // Theme Logic
@@ -396,13 +406,70 @@
 
             // Render Stocks
             const stockContainer = document.getElementById('content-stocks');
+
+            const getTrendArrow = (value, type) => {
+                if (value === undefined || value === null) return '';
+
+                // Logic based on investment "Goodness"
+                // Returns arrow HTML string
+                const up = '<span class="arrow-up">↑</span>';
+                const down = '<span class="arrow-down">↓</span>';
+
+                switch (type) {
+                    case 'pl':
+                        // P/L: 0 to 15 is generally good (Green Up? Or just Green). 
+                        // Let's use: Positive profit = Up, Negative profit = Down.
+                        return value > 0 ? up : down;
+                    case 'pvp':
+                        // P/VP: < 1.0 "Cheap" (Up?), > 1.5 "Expensive" (Down?). 
+                        // Usually > 3 is risky. Let's stick to simple: <= 1.2 Good (Up), > 1.2 Bad (Down).
+                        // Common strategy: Buy below 1.2.
+                        return value <= 1.2 ? up : down;
+                    case 'roe':
+                        // ROE: Higher is better. > 10% Good (Up), < 10% Bad (Down).
+                        return value > 10 ? up : down;
+                    case 'liq':
+                        // Liquidity: > 200k Good (Up).
+                        return value > 200000 ? up : down;
+                    case 'div_patrim':
+                        // Debt/Equity: Lower is better. < 0.5 Good (Up), > 0.5 Bad (Down).
+                        // Note: "Up" here means "Good Score", visually. 
+                        // Actually, let's stick to standard: 
+                        // Asset Growth/Profit -> Up Green. 
+                        // Liabilities/Loss -> Down Red.
+                        // For Debt: < 0.5 is Good. Let's give it a Green Check or Green Arrow Up (Strong Balance Sheet).
+                        return value < 0.5 ? up : down;
+                    case 'cresc':
+                        // Growth: Positive = Up, Negative = Down
+                        return value > 0 ? up : down;
+                    case 'vacancy':
+                        // Vacancy: Lower is better. < 10% Good (Up), > 10% Bad (Down).
+                        // Logic: High vacancy is BAD (Down Red), Low vacancy is GOOD (Up Green).
+                        return value < 10 ? up : down;
+                    case 'liq-fii':
+                        // FII Liquidity: > 50k Good (Up).
+                        return value > 50000 ? up : down;
+                    case 'mkt-cap':
+                        // Market Cap (FII): > 500M (Big/Stable)
+                        return value > 500000000 ? up : down;
+                    default: return '';
+                }
+            };
+
             data.stocks.forEach(stock => {
                 const card = document.createElement('div');
                 card.className = 'stock-card high-upside';
                 card.innerHTML = `
                 <div class="card-main">
                     <div class="ticker-info">
-                        <h3>${stock.ticker} <span class="badge">Ação</span></h3>
+                        <h3>
+                            <img src="https://raw.githubusercontent.com/thefintz/icones-b3/main/icones/${stock.ticker}.png" 
+                                 class="stock-logo" 
+                                 onerror="this.style.display='none'"
+                                 alt="${stock.ticker}">
+                            ${stock.ticker} 
+                            <span class="badge">Ação</span>
+                        </h3>
                         <span>Graham: R$ ${stock.graham_price.toFixed(2)}</span>
                     </div>
                     <div class="metrics">
@@ -412,12 +479,12 @@
                     </div>
                 </div>
                 <div class="card-details">
-                    <div class="detail-row"><span class="detail-label">P/L:</span><span class="detail-value">${stock.pl?.toFixed(2) || 'N/A'}</span></div>
-                    <div class="detail-row"><span class="detail-label">P/VP:</span><span class="detail-value">${stock.p_vp?.toFixed(2) || 'N/A'}</span></div>
-                    <div class="detail-row"><span class="detail-label">ROE:</span><span class="detail-value">${stock.roe?.toFixed(2) || 'N/A'}%</span></div>
-                    <div class="detail-row"><span class="detail-label">Liquidez (2m):</span><span class="detail-value">R$ ${(stock.liq_2meses / 1000000).toFixed(1)}M</span></div>
-                    <div class="detail-row"><span class="detail-label">Dív/Patrim:</span><span class="detail-value">${stock.div_br_patrim?.toFixed(2) || 'N/A'}</span></div>
-                    <div class="detail-row"><span class="detail-label">Cresc. 5a:</span><span class="detail-value">${stock.cresc_5a?.toFixed(2) || 'N/A'}%</span></div>
+                    <div class="detail-row"><span class="detail-label">P/L:</span><span class="detail-value">${stock.pl?.toFixed(2) || 'N/A'} ${getTrendArrow(stock.pl, 'pl')}</span></div>
+                    <div class="detail-row"><span class="detail-label">P/VP:</span><span class="detail-value">${stock.p_vp?.toFixed(2) || 'N/A'} ${getTrendArrow(stock.p_vp, 'pvp')}</span></div>
+                    <div class="detail-row"><span class="detail-label">ROE:</span><span class="detail-value">${stock.roe?.toFixed(2) || 'N/A'}% ${getTrendArrow(stock.roe, 'roe')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Liquidez (2m):</span><span class="detail-value">R$ ${(stock.liq_2meses / 1000000).toFixed(1)}M ${getTrendArrow(stock.liq_2meses, 'liq')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Dív/Patrim:</span><span class="detail-value">${stock.div_br_patrim?.toFixed(2) || 'N/A'} ${getTrendArrow(stock.div_br_patrim, 'div_patrim')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Cresc. 5a:</span><span class="detail-value">${stock.cresc_5a?.toFixed(2) || 'N/A'}% ${getTrendArrow(stock.cresc_5a, 'cresc')}</span></div>
                 </div>
             `;
                 card.addEventListener('click', () => {
@@ -435,7 +502,14 @@
                 card.innerHTML = `
                 <div class="card-main">
                     <div class="ticker-info">
-                        <h3>${fii.ticker} <span class="badge">FII</span></h3>
+                        <h3>
+                            <img src="https://raw.githubusercontent.com/thefintz/icones-b3/main/icones/${fii.ticker}.png" 
+                                 class="stock-logo" 
+                                 onerror="this.style.display='none'"
+                                 alt="${fii.ticker}">
+                            ${fii.ticker} 
+                            <span class="badge">FII</span>
+                        </h3>
                         <span>${fii.segment}</span>
                     </div>
                     <div class="metrics">
@@ -445,11 +519,12 @@
                     </div>
                 </div>
                 <div class="card-details">
-                    <div class="detail-row"><span class="detail-label">FFO Yield:</span><span class="detail-value">${fii.ffo_yield || 'N/A'}%</span></div>
-                    <div class="detail-row"><span class="detail-label">Cap Rate:</span><span class="detail-value">${fii.cap_rate || 'N/A'}%</span></div>
-                    <div class="detail-row"><span class="detail-label">Vacância:</span><span class="detail-value">${fii.vacancy}%</span></div>
-                    <div class="detail-row"><span class="detail-label">Imóveis:</span><span class="detail-value">${fii.num_properties || 'N/A'}</span></div>
-                    <div class="detail-row"><span class="detail-label">Liquidez (2m):</span><span class="detail-value">R$ ${(fii.liquidity / 1000).toFixed(0)}k</span></div>
+                    <div class="detail-row"><span class="detail-label">FFO Yield:</span><span class="detail-value">${fii.ffo_yield || 'N/A'}% ${getTrendArrow(fii.ffo_yield, 'roe')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Cap Rate:</span><span class="detail-value">${fii.cap_rate || 'N/A'}% ${getTrendArrow(fii.cap_rate, 'roe')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Vacância:</span><span class="detail-value">${fii.vacancy}% ${getTrendArrow(fii.vacancy, 'vacancy')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Imóveis:</span><span class="detail-value">${fii.num_properties || 'N/A'} ${getTrendArrow(fii.num_properties, 'cresc')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Liquidez (2m):</span><span class="detail-value">R$ ${(fii.liquidity / 1000).toFixed(0)}k ${getTrendArrow(fii.liquidity, 'liq-fii')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Val. Mercado:</span><span class="detail-value">R$ ${(fii.market_cap / 1000000).toFixed(0)}M ${getTrendArrow(fii.market_cap, 'mkt-cap')}</span></div>
                 </div>
             `;
                 card.addEventListener('click', () => {

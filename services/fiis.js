@@ -32,6 +32,7 @@ async function getBestFIIs() {
                 ffo_yield: parseNumber($(tds[3]).text().trim()),
                 dy: parseNumber($(tds[4]).text().trim()),
                 p_vp: parseNumber($(tds[5]).text().trim()),
+                market_cap: parseNumber($(tds[6]).text().trim()),
                 liquidity: parseNumber($(tds[7]).text().trim()),
                 num_properties: parseNumber($(tds[8]).text().trim()),
                 cap_rate: parseNumber($(tds[11]).text().trim()),
