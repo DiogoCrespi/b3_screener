@@ -392,7 +392,20 @@
             // Header
             document.getElementById('lastUpdate').textContent = `Atualizado em: ${data.updatedAt}`;
             document.getElementById('dollarVal').textContent = `R$ ${data.economy.dollar.toFixed(2)}`;
-            document.getElementById('selicVal').textContent = `${data.economy.selic}%`;
+
+            const selic = data.economy.selic;
+            const selicEl = document.getElementById('selicVal');
+            selicEl.textContent = `${selic.toFixed(2)}%`;
+
+            // Show dynamic DY threshold notice
+            const minDY = selic > 10 ? 4 : 6;
+            const selicContext = document.createElement('div');
+            selicContext.className = 'last-update';
+            selicContext.style.textAlign = 'center';
+            selicContext.style.marginTop = '-10px';
+            selicContext.style.marginBottom = '15px';
+            selicContext.innerHTML = `Filtro DY Atual: <strong style="color:var(--success)">>${minDY}%</strong> (Selic ${selic > 10 ? 'Alta' : 'Normal'})`;
+            document.querySelector('.dashboard').after(selicContext);
 
             // Render Stocks
             const stockContainer = document.getElementById('content-stocks');
@@ -416,6 +429,7 @@
                     <div class="detail-row"><span class="detail-label">P/VP:</span><span class="detail-value">${stock.p_vp?.toFixed(2) || 'N/A'}</span></div>
                     <div class="detail-row"><span class="detail-label">ROE:</span><span class="detail-value">${stock.roe?.toFixed(2) || 'N/A'}%</span></div>
                     <div class="detail-row"><span class="detail-label">Liquidez (2m):</span><span class="detail-value">R$ ${(stock.liq_2meses / 1000000).toFixed(1)}M</span></div>
+                    <div class="detail-row"><span class="detail-label">Liq. Corrente:</span><span class="detail-value">${stock.liq_corr?.toFixed(2) || 'N/A'}</span></div>
                     <div class="detail-row"><span class="detail-label">Dív/Patrim:</span><span class="detail-value">${stock.div_br_patrim?.toFixed(2) || 'N/A'}</span></div>
                     <div class="detail-row"><span class="detail-label">Cresc. 5a:</span><span class="detail-value">${stock.cresc_5a?.toFixed(2) || 'N/A'}%</span></div>
                 </div>

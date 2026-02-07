@@ -1,5 +1,5 @@
 window.INVEST_DATA = {
-  "updatedAt": "07/02/2026, 10:43:51",
+  "updatedAt": "07/02/2026, 11:34:54",
   "economy": {
     "dollar": 5.2159,
     "selic": 15
@@ -14,9 +14,11 @@ window.INVEST_DATA = {
       "roe": 16.18,
       "liq_2meses": 3512180,
       "div_br_patrim": 0.63,
+      "liq_corr": 1.51,
       "cresc_5a": -12.11,
       "graham_price": 9.160793025442217,
-      "upside": 88.49368365107442
+      "upside": 88.49368365107442,
+      "selic": 15
     },
     {
       "ticker": "ALLD3",
@@ -27,9 +29,11 @@ window.INVEST_DATA = {
       "roe": 20.88,
       "liq_2meses": 4556500,
       "div_br_patrim": 0.27,
+      "liq_corr": 1.81,
       "cresc_5a": -0.99,
       "graham_price": 38.53952053226846,
-      "upside": 393.4637712198267
+      "upside": 393.4637712198267,
+      "selic": 15
     },
     {
       "ticker": "GRND3",
@@ -40,35 +44,11 @@ window.INVEST_DATA = {
       "roe": 17.92,
       "liq_2meses": 19474600,
       "div_br_patrim": 0.02,
+      "liq_corr": 6.07,
       "cresc_5a": 2.73,
       "graham_price": 9.032221610552892,
-      "upside": 83.95563361614849
-    },
-    {
-      "ticker": "MELK3",
-      "cotacao": 3.97,
-      "pl": 7.65,
-      "p_vp": 0.75,
-      "dividend_yield": 32.61,
-      "roe": 9.75,
-      "liq_2meses": 2248900,
-      "div_br_patrim": 0.47,
-      "cresc_5a": 11.59,
-      "graham_price": 7.861771491234793,
-      "upside": 98.02950859533483
-    },
-    {
-      "ticker": "GUAR3",
-      "cotacao": 10.14,
-      "pl": 11.52,
-      "p_vp": 0.91,
-      "dividend_yield": 30.46,
-      "roe": 7.94,
-      "liq_2meses": 27212800,
-      "div_br_patrim": 0.34,
-      "cresc_5a": 9.45,
-      "graham_price": 14.855329130363575,
-      "upside": 46.50225966827983
+      "upside": 83.95563361614849,
+      "selic": 15
     },
     {
       "ticker": "CGRA3",
@@ -79,9 +59,11 @@ window.INVEST_DATA = {
       "roe": 10.65,
       "liq_2meses": 102282,
       "div_br_patrim": 0,
+      "liq_corr": 2.81,
       "cresc_5a": 5.52,
       "graham_price": 61.78890368577507,
-      "upside": 131.24589702760133
+      "upside": 131.24589702760133,
+      "selic": 15
     },
     {
       "ticker": "CGRA4",
@@ -92,9 +74,11 @@ window.INVEST_DATA = {
       "roe": 10.65,
       "liq_2meses": 684444,
       "div_br_patrim": 0,
+      "liq_corr": 2.81,
       "cresc_5a": 5.52,
       "graham_price": 61.98493081331324,
-      "upside": 130.51294463857656
+      "upside": 130.51294463857656,
+      "selic": 15
     },
     {
       "ticker": "RECV3",
@@ -105,9 +89,11 @@ window.INVEST_DATA = {
       "roe": 13.59,
       "liq_2meses": 43884700,
       "div_br_patrim": 0.53,
+      "liq_corr": 2.16,
       "cresc_5a": 9.61,
       "graham_price": 27.234543107222514,
-      "upside": 153.10913668422413
+      "upside": 153.10913668422413,
+      "selic": 15
     },
     {
       "ticker": "LOGG3",
@@ -118,9 +104,11 @@ window.INVEST_DATA = {
       "roe": 10.02,
       "liq_2meses": 10756600,
       "div_br_patrim": 0.66,
+      "liq_corr": 1.32,
       "cresc_5a": 11.25,
       "graham_price": 65.63840287576014,
-      "upside": 137.90649828111682
+      "upside": 137.90649828111682,
+      "selic": 15
     },
     {
       "ticker": "BRAP3",
@@ -131,9 +119,11 @@ window.INVEST_DATA = {
       "roe": 12.38,
       "liq_2meses": 1747210,
       "div_br_patrim": 0,
+      "liq_corr": 5.95,
       "cresc_5a": 0,
       "graham_price": 38.75690469610684,
-      "upside": 85.439735388071
+      "upside": 85.439735388071,
+      "selic": 15
     },
     {
       "ticker": "VLID3",
@@ -144,9 +134,11 @@ window.INVEST_DATA = {
       "roe": 13.91,
       "liq_2meses": 5384140,
       "div_br_patrim": 0.35,
+      "liq_corr": 3.14,
       "cresc_5a": 0.12,
       "graham_price": 37.15740292696295,
-      "upside": 70.52502490575013
+      "upside": 70.52502490575013,
+      "selic": 15
     },
     {
       "ticker": "TRIS3",
@@ -157,9 +149,11 @@ window.INVEST_DATA = {
       "roe": 13.44,
       "liq_2meses": 2664870,
       "div_br_patrim": 0.67,
+      "liq_corr": 2.96,
       "cresc_5a": 15.39,
       "graham_price": 11.371723979597864,
-      "upside": 61.07257761470063
+      "upside": 61.07257761470063,
+      "selic": 15
     },
     {
       "ticker": "BRAP4",
@@ -170,22 +164,11 @@ window.INVEST_DATA = {
       "roe": 12.38,
       "liq_2meses": 100183000,
       "div_br_patrim": 0,
+      "liq_corr": 5.95,
       "cresc_5a": 0,
       "graham_price": 38.81630719447321,
-      "upside": 60.19936935399591
-    },
-    {
-      "ticker": "MTRE3",
-      "cotacao": 3.92,
-      "pl": 8.46,
-      "p_vp": 0.42,
-      "dividend_yield": 12.78,
-      "roe": 4.95,
-      "liq_2meses": 2224440,
-      "div_br_patrim": 0.62,
-      "cresc_5a": 20.29,
-      "graham_price": 9.86432788075331,
-      "upside": 151.64101736615586
+      "upside": 60.19936935399591,
+      "selic": 15
     },
     {
       "ticker": "LPSB3",
@@ -196,9 +179,56 @@ window.INVEST_DATA = {
       "roe": 15.55,
       "liq_2meses": 477754,
       "div_br_patrim": 0,
+      "liq_corr": 2.13,
       "cresc_5a": -2.13,
       "graham_price": 3.2915098692992375,
-      "upside": 75.08031219676796
+      "upside": 75.08031219676796,
+      "selic": 15
+    },
+    {
+      "ticker": "INTB3",
+      "cotacao": 12.12,
+      "pl": 8.4,
+      "p_vp": 1.26,
+      "dividend_yield": 11.57,
+      "roe": 14.99,
+      "liq_2meses": 25629600,
+      "div_br_patrim": 0.33,
+      "liq_corr": 2.54,
+      "cresc_5a": 11.78,
+      "graham_price": 17.671318858650068,
+      "upside": 45.802960879951065,
+      "selic": 15
+    },
+    {
+      "ticker": "SHUL4",
+      "cotacao": 5.48,
+      "pl": 7.5,
+      "p_vp": 1.26,
+      "dividend_yield": 11.55,
+      "roe": 16.8,
+      "liq_2meses": 1892410,
+      "div_br_patrim": 0.57,
+      "liq_corr": 2.93,
+      "cresc_5a": 4.3,
+      "graham_price": 8.455823577922638,
+      "upside": 54.30334996209193,
+      "selic": 15
+    },
+    {
+      "ticker": "CAMB3",
+      "cotacao": 9.43,
+      "pl": 6.04,
+      "p_vp": 1.28,
+      "dividend_yield": 11.21,
+      "roe": 21.24,
+      "liq_2meses": 289244,
+      "div_br_patrim": 0.01,
+      "liq_corr": 3.04,
+      "cresc_5a": 15.08,
+      "graham_price": 16.08716431190084,
+      "upside": 70.59559185472789,
+      "selic": 15
     },
     {
       "ticker": "DEXP3",
@@ -209,9 +239,11 @@ window.INVEST_DATA = {
       "roe": 15,
       "liq_2meses": 1599680,
       "div_br_patrim": 0.22,
+      "liq_corr": 3.48,
       "cresc_5a": 5.73,
       "graham_price": 15.584535890215422,
-      "upside": 108.3494102969976
+      "upside": 108.3494102969976,
+      "selic": 15
     },
     {
       "ticker": "BMGB4",
@@ -222,35 +254,26 @@ window.INVEST_DATA = {
       "roe": 12.68,
       "liq_2meses": 5407650,
       "div_br_patrim": 0,
+      "liq_corr": 0,
       "cresc_5a": 0.91,
       "graham_price": 10.853157013716107,
-      "upside": 121.94595120073839
+      "upside": 121.94595120073839,
+      "selic": 15
     },
     {
-      "ticker": "AZZA3",
-      "cotacao": 24.82,
-      "pl": 6.8,
-      "p_vp": 0.61,
-      "dividend_yield": 9.97,
-      "roe": 9.02,
-      "liq_2meses": 79743500,
-      "div_br_patrim": 0.37,
-      "cresc_5a": 43.57,
-      "graham_price": 57.80609900319528,
-      "upside": 132.90128526670136
-    },
-    {
-      "ticker": "EVEN3",
-      "cotacao": 7.79,
-      "pl": 8.71,
-      "p_vp": 0.79,
-      "dividend_yield": 9.82,
-      "roe": 9.03,
-      "liq_2meses": 5466380,
-      "div_br_patrim": 0.56,
-      "cresc_5a": -3.67,
-      "graham_price": 14.086597111053287,
-      "upside": 80.82923120735927
+      "ticker": "CYRE3",
+      "cotacao": 31.13,
+      "pl": 7.81,
+      "p_vp": 1.36,
+      "dividend_yield": 10.26,
+      "roe": 17.45,
+      "liq_2meses": 181094000,
+      "div_br_patrim": 0.72,
+      "liq_corr": 3.51,
+      "cresc_5a": 17.29,
+      "graham_price": 45.308053912948246,
+      "upside": 45.54466403131464,
+      "selic": 15
     },
     {
       "ticker": "ABCB4",
@@ -261,9 +284,11 @@ window.INVEST_DATA = {
       "roe": 14.82,
       "liq_2meses": 16359600,
       "div_br_patrim": 0,
+      "liq_corr": 0,
       "cresc_5a": 12.09,
       "graham_price": 50.35993515969322,
-      "upside": 86.79501171993034
+      "upside": 86.79501171993034,
+      "selic": 15
     },
     {
       "ticker": "ISAE4",
@@ -274,9 +299,11 @@ window.INVEST_DATA = {
       "roe": 13.99,
       "liq_2meses": 59668400,
       "div_br_patrim": 0.71,
+      "liq_corr": 4.46,
       "cresc_5a": 17.91,
       "graham_price": 56.3371922483908,
-      "upside": 94.7362331434179
+      "upside": 94.7362331434179,
+      "selic": 15
     },
     {
       "ticker": "BAZA3",
@@ -287,22 +314,11 @@ window.INVEST_DATA = {
       "roe": 14.74,
       "liq_2meses": 377871,
       "div_br_patrim": 0,
+      "liq_corr": 0,
       "cresc_5a": 15.88,
       "graham_price": 236.19041448289065,
-      "upside": 176.47245052427792
-    },
-    {
-      "ticker": "FESA4",
-      "cotacao": 8.11,
-      "pl": 13.33,
-      "p_vp": 0.85,
-      "dividend_yield": 9,
-      "roe": 6.34,
-      "liq_2meses": 6497080,
-      "div_br_patrim": 0.05,
-      "cresc_5a": -2.07,
-      "graham_price": 11.428456397921984,
-      "upside": 40.91808135538822
+      "upside": 176.47245052427792,
+      "selic": 15
     },
     {
       "ticker": "BRSR6",
@@ -313,22 +329,11 @@ window.INVEST_DATA = {
       "roe": 11.32,
       "liq_2meses": 29263600,
       "div_br_patrim": 0,
+      "liq_corr": 0,
       "cresc_5a": 5.41,
       "graham_price": 42.54915705788289,
-      "upside": 137.572066208168
-    },
-    {
-      "ticker": "MTSA4",
-      "cotacao": 52,
-      "pl": 11.14,
-      "p_vp": 0.97,
-      "dividend_yield": 8.88,
-      "roe": 8.71,
-      "liq_2meses": 143808,
-      "div_br_patrim": 0.02,
-      "cresc_5a": -4.39,
-      "graham_price": 75.03538930746005,
-      "upside": 44.29882559126933
+      "upside": 137.572066208168,
+      "selic": 15
     },
     {
       "ticker": "PETR4",
@@ -339,22 +344,11 @@ window.INVEST_DATA = {
       "roe": 18.33,
       "liq_2meses": 1347940000,
       "div_br_patrim": 0.89,
+      "liq_corr": 0.82,
       "cresc_5a": 2.45,
       "graham_price": 66.56525198491795,
-      "upside": 81.62415275557422
-    },
-    {
-      "ticker": "ROMI3",
-      "cotacao": 8.21,
-      "pl": 8.99,
-      "p_vp": 0.61,
-      "dividend_yield": 8.77,
-      "roe": 6.83,
-      "liq_2meses": 1686480,
-      "div_br_patrim": 0.82,
-      "cresc_5a": -3.44,
-      "graham_price": 16.62990057834631,
-      "upside": 102.55664529045441
+      "upside": 81.62415275557422,
+      "selic": 15
     },
     {
       "ticker": "BRSR3",
@@ -365,9 +359,11 @@ window.INVEST_DATA = {
       "roe": 11.32,
       "liq_2meses": 177090,
       "div_br_patrim": 0,
+      "liq_corr": 0,
       "cresc_5a": 5.41,
       "graham_price": 42.50141555117843,
-      "upside": 124.63750291320524
+      "upside": 124.63750291320524,
+      "selic": 15
     },
     {
       "ticker": "BEES3",
@@ -378,9 +374,11 @@ window.INVEST_DATA = {
       "roe": 17.91,
       "liq_2meses": 127300,
       "div_br_patrim": 0,
+      "liq_corr": 0,
       "cresc_5a": 11.77,
       "graham_price": 14.136165684870548,
-      "upside": 71.34746284691573
+      "upside": 71.34746284691573,
+      "selic": 15
     },
     {
       "ticker": "PETR3",
@@ -391,9 +389,11 @@ window.INVEST_DATA = {
       "roe": 18.33,
       "liq_2meses": 483252000,
       "div_br_patrim": 0.89,
+      "liq_corr": 0.82,
       "cresc_5a": 2.45,
       "graham_price": 66.78032634248797,
-      "upside": 71.80428696292249
+      "upside": 71.80428696292249,
+      "selic": 15
     },
     {
       "ticker": "BLAU3",
@@ -404,9 +404,11 @@ window.INVEST_DATA = {
       "roe": 13.47,
       "liq_2meses": 6512300,
       "div_br_patrim": 0.23,
+      "liq_corr": 2.9,
       "cresc_5a": 7.54,
       "graham_price": 17.50501373823714,
-      "upside": 78.07745410210721
+      "upside": 78.07745410210721,
+      "selic": 15
     },
     {
       "ticker": "ISAE3",
@@ -417,9 +419,11 @@ window.INVEST_DATA = {
       "roe": 13.99,
       "liq_2meses": 109792,
       "div_br_patrim": 0.71,
+      "liq_corr": 4.46,
       "cresc_5a": 17.91,
       "graham_price": 56.18156117528199,
-      "upside": 61.62704595880896
+      "upside": 61.62704595880896,
+      "selic": 15
     },
     {
       "ticker": "CMIG4",
@@ -430,9 +434,11 @@ window.INVEST_DATA = {
       "roe": 13.99,
       "liq_2meses": 144410000,
       "div_br_patrim": 0.54,
+      "liq_corr": 0.89,
       "cresc_5a": 7.64,
       "graham_price": 17.817313371753333,
-      "upside": 56.9807345528928
+      "upside": 56.9807345528928,
+      "selic": 15
     },
     {
       "ticker": "EZTC3",
@@ -443,22 +449,26 @@ window.INVEST_DATA = {
       "roe": 10.6,
       "liq_2meses": 30888900,
       "div_br_patrim": 0.27,
+      "liq_corr": 5.66,
       "cresc_5a": 14.15,
       "graham_price": 28.293158560270616,
-      "upside": 77.05355794912775
+      "upside": 77.05355794912775,
+      "selic": 15
     },
     {
-      "ticker": "PFRM3",
-      "cotacao": 8.53,
-      "pl": 9.13,
-      "p_vp": 0.76,
-      "dividend_yield": 7.55,
-      "roe": 8.35,
-      "liq_2meses": 2069050,
-      "div_br_patrim": 0.57,
-      "cresc_5a": 15.32,
-      "graham_price": 15.360243672000358,
-      "upside": 80.07319662368533
+      "ticker": "CSED3",
+      "cotacao": 6.53,
+      "pl": 9.43,
+      "p_vp": 1.44,
+      "dividend_yield": 7.44,
+      "roe": 15.25,
+      "liq_2meses": 4678770,
+      "div_br_patrim": 0.76,
+      "liq_corr": 1.44,
+      "cresc_5a": 11.3,
+      "graham_price": 8.405573458388728,
+      "upside": 28.722411307637486,
+      "selic": 15
     },
     {
       "ticker": "BBDC3",
@@ -469,22 +479,56 @@ window.INVEST_DATA = {
       "roe": 14.25,
       "liq_2meses": 100480000,
       "div_br_patrim": 0,
+      "liq_corr": 0,
       "cresc_5a": 0.34,
       "graham_price": 29.06552861785292,
-      "upside": 63.19780245846671
+      "upside": 63.19780245846671,
+      "selic": 15
     },
     {
-      "ticker": "VITT3",
-      "cotacao": 4.3,
-      "pl": 10.36,
-      "p_vp": 1.03,
-      "dividend_yield": 6.7,
-      "roe": 9.9,
-      "liq_2meses": 804322,
-      "div_br_patrim": 0.36,
-      "cresc_5a": 1.52,
-      "graham_price": 6.243975992584698,
-      "upside": 45.20874401359763
+      "ticker": "BBDC4",
+      "cotacao": 20.61,
+      "pl": 8.89,
+      "p_vp": 1.27,
+      "dividend_yield": 6.97,
+      "roe": 14.25,
+      "liq_2meses": 630479000,
+      "div_br_patrim": 0,
+      "liq_corr": 0,
+      "cresc_5a": 0.34,
+      "graham_price": 29.094875950844706,
+      "upside": 41.168733385952,
+      "selic": 15
+    },
+    {
+      "ticker": "SANB4",
+      "cotacao": 16.81,
+      "pl": 8.15,
+      "p_vp": 1.32,
+      "dividend_yield": 6.78,
+      "roe": 16.24,
+      "liq_2meses": 1420680,
+      "div_br_patrim": 0,
+      "liq_corr": 0,
+      "cresc_5a": -3.32,
+      "graham_price": 24.31046145126063,
+      "upside": 44.61904492124111,
+      "selic": 15
+    },
+    {
+      "ticker": "SANB11",
+      "cotacao": 33.95,
+      "pl": 8.23,
+      "p_vp": 1.34,
+      "dividend_yield": 6.41,
+      "roe": 16.24,
+      "liq_2meses": 127782000,
+      "div_br_patrim": 0,
+      "liq_corr": 0,
+      "cresc_5a": -3.32,
+      "graham_price": 48.49296298307775,
+      "upside": 42.836415266797495,
+      "selic": 15
     },
     {
       "ticker": "EALT4",
@@ -495,9 +539,176 @@ window.INVEST_DATA = {
       "roe": 29.71,
       "liq_2meses": 221936,
       "div_br_patrim": 0.29,
+      "liq_corr": 1.31,
       "cresc_5a": 12.78,
       "graham_price": 40.85757102068064,
-      "upside": 184.72174927303578
+      "upside": 184.72174927303578,
+      "selic": 15
+    },
+    {
+      "ticker": "SANB3",
+      "cotacao": 16.62,
+      "pl": 8.06,
+      "p_vp": 1.31,
+      "dividend_yield": 6.23,
+      "roe": 16.24,
+      "liq_2meses": 1063980,
+      "div_br_patrim": 0,
+      "liq_corr": 0,
+      "cresc_5a": -3.32,
+      "graham_price": 24.26158164952428,
+      "upside": 45.97822893817256,
+      "selic": 15
+    },
+    {
+      "ticker": "CMIG3",
+      "cotacao": 14.9,
+      "pl": 10.61,
+      "p_vp": 1.48,
+      "dividend_yield": 6.03,
+      "roe": 13.99,
+      "liq_2meses": 1641820,
+      "div_br_patrim": 0.54,
+      "liq_corr": 0.89,
+      "cresc_5a": 7.64,
+      "graham_price": 17.835651498495373,
+      "upside": 19.702359050304516,
+      "selic": 15
+    },
+    {
+      "ticker": "EUCA4",
+      "cotacao": 20,
+      "pl": 6.27,
+      "p_vp": 0.66,
+      "dividend_yield": 5.62,
+      "roe": 10.54,
+      "liq_2meses": 692318,
+      "div_br_patrim": 0.3,
+      "liq_corr": 2.16,
+      "cresc_5a": 7.06,
+      "graham_price": 46.63537964023428,
+      "upside": 133.17689820117138,
+      "selic": 15
+    },
+    {
+      "ticker": "TECN3",
+      "cotacao": 8.46,
+      "pl": 7.53,
+      "p_vp": 1.18,
+      "dividend_yield": 4.95,
+      "roe": 15.64,
+      "liq_2meses": 324050,
+      "div_br_patrim": 0.21,
+      "liq_corr": 3.25,
+      "cresc_5a": 7.91,
+      "graham_price": 13.462419839076482,
+      "upside": 59.13025814511206,
+      "selic": 15
+    },
+    {
+      "ticker": "JHSF3",
+      "cotacao": 9.75,
+      "pl": 5.15,
+      "p_vp": 1.06,
+      "dividend_yield": 4.9,
+      "roe": 20.57,
+      "liq_2meses": 37519300,
+      "div_br_patrim": 0.91,
+      "liq_corr": 2.8,
+      "cresc_5a": -1.95,
+      "graham_price": 19.79426260360604,
+      "upside": 103.01807798570297,
+      "selic": 15
+    },
+    {
+      "ticker": "GMAT3",
+      "cotacao": 4.97,
+      "pl": 6.05,
+      "p_vp": 1.12,
+      "dividend_yield": 4.9,
+      "roe": 18.56,
+      "liq_2meses": 42070300,
+      "div_br_patrim": 0.26,
+      "liq_corr": 1.93,
+      "cresc_5a": 24.62,
+      "graham_price": 9.056511629350561,
+      "upside": 82.22357403119844,
+      "selic": 15
+    },
+    {
+      "ticker": "BBAS3",
+      "cotacao": 24.33,
+      "pl": 6.46,
+      "p_vp": 0.78,
+      "dividend_yield": 4.84,
+      "roe": 12.13,
+      "liq_2meses": 629360000,
+      "div_br_patrim": 0,
+      "liq_corr": 0,
+      "cresc_5a": 1.13,
+      "graham_price": 51.41262845923096,
+      "upside": 111.31372157513752,
+      "selic": 15
+    },
+    {
+      "ticker": "SAPR4",
+      "cotacao": 8.64,
+      "pl": 6.13,
+      "p_vp": 1.09,
+      "dividend_yield": 4.62,
+      "roe": 17.71,
+      "liq_2meses": 8869340,
+      "div_br_patrim": 0.6,
+      "liq_corr": 1.28,
+      "cresc_5a": 9.07,
+      "graham_price": 15.854827281902086,
+      "upside": 83.50494539238524,
+      "selic": 15
+    },
+    {
+      "ticker": "COGN3",
+      "cotacao": 3.81,
+      "pl": 5.91,
+      "p_vp": 0.62,
+      "dividend_yield": 4.33,
+      "roe": 10.43,
+      "liq_2meses": 125245000,
+      "div_br_patrim": 0.5,
+      "liq_corr": 1.81,
+      "cresc_5a": 12.57,
+      "graham_price": 9.44118808317105,
+      "upside": 147.80021215672048,
+      "selic": 15
+    },
+    {
+      "ticker": "CEAB3",
+      "cotacao": 13.04,
+      "pl": 7.6,
+      "p_vp": 1.14,
+      "dividend_yield": 4.29,
+      "roe": 14.95,
+      "liq_2meses": 156635000,
+      "div_br_patrim": 0.35,
+      "liq_corr": 1.5,
+      "cresc_5a": 11.98,
+      "graham_price": 21.014043582824108,
+      "upside": 61.15064097257753,
+      "selic": 15
+    },
+    {
+      "ticker": "SAPR11",
+      "cotacao": 45.93,
+      "pl": 6.51,
+      "p_vp": 1.15,
+      "dividend_yield": 4.27,
+      "roe": 17.71,
+      "liq_2meses": 63407600,
+      "div_br_patrim": 0.6,
+      "liq_corr": 1.28,
+      "cresc_5a": 9.07,
+      "graham_price": 79.62478817809395,
+      "upside": 73.36117608990628,
+      "selic": 15
     }
   ],
   "fiis": [

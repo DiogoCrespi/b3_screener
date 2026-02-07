@@ -32,20 +32,30 @@ async function getBestStocks() {
                 roe: parseNumber($(tds[16]).text().trim()),
                 liq_2meses: parseNumber($(tds[17]).text().trim()),
                 div_br_patrim: parseNumber($(tds[19]).text().trim()),
+                liq_corr: parseNumber($(tds[14]).text().trim()),
                 cresc_5a: parseNumber($(tds[20]).text().trim())
             });
         });
 
+        // Get current Selic rate for dynamic filtering
+        const selicResponse = await fetch('https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados/ultimos/1?formato=json');
+        const selicData = await selicResponse.json();
+        const selic = parseFloat(selicData[0]?.valor || 13.75); // Fallback to ~13.75% if API fails
+
+        // Dynamic DY threshold: if Selic > 10%, accept DY > 4%, otherwise DY > 6%
+        const minDY = selic > 10 ? 4 : 6;
+
         return stocks
-            .filter(s => s.liq_2meses > 100000)
-            .filter(s => s.p_vp > 0 && s.p_vp < 1.2)
-            .filter(s => s.dividend_yield > 6)
-            .filter(s => s.pl > 0 && s.pl < 15)
-            .filter(s => s.div_br_patrim < 1.0)
+            .filter(s => s.liq_2meses > 100000) // Liquidity > 100k
+            .filter(s => s.roe > 10) // ✅ NEW: Quality filter - ROE > 10%
+            .filter(s => s.p_vp > 0 && s.p_vp < 1.5) // ✅ UPDATED: More flexible P/VP (was 1.2)
+            .filter(s => s.dividend_yield > minDY) // ✅ UPDATED: Dynamic DY based on Selic
+            .filter(s => s.pl > 0 && s.pl < 15) // P/L reasonable
+            .filter(s => s.div_br_patrim < 1.0) // Low debt
             .map(s => {
                 const graham_price = s.cotacao * Math.sqrt(22.5 / (s.pl * s.p_vp));
                 const upside = ((graham_price - s.cotacao) / s.cotacao) * 100;
-                return { ...s, graham_price, upside };
+                return { ...s, graham_price, upside, selic }; // Include Selic in output for reference
             })
             .sort((a, b) => b.dividend_yield - a.dividend_yield);
 
