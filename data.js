@@ -1,0 +1,1410 @@
+window.INVEST_DATA = {
+  "updatedAt": "07/02/2026, 10:43:51",
+  "economy": {
+    "dollar": 5.2159,
+    "selic": 15
+  },
+  "stocks": [
+    {
+      "ticker": "SYNE3",
+      "cotacao": 4.86,
+      "pl": 6.27,
+      "p_vp": 1.01,
+      "dividend_yield": 62.55,
+      "roe": 16.18,
+      "liq_2meses": 3512180,
+      "div_br_patrim": 0.63,
+      "cresc_5a": -12.11,
+      "graham_price": 9.160793025442217,
+      "upside": 88.49368365107442
+    },
+    {
+      "ticker": "ALLD3",
+      "cotacao": 7.81,
+      "pl": 2.1,
+      "p_vp": 0.44,
+      "dividend_yield": 38.98,
+      "roe": 20.88,
+      "liq_2meses": 4556500,
+      "div_br_patrim": 0.27,
+      "cresc_5a": -0.99,
+      "graham_price": 38.53952053226846,
+      "upside": 393.4637712198267
+    },
+    {
+      "ticker": "GRND3",
+      "cotacao": 4.91,
+      "pl": 6.1,
+      "p_vp": 1.09,
+      "dividend_yield": 34.69,
+      "roe": 17.92,
+      "liq_2meses": 19474600,
+      "div_br_patrim": 0.02,
+      "cresc_5a": 2.73,
+      "graham_price": 9.032221610552892,
+      "upside": 83.95563361614849
+    },
+    {
+      "ticker": "MELK3",
+      "cotacao": 3.97,
+      "pl": 7.65,
+      "p_vp": 0.75,
+      "dividend_yield": 32.61,
+      "roe": 9.75,
+      "liq_2meses": 2248900,
+      "div_br_patrim": 0.47,
+      "cresc_5a": 11.59,
+      "graham_price": 7.861771491234793,
+      "upside": 98.02950859533483
+    },
+    {
+      "ticker": "GUAR3",
+      "cotacao": 10.14,
+      "pl": 11.52,
+      "p_vp": 0.91,
+      "dividend_yield": 30.46,
+      "roe": 7.94,
+      "liq_2meses": 27212800,
+      "div_br_patrim": 0.34,
+      "cresc_5a": 9.45,
+      "graham_price": 14.855329130363575,
+      "upside": 46.50225966827983
+    },
+    {
+      "ticker": "CGRA3",
+      "cotacao": 26.72,
+      "pl": 6.28,
+      "p_vp": 0.67,
+      "dividend_yield": 22.21,
+      "roe": 10.65,
+      "liq_2meses": 102282,
+      "div_br_patrim": 0,
+      "cresc_5a": 5.52,
+      "graham_price": 61.78890368577507,
+      "upside": 131.24589702760133
+    },
+    {
+      "ticker": "CGRA4",
+      "cotacao": 26.89,
+      "pl": 6.32,
+      "p_vp": 0.67,
+      "dividend_yield": 22.07,
+      "roe": 10.65,
+      "liq_2meses": 684444,
+      "div_br_patrim": 0,
+      "cresc_5a": 5.52,
+      "graham_price": 61.98493081331324,
+      "upside": 130.51294463857656
+    },
+    {
+      "ticker": "RECV3",
+      "cotacao": 10.76,
+      "pl": 5.09,
+      "p_vp": 0.69,
+      "dividend_yield": 17.88,
+      "roe": 13.59,
+      "liq_2meses": 43884700,
+      "div_br_patrim": 0.53,
+      "cresc_5a": 9.61,
+      "graham_price": 27.234543107222514,
+      "upside": 153.10913668422413
+    },
+    {
+      "ticker": "LOGG3",
+      "cotacao": 27.59,
+      "pl": 6.31,
+      "p_vp": 0.63,
+      "dividend_yield": 14.37,
+      "roe": 10.02,
+      "liq_2meses": 10756600,
+      "div_br_patrim": 0.66,
+      "cresc_5a": 11.25,
+      "graham_price": 65.63840287576014,
+      "upside": 137.90649828111682
+    },
+    {
+      "ticker": "BRAP3",
+      "cotacao": 20.9,
+      "pl": 7.27,
+      "p_vp": 0.9,
+      "dividend_yield": 14.25,
+      "roe": 12.38,
+      "liq_2meses": 1747210,
+      "div_br_patrim": 0,
+      "cresc_5a": 0,
+      "graham_price": 38.75690469610684,
+      "upside": 85.439735388071
+    },
+    {
+      "ticker": "VLID3",
+      "cotacao": 21.79,
+      "pl": 7.44,
+      "p_vp": 1.04,
+      "dividend_yield": 14.13,
+      "roe": 13.91,
+      "liq_2meses": 5384140,
+      "div_br_patrim": 0.35,
+      "cresc_5a": 0.12,
+      "graham_price": 37.15740292696295,
+      "upside": 70.52502490575013
+    },
+    {
+      "ticker": "TRIS3",
+      "cotacao": 7.06,
+      "pl": 8.03,
+      "p_vp": 1.08,
+      "dividend_yield": 14.01,
+      "roe": 13.44,
+      "liq_2meses": 2664870,
+      "div_br_patrim": 0.67,
+      "cresc_5a": 15.39,
+      "graham_price": 11.371723979597864,
+      "upside": 61.07257761470063
+    },
+    {
+      "ticker": "BRAP4",
+      "cotacao": 24.23,
+      "pl": 8.43,
+      "p_vp": 1.04,
+      "dividend_yield": 13.52,
+      "roe": 12.38,
+      "liq_2meses": 100183000,
+      "div_br_patrim": 0,
+      "cresc_5a": 0,
+      "graham_price": 38.81630719447321,
+      "upside": 60.19936935399591
+    },
+    {
+      "ticker": "MTRE3",
+      "cotacao": 3.92,
+      "pl": 8.46,
+      "p_vp": 0.42,
+      "dividend_yield": 12.78,
+      "roe": 4.95,
+      "liq_2meses": 2224440,
+      "div_br_patrim": 0.62,
+      "cresc_5a": 20.29,
+      "graham_price": 9.86432788075331,
+      "upside": 151.64101736615586
+    },
+    {
+      "ticker": "LPSB3",
+      "cotacao": 1.88,
+      "pl": 6.86,
+      "p_vp": 1.07,
+      "dividend_yield": 11.62,
+      "roe": 15.55,
+      "liq_2meses": 477754,
+      "div_br_patrim": 0,
+      "cresc_5a": -2.13,
+      "graham_price": 3.2915098692992375,
+      "upside": 75.08031219676796
+    },
+    {
+      "ticker": "DEXP3",
+      "cotacao": 7.48,
+      "pl": 5.89,
+      "p_vp": 0.88,
+      "dividend_yield": 11.19,
+      "roe": 15,
+      "liq_2meses": 1599680,
+      "div_br_patrim": 0.22,
+      "cresc_5a": 5.73,
+      "graham_price": 15.584535890215422,
+      "upside": 108.3494102969976
+    },
+    {
+      "ticker": "BMGB4",
+      "cotacao": 4.89,
+      "pl": 6.01,
+      "p_vp": 0.76,
+      "dividend_yield": 10.89,
+      "roe": 12.68,
+      "liq_2meses": 5407650,
+      "div_br_patrim": 0,
+      "cresc_5a": 0.91,
+      "graham_price": 10.853157013716107,
+      "upside": 121.94595120073839
+    },
+    {
+      "ticker": "AZZA3",
+      "cotacao": 24.82,
+      "pl": 6.8,
+      "p_vp": 0.61,
+      "dividend_yield": 9.97,
+      "roe": 9.02,
+      "liq_2meses": 79743500,
+      "div_br_patrim": 0.37,
+      "cresc_5a": 43.57,
+      "graham_price": 57.80609900319528,
+      "upside": 132.90128526670136
+    },
+    {
+      "ticker": "EVEN3",
+      "cotacao": 7.79,
+      "pl": 8.71,
+      "p_vp": 0.79,
+      "dividend_yield": 9.82,
+      "roe": 9.03,
+      "liq_2meses": 5466380,
+      "div_br_patrim": 0.56,
+      "cresc_5a": -3.67,
+      "graham_price": 14.086597111053287,
+      "upside": 80.82923120735927
+    },
+    {
+      "ticker": "ABCB4",
+      "cotacao": 26.96,
+      "pl": 6.58,
+      "p_vp": 0.98,
+      "dividend_yield": 9.71,
+      "roe": 14.82,
+      "liq_2meses": 16359600,
+      "div_br_patrim": 0,
+      "cresc_5a": 12.09,
+      "graham_price": 50.35993515969322,
+      "upside": 86.79501171993034
+    },
+    {
+      "ticker": "ISAE4",
+      "cotacao": 28.93,
+      "pl": 6.52,
+      "p_vp": 0.91,
+      "dividend_yield": 9.51,
+      "roe": 13.99,
+      "liq_2meses": 59668400,
+      "div_br_patrim": 0.71,
+      "cresc_5a": 17.91,
+      "graham_price": 56.3371922483908,
+      "upside": 94.7362331434179
+    },
+    {
+      "ticker": "BAZA3",
+      "cotacao": 85.43,
+      "pl": 4.46,
+      "p_vp": 0.66,
+      "dividend_yield": 9.34,
+      "roe": 14.74,
+      "liq_2meses": 377871,
+      "div_br_patrim": 0,
+      "cresc_5a": 15.88,
+      "graham_price": 236.19041448289065,
+      "upside": 176.47245052427792
+    },
+    {
+      "ticker": "FESA4",
+      "cotacao": 8.11,
+      "pl": 13.33,
+      "p_vp": 0.85,
+      "dividend_yield": 9,
+      "roe": 6.34,
+      "liq_2meses": 6497080,
+      "div_br_patrim": 0.05,
+      "cresc_5a": -2.07,
+      "graham_price": 11.428456397921984,
+      "upside": 40.91808135538822
+    },
+    {
+      "ticker": "BRSR6",
+      "cotacao": 17.91,
+      "pl": 5.95,
+      "p_vp": 0.67,
+      "dividend_yield": 8.95,
+      "roe": 11.32,
+      "liq_2meses": 29263600,
+      "div_br_patrim": 0,
+      "cresc_5a": 5.41,
+      "graham_price": 42.54915705788289,
+      "upside": 137.572066208168
+    },
+    {
+      "ticker": "MTSA4",
+      "cotacao": 52,
+      "pl": 11.14,
+      "p_vp": 0.97,
+      "dividend_yield": 8.88,
+      "roe": 8.71,
+      "liq_2meses": 143808,
+      "div_br_patrim": 0.02,
+      "cresc_5a": -4.39,
+      "graham_price": 75.03538930746005,
+      "upside": 44.29882559126933
+    },
+    {
+      "ticker": "PETR4",
+      "cotacao": 36.65,
+      "pl": 6.09,
+      "p_vp": 1.12,
+      "dividend_yield": 8.82,
+      "roe": 18.33,
+      "liq_2meses": 1347940000,
+      "div_br_patrim": 0.89,
+      "cresc_5a": 2.45,
+      "graham_price": 66.56525198491795,
+      "upside": 81.62415275557422
+    },
+    {
+      "ticker": "ROMI3",
+      "cotacao": 8.21,
+      "pl": 8.99,
+      "p_vp": 0.61,
+      "dividend_yield": 8.77,
+      "roe": 6.83,
+      "liq_2meses": 1686480,
+      "div_br_patrim": 0.82,
+      "cresc_5a": -3.44,
+      "graham_price": 16.62990057834631,
+      "upside": 102.55664529045441
+    },
+    {
+      "ticker": "BRSR3",
+      "cotacao": 18.92,
+      "pl": 6.28,
+      "p_vp": 0.71,
+      "dividend_yield": 8.47,
+      "roe": 11.32,
+      "liq_2meses": 177090,
+      "div_br_patrim": 0,
+      "cresc_5a": 5.41,
+      "graham_price": 42.50141555117843,
+      "upside": 124.63750291320524
+    },
+    {
+      "ticker": "BEES3",
+      "cotacao": 8.25,
+      "pl": 6.55,
+      "p_vp": 1.17,
+      "dividend_yield": 8.44,
+      "roe": 17.91,
+      "liq_2meses": 127300,
+      "div_br_patrim": 0,
+      "cresc_5a": 11.77,
+      "graham_price": 14.136165684870548,
+      "upside": 71.34746284691573
+    },
+    {
+      "ticker": "PETR3",
+      "cotacao": 38.87,
+      "pl": 6.46,
+      "p_vp": 1.18,
+      "dividend_yield": 8.32,
+      "roe": 18.33,
+      "liq_2meses": 483252000,
+      "div_br_patrim": 0.89,
+      "cresc_5a": 2.45,
+      "graham_price": 66.78032634248797,
+      "upside": 71.80428696292249
+    },
+    {
+      "ticker": "BLAU3",
+      "cotacao": 9.83,
+      "pl": 7.24,
+      "p_vp": 0.98,
+      "dividend_yield": 8.02,
+      "roe": 13.47,
+      "liq_2meses": 6512300,
+      "div_br_patrim": 0.23,
+      "cresc_5a": 7.54,
+      "graham_price": 17.50501373823714,
+      "upside": 78.07745410210721
+    },
+    {
+      "ticker": "ISAE3",
+      "cotacao": 34.76,
+      "pl": 7.83,
+      "p_vp": 1.1,
+      "dividend_yield": 7.91,
+      "roe": 13.99,
+      "liq_2meses": 109792,
+      "div_br_patrim": 0.71,
+      "cresc_5a": 17.91,
+      "graham_price": 56.18156117528199,
+      "upside": 61.62704595880896
+    },
+    {
+      "ticker": "CMIG4",
+      "cotacao": 11.35,
+      "pl": 8.08,
+      "p_vp": 1.13,
+      "dividend_yield": 7.91,
+      "roe": 13.99,
+      "liq_2meses": 144410000,
+      "div_br_patrim": 0.54,
+      "cresc_5a": 7.64,
+      "graham_price": 17.817313371753333,
+      "upside": 56.9807345528928
+    },
+    {
+      "ticker": "EZTC3",
+      "cotacao": 15.98,
+      "pl": 8.25,
+      "p_vp": 0.87,
+      "dividend_yield": 7.65,
+      "roe": 10.6,
+      "liq_2meses": 30888900,
+      "div_br_patrim": 0.27,
+      "cresc_5a": 14.15,
+      "graham_price": 28.293158560270616,
+      "upside": 77.05355794912775
+    },
+    {
+      "ticker": "PFRM3",
+      "cotacao": 8.53,
+      "pl": 9.13,
+      "p_vp": 0.76,
+      "dividend_yield": 7.55,
+      "roe": 8.35,
+      "liq_2meses": 2069050,
+      "div_br_patrim": 0.57,
+      "cresc_5a": 15.32,
+      "graham_price": 15.360243672000358,
+      "upside": 80.07319662368533
+    },
+    {
+      "ticker": "BBDC3",
+      "cotacao": 17.81,
+      "pl": 7.68,
+      "p_vp": 1.1,
+      "dividend_yield": 7.33,
+      "roe": 14.25,
+      "liq_2meses": 100480000,
+      "div_br_patrim": 0,
+      "cresc_5a": 0.34,
+      "graham_price": 29.06552861785292,
+      "upside": 63.19780245846671
+    },
+    {
+      "ticker": "VITT3",
+      "cotacao": 4.3,
+      "pl": 10.36,
+      "p_vp": 1.03,
+      "dividend_yield": 6.7,
+      "roe": 9.9,
+      "liq_2meses": 804322,
+      "div_br_patrim": 0.36,
+      "cresc_5a": 1.52,
+      "graham_price": 6.243975992584698,
+      "upside": 45.20874401359763
+    },
+    {
+      "ticker": "EALT4",
+      "cotacao": 14.35,
+      "pl": 3.05,
+      "p_vp": 0.91,
+      "dividend_yield": 6.25,
+      "roe": 29.71,
+      "liq_2meses": 221936,
+      "div_br_patrim": 0.29,
+      "cresc_5a": 12.78,
+      "graham_price": 40.85757102068064,
+      "upside": 184.72174927303578
+    }
+  ],
+  "fiis": [
+    {
+      "ticker": "LPLP11",
+      "segment": "Residencial",
+      "price": 340,
+      "ffo_yield": 15.32,
+      "dy": 52.92,
+      "p_vp": 1.03,
+      "liquidity": 124434,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "GZIT11",
+      "segment": "Multicategoria",
+      "price": 49.1,
+      "ffo_yield": 10.51,
+      "dy": 20.48,
+      "p_vp": 0.54,
+      "liquidity": 690067,
+      "num_properties": 6,
+      "cap_rate": 12.7,
+      "vacancy": 4.14
+    },
+    {
+      "ticker": "CACR11",
+      "segment": "Multicategoria",
+      "price": 81.02,
+      "ffo_yield": 19.94,
+      "dy": 19.51,
+      "p_vp": 1.08,
+      "liquidity": 1806930,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "KORE11",
+      "segment": "Outros",
+      "price": 72.68,
+      "ffo_yield": 20.66,
+      "dy": 19.4,
+      "p_vp": 0.69,
+      "liquidity": 3348310,
+      "num_properties": 4,
+      "cap_rate": 15.93,
+      "vacancy": 1.61
+    },
+    {
+      "ticker": "SMRE11",
+      "segment": "Multicategoria",
+      "price": 65,
+      "ffo_yield": 27.49,
+      "dy": 18.68,
+      "p_vp": 0.63,
+      "liquidity": 458082,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "IBCR11",
+      "segment": "Outros",
+      "price": 50.99,
+      "ffo_yield": 12.05,
+      "dy": 18.35,
+      "p_vp": 0.56,
+      "liquidity": 244585,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "VGRI11",
+      "segment": "Outros",
+      "price": 8.31,
+      "ffo_yield": 13.95,
+      "dy": 17.4,
+      "p_vp": 1,
+      "liquidity": 659723,
+      "num_properties": 0,
+      "cap_rate": 12.92,
+      "vacancy": 0
+    },
+    {
+      "ticker": "KIVO11",
+      "segment": "Outros",
+      "price": 68.18,
+      "ffo_yield": 16.29,
+      "dy": 16.55,
+      "p_vp": 0.8,
+      "liquidity": 306131,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "LIFE11",
+      "segment": "Residencial",
+      "price": 8.59,
+      "ffo_yield": 12.77,
+      "dy": 16.51,
+      "p_vp": 0.85,
+      "liquidity": 899941,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "MFII11",
+      "segment": "Multicategoria",
+      "price": 78.06,
+      "ffo_yield": 2.64,
+      "dy": 16.38,
+      "p_vp": 0.79,
+      "liquidity": 1533440,
+      "num_properties": 3,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "EXES11",
+      "segment": "Multicategoria",
+      "price": 9.42,
+      "ffo_yield": 8.16,
+      "dy": 16.32,
+      "p_vp": 0.96,
+      "liquidity": 205787,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "VIUR11",
+      "segment": "Outros",
+      "price": 5.84,
+      "ffo_yield": 14.21,
+      "dy": 16.23,
+      "p_vp": 0.72,
+      "liquidity": 609625,
+      "num_properties": 7,
+      "cap_rate": 86.56,
+      "vacancy": 3.14
+    },
+    {
+      "ticker": "LASC11",
+      "segment": "Shoppings",
+      "price": 112.75,
+      "ffo_yield": 12.24,
+      "dy": 16.16,
+      "p_vp": 0.85,
+      "liquidity": 5877940,
+      "num_properties": 2,
+      "cap_rate": 8.6,
+      "vacancy": 0
+    },
+    {
+      "ticker": "ARRI11",
+      "segment": "Multicategoria",
+      "price": 6.64,
+      "ffo_yield": 11.71,
+      "dy": 16.04,
+      "p_vp": 0.79,
+      "liquidity": 268061,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "HABT11",
+      "segment": "Multicategoria",
+      "price": 76.6,
+      "ffo_yield": 15.57,
+      "dy": 15.93,
+      "p_vp": 0.8,
+      "liquidity": 1127180,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "RBHY11",
+      "segment": "Outros",
+      "price": 79.09,
+      "ffo_yield": 10.94,
+      "dy": 15.7,
+      "p_vp": 0.86,
+      "liquidity": 249685,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "RZAK11",
+      "segment": "Multicategoria",
+      "price": 86.57,
+      "ffo_yield": 13.39,
+      "dy": 15.59,
+      "p_vp": 0.98,
+      "liquidity": 1694890,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "ALZC11",
+      "segment": "Outros",
+      "price": 7.95,
+      "ffo_yield": 10.75,
+      "dy": 15.46,
+      "p_vp": 0.85,
+      "liquidity": 364529,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "BNFS11",
+      "segment": "Varejo",
+      "price": 69.96,
+      "ffo_yield": 18.46,
+      "dy": 15.46,
+      "p_vp": 0.9,
+      "liquidity": 81433,
+      "num_properties": 18,
+      "cap_rate": 21.82,
+      "vacancy": 0.44
+    },
+    {
+      "ticker": "SAPI11",
+      "segment": "Multicategoria",
+      "price": 9.13,
+      "ffo_yield": 7.92,
+      "dy": 15.46,
+      "p_vp": 0.91,
+      "liquidity": 291963,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "NCRA11",
+      "segment": "Outros",
+      "price": 7.7,
+      "ffo_yield": 21.21,
+      "dy": 15.44,
+      "p_vp": 0.73,
+      "liquidity": 63185,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "RBRD11",
+      "segment": "Multicategoria",
+      "price": 40.89,
+      "ffo_yield": 14.55,
+      "dy": 15.4,
+      "p_vp": 0.63,
+      "liquidity": 111086,
+      "num_properties": 4,
+      "cap_rate": 15.43,
+      "vacancy": 14.02
+    },
+    {
+      "ticker": "JPPA11",
+      "segment": "Multicategoria",
+      "price": 85.27,
+      "ffo_yield": 15.21,
+      "dy": 15,
+      "p_vp": 0.86,
+      "liquidity": 134063,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "VGIR11",
+      "segment": "Multicategoria",
+      "price": 9.82,
+      "ffo_yield": 14.1,
+      "dy": 14.96,
+      "p_vp": 1,
+      "liquidity": 5217430,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "GCRI11",
+      "segment": "Multicategoria",
+      "price": 66.73,
+      "ffo_yield": 14.53,
+      "dy": 14.95,
+      "p_vp": 0.73,
+      "liquidity": 179600,
+      "num_properties": 1,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "BCRI11",
+      "segment": "Outros",
+      "price": 66.96,
+      "ffo_yield": 13.32,
+      "dy": 14.91,
+      "p_vp": 0.79,
+      "liquidity": 613366,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "SNME11",
+      "segment": "Multicategoria",
+      "price": 9.8,
+      "ffo_yield": 11.28,
+      "dy": 14.89,
+      "p_vp": 1.02,
+      "liquidity": 335237,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "OUJP11",
+      "segment": "Multicategoria",
+      "price": 84.51,
+      "ffo_yield": 15.5,
+      "dy": 14.88,
+      "p_vp": 0.83,
+      "liquidity": 523729,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "KNUQ11",
+      "segment": "Multicategoria",
+      "price": 104.41,
+      "ffo_yield": 9.86,
+      "dy": 14.77,
+      "p_vp": 1.03,
+      "liquidity": 4488130,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "TGAR11",
+      "segment": "Multicategoria",
+      "price": 78.68,
+      "ffo_yield": 12.36,
+      "dy": 14.7,
+      "p_vp": 0.69,
+      "liquidity": 8792250,
+      "num_properties": 5,
+      "cap_rate": 13.12,
+      "vacancy": 0
+    },
+    {
+      "ticker": "VRTM11",
+      "segment": "Multicategoria",
+      "price": 7.3,
+      "ffo_yield": 12.04,
+      "dy": 14.59,
+      "p_vp": 0.78,
+      "liquidity": 390754,
+      "num_properties": 28,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "RZLC11",
+      "segment": "Outros",
+      "price": 1002.98,
+      "ffo_yield": 4.61,
+      "dy": 14.41,
+      "p_vp": 1.01,
+      "liquidity": 1173870,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "VCRI11",
+      "segment": "Outros",
+      "price": 7.64,
+      "ffo_yield": 11.87,
+      "dy": 14.4,
+      "p_vp": 0.8,
+      "liquidity": 162982,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "CVBI11",
+      "segment": "Outros",
+      "price": 82.78,
+      "ffo_yield": 14.59,
+      "dy": 14.35,
+      "p_vp": 0.89,
+      "liquidity": 3128870,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "RPRI11",
+      "segment": "Outros",
+      "price": 87,
+      "ffo_yield": 13.27,
+      "dy": 14.22,
+      "p_vp": 0.87,
+      "liquidity": 399234,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "IRIM11",
+      "segment": "Multicategoria",
+      "price": 68.2,
+      "ffo_yield": 0.83,
+      "dy": 14.16,
+      "p_vp": 0.81,
+      "liquidity": 7922250,
+      "num_properties": 1,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "RVBI11",
+      "segment": "Outros",
+      "price": 59.9,
+      "ffo_yield": 13.05,
+      "dy": 14.1,
+      "p_vp": 0.81,
+      "liquidity": 931734,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "PORD11",
+      "segment": "Multicategoria",
+      "price": 8.11,
+      "ffo_yield": 13.55,
+      "dy": 13.99,
+      "p_vp": 0.85,
+      "liquidity": 759028,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "RELG11",
+      "segment": "Multicategoria",
+      "price": 64.96,
+      "ffo_yield": 10.08,
+      "dy": 13.96,
+      "p_vp": 0.76,
+      "liquidity": 273475,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "EQIR11",
+      "segment": "Multicategoria",
+      "price": 8.54,
+      "ffo_yield": 13.28,
+      "dy": 13.92,
+      "p_vp": 0.89,
+      "liquidity": 149770,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "HSAF11",
+      "segment": "Outros",
+      "price": 80.96,
+      "ffo_yield": 14.4,
+      "dy": 13.9,
+      "p_vp": 0.91,
+      "liquidity": 1278890,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "RBHG11",
+      "segment": "Outros",
+      "price": 68.21,
+      "ffo_yield": 10.99,
+      "dy": 13.9,
+      "p_vp": 0.79,
+      "liquidity": 204475,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "RBRY11",
+      "segment": "Multicategoria",
+      "price": 98.93,
+      "ffo_yield": 11.71,
+      "dy": 13.89,
+      "p_vp": 0.99,
+      "liquidity": 5534710,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "SNEL11",
+      "segment": "Outros",
+      "price": 8.54,
+      "ffo_yield": 1.72,
+      "dy": 13.88,
+      "p_vp": 1.04,
+      "liquidity": 2899290,
+      "num_properties": 1,
+      "cap_rate": 13.16,
+      "vacancy": 0
+    },
+    {
+      "ticker": "VGHF11",
+      "segment": "Outros",
+      "price": 7.13,
+      "ffo_yield": 10.74,
+      "dy": 13.86,
+      "p_vp": 0.82,
+      "liquidity": 3029100,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "VCJR11",
+      "segment": "Outros",
+      "price": 82.89,
+      "ffo_yield": 12.01,
+      "dy": 13.84,
+      "p_vp": 0.88,
+      "liquidity": 2028400,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "ARXD11",
+      "segment": "Multicategoria",
+      "price": 7.99,
+      "ffo_yield": 15.05,
+      "dy": 13.77,
+      "p_vp": 0.88,
+      "liquidity": 69365,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "SPXS11",
+      "segment": "Multicategoria",
+      "price": 8.82,
+      "ffo_yield": 11.61,
+      "dy": 13.77,
+      "p_vp": 0.93,
+      "liquidity": 633440,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "VGIP11",
+      "segment": "Multicategoria",
+      "price": 82.1,
+      "ffo_yield": 11.91,
+      "dy": 13.71,
+      "p_vp": 0.91,
+      "liquidity": 2096060,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0
+    },
+    {
+      "ticker": "KNCR11",
+      "segment": "Multicategoria",
+      "price": 105.58,
+      "ffo_yield": 10.31,
+      "dy": 13.69,
+      "p_vp": 1.03,
+      "liquidity": 18102200,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0
+    }
+  ],
+  "etfs": [
+    {
+      "ticker": "IVVB11",
+      "name": "S&P 500 Brazilian ETF",
+      "type": "International"
+    },
+    {
+      "ticker": "BOVA11",
+      "name": "Ibovespa Index ETF",
+      "type": "Index"
+    },
+    {
+      "ticker": "SMAL11",
+      "name": "Small Caps ETF",
+      "type": "Small Caps"
+    },
+    {
+      "ticker": "HASH11",
+      "name": "Crypto Index ETF",
+      "type": "Crypto"
+    },
+    {
+      "ticker": "DIVO11",
+      "name": "High Dividend ETF",
+      "type": "Diversified"
+    }
+  ],
+  "fixedIncome": {
+    "tesouro": [
+      {
+        "name": "Tesouro Prefixado 2029",
+        "rate": "12,74%",
+        "minInvest": "R$ 7,09",
+        "price": "R$ 709,23",
+        "maturity": "01/01/2029"
+      },
+      {
+        "name": "Tesouro Prefixado 2032",
+        "rate": "13,40%",
+        "minInvest": "R$ 4,79",
+        "price": "R$ 479,00",
+        "maturity": "01/01/2032"
+      },
+      {
+        "name": "Tesouro Prefixado 2037Juros\n                                                                            Semestrais",
+        "rate": "13,64%",
+        "minInvest": "R$ 8,18",
+        "price": "R$ 818,96",
+        "maturity": "01/01/2037"
+      },
+      {
+        "name": "Tesouro Selic 2031",
+        "rate": "SELIC + 0,0996%",
+        "minInvest": "R$ 182,65",
+        "price": "R$ 18.265,60",
+        "maturity": "01/03/2031"
+      },
+      {
+        "name": "Tesouro Renda+ Aposentadoria Extra 2030",
+        "rate": "IPCA + 7,30%",
+        "minInvest": "R$ 18,84",
+        "price": "R$ 1.884,59",
+        "maturity": "15/12/2049"
+      },
+      {
+        "name": "Tesouro Renda+ Aposentadoria Extra 2035",
+        "rate": "IPCA + 7,17%",
+        "minInvest": "R$ 13,54",
+        "price": "R$ 1.354,72",
+        "maturity": "15/12/2054"
+      },
+      {
+        "name": "Tesouro Renda+ Aposentadoria Extra 2040",
+        "rate": "IPCA + 7,05%",
+        "minInvest": "R$ 9,83",
+        "price": "R$ 983,67",
+        "maturity": "15/12/2059"
+      },
+      {
+        "name": "Tesouro Renda+ Aposentadoria Extra 2045",
+        "rate": "IPCA + 6,98%",
+        "minInvest": "R$ 7,13",
+        "price": "R$ 713,53",
+        "maturity": "15/12/2064"
+      },
+      {
+        "name": "Tesouro Renda+ Aposentadoria Extra 2050",
+        "rate": "IPCA + 6,95%",
+        "minInvest": "R$ 5,14",
+        "price": "R$ 514,78",
+        "maturity": "15/12/2069"
+      },
+      {
+        "name": "Tesouro Renda+ Aposentadoria Extra 2055",
+        "rate": "IPCA + 6,96%",
+        "minInvest": "R$ 3,67",
+        "price": "R$ 367,37",
+        "maturity": "15/12/2074"
+      },
+      {
+        "name": "Tesouro Renda+ Aposentadoria Extra 2060",
+        "rate": "IPCA + 6,97%",
+        "minInvest": "R$ 2,61",
+        "price": "R$ 261,92",
+        "maturity": "15/12/2079"
+      },
+      {
+        "name": "Tesouro Renda+ Aposentadoria Extra 2065",
+        "rate": "IPCA + 6,97%",
+        "minInvest": "R$ 1,87",
+        "price": "R$ 187,39",
+        "maturity": "15/12/2084"
+      },
+      {
+        "name": "Tesouro Educa+ 2027",
+        "rate": "IPCA + 7,67%",
+        "minInvest": "R$ 36,06",
+        "price": "R$ 3.606,99",
+        "maturity": "15/12/2031"
+      },
+      {
+        "name": "Tesouro Educa+ 2028",
+        "rate": "IPCA + 7,61%",
+        "minInvest": "R$ 33,59",
+        "price": "R$ 3.359,33",
+        "maturity": "15/12/2032"
+      },
+      {
+        "name": "Tesouro Educa+ 2029",
+        "rate": "IPCA + 7,59%",
+        "minInvest": "R$ 31,26",
+        "price": "R$ 3.126,17",
+        "maturity": "15/12/2033"
+      },
+      {
+        "name": "Tesouro Educa+ 2030",
+        "rate": "IPCA + 7,57%",
+        "minInvest": "R$ 29,09",
+        "price": "R$ 2.909,72",
+        "maturity": "15/12/2034"
+      },
+      {
+        "name": "Tesouro Educa+ 2031",
+        "rate": "IPCA + 7,54%",
+        "minInvest": "R$ 27,11",
+        "price": "R$ 2.711,21",
+        "maturity": "15/12/2035"
+      },
+      {
+        "name": "Tesouro Educa+ 2032",
+        "rate": "IPCA + 7,51%",
+        "minInvest": "R$ 25,27",
+        "price": "R$ 2.527,84",
+        "maturity": "15/12/2036"
+      },
+      {
+        "name": "Tesouro Educa+ 2033",
+        "rate": "IPCA + 7,48%",
+        "minInvest": "R$ 23,58",
+        "price": "R$ 2.358,34",
+        "maturity": "15/12/2037"
+      },
+      {
+        "name": "Tesouro Educa+ 2034",
+        "rate": "IPCA + 7,45%",
+        "minInvest": "R$ 22,01",
+        "price": "R$ 2.201,82",
+        "maturity": "15/12/2038"
+      },
+      {
+        "name": "Tesouro Educa+ 2035",
+        "rate": "IPCA + 7,41%",
+        "minInvest": "R$ 20,58",
+        "price": "R$ 2.058,93",
+        "maturity": "15/12/2039"
+      },
+      {
+        "name": "Tesouro Educa+ 2036",
+        "rate": "IPCA + 7,38%",
+        "minInvest": "R$ 19,24",
+        "price": "R$ 1.924,11",
+        "maturity": "15/12/2040"
+      },
+      {
+        "name": "Tesouro Educa+ 2037",
+        "rate": "IPCA + 7,34%",
+        "minInvest": "R$ 18,01",
+        "price": "R$ 1.801,27",
+        "maturity": "15/12/2041"
+      },
+      {
+        "name": "Tesouro Educa+ 2038",
+        "rate": "IPCA + 7,30%",
+        "minInvest": "R$ 16,87",
+        "price": "R$ 1.687,55",
+        "maturity": "15/12/2042"
+      },
+      {
+        "name": "Tesouro Educa+ 2039",
+        "rate": "IPCA + 7,26%",
+        "minInvest": "R$ 15,82",
+        "price": "R$ 1.582,04",
+        "maturity": "15/12/2043"
+      },
+      {
+        "name": "Tesouro Educa+ 2040",
+        "rate": "IPCA + 7,22%",
+        "minInvest": "R$ 14,84",
+        "price": "R$ 1.484,34",
+        "maturity": "15/12/2044"
+      },
+      {
+        "name": "Tesouro Educa+ 2041",
+        "rate": "IPCA + 7,18%",
+        "minInvest": "R$ 13,93",
+        "price": "R$ 1.393,83",
+        "maturity": "15/12/2045"
+      },
+      {
+        "name": "Tesouro Educa+ 2042",
+        "rate": "IPCA + 7,15%",
+        "minInvest": "R$ 13,07",
+        "price": "R$ 1.307,68",
+        "maturity": "15/12/2046"
+      },
+      {
+        "name": "Tesouro IPCA+ 2040",
+        "rate": "IPCA + 7,30%",
+        "minInvest": "R$ 16,63",
+        "price": "R$ 1.663,40",
+        "maturity": "15/08/2040"
+      },
+      {
+        "name": "Tesouro Educa+ 2043",
+        "rate": "IPCA + 7,11%",
+        "minInvest": "R$ 12,29",
+        "price": "R$ 1.229,83",
+        "maturity": "15/12/2047"
+      },
+      {
+        "name": "Tesouro IPCA+ 2050",
+        "rate": "IPCA + 6,98%",
+        "minInvest": "R$ 8,88",
+        "price": "R$ 888,75",
+        "maturity": "15/08/2050"
+      },
+      {
+        "name": "Tesouro IPCA+ 2032",
+        "rate": "IPCA + 7,59%",
+        "minInvest": "R$ 28,63",
+        "price": "R$ 2.863,34",
+        "maturity": "15/08/2032"
+      },
+      {
+        "name": "Tesouro Educa+ 2044",
+        "rate": "IPCA + 7,09%",
+        "minInvest": "R$ 11,53",
+        "price": "R$ 1.153,14",
+        "maturity": "15/12/2048"
+      },
+      {
+        "name": "Tesouro IPCA+ 2045Juros\n                                                                            Semestrais",
+        "rate": "IPCA + 7,26%",
+        "minInvest": "R$ 40,99",
+        "price": "R$ 4.099,60",
+        "maturity": "15/05/2045"
+      },
+      {
+        "name": "Tesouro IPCA+ 2060Juros\n                                                                            Semestrais",
+        "rate": "IPCA + 7,15%",
+        "minInvest": "R$ 40,91",
+        "price": "R$ 4.091,54",
+        "maturity": "15/08/2060"
+      },
+      {
+        "name": "Tesouro IPCA+ 2037Juros\n                                                                            Semestrais",
+        "rate": "IPCA + 7,49%",
+        "minInvest": "R$ 41,76",
+        "price": "R$ 4.176,88",
+        "maturity": "15/05/2037"
+      }
+    ],
+    "private": [
+      {
+        "name": "CDB 100% CDI",
+        "rate": "14.90%",
+        "type": "Pós-fixado"
+      },
+      {
+        "name": "LCI/LCA 90% CDI",
+        "rate": "13.41%",
+        "type": "Isento IR"
+      },
+      {
+        "name": "Poupança (Est.)",
+        "rate": "6.17% + TR",
+        "type": "Isento IR"
+      },
+      {
+        "name": "CDB Pré-fixado (Est.)",
+        "rate": "16.50%",
+        "type": "Prefixado"
+      }
+    ]
+  }
+};

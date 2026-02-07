@@ -2,8 +2,7 @@
 node_modules/
 package-lock.json
 
-# Generated data
-data.js
+# Generated data - REMOVED: data.js is now tracked for GitHub Actions
 *.html.backup
 
 # Debug scripts
