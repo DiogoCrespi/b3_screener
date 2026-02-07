@@ -1,0 +1,12 @@
+{
+  "name": "b3-stock-screener",
+  "version": "1.0.0",
+  "description": "A simple CLI tool to screen B3 stocks using Fundamentus data.",
+  "main": "screener.js",
+  "scripts": {
+    "start": "node screener.js"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12"
+  }
+}
