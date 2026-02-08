@@ -23,8 +23,8 @@ async function exportData() {
         const data = {
             updatedAt: new Date().toLocaleString('pt-BR'),
             economy: { dollar, selic },
-            stocks: stocks.slice(0, 50),
-            fiis: fiis.slice(0, 50),
+            stocks: stocks,
+            fiis: fiis,
             etfs,
             fixedIncome: {
                 tesouro,

@@ -220,7 +220,7 @@
         }
 
         .card-details.show {
-            max-height: 500px;
+            max-height: 800px;
             margin-top: 12px;
             padding-top: 12px;
             border-top: 1px solid var(--border-color);
@@ -329,6 +329,39 @@
             border-radius: 8px;
             overflow: hidden;
         }
+
+        .opp-filters {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+            width: 100%;
+        }
+
+        .filter-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--primary);
+            color: var(--text-color);
+            background: var(--card-hover);
+        }
+
+        .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
     </style>
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
 </head>
@@ -431,56 +464,139 @@
 
             const getTrendArrow = (value, type) => {
                 if (value === undefined || value === null) return '';
-
-                // Logic based on investment "Goodness"
-                // Returns arrow HTML string
                 const up = '<span class="arrow-up">↑</span>';
                 const down = '<span class="arrow-down">↓</span>';
-
                 switch (type) {
-                    case 'pl':
-                        // P/L: 0 to 15 is generally good (Green Up? Or just Green). 
-                        // Let's use: Positive profit = Up, Negative profit = Down.
-                        return value > 0 ? up : down;
-                    case 'pvp':
-                        // P/VP: < 1.0 "Cheap" (Up?), > 1.5 "Expensive" (Down?). 
-                        // Usually > 3 is risky. Let's stick to simple: <= 1.2 Good (Up), > 1.2 Bad (Down).
-                        // Common strategy: Buy below 1.2.
-                        return value <= 1.2 ? up : down;
-                    case 'roe':
-                        // ROE: Higher is better. > 10% Good (Up), < 10% Bad (Down).
-                        return value > 10 ? up : down;
-                    case 'liq':
-                        // Liquidity: > 200k Good (Up).
-                        return value > 200000 ? up : down;
-                    case 'div_patrim':
-                        // Debt/Equity: Lower is better. < 0.5 Good (Up), > 0.5 Bad (Down).
-                        // Note: "Up" here means "Good Score", visually. 
-                        // Actually, let's stick to standard: 
-                        // Asset Growth/Profit -> Up Green. 
-                        // Liabilities/Loss -> Down Red.
-                        // For Debt: < 0.5 is Good. Let's give it a Green Check or Green Arrow Up (Strong Balance Sheet).
-                        return value < 0.5 ? up : down;
-                    case 'cresc':
-                        // Growth: Positive = Up, Negative = Down
-                        return value > 0 ? up : down;
-                    case 'vacancy':
-                        // Vacancy: Lower is better. < 10% Good (Up), > 10% Bad (Down).
-                        // Logic: High vacancy is BAD (Down Red), Low vacancy is GOOD (Up Green).
-                        return value < 10 ? up : down;
-                    case 'liq-fii':
-                        // FII Liquidity: > 50k Good (Up).
-                        return value > 50000 ? up : down;
-                    case 'mkt-cap':
-                        // Market Cap (FII): > 500M (Big/Stable)
-                        return value > 500000000 ? up : down;
+                    case 'pl': return value > 0 ? up : down;
+                    case 'pvp': return value <= 1.2 ? up : down;
+                    case 'roe': return value > 10 ? up : down;
+                    case 'liq': return value > 200000 ? up : down;
+                    case 'div_patrim': return value < 0.5 ? up : down;
+                    case 'cresc': return value > 0 ? up : down;
+                    case 'vacancy': return value < 10 ? up : down;
+                    case 'liq-fii': return value > 50000 ? up : down;
+                    case 'mkt-cap': return value > 500000000 ? up : down;
                     default: return '';
                 }
             };
 
-            data.stocks.forEach(stock => {
+            const stars = data.stocks.filter(s => s.category === 'STAR');
+            const opportunities = data.stocks.filter(s => s.category === 'OPPORTUNITY');
+
+            // 1. STARS SECTION
+            if (stars.length > 0) {
+                const starHeader = document.createElement('h2');
+                starHeader.innerHTML = '⭐ TOP STARS <span style="font-size:0.8rem; font-weight:normal; color:var(--text-muted)">(Ouro: Qualidade + Crescimento + Renda)</span>';
+                starHeader.style.width = '100%';
+                starHeader.style.margin = '1rem 0 1rem 0';
+                starHeader.style.color = '#FFD700'; // Gold
+                starHeader.style.gridColumn = '1 / -1'; // Spans full width
+
+                stockContainer.appendChild(starHeader);
+
+                stars.forEach(stock => renderStockCard(stock, stockContainer, true));
+            }
+
+            // 2. OPPORTUNITIES SECTION
+            if (opportunities.length > 0) {
+                const oppHeader = document.createElement('h2');
+                oppHeader.innerHTML = '📈 OPORTUNIDADES <span style="font-size:0.8rem; font-weight:normal; color:var(--text-muted)">(Lucrativas & Valor Descontado)</span>';
+
+                oppHeader.style.width = '100%';
+                oppHeader.style.margin = '2rem 0 1rem 0';
+                oppHeader.style.color = 'var(--text-color)';
+                oppHeader.style.gridColumn = '1 / -1'; // Spans full width
+
+                stockContainer.appendChild(oppHeader);
+
+                // --- FILTER UI ---
+                const filterContainer = document.createElement('div');
+                filterContainer.className = 'opp-filters';
+                filterContainer.style.gridColumn = '1 / -1'; // Spans full width
+
+
+                const strategies = [
+                    { id: 'ALL', label: 'Ver Todas' },
+                    { id: 'QUALITY', label: '💎 Quality' },
+                    { id: 'DIVIDEND', label: '💰 Dividendos' },
+                    { id: 'VALUE', label: '📉 Valor/Desconto' },
+                    { id: 'GROWTH', label: '🚀 Crescimento' },
+                    { id: 'MAGIC', label: '🪄 Magic Formula' }
+
+                ];
+
+                strategies.forEach(s => {
+                    const btn = document.createElement('button');
+                    btn.textContent = s.label;
+                    btn.className = 'filter-btn ' + (s.id === 'ALL' ? 'active' : '');
+                    btn.dataset.id = s.id;
+                    btn.onclick = () => filterOpportunities(s.id, btn);
+                    filterContainer.appendChild(btn);
+                });
+                stockContainer.appendChild(filterContainer);
+                // -----------------
+
+                opportunities.forEach(stock => renderStockCard(stock, stockContainer, false));
+            }
+
+            // Filter Logic Function
+            window.filterOpportunities = function (strategy, btn) {
+                // Update buttons
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Filter cards
+                const cards = document.querySelectorAll('.stock-card[data-type="opportunity"]');
+                let visibleCount = 0;
+
+                cards.forEach(card => {
+                    const cardStrategies = (card.dataset.strategies || '').split(',');
+                    if (strategy === 'ALL' || cardStrategies.includes(strategy)) {
+                        card.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            };
+
+            // FII Filter Logic
+            window.filterFIIs = function (strategy, btn) {
+                // Update buttons
+                const container = btn.parentNode;
+                container.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Filter cards
+                const cards = document.querySelectorAll('.stock-card[data-type="fii"]');
+
+                cards.forEach(card => {
+                    const cardStrategies = (card.dataset.strategies || '').split(',');
+                    if (strategy === 'ALL' || cardStrategies.includes(strategy)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            };
+
+            function renderStockCard(stock, container, isStar) {
                 const card = document.createElement('div');
                 card.className = 'stock-card high-upside';
+
+                // Add attributes for filtering
+                if (!isStar) {
+                    card.dataset.type = 'opportunity';
+                    // stock.strategies is an array, join it for the attribute
+                    card.dataset.strategies = stock.strategies ? stock.strategies.join(',') : '';
+                }
+
+                if (isStar) card.style.borderLeftColor = '#FFD700'; // Gold border for stars
+
+                const badge = isStar
+                    ? `<span class="badge" style="background:#FFD700; color:black">⭐ ${stock.score}/9</span>`
+                    : `<span class="badge" style="background:var(--card-hover); color:var(--text-muted)">${stock.score}/9</span>`;
+
                 card.innerHTML = `
                 <div class="card-main">
                     <div class="ticker-info">
@@ -490,9 +606,10 @@
                                  onerror="this.style.display='none'"
                                  alt="${stock.ticker}">
                             ${stock.ticker} 
-                            <span class="badge">Ação</span>
+                            ${badge}
                         </h3>
-                        <span>Graham: R$ ${stock.graham_price.toFixed(2)}</span>
+                        <span>Graham: R$ ${stock.graham_price.toFixed(2)} | Bazin: R$ ${stock.bazin_price.toFixed(2)}</span>
+
                     </div>
                     <div class="metrics">
                         <div class="price">R$ ${stock.cotacao.toFixed(2)}</div>
@@ -503,11 +620,20 @@
                 <div class="card-details">
                     <div class="detail-row"><span class="detail-label">P/L:</span><span class="detail-value">${stock.pl?.toFixed(2) || 'N/A'} ${getTrendArrow(stock.pl, 'pl')}</span></div>
                     <div class="detail-row"><span class="detail-label">P/VP:</span><span class="detail-value">${stock.p_vp?.toFixed(2) || 'N/A'} ${getTrendArrow(stock.p_vp, 'pvp')}</span></div>
+                    <div class="detail-row"><span class="detail-label">EV/EBIT:</span><span class="detail-value">${stock.ev_ebit?.toFixed(2) || 'N/A'}</span></div>
+                    <div class="detail-row"><span class="detail-label">PSR:</span><span class="detail-value">${stock.psr?.toFixed(2) || 'N/A'}</span></div>
+                    <div class="detail-row"><span class="detail-label">PEG Ratio:</span><span class="detail-value">${(stock.peg_ratio && stock.peg_ratio < 50) ? stock.peg_ratio.toFixed(2) : 'N/A'} ${stock.peg_ratio < 1 ? '<span class="arrow-up">OK</span>' : ''}</span></div>
                     <div class="detail-row"><span class="detail-label">ROE:</span><span class="detail-value">${stock.roe?.toFixed(2) || 'N/A'}% ${getTrendArrow(stock.roe, 'roe')}</span></div>
+                    <div class="detail-row"><span class="detail-label">ROIC:</span><span class="detail-value">${stock.roic?.toFixed(2) || 'N/A'}% ${getTrendArrow(stock.roic, 'roe')}</span></div>
+                    <div class="detail-row"><span class="detail-label">M. Líquida:</span><span class="detail-value">${stock.mrg_liq?.toFixed(1) || 'N/A'}% ${getTrendArrow(stock.mrg_liq, 'roe')}</span></div>
                     <div class="detail-row"><span class="detail-label">Liquidez (2m):</span><span class="detail-value">R$ ${(stock.liq_2meses / 1000000).toFixed(1)}M ${getTrendArrow(stock.liq_2meses, 'liq')}</span></div>
-                    <div class="detail-row"><span class="detail-label">Liq. Corrente:</span><span class="detail-value">${stock.liq_corr?.toFixed(2) || 'N/A'}</span></div>
                     <div class="detail-row"><span class="detail-label">Dív/Patrim:</span><span class="detail-value">${stock.div_br_patrim?.toFixed(2) || 'N/A'} ${getTrendArrow(stock.div_br_patrim, 'div_patrim')}</span></div>
                     <div class="detail-row"><span class="detail-label">Cresc. 5a:</span><span class="detail-value">${stock.cresc_5a?.toFixed(2) || 'N/A'}% ${getTrendArrow(stock.cresc_5a, 'cresc')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Preço Teto (Bazin):</span><span class="detail-value">R$ ${stock.bazin_price?.toFixed(2) || 'N/A'}</span></div>
+                    <div class="detail-row"><span class="detail-label">Dividend Yield:</span><span class="detail-value">${stock.dividend_yield?.toFixed(2) || 'N/A'}% ${getTrendArrow(stock.dividend_yield, 'dy')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Payout:</span><span class="detail-value">${stock.payout ? stock.payout.toFixed(1) + '%' : 'N/A'} ${stock.payout > 80 ? '<span class="arrow-down">⚠️</span>' : stock.payout >= 30 && stock.payout <= 60 ? '<span class="arrow-up">✓</span>' : ''}</span></div>
+                    <div class="detail-row"><span class="detail-label">Graham Price:</span><span class="detail-value">R$ ${stock.graham_price?.toFixed(2) || 'N/A'}</span></div>
+
                     <div id="chart-${stock.ticker}" class="chart-container"></div>
                 </div>
             `;
@@ -541,14 +667,49 @@
                         }
                     }
                 });
-                stockContainer.appendChild(card);
-            });
+                container.appendChild(card);
+            }
 
             // Render FIIs
             const fiiContainer = document.getElementById('content-fiis');
+
+            // --- FII FILTER UI ---
+            const fiiFilterContainer = document.createElement('div');
+            fiiFilterContainer.className = 'opp-filters';
+            fiiFilterContainer.style.marginTop = '1rem';
+            fiiFilterContainer.style.gridColumn = '1 / -1'; // Spans full width in grid
+
+
+            const fiiStrategies = [
+                { id: 'ALL', label: 'Ver Todos' },
+                { id: 'TIJOLO_VALUE', label: '🧱 Tijolo (Oportunidade)' },
+                { id: 'PAPEL_YIELD', label: '📄 Papel (High Yield)' },
+                { id: 'SAFE_INCOME', label: '🛡️ Renda Segura' }
+            ];
+
+            fiiStrategies.forEach(s => {
+                const btn = document.createElement('button');
+                btn.textContent = s.label;
+                btn.className = 'filter-btn ' + (s.id === 'ALL' ? 'active' : '');
+                btn.onclick = () => filterFIIs(s.id, btn);
+                fiiFilterContainer.appendChild(btn);
+            });
+            fiiContainer.prepend(fiiFilterContainer); // Insert INSIDE list (top)
+
+            // ---------------------
+
             data.fiis.forEach(fii => {
                 const card = document.createElement('div');
                 card.className = 'stock-card fii';
+                // Add attributes for filtering
+                card.dataset.type = 'fii';
+                card.dataset.strategies = fii.strategies ? fii.strategies.join(',') : '';
+
+                const scoreColor = fii.score >= 8 ? '#04d361' : (fii.score >= 6 ? '#fba94c' : '#f75a68');
+                const typeBadge = fii.type === 'TIJOLO'
+                    ? '<span class="badge" style="background:#555; color:white">🧱 TIJOLO</span>'
+                    : (fii.type === 'PAPEL' ? '<span class="badge" style="background:#ddd; color:black">📄 PAPEL</span>' : '');
+
                 card.innerHTML = `
                 <div class="card-main">
                     <div class="ticker-info">
@@ -558,7 +719,10 @@
                                  onerror="this.style.display='none'"
                                  alt="${fii.ticker}">
                             ${fii.ticker} 
-                            <span class="badge">FII</span>
+                            ${typeBadge}
+                            <span class="badge" style="background:${scoreColor}20; color:${scoreColor}; border:1px solid ${scoreColor}">
+                                ⭐ ${fii.score}/10
+                            </span>
                         </h3>
                         <span>${fii.segment}</span>
                     </div>
