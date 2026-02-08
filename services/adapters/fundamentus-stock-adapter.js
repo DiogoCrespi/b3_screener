@@ -43,11 +43,13 @@ class FundamentusStockAdapter {
                     cresc_5a: parseNumber($(tds[20]).text().trim())
                 };
 
-                // Calculate Payout Ratio: (DY * Price) / (Price / P/L) * 100
-                // Simplified: (DY * P/L) / 100 * 100 = DY * P/L
-                // More accurate: Payout = (Dividend per Share / Earnings per Share) * 100
+                // CRITICAL FIX: Calculate Payout Ratio in 0-100 scale
+                // Formula: Payout = (Dividend per Share / Earnings per Share) * 100
+                // Simplified: Payout = (DY% * P/L)
+                // Example: DY 32.61%, P/L 7.65 -> Payout = 32.61 * 7.65 = 249.46%
+                // DO NOT divide by 100 - we want 249, not 2.49!
                 if (stock.pl > 0 && stock.dividend_yield > 0) {
-                    stock.payout = (stock.dividend_yield * stock.pl) / 100;
+                    stock.payout = stock.dividend_yield * stock.pl; // Result in 0-100+ scale
                 } else {
                     stock.payout = 0;
                 }

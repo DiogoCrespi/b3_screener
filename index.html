@@ -594,8 +594,8 @@
                 if (isStar) card.style.borderLeftColor = '#FFD700'; // Gold border for stars
 
                 const badge = isStar
-                    ? `<span class="badge" style="background:#FFD700; color:black">⭐ ${stock.score}/9</span>`
-                    : `<span class="badge" style="background:var(--card-hover); color:var(--text-muted)">${stock.score}/9</span>`;
+                    ? `<span class="badge" style="background:#FFD700; color:black">⭐ ${stock.score}/12</span>`
+                    : `<span class="badge" style="background:var(--card-hover); color:var(--text-muted)">${stock.score}/12</span>`;
 
                 card.innerHTML = `
                 <div class="card-main">
@@ -622,7 +622,7 @@
                     <div class="detail-row"><span class="detail-label">P/VP:</span><span class="detail-value">${stock.p_vp?.toFixed(2) || 'N/A'} ${getTrendArrow(stock.p_vp, 'pvp')}</span></div>
                     <div class="detail-row"><span class="detail-label">EV/EBIT:</span><span class="detail-value">${stock.ev_ebit?.toFixed(2) || 'N/A'}</span></div>
                     <div class="detail-row"><span class="detail-label">PSR:</span><span class="detail-value">${stock.psr?.toFixed(2) || 'N/A'}</span></div>
-                    <div class="detail-row"><span class="detail-label">PEG Ratio:</span><span class="detail-value">${(stock.peg_ratio && stock.peg_ratio < 50) ? stock.peg_ratio.toFixed(2) : 'N/A'} ${stock.peg_ratio < 1 ? '<span class="arrow-up">OK</span>' : ''}</span></div>
+                    <div class="detail-row"><span class="detail-label">PEG Ratio:</span><span class="detail-value">${(stock.peg_ratio && stock.peg_ratio < 50) ? stock.peg_ratio.toFixed(2) : 'N/A'} ${stock.peg_ratio < 0.5 ? '<span class="arrow-up">🌟 DREAM</span>' : stock.peg_ratio < 1 ? '<span class="arrow-up">✓ OK</span>' : ''}</span></div>
                     <div class="detail-row"><span class="detail-label">ROE:</span><span class="detail-value">${stock.roe?.toFixed(2) || 'N/A'}% ${getTrendArrow(stock.roe, 'roe')}</span></div>
                     <div class="detail-row"><span class="detail-label">ROIC:</span><span class="detail-value">${stock.roic?.toFixed(2) || 'N/A'}% ${getTrendArrow(stock.roic, 'roe')}</span></div>
                     <div class="detail-row"><span class="detail-label">M. Líquida:</span><span class="detail-value">${stock.mrg_liq?.toFixed(1) || 'N/A'}% ${getTrendArrow(stock.mrg_liq, 'roe')}</span></div>
@@ -631,7 +631,7 @@
                     <div class="detail-row"><span class="detail-label">Cresc. 5a:</span><span class="detail-value">${stock.cresc_5a?.toFixed(2) || 'N/A'}% ${getTrendArrow(stock.cresc_5a, 'cresc')}</span></div>
                     <div class="detail-row"><span class="detail-label">Preço Teto (Bazin):</span><span class="detail-value">R$ ${stock.bazin_price?.toFixed(2) || 'N/A'}</span></div>
                     <div class="detail-row"><span class="detail-label">Dividend Yield:</span><span class="detail-value">${stock.dividend_yield?.toFixed(2) || 'N/A'}% ${getTrendArrow(stock.dividend_yield, 'dy')}</span></div>
-                    <div class="detail-row"><span class="detail-label">Payout:</span><span class="detail-value">${stock.payout ? stock.payout.toFixed(1) + '%' : 'N/A'} ${stock.payout > 80 ? '<span class="arrow-down">⚠️</span>' : stock.payout >= 30 && stock.payout <= 60 ? '<span class="arrow-up">✓</span>' : ''}</span></div>
+                    <div class="detail-row"><span class="detail-label">Payout:</span><span class="detail-value">${stock.payout ? stock.payout.toFixed(1) + '%' : 'N/A'} ${stock.payout > 100 ? '<span class="arrow-down">🚨</span>' : stock.payout > 80 ? '<span class="arrow-down">⚠️</span>' : stock.payout >= 30 && stock.payout <= 60 ? '<span class="arrow-up">✓</span>' : ''}</span></div>
                     <div class="detail-row"><span class="detail-label">Graham Price:</span><span class="detail-value">R$ ${stock.graham_price?.toFixed(2) || 'N/A'}</span></div>
 
                     <div id="chart-${stock.ticker}" class="chart-container"></div>

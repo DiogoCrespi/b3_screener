@@ -3,18 +3,20 @@ const { getDollarRate, getSelicRate } = require('./services/economy');
 const { getBestStocks } = require('./services/stocks');
 const { getBestFIIs } = require('./services/fiis');
 const { getETFs } = require('./services/etfs');
+const { getPrivateBenchmarks } = require('./services/fixed_income');
 
 async function main() {
     // console.clear();
     console.log('--- B3 SCREENER DASHBOARD ---\n');
     console.log('Fetching data... please wait.');
 
-    const [dollar, selic, stocks, fiis, etfs] = await Promise.all([
+    const [dollar, selic, stocks, fiis, etfs, privateBenchmarks] = await Promise.all([
         getDollarRate(),
         getSelicRate(),
         getBestStocks(),
         getBestFIIs(),
-        getETFs()
+        getETFs(),
+        getPrivateBenchmarks()
     ]);
 
     // console.clear();
@@ -31,7 +33,7 @@ async function main() {
             stocks: stocks,
             fiis: fiis,
             etfs: etfs,
-            fixedIncome: { private: [] } // Placeholder or fetch real data if available
+            fixedIncome: { private: privateBenchmarks }
         };
 
         const fileContent = `window.INVEST_DATA = ${JSON.stringify(investData, null, 2)};`;

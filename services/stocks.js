@@ -58,7 +58,12 @@ async function getBestStocks() {
                 return b.score - a.score || b.dividend_yield - a.dividend_yield;
             });
 
-        return enrichedStocks;
+        // CRITICAL: Differentiated liquidity for STARS vs OPPORTUNITIES
+        // STARS need 300k+ (captures quality small caps), OPPORTUNITIES can have 200k+ (value investing tolerance)
+        const stars = enrichedStocks.filter(s => s.category === 'STAR' && s.liq_2meses > 300000);
+        const opportunities = enrichedStocks.filter(s => s.category === 'OPPORTUNITY');
+
+        return [...stars, ...opportunities];
 
     } catch (error) {
         console.error('Error in stock analysis/filtering:', error.message);

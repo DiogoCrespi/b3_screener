@@ -56,7 +56,7 @@ async function getBestFIIs() {
         const MAX_PAPER_PVP = 1.05;       // Don't overpay for paper
 
         return fiis
-            .filter(f => f.liquidity > 200000) // 2025 Standard: Higher liquidity for safety
+            .filter(f => f.liquidity > 300000) // 2026 Standard: 300k minimum for safety (spread protection)
             .map(f => {
                 const strategies = [];
 
@@ -97,11 +97,13 @@ async function getBestFIIs() {
                 // 🧱 Brick Opportunities (Tijolo)
                 // Tijolo is safer long term. We look for good assets at a discount.
                 // Discount: P/VP < 0.95 (Margin of Safety), but > 0.60 (Avoid Zombie funds).
-                // Quality: Vacancy < 10% (Tighter 2025 Standard).
-                // Cap Rate Check: If available, should be decent (> 6%).
-                const capRateOk = f.cap_rate === 0 || f.cap_rate > 6;
+                // CRITICAL: Dynamic vacancy tolerance based on valuation
+                // - Deep value (P/VP < 0.75): Accept up to 20% vacancy (risk already priced in)
+                // - Regular value (P/VP < 0.95): Accept up to 15% vacancy
+                const maxVacancy = f.p_vp < 0.75 ? 20 : 15;
+                const capRateOk = f.cap_rate === 0 || f.cap_rate > 8; // CRITICAL: Increased from 6% to 8%
 
-                if (isTijolo && f.p_vp < 0.95 && f.p_vp > 0.60 && f.vacancy < 10 && f.dy > MIN_BRICK_DY && capRateOk) {
+                if (isTijolo && f.p_vp < 0.95 && f.p_vp > 0.60 && f.vacancy < maxVacancy && f.dy > MIN_BRICK_DY && capRateOk) {
                     strategies.push('TIJOLO_VALUE');
                 }
 
