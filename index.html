@@ -392,6 +392,7 @@
         <div class="tabs">
             <button class="tab-btn active" onclick="showTab('stocks')">Ações</button>
             <button class="tab-btn" onclick="showTab('fiis')">FIIs</button>
+            <button class="tab-btn" onclick="showTab('snowball')">❄️ Bola de Neve</button>
             <button class="tab-btn" onclick="showTab('fixed')">Renda Fixa</button>
             <button class="tab-btn" onclick="showTab('etfs')">ETFs</button>
         </div>
@@ -402,6 +403,10 @@
 
         <div class="list-container hidden" id="content-fiis">
             <!-- FII list goes here -->
+        </div>
+
+        <div class="list-container hidden" id="content-snowball">
+            <!-- Snowball list goes here -->
         </div>
 
         <div class="list-container hidden" id="content-fixed">
@@ -831,6 +836,9 @@
                 });
             }
 
+            // Render Snowball Tab
+            renderSnowball(data.fiis);
+
             // Render ETFs
             const etfContainer = document.getElementById('content-etfs');
             data.etfs.forEach(etf => {
@@ -850,16 +858,64 @@
             });
         });
 
+        function renderSnowball(fiis) {
+            const snowballContainer = document.getElementById('content-snowball');
+            snowballContainer.innerHTML = '';
+
+            const sections = [
+                { title: '🪙 Base R$ 10 (Acessíveis)', filter: f => f.price < 15, color: '#fba94c' },
+                { title: '⚖️ Base R$ 20 - R$ 50 (Intermediários)', filter: f => f.price >= 15 && f.price < 70, color: '#8257e5' },
+                { title: '💎 Base R$ 100+ (Premium/Tradicionais)', filter: f => f.price >= 70, color: '#04d361' }
+            ];
+
+            sections.forEach(section => {
+                const filtered = fiis.filter(section.filter);
+                if (filtered.length === 0) return;
+
+                const header = document.createElement('h2');
+                header.textContent = section.title;
+                header.style.gridColumn = '1 / -1';
+                header.style.color = section.color;
+                header.style.marginTop = '1.5rem';
+                snowballContainer.appendChild(header);
+
+                filtered.forEach(fii => {
+                    const monthlyDiv = (fii.price * (fii.dy / 100)) / 12;
+                    const magicNumber = Math.ceil(fii.price / monthlyDiv);
+
+                    const card = document.createElement('div');
+                    card.className = 'stock-card';
+                    card.style.borderLeftColor = section.color;
+                    card.innerHTML = `
+                        <div class="card-main">
+                            <div class="ticker-info">
+                                <h3>${fii.ticker} <span class="badge" style="background:${section.color}20; color:${section.color}">⭐ ${fii.score}</span></h3>
+                                <span style="color:var(--accent); font-weight:bold; font-size:1rem;">❄️ Meta: ${magicNumber} cotas</span>
+                                <span style="font-size:0.75rem">Com ${magicNumber} cotas, o dividendo compra +1 cota/mês</span>
+                            </div>
+                            <div class="metrics">
+                                <div class="price">R$ ${fii.price.toFixed(2)}</div>
+                                <div class="yield">DY ${fii.dy}%</div>
+                                <div style="font-size:0.7rem; color:var(--text-muted)">~R$ ${monthlyDiv.toFixed(2)} /cota</div>
+                            </div>
+                        </div>
+                    `;
+                    snowballContainer.appendChild(card);
+                });
+            });
+        }
+
         function showTab(tabName) {
             // Hide all
-            ['stocks', 'fiis', 'fixed', 'etfs'].forEach(t => {
+            ['stocks', 'fiis', 'snowball', 'fixed', 'etfs'].forEach(t => {
                 document.getElementById(`content-${t}`).classList.add('hidden');
             });
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
 
             // Show selected
             document.getElementById(`content-${tabName}`).classList.remove('hidden');
-            event.target.classList.add('active');
+            // Ensure the clicked button gets active class (event might not be passed explicitly in all browsers but works in modern ones)
+            if (window.event) window.event.target.classList.add('active');
         }
     </script>
 
