@@ -443,11 +443,11 @@
 
             // Header
             document.getElementById('lastUpdate').textContent = `Atualizado em: ${data.updatedAt}`;
-            document.getElementById('dollarVal').textContent = `R$ ${data.economy.dollar.toFixed(2)}`;
+            document.getElementById('dollarVal').textContent = data.economy.dollar ? `R$ ${data.economy.dollar.toFixed(2)}` : '---';
 
             const selic = data.economy.selic;
             const selicEl = document.getElementById('selicVal');
-            selicEl.textContent = `${selic.toFixed(2)}%`;
+            selicEl.textContent = selic ? `${selic.toFixed(2)}%` : '---';
 
             // Show dynamic DY threshold notice
             const minDY = selic > 10 ? 4 : 6;
