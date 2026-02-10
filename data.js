@@ -1,5 +1,5 @@
 window.INVEST_DATA = {
-  "updatedAt": "10/02/2026, 12:52:17",
+  "updatedAt": "10/02/2026, 13:14:37",
   "economy": {
     "dollar": null,
     "selic": 15
