@@ -1,7 +1,7 @@
 window.INVEST_DATA = {
-  "updatedAt": "10/02/2026, 11:21:00",
+  "updatedAt": "10/02/2026, 14:12:57",
   "economy": {
-    "dollar": 5.1868,
+    "dollar": 5.1993,
     "selic": 15
   },
   "stocks": [
@@ -3921,7 +3921,9 @@ window.INVEST_DATA = {
       ],
       "type": "TIJOLO",
       "score": 10,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 75,
+      "magicCost": 8437.5
     },
     {
       "ticker": "TJKB11",
@@ -3941,7 +3943,9 @@ window.INVEST_DATA = {
       ],
       "type": "TIJOLO",
       "score": 10,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 88,
+      "magicCost": 22449.68
     },
     {
       "ticker": "XPML11",
@@ -3958,7 +3962,9 @@ window.INVEST_DATA = {
       "strategies": [],
       "type": "TIJOLO",
       "score": 10,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 122,
+      "magicCost": 13468.800000000001
     },
     {
       "ticker": "PMLL11",
@@ -3977,7 +3983,9 @@ window.INVEST_DATA = {
       ],
       "type": "TIJOLO",
       "score": 10,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 124,
+      "magicCost": 13189.880000000001
     },
     {
       "ticker": "MALL11",
@@ -3996,7 +4004,9 @@ window.INVEST_DATA = {
       ],
       "type": "TIJOLO",
       "score": 10,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 135,
+      "magicCost": 13504.05
     },
     {
       "ticker": "VISC11",
@@ -4015,7 +4025,156 @@ window.INVEST_DATA = {
       ],
       "type": "TIJOLO",
       "score": 10,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 136,
+      "magicCost": 14757.36
+    },
+    {
+      "ticker": "RZAK11",
+      "segment": "Multicategoria",
+      "price": 86.27,
+      "ffo_yield": 13.43,
+      "dy": 15.64,
+      "p_vp": 0.97,
+      "market_cap": 759856000,
+      "liquidity": 1692800,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "SAFE_INCOME"
+      ],
+      "type": "MULTI",
+      "score": 9,
+      "selic": 15,
+      "magicNumber": 77,
+      "magicCost": 6642.79
+    },
+    {
+      "ticker": "VGIR11",
+      "segment": "Multicategoria",
+      "price": 9.82,
+      "ffo_yield": 14.1,
+      "dy": 14.96,
+      "p_vp": 1,
+      "market_cap": 1434710000,
+      "liquidity": 5329300,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "SAFE_INCOME"
+      ],
+      "type": "MULTI",
+      "score": 9,
+      "selic": 15,
+      "magicNumber": 81,
+      "magicCost": 795.4200000000001
+    },
+    {
+      "ticker": "KNUQ11",
+      "segment": "Multicategoria",
+      "price": 104.4,
+      "ffo_yield": 9.86,
+      "dy": 14.77,
+      "p_vp": 1.03,
+      "market_cap": 2243010000,
+      "liquidity": 4402820,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "SAFE_INCOME"
+      ],
+      "type": "MULTI",
+      "score": 9,
+      "selic": 15,
+      "magicNumber": 82,
+      "magicCost": 8560.800000000001
+    },
+    {
+      "ticker": "RBRY11",
+      "segment": "Multicategoria",
+      "price": 98.8,
+      "ffo_yield": 11.72,
+      "dy": 13.91,
+      "p_vp": 0.99,
+      "market_cap": 1261630000,
+      "liquidity": 5544360,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "SAFE_INCOME"
+      ],
+      "type": "MULTI",
+      "score": 9,
+      "selic": 15,
+      "magicNumber": 87,
+      "magicCost": 8595.6
+    },
+    {
+      "ticker": "VGIP11",
+      "segment": "Multicategoria",
+      "price": 81.02,
+      "ffo_yield": 12.07,
+      "dy": 13.9,
+      "p_vp": 0.9,
+      "market_cap": 955003000,
+      "liquidity": 2099240,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "SAFE_INCOME"
+      ],
+      "type": "MULTI",
+      "score": 9,
+      "selic": 15,
+      "magicNumber": 87,
+      "magicCost": 7048.74
+    },
+    {
+      "ticker": "FGAA11",
+      "segment": "Outros",
+      "price": 9.14,
+      "ffo_yield": 14.46,
+      "dy": 13.77,
+      "p_vp": 0.97,
+      "market_cap": 412044000,
+      "liquidity": 1100330,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "SAFE_INCOME"
+      ],
+      "type": "AGRO",
+      "score": 9,
+      "selic": 15,
+      "magicNumber": 88,
+      "magicCost": 804.32
+    },
+    {
+      "ticker": "KNCR11",
+      "segment": "Multicategoria",
+      "price": 105.39,
+      "ffo_yield": 10.33,
+      "dy": 13.71,
+      "p_vp": 1.03,
+      "market_cap": 10040000000,
+      "liquidity": 18206100,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "SAFE_INCOME"
+      ],
+      "type": "MULTI",
+      "score": 9,
+      "selic": 15,
+      "magicNumber": 88,
+      "magicCost": 9274.32
     },
     {
       "ticker": "CPSH11",
@@ -4035,7 +4194,9 @@ window.INVEST_DATA = {
       ],
       "type": "TIJOLO",
       "score": 9,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 102,
+      "magicCost": 1092.42
     },
     {
       "ticker": "HGBS11",
@@ -4052,7 +4213,9 @@ window.INVEST_DATA = {
       "strategies": [],
       "type": "TIJOLO",
       "score": 9,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 131,
+      "magicCost": 2626.55
     },
     {
       "ticker": "HSML11",
@@ -4071,67 +4234,28 @@ window.INVEST_DATA = {
       ],
       "type": "TIJOLO",
       "score": 9,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 140,
+      "magicCost": 12964
     },
     {
-      "ticker": "RZAK11",
+      "ticker": "SNME11",
       "segment": "Multicategoria",
-      "price": 86.27,
-      "ffo_yield": 13.43,
-      "dy": 15.64,
-      "p_vp": 0.97,
-      "market_cap": 759856000,
-      "liquidity": 1692800,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "strategies": [
-        "PAPEL_YIELD",
-        "SAFE_INCOME"
-      ],
-      "type": "PAPEL",
-      "score": 8,
-      "selic": 15
-    },
-    {
-      "ticker": "VGIR11",
-      "segment": "Multicategoria",
-      "price": 9.82,
-      "ffo_yield": 14.1,
+      "price": 9.75,
+      "ffo_yield": 11.34,
       "dy": 14.96,
-      "p_vp": 1,
-      "market_cap": 1434710000,
-      "liquidity": 5329300,
+      "p_vp": 1.01,
+      "market_cap": 72327900,
+      "liquidity": 345422,
       "num_properties": 0,
       "cap_rate": 0,
       "vacancy": 0,
-      "strategies": [
-        "PAPEL_YIELD",
-        "SAFE_INCOME"
-      ],
-      "type": "PAPEL",
+      "strategies": [],
+      "type": "MULTI",
       "score": 8,
-      "selic": 15
-    },
-    {
-      "ticker": "KNUQ11",
-      "segment": "Multicategoria",
-      "price": 104.4,
-      "ffo_yield": 9.86,
-      "dy": 14.77,
-      "p_vp": 1.03,
-      "market_cap": 2243010000,
-      "liquidity": 4402820,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "strategies": [
-        "PAPEL_YIELD",
-        "SAFE_INCOME"
-      ],
-      "type": "PAPEL",
-      "score": 8,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 81,
+      "magicCost": 789.75
     },
     {
       "ticker": "RZLC11",
@@ -4151,7 +4275,9 @@ window.INVEST_DATA = {
       ],
       "type": "PAPEL",
       "score": 8,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 84,
+      "magicCost": 84299.88
     },
     {
       "ticker": "CVBI11",
@@ -4171,7 +4297,28 @@ window.INVEST_DATA = {
       ],
       "type": "PAPEL",
       "score": 8,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 84,
+      "magicCost": 6953.52
+    },
+    {
+      "ticker": "PORD11",
+      "segment": "Multicategoria",
+      "price": 8.1,
+      "ffo_yield": 13.56,
+      "dy": 14,
+      "p_vp": 0.85,
+      "market_cap": 301998000,
+      "liquidity": 761393,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [],
+      "type": "MULTI",
+      "score": 8,
+      "selic": 15,
+      "magicNumber": 86,
+      "magicCost": 696.6
     },
     {
       "ticker": "HSAF11",
@@ -4191,47 +4338,28 @@ window.INVEST_DATA = {
       ],
       "type": "PAPEL",
       "score": 8,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 87,
+      "magicCost": 7035.6900000000005
     },
     {
-      "ticker": "RBRY11",
+      "ticker": "SPXS11",
       "segment": "Multicategoria",
-      "price": 98.8,
-      "ffo_yield": 11.72,
-      "dy": 13.91,
-      "p_vp": 0.99,
-      "market_cap": 1261630000,
-      "liquidity": 5544360,
+      "price": 8.67,
+      "ffo_yield": 11.81,
+      "dy": 13.92,
+      "p_vp": 0.91,
+      "market_cap": 175039000,
+      "liquidity": 642997,
       "num_properties": 0,
       "cap_rate": 0,
       "vacancy": 0,
-      "strategies": [
-        "PAPEL_YIELD",
-        "SAFE_INCOME"
-      ],
-      "type": "PAPEL",
+      "strategies": [],
+      "type": "MULTI",
       "score": 8,
-      "selic": 15
-    },
-    {
-      "ticker": "VGIP11",
-      "segment": "Multicategoria",
-      "price": 81.02,
-      "ffo_yield": 12.07,
-      "dy": 13.9,
-      "p_vp": 0.9,
-      "market_cap": 955003000,
-      "liquidity": 2099240,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "strategies": [
-        "PAPEL_YIELD",
-        "SAFE_INCOME"
-      ],
-      "type": "PAPEL",
-      "score": 8,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 87,
+      "magicCost": 754.29
     },
     {
       "ticker": "VCJR11",
@@ -4251,7 +4379,9 @@ window.INVEST_DATA = {
       ],
       "type": "PAPEL",
       "score": 8,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 87,
+      "magicCost": 7193.160000000001
     },
     {
       "ticker": "SNEL11",
@@ -4271,27 +4401,9 @@ window.INVEST_DATA = {
       ],
       "type": "PAPEL",
       "score": 8,
-      "selic": 15
-    },
-    {
-      "ticker": "FGAA11",
-      "segment": "Outros",
-      "price": 9.14,
-      "ffo_yield": 14.46,
-      "dy": 13.77,
-      "p_vp": 0.97,
-      "market_cap": 412044000,
-      "liquidity": 1100330,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "strategies": [
-        "PAPEL_YIELD",
-        "SAFE_INCOME"
-      ],
-      "type": "PAPEL",
-      "score": 8,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 87,
+      "magicCost": 746.46
     },
     {
       "ticker": "PCIP11",
@@ -4311,27 +4423,9 @@ window.INVEST_DATA = {
       ],
       "type": "PAPEL",
       "score": 8,
-      "selic": 15
-    },
-    {
-      "ticker": "KNCR11",
-      "segment": "Multicategoria",
-      "price": 105.39,
-      "ffo_yield": 10.33,
-      "dy": 13.71,
-      "p_vp": 1.03,
-      "market_cap": 10040000000,
-      "liquidity": 18206100,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "strategies": [
-        "PAPEL_YIELD",
-        "SAFE_INCOME"
-      ],
-      "type": "PAPEL",
-      "score": 8,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 88,
+      "magicCost": 7500.240000000001
     },
     {
       "ticker": "BBIG11",
@@ -4348,7 +4442,356 @@ window.INVEST_DATA = {
       "strategies": [],
       "type": "TIJOLO",
       "score": 8,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 92,
+      "magicCost": 677.12
+    },
+    {
+      "ticker": "JSAF11",
+      "segment": "Multicategoria",
+      "price": 8.05,
+      "ffo_yield": 11.81,
+      "dy": 12.78,
+      "p_vp": 0.87,
+      "market_cap": 624062000,
+      "liquidity": 2059100,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "SAFE_INCOME"
+      ],
+      "type": "MULTI",
+      "score": 8,
+      "selic": 15,
+      "magicNumber": 94,
+      "magicCost": 756.7
+    },
+    {
+      "ticker": "TRXF11",
+      "segment": "Multicategoria",
+      "price": 93.04,
+      "ffo_yield": 7.94,
+      "dy": 12.55,
+      "p_vp": 0.9,
+      "market_cap": 3023180000,
+      "liquidity": 25353700,
+      "num_properties": 57,
+      "cap_rate": 4.28,
+      "vacancy": 0,
+      "strategies": [
+        "SAFE_INCOME"
+      ],
+      "type": "MULTI",
+      "score": 8,
+      "selic": 15,
+      "magicNumber": 96,
+      "magicCost": 8931.84
+    },
+    {
+      "ticker": "KNSC11",
+      "segment": "Multicategoria",
+      "price": 9.05,
+      "ffo_yield": 11.79,
+      "dy": 12.45,
+      "p_vp": 1.03,
+      "market_cap": 1829930000,
+      "liquidity": 6014080,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "SAFE_INCOME"
+      ],
+      "type": "MULTI",
+      "score": 8,
+      "selic": 15,
+      "magicNumber": 97,
+      "magicCost": 877.85
+    },
+    {
+      "ticker": "RBRR11",
+      "segment": "Multicategoria",
+      "price": 85.9,
+      "ffo_yield": 10.33,
+      "dy": 12.2,
+      "p_vp": 0.92,
+      "market_cap": 1400190000,
+      "liquidity": 4917000,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "SAFE_INCOME"
+      ],
+      "type": "MULTI",
+      "score": 8,
+      "selic": 15,
+      "magicNumber": 99,
+      "magicCost": 8504.1
+    },
+    {
+      "ticker": "RBRX11",
+      "segment": "Multicategoria",
+      "price": 8.68,
+      "ffo_yield": 2.48,
+      "dy": 12.03,
+      "p_vp": 0.88,
+      "market_cap": 1270360000,
+      "liquidity": 4330480,
+      "num_properties": 1,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "SAFE_INCOME"
+      ],
+      "type": "MULTI",
+      "score": 8,
+      "selic": 15,
+      "magicNumber": 100,
+      "magicCost": 868
+    },
+    {
+      "ticker": "GGRC11",
+      "segment": "Multicategoria",
+      "price": 10,
+      "ffo_yield": 6.2,
+      "dy": 11.92,
+      "p_vp": 0.89,
+      "market_cap": 2142500000,
+      "liquidity": 9866550,
+      "num_properties": 39,
+      "cap_rate": 9.85,
+      "vacancy": 0,
+      "strategies": [
+        "SAFE_INCOME"
+      ],
+      "type": "MULTI",
+      "score": 8,
+      "selic": 15,
+      "magicNumber": 101,
+      "magicCost": 1010
+    },
+    {
+      "ticker": "KNHF11",
+      "segment": "Multicategoria",
+      "price": 97.82,
+      "ffo_yield": 12.61,
+      "dy": 11.87,
+      "p_vp": 0.97,
+      "market_cap": 1923460000,
+      "liquidity": 4616040,
+      "num_properties": 9,
+      "cap_rate": 6.41,
+      "vacancy": 0.64,
+      "strategies": [
+        "SAFE_INCOME"
+      ],
+      "type": "MULTI",
+      "score": 8,
+      "selic": 15,
+      "magicNumber": 102,
+      "magicCost": 9977.64
+    },
+    {
+      "ticker": "MCCI11",
+      "segment": "Multicategoria",
+      "price": 95.51,
+      "ffo_yield": 10.88,
+      "dy": 11.8,
+      "p_vp": 1,
+      "market_cap": 1619850000,
+      "liquidity": 5175260,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "SAFE_INCOME"
+      ],
+      "type": "MULTI",
+      "score": 8,
+      "selic": 15,
+      "magicNumber": 102,
+      "magicCost": 9742.02
+    },
+    {
+      "ticker": "GARE11",
+      "segment": "Multicategoria",
+      "price": 8.61,
+      "ffo_yield": 3.02,
+      "dy": 11.46,
+      "p_vp": 0.92,
+      "market_cap": 2489900000,
+      "liquidity": 13108900,
+      "num_properties": 3,
+      "cap_rate": 5.06,
+      "vacancy": 0,
+      "strategies": [
+        "SAFE_INCOME"
+      ],
+      "type": "MULTI",
+      "score": 8,
+      "selic": 15,
+      "magicNumber": 105,
+      "magicCost": 904.05
+    },
+    {
+      "ticker": "KNHY11",
+      "segment": "Multicategoria",
+      "price": 99.73,
+      "ffo_yield": 13.52,
+      "dy": 11.33,
+      "p_vp": 1.01,
+      "market_cap": 3108890000,
+      "liquidity": 4175110,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "SAFE_INCOME"
+      ],
+      "type": "MULTI",
+      "score": 8,
+      "selic": 15,
+      "magicNumber": 106,
+      "magicCost": 10571.380000000001
+    },
+    {
+      "ticker": "KFOF11",
+      "segment": "Multicategoria",
+      "price": 84.75,
+      "ffo_yield": 11.57,
+      "dy": 10.86,
+      "p_vp": 0.91,
+      "market_cap": 594484000,
+      "liquidity": 1147300,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "SAFE_INCOME"
+      ],
+      "type": "MULTI",
+      "score": 8,
+      "selic": 15,
+      "magicNumber": 111,
+      "magicCost": 9407.25
+    },
+    {
+      "ticker": "KNIP11",
+      "segment": "Multicategoria",
+      "price": 91.14,
+      "ffo_yield": 12.03,
+      "dy": 10.78,
+      "p_vp": 0.98,
+      "market_cap": 7298330000,
+      "liquidity": 10652500,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "SAFE_INCOME"
+      ],
+      "type": "MULTI",
+      "score": 8,
+      "selic": 15,
+      "magicNumber": 112,
+      "magicCost": 10207.68
+    },
+    {
+      "ticker": "HFOF11",
+      "segment": "Multicategoria",
+      "price": 6.81,
+      "ffo_yield": 9.98,
+      "dy": 9.83,
+      "p_vp": 0.87,
+      "market_cap": 1539940000,
+      "liquidity": 2146940,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [],
+      "type": "MULTI",
+      "score": 8,
+      "selic": 15,
+      "magicNumber": 123,
+      "magicCost": 837.63
+    },
+    {
+      "ticker": "NEWL11",
+      "segment": "Multicategoria",
+      "price": 117.74,
+      "ffo_yield": 12.23,
+      "dy": 9.74,
+      "p_vp": 0.9,
+      "market_cap": 330872000,
+      "liquidity": 3859020,
+      "num_properties": 3,
+      "cap_rate": 9.67,
+      "vacancy": 0,
+      "strategies": [],
+      "type": "MULTI",
+      "score": 8,
+      "selic": 15,
+      "magicNumber": 124,
+      "magicCost": 14599.76
+    },
+    {
+      "ticker": "ALZR11",
+      "segment": "Multicategoria",
+      "price": 10.83,
+      "ffo_yield": 8.48,
+      "dy": 9.16,
+      "p_vp": 1.02,
+      "market_cap": 1324140000,
+      "liquidity": 2366310,
+      "num_properties": 19,
+      "cap_rate": 7.87,
+      "vacancy": 0,
+      "strategies": [],
+      "type": "MULTI",
+      "score": 8,
+      "selic": 15,
+      "magicNumber": 132,
+      "magicCost": 1429.56
+    },
+    {
+      "ticker": "BTLG11",
+      "segment": "Multicategoria",
+      "price": 102.47,
+      "ffo_yield": 7.26,
+      "dy": 9.11,
+      "p_vp": 0.99,
+      "market_cap": 5462710000,
+      "liquidity": 19675400,
+      "num_properties": 22,
+      "cap_rate": 6.9,
+      "vacancy": 0.84,
+      "strategies": [],
+      "type": "MULTI",
+      "score": 8,
+      "selic": 15,
+      "magicNumber": 132,
+      "magicCost": 13526.039999999999
+    },
+    {
+      "ticker": "HGLG11",
+      "segment": "Multicategoria",
+      "price": 157.04,
+      "ffo_yield": 6.31,
+      "dy": 8.34,
+      "p_vp": 0.94,
+      "market_cap": 6659230000,
+      "liquidity": 16713000,
+      "num_properties": 28,
+      "cap_rate": 6.98,
+      "vacancy": 2.91,
+      "strategies": [],
+      "type": "MULTI",
+      "score": 8,
+      "selic": 15,
+      "magicNumber": 144,
+      "magicCost": 22613.76
     },
     {
       "ticker": "AJFI11",
@@ -4367,7 +4810,30 @@ window.INVEST_DATA = {
       ],
       "type": "TIJOLO",
       "score": 8,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 148,
+      "magicCost": 1212.12
+    },
+    {
+      "ticker": "CACR11",
+      "segment": "Multicategoria",
+      "price": 80.97,
+      "ffo_yield": 19.95,
+      "dy": 19.52,
+      "p_vp": 1.08,
+      "market_cap": 391597000,
+      "liquidity": 1820990,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "SAFE_INCOME"
+      ],
+      "type": "MULTI",
+      "score": 7,
+      "selic": 15,
+      "magicNumber": 62,
+      "magicCost": 5020.14
     },
     {
       "ticker": "VGRI11",
@@ -4386,24 +4852,110 @@ window.INVEST_DATA = {
       ],
       "type": "PAPEL",
       "score": 7,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 69,
+      "magicCost": 571.3199999999999
     },
     {
-      "ticker": "SNME11",
+      "ticker": "HCTR11",
       "segment": "Multicategoria",
-      "price": 9.75,
-      "ffo_yield": 11.34,
-      "dy": 14.96,
-      "p_vp": 1.01,
-      "market_cap": 72327900,
-      "liquidity": 345422,
+      "price": 21.19,
+      "ffo_yield": 17.94,
+      "dy": 17.36,
+      "p_vp": 0.2,
+      "market_cap": 467964000,
+      "liquidity": 1064950,
       "num_properties": 0,
       "cap_rate": 0,
       "vacancy": 0,
-      "strategies": [],
-      "type": "PAPEL",
+      "strategies": [
+        "MULTI_DISCOUNT"
+      ],
+      "type": "MULTI",
       "score": 7,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 70,
+      "magicCost": 1483.3000000000002
+    },
+    {
+      "ticker": "MFII11",
+      "segment": "Multicategoria",
+      "price": 77,
+      "ffo_yield": 2.68,
+      "dy": 16.61,
+      "p_vp": 0.78,
+      "market_cap": 523600000,
+      "liquidity": 1539510,
+      "num_properties": 3,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "MULTI_DISCOUNT"
+      ],
+      "type": "MULTI",
+      "score": 7,
+      "selic": 15,
+      "magicNumber": 73,
+      "magicCost": 5621
+    },
+    {
+      "ticker": "HABT11",
+      "segment": "Multicategoria",
+      "price": 76.14,
+      "ffo_yield": 15.66,
+      "dy": 16.03,
+      "p_vp": 0.8,
+      "market_cap": 618773000,
+      "liquidity": 1119900,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "MULTI_DISCOUNT"
+      ],
+      "type": "MULTI",
+      "score": 7,
+      "selic": 15,
+      "magicNumber": 75,
+      "magicCost": 5710.5
+    },
+    {
+      "ticker": "TRXB11",
+      "segment": "Multicategoria",
+      "price": 177.57,
+      "ffo_yield": 4.92,
+      "dy": 15.08,
+      "p_vp": 1.75,
+      "market_cap": 665181000,
+      "liquidity": 3324540,
+      "num_properties": 12,
+      "cap_rate": 10.17,
+      "vacancy": 0,
+      "strategies": [],
+      "type": "MULTI",
+      "score": 7,
+      "selic": 15,
+      "magicNumber": 80,
+      "magicCost": 14205.599999999999
+    },
+    {
+      "ticker": "TGAR11",
+      "segment": "Multicategoria",
+      "price": 78.7,
+      "ffo_yield": 12.36,
+      "dy": 14.7,
+      "p_vp": 0.69,
+      "market_cap": 1854800000,
+      "liquidity": 8799730,
+      "num_properties": 5,
+      "cap_rate": 13.11,
+      "vacancy": 0,
+      "strategies": [],
+      "type": "MULTI",
+      "score": 7,
+      "selic": 15,
+      "magicNumber": 82,
+      "magicCost": 6453.400000000001
     },
     {
       "ticker": "RPRI11",
@@ -4420,43 +4972,28 @@ window.INVEST_DATA = {
       "strategies": [],
       "type": "PAPEL",
       "score": 7,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 85,
+      "magicCost": 7416.25
     },
     {
-      "ticker": "PORD11",
+      "ticker": "IRIM11",
       "segment": "Multicategoria",
-      "price": 8.1,
-      "ffo_yield": 13.56,
-      "dy": 14,
-      "p_vp": 0.85,
-      "market_cap": 301998000,
-      "liquidity": 761393,
-      "num_properties": 0,
+      "price": 68.21,
+      "ffo_yield": 0.83,
+      "dy": 14.16,
+      "p_vp": 0.81,
+      "market_cap": 2402760000,
+      "liquidity": 8000310,
+      "num_properties": 1,
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 7,
-      "selic": 15
-    },
-    {
-      "ticker": "SPXS11",
-      "segment": "Multicategoria",
-      "price": 8.67,
-      "ffo_yield": 11.81,
-      "dy": 13.92,
-      "p_vp": 0.91,
-      "market_cap": 175039000,
-      "liquidity": 642997,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "strategies": [
-        "PAPEL_YIELD"
-      ],
-      "type": "PAPEL",
-      "score": 7,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 85,
+      "magicCost": 5797.849999999999
     },
     {
       "ticker": "SNCI11",
@@ -4475,7 +5012,47 @@ window.INVEST_DATA = {
       ],
       "type": "PAPEL",
       "score": 7,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 90,
+      "magicCost": 7962.3
+    },
+    {
+      "ticker": "KCRE11",
+      "segment": "Multicategoria",
+      "price": 8.77,
+      "ffo_yield": 14.45,
+      "dy": 13.29,
+      "p_vp": 0.93,
+      "market_cap": 315720000,
+      "liquidity": 538632,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [],
+      "type": "MULTI",
+      "score": 7,
+      "selic": 15,
+      "magicNumber": 91,
+      "magicCost": 798.0699999999999
+    },
+    {
+      "ticker": "JSCR11",
+      "segment": "Multicategoria",
+      "price": 8.51,
+      "ffo_yield": 13.82,
+      "dy": 13.23,
+      "p_vp": 0.9,
+      "market_cap": 188387000,
+      "liquidity": 363642,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [],
+      "type": "MULTI",
+      "score": 7,
+      "selic": 15,
+      "magicNumber": 91,
+      "magicCost": 774.41
     },
     {
       "ticker": "MXRF11",
@@ -4494,7 +5071,28 @@ window.INVEST_DATA = {
       ],
       "type": "OUTROS",
       "score": 7,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 91,
+      "magicCost": 877.24
+    },
+    {
+      "ticker": "RZAT11",
+      "segment": "Multicategoria",
+      "price": 91.59,
+      "ffo_yield": 13.27,
+      "dy": 13.1,
+      "p_vp": 0.91,
+      "market_cap": 387887000,
+      "liquidity": 665875,
+      "num_properties": 13,
+      "cap_rate": 15.42,
+      "vacancy": 0,
+      "strategies": [],
+      "type": "MULTI",
+      "score": 7,
+      "selic": 15,
+      "magicNumber": 92,
+      "magicCost": 8426.28
     },
     {
       "ticker": "CLIN11",
@@ -4513,7 +5111,9 @@ window.INVEST_DATA = {
       ],
       "type": "PAPEL",
       "score": 7,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 93,
+      "magicCost": 8787.57
     },
     {
       "ticker": "XPCI11",
@@ -4532,7 +5132,28 @@ window.INVEST_DATA = {
       ],
       "type": "PAPEL",
       "score": 7,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 94,
+      "magicCost": 7870.620000000001
+    },
+    {
+      "ticker": "BBFO11",
+      "segment": "Multicategoria",
+      "price": 67.5,
+      "ffo_yield": 18.53,
+      "dy": 12.89,
+      "p_vp": 0.88,
+      "market_cap": 270263000,
+      "liquidity": 308521,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [],
+      "type": "MULTI",
+      "score": 7,
+      "selic": 15,
+      "magicNumber": 94,
+      "magicCost": 6345
     },
     {
       "ticker": "HGCR11",
@@ -4551,26 +5172,9 @@ window.INVEST_DATA = {
       ],
       "type": "PAPEL",
       "score": 7,
-      "selic": 15
-    },
-    {
-      "ticker": "JSAF11",
-      "segment": "Multicategoria",
-      "price": 8.05,
-      "ffo_yield": 11.81,
-      "dy": 12.78,
-      "p_vp": 0.87,
-      "market_cap": 624062000,
-      "liquidity": 2059100,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "strategies": [
-        "SAFE_INCOME"
-      ],
-      "type": "PAPEL",
-      "score": 7,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 94,
+      "magicCost": 8981.699999999999
     },
     {
       "ticker": "PSEC11",
@@ -4589,7 +5193,9 @@ window.INVEST_DATA = {
       ],
       "type": "PAPEL",
       "score": 7,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 94,
+      "magicCost": 6036.68
     },
     {
       "ticker": "ICRI11",
@@ -4608,7 +5214,9 @@ window.INVEST_DATA = {
       ],
       "type": "PAPEL",
       "score": 7,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 95,
+      "magicCost": 8873
     },
     {
       "ticker": "VRTA11",
@@ -4627,26 +5235,9 @@ window.INVEST_DATA = {
       ],
       "type": "PAPEL",
       "score": 7,
-      "selic": 15
-    },
-    {
-      "ticker": "TRXF11",
-      "segment": "Multicategoria",
-      "price": 93.04,
-      "ffo_yield": 7.94,
-      "dy": 12.55,
-      "p_vp": 0.9,
-      "market_cap": 3023180000,
-      "liquidity": 25353700,
-      "num_properties": 57,
-      "cap_rate": 4.28,
-      "vacancy": 0,
-      "strategies": [
-        "SAFE_INCOME"
-      ],
-      "type": "PAPEL",
-      "score": 7,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 95,
+      "magicCost": 7509.75
     },
     {
       "ticker": "CPTS11",
@@ -4665,26 +5256,9 @@ window.INVEST_DATA = {
       ],
       "type": "PAPEL",
       "score": 7,
-      "selic": 15
-    },
-    {
-      "ticker": "KNSC11",
-      "segment": "Multicategoria",
-      "price": 9.05,
-      "ffo_yield": 11.79,
-      "dy": 12.45,
-      "p_vp": 1.03,
-      "market_cap": 1829930000,
-      "liquidity": 6014080,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "strategies": [
-        "SAFE_INCOME"
-      ],
-      "type": "PAPEL",
-      "score": 7,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 97,
+      "magicCost": 790.5500000000001
     },
     {
       "ticker": "BTCI11",
@@ -4703,7 +5277,28 @@ window.INVEST_DATA = {
       ],
       "type": "PAPEL",
       "score": 7,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 97,
+      "magicCost": 896.28
+    },
+    {
+      "ticker": "AFHI11",
+      "segment": "Multicategoria",
+      "price": 97,
+      "ffo_yield": 12.08,
+      "dy": 12.31,
+      "p_vp": 1.03,
+      "market_cap": 464557000,
+      "liquidity": 767809,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [],
+      "type": "MULTI",
+      "score": 7,
+      "selic": 15,
+      "magicNumber": 98,
+      "magicCost": 9506
     },
     {
       "ticker": "GAME11",
@@ -4722,64 +5317,9 @@ window.INVEST_DATA = {
       ],
       "type": "PAPEL",
       "score": 7,
-      "selic": 15
-    },
-    {
-      "ticker": "RBRR11",
-      "segment": "Multicategoria",
-      "price": 85.9,
-      "ffo_yield": 10.33,
-      "dy": 12.2,
-      "p_vp": 0.92,
-      "market_cap": 1400190000,
-      "liquidity": 4917000,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "strategies": [
-        "SAFE_INCOME"
-      ],
-      "type": "PAPEL",
-      "score": 7,
-      "selic": 15
-    },
-    {
-      "ticker": "RBRX11",
-      "segment": "Multicategoria",
-      "price": 8.68,
-      "ffo_yield": 2.48,
-      "dy": 12.03,
-      "p_vp": 0.88,
-      "market_cap": 1270360000,
-      "liquidity": 4330480,
-      "num_properties": 1,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "strategies": [
-        "SAFE_INCOME"
-      ],
-      "type": "PAPEL",
-      "score": 7,
-      "selic": 15
-    },
-    {
-      "ticker": "GGRC11",
-      "segment": "Multicategoria",
-      "price": 10,
-      "ffo_yield": 6.2,
-      "dy": 11.92,
-      "p_vp": 0.89,
-      "market_cap": 2142500000,
-      "liquidity": 9866550,
-      "num_properties": 39,
-      "cap_rate": 9.85,
-      "vacancy": 0,
-      "strategies": [
-        "SAFE_INCOME"
-      ],
-      "type": "PAPEL",
-      "score": 7,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 98,
+      "magicCost": 896.7
     },
     {
       "ticker": "BTHF11",
@@ -4798,45 +5338,9 @@ window.INVEST_DATA = {
       ],
       "type": "PAPEL",
       "score": 7,
-      "selic": 15
-    },
-    {
-      "ticker": "KNHF11",
-      "segment": "Multicategoria",
-      "price": 97.82,
-      "ffo_yield": 12.61,
-      "dy": 11.87,
-      "p_vp": 0.97,
-      "market_cap": 1923460000,
-      "liquidity": 4616040,
-      "num_properties": 9,
-      "cap_rate": 6.41,
-      "vacancy": 0.64,
-      "strategies": [
-        "SAFE_INCOME"
-      ],
-      "type": "PAPEL",
-      "score": 7,
-      "selic": 15
-    },
-    {
-      "ticker": "MCCI11",
-      "segment": "Multicategoria",
-      "price": 95.51,
-      "ffo_yield": 10.88,
-      "dy": 11.8,
-      "p_vp": 1,
-      "market_cap": 1619850000,
-      "liquidity": 5175260,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "strategies": [
-        "SAFE_INCOME"
-      ],
-      "type": "PAPEL",
-      "score": 7,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 101,
+      "magicCost": 946.3699999999999
     },
     {
       "ticker": "ITRI11",
@@ -4855,7 +5359,9 @@ window.INVEST_DATA = {
       ],
       "type": "PAPEL",
       "score": 7,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 103,
+      "magicCost": 8863.15
     },
     {
       "ticker": "FIGS11",
@@ -4874,45 +5380,28 @@ window.INVEST_DATA = {
       ],
       "type": "TIJOLO",
       "score": 7,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 105,
+      "magicCost": 5086.2
     },
     {
-      "ticker": "GARE11",
+      "ticker": "BCIA11",
       "segment": "Multicategoria",
-      "price": 8.61,
-      "ffo_yield": 3.02,
-      "dy": 11.46,
-      "p_vp": 0.92,
-      "market_cap": 2489900000,
-      "liquidity": 13108900,
-      "num_properties": 3,
-      "cap_rate": 5.06,
-      "vacancy": 0,
-      "strategies": [
-        "SAFE_INCOME"
-      ],
-      "type": "PAPEL",
-      "score": 7,
-      "selic": 15
-    },
-    {
-      "ticker": "KNHY11",
-      "segment": "Multicategoria",
-      "price": 99.73,
-      "ffo_yield": 13.52,
-      "dy": 11.33,
-      "p_vp": 1.01,
-      "market_cap": 3108890000,
-      "liquidity": 4175110,
+      "price": 95.89,
+      "ffo_yield": 12.01,
+      "dy": 11.5,
+      "p_vp": 0.93,
+      "market_cap": 356619000,
+      "liquidity": 605880,
       "num_properties": 0,
       "cap_rate": 0,
       "vacancy": 0,
-      "strategies": [
-        "SAFE_INCOME"
-      ],
-      "type": "PAPEL",
+      "strategies": [],
+      "type": "MULTI",
       "score": 7,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 105,
+      "magicCost": 10068.45
     },
     {
       "ticker": "TEPP11",
@@ -4931,26 +5420,9 @@ window.INVEST_DATA = {
       ],
       "type": "PAPEL",
       "score": 7,
-      "selic": 15
-    },
-    {
-      "ticker": "KFOF11",
-      "segment": "Multicategoria",
-      "price": 84.75,
-      "ffo_yield": 11.57,
-      "dy": 10.86,
-      "p_vp": 0.91,
-      "market_cap": 594484000,
-      "liquidity": 1147300,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "strategies": [
-        "SAFE_INCOME"
-      ],
-      "type": "PAPEL",
-      "score": 7,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 107,
+      "magicCost": 969.4200000000001
     },
     {
       "ticker": "HTMX11",
@@ -4969,26 +5441,9 @@ window.INVEST_DATA = {
       ],
       "type": "TIJOLO",
       "score": 7,
-      "selic": 15
-    },
-    {
-      "ticker": "KNIP11",
-      "segment": "Multicategoria",
-      "price": 91.14,
-      "ffo_yield": 12.03,
-      "dy": 10.78,
-      "p_vp": 0.98,
-      "market_cap": 7298330000,
-      "liquidity": 10652500,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "strategies": [
-        "SAFE_INCOME"
-      ],
-      "type": "PAPEL",
-      "score": 7,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 111,
+      "magicCost": 15262.5
     },
     {
       "ticker": "RBVA11",
@@ -5007,41 +5462,9 @@ window.INVEST_DATA = {
       ],
       "type": "TIJOLO",
       "score": 7,
-      "selic": 15
-    },
-    {
-      "ticker": "HFOF11",
-      "segment": "Multicategoria",
-      "price": 6.81,
-      "ffo_yield": 9.98,
-      "dy": 9.83,
-      "p_vp": 0.87,
-      "market_cap": 1539940000,
-      "liquidity": 2146940,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "strategies": [],
-      "type": "PAPEL",
-      "score": 7,
-      "selic": 15
-    },
-    {
-      "ticker": "NEWL11",
-      "segment": "Multicategoria",
-      "price": 117.74,
-      "ffo_yield": 12.23,
-      "dy": 9.74,
-      "p_vp": 0.9,
-      "market_cap": 330872000,
-      "liquidity": 3859020,
-      "num_properties": 3,
-      "cap_rate": 9.67,
-      "vacancy": 0,
-      "strategies": [],
-      "type": "PAPEL",
-      "score": 7,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 112,
+      "magicCost": 1113.28
     },
     {
       "ticker": "RBRL11",
@@ -5058,7 +5481,28 @@ window.INVEST_DATA = {
       "strategies": [],
       "type": "OUTROS",
       "score": 7,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 124,
+      "magicCost": 11381.960000000001
+    },
+    {
+      "ticker": "BBGO11",
+      "segment": "Outros",
+      "price": 79.39,
+      "ffo_yield": 18.8,
+      "dy": 9.66,
+      "p_vp": 0.85,
+      "market_cap": 317970000,
+      "liquidity": 574928,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [],
+      "type": "AGRO",
+      "score": 7,
+      "selic": 15,
+      "magicNumber": 125,
+      "magicCost": 9923.75
     },
     {
       "ticker": "HGRU11",
@@ -5075,7 +5519,9 @@ window.INVEST_DATA = {
       "strategies": [],
       "type": "PAPEL",
       "score": 7,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 125,
+      "magicCost": 15820
     },
     {
       "ticker": "PLAG11",
@@ -5092,41 +5538,28 @@ window.INVEST_DATA = {
       "strategies": [],
       "type": "PAPEL",
       "score": 7,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 128,
+      "magicCost": 7680
     },
     {
-      "ticker": "ALZR11",
-      "segment": "Multicategoria",
-      "price": 10.83,
-      "ffo_yield": 8.48,
-      "dy": 9.16,
-      "p_vp": 1.02,
-      "market_cap": 1324140000,
-      "liquidity": 2366310,
-      "num_properties": 19,
-      "cap_rate": 7.87,
+      "ticker": "EGAF11",
+      "segment": "T�tulos e Val. Mob.",
+      "price": 97.03,
+      "ffo_yield": 13.05,
+      "dy": 8.74,
+      "p_vp": 0.98,
+      "market_cap": 303890000,
+      "liquidity": 710072,
+      "num_properties": 0,
+      "cap_rate": 0,
       "vacancy": 0,
       "strategies": [],
-      "type": "PAPEL",
+      "type": "AGRO",
       "score": 7,
-      "selic": 15
-    },
-    {
-      "ticker": "BTLG11",
-      "segment": "Multicategoria",
-      "price": 102.47,
-      "ffo_yield": 7.26,
-      "dy": 9.11,
-      "p_vp": 0.99,
-      "market_cap": 5462710000,
-      "liquidity": 19675400,
-      "num_properties": 22,
-      "cap_rate": 6.9,
-      "vacancy": 0.84,
-      "strategies": [],
-      "type": "PAPEL",
-      "score": 7,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 138,
+      "magicCost": 13390.14
     },
     {
       "ticker": "VILG11",
@@ -5143,24 +5576,28 @@ window.INVEST_DATA = {
       "strategies": [],
       "type": "OUTROS",
       "score": 7,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 143,
+      "magicCost": 14334.32
     },
     {
-      "ticker": "HGLG11",
-      "segment": "Multicategoria",
-      "price": 157.04,
-      "ffo_yield": 6.31,
-      "dy": 8.34,
-      "p_vp": 0.94,
-      "market_cap": 6659230000,
-      "liquidity": 16713000,
-      "num_properties": 28,
-      "cap_rate": 6.98,
-      "vacancy": 2.91,
+      "ticker": "CPTR11",
+      "segment": "Outros",
+      "price": 8.64,
+      "ffo_yield": 110.36,
+      "dy": 8.42,
+      "p_vp": 0.88,
+      "market_cap": 171285000,
+      "liquidity": 316660,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
       "strategies": [],
-      "type": "PAPEL",
+      "type": "AGRO",
       "score": 7,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 143,
+      "magicCost": 1235.52
     },
     {
       "ticker": "LVBI11",
@@ -5177,7 +5614,28 @@ window.INVEST_DATA = {
       "strategies": [],
       "type": "OUTROS",
       "score": 7,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 146,
+      "magicCost": 15998.68
+    },
+    {
+      "ticker": "XPCA11",
+      "segment": "Multicategoria",
+      "price": 8.42,
+      "ffo_yield": 12.1,
+      "dy": 8.2,
+      "p_vp": 0.87,
+      "market_cap": 383304000,
+      "liquidity": 931312,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [],
+      "type": "AGRO",
+      "score": 7,
+      "selic": 15,
+      "magicNumber": 147,
+      "magicCost": 1237.74
     },
     {
       "ticker": "HPDP11",
@@ -5194,7 +5652,85 @@ window.INVEST_DATA = {
       "strategies": [],
       "type": "TIJOLO",
       "score": 7,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 160,
+      "magicCost": 14200
+    },
+    {
+      "ticker": "KNRI11",
+      "segment": "Multicategoria",
+      "price": 164.96,
+      "ffo_yield": 7.25,
+      "dy": 7.3,
+      "p_vp": 1.01,
+      "market_cap": 4652540000,
+      "liquidity": 6341890,
+      "num_properties": 20,
+      "cap_rate": 7.24,
+      "vacancy": 0.09,
+      "strategies": [],
+      "type": "MULTI",
+      "score": 7,
+      "selic": 15,
+      "magicNumber": 165,
+      "magicCost": 27218.4
+    },
+    {
+      "ticker": "FATN11",
+      "segment": "Multicategoria",
+      "price": 87.34,
+      "ffo_yield": 6.01,
+      "dy": 6.19,
+      "p_vp": 0.91,
+      "market_cap": 468418000,
+      "liquidity": 1783070,
+      "num_properties": 54,
+      "cap_rate": 7.98,
+      "vacancy": 1.59,
+      "strategies": [],
+      "type": "MULTI",
+      "score": 7,
+      "selic": 15,
+      "magicNumber": 194,
+      "magicCost": 16943.96
+    },
+    {
+      "ticker": "RZAG11",
+      "segment": "T�tulos e Val. Mob.",
+      "price": 9.04,
+      "ffo_yield": 18.43,
+      "dy": 6.08,
+      "p_vp": 0.94,
+      "market_cap": 615085000,
+      "liquidity": 2868840,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [],
+      "type": "AGRO",
+      "score": 7,
+      "selic": 15,
+      "magicNumber": 198,
+      "magicCost": 1789.9199999999998
+    },
+    {
+      "ticker": "KNCA11",
+      "segment": "T�tulos e Val. Mob.",
+      "price": 97.3,
+      "ffo_yield": 11.37,
+      "dy": 5.31,
+      "p_vp": 0.95,
+      "market_cap": 2101670000,
+      "liquidity": 3202690,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [],
+      "type": "AGRO",
+      "score": 7,
+      "selic": 15,
+      "magicNumber": 226,
+      "magicCost": 21989.8
     },
     {
       "ticker": "APXM11",
@@ -5211,60 +5747,131 @@ window.INVEST_DATA = {
       "strategies": [],
       "type": "TIJOLO",
       "score": 7,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 239,
+      "magicCost": 19999.52
     },
     {
-      "ticker": "CACR11",
+      "ticker": "RURA11",
+      "segment": "T�tulos e Val. Mob.",
+      "price": 8.87,
+      "ffo_yield": 12.09,
+      "dy": 4.82,
+      "p_vp": 0.87,
+      "market_cap": 1420080000,
+      "liquidity": 2497820,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [],
+      "type": "AGRO",
+      "score": 7,
+      "selic": 15,
+      "magicNumber": 249,
+      "magicCost": 2208.6299999999997
+    },
+    {
+      "ticker": "GZIT11",
       "segment": "Multicategoria",
-      "price": 80.97,
-      "ffo_yield": 19.95,
-      "dy": 19.52,
-      "p_vp": 1.08,
-      "market_cap": 391597000,
-      "liquidity": 1820990,
+      "price": 48.15,
+      "ffo_yield": 10.72,
+      "dy": 20.88,
+      "p_vp": 0.53,
+      "market_cap": 1051660000,
+      "liquidity": 696983,
+      "num_properties": 6,
+      "cap_rate": 12.95,
+      "vacancy": 4.14,
+      "strategies": [
+        "MULTI_DISCOUNT"
+      ],
+      "type": "MULTI",
+      "score": 6,
+      "selic": 15,
+      "magicNumber": 58,
+      "magicCost": 2792.7
+    },
+    {
+      "ticker": "DEVA11",
+      "segment": "Multicategoria",
+      "price": 24.51,
+      "ffo_yield": 19.58,
+      "dy": 18.85,
+      "p_vp": 0.25,
+      "market_cap": 344241000,
+      "liquidity": 915564,
       "num_properties": 0,
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [
-        "SAFE_INCOME"
+        "MULTI_DISCOUNT"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 6,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 64,
+      "magicCost": 1568.64
     },
     {
-      "ticker": "HABT11",
+      "ticker": "SMRE11",
       "segment": "Multicategoria",
-      "price": 76.14,
-      "ffo_yield": 15.66,
-      "dy": 16.03,
-      "p_vp": 0.8,
-      "market_cap": 618773000,
-      "liquidity": 1119900,
+      "price": 65.01,
+      "ffo_yield": 28.98,
+      "dy": 18.67,
+      "p_vp": 0.62,
+      "market_cap": 64870700,
+      "liquidity": 452989,
       "num_properties": 0,
       "cap_rate": 0,
       "vacancy": 0,
-      "strategies": [],
-      "type": "PAPEL",
+      "strategies": [
+        "MULTI_DISCOUNT"
+      ],
+      "type": "MULTI",
       "score": 6,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 65,
+      "magicCost": 4225.650000000001
     },
     {
-      "ticker": "IRIM11",
+      "ticker": "OUJP11",
       "segment": "Multicategoria",
-      "price": 68.21,
-      "ffo_yield": 0.83,
-      "dy": 14.16,
-      "p_vp": 0.81,
-      "market_cap": 2402760000,
-      "liquidity": 8000310,
-      "num_properties": 1,
+      "price": 83.56,
+      "ffo_yield": 15.67,
+      "dy": 15.05,
+      "p_vp": 0.83,
+      "market_cap": 271769000,
+      "liquidity": 525623,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "MULTI_DISCOUNT"
+      ],
+      "type": "MULTI",
+      "score": 6,
+      "selic": 15,
+      "magicNumber": 80,
+      "magicCost": 6684.8
+    },
+    {
+      "ticker": "VRTM11",
+      "segment": "Multicategoria",
+      "price": 7.28,
+      "ffo_yield": 12.07,
+      "dy": 14.63,
+      "p_vp": 0.78,
+      "market_cap": 341951000,
+      "liquidity": 391157,
+      "num_properties": 28,
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 6,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 83,
+      "magicCost": 604.24
     },
     {
       "ticker": "VGHF11",
@@ -5281,75 +5888,9 @@ window.INVEST_DATA = {
       "strategies": [],
       "type": "PAPEL",
       "score": 6,
-      "selic": 15
-    },
-    {
-      "ticker": "KCRE11",
-      "segment": "Multicategoria",
-      "price": 8.77,
-      "ffo_yield": 14.45,
-      "dy": 13.29,
-      "p_vp": 0.93,
-      "market_cap": 315720000,
-      "liquidity": 538632,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "strategies": [],
-      "type": "PAPEL",
-      "score": 6,
-      "selic": 15
-    },
-    {
-      "ticker": "JSCR11",
-      "segment": "Multicategoria",
-      "price": 8.51,
-      "ffo_yield": 13.82,
-      "dy": 13.23,
-      "p_vp": 0.9,
-      "market_cap": 188387000,
-      "liquidity": 363642,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "strategies": [],
-      "type": "PAPEL",
-      "score": 6,
-      "selic": 15
-    },
-    {
-      "ticker": "RZAT11",
-      "segment": "Multicategoria",
-      "price": 91.59,
-      "ffo_yield": 13.27,
-      "dy": 13.1,
-      "p_vp": 0.91,
-      "market_cap": 387887000,
-      "liquidity": 665875,
-      "num_properties": 13,
-      "cap_rate": 15.42,
-      "vacancy": 0,
-      "strategies": [],
-      "type": "PAPEL",
-      "score": 6,
-      "selic": 15
-    },
-    {
-      "ticker": "BBFO11",
-      "segment": "Multicategoria",
-      "price": 67.5,
-      "ffo_yield": 18.53,
-      "dy": 12.89,
-      "p_vp": 0.88,
-      "market_cap": 270263000,
-      "liquidity": 308521,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "strategies": [],
-      "type": "PAPEL",
-      "score": 6,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 87,
+      "magicCost": 618.57
     },
     {
       "ticker": "SNFF11",
@@ -5366,7 +5907,9 @@ window.INVEST_DATA = {
       "strategies": [],
       "type": "PAPEL",
       "score": 6,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 95,
+      "magicCost": 7286.5
     },
     {
       "ticker": "GRUL11",
@@ -5383,7 +5926,9 @@ window.INVEST_DATA = {
       "strategies": [],
       "type": "OUTROS",
       "score": 6,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 96,
+      "magicCost": 859.1999999999999
     },
     {
       "ticker": "AZPL11",
@@ -5400,7 +5945,9 @@ window.INVEST_DATA = {
       "strategies": [],
       "type": "OUTROS",
       "score": 6,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 96,
+      "magicCost": 738.24
     },
     {
       "ticker": "TVRI11",
@@ -5417,24 +5964,9 @@ window.INVEST_DATA = {
       "strategies": [],
       "type": "OUTROS",
       "score": 6,
-      "selic": 15
-    },
-    {
-      "ticker": "AFHI11",
-      "segment": "Multicategoria",
-      "price": 97,
-      "ffo_yield": 12.08,
-      "dy": 12.31,
-      "p_vp": 1.03,
-      "market_cap": 464557000,
-      "liquidity": 767809,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "strategies": [],
-      "type": "PAPEL",
-      "score": 6,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 97,
+      "magicCost": 9611.73
     },
     {
       "ticker": "KISU11",
@@ -5451,24 +5983,9 @@ window.INVEST_DATA = {
       "strategies": [],
       "type": "PAPEL",
       "score": 6,
-      "selic": 15
-    },
-    {
-      "ticker": "BCIA11",
-      "segment": "Multicategoria",
-      "price": 95.89,
-      "ffo_yield": 12.01,
-      "dy": 11.5,
-      "p_vp": 0.93,
-      "market_cap": 356619000,
-      "liquidity": 605880,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "strategies": [],
-      "type": "PAPEL",
-      "score": 6,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 101,
+      "magicCost": 705.99
     },
     {
       "ticker": "RINV11",
@@ -5485,7 +6002,28 @@ window.INVEST_DATA = {
       "strategies": [],
       "type": "PAPEL",
       "score": 6,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 105,
+      "magicCost": 11692.8
+    },
+    {
+      "ticker": "CPUR11",
+      "segment": "Multicategoria",
+      "price": 10.7,
+      "ffo_yield": 8.02,
+      "dy": 10.5,
+      "p_vp": 1.09,
+      "market_cap": 725735000,
+      "liquidity": 5825510,
+      "num_properties": 12,
+      "cap_rate": 5.91,
+      "vacancy": 0.6,
+      "strategies": [],
+      "type": "MULTI",
+      "score": 6,
+      "selic": 15,
+      "magicNumber": 115,
+      "magicCost": 1230.5
     },
     {
       "ticker": "PQAG11",
@@ -5502,24 +6040,28 @@ window.INVEST_DATA = {
       "strategies": [],
       "type": "OUTROS",
       "score": 6,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 116,
+      "magicCost": 6297.64
     },
     {
-      "ticker": "BBGO11",
-      "segment": "Outros",
-      "price": 79.39,
-      "ffo_yield": 18.8,
-      "dy": 9.66,
-      "p_vp": 0.85,
-      "market_cap": 317970000,
-      "liquidity": 574928,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
+      "ticker": "BRCR11",
+      "segment": "Multicategoria",
+      "price": 48.42,
+      "ffo_yield": 11.27,
+      "dy": 10.3,
+      "p_vp": 0.57,
+      "market_cap": 1289820000,
+      "liquidity": 3106940,
+      "num_properties": 6,
+      "cap_rate": 13.2,
+      "vacancy": 2.99,
       "strategies": [],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 6,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 117,
+      "magicCost": 5665.14
     },
     {
       "ticker": "XPLG11",
@@ -5536,7 +6078,9 @@ window.INVEST_DATA = {
       "strategies": [],
       "type": "OUTROS",
       "score": 6,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 127,
+      "magicCost": 13067.03
     },
     {
       "ticker": "HGBL11",
@@ -5553,7 +6097,9 @@ window.INVEST_DATA = {
       "strategies": [],
       "type": "OUTROS",
       "score": 6,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 127,
+      "magicCost": 1179.83
     },
     {
       "ticker": "BRCO11",
@@ -5570,109 +6116,66 @@ window.INVEST_DATA = {
       "strategies": [],
       "type": "OUTROS",
       "score": 6,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 135,
+      "magicCost": 15907.05
     },
     {
-      "ticker": "EGAF11",
-      "segment": "T�tulos e Val. Mob.",
-      "price": 97.03,
-      "ffo_yield": 13.05,
-      "dy": 8.74,
-      "p_vp": 0.98,
-      "market_cap": 303890000,
-      "liquidity": 710072,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "strategies": [],
-      "type": "PAPEL",
-      "score": 6,
-      "selic": 15
-    },
-    {
-      "ticker": "CPTR11",
+      "ticker": "VGIA11",
       "segment": "Outros",
-      "price": 8.64,
-      "ffo_yield": 110.36,
-      "dy": 8.42,
-      "p_vp": 0.88,
-      "market_cap": 171285000,
-      "liquidity": 316660,
+      "price": 10.28,
+      "ffo_yield": 10.45,
+      "dy": 8.81,
+      "p_vp": 1.06,
+      "market_cap": 888759000,
+      "liquidity": 2090390,
       "num_properties": 0,
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [],
-      "type": "PAPEL",
+      "type": "AGRO",
       "score": 6,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 137,
+      "magicCost": 1408.36
     },
     {
-      "ticker": "XPCA11",
+      "ticker": "JSRE11",
       "segment": "Multicategoria",
-      "price": 8.42,
-      "ffo_yield": 12.1,
-      "dy": 8.2,
-      "p_vp": 0.87,
-      "market_cap": 383304000,
-      "liquidity": 931312,
+      "price": 67.13,
+      "ffo_yield": 9.67,
+      "dy": 8.51,
+      "p_vp": 0.63,
+      "market_cap": 1394110000,
+      "liquidity": 3129550,
+      "num_properties": 6,
+      "cap_rate": 11.83,
+      "vacancy": 2.07,
+      "strategies": [],
+      "type": "MULTI",
+      "score": 6,
+      "selic": 15,
+      "magicNumber": 142,
+      "magicCost": 9532.46
+    },
+    {
+      "ticker": "AAZQ11",
+      "segment": "Outros",
+      "price": 8.37,
+      "ffo_yield": 12.52,
+      "dy": 7.83,
+      "p_vp": 0.97,
+      "market_cap": 201192000,
+      "liquidity": 676125,
       "num_properties": 0,
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [],
-      "type": "PAPEL",
+      "type": "AGRO",
       "score": 6,
-      "selic": 15
-    },
-    {
-      "ticker": "KNRI11",
-      "segment": "Multicategoria",
-      "price": 164.96,
-      "ffo_yield": 7.25,
-      "dy": 7.3,
-      "p_vp": 1.01,
-      "market_cap": 4652540000,
-      "liquidity": 6341890,
-      "num_properties": 20,
-      "cap_rate": 7.24,
-      "vacancy": 0.09,
-      "strategies": [],
-      "type": "PAPEL",
-      "score": 6,
-      "selic": 15
-    },
-    {
-      "ticker": "FATN11",
-      "segment": "Multicategoria",
-      "price": 87.34,
-      "ffo_yield": 6.01,
-      "dy": 6.19,
-      "p_vp": 0.91,
-      "market_cap": 468418000,
-      "liquidity": 1783070,
-      "num_properties": 54,
-      "cap_rate": 7.98,
-      "vacancy": 1.59,
-      "strategies": [],
-      "type": "PAPEL",
-      "score": 6,
-      "selic": 15
-    },
-    {
-      "ticker": "RZAG11",
-      "segment": "T�tulos e Val. Mob.",
-      "price": 9.04,
-      "ffo_yield": 18.43,
-      "dy": 6.08,
-      "p_vp": 0.94,
-      "market_cap": 615085000,
-      "liquidity": 2868840,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "strategies": [],
-      "type": "PAPEL",
-      "score": 6,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 154,
+      "magicCost": 1288.9799999999998
     },
     {
       "ticker": "CPOF11",
@@ -5689,41 +6192,9 @@ window.INVEST_DATA = {
       "strategies": [],
       "type": "PAPEL",
       "score": 6,
-      "selic": 15
-    },
-    {
-      "ticker": "KNCA11",
-      "segment": "T�tulos e Val. Mob.",
-      "price": 97.3,
-      "ffo_yield": 11.37,
-      "dy": 5.31,
-      "p_vp": 0.95,
-      "market_cap": 2101670000,
-      "liquidity": 3202690,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "strategies": [],
-      "type": "PAPEL",
-      "score": 6,
-      "selic": 15
-    },
-    {
-      "ticker": "RURA11",
-      "segment": "T�tulos e Val. Mob.",
-      "price": 8.87,
-      "ffo_yield": 12.09,
-      "dy": 4.82,
-      "p_vp": 0.87,
-      "market_cap": 1420080000,
-      "liquidity": 2497820,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "strategies": [],
-      "type": "PAPEL",
-      "score": 6,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 204,
+      "magicCost": 22440
     },
     {
       "ticker": "LIFE11",
@@ -5742,26 +6213,350 @@ window.INVEST_DATA = {
       ],
       "type": "TIJOLO",
       "score": 5,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 74,
+      "magicCost": 642.3199999999999
     },
     {
-      "ticker": "RECR11",
+      "ticker": "MANA11",
       "segment": "Multicategoria",
-      "price": 81.1,
-      "ffo_yield": 13.94,
-      "dy": 13.71,
-      "p_vp": 0.91,
-      "market_cap": 2144420000,
-      "liquidity": 2995490,
-      "num_properties": 1,
+      "price": 9.29,
+      "ffo_yield": 0,
+      "dy": 27.45,
+      "p_vp": 0.09,
+      "market_cap": 13404900,
+      "liquidity": 1106650,
+      "num_properties": 0,
       "cap_rate": 0,
-      "vacancy": 100,
+      "vacancy": 0,
       "strategies": [
-        "PAPEL_YIELD"
+        "MULTI_DISCOUNT"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 4,
-      "selic": 15
+      "selic": 15,
+      "magicNumber": 44,
+      "magicCost": 408.76
+    },
+    {
+      "ticker": "CDII11",
+      "price": 106.64,
+      "dy": 16.29,
+      "p_vp": 1.03,
+      "segment": "Infraestrutura",
+      "type": "INFRA",
+      "score": 8,
+      "strategies": [
+        "DIVIDEND"
+      ],
+      "magicNumber": 74,
+      "magicCost": 7891.36,
+      "selic": 15,
+      "num_properties": 0,
+      "vacancy": 0,
+      "liquidity": 1000000,
+      "market_cap": 500000000
+    },
+    {
+      "ticker": "KDIF11",
+      "price": 127.29,
+      "dy": 12.18,
+      "p_vp": 1.01,
+      "segment": "Infraestrutura",
+      "type": "INFRA",
+      "score": 5,
+      "strategies": [
+        "DIVIDEND"
+      ],
+      "magicNumber": 99,
+      "magicCost": 12601.710000000001,
+      "selic": 15,
+      "num_properties": 0,
+      "vacancy": 0,
+      "liquidity": 1000000,
+      "market_cap": 500000000
+    },
+    {
+      "ticker": "JURO11",
+      "price": 103.04,
+      "dy": 11.64,
+      "p_vp": 1.02,
+      "segment": "Infraestrutura",
+      "type": "INFRA",
+      "score": 5,
+      "strategies": [],
+      "magicNumber": 104,
+      "magicCost": 10716.16,
+      "selic": 15,
+      "num_properties": 0,
+      "vacancy": 0,
+      "liquidity": 1000000,
+      "market_cap": 500000000
+    },
+    {
+      "ticker": "IFRA11",
+      "price": 101.5,
+      "dy": 11.57,
+      "p_vp": 1.01,
+      "segment": "Infraestrutura",
+      "type": "INFRA",
+      "score": 5,
+      "strategies": [],
+      "magicNumber": 104,
+      "magicCost": 10556,
+      "selic": 15,
+      "num_properties": 0,
+      "vacancy": 0,
+      "liquidity": 1000000,
+      "market_cap": 500000000
+    },
+    {
+      "ticker": "BDIF11",
+      "price": 76.45,
+      "dy": 13.27,
+      "p_vp": 0.92,
+      "segment": "Infraestrutura",
+      "type": "INFRA",
+      "score": 8,
+      "strategies": [
+        "DIVIDEND"
+      ],
+      "magicNumber": 91,
+      "magicCost": 6956.95,
+      "selic": 15,
+      "num_properties": 0,
+      "vacancy": 0,
+      "liquidity": 1000000,
+      "market_cap": 500000000
+    },
+    {
+      "ticker": "CPTI11",
+      "price": 89.91,
+      "dy": 13.5,
+      "p_vp": 0.95,
+      "segment": "Infraestrutura",
+      "type": "INFRA",
+      "score": 7,
+      "strategies": [
+        "DIVIDEND"
+      ],
+      "magicNumber": 89,
+      "magicCost": 8001.99,
+      "selic": 15,
+      "num_properties": 0,
+      "vacancy": 0,
+      "liquidity": 1000000,
+      "market_cap": 500000000
+    },
+    {
+      "ticker": "IFRI11",
+      "price": 103.75,
+      "dy": 13.99,
+      "p_vp": 0.99,
+      "segment": "Infraestrutura",
+      "type": "INFRA",
+      "score": 7,
+      "strategies": [
+        "DIVIDEND"
+      ],
+      "magicNumber": 86,
+      "magicCost": 8922.5,
+      "selic": 15,
+      "num_properties": 0,
+      "vacancy": 0,
+      "liquidity": 1000000,
+      "market_cap": 500000000
+    },
+    {
+      "ticker": "BODB11",
+      "price": 8.02,
+      "dy": 12.88,
+      "p_vp": 0.93,
+      "segment": "Infraestrutura",
+      "type": "INFRA",
+      "score": 8,
+      "strategies": [
+        "DIVIDEND"
+      ],
+      "magicNumber": 94,
+      "magicCost": 753.88,
+      "selic": 15,
+      "num_properties": 0,
+      "vacancy": 0,
+      "liquidity": 1000000,
+      "market_cap": 500000000
+    },
+    {
+      "ticker": "BINC11",
+      "price": 102.5,
+      "dy": 15.07,
+      "p_vp": 0.98,
+      "segment": "Infraestrutura",
+      "type": "INFRA",
+      "score": 10,
+      "strategies": [
+        "INFRA_INCOME",
+        "DIVIDEND"
+      ],
+      "magicNumber": 80,
+      "magicCost": 8200,
+      "selic": 15,
+      "num_properties": 0,
+      "vacancy": 0,
+      "liquidity": 1000000,
+      "market_cap": 500000000
+    },
+    {
+      "ticker": "JMBI11",
+      "price": 92.67,
+      "dy": 15.24,
+      "p_vp": 0.91,
+      "segment": "Infraestrutura",
+      "type": "INFRA",
+      "score": 10,
+      "strategies": [
+        "INFRA_INCOME",
+        "DIVIDEND"
+      ],
+      "magicNumber": 79,
+      "magicCost": 7320.93,
+      "selic": 15,
+      "num_properties": 0,
+      "vacancy": 0,
+      "liquidity": 1000000,
+      "market_cap": 500000000
+    },
+    {
+      "ticker": "XPID11",
+      "price": 52.96,
+      "dy": 13.2,
+      "p_vp": 0.56,
+      "segment": "Infraestrutura",
+      "type": "INFRA",
+      "score": 8,
+      "strategies": [
+        "DIVIDEND"
+      ],
+      "magicNumber": 91,
+      "magicCost": 4819.36,
+      "selic": 15,
+      "num_properties": 0,
+      "vacancy": 0,
+      "liquidity": 1000000,
+      "market_cap": 500000000
+    },
+    {
+      "ticker": "DIVS11",
+      "price": 104.06,
+      "dy": 12.68,
+      "p_vp": 1.04,
+      "segment": "Infraestrutura",
+      "type": "INFRA",
+      "score": 5,
+      "strategies": [
+        "DIVIDEND"
+      ],
+      "magicNumber": 95,
+      "magicCost": 9885.7,
+      "selic": 15,
+      "num_properties": 0,
+      "vacancy": 0,
+      "liquidity": 1000000,
+      "market_cap": 500000000
+    },
+    {
+      "ticker": "BIDB11",
+      "price": 79.91,
+      "dy": 16.21,
+      "p_vp": 0.97,
+      "segment": "Infraestrutura",
+      "type": "INFRA",
+      "score": 10,
+      "strategies": [
+        "INFRA_INCOME",
+        "DIVIDEND"
+      ],
+      "magicNumber": 75,
+      "magicCost": 5993.25,
+      "selic": 15,
+      "num_properties": 0,
+      "vacancy": 0,
+      "liquidity": 1000000,
+      "market_cap": 500000000
+    },
+    {
+      "ticker": "NUIF11",
+      "price": 94.5,
+      "dy": 14.87,
+      "p_vp": 0.94,
+      "segment": "Infraestrutura",
+      "type": "INFRA",
+      "score": 8,
+      "strategies": [
+        "DIVIDEND"
+      ],
+      "magicNumber": 81,
+      "magicCost": 7654.5,
+      "selic": 15,
+      "num_properties": 0,
+      "vacancy": 0,
+      "liquidity": 1000000,
+      "market_cap": 500000000
+    },
+    {
+      "ticker": "RBIF11",
+      "price": 79.83,
+      "dy": 14.2,
+      "p_vp": 0.89,
+      "segment": "Infraestrutura",
+      "type": "INFRA",
+      "score": 8,
+      "strategies": [
+        "DIVIDEND"
+      ],
+      "magicNumber": 85,
+      "magicCost": 6785.55,
+      "selic": 15,
+      "num_properties": 0,
+      "vacancy": 0,
+      "liquidity": 1000000,
+      "market_cap": 500000000
+    },
+    {
+      "ticker": "SNID11",
+      "price": 11.24,
+      "dy": 12.89,
+      "p_vp": 1.08,
+      "segment": "Infraestrutura",
+      "type": "INFRA",
+      "score": 5,
+      "strategies": [
+        "DIVIDEND"
+      ],
+      "magicNumber": 94,
+      "magicCost": 1056.56,
+      "selic": 15,
+      "num_properties": 0,
+      "vacancy": 0,
+      "liquidity": 1000000,
+      "market_cap": 500000000
+    },
+    {
+      "ticker": "VANG11",
+      "price": 100.57,
+      "dy": 11.93,
+      "p_vp": 1,
+      "segment": "Infraestrutura",
+      "type": "INFRA",
+      "score": 5,
+      "strategies": [],
+      "magicNumber": 101,
+      "magicCost": 10157.57,
+      "selic": 15,
+      "num_properties": 0,
+      "vacancy": 0,
+      "liquidity": 1000000,
+      "market_cap": 500000000
     }
   ],
   "etfs": [

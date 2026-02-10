@@ -74,25 +74,78 @@ async function getBestFIIs() {
                     segmentNorm.includes('Residencial') ||
                     segmentNorm.includes('Varejo');
 
-                // Papel/Income: Receivables, Securities, Hybrids, Multistrat, Others
-                // "Multicategoria" and "Outros" often behave like Paper/Hedge Funds in Brazil
-                const isPapel = segmentNorm.includes('Titulos') ||
+                // Known Lists (since Fundamentus segments are generic for these)
+                const KNOWN_FIAGROS = [
+                    'SNAG11', 'KNCA11', 'VGIA11', 'RURA11', 'CPTR11', 'FGAA11', 'EGAF11',
+                    'DCRA11', 'HGAG11', 'XPCA11', 'GCRA11', 'PLCA11', 'AAZQ11', 'RZAG11',
+                    'OIAG11', 'BBGO11', 'AGRX11', 'VCRA11', 'NCRA11', 'JGPX11', 'SPZA11',
+                    'AZQUEST11', 'KOLN11', 'LSAG11', 'RANG11', 'SNAA11'
+                ];
+
+                const KNOWN_INFRAS = [
+                    'BDIF11', 'JURO11', 'KDIF11', 'XPIF11', 'CPTI11', 'VIGT11', 'BIDB11',
+                    'RBIF11', 'IFRA11', 'XPID11', 'BODB11', 'CDII11'
+                ];
+
+                // Agro / Fiagro
+                const isAgro = segmentNorm.includes('Agro') ||
+                    segmentNorm.includes('Fiagro') ||
+                    segmentNorm.includes('Rural') ||
+                    KNOWN_FIAGROS.includes(f.ticker);
+
+                // Infra / FI-Infra
+                const isInfra = segmentNorm.includes('Infra') ||
+                    segmentNorm.includes('Energia') ||
+                    segmentNorm.includes('Saneamento') ||
+                    segmentNorm.includes('Infraestrutura') ||
+                    KNOWN_INFRAS.includes(f.ticker);
+
+
+
+                // Multimercado / Híbrido / Fundo de Fundos (FoF)
+                const isMulti = segmentNorm.includes('Multicategoria') ||
+                    segmentNorm.includes('Hibrido') ||
+                    segmentNorm.includes('Fundo de Fundos') ||
+                    segmentNorm.includes('Mista');
+
+                // Papel/Income: Receivables, Securities (CRIs)
+                const isPapel = !isAgro && !isInfra && !isMulti && (
+                    segmentNorm.includes('Titulos') ||
                     segmentNorm.includes('Val. Mob') ||
                     segmentNorm.includes('Recebiveis') ||
                     segmentNorm.includes('Papel') ||
-                    segmentNorm.includes('Multicategoria') ||
-                    segmentNorm.includes('Outros');
+                    segmentNorm.includes('Outros'));
 
-                // Hybrids/Fund of Funds could be either, but usually behave more like Paper/Income or Mixed
-                const isHybridOrOther = !isTijolo && !isPapel;
 
                 // Explicit Category for UI
                 let type = 'OUTROS';
                 if (isTijolo) type = 'TIJOLO';
                 if (isPapel) type = 'PAPEL';
+                if (isMulti) type = 'MULTI'; // Generic (Hybrid/FoF)
+                if (isAgro) type = 'AGRO';   // Specific (Overrides Multi)
+                if (isInfra) type = 'INFRA'; // Specific (Overrides Multi)
 
 
                 // --- STRATEGY CLASSIFICATION ---
+
+                // 🌿 Agro / Fiagro
+                // Usually High Yield, Riskier than Brick/Paper.
+                // Look for Yield > Selic + 2% and reasonable P/VP
+                if (isAgro && f.dy > (selic + 2) && f.p_vp > 0.85 && f.p_vp < 1.15) {
+                    strategies.push('AGRO_OPPORTUNITY');
+                }
+
+                // ⚡ Infra / FI-Infra
+                // Long term contracts, inflation protection.
+                if (isInfra && f.dy > selic && f.p_vp > 0.80 && f.p_vp < 1.10) {
+                    strategies.push('INFRA_INCOME');
+                }
+
+                // 🔄 Multimercado / FoF
+                // Opportunities in FoFs usually appear when they are discounted (double discount).
+                if (isMulti && f.p_vp < 0.90 && f.dy > selic) {
+                    strategies.push('MULTI_DISCOUNT');
+                }
 
                 // 🧱 Brick Opportunities (Tijolo)
                 // Tijolo is safer long term. We look for good assets at a discount.
@@ -158,7 +211,8 @@ async function getBestFIIs() {
                 if (segmentNorm.includes('Logistica') ||
                     segmentNorm.includes('Shopping') ||
                     segmentNorm.includes('Agencia') ||
-                    segmentNorm.includes('Hospital')) {
+                    segmentNorm.includes('Hospital') ||
+                    isAgro || isInfra || isMulti) { // Bonus for Agro/Infra/Multi too as diversification
                     score += 1;
                 }
 
@@ -172,7 +226,22 @@ async function getBestFIIs() {
                 // Ensure score is 0-10
                 score = Math.max(0, Math.min(10, score));
 
-                return { ...f, strategies, type, score, selic };
+                // MAGIC NUMBER DATA
+                // How many shares needed to buy 1 new share with dividends?
+                // Monthly Yield approx = DY / 12
+                // Magic Number = Price / (Price * (DY/100)/12) = 1 / ((DY/100)/12)
+                // Actually simpler: Price / Dividend_Amount.
+                // Dividend Amount = Price * (DY/100) / 12 (approx)
+                // So Magic Number = Price / (Price * DY/1200) = 1200 / DY
+
+                // Let's store the Magic Number (approximate number of shares)
+                // If DY is 12%, Magic Number = 1200 / 12 = 100 shares.
+                const magicNumber = f.dy > 0 ? Math.ceil(1200 / f.dy) : 9999;
+
+                // Cost to reach Magic Number
+                const magicCost = magicNumber * f.price;
+
+                return { ...f, strategies, type, score, selic, magicNumber, magicCost };
             })
             // Filter: Must have a strategy OR a decent score (>= 6) to show up
             .filter(f => f.strategies.length > 0 || f.score >= 6)

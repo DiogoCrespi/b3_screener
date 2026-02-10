@@ -1,8 +1,8 @@
-
 const fs = require('fs');
 const { getDollarRate, getSelicRate } = require('./services/economy');
 const { getBestStocks } = require('./services/stocks');
 const { getBestFIIs } = require('./services/fiis');
+const { getFIInfra } = require('./services/fi_infra');
 const { getETFs } = require('./services/etfs');
 const { getTesouroDirect, getPrivateBenchmarks } = require('./services/fixed_income');
 
@@ -10,15 +10,19 @@ async function exportData() {
     console.log('Fetching data for mobile app...');
 
     try {
-        const [dollar, selic, stocks, fiis, etfs, tesouro, privateFixed] = await Promise.all([
+        const [dollar, selic, stocks, baseFiis, infraFiis, etfs, tesouro, privateFixed] = await Promise.all([
             getDollarRate(),
             getSelicRate(),
             getBestStocks(),
             getBestFIIs(),
+            getFIInfra(),
             getETFs(),
             getTesouroDirect(),
             getPrivateBenchmarks()
         ]);
+
+        // Merge FIIs and Infras
+        const fiis = [...baseFiis, ...infraFiis];
 
         const data = {
             updatedAt: new Date().toLocaleString('pt-BR'),

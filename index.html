@@ -573,15 +573,23 @@
                 btn.classList.add('active');
 
                 // Filter cards
-                const cards = document.querySelectorAll('.stock-card[data-type="fii"]');
+                const cards = document.querySelectorAll('.stock-card.fii');
 
                 cards.forEach(card => {
+                    const cardType = card.dataset.type;
                     const cardStrategies = (card.dataset.strategies || '').split(',');
-                    if (strategy === 'ALL' || cardStrategies.includes(strategy)) {
-                        card.style.display = 'block';
+
+                    let show = false;
+                    if (strategy === 'ALL') {
+                        show = true;
+                    } else if (strategy === 'SAFE_INCOME') {
+                        show = cardStrategies.includes('SAFE_INCOME');
                     } else {
-                        card.style.display = 'none';
+                        // Strategy works as TYPE matching now
+                        show = (cardType === strategy);
                     }
+
+                    card.style.display = show ? 'block' : 'none';
                 });
             };
 
@@ -687,8 +695,11 @@
 
             const fiiStrategies = [
                 { id: 'ALL', label: 'Ver Todos' },
-                { id: 'TIJOLO_VALUE', label: '🧱 Tijolo (Oportunidade)' },
-                { id: 'PAPEL_YIELD', label: '📄 Papel (High Yield)' },
+                { id: 'TIJOLO', label: '🧱 Tijolo' },
+                { id: 'PAPEL', label: '📄 Papel' },
+                { id: 'AGRO', label: '🌾 Fiagro/Agro' },
+                { id: 'MULTI', label: '🔄 Multimercado' },
+                { id: 'INFRA', label: '⚡ Infra' },
                 { id: 'SAFE_INCOME', label: '🛡️ Renda Segura' }
             ];
 
@@ -703,19 +714,56 @@
 
             // ---------------------
 
-            data.fiis.forEach(fii => {
-                const card = document.createElement('div');
-                card.className = 'stock-card fii';
-                // Add attributes for filtering
-                card.dataset.type = 'fii';
-                card.dataset.strategies = fii.strategies ? fii.strategies.join(',') : '';
+            // Group and Render FIIs by type
+            const typesOrder = ['AGRO', 'INFRA', 'TIJOLO', 'PAPEL', 'MULTI', 'OUTROS'];
+            const labels = {
+                'AGRO': '🌾 Fiagro & Agronegócio',
+                'INFRA': '⚡ Infraestrutura & Energia',
+                'TIJOLO': '🧱 Tijolo (Ativos Reais)',
+                'PAPEL': '📄 Papel (CRI/Recebíveis)',
+                'MULTI': '🔄 Multimercado & FoF',
+                'OUTROS': '📂 Outros Segmentos'
+            };
 
-                const scoreColor = fii.score >= 8 ? '#04d361' : (fii.score >= 6 ? '#fba94c' : '#f75a68');
-                const typeBadge = fii.type === 'TIJOLO'
-                    ? '<span class="badge" style="background:#555; color:white">🧱 TIJOLO</span>'
-                    : (fii.type === 'PAPEL' ? '<span class="badge" style="background:#ddd; color:black">📄 PAPEL</span>' : '');
+            const colors = {
+                'AGRO': '#fba94c',
+                'INFRA': '#00d4ff',
+                'TIJOLO': '#555',
+                'PAPEL': '#aaa',
+                'MULTI': '#8257e5',
+                'OUTROS': '#333'
+            };
 
-                card.innerHTML = `
+            typesOrder.forEach(type => {
+                const fiisOfType = data.fiis.filter(f => (f.type || 'OUTROS') === type);
+                if (fiisOfType.length === 0) return;
+
+                const header = document.createElement('h2');
+                header.innerHTML = labels[type];
+                header.className = 'group-header';
+                header.style.gridColumn = '1 / -1';
+                header.style.color = colors[type];
+                header.style.marginTop = '2rem';
+                header.dataset.type = type;
+                fiiContainer.appendChild(header);
+
+                fiisOfType.forEach(fii => {
+                    const card = document.createElement('div');
+                    card.className = 'stock-card fii';
+                    card.dataset.type = type;
+                    card.dataset.strategies = fii.strategies ? fii.strategies.join(',') : '';
+
+                    const scoreColor = fii.score >= 8 ? '#04d361' : (fii.score >= 6 ? '#fba94c' : '#f75a68');
+
+                    let typeBadge = '';
+                    if (fii.type === 'TIJOLO') typeBadge = `<span class="badge" style="background:${colors.TIJOLO}; color:white">🧱 TIJOLO</span>`;
+                    else if (fii.type === 'PAPEL') typeBadge = `<span class="badge" style="background:${colors.PAPEL}; color:black">📄 PAPEL</span>`;
+                    else if (fii.type === 'AGRO') typeBadge = `<span class="badge" style="background:${colors.AGRO}; color:black">🌾 AGRO</span>`;
+                    else if (fii.type === 'INFRA') typeBadge = `<span class="badge" style="background:${colors.INFRA}; color:black">⚡ INFRA</span>`;
+                    else if (fii.type === 'MULTI') typeBadge = `<span class="badge" style="background:${colors.MULTI}; color:white">🔄 MULTI</span>`;
+                    else typeBadge = `<span class="badge" style="background:${colors.OUTROS}; color:#aaa">OUTROS</span>`;
+
+                    card.innerHTML = `
                 <div class="card-main">
                     <div class="ticker-info">
                         <h3>
@@ -734,7 +782,7 @@
                     <div class="metrics">
                         <div class="price">R$ ${fii.price.toFixed(2)}</div>
                         <div class="yield">DY ${fii.dy}%</div>
-                        <div style="font-size:0.7rem; color:var(--text-muted)">P/VP: ${fii.p_vp.toFixed(2)}</div>
+                        <div style="font-size:0.7rem; color:var(--text-muted)">P/VP: ${(fii.p_vp || fii.pvp || 0).toFixed(2)}</div>
                     </div>
                 </div>
                 <div class="card-details">
@@ -747,39 +795,59 @@
                     <div id="chart-${fii.ticker}" class="chart-container"></div>
                 </div>
             `;
-                card.addEventListener('click', () => {
-                    const isExpanded = card.classList.toggle('expanded');
-                    card.querySelector('.card-details').classList.toggle('show');
+                    card.addEventListener('click', () => {
+                        const isExpanded = card.classList.toggle('expanded');
+                        card.querySelector('.card-details').classList.toggle('show');
 
-                    if (isExpanded) {
-                        const chartId = `chart-${fii.ticker}`;
-                        const container = document.getElementById(chartId);
-                        if (container && container.children.length === 0) {
-                            new TradingView.MediumWidget({
-                                "symbols": [[`${fii.ticker}`, `BMFBOVESPA:${fii.ticker}|1D`]],
-                                "chartOnly": false,
-                                "width": "100%",
-                                "height": 300,
-                                "locale": "br",
-                                "colorTheme": "dark",
-                                "autosize": true,
-                                "showVolume": false,
-                                "hideDateRanges": false,
-                                "scalePosition": "right",
-                                "scaleMode": "Normal",
-                                "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
-                                "noTimeScale": false,
-                                "valuesTracking": "1",
-                                "changeMode": "price-and-percent",
-                                "chartType": "area",
-                                "container_id": chartId
-                            });
+                        if (isExpanded) {
+                            const chartId = `chart-${fii.ticker}`;
+                            const container = document.getElementById(chartId);
+                            if (container && container.children.length === 0) {
+                                new TradingView.MediumWidget({
+                                    "symbols": [[`${fii.ticker}`, `BMFBOVESPA:${fii.ticker}|1D`]],
+                                    "chartOnly": false,
+                                    "width": "100%",
+                                    "height": 300,
+                                    "locale": "br",
+                                    "colorTheme": "dark",
+                                    "autosize": true,
+                                    "showVolume": false,
+                                    "hideDateRanges": false,
+                                    "scalePosition": "right",
+                                    "scaleMode": "Normal",
+                                    "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
+                                    "noTimeScale": false,
+                                    "valuesTracking": "1",
+                                    "changeMode": "price-and-percent",
+                                    "chartType": "area",
+                                    "container_id": chartId
+                                });
+                            }
                         }
-                    }
+                    });
+                    fiiContainer.appendChild(card);
                 });
-                fiiContainer.appendChild(card);
             });
 
+            // Update filter logic to hide/show headers
+            const originalFilterFIIs = window.filterFIIs;
+            window.filterFIIs = function (strategy, btn) {
+                originalFilterFIIs(strategy, btn);
+                const headers = fiiContainer.querySelectorAll('.group-header');
+                headers.forEach(h => {
+                    if (strategy === 'ALL') {
+                        h.style.display = 'block';
+                    } else if (strategy === 'SAFE_INCOME') {
+                        // Safe income could be in any group, difficult to hide headers safely 
+                        // without checking if any children are visible. 
+                        // Let's just keep headers visible for SAFE_INCOME for now or hide if empty.
+                        const visibleCards = fiiContainer.querySelectorAll(`.stock-card.fii[data-type="${h.dataset.type}"]:not([style*="display: none"])`);
+                        h.style.display = visibleCards.length > 0 ? 'block' : 'none';
+                    } else {
+                        h.style.display = (h.dataset.type === strategy) ? 'block' : 'none';
+                    }
+                });
+            };
             // Render Fixed Income
             const fixedContainer = document.getElementById('content-fixed');
 
@@ -862,14 +930,79 @@
             const snowballContainer = document.getElementById('content-snowball');
             snowballContainer.innerHTML = '';
 
+            // --- SNOWBALL FILTER UI ---
+            const filterContainer = document.createElement('div');
+            filterContainer.className = 'opp-filters';
+            filterContainer.style.marginBottom = '1.5rem';
+            filterContainer.style.marginTop = '1rem';
+            filterContainer.style.gridColumn = '1 / -1'; // Spans full width
+
+            const strategies = [
+                { id: 'ALL', label: 'Ver Todos' },
+                { id: 'TIJOLO', label: '🧱 Tijolo' },
+                { id: 'PAPEL', label: '📄 Papel' },
+                { id: 'AGRO', label: '🌾 Fiagro/Agro' },
+                { id: 'MULTI', label: '🔄 Multimercado' },
+                { id: 'INFRA', label: '⚡ Infra' },
+                { id: 'BASE10', label: '🪙 Base 10' },
+                { id: 'SAFE_INCOME', label: '🛡️ Seguro' }
+            ];
+
+            strategies.forEach(s => {
+                const btn = document.createElement('button');
+                btn.textContent = s.label;
+                btn.className = 'filter-btn ' + (s.id === 'ALL' ? 'active' : '');
+                btn.onclick = () => filterSnowball(s.id, btn, fiis);
+                filterContainer.appendChild(btn);
+            });
+            snowballContainer.appendChild(filterContainer);
+            // --------------------------
+
+            // Wrapper for list content (not strictly needed as we clear children except filter container)
+
+            // Initial Render
+            renderSnowballItems(fiis, 'ALL', snowballContainer);
+
+            // Filter Logic
+            window.filterSnowball = function (strategy, btn, allFiis) {
+                // Update buttons
+                const container = btn.parentNode;
+                container.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Clear items only
+                Array.from(snowballContainer.children).forEach(child => {
+                    if (child !== filterContainer) snowballContainer.removeChild(child);
+                });
+
+                renderSnowballItems(allFiis, strategy, snowballContainer);
+            };
+        }
+
+        function renderSnowballItems(fiis, strategy, container) {
             const sections = [
-                { title: '🪙 Base R$ 10 (Acessíveis)', filter: f => f.price < 15, color: '#fba94c' },
-                { title: '⚖️ Base R$ 20 - R$ 50 (Intermediários)', filter: f => f.price >= 15 && f.price < 70, color: '#8257e5' },
-                { title: '💎 Base R$ 100+ (Premium/Tradicionais)', filter: f => f.price >= 70, color: '#04d361' }
+                { title: '⚡ Destaques (Fiagro & Infra)', filter: f => f.type === 'AGRO' || f.type === 'INFRA', color: '#00d4ff' },
+                { title: '🪙 Base R$ 10 (Acessíveis)', filter: f => f.price < 15 && f.type !== 'AGRO' && f.type !== 'INFRA', color: '#fba94c' },
+                { title: '⚖️ Base R$ 20 - R$ 50 (Intermediários)', filter: f => f.price >= 15 && f.price < 70 && f.type !== 'AGRO' && f.type !== 'INFRA', color: '#8257e5' },
+                { title: '💎 Base R$ 100+ (Premium/Tradicionais)', filter: f => f.price >= 70 && f.type !== 'AGRO' && f.type !== 'INFRA', color: '#04d361' }
             ];
 
             sections.forEach(section => {
-                const filtered = fiis.filter(section.filter);
+                // 1. Filter by Section (Price)
+                let filtered = fiis.filter(section.filter);
+
+                // 2. Filter by Strategy/Type
+                if (strategy !== 'ALL') {
+                    if (strategy === 'BASE10') {
+                        if (!section.title.includes('Base R$ 10')) filtered = [];
+                    } else if (strategy === 'SAFE_INCOME') {
+                        filtered = filtered.filter(f => f.strategies.includes('SAFE_INCOME'));
+                    } else {
+                        // For TIJOLO, PAPEL, AGRO, INFRA, MULTI -> Filter by TYPE
+                        filtered = filtered.filter(f => f.type === strategy);
+                    }
+                }
+
                 if (filtered.length === 0) return;
 
                 const header = document.createElement('h2');
@@ -877,23 +1010,38 @@
                 header.style.gridColumn = '1 / -1';
                 header.style.color = section.color;
                 header.style.marginTop = '1.5rem';
-                snowballContainer.appendChild(header);
+                container.appendChild(header);
 
                 filtered.forEach(fii => {
+                    // Use pre-calculated magic numbers if available, else fallback
+                    const magicNumber = fii.magicNumber || Math.ceil(fii.price / ((fii.price * (fii.dy / 100)) / 12));
                     const monthlyDiv = (fii.price * (fii.dy / 100)) / 12;
-                    const magicNumber = Math.ceil(fii.price / monthlyDiv);
                     const totalInvest = magicNumber * fii.price;
                     const totalMonthly = magicNumber * monthlyDiv;
 
                     const card = document.createElement('div');
                     card.className = 'stock-card';
                     card.style.borderLeftColor = section.color;
+
+                    // Highlight AGRO/INFRA
+                    if (fii.type === 'AGRO') card.style.borderRight = '4px solid #fba94c'; // Orange for Agro
+                    if (fii.type === 'INFRA') card.style.borderRight = '4px solid #00d4ff'; // Blue for Infra
+
                     card.innerHTML = `
                         <div class="card-main">
                             <div class="ticker-info">
-                                <h3>${fii.ticker} <span class="badge" style="background:${section.color}20; color:${section.color}">⭐ ${fii.score}</span></h3>
+                                <h3>
+                                    <img src="https://raw.githubusercontent.com/thefintz/icones-b3/main/icones/${fii.ticker}.png" 
+                                        class="stock-logo" 
+                                        onerror="this.style.display='none'"
+                                        alt="${fii.ticker}">
+                                    ${fii.ticker} 
+                                    <span class="badge" style="background:${section.color}20; color:${section.color}">⭐ ${fii.score}</span>
+                                    ${fii.type === 'AGRO' ? '<span class="badge" style="background:#fba94c; color:black">🌾 AGRO</span>' : ''}
+                                    ${fii.type === 'INFRA' ? '<span class="badge" style="background:#00d4ff; color:black">⚡ INFRA</span>' : ''}
+                                </h3>
                                 <span style="color:var(--accent); font-weight:bold; font-size:1rem;">❄️ Meta: ${magicNumber} cotas</span>
-                                <span style="font-size:0.75rem">Com ${magicNumber} cotas, o dividendo compra +1 cota/mês</span>
+                                <span style="font-size:0.75rem">Com ${magicNumber} cotas, o dividendo paga +1 cota</span>
                             </div>
                             <div class="metrics">
                                 <div class="price">R$ ${fii.price.toFixed(2)}</div>
@@ -924,7 +1072,7 @@
                             </div>
                             <div class="detail-row">
                                 <span class="detail-label">P/VP:</span>
-                                <span class="detail-value">${fii.p_vp.toFixed(2)}</span>
+                                <span class="detail-value">${(fii.p_vp || fii.pvp || 0).toFixed(2)}</span>
                             </div>
                             <div id="chart-snow-${fii.ticker}" class="chart-container"></div>
                         </div>
@@ -952,7 +1100,7 @@
                         }
                     });
 
-                    snowballContainer.appendChild(card);
+                    container.appendChild(card);
                 });
             });
         }
@@ -966,8 +1114,13 @@
 
             // Show selected
             document.getElementById(`content-${tabName}`).classList.remove('hidden');
-            // Ensure the clicked button gets active class (event might not be passed explicitly in all browsers but works in modern ones)
-            if (window.event) window.event.target.classList.add('active');
+
+            // Highlight active tab
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                if (btn.textContent.toLowerCase().includes(tabName === 'snowball' ? 'bola de neve' : tabName)) {
+                    btn.classList.add('active');
+                }
+            });
         }
     </script>
 
