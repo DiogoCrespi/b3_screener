@@ -675,6 +675,7 @@
                                 "valuesTracking": "1",
                                 "changeMode": "price-and-percent",
                                 "chartType": "area",
+                                "adjustment": "dividends",
                                 "container_id": chartId
                             });
                         }
@@ -820,6 +821,7 @@
                                     "valuesTracking": "1",
                                     "changeMode": "price-and-percent",
                                     "chartType": "area",
+                                    "adjustment": "dividends",
                                     "container_id": chartId
                                 });
                             }
@@ -1048,8 +1050,8 @@
                                     <span class="detail-value" style="color:var(--warning)">R$ ${totalInvest.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span>
                                 </div>
                                 <div class="detail-row">
-                                    <span class="detail-label">Dividendo p/ cota/mês:</span>
-                                    <span class="detail-value">R$ ${monthlyDiv.toFixed(2)}</span>
+                                    <span class="detail-label">Último Rendimento:</span>
+                                    <span class="detail-value" style="color:var(--success)">${fii.last_dividend ? `R$ ${fii.last_dividend.toFixed(2)}` : 'N/A'}</span>
                                 </div>
                                 <div class="detail-row">
                                     <span class="detail-label">Renda Mensal na Meta:</span>
@@ -1093,6 +1095,7 @@
                                         "locale": "br",
                                         "toolbar_bg": "#f1f3f6",
                                         "enable_publishing": false,
+                                        "adjustment": "dividends",
                                         "container_id": chartId
                                     });
                                 }
@@ -1190,8 +1193,8 @@
                                 <span class="detail-value" style="color:var(--warning)">R$ ${totalInvest.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span>
                             </div>
                             <div class="detail-row">
-                                <span class="detail-label">Dividendo p/ cota/mês:</span>
-                                <span class="detail-value">R$ ${monthlyDiv.toFixed(2)}</span>
+                                <span class="detail-label">Último Rendimento:</span>
+                                <span class="detail-value" style="color:var(--success)">${fii.last_dividend ? `R$ ${fii.last_dividend.toFixed(2)}` : 'N/A'}</span>
                             </div>
                             <div class="detail-row">
                                 <span class="detail-label">Renda Mensal na Meta:</span>
@@ -1233,6 +1236,7 @@
                                     "locale": "br",
                                     "colorTheme": "dark",
                                     "autosize": true,
+                                    "adjustment": "dividends",
                                     "container_id": chartId
                                 });
                             }
