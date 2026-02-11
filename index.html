@@ -981,14 +981,17 @@
 
         function renderSnowballItems(fiis, strategy, container) {
             const sections = [
-                { title: '⚡ Destaques (Fiagro & Infra)', filter: f => f.type === 'AGRO' || f.type === 'INFRA', color: '#00d4ff' },
-                { title: '🪙 Base R$ 10 (Acessíveis)', filter: f => f.price < 15 && f.type !== 'AGRO' && f.type !== 'INFRA', color: '#fba94c' },
-                { title: '⚖️ Base R$ 20 - R$ 50 (Intermediários)', filter: f => f.price >= 15 && f.price < 70 && f.type !== 'AGRO' && f.type !== 'INFRA', color: '#8257e5' },
-                { title: '💎 Base R$ 100+ (Premium/Tradicionais)', filter: f => f.price >= 70 && f.type !== 'AGRO' && f.type !== 'INFRA', color: '#04d361' }
+                { title: '⚡ Destaques (Fiagro & Infra)', filter: f => f.type === 'AGRO' || f.type === 'INFRA', color: '#00d4ff', showOnlyWhenFiltered: true },
+                { title: '🪙 Base R$ 10 (Acessíveis)', filter: f => f.price < 15, color: '#fba94c' },
+                { title: '⚖️ Base R$ 20 - R$ 50 (Intermediários)', filter: f => f.price >= 15 && f.price < 70, color: '#8257e5' },
+                { title: '💎 Base R$ 100+ (Premium/Tradicionais)', filter: f => f.price >= 70, color: '#04d361' }
             ];
 
             sections.forEach(section => {
-                // 1. Filter by Section (Price)
+                // Skip Destaques section when 'Ver Todos' is active
+                if (section.showOnlyWhenFiltered && strategy === 'ALL') return;
+
+                // 1. Filter by Section (Price or Type)
                 let filtered = fiis.filter(section.filter);
 
                 // 2. Filter by Strategy/Type
