@@ -5,42 +5,42 @@ const { getBestFIIs } = require('./services/fiis');
 const { getFIInfra } = require('./services/fi_infra');
 const { getETFs } = require('./services/etfs');
 const { getTesouroDirect, getPrivateBenchmarks } = require('./services/fixed_income');
+const { getMultipleFiiMetadata } = require('./services/investidor10');
 
 async function exportData() {
-    console.log('Fetching data for mobile app...');
+    console.log('🚀 Starting Data Export for B3 Screener...');
 
     try {
-        const [dollar, selic, stocks, baseFiis, infraFiis, etfs, tesouro, privateFixed] = await Promise.all([
+        // 1. Initial Data Fetch (Parallel)
+        const [dollar, selic, stocks, rawStandardFiis, rawInfraFiis, etfs, tesouro, privateFixed] = await Promise.all([
             getDollarRate(),
             getSelicRate(),
             getBestStocks(),
-            getBestFIIs(),
-            getFIInfra(),
+            getBestFIIs(), // Pass 1: Discovery from Fundamentus
+            getFIInfra(),  // Pass 1: Discovery from hardcoded Infra list
             getETFs(),
             getTesouroDirect(),
             getPrivateBenchmarks()
         ]);
 
-        // Merge FIIs and Infras
-        const fiis = [...baseFiis, ...infraFiis];
+        // 2. Combine all discovered FIIs to fetch metadata
+        const combinedRaw = [...rawStandardFiis, ...rawInfraFiis];
+        const allTickers = [...new Set(combinedRaw.map(f => f.ticker))];
+        console.log(`🔍 Found ${allTickers.length} unique tickers. Fetching verified metadata from Investidor 10...`);
 
-        // Fetch last dividends from Investidor10
-        console.log('📊 Fetching last dividends from Investidor10...');
-        const { getLastDividends } = require('./services/last_dividend');
-        const tickers = fiis.map(f => f.ticker);
-        const lastDividends = await getLastDividends(tickers, 200); // 200ms delay between requests
+        // 3. Fetch verified metadata from Investidor 10
+        const metadataMap = await getMultipleFiiMetadata(allTickers, 150);
 
-        // Add last_dividend to each FII
-        fiis.forEach(fii => {
-            fii.last_dividend = lastDividends[fii.ticker] || null;
-        });
-        console.log(`✅ Fetched last dividends for ${Object.keys(lastDividends).filter(k => lastDividends[k] !== null).length}/${fiis.length} FIIs`);
+        // 4. Second Pass: Re-process the combined list through the business logic
+        // This ensures all assets (Standard, Infra, Agro) use the SAME scoring and classification rules
+        console.log('⚖️  Re-processing all FIIs/Infras with verified metadata...');
+        const finalFiis = await getBestFIIs(metadataMap, combinedRaw);
 
         const data = {
             updatedAt: new Date().toLocaleString('pt-BR'),
             economy: { dollar, selic },
             stocks: stocks,
-            fiis: fiis,
+            fiis: finalFiis,
             etfs,
             fixedIncome: {
                 tesouro,
@@ -48,12 +48,20 @@ async function exportData() {
             }
         };
 
-        // Saving as a JS file that sets a global variable is the easiest way 
-        // to load data locally without CORS issues (opening html file directly).
         const fileContent = `window.INVEST_DATA = ${JSON.stringify(data, null, 2)};`;
-
         fs.writeFileSync('data.js', fileContent);
-        console.log('✅ Data exported to data.js successfully!');
+
+        const stats = {
+            total: finalFiis.length,
+            infra: finalFiis.filter(f => f.type === 'INFRA').length,
+            agro: finalFiis.filter(f => f.type === 'AGRO').length,
+            papel: finalFiis.filter(f => f.type === 'PAPEL').length,
+            tijolo: finalFiis.filter(f => f.type === 'TIJOLO').length,
+            multi: finalFiis.filter(f => f.type === 'MULTI').length
+        };
+
+        console.log('✅ Data exported successfully!');
+        console.log(`📊 Statistics: ${stats.total} Assets (${stats.tijolo} Tijolo, ${stats.papel} Papel, ${stats.agro} Agro, ${stats.infra} Infra, ${stats.multi} Multi)`);
 
     } catch (error) {
         console.error('❌ Error exporting data:', error);

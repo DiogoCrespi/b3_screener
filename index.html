@@ -636,14 +636,6 @@
                 });
             };
 
-            function getInvestidor10Url(item) {
-                const ticker = (item.ticker || item.Ticker || '').toLowerCase();
-                const type = item.type;
-                if (type === 'AGRO') return `https://investidor10.com.br/fiagros/${ticker}/`;
-                if (ticker && !type) return `https://investidor10.com.br/acoes/${ticker}/`;
-                return `https://investidor10.com.br/fiis/${ticker}/`;
-            }
-
             function renderStockCard(stock, container, isStar) {
                 const card = document.createElement('div');
                 card.className = 'stock-card high-upside';
@@ -1057,9 +1049,13 @@
                     container.appendChild(header);
 
                     top10.forEach((fii, index) => {
-                        const magicNumber = fii.magicNumber || Math.ceil(fii.price / ((fii.price * (fii.dy / 100)) / 12));
-                        const monthlyDiv = (fii.price * (fii.dy / 100)) / 12;
-                        const totalInvest = magicNumber * fii.price;
+                        // Safety checks for dy and price to avoid division by zero
+                        const dy = fii.dy || 0;
+                        const price = fii.price || 0;
+
+                        const monthlyDiv = (price * (dy / 100)) / 12;
+                        const magicNumber = fii.magicNumber || (monthlyDiv > 0 ? Math.ceil(price / monthlyDiv) : 0);
+                        const totalInvest = magicNumber * price;
                         const totalMonthly = magicNumber * monthlyDiv;
 
                         const formatLiquidity = (value) => {
@@ -1206,10 +1202,13 @@
                 container.appendChild(header);
 
                 filtered.forEach(fii => {
-                    // Use pre-calculated magic numbers if available, else fallback
-                    const magicNumber = fii.magicNumber || Math.ceil(fii.price / ((fii.price * (fii.dy / 100)) / 12));
-                    const monthlyDiv = (fii.price * (fii.dy / 100)) / 12;
-                    const totalInvest = magicNumber * fii.price;
+                    // Safety checks for dy and price to avoid division by zero
+                    const dy = fii.dy || 0;
+                    const price = fii.price || 0;
+
+                    const monthlyDiv = (price * (dy / 100)) / 12;
+                    const magicNumber = fii.magicNumber || (monthlyDiv > 0 ? Math.ceil(price / monthlyDiv) : 0);
+                    const totalInvest = magicNumber * price;
                     const totalMonthly = magicNumber * monthlyDiv;
 
                     // Format liquidity
@@ -1333,6 +1332,14 @@
                     btn.classList.add('active');
                 }
             });
+        }
+
+        function getInvestidor10Url(item) {
+            const ticker = (item.ticker || item.Ticker || '').toLowerCase();
+            const type = item.type;
+            if (type === 'AGRO') return `https://investidor10.com.br/fiagros/${ticker}/`;
+            if (ticker && !type) return `https://investidor10.com.br/acoes/${ticker}/`;
+            return `https://investidor10.com.br/fiis/${ticker}/`;
         }
     </script>
 
