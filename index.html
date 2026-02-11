@@ -389,21 +389,27 @@
         .external-link-btn {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 6px;
-            background: #0047bb;
+            background: var(--primary);
             color: white !important;
-            padding: 6px 14px;
-            border-radius: 4px;
-            font-size: 0.85rem;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.9rem;
             text-decoration: none;
+            margin-top: 10px;
             margin-bottom: 12px;
-            transition: background 0.2s;
+            transition: all 0.2s ease;
             font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             width: fit-content;
         }
 
         .external-link-btn:hover {
-            background: #003388;
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+            box-shadow: 0 4px 12px var(--primary-glow);
+            background: var(--primary);
         }
     </style>
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
@@ -691,7 +697,7 @@
                     <div class="detail-row"><span class="detail-label">Graham Price:</span><span class="detail-value">R$ ${stock.graham_price?.toFixed(2) || 'N/A'}</span></div>
 
                     <div id="chart-${stock.ticker}" class="chart-container"></div>
-                    <a href="${getInvestidor10Url(stock)}" target="_blank" class="external-link-btn" style="margin-top: 10px;">
+                    <a href="${getInvestidor10Url(stock)}" target="_blank" class="external-link-btn">
                         📊 Ver no Investidor 10
                     </a>
                 </div>
@@ -840,7 +846,7 @@
                     <div class="detail-row"><span class="detail-label">Liquidez (2m):</span><span class="detail-value">R$ ${(fii.liquidity / 1000).toFixed(0)}k ${getTrendArrow(fii.liquidity, 'liq-fii')}</span></div>
                     <div class="detail-row"><span class="detail-label">Val. Mercado:</span><span class="detail-value">R$ ${(fii.market_cap / 1000000).toFixed(0)}M ${getTrendArrow(fii.market_cap, 'mkt-cap')}</span></div>
                     <div id="chart-${fii.ticker}" class="chart-container"></div>
-                    <a href="${getInvestidor10Url(fii)}" target="_blank" class="external-link-btn" style="margin-top: 10px;">
+                    <a href="${getInvestidor10Url(fii)}" target="_blank" class="external-link-btn">
                         📊 Ver no Investidor 10
                     </a>
                 </div>
@@ -1130,7 +1136,7 @@
                                     <span class="detail-value">${(fii.p_vp || fii.pvp || 0).toFixed(2)}</span>
                                 </div>
                                 <div id="chart-snow-top-${fii.ticker}" class="chart-container"></div>
-                                <a href="${getInvestidor10Url(fii)}" target="_blank" class="external-link-btn" style="margin-top: 10px;">
+                                <a href="${getInvestidor10Url(fii)}" target="_blank" class="external-link-btn">
                                     📊 Ver no Investidor 10
                                 </a>
                             </div>
@@ -1282,7 +1288,7 @@
                                 <span class="detail-value" style="color:var(--accent)">${formatLiquidity(fii.liquidity)}</span>
                             </div>
                             <div id="chart-snow-${fii.ticker}" class="chart-container"></div>
-                            <a href="${getInvestidor10Url(fii)}" target="_blank" class="external-link-btn" style="margin-top: 10px;">
+                            <a href="${getInvestidor10Url(fii)}" target="_blank" class="external-link-btn">
                                 📊 Ver no Investidor 10
                             </a>
                         </div>
