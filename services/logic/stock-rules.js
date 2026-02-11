@@ -90,8 +90,19 @@ function analyzeStock(s, selic) {
     if (peg_ratio < 0.5) score += 2; // Super bargain (Peter Lynch "dream stock")
     else if (peg_ratio < 1) score++; // Fair value growth
 
-    // Dividends
-    if (s.dividend_yield > YIELD_THRESHOLD) score++;
+    // Dividends (Capped at 16%)
+    let effectiveDy = s.dividend_yield;
+    if (effectiveDy > 16) {
+        effectiveDy = 16;
+        // strategies.push('HIGH_VOLATILITY'); // Optional: Add alert tag if needed, but score is the main goal here
+    }
+    if (effectiveDy > YIELD_THRESHOLD) score++;
+
+    // Trend / Innovation Check (Proxy: Revenue contraction 5y)
+    // "Lucro Atual < Lucro 5 Anos Atrás" -> Using Revenue Growth < 0 as proxy
+    if (s.cresc_5a < 0) {
+        score -= 3;
+    }
 
     // Health
     if (s.div_br_patrim < 1) score++;

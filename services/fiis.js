@@ -153,6 +153,7 @@ async function getBestFIIs(externalMetadata = {}, baseList = null) {
                 }
 
                 // 3. SCORING SYSTEM (RE-CALCULATED WITH CORRECT TYPE)
+                // 3. SCORING SYSTEM (RE-CALCULATED WITH CORRECT TYPE)
                 let score = 0;
                 if (f.p_vp >= 0.85 && f.p_vp <= 1.05) score += 2;
                 else if (f.p_vp < 0.85 && isTijolo && f.p_vp > 0.60) score += 1;
@@ -163,7 +164,15 @@ async function getBestFIIs(externalMetadata = {}, baseList = null) {
                 const effectiveYield = (isTijolo && f.ffo_yield > 0) ? f.ffo_yield : f.dy;
                 // Infra and Agro get a small bonus for tax exemption (since we don't calculate tax-equivalent yield here)
                 const taxBonus = (isInfra || isAgro) ? 1.5 : 0;
-                const comparisonYield = effectiveYield + taxBonus;
+
+                // DY Capping for Score
+                let effectiveDyForScore = effectiveYield;
+                if (effectiveDyForScore > 16) {
+                    effectiveDyForScore = 16;
+                    strategies.push('HIGH_VOLATILITY');
+                }
+
+                const comparisonYield = effectiveDyForScore + taxBonus;
 
                 if (comparisonYield > MIN_PAPER_DY) score += 4;
                 else if (comparisonYield > 10) score += 3;
@@ -176,7 +185,7 @@ async function getBestFIIs(externalMetadata = {}, baseList = null) {
                 if (f.liquidity > 1000000) score += 2;
                 else if (f.liquidity > 400000) score += 1;
 
-                if (isPapel && f.p_vp < 0.80) score -= 3;
+                if (isPapel && f.p_vp < 0.85) score -= 3; // Penalize Paper below 0.85 (High Risk)
                 if (f.vacancy > 25) score -= 2;
                 if (f.dy < 0.1) score -= 5;
 
