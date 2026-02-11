@@ -24,6 +24,18 @@ async function exportData() {
         // Merge FIIs and Infras
         const fiis = [...baseFiis, ...infraFiis];
 
+        // Fetch last dividends from Investidor10
+        console.log('📊 Fetching last dividends from Investidor10...');
+        const { getLastDividends } = require('./services/last_dividend');
+        const tickers = fiis.map(f => f.ticker);
+        const lastDividends = await getLastDividends(tickers, 200); // 200ms delay between requests
+
+        // Add last_dividend to each FII
+        fiis.forEach(fii => {
+            fii.last_dividend = lastDividends[fii.ticker] || null;
+        });
+        console.log(`✅ Fetched last dividends for ${Object.keys(lastDividends).filter(k => lastDividends[k] !== null).length}/${fiis.length} FIIs`);
+
         const data = {
             updatedAt: new Date().toLocaleString('pt-BR'),
             economy: { dollar, selic },
