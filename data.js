@@ -1,7 +1,7 @@
 window.INVEST_DATA = {
-  "updatedAt": "11/02/2026, 11:10:05",
+  "updatedAt": "11/02/2026, 13:00:52",
   "economy": {
-    "dollar": 5.1975,
+    "dollar": 5.2037,
     "selic": 15
   },
   "stocks": [
@@ -3947,7 +3947,8 @@ window.INVEST_DATA = {
       "score": 10,
       "selic": 15,
       "magicNumber": 75,
-      "magicCost": 8437.5
+      "magicCost": 8437.5,
+      "last_dividend": 0.75
     },
     {
       "ticker": "TJKB11",
@@ -3969,7 +3970,8 @@ window.INVEST_DATA = {
       "score": 10,
       "selic": 15,
       "magicNumber": 88,
-      "magicCost": 22440.879999999997
+      "magicCost": 22440.879999999997,
+      "last_dividend": 2.9
     },
     {
       "ticker": "XPML11",
@@ -3988,7 +3990,8 @@ window.INVEST_DATA = {
       "score": 10,
       "selic": 15,
       "magicNumber": 121,
-      "magicCost": 13346.3
+      "magicCost": 13346.3,
+      "last_dividend": 0.92
     },
     {
       "ticker": "PMLL11",
@@ -4009,7 +4012,8 @@ window.INVEST_DATA = {
       "score": 10,
       "selic": 15,
       "magicNumber": 124,
-      "magicCost": 13152.679999999998
+      "magicCost": 13152.679999999998,
+      "last_dividend": 1
     },
     {
       "ticker": "VISC11",
@@ -4030,7 +4034,8 @@ window.INVEST_DATA = {
       "score": 10,
       "selic": 15,
       "magicNumber": 135,
-      "magicCost": 14580
+      "magicCost": 14580,
+      "last_dividend": 0.84
     },
     {
       "ticker": "MALL11",
@@ -4051,7 +4056,8 @@ window.INVEST_DATA = {
       "score": 10,
       "selic": 15,
       "magicNumber": 135,
-      "magicCost": 13504.05
+      "magicCost": 13504.05,
+      "last_dividend": 0.86
     },
     {
       "ticker": "RZAK11",
@@ -4072,7 +4078,8 @@ window.INVEST_DATA = {
       "score": 9,
       "selic": 15,
       "magicNumber": 77,
-      "magicCost": 6653.57
+      "magicCost": 6653.57,
+      "last_dividend": 1.1
     },
     {
       "ticker": "VGIR11",
@@ -4093,7 +4100,8 @@ window.INVEST_DATA = {
       "score": 9,
       "selic": 15,
       "magicNumber": 81,
-      "magicCost": 794.61
+      "magicCost": 794.61,
+      "last_dividend": 0.13
     },
     {
       "ticker": "KNUQ11",
@@ -4114,7 +4122,8 @@ window.INVEST_DATA = {
       "score": 9,
       "selic": 15,
       "magicNumber": 82,
-      "magicCost": 8565.72
+      "magicCost": 8565.72,
+      "last_dividend": 1.3
     },
     {
       "ticker": "RBRY11",
@@ -4135,7 +4144,8 @@ window.INVEST_DATA = {
       "score": 9,
       "selic": 15,
       "magicNumber": 85,
-      "magicCost": 8269.65
+      "magicCost": 8269.65,
+      "last_dividend": 1.15
     },
     {
       "ticker": "VGIP11",
@@ -4156,7 +4166,8 @@ window.INVEST_DATA = {
       "score": 9,
       "selic": 15,
       "magicNumber": 87,
-      "magicCost": 7060.05
+      "magicCost": 7060.05,
+      "last_dividend": 0.71
     },
     {
       "ticker": "FGAA11",
@@ -4177,7 +4188,8 @@ window.INVEST_DATA = {
       "score": 9,
       "selic": 15,
       "magicNumber": 87,
-      "magicCost": 791.6999999999999
+      "magicCost": 791.6999999999999,
+      "last_dividend": 0.12
     },
     {
       "ticker": "KNCR11",
@@ -4198,7 +4210,8 @@ window.INVEST_DATA = {
       "score": 9,
       "selic": 15,
       "magicNumber": 88,
-      "magicCost": 9243.52
+      "magicCost": 9243.52,
+      "last_dividend": 1.2
     },
     {
       "ticker": "CPSH11",
@@ -4219,7 +4232,8 @@ window.INVEST_DATA = {
       "score": 9,
       "selic": 15,
       "magicNumber": 104,
-      "magicCost": 1133.6000000000001
+      "magicCost": 1133.6000000000001,
+      "last_dividend": 0.11
     },
     {
       "ticker": "HGBS11",
@@ -4238,7 +4252,8 @@ window.INVEST_DATA = {
       "score": 9,
       "selic": 15,
       "magicNumber": 131,
-      "magicCost": 2621.3100000000004
+      "magicCost": 2621.3100000000004,
+      "last_dividend": 0.16
     },
     {
       "ticker": "HSML11",
@@ -4259,7 +4274,8 @@ window.INVEST_DATA = {
       "score": 9,
       "selic": 15,
       "magicNumber": 139,
-      "magicCost": 12851.939999999999
+      "magicCost": 12851.939999999999,
+      "last_dividend": 0.7
     },
     {
       "ticker": "SNME11",
@@ -4278,7 +4294,8 @@ window.INVEST_DATA = {
       "score": 8,
       "selic": 15,
       "magicNumber": 81,
-      "magicCost": 791.37
+      "magicCost": 791.37,
+      "last_dividend": 0.15
     },
     {
       "ticker": "RZLC11",
@@ -4300,7 +4317,8 @@ window.INVEST_DATA = {
       "score": 8,
       "selic": 15,
       "magicNumber": 84,
-      "magicCost": 84347.76
+      "magicCost": 84347.76,
+      "last_dividend": 12.5
     },
     {
       "ticker": "CVBI11",
@@ -4322,7 +4340,8 @@ window.INVEST_DATA = {
       "score": 8,
       "selic": 15,
       "magicNumber": 84,
-      "magicCost": 6953.52
+      "magicCost": 6953.52,
+      "last_dividend": 1.05
     },
     {
       "ticker": "PORD11",
@@ -4341,7 +4360,8 @@ window.INVEST_DATA = {
       "score": 8,
       "selic": 15,
       "magicNumber": 86,
-      "magicCost": 695.74
+      "magicCost": 695.74,
+      "last_dividend": 0.1
     },
     {
       "ticker": "SPXS11",
@@ -4360,7 +4380,8 @@ window.INVEST_DATA = {
       "score": 8,
       "selic": 15,
       "magicNumber": 86,
-      "magicCost": 740.4599999999999
+      "magicCost": 740.4599999999999,
+      "last_dividend": 0.09
     },
     {
       "ticker": "VCJR11",
@@ -4382,7 +4403,8 @@ window.INVEST_DATA = {
       "score": 8,
       "selic": 15,
       "magicNumber": 87,
-      "magicCost": 7185.33
+      "magicCost": 7185.33,
+      "last_dividend": 0.88
     },
     {
       "ticker": "PCIP11",
@@ -4404,7 +4426,8 @@ window.INVEST_DATA = {
       "score": 8,
       "selic": 15,
       "magicNumber": 87,
-      "magicCost": 7221.870000000001
+      "magicCost": 7221.870000000001,
+      "last_dividend": 0.83
     },
     {
       "ticker": "SNEL11",
@@ -4426,7 +4449,8 @@ window.INVEST_DATA = {
       "score": 8,
       "selic": 15,
       "magicNumber": 87,
-      "magicCost": 746.46
+      "magicCost": 746.46,
+      "last_dividend": 0.1
     },
     {
       "ticker": "HSAF11",
@@ -4448,7 +4472,8 @@ window.INVEST_DATA = {
       "score": 8,
       "selic": 15,
       "magicNumber": 87,
-      "magicCost": 7089.629999999999
+      "magicCost": 7089.629999999999,
+      "last_dividend": 0.95
     },
     {
       "ticker": "BBIG11",
@@ -4467,7 +4492,8 @@ window.INVEST_DATA = {
       "score": 8,
       "selic": 15,
       "magicNumber": 90,
-      "magicCost": 646.1999999999999
+      "magicCost": 646.1999999999999,
+      "last_dividend": 0.09
     },
     {
       "ticker": "JSAF11",
@@ -4488,7 +4514,8 @@ window.INVEST_DATA = {
       "score": 8,
       "selic": 15,
       "magicNumber": 93,
-      "magicCost": 739.35
+      "magicCost": 739.35,
+      "last_dividend": 0.08
     },
     {
       "ticker": "TRXF11",
@@ -4509,7 +4536,8 @@ window.INVEST_DATA = {
       "score": 8,
       "selic": 15,
       "magicNumber": 96,
-      "magicCost": 8917.44
+      "magicCost": 8917.44,
+      "last_dividend": 0.93
     },
     {
       "ticker": "KNSC11",
@@ -4530,7 +4558,8 @@ window.INVEST_DATA = {
       "score": 8,
       "selic": 15,
       "magicNumber": 96,
-      "magicCost": 861.1200000000001
+      "magicCost": 861.1200000000001,
+      "last_dividend": 0.09
     },
     {
       "ticker": "RBRR11",
@@ -4551,7 +4580,8 @@ window.INVEST_DATA = {
       "score": 8,
       "selic": 15,
       "magicNumber": 98,
-      "magicCost": 8358.42
+      "magicCost": 8358.42,
+      "last_dividend": 0.8
     },
     {
       "ticker": "RBRX11",
@@ -4572,7 +4602,8 @@ window.INVEST_DATA = {
       "score": 8,
       "selic": 15,
       "magicNumber": 100,
-      "magicCost": 865
+      "magicCost": 865,
+      "last_dividend": 0.09
     },
     {
       "ticker": "KNHF11",
@@ -4593,7 +4624,8 @@ window.INVEST_DATA = {
       "score": 8,
       "selic": 15,
       "magicNumber": 101,
-      "magicCost": 9848.51
+      "magicCost": 9848.51,
+      "last_dividend": 1
     },
     {
       "ticker": "GGRC11",
@@ -4614,7 +4646,8 @@ window.INVEST_DATA = {
       "score": 8,
       "selic": 15,
       "magicNumber": 101,
-      "magicCost": 1012.02
+      "magicCost": 1012.02,
+      "last_dividend": 0.1
     },
     {
       "ticker": "MCCI11",
@@ -4635,7 +4668,8 @@ window.INVEST_DATA = {
       "score": 8,
       "selic": 15,
       "magicNumber": 102,
-      "magicCost": 9710.4
+      "magicCost": 9710.4,
+      "last_dividend": 1
     },
     {
       "ticker": "GARE11",
@@ -4656,7 +4690,8 @@ window.INVEST_DATA = {
       "score": 8,
       "selic": 15,
       "magicNumber": 105,
-      "magicCost": 900.9
+      "magicCost": 900.9,
+      "last_dividend": 0.08
     },
     {
       "ticker": "KNHY11",
@@ -4677,7 +4712,8 @@ window.INVEST_DATA = {
       "score": 8,
       "selic": 15,
       "magicNumber": 106,
-      "magicCost": 10547
+      "magicCost": 10547,
+      "last_dividend": 0.96
     },
     {
       "ticker": "KFOF11",
@@ -4698,7 +4734,8 @@ window.INVEST_DATA = {
       "score": 8,
       "selic": 15,
       "magicNumber": 110,
-      "magicCost": 9227.9
+      "magicCost": 9227.9,
+      "last_dividend": 0.8
     },
     {
       "ticker": "KNIP11",
@@ -4719,7 +4756,8 @@ window.INVEST_DATA = {
       "score": 8,
       "selic": 15,
       "magicNumber": 111,
-      "magicCost": 10047.72
+      "magicCost": 10047.72,
+      "last_dividend": 0.7
     },
     {
       "ticker": "HFOF11",
@@ -4738,7 +4776,8 @@ window.INVEST_DATA = {
       "score": 8,
       "selic": 15,
       "magicNumber": 122,
-      "magicCost": 825.9399999999999
+      "magicCost": 825.9399999999999,
+      "last_dividend": 0.06
     },
     {
       "ticker": "NEWL11",
@@ -4757,7 +4796,8 @@ window.INVEST_DATA = {
       "score": 8,
       "selic": 15,
       "magicNumber": 124,
-      "magicCost": 14582.4
+      "magicCost": 14582.4,
+      "last_dividend": 1
     },
     {
       "ticker": "ALZR11",
@@ -4776,7 +4816,8 @@ window.INVEST_DATA = {
       "score": 8,
       "selic": 15,
       "magicNumber": 131,
-      "magicCost": 1409.56
+      "magicCost": 1409.56,
+      "last_dividend": 0.09
     },
     {
       "ticker": "BTLG11",
@@ -4795,7 +4836,8 @@ window.INVEST_DATA = {
       "score": 8,
       "selic": 15,
       "magicNumber": 132,
-      "magicCost": 13516.800000000001
+      "magicCost": 13516.800000000001,
+      "last_dividend": 0.79
     },
     {
       "ticker": "HGLG11",
@@ -4814,7 +4856,8 @@ window.INVEST_DATA = {
       "score": 8,
       "selic": 15,
       "magicNumber": 144,
-      "magicCost": 22559.04
+      "magicCost": 22559.04,
+      "last_dividend": 1.1
     },
     {
       "ticker": "AJFI11",
@@ -4835,7 +4878,8 @@ window.INVEST_DATA = {
       "score": 8,
       "selic": 15,
       "magicNumber": 148,
-      "magicCost": 1215.0800000000002
+      "magicCost": 1215.0800000000002,
+      "last_dividend": 0.05
     },
     {
       "ticker": "CACR11",
@@ -4856,7 +4900,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 61,
-      "magicCost": 4863.530000000001
+      "magicCost": 4863.530000000001,
+      "last_dividend": 1.2
     },
     {
       "ticker": "VGRI11",
@@ -4877,7 +4922,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 69,
-      "magicCost": 565.8
+      "magicCost": 565.8,
+      "last_dividend": 0.12
     },
     {
       "ticker": "HCTR11",
@@ -4898,7 +4944,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 70,
-      "magicCost": 1499.4
+      "magicCost": 1499.4,
+      "last_dividend": 0.27
     },
     {
       "ticker": "MFII11",
@@ -4919,7 +4966,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 73,
-      "magicCost": 5644.36
+      "magicCost": 5644.36,
+      "last_dividend": 1.05
     },
     {
       "ticker": "HABT11",
@@ -4940,7 +4988,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 75,
-      "magicCost": 5673.75
+      "magicCost": 5673.75,
+      "last_dividend": 0.95
     },
     {
       "ticker": "TRXB11",
@@ -4959,7 +5008,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 81,
-      "magicCost": 14580
+      "magicCost": 14580,
+      "last_dividend": 3
     },
     {
       "ticker": "TGAR11",
@@ -4978,7 +5028,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 84,
-      "magicCost": 6722.52
+      "magicCost": 6722.52,
+      "last_dividend": 0.71
     },
     {
       "ticker": "RPRI11",
@@ -4997,7 +5048,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 85,
-      "magicCost": 7380.55
+      "magicCost": 7380.55,
+      "last_dividend": 0.9
     },
     {
       "ticker": "IRIM11",
@@ -5016,7 +5068,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 85,
-      "magicCost": 5769.799999999999
+      "magicCost": 5769.799999999999,
+      "last_dividend": 0.69
     },
     {
       "ticker": "SNCI11",
@@ -5037,7 +5090,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 91,
-      "magicCost": 8088.99
+      "magicCost": 8088.99,
+      "last_dividend": 1
     },
     {
       "ticker": "MXRF11",
@@ -5058,7 +5112,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 91,
-      "magicCost": 873.6
+      "magicCost": 873.6,
+      "last_dividend": 0.1
     },
     {
       "ticker": "JSCR11",
@@ -5077,7 +5132,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 91,
-      "magicCost": 774.41
+      "magicCost": 774.41,
+      "last_dividend": 0.1
     },
     {
       "ticker": "KCRE11",
@@ -5096,7 +5152,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 91,
-      "magicCost": 802.62
+      "magicCost": 802.62,
+      "last_dividend": 0.08
     },
     {
       "ticker": "RZAT11",
@@ -5115,7 +5172,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 92,
-      "magicCost": 8454.800000000001
+      "magicCost": 8454.800000000001,
+      "last_dividend": 0.95
     },
     {
       "ticker": "CLIN11",
@@ -5136,7 +5194,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 92,
-      "magicCost": 8530.24
+      "magicCost": 8530.24,
+      "last_dividend": 0.88
     },
     {
       "ticker": "XPCI11",
@@ -5157,7 +5216,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 93,
-      "magicCost": 7736.67
+      "magicCost": 7736.67,
+      "last_dividend": 0.88
     },
     {
       "ticker": "ICRI11",
@@ -5178,7 +5238,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 94,
-      "magicCost": 8742.94
+      "magicCost": 8742.94,
+      "last_dividend": 0.95
     },
     {
       "ticker": "BBFO11",
@@ -5197,7 +5258,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 94,
-      "magicCost": 6396.7
+      "magicCost": 6396.7,
+      "last_dividend": 0.87
     },
     {
       "ticker": "VRTA11",
@@ -5218,7 +5280,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 94,
-      "magicCost": 7411.9
+      "magicCost": 7411.9,
+      "last_dividend": 0.85
     },
     {
       "ticker": "HGCR11",
@@ -5239,7 +5302,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 94,
-      "magicCost": 8986.4
+      "magicCost": 8986.4,
+      "last_dividend": 0.95
     },
     {
       "ticker": "CPTS11",
@@ -5260,7 +5324,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 97,
-      "magicCost": 791.52
+      "magicCost": 791.52,
+      "last_dividend": 0.09
     },
     {
       "ticker": "BTCI11",
@@ -5281,7 +5346,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 97,
-      "magicCost": 899.1899999999999
+      "magicCost": 899.1899999999999,
+      "last_dividend": 0.09
     },
     {
       "ticker": "AFHI11",
@@ -5300,7 +5366,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 98,
-      "magicCost": 9465.82
+      "magicCost": 9465.82,
+      "last_dividend": 1.01
     },
     {
       "ticker": "GAME11",
@@ -5321,7 +5388,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 98,
-      "magicCost": 896.7
+      "magicCost": 896.7,
+      "last_dividend": 0.1
     },
     {
       "ticker": "WHGR11",
@@ -5340,7 +5408,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 99,
-      "magicCost": 910.8
+      "magicCost": 910.8,
+      "last_dividend": 0.1
     },
     {
       "ticker": "BTHF11",
@@ -5361,7 +5430,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 100,
-      "magicCost": 927
+      "magicCost": 927,
+      "last_dividend": 0.1
     },
     {
       "ticker": "ITRI11",
@@ -5382,7 +5452,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 103,
-      "magicCost": 8859.03
+      "magicCost": 8859.03,
+      "last_dividend": 0.85
     },
     {
       "ticker": "BCIA11",
@@ -5401,7 +5472,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 105,
-      "magicCost": 10043.25
+      "magicCost": 10043.25,
+      "last_dividend": 0.86
     },
     {
       "ticker": "FIGS11",
@@ -5422,7 +5494,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 105,
-      "magicCost": 5103
+      "magicCost": 5103,
+      "last_dividend": 0.48
     },
     {
       "ticker": "TEPP11",
@@ -5443,7 +5516,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 107,
-      "magicCost": 966.2099999999999
+      "magicCost": 966.2099999999999,
+      "last_dividend": 0.08
     },
     {
       "ticker": "HTMX11",
@@ -5464,7 +5538,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 111,
-      "magicCost": 15273.599999999999
+      "magicCost": 15273.599999999999,
+      "last_dividend": 1
     },
     {
       "ticker": "RBVA11",
@@ -5485,7 +5560,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 111,
-      "magicCost": 1095.57
+      "magicCost": 1095.57,
+      "last_dividend": 0.09
     },
     {
       "ticker": "RBRL11",
@@ -5504,7 +5580,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 124,
-      "magicCost": 11375.76
+      "magicCost": 11375.76,
+      "last_dividend": 0.75
     },
     {
       "ticker": "HGRU11",
@@ -5523,7 +5600,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 124,
-      "magicCost": 15617.800000000001
+      "magicCost": 15617.800000000001,
+      "last_dividend": 0.95
     },
     {
       "ticker": "BBGO11",
@@ -5542,7 +5620,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 125,
-      "magicCost": 9923.75
+      "magicCost": 9923.75,
+      "last_dividend": 0.96
     },
     {
       "ticker": "PLAG11",
@@ -5561,7 +5640,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 129,
-      "magicCost": 7765.8
+      "magicCost": 7765.8,
+      "last_dividend": 0.48
     },
     {
       "ticker": "EGAF11",
@@ -5580,7 +5660,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 138,
-      "magicCost": 13403.939999999999
+      "magicCost": 13403.939999999999,
+      "last_dividend": 1.44
     },
     {
       "ticker": "CPTR11",
@@ -5599,7 +5680,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 142,
-      "magicCost": 1214.1000000000001
+      "magicCost": 1214.1000000000001,
+      "last_dividend": 0.12
     },
     {
       "ticker": "VILG11",
@@ -5618,7 +5700,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 142,
-      "magicCost": 14174.439999999999
+      "magicCost": 14174.439999999999,
+      "last_dividend": 0.8
     },
     {
       "ticker": "LVBI11",
@@ -5637,7 +5720,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 146,
-      "magicCost": 15994.3
+      "magicCost": 15994.3,
+      "last_dividend": 0.75
     },
     {
       "ticker": "XPCA11",
@@ -5656,7 +5740,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 147,
-      "magicCost": 1237.74
+      "magicCost": 1237.74,
+      "last_dividend": 0.12
     },
     {
       "ticker": "HPDP11",
@@ -5675,7 +5760,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 159,
-      "magicCost": 13992
+      "magicCost": 13992,
+      "last_dividend": 0.56
     },
     {
       "ticker": "KNRI11",
@@ -5694,7 +5780,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 164,
-      "magicCost": 26961.600000000002
+      "magicCost": 26961.600000000002,
+      "last_dividend": 0.88
     },
     {
       "ticker": "FATN11",
@@ -5713,7 +5800,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 195,
-      "magicCost": 17062.5
+      "magicCost": 17062.5,
+      "last_dividend": 0.8
     },
     {
       "ticker": "RZAG11",
@@ -5732,7 +5820,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 198,
-      "magicCost": 1791.9
+      "magicCost": 1791.9,
+      "last_dividend": 0.12
     },
     {
       "ticker": "KNCA11",
@@ -5751,7 +5840,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 227,
-      "magicCost": 22109.800000000003
+      "magicCost": 22109.800000000003,
+      "last_dividend": 1.1
     },
     {
       "ticker": "APXM11",
@@ -5770,7 +5860,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 239,
-      "magicCost": 19999.52
+      "magicCost": 19999.52,
+      "last_dividend": 0.49
     },
     {
       "ticker": "RURA11",
@@ -5789,7 +5880,8 @@ window.INVEST_DATA = {
       "score": 7,
       "selic": 15,
       "magicNumber": 247,
-      "magicCost": 2168.66
+      "magicCost": 2168.66,
+      "last_dividend": 0.12
     },
     {
       "ticker": "GZIT11",
@@ -5810,7 +5902,8 @@ window.INVEST_DATA = {
       "score": 6,
       "selic": 15,
       "magicNumber": 59,
-      "magicCost": 2899.85
+      "magicCost": 2899.85,
+      "last_dividend": 0.78
     },
     {
       "ticker": "DEVA11",
@@ -5831,7 +5924,8 @@ window.INVEST_DATA = {
       "score": 6,
       "selic": 15,
       "magicNumber": 64,
-      "magicCost": 1567.36
+      "magicCost": 1567.36,
+      "last_dividend": 0.3
     },
     {
       "ticker": "SMRE11",
@@ -5852,7 +5946,8 @@ window.INVEST_DATA = {
       "score": 6,
       "selic": 15,
       "magicNumber": 65,
-      "magicCost": 4225
+      "magicCost": 4225,
+      "last_dividend": 1.02
     },
     {
       "ticker": "OUJP11",
@@ -5873,7 +5968,8 @@ window.INVEST_DATA = {
       "score": 6,
       "selic": 15,
       "magicNumber": 80,
-      "magicCost": 6640
+      "magicCost": 6640,
+      "last_dividend": 1.06
     },
     {
       "ticker": "VRTM11",
@@ -5892,7 +5988,8 @@ window.INVEST_DATA = {
       "score": 6,
       "selic": 15,
       "magicNumber": 83,
-      "magicCost": 604.24
+      "magicCost": 604.24,
+      "last_dividend": 0.09
     },
     {
       "ticker": "VGHF11",
@@ -5911,7 +6008,8 @@ window.INVEST_DATA = {
       "score": 6,
       "selic": 15,
       "magicNumber": 87,
-      "magicCost": 619.44
+      "magicCost": 619.44,
+      "last_dividend": 0.07
     },
     {
       "ticker": "TVRI11",
@@ -5930,7 +6028,8 @@ window.INVEST_DATA = {
       "score": 6,
       "selic": 15,
       "magicNumber": 96,
-      "magicCost": 9436.8
+      "magicCost": 9436.8,
+      "last_dividend": 1.05
     },
     {
       "ticker": "AZPL11",
@@ -5949,7 +6048,8 @@ window.INVEST_DATA = {
       "score": 6,
       "selic": 15,
       "magicNumber": 96,
-      "magicCost": 738.24
+      "magicCost": 738.24,
+      "last_dividend": 0.08
     },
     {
       "ticker": "GRUL11",
@@ -5968,7 +6068,8 @@ window.INVEST_DATA = {
       "score": 6,
       "selic": 15,
       "magicNumber": 98,
-      "magicCost": 891.8
+      "magicCost": 891.8,
+      "last_dividend": 0.08
     },
     {
       "ticker": "SNFF11",
@@ -5987,7 +6088,8 @@ window.INVEST_DATA = {
       "score": 6,
       "selic": 15,
       "magicNumber": 98,
-      "magicCost": 7720.4400000000005
+      "magicCost": 7720.4400000000005,
+      "last_dividend": 0.8
     },
     {
       "ticker": "RINV11",
@@ -6006,7 +6108,8 @@ window.INVEST_DATA = {
       "score": 6,
       "selic": 15,
       "magicNumber": 105,
-      "magicCost": 11676
+      "magicCost": 11676,
+      "last_dividend": 1.35
     },
     {
       "ticker": "CPUR11",
@@ -6027,7 +6130,8 @@ window.INVEST_DATA = {
       "score": 6,
       "selic": 15,
       "magicNumber": 115,
-      "magicCost": 1229.35
+      "magicCost": 1229.35,
+      "last_dividend": 0.1
     },
     {
       "ticker": "BRCR11",
@@ -6046,7 +6150,8 @@ window.INVEST_DATA = {
       "score": 6,
       "selic": 15,
       "magicNumber": 117,
-      "magicCost": 5663.969999999999
+      "magicCost": 5663.969999999999,
+      "last_dividend": 0.41
     },
     {
       "ticker": "PQAG11",
@@ -6065,7 +6170,8 @@ window.INVEST_DATA = {
       "score": 6,
       "selic": 15,
       "magicNumber": 117,
-      "magicCost": 6405.75
+      "magicCost": 6405.75,
+      "last_dividend": 0.48
     },
     {
       "ticker": "XPLG11",
@@ -6084,7 +6190,8 @@ window.INVEST_DATA = {
       "score": 6,
       "selic": 15,
       "magicNumber": 126,
-      "magicCost": 12854.519999999999
+      "magicCost": 12854.519999999999,
+      "last_dividend": 0.82
     },
     {
       "ticker": "HGBL11",
@@ -6103,7 +6210,8 @@ window.INVEST_DATA = {
       "score": 6,
       "selic": 15,
       "magicNumber": 128,
-      "magicCost": 1198.08
+      "magicCost": 1198.08,
+      "last_dividend": 0.07
     },
     {
       "ticker": "BRCO11",
@@ -6122,7 +6230,8 @@ window.INVEST_DATA = {
       "score": 6,
       "selic": 15,
       "magicNumber": 135,
-      "magicCost": 15966.449999999999
+      "magicCost": 15966.449999999999,
+      "last_dividend": 0.87
     },
     {
       "ticker": "VGIA11",
@@ -6141,7 +6250,8 @@ window.INVEST_DATA = {
       "score": 6,
       "selic": 15,
       "magicNumber": 137,
-      "magicCost": 1409.7299999999998
+      "magicCost": 1409.7299999999998,
+      "last_dividend": 0.14
     },
     {
       "ticker": "JSRE11",
@@ -6160,7 +6270,8 @@ window.INVEST_DATA = {
       "score": 6,
       "selic": 15,
       "magicNumber": 141,
-      "magicCost": 9439.95
+      "magicCost": 9439.95,
+      "last_dividend": 0.48
     },
     {
       "ticker": "AAZQ11",
@@ -6179,7 +6290,8 @@ window.INVEST_DATA = {
       "score": 6,
       "selic": 15,
       "magicNumber": 153,
-      "magicCost": 1271.43
+      "magicCost": 1271.43,
+      "last_dividend": 0.11
     },
     {
       "ticker": "CPOF11",
@@ -6198,7 +6310,8 @@ window.INVEST_DATA = {
       "score": 6,
       "selic": 15,
       "magicNumber": 204,
-      "magicCost": 22440
+      "magicCost": 22440,
+      "last_dividend": 0.47
     },
     {
       "ticker": "LIFE11",
@@ -6219,7 +6332,8 @@ window.INVEST_DATA = {
       "score": 5,
       "selic": 15,
       "magicNumber": 75,
-      "magicCost": 656.25
+      "magicCost": 656.25,
+      "last_dividend": 0.12
     },
     {
       "ticker": "MANA11",
@@ -6240,7 +6354,8 @@ window.INVEST_DATA = {
       "score": 4,
       "selic": 15,
       "magicNumber": 44,
-      "magicCost": 408.32
+      "magicCost": 408.32,
+      "last_dividend": 0.11
     },
     {
       "ticker": "CDII11",
@@ -6259,7 +6374,8 @@ window.INVEST_DATA = {
       "num_properties": 0,
       "vacancy": 0,
       "liquidity": 1000000,
-      "market_cap": 500000000
+      "market_cap": 500000000,
+      "last_dividend": 1.32
     },
     {
       "ticker": "KDIF11",
@@ -6278,7 +6394,8 @@ window.INVEST_DATA = {
       "num_properties": 0,
       "vacancy": 0,
       "liquidity": 1000000,
-      "market_cap": 500000000
+      "market_cap": 500000000,
+      "last_dividend": 1.45
     },
     {
       "ticker": "JURO11",
@@ -6295,7 +6412,8 @@ window.INVEST_DATA = {
       "num_properties": 0,
       "vacancy": 0,
       "liquidity": 1000000,
-      "market_cap": 500000000
+      "market_cap": 500000000,
+      "last_dividend": 1
     },
     {
       "ticker": "IFRA11",
@@ -6312,7 +6430,8 @@ window.INVEST_DATA = {
       "num_properties": 0,
       "vacancy": 0,
       "liquidity": 1000000,
-      "market_cap": 500000000
+      "market_cap": 500000000,
+      "last_dividend": 0.86
     },
     {
       "ticker": "BDIF11",
@@ -6331,7 +6450,8 @@ window.INVEST_DATA = {
       "num_properties": 0,
       "vacancy": 0,
       "liquidity": 1000000,
-      "market_cap": 500000000
+      "market_cap": 500000000,
+      "last_dividend": 0.8
     },
     {
       "ticker": "CPTI11",
@@ -6350,7 +6470,8 @@ window.INVEST_DATA = {
       "num_properties": 0,
       "vacancy": 0,
       "liquidity": 1000000,
-      "market_cap": 500000000
+      "market_cap": 500000000,
+      "last_dividend": 1.15
     },
     {
       "ticker": "IFRI11",
@@ -6369,7 +6490,8 @@ window.INVEST_DATA = {
       "num_properties": 0,
       "vacancy": 0,
       "liquidity": 1000000,
-      "market_cap": 500000000
+      "market_cap": 500000000,
+      "last_dividend": 1.35
     },
     {
       "ticker": "BODB11",
@@ -6388,7 +6510,8 @@ window.INVEST_DATA = {
       "num_properties": 0,
       "vacancy": 0,
       "liquidity": 1000000,
-      "market_cap": 500000000
+      "market_cap": 500000000,
+      "last_dividend": 0.09
     },
     {
       "ticker": "BINC11",
@@ -6408,7 +6531,8 @@ window.INVEST_DATA = {
       "num_properties": 0,
       "vacancy": 0,
       "liquidity": 1000000,
-      "market_cap": 500000000
+      "market_cap": 500000000,
+      "last_dividend": 1.5
     },
     {
       "ticker": "JMBI11",
@@ -6428,7 +6552,8 @@ window.INVEST_DATA = {
       "num_properties": 0,
       "vacancy": 0,
       "liquidity": 1000000,
-      "market_cap": 500000000
+      "market_cap": 500000000,
+      "last_dividend": 1.28
     },
     {
       "ticker": "XPID11",
@@ -6447,7 +6572,8 @@ window.INVEST_DATA = {
       "num_properties": 0,
       "vacancy": 0,
       "liquidity": 1000000,
-      "market_cap": 500000000
+      "market_cap": 500000000,
+      "last_dividend": 0.75
     },
     {
       "ticker": "DIVS11",
@@ -6466,7 +6592,8 @@ window.INVEST_DATA = {
       "num_properties": 0,
       "vacancy": 0,
       "liquidity": 1000000,
-      "market_cap": 500000000
+      "market_cap": 500000000,
+      "last_dividend": 1.2
     },
     {
       "ticker": "BIDB11",
@@ -6486,7 +6613,8 @@ window.INVEST_DATA = {
       "num_properties": 0,
       "vacancy": 0,
       "liquidity": 1000000,
-      "market_cap": 500000000
+      "market_cap": 500000000,
+      "last_dividend": 1
     },
     {
       "ticker": "NUIF11",
@@ -6505,7 +6633,8 @@ window.INVEST_DATA = {
       "num_properties": 0,
       "vacancy": 0,
       "liquidity": 1000000,
-      "market_cap": 500000000
+      "market_cap": 500000000,
+      "last_dividend": 1.25
     },
     {
       "ticker": "RBIF11",
@@ -6524,7 +6653,8 @@ window.INVEST_DATA = {
       "num_properties": 0,
       "vacancy": 0,
       "liquidity": 1000000,
-      "market_cap": 500000000
+      "market_cap": 500000000,
+      "last_dividend": 0.95
     },
     {
       "ticker": "SNID11",
@@ -6543,7 +6673,8 @@ window.INVEST_DATA = {
       "num_properties": 0,
       "vacancy": 0,
       "liquidity": 1000000,
-      "market_cap": 500000000
+      "market_cap": 500000000,
+      "last_dividend": 0.13
     },
     {
       "ticker": "VANG11",
@@ -6560,7 +6691,8 @@ window.INVEST_DATA = {
       "num_properties": 0,
       "vacancy": 0,
       "liquidity": 1000000,
-      "market_cap": 500000000
+      "market_cap": 500000000,
+      "last_dividend": 1
     }
   ],
   "etfs": [
