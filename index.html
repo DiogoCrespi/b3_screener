@@ -1022,6 +1022,14 @@
                     const totalInvest = magicNumber * fii.price;
                     const totalMonthly = magicNumber * monthlyDiv;
 
+                    // Format liquidity
+                    const formatLiquidity = (value) => {
+                        if (!value || value === 0) return 'N/A';
+                        if (value >= 1000000) return `R$ ${(value / 1000000).toFixed(2)}M`;
+                        if (value >= 1000) return `R$ ${(value / 1000).toFixed(0)}K`;
+                        return `R$ ${value.toFixed(2)}`;
+                    };
+
                     const card = document.createElement('div');
                     card.className = 'stock-card';
                     card.style.borderLeftColor = section.color;
@@ -1076,6 +1084,10 @@
                             <div class="detail-row">
                                 <span class="detail-label">P/VP:</span>
                                 <span class="detail-value">${(fii.p_vp || fii.pvp || 0).toFixed(2)}</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Liquidez Diária:</span>
+                                <span class="detail-value" style="color:var(--accent)">${formatLiquidity(fii.liquidity)}</span>
                             </div>
                             <div id="chart-snow-${fii.ticker}" class="chart-container"></div>
                         </div>
