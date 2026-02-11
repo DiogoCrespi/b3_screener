@@ -84,20 +84,19 @@ async function getBestFIIs(externalMetadata = {}, baseList = null) {
                 } else if (exType.includes('fiagro') || exSegment.includes('fiagro') || exMandate.includes('agro') || exMandate.includes('rural')) {
                     type = 'AGRO';
                 }
-                // PRIORITY 2: Explicit PAPEL & TIJOLO (From Investidor10 Type)
-                // If the external source explicitly says "Fundo de Papel" or "Fundo de Tijolo", trust it over "Hibrido" segment
-                else if (exType.includes('papel') || exMandate.includes('titulos')) {
-                    type = 'PAPEL';
-                } else if (exType.includes('tijolo') || exMandate.includes('renda')) {
-                    type = 'TIJOLO';
-                }
-                // PRIORITY 3: MISTO / MULTI (Hybrid nature)
-                // Only if it wasn't caught as explicit Paper/Brick
+                // PRIORITY 2: MISTO / MULTI (Hybrid nature)
+                // If it is Hybrid/Misto, we value that distinction over just "Paper" or "Brick"
                 else if (exType.includes('misto') || exType.includes('mista') ||
                     exType.includes('hibrido') || exMandate.includes('hibrido') ||
                     exSegment.includes('hibrido') || exMandate.includes('misto') ||
                     exType.includes('multimercado') || exType.includes('fundos de fundos')) {
                     type = 'MULTI';
+                }
+                // PRIORITY 3: Explicit PAPEL & TIJOLO (From Investidor10 Type)
+                else if (exType.includes('papel') || exMandate.includes('titulos')) {
+                    type = 'PAPEL';
+                } else if (exType.includes('tijolo') || exMandate.includes('renda')) {
+                    type = 'TIJOLO';
                 }
                 // PRIORITY 4: Fallbacks based on Segment (if Type was generic or missing)
                 else if (exSegment.includes('recebiveis')) {
