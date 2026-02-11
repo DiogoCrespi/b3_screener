@@ -84,17 +84,25 @@ async function getBestFIIs(externalMetadata = {}, baseList = null) {
                 } else if (exType.includes('fiagro') || exSegment.includes('fiagro') || exMandate.includes('agro') || exMandate.includes('rural')) {
                     type = 'AGRO';
                 }
-                // PRIORITY 2: MISTO / MULTI (Hybrid nature)
+                // PRIORITY 2: Explicit PAPEL & TIJOLO (From Investidor10 Type)
+                // If the external source explicitly says "Fundo de Papel" or "Fundo de Tijolo", trust it over "Hibrido" segment
+                else if (exType.includes('papel') || exMandate.includes('titulos')) {
+                    type = 'PAPEL';
+                } else if (exType.includes('tijolo') || exMandate.includes('renda')) {
+                    type = 'TIJOLO';
+                }
+                // PRIORITY 3: MISTO / MULTI (Hybrid nature)
+                // Only if it wasn't caught as explicit Paper/Brick
                 else if (exType.includes('misto') || exType.includes('mista') ||
                     exType.includes('hibrido') || exMandate.includes('hibrido') ||
                     exSegment.includes('hibrido') || exMandate.includes('misto') ||
                     exType.includes('multimercado') || exType.includes('fundos de fundos')) {
                     type = 'MULTI';
                 }
-                // PRIORITY 3: PAPEL & TIJOLO (Core FII categories)
-                else if (exType.includes('papel') || exMandate.includes('titulos') || exSegment.includes('recebiveis')) {
+                // PRIORITY 4: Fallbacks based on Segment (if Type was generic or missing)
+                else if (exSegment.includes('recebiveis')) {
                     type = 'PAPEL';
-                } else if (exType.includes('tijolo') || exMandate.includes('renda') || exSegment.includes('imoveis')) {
+                } else if (exSegment.includes('imoveis')) {
                     type = 'TIJOLO';
                 } else {
                     // FALLBACK: Fundamentus Segment Analysis
@@ -109,13 +117,14 @@ async function getBestFIIs(externalMetadata = {}, baseList = null) {
 
                     const isAgro = segmentNorm.includes('agro') || segmentNorm.includes('fiagro') || segmentNorm.includes('rural');
                     const isInfra = segmentNorm.includes('infra') || segmentNorm.includes('energia') || segmentNorm.includes('saneamento');
+                    // Only treat as Multi if we really have no other clue
                     const isMulti = segmentNorm.includes('multicategoria') || segmentNorm.includes('hibrido') || segmentNorm.includes('fundos') || segmentNorm.includes('mista');
 
                     if (isTijolo) type = 'TIJOLO';
                     else if (isAgro) type = 'AGRO';
                     else if (isInfra) type = 'INFRA';
-                    else if (isMulti) type = 'MULTI';
                     else if (segmentNorm.includes('titulos') || segmentNorm.includes('recebiveis')) type = 'PAPEL';
+                    else if (isMulti) type = 'MULTI';
                 }
 
                 // Explicitly check for known Fiagros/Infras if still "OUTROS"
