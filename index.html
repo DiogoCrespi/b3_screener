@@ -1032,6 +1032,8 @@
                                             alt="${fii.ticker}">
                                         ${fii.ticker} 
                                         <span class="badge" style="background:#FFD70020; color:#FFD700">⭐ ${fii.score}</span>
+                                        ${fii.type === 'TIJOLO' ? '<span class="badge" style="background:#e74c3c; color:white">🏢 TIJOLO</span>' : ''}
+                                        ${fii.type === 'PAPEL' ? '<span class="badge" style="background:#3498db; color:white">📄 PAPEL</span>' : ''}
                                         ${fii.type === 'AGRO' ? '<span class="badge" style="background:#fba94c; color:black">🌾 AGRO</span>' : ''}
                                         ${fii.type === 'INFRA' ? '<span class="badge" style="background:#00d4ff; color:black">⚡ INFRA</span>' : ''}
                                     </h3>
@@ -1175,6 +1177,8 @@
                                         alt="${fii.ticker}">
                                     ${fii.ticker} 
                                     <span class="badge" style="background:${section.color}20; color:${section.color}">⭐ ${fii.score}</span>
+                                    ${fii.type === 'TIJOLO' ? '<span class="badge" style="background:#e74c3c; color:white">🏢 TIJOLO</span>' : ''}
+                                    ${fii.type === 'PAPEL' ? '<span class="badge" style="background:#3498db; color:white">📄 PAPEL</span>' : ''}
                                     ${fii.type === 'AGRO' ? '<span class="badge" style="background:#fba94c; color:black">🌾 AGRO</span>' : ''}
                                     ${fii.type === 'INFRA' ? '<span class="badge" style="background:#00d4ff; color:black">⚡ INFRA</span>' : ''}
                                 </h3>
