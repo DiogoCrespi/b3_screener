@@ -304,6 +304,23 @@
             margin-left: 8px;
             vertical-align: middle;
             color: var(--text-muted);
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        @media (max-width: 480px) {
+            .badge {
+                font-size: 0.65rem;
+                padding: 1px 4px;
+                margin-left: 4px;
+            }
+
+            .ticker-info h3 {
+                font-size: 1.1rem;
+                flex-wrap: wrap;
+            }
         }
 
         .hidden {
