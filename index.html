@@ -1034,6 +1034,7 @@
                                         <span class="badge" style="background:#FFD70020; color:#FFD700">⭐ ${fii.score}</span>
                                         ${fii.type === 'TIJOLO' ? '<span class="badge" style="background:#e74c3c; color:white">🏢 TIJOLO</span>' : ''}
                                         ${fii.type === 'PAPEL' ? '<span class="badge" style="background:#3498db; color:white">📄 PAPEL</span>' : ''}
+                                        ${fii.type === 'MULTI' ? '<span class="badge" style="background:#9b59b6; color:white">🔄 MULTI</span>' : ''}
                                         ${fii.type === 'AGRO' ? '<span class="badge" style="background:#fba94c; color:black">🌾 AGRO</span>' : ''}
                                         ${fii.type === 'INFRA' ? '<span class="badge" style="background:#00d4ff; color:black">⚡ INFRA</span>' : ''}
                                     </h3>
@@ -1177,10 +1178,11 @@
                                         alt="${fii.ticker}">
                                     ${fii.ticker} 
                                     <span class="badge" style="background:${section.color}20; color:${section.color}">⭐ ${fii.score}</span>
-                                    ${fii.type === 'TIJOLO' ? '<span class="badge" style="background:#e74c3c; color:white">🏢 TIJOLO</span>' : ''}
-                                    ${fii.type === 'PAPEL' ? '<span class="badge" style="background:#3498db; color:white">📄 PAPEL</span>' : ''}
-                                    ${fii.type === 'AGRO' ? '<span class="badge" style="background:#fba94c; color:black">🌾 AGRO</span>' : ''}
-                                    ${fii.type === 'INFRA' ? '<span class="badge" style="background:#00d4ff; color:black">⚡ INFRA</span>' : ''}
+                                    ${fii.type === 'TIJOLO' ? '<span class="badge" style="background:#7f7f7f; color:white">🧱 Tijolo</span>' : ''}
+                                    ${fii.type === 'PAPEL' ? '<span class="badge" style="background:#3498db; color:white">📄 Papel</span>' : ''}
+                                    ${fii.type === 'MULTI' ? '<span class="badge" style="background:#9b59b6; color:white">🔄 Multi</span>' : ''}
+                                    ${fii.type === 'AGRO' ? '<span class="badge" style="background:#fba94c; color:black">🌾 Agro</span>' : ''}
+                                    ${fii.type === 'INFRA' ? '<span class="badge" style="background:#00d4ff; color:black">⚡ Infra</span>' : ''}
                                 </h3>
                                 <span style="color:var(--accent); font-weight:bold; font-size:1rem;">❄️ Meta: ${magicNumber} cotas</span>
                                 <span style="font-size:0.75rem">Com ${magicNumber} cotas, o dividendo paga +1 cota</span>
