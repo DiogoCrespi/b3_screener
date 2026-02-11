@@ -37,11 +37,9 @@ async function getBestStocks() {
         // 2. Get Context (Selic)
         let selic = 12.75;
         try {
-            const selicResponse = await fetch('https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados/ultimos/1?formato=json');
-            if (selicResponse.ok) {
-                const selicData = await selicResponse.json();
-                selic = parseFloat(selicData[0]?.valor || 12.75);
-            }
+            const axios = require('axios');
+            const selicResponse = await axios.get('https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados/ultimos/1?formato=json');
+            selic = parseFloat(selicResponse.data[0]?.valor || 12.75);
         } catch (e) {
             console.warn('⚠️  Could not fetch Selic, using default 12.75%.');
         }
