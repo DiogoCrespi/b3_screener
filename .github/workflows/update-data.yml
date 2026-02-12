@@ -37,6 +37,32 @@ jobs:
            echo "--- CURL HEADERS ---"
            curl -I https://www.fundamentus.com.br/detalhes.php || echo "Curl failed"
 
+      - name: Install and Configure Cloudflare WARP
+        run: |
+          # 1. Install WARP
+          curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
+          echo "deb [arch=amd64 signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
+          sudo apt-get update
+          sudo apt-get install -y cloudflare-warp
+
+          # 2. Register and Connect (Free Account)
+          echo "Registering WARP..."
+          sudo warp-cli --accept-tos registration new
+          
+          echo "Connecting WARP..."
+          sudo warp-cli --accept-tos mode warp
+          sudo warp-cli --accept-tos connect
+          
+          # 3. Wait and Verify
+          echo "Waiting for connection..."
+          sleep 5
+          
+          echo "Checking status..."
+          sudo warp-cli --accept-tos status
+          
+          echo "Verifying Public IP (via Cloudflare Trace)..."
+          curl https://www.cloudflare.com/cdn-cgi/trace
+          
       - name: Install dependencies
         run: npm install
         
