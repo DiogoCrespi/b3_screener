@@ -54,6 +54,11 @@ async function main() {
             fixedIncome: { private: privateBenchmarks }
         };
 
+        if (stocks.length === 0 && fiis.length === 0) {
+            console.error('❌ CRITICAL: No data fetched (0 stocks, 0 FIIs). Aborting save to prevent overwriting with empty data.');
+            process.exit(1);
+        }
+
         const fileContent = `window.INVEST_DATA = ${JSON.stringify(investData, null, 2)};`;
         fs.writeFileSync('data.js', fileContent);
         console.log('✅ Data exported successfully to data.js!');
