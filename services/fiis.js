@@ -47,8 +47,14 @@ async function getBestFIIs(externalMetadata = {}, baseList = null) {
 
 
             const EXTRA_TICKERS = [
-                'BDIF11', 'JURO11', 'KDIF11', 'CPTI11', 'VIGT11', 'BIDB11', 'CDII11', // Infra
-                'SNAG11', 'KNCA11', 'VGIA11', 'RURA11', 'FGAA11', 'RZAG11', 'OIAG11', 'AGRX11', 'NCRA11' // Fiagro
+                // INFRA (FI-INFRA) - Verified via Browser on Investidor10 (21 items)
+                "ISNT11", "ISEN11", "ISTT11", "CDII11", "KDIF11", "JURO11", "IFRA11", "BDIF11", "CPTI11", "IFRI11",
+                "BODB11", "BINC11", "JMBI11", "XPID11", "DIVS11", "BIDB11", "VINF11", "NUIF11", "RBIF11", "SNID11", "VANG11",
+
+                // FIAGRO - Verified via Browser on Investidor10 (25 items)
+                "KNCA11", "RURA11", "VGIA11", "RZAG11", "SNAG11", "VCRA11", "XPCA11", "FGAA11", "BTRA11", "BBGO11",
+                "EGAF11", "CRAA11", "KOPA11", "AAZQ11", "JGPX11", "CPTR11", "AGRX11", "GCRA11", "NEXG11", "SNFZ11",
+                "IAAG11", "LSAG11", "OIAG11", "PLCA11", "FTCA11"
             ];
 
             // Filter out ones we already have
