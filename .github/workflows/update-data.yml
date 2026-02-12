@@ -66,9 +66,7 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: 🧪 DEBUG - Test Dynamic Fetching (with WARP)
-        run: node debug/fetch_tickers.js
-        continue-on-error: true
+
         
       - name: Generate data
         env:
