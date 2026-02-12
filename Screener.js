@@ -66,6 +66,11 @@ class Screener {
         return this;
     }
 
+    setEconomy(dollar, selic) {
+        this.config.economy = { dollar, selic };
+        return this;
+    }
+
     async run() {
         console.log(`\n🚀 Starting Screener for [${this.config.assetType.toUpperCase()}]...`);
         let assets = [];
@@ -140,7 +145,7 @@ class Screener {
 
         if (this.config.shouldSave) {
             const { saveHistory } = require('./services/storage');
-            saveHistory(results, this.config.assetType);
+            saveHistory(results, this.config.assetType, this.config.economy);
         }
 
         console.log('\n');

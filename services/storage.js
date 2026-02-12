@@ -12,8 +12,9 @@ if (!fs.existsSync(HISTORY_DIR)) {
  * Saves the screener results to a JSON file with today's date.
  * @param {Array} results - The filtered list of stocks/FIIs.
  * @param {string} type - 'stock', 'fii', or 'combined'
+ * @param {Object} economy - Optional economy data { dollar, selic }
  */
-function saveHistory(results, type = 'combined') {
+function saveHistory(results, type = 'combined', economy = null) {
     try {
         const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
         const filename = `${today}-${type}-results.json`;
@@ -22,6 +23,7 @@ function saveHistory(results, type = 'combined') {
         const data = {
             date: new Date().toISOString(),
             count: results.length,
+            economy: economy,
             type: type,
             items: results
         };

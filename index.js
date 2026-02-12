@@ -23,6 +23,7 @@ async function main() {
     const stockScreener = new Screener()
         .assetType('stock')
         .minLiquidity(100000) // Base liquidity filter
+        .setEconomy(dollar, selic)
         .save(true); // Persist results
 
     const stocks = await stockScreener.run();
@@ -32,6 +33,7 @@ async function main() {
     const fiiScreener = new Screener()
         .assetType('fii')
         .minLiquidity(200000) // FII base liquidity
+        .setEconomy(dollar, selic)
         .save(true); // Persist results
 
     const fiis = await fiiScreener.run();
