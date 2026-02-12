@@ -1,8 +1,8 @@
 window.INVEST_DATA = {
-  "updatedAt": "12/02/2026, 20:04:36",
+  "updatedAt": "12/02/2026, 21:33:31",
   "economy": {
-    "dollar": 5.2058,
-    "selic": 15
+    "dollar": 5.211,
+    "selic": null
   },
   "stocks": [
     {
@@ -7148,22 +7148,22 @@ window.INVEST_DATA = {
     "private": [
       {
         "name": "CDB 100% CDI",
-        "rate": "14.90%",
+        "rate": "NaN%",
         "type": "Pós-fixado"
       },
       {
         "name": "LCI/LCA 90% CDI",
-        "rate": "13.41%",
+        "rate": "NaN%",
         "type": "Isento IR"
       },
       {
         "name": "Poupança (Est.)",
-        "rate": "6.17% + TR",
+        "rate": "NaN% + TR",
         "type": "Isento IR"
       },
       {
         "name": "CDB Pré-fixado (Est.)",
-        "rate": "16.50%",
+        "rate": "NaN%",
         "type": "Prefixado"
       }
     ]

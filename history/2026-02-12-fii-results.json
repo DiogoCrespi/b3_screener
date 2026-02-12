@@ -1,9 +1,9 @@
 {
-  "date": "2026-02-12T20:04:36.388Z",
+  "date": "2026-02-12T21:33:31.621Z",
   "count": 147,
   "economy": {
-    "dollar": 5.2058,
-    "selic": 15
+    "dollar": 5.211,
+    "selic": null
   },
   "type": "fii",
   "items": [
