@@ -1,4 +1,5 @@
 const cheerio = require('cheerio');
+const { getFiiMetadata } = require('./investidor10');
 
 const FII_URL = 'https://www.fundamentus.com.br/fii_resultado.php';
 
@@ -43,6 +44,47 @@ async function getBestFIIs(externalMetadata = {}, baseList = null) {
                     vacancy: parseNumber($(tds[12]).text().trim())
                 });
             });
+
+
+            const EXTRA_TICKERS = [
+                'BDIF11', 'JURO11', 'KDIF11', 'CPTI11', 'VIGT11', 'BIDB11', 'CDII11', // Infra
+                'SNAG11', 'KNCA11', 'VGIA11', 'RURA11', 'FGAA11', 'RZAG11', 'OIAG11', 'AGRX11', 'NCRA11' // Fiagro
+            ];
+
+            // Filter out ones we already have
+            const existingTickers = new Set(fiis.map(f => f.ticker));
+            const missing = EXTRA_TICKERS.filter(t => !existingTickers.has(t));
+
+            if (missing.length > 0) {
+                console.log(`🔍 Fetching ${missing.length} Missing Assets (Infra/Fiagro) from Investidor10...`);
+                // Fetch in parallel with delay to avoid rate limit if we didn't implement it in getFiiMetadata (we didn't, but calling one by one)
+                // Actually getFiiMetadata does one request. We can use Promise.all but maybe batching is safer.
+                // Let's use a simple loop or small batches.
+
+                for (const ticker of missing) {
+                    try {
+                        const data = await getFiiMetadata(ticker);
+                        if (data.price > 0) {
+                            fiis.push({
+                                ticker: data.ticker,
+                                segment: data.segment || (EXTRA_TICKERS.slice(0, 7).includes(ticker) ? 'Energia/Infra' : 'Outros'),
+                                price: data.price,
+                                ffo_yield: 0, // Not scraped
+                                dy: data.dy,
+                                p_vp: data.p_vp,
+                                market_cap: 0, // Not scraped yet
+                                liquidity: data.liquidity || 0,
+                                num_properties: 0,
+                                cap_rate: 0,
+                                vacancy: data.vacancy || 0,
+                                type: EXTRA_TICKERS.slice(0, 7).includes(ticker) ? 'INFRA' : 'AGRO' // Pre-classify
+                            });
+                        }
+                    } catch (err) {
+                        console.warn(`Failed to fetch extra asset ${ticker}: ${err.message}`);
+                    }
+                }
+            }
         }
 
         let selic = 12.75;
