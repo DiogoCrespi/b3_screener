@@ -5,14 +5,12 @@ const { analyzeStock } = require('./logic/stock-rules');
 
 async function getBestStocks() {
     let rawStocks = [];
-    let dataSource = 'Unknown';
 
     // 1. Fetch Data (Adapter Pattern with Failover)
     try {
         console.log('📊 Attempting to fetch from Fundamentus...');
         const fundamentusAdapter = new FundamentusStockAdapter();
         rawStocks = await fundamentusAdapter.getStocks();
-        dataSource = 'Fundamentus';
         console.log(`✅ Successfully fetched ${rawStocks.length} stocks from Fundamentus`);
     } catch (fundamentusError) {
         console.warn('⚠️  Fundamentus failed:', fundamentusError.message);
@@ -22,7 +20,6 @@ async function getBestStocks() {
             const BrapiStockAdapter = require('./adapters/brapi-stock-adapter');
             const brapiAdapter = new BrapiStockAdapter();
             rawStocks = await brapiAdapter.getStocks();
-            dataSource = 'Brapi.dev';
             console.log(`✅ Successfully fetched ${rawStocks.length} stocks from Brapi.dev`);
         } catch (brapiError) {
             console.error('❌ Both data sources failed!');
