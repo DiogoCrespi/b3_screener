@@ -11,16 +11,17 @@ async function exportData() {
     console.log('🚀 Starting Data Export for B3 Screener...');
 
     try {
-        // 1. Initial Data Fetch (Parallel)
-        const [dollar, selic, stocks, rawStandardFiis, rawInfraFiis, etfs, tesouro, privateFixed] = await Promise.all([
+        // 1. Initial Data Fetch
+        // Fetch Selic first to avoid redundant requests in parallel calls
+        const selic = await getSelicRate();
+        const [dollar, stocks, rawStandardFiis, rawInfraFiis, etfs, tesouro, privateFixed] = await Promise.all([
             getDollarRate(),
-            getSelicRate(),
-            getBestStocks(),
-            getBestFIIs(), // Pass 1: Discovery from Fundamentus
-            getFIInfra(),  // Pass 1: Discovery from hardcoded Infra list
+            getBestStocks(selic),
+            getBestFIIs({}, null, selic), // Pass 1: Discovery from Fundamentus
+            getFIInfra(selic),  // Pass 1: Discovery from hardcoded Infra list
             getETFs(),
             getTesouroDirect(),
-            getPrivateBenchmarks()
+            getPrivateBenchmarks(selic)
         ]);
 
         // 2. Combine all discovered FIIs to fetch metadata
@@ -34,7 +35,7 @@ async function exportData() {
         // 4. Second Pass: Re-process the combined list through the business logic
         // This ensures all assets (Standard, Infra, Agro) use the SAME scoring and classification rules
         console.log('⚖️  Re-processing all FIIs/Infras with verified metadata...');
-        const finalFiis = await getBestFIIs(metadataMap, combinedRaw);
+        const finalFiis = await getBestFIIs(metadataMap, combinedRaw, selic);
 
         const data = {
             updatedAt: new Date().toLocaleString('pt-BR'),

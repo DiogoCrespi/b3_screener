@@ -3,7 +3,7 @@
 const FundamentusStockAdapter = require('./adapters/fundamentus-stock-adapter');
 const { analyzeStock } = require('./logic/stock-rules');
 
-async function getBestStocks() {
+async function getBestStocks(selicParam = null) {
     let rawStocks = [];
 
     // 1. Fetch Data (Adapter Pattern with Failover)
@@ -32,13 +32,16 @@ async function getBestStocks() {
     try {
 
         // 2. Get Context (Selic)
-        let selic = 12.75;
-        try {
-            const axios = require('axios');
-            const selicResponse = await axios.get('https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados/ultimos/1?formato=json');
-            selic = parseFloat(selicResponse.data[0]?.valor || 12.75);
-        } catch (e) {
-            console.warn('⚠️  Could not fetch Selic, using default 12.75%.');
+        let selic = selicParam;
+        if (!selic) {
+            try {
+                const axios = require('axios');
+                const selicResponse = await axios.get('https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados/ultimos/1?formato=json');
+                selic = parseFloat(selicResponse.data[0]?.valor || 12.75);
+            } catch (e) {
+                console.warn('⚠️  Could not fetch Selic, using default 12.75%.');
+                selic = 12.75;
+            }
         }
 
         // 3. Apply Business Logic (Strategy Pattern)
