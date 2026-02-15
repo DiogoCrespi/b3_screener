@@ -40,56 +40,71 @@ async function getETFs() {
         console.log(`✅ Found ${tickers.length} ETF tickers.`);
 
         // Fetch details for each ETF
-        const etfData = [];
-        console.log(`📡 Fetching detailed data for ${tickers.length} ETFs...`);
+        console.log(`✅ Found ${tickers.length} ETF tickers.`);
 
-        // Limit to top 40 for performance and relevance (can be adjusted)
-        const targetTickers = tickers.slice(0, 40);
+        // Fetch details for each ETF
+        const etfData = [];
+        const targetTickers = tickers.slice(0, 40); // Limit to top 40
+        console.log(`📡 Fetching detailed data for ${targetTickers.length} ETFs...`);
 
         for (const ticker of targetTickers) {
             try {
-                const detailUrl = `https://investidor10.com.br/etfs/${ticker.toLowerCase()}/`;
-                const detailRes = await axios.get(detailUrl, {
-                    headers: {
-                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-                    }
-                });
-                const $d = cheerio.load(detailRes.data);
-
                 const data = {
                     ticker,
                     price: 0,
                     dy: 0,
                     market_cap: 0,
-                    variation_12m: 0
+                    variation_12m: 0,
+                    liquidity: 0,
+                    high_52w: 0,
+                    low_52w: 0
                 };
 
-                // Parse price from the main cotacao card
-                const cotacaoText = $d('.cotacao').text().trim();
-                const priceMatch = cotacaoText.match(/R\$\s*([\d.,]+)/);
-                if (priceMatch) {
-                    data.price = parseFloat(priceMatch[1].replace(/\./g, '').replace(',', '.')) || 0;
+                // 1. Fetch Price from Investidor 10
+                try {
+                    const detailUrl = `https://investidor10.com.br/etfs/${ticker.toLowerCase()}/`;
+                    const detailRes = await axios.get(detailUrl, {
+                        headers: { 'User-Agent': 'Mozilla/5.0' }
+                    });
+                    const $d = cheerio.load(detailRes.data);
+
+                    const cotacaoText = $d('.cotacao').text().trim();
+                    const priceMatch = cotacaoText.match(/R\$\s*([\d.,]+)/);
+                    if (priceMatch) {
+                        data.price = parseFloat(priceMatch[1].replace(/\./g, '').replace(',', '.')) || 0;
+                    }
+                } catch (err) {
+                    console.error(`⚠️ Error fetching Investidor10 for ${ticker}: ${err.message}`);
                 }
 
-                // Parse other metrics from card structure
-                $d('._card').each((i, card) => {
-                    const header = $d(card).find('._card-header').text().trim().toLowerCase();
-                    const value = $d(card).find('._card-body-value').text().trim();
+                // 2. Fetch Volume/High/Low from Yahoo Finance
+                try {
+                    const yahooUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${ticker}.SA?interval=1d&range=1d`;
+                    const yahooRes = await axios.get(yahooUrl, {
+                        headers: { 'User-Agent': 'Mozilla/5.0' }
+                    });
+                    const result = yahooRes.data.chart.result[0];
+                    if (result && result.meta) {
+                        data.liquidity = result.meta.regularMarketVolume || 0;
+                        data.high_52w = result.meta.fiftyTwoWeekHigh || 0;
+                        data.low_52w = result.meta.fiftyTwoWeekLow || 0;
 
-                    if (header.includes('dividend yield') || header.includes('dy')) {
-                        data.dy = parseFloat(value.replace('%', '').replace(',', '.').trim()) || 0;
-                    } else if (header.includes('patrimônio') || header.includes('valor de mercado')) {
-                        data.market_cap = parseVal(value);
-                    } else if (header.includes('valorização') && header.includes('12')) {
-                        data.variation_12m = parseFloat(value.replace('%', '').replace(',', '.').trim()) || 0;
+                        // Fallback price if Investidor10 failed
+                        if (data.price === 0 && result.meta.regularMarketPrice) {
+                            data.price = result.meta.regularMarketPrice;
+                        }
                     }
-                });
+                } catch (err) {
+                    // Normalize error message (404 is common for some tickers)
+                    const status = err.response ? err.response.status : 'Unknown';
+                    // console.warn(`⚠️ Yahoo Finance failed for ${ticker} (${status})`);
+                }
 
                 if (data.price > 0) {
                     etfData.push(data);
                 }
             } catch (err) {
-                console.error(`❌ Error fetching ${ticker}:`, err.message);
+                console.error(`❌ Error processing ${ticker}:`, err.message);
             }
         }
 

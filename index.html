@@ -589,7 +589,7 @@
                 ? ['ticker', 'category', 'cotacao', 'dividend_yield', 'p_vp', 'score', 'upside', 'pl', 'roe', 'liq_2meses', 'graham_price', 'bazin_price']
                 : type === 'fiis'
                     ? ['ticker', 'type', 'price', 'dy', 'p_vp', 'score', 'liquidity', 'vacancy', 'cap_rate', 'magicNumber', 'magicCost', 'last_dividend', 'segment']
-                    : ['ticker', 'price', 'dy', 'market_cap', 'variation_12m'];
+                    : ['ticker', 'price', 'dy', 'liquidity', 'high_52w', 'low_52w', 'variation_12m'];
 
             const allKeys = new Set(priorityKeys);
             data.forEach(item => {
@@ -1140,8 +1140,10 @@
                     </div>
                 </div>
                 <div class="card-details">
+                    <div class="detail-row"><span class="detail-label">Liq. Diária:</span><span class="detail-value">R$ ${(etf.liquidity / 1000000).toFixed(1)}M</span></div>
                     <div class="detail-row"><span class="detail-label">Variação (12m):</span><span class="detail-value" style="color:${etf.variation_12m >= 0 ? 'var(--success)' : 'var(--danger)'}">${etf.variation_12m.toFixed(2)}%</span></div>
-                    <div class="detail-row"><span class="detail-label">Val. Mercado:</span><span class="detail-value">R$ ${(etf.market_cap / 1000000).toFixed(0)}M</span></div>
+                    <div class="detail-row"><span class="detail-label">Min 52s:</span><span class="detail-value">R$ ${etf.low_52w.toFixed(2)}</span></div>
+                    <div class="detail-row"><span class="detail-label">Max 52s:</span><span class="detail-value">R$ ${etf.high_52w.toFixed(2)}</span></div>
                     <div id="chart-${etf.ticker}" class="chart-container"></div>
                     <a href="${getInvestidor10Url({ ticker: etf.ticker, type: 'ETF' })}" target="_blank" class="external-link-btn">
                         📊 Ver no Investidor 10
