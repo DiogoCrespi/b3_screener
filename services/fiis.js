@@ -87,6 +87,12 @@ async function getBestFIIs(externalMetadata = {}, baseList = null, selicParam = 
                 const segmentNorm = norm(f.segment);
                 let type = f.type || 'OUTROS';
 
+                // Defensive check: Well-known non-infra tickers should never be tagged as INFRA
+                const NEVER_INFRA = ['MXRF11', 'HGLG11', 'KNRI11', 'XPLG11', 'VISC11', 'VINO11', 'BCFF11', 'XPML11', 'BTLG11', 'TRXF11', 'KNCR11', 'RECR11'];
+                if (NEVER_INFRA.includes(f.ticker)) {
+                    if (type === 'OUTROS' || type === 'INFRA') type = 'MULTI';
+                }
+
                 if (type === 'OUTROS') {
                     // PRIORITY 1: INFRA & AGRO (Specific tax-advantaged categories)
                     if (exType.includes('infra') || exSegment.includes('infra') || exMandate.includes('infra')) {
@@ -138,14 +144,16 @@ async function getBestFIIs(externalMetadata = {}, baseList = null, selicParam = 
                 // Explicitly check for known Fiagros/Infras if still "OUTROS"
                 const KNOWN_FIAGROS = ['SNAG11', 'KNCA11', 'VGIA11', 'RURA11', 'FGAA11', 'RZAG11', 'OIAG11', 'AGRX11', 'NCRA11', 'XPCA11', 'BTRA11'];
                 const KNOWN_INFRAS = ['BDIF11', 'JURO11', 'KDIF11', 'CPTI11', 'VIGT11', 'BIDB11', 'CDII11', 'IFRA11', 'IFRI11', 'BINC11', 'BODB11', 'JMBI11'];
-                if (type === 'OUTROS') {
+                if (type === 'OUTROS' || type === 'MULTI') {
                     if (KNOWN_FIAGROS.includes(f.ticker)) type = 'AGRO';
                     if (KNOWN_INFRAS.includes(f.ticker)) type = 'INFRA';
                 }
 
-                // If the segment name suggests it, force it
-                if (segmentNorm.includes('fiagro')) type = 'AGRO';
-                if (segmentNorm.includes('infra')) type = 'INFRA';
+                // If the segment name suggests it, force it (unless it's a known non-infra)
+                if (!NEVER_INFRA.includes(f.ticker)) {
+                    if (segmentNorm.includes('fiagro')) type = 'AGRO';
+                    if (segmentNorm.includes('infra')) type = 'INFRA';
+                }
 
                 // 2. STRATEGY RE-CALCULATION
                 const isAgro = type === 'AGRO';

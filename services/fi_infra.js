@@ -19,20 +19,27 @@ async function getFIInfra(selicParam = null) {
         const response = await axios.get(SEGMENT_URL, { headers, timeout: 10000 });
         const $ = cheerio.load(response.data);
 
-        // Find tickers in the rankings table
-        $('#rankigns_wrapper tbody tr').each((i, el) => {
-            const ticker = $(el).find('td:nth-child(2) a').attr('href')?.split('/').filter(Boolean).pop()?.toUpperCase();
-            if (ticker && /^[A-Z]{4}\d{2}$/.test(ticker)) {
-                tickers.push(ticker);
-            }
-        });
+        // Find tickers in the rankings table (ID: rankigns - with typo as used by the site)
+        // We find the table, then look for links within it that match the ticker pattern
+        const table = $('table#rankigns');
+        if (table.length > 0) {
+            table.find('a[href*="/fiis/"]').each((i, el) => {
+                const ticker = $(el).attr('href').split('/').filter(Boolean).pop().toUpperCase();
+                if (/^[A-Z]{4}11$/.test(ticker)) { // Only 11-ended tickers for infra usually
+                    if (!tickers.includes(ticker)) tickers.push(ticker);
+                }
+            });
+        }
 
-        // Fallback for different table structures
+        // If table ID is different or not found, try a more specific fallback (only items with 'logo' class in parent)
         if (tickers.length === 0) {
             $('a[href*="/fiis/"]').each((i, el) => {
-                const ticker = $(el).attr('href').split('/').filter(Boolean).pop().toUpperCase();
-                if (/^[A-Z]{4}\d{2}$/.test(ticker) && !tickers.includes(ticker)) {
-                    tickers.push(ticker);
+                const parent = $(el).parent();
+                if (parent.hasClass('logo') || parent.hasClass('name')) {
+                    const ticker = $(el).attr('href').split('/').filter(Boolean).pop().toUpperCase();
+                    if (/^[A-Z]{4}11$/.test(ticker) && !tickers.includes(ticker)) {
+                        tickers.push(ticker);
+                    }
                 }
             });
         }
