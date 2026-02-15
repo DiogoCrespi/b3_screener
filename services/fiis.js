@@ -7,8 +7,9 @@ const FII_URL = 'https://www.fundamentus.com.br/fii_resultado.php';
  * Fetches and processes FII data.
  * @param {Object} externalMetadata - Optional metadata from external sources (mapping ticker -> meta)
  * @param {Array} baseList - Optional list of raw FII objects to process instead of fetching from Fundamentus
+ * @param {number} selicParam - Optional Selic rate
  */
-async function getBestFIIs(externalMetadata = {}, baseList = null) {
+async function getBestFIIs(externalMetadata = {}, baseList = null, selicParam = null) {
     try {
         let fiis = [];
 
@@ -93,15 +94,18 @@ async function getBestFIIs(externalMetadata = {}, baseList = null) {
             }
         }
 
-        let selic = 12.75;
-        try {
-            const selicResponse = await fetch('https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados/ultimos/1?formato=json');
-            if (selicResponse.ok) {
-                const selicData = await selicResponse.json();
-                selic = parseFloat(selicData[0]?.valor || 12.75);
+        let selic = selicParam;
+        if (!selic) {
+            selic = 12.75;
+            try {
+                const selicResponse = await fetch('https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados/ultimos/1?formato=json');
+                if (selicResponse.ok) {
+                    const selicData = await selicResponse.json();
+                    selic = parseFloat(selicData[0]?.valor || 12.75);
+                }
+            } catch (e) {
+                console.warn('⚠️  Could not fetch Selic for FIIs, using default 12.75%.');
             }
-        } catch (e) {
-            console.warn('⚠️  Could not fetch Selic for FIIs, using default 12.75%.');
         }
 
         const MIN_PAPER_DY = selic - 1.5;

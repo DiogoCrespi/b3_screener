@@ -76,12 +76,13 @@ class Screener {
         let assets = [];
 
         try {
+            const selic = this.config.economy?.selic;
             if (this.config.assetType === 'stock') {
-                assets = await getBestStocks();
+                assets = await getBestStocks(selic);
             } else if (this.config.assetType === 'fii') {
                 // 1. First pass: Get FIIs from Fundamentus
                 console.log('📊 Fetching basic FII data from Fundamentus...');
-                const initialList = await getBestFIIs();
+                const initialList = await getBestFIIs({}, null, selic);
 
                 // 2. Filter to just the relevant ones to save time on scraping
                 // We apply the liquidity filter here again just to be safe/efficient
@@ -97,7 +98,7 @@ class Screener {
                 // 4. Second pass: Re-run classification with metadata
                 // We pass 'candidates' as baseList so we don't re-fetch from Fundamentus
                 // Note: getBestFIIs expects metadata as first arg
-                assets = await getBestFIIs(metadata, candidates);
+                assets = await getBestFIIs(metadata, candidates, selic);
             }
         } catch (err) {
             console.error('Error fetching assets:', err);

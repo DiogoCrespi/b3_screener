@@ -64,9 +64,9 @@ async function getTesouroDirect() {
     }
 }
 
-async function getPrivateBenchmarks() {
+async function getPrivateBenchmarks(selicParam = null) {
     try {
-        const selic = await getSelicRate(); // e.g. 15.0
+        const selic = selicParam || await getSelicRate(); // e.g. 15.0
         const cdi = selic - 0.10; // CDI is usually Selic - 0.10
 
         // Poupança Rule:

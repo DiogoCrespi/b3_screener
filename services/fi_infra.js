@@ -4,7 +4,7 @@
  * Scraped from Investidor10 (as Fundamentus misses Law 12.431 funds)
  */
 
-async function getFIInfra() {
+async function getFIInfra(selicParam = null) {
     // Current list scraped from Investidor10
     // These are high-yield infrastructure funds (Law 12.431)
     const rawData = [
@@ -28,14 +28,17 @@ async function getFIInfra() {
     ];
 
     // Attempt to get Selic for scoring
-    let selic = 12.75;
-    try {
-        const selicResponse = await fetch('https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados/ultimos/1?formato=json');
-        if (selicResponse.ok) {
-            const selicData = await selicResponse.json();
-            selic = parseFloat(selicData[0]?.valor || 12.75);
-        }
-    } catch (e) { }
+    let selic = selicParam;
+    if (!selic) {
+        selic = 12.75;
+        try {
+            const selicResponse = await fetch('https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados/ultimos/1?formato=json');
+            if (selicResponse.ok) {
+                const selicData = await selicResponse.json();
+                selic = parseFloat(selicData[0]?.valor || 12.75);
+            }
+        } catch (e) { }
+    }
 
     return rawData.map(f => {
         // Scoring logic for Infra
