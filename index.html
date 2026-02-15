@@ -579,8 +579,12 @@
             const data = type === 'stocks' ? window.INVEST_DATA.stocks : window.INVEST_DATA.fiis;
             if (!data || data.length === 0) return;
 
-            // Extract all keys from all objects to build full header
-            const allKeys = new Set();
+            // Define priority columns for better organization
+            const priorityKeys = type === 'stocks'
+                ? ['ticker', 'category', 'cotacao', 'dividend_yield', 'p_vp', 'score', 'upside', 'pl', 'roe', 'liq_2meses', 'graham_price', 'bazin_price']
+                : ['ticker', 'type', 'price', 'dy', 'p_vp', 'score', 'liquidity', 'vacancy', 'cap_rate', 'magicNumber', 'magicCost', 'last_dividend', 'segment'];
+
+            const allKeys = new Set(priorityKeys);
             data.forEach(item => {
                 Object.keys(item).forEach(key => {
                     if (typeof item[key] !== 'object' || Array.isArray(item[key])) {
@@ -588,7 +592,7 @@
                     }
                 });
             });
-            const headers = Array.from(allKeys);
+            const headers = Array.from(allKeys).filter(k => data.some(item => k in item));
 
             const csvRows = [];
             csvRows.push(headers.join(','));
