@@ -57,18 +57,18 @@ class BrapiStockAdapter {
                 pl: fundamentals.trailingPE || 0,
                 p_vp: fundamentals.priceToBook || 0,
                 psr: fundamentals.priceToSalesTrailing12Months || 0,
-                dividend_yield: (fundamentals.dividendYield || 0) * 100, // Brapi returns as decimal
+                dividend_yield: Math.round((fundamentals.dividendYield || 0) * 100 * 100) / 100, // Brapi returns as decimal
                 ev_ebit: fundamentals.enterpriseToEbitda || 0,
-                mrg_ebit: (fundamentals.ebitdaMargins || 0) * 100,
-                mrg_liq: (fundamentals.profitMargins || 0) * 100,
+                mrg_ebit: Math.round((fundamentals.ebitdaMargins || 0) * 100 * 100) / 100,
+                mrg_liq: Math.round((fundamentals.profitMargins || 0) * 100 * 100) / 100,
                 roic: fundamentals.returnOnAssets || 0, // Approximation
-                roe: (fundamentals.returnOnEquity || 0) * 100,
+                roe: Math.round((fundamentals.returnOnEquity || 0) * 100 * 100) / 100,
                 liq_2meses: brapiStock.averageDailyVolume10Day || 0,
                 div_br_patrim: fundamentals.debtToEquity || 0,
-                cresc_5a: (fundamentals.earningsQuarterlyGrowth || 0) * 100 // Approximation
+                cresc_5a: Math.round((fundamentals.earningsQuarterlyGrowth || 0) * 100 * 100) / 100 // Approximation
             };
         } catch (e) {
-            console.warn(`Failed to transform stock ${brapiStock.symbol}:`, e.message);
+            console.warn(`Failed to transform stock ${brapiStock?.symbol || 'unknown'}:`, e.message);
             return null;
         }
     }
