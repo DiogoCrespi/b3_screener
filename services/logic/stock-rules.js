@@ -143,7 +143,8 @@ function analyzeStock(s, selic) {
 
     // Turnaround Candidates context
     if (s.pl < 0 && s.mrg_ebit > 0 && s.cotacao > 2) {
-        // Placeholder for TURNAROUND
+        strategies.push('TURNAROUND');
+        if (!category) category = 'OPPORTUNITY';
     }
 
     return {
