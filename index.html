@@ -411,6 +411,72 @@
             box-shadow: 0 4px 12px var(--primary-glow);
             background: var(--primary);
         }
+
+        .header-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .btn-icon {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 8px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+        }
+
+        .btn-icon:hover {
+            background: var(--card-hover);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .download-menu {
+            position: relative;
+        }
+
+        .download-options {
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 8px 0;
+            margin-top: 8px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            z-index: 1000;
+            min-width: 150px;
+            display: none;
+        }
+
+        .download-options.show {
+            display: block;
+        }
+
+        .download-option {
+            padding: 10px 16px;
+            cursor: pointer;
+            transition: background 0.2s;
+            color: var(--text-color);
+            font-size: 0.9rem;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        .download-option:hover {
+            background: var(--card-hover);
+            color: var(--primary);
+        }
     </style>
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
 </head>
@@ -422,7 +488,16 @@
             <h1>🚀 B3 Screener</h1>
             <div class="last-update" id="lastUpdate">Atualizando...</div>
         </div>
-        <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">☀️</button>
+        <div class="header-actions">
+            <div class="download-menu" id="downloadMenu">
+                <button class="btn-icon" onclick="toggleDownloadMenu()" title="Baixar CSV">📥</button>
+                <div class="download-options" id="downloadOptions">
+                    <div class="download-option" onclick="downloadCSV('stocks')">📊 Baixar Ações</div>
+                    <div class="download-option" onclick="downloadCSV('fiis')">🏘️ Baixar FIIs</div>
+                </div>
+            </div>
+            <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">☀️</button>
+        </div>
     </header>
 
     <div class="container">
@@ -485,6 +560,67 @@
             const isLight = document.body.classList.contains('light-mode');
             themeBtn.textContent = isLight ? '🌙' : '☀️';
             localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        }
+
+        // CSV Download Logic
+        function toggleDownloadMenu() {
+            document.getElementById('downloadOptions').classList.toggle('show');
+        }
+
+        // Close menu when clicking outside
+        window.addEventListener('click', (e) => {
+            if (!document.getElementById('downloadMenu').contains(e.target)) {
+                document.getElementById('downloadOptions').classList.remove('show');
+            }
+        });
+
+        function downloadCSV(type) {
+            if (!window.INVEST_DATA) return;
+            const data = type === 'stocks' ? window.INVEST_DATA.stocks : window.INVEST_DATA.fiis;
+            if (!data || data.length === 0) return;
+
+            // Extract all keys from all objects to build full header
+            const allKeys = new Set();
+            data.forEach(item => {
+                Object.keys(item).forEach(key => {
+                    if (typeof item[key] !== 'object' || Array.isArray(item[key])) {
+                        allKeys.add(key);
+                    }
+                });
+            });
+            const headers = Array.from(allKeys);
+
+            const csvRows = [];
+            csvRows.push(headers.join(','));
+
+            for (const row of data) {
+                const values = headers.map(header => {
+                    let val = row[header];
+                    if (val === undefined || val === null) val = '';
+                    if (Array.isArray(val)) val = val.join('; ');
+
+                    const str = String(val);
+                    if (str.includes(',') || str.includes('"') || str.includes('\n')) {
+                        return `"${str.replace(/"/g, '""')}"`;
+                    }
+                    return str;
+                });
+                csvRows.push(values.join(','));
+            }
+
+            const csvString = csvRows.join('\n');
+            const blob = new Blob([csvString], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+
+            link.setAttribute('href', url);
+            link.setAttribute('download', `${type}_${new Date().toISOString().split('T')[0]}.csv`);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            document.getElementById('downloadOptions').classList.remove('show');
         }
 
         document.addEventListener('DOMContentLoaded', () => {
