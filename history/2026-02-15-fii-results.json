@@ -1,6 +1,6 @@
 {
-  "date": "2026-02-15T12:52:59.005Z",
-  "count": 149,
+  "date": "2026-02-15T16:09:33.516Z",
+  "count": 150,
   "economy": {
     "dollar": 5.2179,
     "selic": 15
@@ -68,10 +68,9 @@
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [
-        "PAPEL_YIELD",
         "SAFE_INCOME"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 10,
       "selic": 15,
       "magicNumber": 78,
@@ -92,10 +91,9 @@
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [
-        "PAPEL_YIELD",
         "SAFE_INCOME"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 10,
       "selic": 15,
       "magicNumber": 79,
@@ -116,10 +114,9 @@
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [
-        "PAPEL_YIELD",
         "SAFE_INCOME"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 10,
       "selic": 15,
       "magicNumber": 83,
@@ -187,10 +184,9 @@
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [
-        "PAPEL_YIELD",
         "SAFE_INCOME"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 10,
       "selic": 15,
       "magicNumber": 85,
@@ -211,10 +207,10 @@
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [
-        "PAPEL_YIELD",
+        "MULTI_DISCOUNT",
         "SAFE_INCOME"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 10,
       "selic": 15,
       "magicNumber": 85,
@@ -377,10 +373,9 @@
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [
-        "PAPEL_YIELD",
         "SAFE_INCOME"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 10,
       "selic": 15,
       "magicNumber": 89,
@@ -670,30 +665,6 @@
       "external_segment": "Híbrido"
     },
     {
-      "ticker": "LIFE11",
-      "segment": "Residencial",
-      "price": 8.93,
-      "ffo_yield": 12.29,
-      "dy": 15.88,
-      "p_vp": 0.9,
-      "market_cap": 355071000,
-      "liquidity": 966076,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "strategies": [
-        "MULTI_DISCOUNT",
-        "SAFE_INCOME"
-      ],
-      "type": "MULTI",
-      "score": 9,
-      "selic": 15,
-      "magicNumber": 76,
-      "magicCost": 678.68,
-      "last_dividend": 0.12,
-      "external_segment": "Outros"
-    },
-    {
       "ticker": "ALZC11",
       "segment": "Outros",
       "price": 8.09,
@@ -729,10 +700,10 @@
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [
-        "PAPEL_YIELD",
+        "MULTI_DISCOUNT",
         "SAFE_INCOME"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 9,
       "selic": 15,
       "magicNumber": 86,
@@ -919,10 +890,10 @@
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [
-        "PAPEL_YIELD",
+        "MULTI_DISCOUNT",
         "SAFE_INCOME"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 9,
       "selic": 15,
       "magicNumber": 94,
@@ -1039,39 +1010,15 @@
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [
-        "PAPEL_YIELD",
         "SAFE_INCOME"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 9,
       "selic": 15,
       "magicNumber": 96,
       "magicCost": 864,
       "last_dividend": 0.09,
       "external_segment": "Títulos e Valores Mobiliários"
-    },
-    {
-      "ticker": "BPML11",
-      "segment": "Multicategoria",
-      "price": 91.57,
-      "ffo_yield": 10.32,
-      "dy": 12.52,
-      "p_vp": 0.74,
-      "market_cap": 681441000,
-      "liquidity": 2288740,
-      "num_properties": 4,
-      "cap_rate": 14.23,
-      "vacancy": 8.23,
-      "strategies": [
-        "TIJOLO_VALUE"
-      ],
-      "type": "TIJOLO",
-      "score": 9,
-      "selic": 15,
-      "magicNumber": 96,
-      "magicCost": 8790.72,
-      "last_dividend": 0.92,
-      "external_segment": "Shoppings / Varejo"
     },
     {
       "ticker": "GTWR11",
@@ -1181,10 +1128,9 @@
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [
-        "PAPEL_YIELD",
         "SAFE_INCOME"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 9,
       "selic": 15,
       "magicNumber": 99,
@@ -1205,10 +1151,9 @@
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [
-        "PAPEL_YIELD",
         "SAFE_INCOME"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 9,
       "selic": 15,
       "magicNumber": 100,
@@ -1229,10 +1174,9 @@
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [
-        "PAPEL_YIELD",
         "SAFE_INCOME"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 9,
       "selic": 15,
       "magicNumber": 100,
@@ -1393,7 +1337,7 @@
       "strategies": [
         "SAFE_INCOME"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 9,
       "selic": 15,
       "magicNumber": 107,
@@ -1416,7 +1360,7 @@
       "strategies": [
         "SAFE_INCOME"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 9,
       "selic": 15,
       "magicNumber": 111,
@@ -1439,7 +1383,7 @@
       "strategies": [
         "SAFE_INCOME"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 9,
       "selic": 15,
       "magicNumber": 112,
@@ -1515,6 +1459,30 @@
       "external_segment": "Logístico / Indústria / Galpões"
     },
     {
+      "ticker": "MANA11",
+      "segment": "Multicategoria",
+      "price": 9.3,
+      "ffo_yield": 10.86,
+      "dy": 27.42,
+      "p_vp": 0.09,
+      "market_cap": 13419300,
+      "liquidity": 1148600,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "MULTI_DISCOUNT",
+        "HIGH_VOLATILITY"
+      ],
+      "type": "MULTI",
+      "score": 8,
+      "selic": 15,
+      "magicNumber": 44,
+      "magicCost": 409.20000000000005,
+      "last_dividend": 0.11,
+      "external_segment": "Títulos e Valores Mobiliários"
+    },
+    {
       "ticker": "CACR11",
       "segment": "Multicategoria",
       "price": 78.33,
@@ -1538,6 +1506,30 @@
       "magicCost": 4699.8,
       "last_dividend": 1.2,
       "external_segment": "Híbrido"
+    },
+    {
+      "ticker": "HCTR11",
+      "segment": "Multicategoria",
+      "price": 21.51,
+      "ffo_yield": 17.67,
+      "dy": 17.1,
+      "p_vp": 0.2,
+      "market_cap": 475031000,
+      "liquidity": 1082300,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "MULTI_DISCOUNT",
+        "HIGH_VOLATILITY"
+      ],
+      "type": "MULTI",
+      "score": 8,
+      "selic": 15,
+      "magicNumber": 71,
+      "magicCost": 1527.21,
+      "last_dividend": 0.27,
+      "external_segment": "Títulos e Valores Mobiliários"
     },
     {
       "ticker": "MFII11",
@@ -1576,15 +1568,62 @@
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [
-        "PAPEL_YIELD",
         "HIGH_VOLATILITY"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 8,
       "selic": 15,
       "magicNumber": 75,
       "magicCost": 711.75,
       "last_dividend": 0.13,
+      "external_segment": "Títulos e Valores Mobiliários"
+    },
+    {
+      "ticker": "LIFE11",
+      "segment": "Residencial",
+      "price": 8.93,
+      "ffo_yield": 12.29,
+      "dy": 15.88,
+      "p_vp": 0.9,
+      "market_cap": 355071000,
+      "liquidity": 966076,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "TIJOLO_VALUE",
+        "SAFE_INCOME"
+      ],
+      "type": "TIJOLO",
+      "score": 8,
+      "selic": 15,
+      "magicNumber": 76,
+      "magicCost": 678.68,
+      "last_dividend": 0.12,
+      "external_segment": "Outros"
+    },
+    {
+      "ticker": "HABT11",
+      "segment": "Multicategoria",
+      "price": 76.98,
+      "ffo_yield": 15.49,
+      "dy": 15.85,
+      "p_vp": 0.81,
+      "market_cap": 625600000,
+      "liquidity": 1161010,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "MULTI_DISCOUNT",
+        "SAFE_INCOME"
+      ],
+      "type": "MULTI",
+      "score": 8,
+      "selic": 15,
+      "magicNumber": 76,
+      "magicCost": 5850.4800000000005,
+      "last_dividend": 0.95,
       "external_segment": "Títulos e Valores Mobiliários"
     },
     {
@@ -1665,9 +1704,9 @@
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [
-        "PAPEL_YIELD"
+        "MULTI_DISCOUNT"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 8,
       "selic": 15,
       "magicNumber": 79,
@@ -1848,9 +1887,9 @@
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [
-        "PAPEL_YIELD"
+        "MULTI_DISCOUNT"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 8,
       "selic": 15,
       "magicNumber": 91,
@@ -1940,10 +1979,9 @@
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [
-        "PAPEL_YIELD",
         "SAFE_INCOME"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 8,
       "selic": 15,
       "magicNumber": 97,
@@ -2009,36 +2047,13 @@
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 8,
       "selic": 15,
       "magicNumber": 105,
       "magicCost": 10054.800000000001,
       "last_dividend": 0.86,
       "external_segment": "Títulos e Valores Mobiliários"
-    },
-    {
-      "ticker": "VINO11",
-      "segment": "Multicategoria",
-      "price": 5.53,
-      "ffo_yield": 11.47,
-      "dy": 11.26,
-      "p_vp": 0.56,
-      "market_cap": 458029000,
-      "liquidity": 1015770,
-      "num_properties": 9,
-      "cap_rate": 15.47,
-      "vacancy": 10.25,
-      "strategies": [
-        "TIJOLO_VALUE"
-      ],
-      "type": "TIJOLO",
-      "score": 8,
-      "selic": 15,
-      "magicNumber": 107,
-      "magicCost": 591.71,
-      "last_dividend": 0.05,
-      "external_segment": "Lajes Corporativas"
     },
     {
       "ticker": "TEPP11",
@@ -2100,9 +2115,10 @@
       "cap_rate": 11.85,
       "vacancy": 5.35,
       "strategies": [
+        "TIJOLO_VALUE",
         "SAFE_INCOME"
       ],
-      "type": "MULTI",
+      "type": "TIJOLO",
       "score": 8,
       "selic": 15,
       "magicNumber": 112,
@@ -2148,7 +2164,7 @@
       "strategies": [
         "SAFE_INCOME"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 8,
       "selic": 15,
       "magicNumber": 123,
@@ -2282,10 +2298,9 @@
       "cap_rate": 6.86,
       "vacancy": 0.84,
       "strategies": [
-        "TIJOLO_VALUE",
         "SAFE_INCOME"
       ],
-      "type": "TIJOLO",
+      "type": "MULTI",
       "score": 8,
       "selic": 15,
       "magicNumber": 133,
@@ -2326,10 +2341,8 @@
       "num_properties": 28,
       "cap_rate": 6.99,
       "vacancy": 2.91,
-      "strategies": [
-        "TIJOLO_VALUE"
-      ],
-      "type": "TIJOLO",
+      "strategies": [],
+      "type": "MULTI",
       "score": 8,
       "selic": 15,
       "magicNumber": 144,
@@ -2384,6 +2397,30 @@
       "magicCost": 4128,
       "last_dividend": 1.02,
       "external_segment": "Outros"
+    },
+    {
+      "ticker": "DEVA11",
+      "segment": "Multicategoria",
+      "price": 24.79,
+      "ffo_yield": 19.36,
+      "dy": 18.63,
+      "p_vp": 0.25,
+      "market_cap": 348173000,
+      "liquidity": 942983,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "MULTI_DISCOUNT",
+        "HIGH_VOLATILITY"
+      ],
+      "type": "MULTI",
+      "score": 7,
+      "selic": 15,
+      "magicNumber": 65,
+      "magicCost": 1611.35,
+      "last_dividend": 0.3,
+      "external_segment": "Títulos e Valores Mobiliários"
     },
     {
       "ticker": "VIUR11",
@@ -2469,9 +2506,9 @@
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [
-        "PAPEL_YIELD"
+        "MULTI_DISCOUNT"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 7,
       "selic": 15,
       "magicNumber": 91,
@@ -2516,9 +2553,9 @@
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [
-        "PAPEL_YIELD"
+        "MULTI_DISCOUNT"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 7,
       "selic": 15,
       "magicNumber": 94,
@@ -2604,7 +2641,7 @@
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 7,
       "selic": 15,
       "magicNumber": 101,
@@ -2843,7 +2880,7 @@
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [],
-      "type": "AGRO",
+      "type": "MULTI",
       "score": 7,
       "selic": 15,
       "magicNumber": 150,
@@ -2949,10 +2986,8 @@
       "num_properties": 54,
       "cap_rate": 7.97,
       "vacancy": 1.59,
-      "strategies": [
-        "TIJOLO_VALUE"
-      ],
-      "type": "TIJOLO",
+      "strategies": [],
+      "type": "MULTI",
       "score": 7,
       "selic": 15,
       "magicNumber": 195,
@@ -3024,6 +3059,30 @@
       "external_segment": "Fiagros"
     },
     {
+      "ticker": "ARRI11",
+      "segment": "Multicategoria",
+      "price": 6.65,
+      "ffo_yield": 11.05,
+      "dy": 16.02,
+      "p_vp": 0.8,
+      "market_cap": 137834000,
+      "liquidity": 272602,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "MULTI_DISCOUNT",
+        "HIGH_VOLATILITY"
+      ],
+      "type": "MULTI",
+      "score": 6,
+      "selic": 15,
+      "magicNumber": 75,
+      "magicCost": 498.75,
+      "last_dividend": 0.09,
+      "external_segment": "Títulos e Valores Mobiliários"
+    },
+    {
       "ticker": "VRTM11",
       "segment": "Multicategoria",
       "price": 7.3,
@@ -3082,9 +3141,9 @@
       "cap_rate": 0,
       "vacancy": 100,
       "strategies": [
-        "PAPEL_YIELD"
+        "MULTI_DISCOUNT"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 6,
       "selic": 15,
       "magicNumber": 89,
@@ -3111,6 +3170,50 @@
       "magicNumber": 92,
       "magicCost": 12692.320000000002,
       "last_dividend": 0.54,
+      "external_segment": "Lajes Corporativas"
+    },
+    {
+      "ticker": "BPML11",
+      "segment": "Multicategoria",
+      "price": 91.57,
+      "ffo_yield": 10.32,
+      "dy": 12.52,
+      "p_vp": 0.74,
+      "market_cap": 681441000,
+      "liquidity": 2288740,
+      "num_properties": 4,
+      "cap_rate": 14.23,
+      "vacancy": 8.23,
+      "strategies": [
+        "MULTI_DISCOUNT"
+      ],
+      "type": "MULTI",
+      "score": 6,
+      "selic": 15,
+      "magicNumber": 96,
+      "magicCost": 8790.72,
+      "last_dividend": 0.92,
+      "external_segment": "Shoppings / Varejo"
+    },
+    {
+      "ticker": "VINO11",
+      "segment": "Multicategoria",
+      "price": 5.53,
+      "ffo_yield": 11.47,
+      "dy": 11.26,
+      "p_vp": 0.56,
+      "market_cap": 458029000,
+      "liquidity": 1015770,
+      "num_properties": 9,
+      "cap_rate": 15.47,
+      "vacancy": 10.25,
+      "strategies": [],
+      "type": "MULTI",
+      "score": 6,
+      "selic": 15,
+      "magicNumber": 107,
+      "magicCost": 591.71,
+      "last_dividend": 0.05,
       "external_segment": "Lajes Corporativas"
     },
     {
@@ -3224,6 +3327,27 @@
       "external_segment": "Híbrido"
     },
     {
+      "ticker": "APXM11",
+      "segment": "Shoppings",
+      "price": 79.95,
+      "ffo_yield": 4.69,
+      "dy": 5.28,
+      "p_vp": 0.63,
+      "market_cap": 226190000,
+      "liquidity": 402409,
+      "num_properties": 1,
+      "cap_rate": 12.8,
+      "vacancy": 0,
+      "strategies": [],
+      "type": "TIJOLO",
+      "score": 6,
+      "selic": 15,
+      "magicNumber": 228,
+      "magicCost": 18228.600000000002,
+      "last_dividend": 0.49,
+      "external_segment": "Shoppings / Varejo"
+    },
+    {
       "ticker": "BFCC11",
       "segment": "Escrit�rios",
       "price": 100.43,
@@ -3243,98 +3367,6 @@
       "magicCost": 182682.17,
       "last_dividend": null,
       "external_segment": null
-    },
-    {
-      "ticker": "MANA11",
-      "segment": "Multicategoria",
-      "price": 9.3,
-      "ffo_yield": 10.86,
-      "dy": 27.42,
-      "p_vp": 0.09,
-      "market_cap": 13419300,
-      "liquidity": 1148600,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "strategies": [
-        "HIGH_VOLATILITY"
-      ],
-      "type": "PAPEL",
-      "score": 5,
-      "selic": 15,
-      "magicNumber": 44,
-      "magicCost": 409.20000000000005,
-      "last_dividend": 0.11,
-      "external_segment": "Títulos e Valores Mobiliários"
-    },
-    {
-      "ticker": "HCTR11",
-      "segment": "Multicategoria",
-      "price": 21.51,
-      "ffo_yield": 17.67,
-      "dy": 17.1,
-      "p_vp": 0.2,
-      "market_cap": 475031000,
-      "liquidity": 1082300,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "strategies": [
-        "HIGH_VOLATILITY"
-      ],
-      "type": "PAPEL",
-      "score": 5,
-      "selic": 15,
-      "magicNumber": 71,
-      "magicCost": 1527.21,
-      "last_dividend": 0.27,
-      "external_segment": "Títulos e Valores Mobiliários"
-    },
-    {
-      "ticker": "HABT11",
-      "segment": "Multicategoria",
-      "price": 76.98,
-      "ffo_yield": 15.49,
-      "dy": 15.85,
-      "p_vp": 0.81,
-      "market_cap": 625600000,
-      "liquidity": 1161010,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "strategies": [
-        "SAFE_INCOME"
-      ],
-      "type": "PAPEL",
-      "score": 5,
-      "selic": 15,
-      "magicNumber": 76,
-      "magicCost": 5850.4800000000005,
-      "last_dividend": 0.95,
-      "external_segment": "Títulos e Valores Mobiliários"
-    },
-    {
-      "ticker": "DEVA11",
-      "segment": "Multicategoria",
-      "price": 24.79,
-      "ffo_yield": 19.36,
-      "dy": 18.63,
-      "p_vp": 0.25,
-      "market_cap": 348173000,
-      "liquidity": 942983,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "strategies": [
-        "HIGH_VOLATILITY"
-      ],
-      "type": "PAPEL",
-      "score": 4,
-      "selic": 15,
-      "magicNumber": 65,
-      "magicCost": 1611.35,
-      "last_dividend": 0.3,
-      "external_segment": "Títulos e Valores Mobiliários"
     },
     {
       "ticker": "XPSF11",
@@ -3403,29 +3435,6 @@
       "magicNumber": 72,
       "magicCost": 4838.400000000001,
       "last_dividend": 1.14,
-      "external_segment": "Títulos e Valores Mobiliários"
-    },
-    {
-      "ticker": "ARRI11",
-      "segment": "Multicategoria",
-      "price": 6.65,
-      "ffo_yield": 11.05,
-      "dy": 16.02,
-      "p_vp": 0.8,
-      "market_cap": 137834000,
-      "liquidity": 272602,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "strategies": [
-        "HIGH_VOLATILITY"
-      ],
-      "type": "PAPEL",
-      "score": 3,
-      "selic": 15,
-      "magicNumber": 75,
-      "magicCost": 498.75,
-      "last_dividend": 0.09,
       "external_segment": "Títulos e Valores Mobiliários"
     }
   ]
