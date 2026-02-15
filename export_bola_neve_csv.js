@@ -100,11 +100,20 @@ async function exportBolaNeveCSV() {
     const csvContent = [
         headers.join(','),
         ...rows.map(row => row.map(cell => {
-            // Escape cells that contain commas or quotes
-            if (typeof cell === 'string' && (cell.includes(',') || cell.includes('"'))) {
-                return `"${cell.replace(/"/g, '""')}"`;
+            if (typeof cell !== 'string') return cell;
+
+            let processedCell = cell;
+            // Prevent CSV Formula Injection by prepending ' to cells starting with =, +, -, @, \t, or \r
+            const injectionChars = ['=', '+', '-', '@', '\t', '\r'];
+            if (injectionChars.some(char => cell.startsWith(char))) {
+                processedCell = `'${cell}`;
             }
-            return cell;
+
+            // Escape cells that contain commas or quotes
+            if (processedCell.includes(',') || processedCell.includes('"')) {
+                return `"${processedCell.replace(/"/g, '""')}"`;
+            }
+            return processedCell;
         }).join(','))
     ].join('\n');
 
