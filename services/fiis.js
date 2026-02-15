@@ -47,51 +47,9 @@ async function getBestFIIs(externalMetadata = {}, baseList = null, selicParam = 
             });
 
 
-            const EXTRA_TICKERS = [
-                // INFRA (FI-INFRA) - Verified via Browser on Investidor10 (21 items)
-                "ISNT11", "ISEN11", "ISTT11", "CDII11", "KDIF11", "JURO11", "IFRA11", "BDIF11", "CPTI11", "IFRI11",
-                "BODB11", "BINC11", "JMBI11", "XPID11", "DIVS11", "BIDB11", "VINF11", "NUIF11", "RBIF11", "SNID11", "VANG11",
-
-                // FIAGRO - Verified via Browser on Investidor10 (25 items)
-                "KNCA11", "RURA11", "VGIA11", "RZAG11", "SNAG11", "VCRA11", "XPCA11", "FGAA11", "BTRA11", "BBGO11",
-                "EGAF11", "CRAA11", "KOPA11", "AAZQ11", "JGPX11", "CPTR11", "AGRX11", "GCRA11", "NEXG11", "SNFZ11",
-                "IAAG11", "LSAG11", "OIAG11", "PLCA11", "FTCA11"
-            ];
-
-            // Filter out ones we already have
-            const existingTickers = new Set(fiis.map(f => f.ticker));
-            const missing = EXTRA_TICKERS.filter(t => !existingTickers.has(t));
-
-            if (missing.length > 0) {
-                console.log(`🔍 Fetching ${missing.length} Missing Assets (Infra/Fiagro) from Investidor10...`);
-                // Fetch in parallel with delay to avoid rate limit if we didn't implement it in getFiiMetadata (we didn't, but calling one by one)
-                // Actually getFiiMetadata does one request. We can use Promise.all but maybe batching is safer.
-                // Let's use a simple loop or small batches.
-
-                for (const ticker of missing) {
-                    try {
-                        const data = await getFiiMetadata(ticker);
-                        if (data.price > 0) {
-                            fiis.push({
-                                ticker: data.ticker,
-                                segment: data.segment || (EXTRA_TICKERS.slice(0, 7).includes(ticker) ? 'Energia/Infra' : 'Outros'),
-                                price: data.price,
-                                ffo_yield: 0, // Not scraped
-                                dy: data.dy,
-                                p_vp: data.p_vp,
-                                market_cap: 0, // Not scraped yet
-                                liquidity: data.liquidity || 0,
-                                num_properties: 0,
-                                cap_rate: 0,
-                                vacancy: data.vacancy || 0,
-                                type: EXTRA_TICKERS.slice(0, 7).includes(ticker) ? 'INFRA' : 'AGRO' // Pre-classify
-                            });
-                        }
-                    } catch (err) {
-                        console.warn(`Failed to fetch extra asset ${ticker}: ${err.message}`);
-                    }
-                }
-            }
+            // Dynamic discovery is now handled primarily by export_data.js calling getFIInfra()
+            // Here we only keep a few core extras if needed, or just skip
+            const EXTRA_TICKERS = [];
         }
 
         let selic = selicParam;
@@ -127,64 +85,67 @@ async function getBestFIIs(externalMetadata = {}, baseList = null, selicParam = 
                 const exMandate = norm(meta.mandate);
                 const exSegment = norm(meta.segment);
                 const segmentNorm = norm(f.segment);
+                let type = f.type || 'OUTROS';
 
-                let type = 'OUTROS';
+                if (type === 'OUTROS') {
+                    // PRIORITY 1: INFRA & AGRO (Specific tax-advantaged categories)
+                    if (exType.includes('infra') || exSegment.includes('infra') || exMandate.includes('infra')) {
+                        type = 'INFRA';
+                    } else if (exType.includes('fiagro') || exSegment.includes('fiagro') || exMandate.includes('agro') || exMandate.includes('rural')) {
+                        type = 'AGRO';
+                    }
+                    // PRIORITY 2: MISTO / MULTI (Hybrid nature)
+                    else if (exType.includes('misto') || exType.includes('mista') ||
+                        exType.includes('hibrido') || exMandate.includes('hibrido') ||
+                        exSegment.includes('hibrido') || exMandate.includes('misto') ||
+                        exType.includes('multimercado') || exType.includes('fundos de fundos')) {
+                        type = 'MULTI';
+                    }
+                    // PRIORITY 3: Explicit PAPEL & TIJOLO (From Investidor10 Type)
+                    else if (exType.includes('papel') || exMandate.includes('titulos')) {
+                        type = 'PAPEL';
+                    } else if (exType.includes('tijolo') || exMandate.includes('renda')) {
+                        type = 'TIJOLO';
+                    }
+                    // PRIORITY 4: Fallbacks based on Segment (if Type was generic or missing)
+                    else if (exSegment.includes('recebiveis')) {
+                        type = 'PAPEL';
+                    } else if (exSegment.includes('imoveis')) {
+                        type = 'TIJOLO';
+                    } else {
+                        // FALLBACK: Fundamentus Segment Analysis
+                        const isTijolo = segmentNorm.includes('logistica') ||
+                            segmentNorm.includes('shopping') ||
+                            segmentNorm.includes('lajes') ||
+                            segmentNorm.includes('escritorio') ||
+                            segmentNorm.includes('hospital') ||
+                            segmentNorm.includes('hotel') ||
+                            segmentNorm.includes('residencial') ||
+                            segmentNorm.includes('varejo');
 
-                // PRIORITY 1: INFRA & AGRO (Specific tax-advantaged categories)
-                if (exType.includes('infra') || exSegment.includes('infra') || exMandate.includes('infra')) {
-                    type = 'INFRA';
-                } else if (exType.includes('fiagro') || exSegment.includes('fiagro') || exMandate.includes('agro') || exMandate.includes('rural')) {
-                    type = 'AGRO';
-                }
-                // PRIORITY 2: MISTO / MULTI (Hybrid nature)
-                // If it is Hybrid/Misto, we value that distinction over just "Paper" or "Brick"
-                else if (exType.includes('misto') || exType.includes('mista') ||
-                    exType.includes('hibrido') || exMandate.includes('hibrido') ||
-                    exSegment.includes('hibrido') || exMandate.includes('misto') ||
-                    exType.includes('multimercado') || exType.includes('fundos de fundos')) {
-                    type = 'MULTI';
-                }
-                // PRIORITY 3: Explicit PAPEL & TIJOLO (From Investidor10 Type)
-                else if (exType.includes('papel') || exMandate.includes('titulos')) {
-                    type = 'PAPEL';
-                } else if (exType.includes('tijolo') || exMandate.includes('renda')) {
-                    type = 'TIJOLO';
-                }
-                // PRIORITY 4: Fallbacks based on Segment (if Type was generic or missing)
-                else if (exSegment.includes('recebiveis')) {
-                    type = 'PAPEL';
-                } else if (exSegment.includes('imoveis')) {
-                    type = 'TIJOLO';
-                } else {
-                    // FALLBACK: Fundamentus Segment Analysis
-                    const isTijolo = segmentNorm.includes('logistica') ||
-                        segmentNorm.includes('shopping') ||
-                        segmentNorm.includes('lajes') ||
-                        segmentNorm.includes('escritorio') ||
-                        segmentNorm.includes('hospital') ||
-                        segmentNorm.includes('hotel') ||
-                        segmentNorm.includes('residencial') ||
-                        segmentNorm.includes('varejo');
+                        const isAgro = segmentNorm.includes('agro') || segmentNorm.includes('fiagro') || segmentNorm.includes('rural');
+                        const isInfra = segmentNorm.includes('infra') || segmentNorm.includes('energia') || segmentNorm.includes('saneamento');
+                        const isMulti = segmentNorm.includes('multicategoria') || segmentNorm.includes('hibrido') || segmentNorm.includes('fundos') || segmentNorm.includes('mista');
 
-                    const isAgro = segmentNorm.includes('agro') || segmentNorm.includes('fiagro') || segmentNorm.includes('rural');
-                    const isInfra = segmentNorm.includes('infra') || segmentNorm.includes('energia') || segmentNorm.includes('saneamento');
-                    // Only treat as Multi if we really have no other clue
-                    const isMulti = segmentNorm.includes('multicategoria') || segmentNorm.includes('hibrido') || segmentNorm.includes('fundos') || segmentNorm.includes('mista');
-
-                    if (isTijolo) type = 'TIJOLO';
-                    else if (isAgro) type = 'AGRO';
-                    else if (isInfra) type = 'INFRA';
-                    else if (segmentNorm.includes('titulos') || segmentNorm.includes('recebiveis')) type = 'PAPEL';
-                    else if (isMulti) type = 'MULTI';
+                        if (isTijolo) type = 'TIJOLO';
+                        else if (isAgro) type = 'AGRO';
+                        else if (isInfra) type = 'INFRA';
+                        else if (segmentNorm.includes('titulos') || segmentNorm.includes('recebiveis')) type = 'PAPEL';
+                        else if (isMulti) type = 'MULTI';
+                    }
                 }
 
                 // Explicitly check for known Fiagros/Infras if still "OUTROS"
-                const KNOWN_FIAGROS = ['SNAG11', 'KNCA11', 'VGIA11', 'RURA11', 'FGAA11', 'RZAG11', 'OIAG11', 'AGRX11', 'NCRA11'];
-                const KNOWN_INFRAS = ['BDIF11', 'JURO11', 'KDIF11', 'CPTI11', 'VIGT11', 'BIDB11', 'CDII11'];
+                const KNOWN_FIAGROS = ['SNAG11', 'KNCA11', 'VGIA11', 'RURA11', 'FGAA11', 'RZAG11', 'OIAG11', 'AGRX11', 'NCRA11', 'XPCA11', 'BTRA11'];
+                const KNOWN_INFRAS = ['BDIF11', 'JURO11', 'KDIF11', 'CPTI11', 'VIGT11', 'BIDB11', 'CDII11', 'IFRA11', 'IFRI11', 'BINC11', 'BODB11', 'JMBI11'];
                 if (type === 'OUTROS') {
                     if (KNOWN_FIAGROS.includes(f.ticker)) type = 'AGRO';
                     if (KNOWN_INFRAS.includes(f.ticker)) type = 'INFRA';
                 }
+
+                // If the segment name suggests it, force it
+                if (segmentNorm.includes('fiagro')) type = 'AGRO';
+                if (segmentNorm.includes('infra')) type = 'INFRA';
 
                 // 2. STRATEGY RE-CALCULATION
                 const isAgro = type === 'AGRO';

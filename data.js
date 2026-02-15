@@ -1,5 +1,5 @@
 window.INVEST_DATA = {
-  "updatedAt": "15/02/2026, 12:52:59",
+  "updatedAt": "15/02/2026, 12:18:07",
   "economy": {
     "dollar": 5.2179,
     "selic": 15
@@ -1568,7 +1568,8 @@ window.INVEST_DATA = {
       "selic": 15,
       "score": 7,
       "strategies": [
-        "BAZIN"
+        "BAZIN",
+        "TURNAROUND"
       ],
       "category": "STAR",
       "peg_ratio": 999
@@ -2573,6 +2574,35 @@ window.INVEST_DATA = {
       "peg_ratio": 999
     },
     {
+      "ticker": "LWSA3",
+      "cotacao": 3.66,
+      "pl": -7.58,
+      "p_vp": 0.85,
+      "psr": 1.414,
+      "dividend_yield": 8.34,
+      "ev_ebit": 13.89,
+      "mrg_ebit": 8.71,
+      "mrg_liq": -18.67,
+      "roic": 4.03,
+      "roe": -11.26,
+      "liq_2meses": 19686100,
+      "div_br_patrim": 0.03,
+      "cresc_5a": 18.82,
+      "payout": 0,
+      "graham_price": 0,
+      "upside": 0,
+      "bazin_price": 4.069920000000001,
+      "bazin_upside": 11.200000000000014,
+      "selic": 15,
+      "score": 5,
+      "strategies": [
+        "BAZIN",
+        "TURNAROUND"
+      ],
+      "category": "OPPORTUNITY",
+      "peg_ratio": 999
+    },
+    {
       "ticker": "TAEE3",
       "cotacao": 14.36,
       "pl": 8.61,
@@ -2891,6 +2921,63 @@ window.INVEST_DATA = {
       ],
       "category": "OPPORTUNITY",
       "peg_ratio": 2.871657754010695
+    },
+    {
+      "ticker": "HAPV3",
+      "cotacao": 10.4,
+      "pl": -16.85,
+      "p_vp": 0.11,
+      "psr": 0.176,
+      "dividend_yield": 0,
+      "ev_ebit": 6.64,
+      "mrg_ebit": 4.61,
+      "mrg_liq": -1.05,
+      "roic": 2.12,
+      "roe": -0.64,
+      "liq_2meses": 113874000,
+      "div_br_patrim": 0.27,
+      "cresc_5a": 29.88,
+      "payout": 0,
+      "graham_price": 0,
+      "upside": 0,
+      "bazin_price": 0,
+      "bazin_upside": 0,
+      "selic": 15,
+      "score": 5,
+      "strategies": [
+        "TURNAROUND"
+      ],
+      "category": "OPPORTUNITY",
+      "peg_ratio": 999
+    },
+    {
+      "ticker": "SCAR3",
+      "cotacao": 14.88,
+      "pl": -14.05,
+      "p_vp": 0.57,
+      "psr": 2.165,
+      "dividend_yield": 47.72,
+      "ev_ebit": 17.89,
+      "mrg_ebit": 22.61,
+      "mrg_liq": -15.03,
+      "roic": 3.51,
+      "roe": -4.06,
+      "liq_2meses": 947041,
+      "div_br_patrim": 0.7,
+      "cresc_5a": 23.6,
+      "payout": 0,
+      "graham_price": 0,
+      "upside": 0,
+      "bazin_price": 94.67648000000001,
+      "bazin_upside": 536.2666666666668,
+      "selic": 15,
+      "score": 4,
+      "strategies": [
+        "BAZIN",
+        "TURNAROUND"
+      ],
+      "category": "OPPORTUNITY",
+      "peg_ratio": 999
     },
     {
       "ticker": "GRND3",
@@ -3223,6 +3310,35 @@ window.INVEST_DATA = {
       "peg_ratio": 999
     },
     {
+      "ticker": "BEEF3",
+      "cotacao": 5.72,
+      "pl": -7.02,
+      "p_vp": 4.43,
+      "psr": 0.111,
+      "dividend_yield": 2.88,
+      "ev_ebit": 4.93,
+      "mrg_ebit": 6.92,
+      "mrg_liq": -1.57,
+      "roic": 17.04,
+      "roe": -63.09,
+      "liq_2meses": 70147400,
+      "div_br_patrim": 20.66,
+      "cresc_5a": 14.53,
+      "payout": 0,
+      "graham_price": 0,
+      "upside": 0,
+      "bazin_price": 2.19648,
+      "bazin_upside": -61.6,
+      "selic": 15,
+      "score": 4,
+      "strategies": [
+        "MAGIC",
+        "TURNAROUND"
+      ],
+      "category": "OPPORTUNITY",
+      "peg_ratio": 999
+    },
+    {
       "ticker": "SEER3",
       "cotacao": 12.28,
       "pl": 14.41,
@@ -3334,6 +3450,34 @@ window.INVEST_DATA = {
       "peg_ratio": 0.4792746113989637
     },
     {
+      "ticker": "TPIS3",
+      "cotacao": 6.35,
+      "pl": -3.79,
+      "p_vp": 0.33,
+      "psr": 0.245,
+      "dividend_yield": 8.64,
+      "ev_ebit": 11.83,
+      "mrg_ebit": 11.09,
+      "mrg_liq": -9,
+      "roic": 5.21,
+      "roe": -8.57,
+      "liq_2meses": 225677,
+      "div_br_patrim": 1.5,
+      "cresc_5a": 3.05,
+      "payout": 0,
+      "graham_price": 0,
+      "upside": 0,
+      "bazin_price": 7.315200000000001,
+      "bazin_upside": 15.200000000000019,
+      "selic": 15,
+      "score": 3,
+      "strategies": [
+        "TURNAROUND"
+      ],
+      "category": "OPPORTUNITY",
+      "peg_ratio": 999
+    },
+    {
       "ticker": "CXSE3",
       "cotacao": 18.03,
       "pl": 12.33,
@@ -3413,6 +3557,174 @@ window.INVEST_DATA = {
       "score": 3,
       "strategies": [
         "VALUE"
+      ],
+      "category": "OPPORTUNITY",
+      "peg_ratio": 999
+    },
+    {
+      "ticker": "SIMH3",
+      "cotacao": 6.56,
+      "pl": -8.97,
+      "p_vp": 1.82,
+      "psr": 0.132,
+      "dividend_yield": 1.07,
+      "ev_ebit": 6.78,
+      "mrg_ebit": 17.24,
+      "mrg_liq": -1.27,
+      "roic": 11.55,
+      "roe": -20.27,
+      "liq_2meses": 37739600,
+      "div_br_patrim": 18.23,
+      "cresc_5a": 36.45,
+      "payout": 0,
+      "graham_price": 0,
+      "upside": 0,
+      "bazin_price": 0.9358933333333335,
+      "bazin_upside": -85.73333333333333,
+      "selic": 15,
+      "score": 3,
+      "strategies": [
+        "TURNAROUND"
+      ],
+      "category": "OPPORTUNITY",
+      "peg_ratio": 999
+    },
+    {
+      "ticker": "CVCB3",
+      "cotacao": 2.42,
+      "pl": -17.08,
+      "p_vp": 2.53,
+      "psr": 0.855,
+      "dividend_yield": 0,
+      "ev_ebit": 8.87,
+      "mrg_ebit": 10.69,
+      "mrg_liq": -5,
+      "roic": 5.92,
+      "roe": -14.79,
+      "liq_2meses": 63292500,
+      "div_br_patrim": 0.76,
+      "cresc_5a": 19.94,
+      "payout": 0,
+      "graham_price": 0,
+      "upside": 0,
+      "bazin_price": 0,
+      "bazin_upside": 0,
+      "selic": 15,
+      "score": 3,
+      "strategies": [
+        "TURNAROUND"
+      ],
+      "category": "OPPORTUNITY",
+      "peg_ratio": 999
+    },
+    {
+      "ticker": "TUPY3",
+      "cotacao": 12.13,
+      "pl": -12.62,
+      "p_vp": 0.52,
+      "psr": 0.161,
+      "dividend_yield": 0,
+      "ev_ebit": 8,
+      "mrg_ebit": 4.87,
+      "mrg_liq": -1.29,
+      "roic": 7.03,
+      "roe": -4.13,
+      "liq_2meses": 14861500,
+      "div_br_patrim": 1.28,
+      "cresc_5a": 10.95,
+      "payout": 0,
+      "graham_price": 0,
+      "upside": 0,
+      "bazin_price": 0,
+      "bazin_upside": 0,
+      "selic": 15,
+      "score": 3,
+      "strategies": [
+        "TURNAROUND"
+      ],
+      "category": "OPPORTUNITY",
+      "peg_ratio": 999
+    },
+    {
+      "ticker": "AALR3",
+      "cotacao": 4.22,
+      "pl": -7.99,
+      "p_vp": 0.6,
+      "psr": 0.519,
+      "dividend_yield": 0,
+      "ev_ebit": 11.66,
+      "mrg_ebit": 6.96,
+      "mrg_liq": -5.7,
+      "roic": 3.13,
+      "roe": -7.54,
+      "liq_2meses": 267192,
+      "div_br_patrim": 0.46,
+      "cresc_5a": 2.34,
+      "payout": 0,
+      "graham_price": 0,
+      "upside": 0,
+      "bazin_price": 0,
+      "bazin_upside": 0,
+      "selic": 15,
+      "score": 3,
+      "strategies": [
+        "TURNAROUND"
+      ],
+      "category": "OPPORTUNITY",
+      "peg_ratio": 999
+    },
+    {
+      "ticker": "DASA3",
+      "cotacao": 4.21,
+      "pl": -5.14,
+      "p_vp": 0.68,
+      "psr": 0.42,
+      "dividend_yield": 0,
+      "ev_ebit": 12.1,
+      "mrg_ebit": 7.32,
+      "mrg_liq": -8.11,
+      "roic": 5.22,
+      "roe": -13.14,
+      "liq_2meses": 9364430,
+      "div_br_patrim": 1.07,
+      "cresc_5a": 6.62,
+      "payout": 0,
+      "graham_price": 0,
+      "upside": 0,
+      "bazin_price": 0,
+      "bazin_upside": 0,
+      "selic": 15,
+      "score": 3,
+      "strategies": [
+        "TURNAROUND"
+      ],
+      "category": "OPPORTUNITY",
+      "peg_ratio": 999
+    },
+    {
+      "ticker": "AMOB3",
+      "cotacao": 13.02,
+      "pl": -1.8,
+      "p_vp": 0.24,
+      "psr": 0.025,
+      "dividend_yield": 0,
+      "ev_ebit": 6.73,
+      "mrg_ebit": 2.4,
+      "mrg_liq": -1.4,
+      "roic": 7.51,
+      "roe": -13.19,
+      "liq_2meses": 563828,
+      "div_br_patrim": 1.48,
+      "cresc_5a": 0,
+      "payout": 0,
+      "graham_price": 0,
+      "upside": 0,
+      "bazin_price": 0,
+      "bazin_upside": 0,
+      "selic": 15,
+      "score": 3,
+      "strategies": [
+        "TURNAROUND"
       ],
       "category": "OPPORTUNITY",
       "peg_ratio": 999
@@ -3528,6 +3840,63 @@ window.INVEST_DATA = {
       "peg_ratio": 999
     },
     {
+      "ticker": "AXIA3",
+      "cotacao": 58.43,
+      "pl": -28.34,
+      "p_vp": 1.56,
+      "psr": 3.995,
+      "dividend_yield": 6.16,
+      "ev_ebit": 33.04,
+      "mrg_ebit": 15.11,
+      "mrg_liq": -14.11,
+      "roic": 2.74,
+      "roe": -5.5,
+      "liq_2meses": 696235000,
+      "div_br_patrim": 0.65,
+      "cresc_5a": 7.63,
+      "payout": 0,
+      "graham_price": 0,
+      "upside": 0,
+      "bazin_price": 47.99050666666667,
+      "bazin_upside": -17.866666666666664,
+      "selic": 15,
+      "score": 2,
+      "strategies": [
+        "BAZIN",
+        "TURNAROUND"
+      ],
+      "category": "OPPORTUNITY",
+      "peg_ratio": 999
+    },
+    {
+      "ticker": "AXIA6",
+      "cotacao": 62.02,
+      "pl": -30.08,
+      "p_vp": 1.65,
+      "psr": 4.24,
+      "dividend_yield": 5.26,
+      "ev_ebit": 34.67,
+      "mrg_ebit": 15.11,
+      "mrg_liq": -14.11,
+      "roic": 2.74,
+      "roe": -5.5,
+      "liq_2meses": 85628800,
+      "div_br_patrim": 0.65,
+      "cresc_5a": 7.63,
+      "payout": 0,
+      "graham_price": 0,
+      "upside": 0,
+      "bazin_price": 43.49669333333334,
+      "bazin_upside": -29.866666666666656,
+      "selic": 15,
+      "score": 2,
+      "strategies": [
+        "TURNAROUND"
+      ],
+      "category": "OPPORTUNITY",
+      "peg_ratio": 999
+    },
+    {
       "ticker": "MATD3",
       "cotacao": 5.78,
       "pl": 23.71,
@@ -3604,6 +3973,174 @@ window.INVEST_DATA = {
       "strategies": [],
       "category": "OPPORTUNITY",
       "peg_ratio": 1.127557683935568
+    },
+    {
+      "ticker": "AURA33",
+      "cotacao": 125.09,
+      "pl": -106.56,
+      "p_vp": 15.84,
+      "psr": 6.206,
+      "dividend_yield": 0.66,
+      "ev_ebit": 13.18,
+      "mrg_ebit": 47.8,
+      "mrg_liq": -5.82,
+      "roic": 41.33,
+      "roe": -14.87,
+      "liq_2meses": 116354000,
+      "div_br_patrim": 1.33,
+      "cresc_5a": 21.31,
+      "payout": 0,
+      "graham_price": 0,
+      "upside": 0,
+      "bazin_price": 11.00792,
+      "bazin_upside": -91.2,
+      "selic": 15,
+      "score": 2,
+      "strategies": [
+        "TURNAROUND"
+      ],
+      "category": "OPPORTUNITY",
+      "peg_ratio": 999
+    },
+    {
+      "ticker": "AURE3",
+      "cotacao": 11.64,
+      "pl": -8.93,
+      "p_vp": 1,
+      "psr": 0.975,
+      "dividend_yield": 0.49,
+      "ev_ebit": 20.59,
+      "mrg_ebit": 12.45,
+      "mrg_liq": -10.02,
+      "roic": 3.68,
+      "roe": -11.15,
+      "liq_2meses": 47584900,
+      "div_br_patrim": 2.04,
+      "cresc_5a": 33.87,
+      "payout": 0,
+      "graham_price": 0,
+      "upside": 0,
+      "bazin_price": 0.76048,
+      "bazin_upside": -93.46666666666667,
+      "selic": 15,
+      "score": 2,
+      "strategies": [
+        "TURNAROUND"
+      ],
+      "category": "OPPORTUNITY",
+      "peg_ratio": 999
+    },
+    {
+      "ticker": "NATU3",
+      "cotacao": 9.19,
+      "pl": -9.1,
+      "p_vp": 0.97,
+      "psr": 0.566,
+      "dividend_yield": 0,
+      "ev_ebit": 6.57,
+      "mrg_ebit": 11.41,
+      "mrg_liq": -6.22,
+      "roic": 11.61,
+      "roe": -10.65,
+      "liq_2meses": 66140800,
+      "div_br_patrim": 0.49,
+      "cresc_5a": -0.68,
+      "payout": 0,
+      "graham_price": 0,
+      "upside": 0,
+      "bazin_price": 0,
+      "bazin_upside": 0,
+      "selic": 15,
+      "score": 2,
+      "strategies": [
+        "TURNAROUND"
+      ],
+      "category": "OPPORTUNITY",
+      "peg_ratio": 999
+    },
+    {
+      "ticker": "MRVE3",
+      "cotacao": 9.79,
+      "pl": -4.13,
+      "p_vp": 1.05,
+      "psr": 0.538,
+      "dividend_yield": 0,
+      "ev_ebit": 10.01,
+      "mrg_ebit": 13.2,
+      "mrg_liq": -13.06,
+      "roic": 5.02,
+      "roe": -25.34,
+      "liq_2meses": 70808900,
+      "div_br_patrim": 1.66,
+      "cresc_5a": 10.61,
+      "payout": 0,
+      "graham_price": 0,
+      "upside": 0,
+      "bazin_price": 0,
+      "bazin_upside": 0,
+      "selic": 15,
+      "score": 2,
+      "strategies": [
+        "TURNAROUND"
+      ],
+      "category": "OPPORTUNITY",
+      "peg_ratio": 999
+    },
+    {
+      "ticker": "CSAN3",
+      "cotacao": 6.12,
+      "pl": -1.84,
+      "p_vp": 4.11,
+      "psr": 0.57,
+      "dividend_yield": 0,
+      "ev_ebit": 8.49,
+      "mrg_ebit": 21.76,
+      "mrg_liq": -27.77,
+      "roic": 8.52,
+      "roe": -223.96,
+      "liq_2meses": 223013000,
+      "div_br_patrim": 11.4,
+      "cresc_5a": 15.81,
+      "payout": 0,
+      "graham_price": 0,
+      "upside": 0,
+      "bazin_price": 0,
+      "bazin_upside": 0,
+      "selic": 15,
+      "score": 2,
+      "strategies": [
+        "TURNAROUND"
+      ],
+      "category": "OPPORTUNITY",
+      "peg_ratio": 999
+    },
+    {
+      "ticker": "ONCO3",
+      "cotacao": 3,
+      "pl": -1.21,
+      "p_vp": 3.5,
+      "psr": 0.573,
+      "dividend_yield": 0,
+      "ev_ebit": 19.43,
+      "mrg_ebit": 6.75,
+      "mrg_liq": -49.09,
+      "roic": 5.8,
+      "roe": -289.63,
+      "liq_2meses": 12069700,
+      "div_br_patrim": 5.01,
+      "cresc_5a": 17.5,
+      "payout": 0,
+      "graham_price": 0,
+      "upside": 0,
+      "bazin_price": 0,
+      "bazin_upside": 0,
+      "selic": 15,
+      "score": 2,
+      "strategies": [
+        "TURNAROUND"
+      ],
+      "category": "OPPORTUNITY",
+      "peg_ratio": 999
     },
     {
       "ticker": "UNIP6",
@@ -3688,6 +4225,174 @@ window.INVEST_DATA = {
       "peg_ratio": 0.4911484339536995
     },
     {
+      "ticker": "HBSA3",
+      "cotacao": 3.96,
+      "pl": -23.89,
+      "p_vp": 2.37,
+      "psr": 2.967,
+      "dividend_yield": 0,
+      "ev_ebit": 31.89,
+      "mrg_ebit": 13.74,
+      "mrg_liq": -12.42,
+      "roic": 4.41,
+      "roe": -9.92,
+      "liq_2meses": 9354500,
+      "div_br_patrim": 1.63,
+      "cresc_5a": 8.08,
+      "payout": 0,
+      "graham_price": 0,
+      "upside": 0,
+      "bazin_price": 0,
+      "bazin_upside": 0,
+      "selic": 15,
+      "score": 1,
+      "strategies": [
+        "TURNAROUND"
+      ],
+      "category": "OPPORTUNITY",
+      "peg_ratio": 999
+    },
+    {
+      "ticker": "CSNA3",
+      "cotacao": 8.73,
+      "pl": -7.44,
+      "p_vp": 0.82,
+      "psr": 0.255,
+      "dividend_yield": 0,
+      "ev_ebit": 7.05,
+      "mrg_ebit": 14.46,
+      "mrg_liq": -1.92,
+      "roic": 8.61,
+      "roe": -11,
+      "liq_2meses": 117128000,
+      "div_br_patrim": 3.69,
+      "cresc_5a": -0.81,
+      "payout": 0,
+      "graham_price": 0,
+      "upside": 0,
+      "bazin_price": 0,
+      "bazin_upside": 0,
+      "selic": 15,
+      "score": 1,
+      "strategies": [
+        "TURNAROUND"
+      ],
+      "category": "OPPORTUNITY",
+      "peg_ratio": 999
+    },
+    {
+      "ticker": "USIM3",
+      "cotacao": 6.42,
+      "pl": -2.61,
+      "p_vp": 0.39,
+      "psr": 0.306,
+      "dividend_yield": 0,
+      "ev_ebit": 8.17,
+      "mrg_ebit": 3.49,
+      "mrg_liq": -11.08,
+      "roic": 3.5,
+      "roe": -14.79,
+      "liq_2meses": 2961230,
+      "div_br_patrim": 0.31,
+      "cresc_5a": -7.02,
+      "payout": 0,
+      "graham_price": 0,
+      "upside": 0,
+      "bazin_price": 0,
+      "bazin_upside": 0,
+      "selic": 15,
+      "score": 1,
+      "strategies": [
+        "TURNAROUND"
+      ],
+      "category": "OPPORTUNITY",
+      "peg_ratio": 999
+    },
+    {
+      "ticker": "USIM5",
+      "cotacao": 6.32,
+      "pl": -2.57,
+      "p_vp": 0.38,
+      "psr": 0.302,
+      "dividend_yield": 0,
+      "ev_ebit": 8.03,
+      "mrg_ebit": 3.49,
+      "mrg_liq": -11.08,
+      "roic": 3.5,
+      "roe": -14.79,
+      "liq_2meses": 82660900,
+      "div_br_patrim": 0.31,
+      "cresc_5a": -7.02,
+      "payout": 0,
+      "graham_price": 0,
+      "upside": 0,
+      "bazin_price": 0,
+      "bazin_upside": 0,
+      "selic": 15,
+      "score": 1,
+      "strategies": [
+        "TURNAROUND"
+      ],
+      "category": "OPPORTUNITY",
+      "peg_ratio": 999
+    },
+    {
+      "ticker": "PTBL3",
+      "cotacao": 3.27,
+      "pl": -2.42,
+      "p_vp": 2.37,
+      "psr": 0.178,
+      "dividend_yield": 0,
+      "ev_ebit": 15.9,
+      "mrg_ebit": 3.62,
+      "mrg_liq": -7.34,
+      "roic": 3.58,
+      "roe": -97.87,
+      "liq_2meses": 643000,
+      "div_br_patrim": 6.61,
+      "cresc_5a": 8.15,
+      "payout": 0,
+      "graham_price": 0,
+      "upside": 0,
+      "bazin_price": 0,
+      "bazin_upside": 0,
+      "selic": 15,
+      "score": 1,
+      "strategies": [
+        "TURNAROUND"
+      ],
+      "category": "OPPORTUNITY",
+      "peg_ratio": 999
+    },
+    {
+      "ticker": "PCAR3",
+      "cotacao": 3.52,
+      "pl": -1.27,
+      "p_vp": 0.64,
+      "psr": 0.09,
+      "dividend_yield": 0,
+      "ev_ebit": 2.81,
+      "mrg_ebit": 8.14,
+      "mrg_liq": -7.02,
+      "roic": 11.16,
+      "roe": -50.45,
+      "liq_2meses": 37301100,
+      "div_br_patrim": 1.5,
+      "cresc_5a": -13.77,
+      "payout": 0,
+      "graham_price": 0,
+      "upside": 0,
+      "bazin_price": 0,
+      "bazin_upside": 0,
+      "selic": 15,
+      "score": 1,
+      "strategies": [
+        "TURNAROUND"
+      ],
+      "category": "OPPORTUNITY",
+      "peg_ratio": 999
+    },
+    {
       "ticker": "UNIP3",
       "cotacao": 60.6,
       "pl": 8.73,
@@ -3740,6 +4445,250 @@ window.INVEST_DATA = {
       "strategies": [],
       "category": "OPPORTUNITY",
       "peg_ratio": 0.5345096004151532
+    },
+    {
+      "ticker": "BHIA3",
+      "cotacao": 2.93,
+      "pl": -1.43,
+      "p_vp": 1.04,
+      "psr": 0.095,
+      "dividend_yield": 0,
+      "ev_ebit": 4.73,
+      "mrg_ebit": 7.22,
+      "mrg_liq": -6.66,
+      "roic": 8.33,
+      "roe": -72.55,
+      "liq_2meses": 12292800,
+      "div_br_patrim": 3.54,
+      "cresc_5a": -3.51,
+      "payout": 0,
+      "graham_price": 0,
+      "upside": 0,
+      "bazin_price": 0,
+      "bazin_upside": 0,
+      "selic": 15,
+      "score": 0,
+      "strategies": [
+        "TURNAROUND"
+      ],
+      "category": "OPPORTUNITY",
+      "peg_ratio": 999
+    },
+    {
+      "ticker": "ARML3",
+      "cotacao": 5.4,
+      "pl": 34.53,
+      "p_vp": 1.47,
+      "psr": 1.006,
+      "dividend_yield": 11.44,
+      "ev_ebit": 9.06,
+      "mrg_ebit": 22.22,
+      "mrg_liq": 2.98,
+      "roic": 11.52,
+      "roe": 4.26,
+      "liq_2meses": 3747460,
+      "div_br_patrim": 1.97,
+      "cresc_5a": 30.95,
+      "payout": 395.0232,
+      "graham_price": 3.5952414515655104,
+      "upside": -33.4214546006387,
+      "bazin_price": 8.236800000000002,
+      "bazin_upside": 52.53333333333337,
+      "selic": 15,
+      "score": -1,
+      "strategies": [],
+      "category": "OPPORTUNITY",
+      "peg_ratio": 1.115670436187399
+    },
+    {
+      "ticker": "FESA4",
+      "cotacao": 7.81,
+      "pl": 12.84,
+      "p_vp": 0.81,
+      "psr": 1.179,
+      "dividend_yield": 9.34,
+      "ev_ebit": 12.15,
+      "mrg_ebit": 7.2,
+      "mrg_liq": 9.2,
+      "roic": 5.23,
+      "roe": 6.34,
+      "liq_2meses": 6627290,
+      "div_br_patrim": 0.05,
+      "cresc_5a": -2.07,
+      "payout": 119.9256,
+      "graham_price": 11.487281708579589,
+      "upside": 47.084272837126626,
+      "bazin_price": 9.726053333333333,
+      "bazin_upside": 24.53333333333333,
+      "selic": 15,
+      "score": -1,
+      "strategies": [
+        "BAZIN"
+      ],
+      "category": "OPPORTUNITY",
+      "peg_ratio": 999
+    },
+    {
+      "ticker": "YDUQ3",
+      "cotacao": 12.88,
+      "pl": 14.44,
+      "p_vp": 1.13,
+      "psr": 0.644,
+      "dividend_yield": 8.85,
+      "ev_ebit": 9.04,
+      "mrg_ebit": 15.72,
+      "mrg_liq": 4.44,
+      "roic": 10.2,
+      "roe": 7.8,
+      "liq_2meses": 45962300,
+      "div_br_patrim": 1.69,
+      "cresc_5a": 6.69,
+      "payout": 127.794,
+      "graham_price": 15.124614140006129,
+      "upside": 17.427128416196645,
+      "bazin_price": 15.198400000000001,
+      "bazin_upside": 18.000000000000004,
+      "selic": 15,
+      "score": -1,
+      "strategies": [],
+      "category": "OPPORTUNITY",
+      "peg_ratio": 2.1584454409566516
+    },
+    {
+      "ticker": "AGRO3",
+      "cotacao": 20.36,
+      "pl": -1325.71,
+      "p_vp": 1.01,
+      "psr": 2.053,
+      "dividend_yield": 3.7,
+      "ev_ebit": 144.32,
+      "mrg_ebit": 2.29,
+      "mrg_liq": -0.15,
+      "roic": 0.67,
+      "roe": -0.08,
+      "liq_2meses": 3483570,
+      "div_br_patrim": 0.64,
+      "cresc_5a": -11.84,
+      "payout": 0,
+      "graham_price": 0,
+      "upside": 0,
+      "bazin_price": 10.044266666666669,
+      "bazin_upside": -50.66666666666666,
+      "selic": 15,
+      "score": -1,
+      "strategies": [
+        "TURNAROUND"
+      ],
+      "category": "OPPORTUNITY",
+      "peg_ratio": 999
+    },
+    {
+      "ticker": "BPAN4",
+      "cotacao": 12.75,
+      "pl": 21.47,
+      "p_vp": 2.08,
+      "psr": 0,
+      "dividend_yield": 0,
+      "ev_ebit": 0,
+      "mrg_ebit": 0,
+      "mrg_liq": 0,
+      "roic": 0,
+      "roe": 9.67,
+      "liq_2meses": 10161300,
+      "div_br_patrim": 0,
+      "cresc_5a": -1.53,
+      "payout": 0,
+      "graham_price": 9.050107837689737,
+      "upside": -29.018762057335394,
+      "bazin_price": 0,
+      "bazin_upside": 0,
+      "selic": 15,
+      "score": -1,
+      "strategies": [],
+      "category": "OPPORTUNITY",
+      "peg_ratio": 999
+    },
+    {
+      "ticker": "VALE3",
+      "cotacao": 87.03,
+      "pl": 28.6,
+      "p_vp": 2.14,
+      "psr": 1.849,
+      "dividend_yield": 8.75,
+      "ev_ebit": 6.42,
+      "mrg_ebit": 33.31,
+      "mrg_liq": 5.53,
+      "roic": 17.62,
+      "roe": 7.5,
+      "liq_2meses": 2587970000,
+      "div_br_patrim": 0.56,
+      "cresc_5a": -7.05,
+      "payout": 250.25,
+      "graham_price": 52.76796420218182,
+      "upside": -39.36807514399423,
+      "bazin_price": 101.535,
+      "bazin_upside": 16.66666666666666,
+      "selic": 15,
+      "score": -2,
+      "strategies": [
+        "MAGIC"
+      ],
+      "category": "OPPORTUNITY",
+      "peg_ratio": 999
+    },
+    {
+      "ticker": "LAND3",
+      "cotacao": 8.4,
+      "pl": -86.13,
+      "p_vp": 1.24,
+      "psr": 8.962,
+      "dividend_yield": 0.86,
+      "ev_ebit": 14.89,
+      "mrg_ebit": 63.46,
+      "mrg_liq": -10.41,
+      "roic": 6.88,
+      "roe": -1.44,
+      "liq_2meses": 428583,
+      "div_br_patrim": 0.1,
+      "cresc_5a": -10.56,
+      "payout": 0,
+      "graham_price": 0,
+      "upside": 0,
+      "bazin_price": 0.9632000000000001,
+      "bazin_upside": -88.53333333333333,
+      "selic": 15,
+      "score": -2,
+      "strategies": [
+        "TURNAROUND"
+      ],
+      "category": "OPPORTUNITY",
+      "peg_ratio": 999
+    },
+    {
+      "ticker": "RAIL3",
+      "cotacao": 16.24,
+      "pl": 80.79,
+      "p_vp": 2.19,
+      "psr": 2.162,
+      "dividend_yield": 4.98,
+      "ev_ebit": 8.23,
+      "mrg_ebit": 40.47,
+      "mrg_liq": 2.81,
+      "roic": 12.49,
+      "roe": 2.71,
+      "liq_2meses": 240915000,
+      "div_br_patrim": 1.58,
+      "cresc_5a": 17.1,
+      "payout": 402.33420000000007,
+      "graham_price": 5.791304796661264,
+      "upside": -64.33925617819418,
+      "bazin_price": 10.78336,
+      "bazin_upside": -33.599999999999994,
+      "selic": 15,
+      "score": -4,
+      "strategies": [],
+      "category": "OPPORTUNITY",
+      "peg_ratio": 4.724561403508772
     }
   ],
   "fiis": [
@@ -3766,6 +4715,30 @@ window.INVEST_DATA = {
       "magicCost": 4655.07,
       "last_dividend": 0.6,
       "external_segment": "Lajes Corporativas"
+    },
+    {
+      "ticker": "CDII11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": null,
+      "price": 106.15,
+      "dy": 16.3,
+      "p_vp": 1.03,
+      "liquidity": 6990000,
+      "last_dividend": 1.32,
+      "vacancy": 0,
+      "score": 10,
+      "strategies": [
+        "INFRA_INCOME",
+        "SAFE_INCOME",
+        "HIGH_VOLATILITY"
+      ],
+      "magicNumber": 74,
+      "magicCost": 7855.1,
+      "selic": 15,
+      "num_properties": 0,
+      "market_cap": 500000000,
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)"
     },
     {
       "ticker": "LASC11",
@@ -3804,10 +4777,9 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [
-        "PAPEL_YIELD",
         "SAFE_INCOME"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 10,
       "selic": 15,
       "magicNumber": 78,
@@ -3828,16 +4800,38 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [
-        "PAPEL_YIELD",
         "SAFE_INCOME"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 10,
       "selic": 15,
       "magicNumber": 79,
       "magicCost": 770.25,
       "last_dividend": 0.13,
       "external_segment": "Títulos e Valores Mobiliários"
+    },
+    {
+      "ticker": "JMBI11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": "Híbridos",
+      "price": 92.45,
+      "dy": 15.15,
+      "p_vp": 0.91,
+      "liquidity": 1040000,
+      "last_dividend": 1.28,
+      "vacancy": 0,
+      "score": 10,
+      "strategies": [
+        "INFRA_INCOME",
+        "SAFE_INCOME"
+      ],
+      "magicNumber": 80,
+      "magicCost": 7396,
+      "selic": 15,
+      "num_properties": 0,
+      "market_cap": 500000000,
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)"
     },
     {
       "ticker": "KNUQ11",
@@ -3852,10 +4846,9 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [
-        "PAPEL_YIELD",
         "SAFE_INCOME"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 10,
       "selic": 15,
       "magicNumber": 83,
@@ -3923,10 +4916,9 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [
-        "PAPEL_YIELD",
         "SAFE_INCOME"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 10,
       "selic": 15,
       "magicNumber": 85,
@@ -3947,10 +4939,10 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [
-        "PAPEL_YIELD",
+        "MULTI_DISCOUNT",
         "SAFE_INCOME"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 10,
       "selic": 15,
       "magicNumber": 85,
@@ -4006,6 +4998,29 @@ window.INVEST_DATA = {
       "external_segment": "Outros"
     },
     {
+      "ticker": "IFRI11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": "Híbridos",
+      "price": 103.38,
+      "dy": 13.98,
+      "p_vp": 0.99,
+      "liquidity": 1890000,
+      "last_dividend": 1.35,
+      "vacancy": 0,
+      "score": 10,
+      "strategies": [
+        "INFRA_INCOME",
+        "SAFE_INCOME"
+      ],
+      "magicNumber": 86,
+      "magicCost": 8890.68,
+      "selic": 15,
+      "num_properties": 0,
+      "market_cap": 500000000,
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)"
+    },
+    {
       "ticker": "FGAA11",
       "segment": "Outros",
       "price": 9.13,
@@ -4027,6 +5042,52 @@ window.INVEST_DATA = {
       "magicCost": 803.44,
       "last_dividend": 0.12,
       "external_segment": "Fiagros"
+    },
+    {
+      "ticker": "KNCR11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": "Títulos e valores mobiliários",
+      "price": 106.4,
+      "dy": 13.78,
+      "p_vp": 1.04,
+      "liquidity": 20390000,
+      "last_dividend": 1.2,
+      "vacancy": 0,
+      "score": 10,
+      "strategies": [
+        "INFRA_INCOME",
+        "SAFE_INCOME"
+      ],
+      "magicNumber": 88,
+      "magicCost": 9363.2,
+      "selic": 15,
+      "num_properties": 0,
+      "market_cap": 500000000,
+      "external_segment": "Títulos e Valores Mobiliários"
+    },
+    {
+      "ticker": "RECR11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": "Títulos e valores mobiliários",
+      "price": 81.8,
+      "dy": 13.77,
+      "p_vp": 0.92,
+      "liquidity": 2770000,
+      "last_dividend": 0.83,
+      "vacancy": 0,
+      "score": 10,
+      "strategies": [
+        "INFRA_INCOME",
+        "SAFE_INCOME"
+      ],
+      "magicNumber": 88,
+      "magicCost": 7198.4,
+      "selic": 15,
+      "num_properties": 0,
+      "market_cap": 500000000,
+      "external_segment": "Títulos e Valores Mobiliários"
     },
     {
       "ticker": "HSAF11",
@@ -4113,16 +5174,38 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [
-        "PAPEL_YIELD",
         "SAFE_INCOME"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 10,
       "selic": 15,
       "magicNumber": 89,
       "magicCost": 9442.9,
       "last_dividend": 1.2,
       "external_segment": "Títulos e Valores Mobiliários"
+    },
+    {
+      "ticker": "CPTI11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": null,
+      "price": 89.9,
+      "dy": 13.52,
+      "p_vp": 0.95,
+      "liquidity": 1670000,
+      "last_dividend": 1.15,
+      "vacancy": 0,
+      "score": 10,
+      "strategies": [
+        "INFRA_INCOME",
+        "SAFE_INCOME"
+      ],
+      "magicNumber": 89,
+      "magicCost": 8001.1,
+      "selic": 15,
+      "num_properties": 0,
+      "market_cap": 500000000,
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)"
     },
     {
       "ticker": "TOPP11",
@@ -4146,6 +5229,72 @@ window.INVEST_DATA = {
       "magicCost": 6718.500000000001,
       "last_dividend": 0.84,
       "external_segment": "Lajes Corporativas"
+    },
+    {
+      "ticker": "BDIF11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": null,
+      "price": 76.32,
+      "dy": 13.3,
+      "p_vp": 0.91,
+      "liquidity": 3650000,
+      "last_dividend": 0.8,
+      "vacancy": 0,
+      "score": 10,
+      "strategies": [
+        "SAFE_INCOME"
+      ],
+      "magicNumber": 91,
+      "magicCost": 6945.119999999999,
+      "selic": 15,
+      "num_properties": 0,
+      "market_cap": 500000000,
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)"
+    },
+    {
+      "ticker": "BODB11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": "Híbridos",
+      "price": 8,
+      "dy": 12.88,
+      "p_vp": 0.93,
+      "liquidity": 1210000,
+      "last_dividend": 0.09,
+      "vacancy": 0,
+      "score": 10,
+      "strategies": [
+        "SAFE_INCOME"
+      ],
+      "magicNumber": 94,
+      "magicCost": 752,
+      "selic": 15,
+      "num_properties": 0,
+      "market_cap": 500000000,
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)"
+    },
+    {
+      "ticker": "TRXF11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": "Renda",
+      "price": 93.1,
+      "dy": 12.69,
+      "p_vp": 0.92,
+      "liquidity": 23320000,
+      "last_dividend": 0.93,
+      "vacancy": 0,
+      "score": 10,
+      "strategies": [
+        "SAFE_INCOME"
+      ],
+      "magicNumber": 95,
+      "magicCost": 8844.5,
+      "selic": 15,
+      "num_properties": 0,
+      "market_cap": 500000000,
+      "external_segment": "Híbrido"
     },
     {
       "ticker": "TVRI11",
@@ -4193,6 +5342,72 @@ window.INVEST_DATA = {
       "magicCost": 862.08,
       "last_dividend": 0.08,
       "external_segment": "Logístico / Indústria / Galpões"
+    },
+    {
+      "ticker": "MXRF11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": "Híbridos",
+      "price": 9.74,
+      "dy": 12.11,
+      "p_vp": 1.04,
+      "liquidity": 18870000,
+      "last_dividend": 0.1,
+      "vacancy": 0,
+      "score": 10,
+      "strategies": [
+        "SAFE_INCOME"
+      ],
+      "magicNumber": 100,
+      "magicCost": 974,
+      "selic": 15,
+      "num_properties": 0,
+      "market_cap": 500000000,
+      "external_segment": "Híbrido"
+    },
+    {
+      "ticker": "KDIF11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": null,
+      "price": 128.48,
+      "dy": 12.05,
+      "p_vp": 1.02,
+      "liquidity": 2600000,
+      "last_dividend": 1.45,
+      "vacancy": 0,
+      "score": 10,
+      "strategies": [
+        "SAFE_INCOME"
+      ],
+      "magicNumber": 100,
+      "magicCost": 12847.999999999998,
+      "selic": 15,
+      "num_properties": 0,
+      "market_cap": 500000000,
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)"
+    },
+    {
+      "ticker": "BTHF11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": "Títulos e valores mobiliários",
+      "price": 9.37,
+      "dy": 12.03,
+      "p_vp": 0.91,
+      "liquidity": 4110000.0000000005,
+      "last_dividend": 0.1,
+      "vacancy": 0,
+      "score": 10,
+      "strategies": [
+        "SAFE_INCOME"
+      ],
+      "magicNumber": 100,
+      "magicCost": 936.9999999999999,
+      "selic": 15,
+      "num_properties": 0,
+      "market_cap": 500000000,
+      "external_segment": "Híbrido"
     },
     {
       "ticker": "PATL11",
@@ -4406,30 +5621,6 @@ window.INVEST_DATA = {
       "external_segment": "Híbrido"
     },
     {
-      "ticker": "LIFE11",
-      "segment": "Residencial",
-      "price": 8.93,
-      "ffo_yield": 12.29,
-      "dy": 15.88,
-      "p_vp": 0.9,
-      "market_cap": 355071000,
-      "liquidity": 966076,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "strategies": [
-        "MULTI_DISCOUNT",
-        "SAFE_INCOME"
-      ],
-      "type": "MULTI",
-      "score": 9,
-      "selic": 15,
-      "magicNumber": 76,
-      "magicCost": 678.68,
-      "last_dividend": 0.12,
-      "external_segment": "Outros"
-    },
-    {
       "ticker": "ALZC11",
       "segment": "Outros",
       "price": 8.09,
@@ -4453,6 +5644,28 @@ window.INVEST_DATA = {
       "external_segment": "Títulos e Valores Mobiliários"
     },
     {
+      "ticker": "BINC11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": null,
+      "price": 102.9,
+      "dy": 15.04,
+      "p_vp": 0.98,
+      "liquidity": 558800,
+      "last_dividend": 1.5,
+      "vacancy": 0,
+      "score": 9,
+      "strategies": [
+        "INFRA_INCOME"
+      ],
+      "magicNumber": 80,
+      "magicCost": 8232,
+      "selic": 15,
+      "num_properties": 0,
+      "market_cap": 500000000,
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)"
+    },
+    {
       "ticker": "PORD11",
       "segment": "Multicategoria",
       "price": 8.12,
@@ -4465,10 +5678,10 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [
-        "PAPEL_YIELD",
+        "MULTI_DISCOUNT",
         "SAFE_INCOME"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 9,
       "selic": 15,
       "magicNumber": 86,
@@ -4655,10 +5868,10 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [
-        "PAPEL_YIELD",
+        "MULTI_DISCOUNT",
         "SAFE_INCOME"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 9,
       "selic": 15,
       "magicNumber": 94,
@@ -4689,6 +5902,26 @@ window.INVEST_DATA = {
       "magicCost": 7507.85,
       "last_dividend": 0.85,
       "external_segment": "Títulos e Valores Mobiliários"
+    },
+    {
+      "ticker": "DIVS11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": "Desenvolvimento para renda",
+      "price": 103.7,
+      "dy": 12.73,
+      "p_vp": 1.04,
+      "liquidity": 612020,
+      "last_dividend": 1.2,
+      "vacancy": 0,
+      "score": 9,
+      "strategies": [],
+      "magicNumber": 95,
+      "magicCost": 9851.5,
+      "selic": 15,
+      "num_properties": 0,
+      "market_cap": 500000000,
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)"
     },
     {
       "ticker": "HGCR11",
@@ -4775,39 +6008,15 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [
-        "PAPEL_YIELD",
         "SAFE_INCOME"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 9,
       "selic": 15,
       "magicNumber": 96,
       "magicCost": 864,
       "last_dividend": 0.09,
       "external_segment": "Títulos e Valores Mobiliários"
-    },
-    {
-      "ticker": "BPML11",
-      "segment": "Multicategoria",
-      "price": 91.57,
-      "ffo_yield": 10.32,
-      "dy": 12.52,
-      "p_vp": 0.74,
-      "market_cap": 681441000,
-      "liquidity": 2288740,
-      "num_properties": 4,
-      "cap_rate": 14.23,
-      "vacancy": 8.23,
-      "strategies": [
-        "TIJOLO_VALUE"
-      ],
-      "type": "TIJOLO",
-      "score": 9,
-      "selic": 15,
-      "magicNumber": 96,
-      "magicCost": 8790.72,
-      "last_dividend": 0.92,
-      "external_segment": "Shoppings / Varejo"
     },
     {
       "ticker": "GTWR11",
@@ -4917,10 +6126,9 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [
-        "PAPEL_YIELD",
         "SAFE_INCOME"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 9,
       "selic": 15,
       "magicNumber": 99,
@@ -4941,10 +6149,9 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [
-        "PAPEL_YIELD",
         "SAFE_INCOME"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 9,
       "selic": 15,
       "magicNumber": 100,
@@ -4965,10 +6172,9 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [
-        "PAPEL_YIELD",
         "SAFE_INCOME"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 9,
       "selic": 15,
       "magicNumber": 100,
@@ -5069,6 +6275,28 @@ window.INVEST_DATA = {
       "external_segment": "Híbrido"
     },
     {
+      "ticker": "JURO11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": null,
+      "price": 102.85,
+      "dy": 11.67,
+      "p_vp": 1.02,
+      "liquidity": 3760000,
+      "last_dividend": 1,
+      "vacancy": 0,
+      "score": 9,
+      "strategies": [
+        "SAFE_INCOME"
+      ],
+      "magicNumber": 103,
+      "magicCost": 10593.55,
+      "selic": 15,
+      "num_properties": 0,
+      "market_cap": 500000000,
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)"
+    },
+    {
       "ticker": "GARE11",
       "segment": "Multicategoria",
       "price": 8.57,
@@ -5090,6 +6318,28 @@ window.INVEST_DATA = {
       "magicCost": 899.85,
       "last_dividend": 0.08,
       "external_segment": "Híbrido"
+    },
+    {
+      "ticker": "IFRA11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": null,
+      "price": 102.79,
+      "dy": 11.43,
+      "p_vp": 1.02,
+      "liquidity": 1740000,
+      "last_dividend": 0.86,
+      "vacancy": 0,
+      "score": 9,
+      "strategies": [
+        "SAFE_INCOME"
+      ],
+      "magicNumber": 105,
+      "magicCost": 10792.95,
+      "selic": 15,
+      "num_properties": 0,
+      "market_cap": 500000000,
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)"
     },
     {
       "ticker": "INLG11",
@@ -5129,7 +6379,7 @@ window.INVEST_DATA = {
       "strategies": [
         "SAFE_INCOME"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 9,
       "selic": 15,
       "magicNumber": 107,
@@ -5152,7 +6402,7 @@ window.INVEST_DATA = {
       "strategies": [
         "SAFE_INCOME"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 9,
       "selic": 15,
       "magicNumber": 111,
@@ -5175,13 +6425,99 @@ window.INVEST_DATA = {
       "strategies": [
         "SAFE_INCOME"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 9,
       "selic": 15,
       "magicNumber": 112,
       "magicCost": 10242.4,
       "last_dividend": 0.7,
       "external_segment": "Títulos e Valores Mobiliários"
+    },
+    {
+      "ticker": "XPML11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": "Renda",
+      "price": 111,
+      "dy": 9.95,
+      "p_vp": 1.03,
+      "liquidity": 14460000,
+      "last_dividend": 0.92,
+      "vacancy": 0,
+      "score": 9,
+      "strategies": [
+        "SAFE_INCOME"
+      ],
+      "magicNumber": 121,
+      "magicCost": 13431,
+      "selic": 15,
+      "num_properties": 0,
+      "market_cap": 500000000,
+      "external_segment": "Shoppings / Varejo"
+    },
+    {
+      "ticker": "BTLG11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": "Renda",
+      "price": 102.99,
+      "dy": 9.91,
+      "p_vp": 1,
+      "liquidity": 22870000,
+      "last_dividend": 0.8,
+      "vacancy": 0,
+      "score": 9,
+      "strategies": [
+        "SAFE_INCOME"
+      ],
+      "magicNumber": 122,
+      "magicCost": 12564.779999999999,
+      "selic": 15,
+      "num_properties": 0,
+      "market_cap": 500000000,
+      "external_segment": "Logístico / Indústria / Galpões"
+    },
+    {
+      "ticker": "XPLG11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": "Renda",
+      "price": 102.28,
+      "dy": 9.62,
+      "p_vp": 0.97,
+      "liquidity": 5890000,
+      "last_dividend": 0.82,
+      "vacancy": 0,
+      "score": 9,
+      "strategies": [
+        "SAFE_INCOME"
+      ],
+      "magicNumber": 125,
+      "magicCost": 12785,
+      "selic": 15,
+      "num_properties": 0,
+      "market_cap": 500000000,
+      "external_segment": "Logístico / Indústria / Galpões"
+    },
+    {
+      "ticker": "VISC11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": "Renda",
+      "price": 108.69,
+      "dy": 8.93,
+      "p_vp": 0.92,
+      "liquidity": 8160000,
+      "last_dividend": 0.84,
+      "vacancy": 0,
+      "score": 9,
+      "strategies": [],
+      "magicNumber": 135,
+      "magicCost": 14673.15,
+      "selic": 15,
+      "num_properties": 0,
+      "market_cap": 500000000,
+      "external_segment": "Shoppings / Varejo"
     },
     {
       "ticker": "VGIA11",
@@ -5251,6 +6587,30 @@ window.INVEST_DATA = {
       "external_segment": "Logístico / Indústria / Galpões"
     },
     {
+      "ticker": "MANA11",
+      "segment": "Multicategoria",
+      "price": 9.3,
+      "ffo_yield": 10.86,
+      "dy": 27.42,
+      "p_vp": 0.09,
+      "market_cap": 13419300,
+      "liquidity": 1148600,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "MULTI_DISCOUNT",
+        "HIGH_VOLATILITY"
+      ],
+      "type": "MULTI",
+      "score": 8,
+      "selic": 15,
+      "magicNumber": 44,
+      "magicCost": 409.20000000000005,
+      "last_dividend": 0.11,
+      "external_segment": "Títulos e Valores Mobiliários"
+    },
+    {
       "ticker": "CACR11",
       "segment": "Multicategoria",
       "price": 78.33,
@@ -5274,6 +6634,30 @@ window.INVEST_DATA = {
       "magicCost": 4699.8,
       "last_dividend": 1.2,
       "external_segment": "Híbrido"
+    },
+    {
+      "ticker": "HCTR11",
+      "segment": "Multicategoria",
+      "price": 21.51,
+      "ffo_yield": 17.67,
+      "dy": 17.1,
+      "p_vp": 0.2,
+      "market_cap": 475031000,
+      "liquidity": 1082300,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "MULTI_DISCOUNT",
+        "HIGH_VOLATILITY"
+      ],
+      "type": "MULTI",
+      "score": 8,
+      "selic": 15,
+      "magicNumber": 71,
+      "magicCost": 1527.21,
+      "last_dividend": 0.27,
+      "external_segment": "Títulos e Valores Mobiliários"
     },
     {
       "ticker": "MFII11",
@@ -5312,15 +6696,85 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [
-        "PAPEL_YIELD",
         "HIGH_VOLATILITY"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 8,
       "selic": 15,
       "magicNumber": 75,
       "magicCost": 711.75,
       "last_dividend": 0.13,
+      "external_segment": "Títulos e Valores Mobiliários"
+    },
+    {
+      "ticker": "BIDB11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": null,
+      "price": 80.35,
+      "dy": 16.13,
+      "p_vp": 0.97,
+      "liquidity": 306910,
+      "last_dividend": 1,
+      "vacancy": 0,
+      "score": 8,
+      "strategies": [
+        "INFRA_INCOME",
+        "HIGH_VOLATILITY"
+      ],
+      "magicNumber": 75,
+      "magicCost": 6026.25,
+      "selic": 15,
+      "num_properties": 0,
+      "market_cap": 500000000,
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)"
+    },
+    {
+      "ticker": "LIFE11",
+      "segment": "Residencial",
+      "price": 8.93,
+      "ffo_yield": 12.29,
+      "dy": 15.88,
+      "p_vp": 0.9,
+      "market_cap": 355071000,
+      "liquidity": 966076,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "TIJOLO_VALUE",
+        "SAFE_INCOME"
+      ],
+      "type": "TIJOLO",
+      "score": 8,
+      "selic": 15,
+      "magicNumber": 76,
+      "magicCost": 678.68,
+      "last_dividend": 0.12,
+      "external_segment": "Outros"
+    },
+    {
+      "ticker": "HABT11",
+      "segment": "Multicategoria",
+      "price": 76.98,
+      "ffo_yield": 15.49,
+      "dy": 15.85,
+      "p_vp": 0.81,
+      "market_cap": 625600000,
+      "liquidity": 1161010,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "MULTI_DISCOUNT",
+        "SAFE_INCOME"
+      ],
+      "type": "MULTI",
+      "score": 8,
+      "selic": 15,
+      "magicNumber": 76,
+      "magicCost": 5850.4800000000005,
+      "last_dividend": 0.95,
       "external_segment": "Títulos e Valores Mobiliários"
     },
     {
@@ -5401,9 +6855,9 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [
-        "PAPEL_YIELD"
+        "MULTI_DISCOUNT"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 8,
       "selic": 15,
       "magicNumber": 79,
@@ -5504,6 +6958,28 @@ window.INVEST_DATA = {
       "external_segment": "Híbrido"
     },
     {
+      "ticker": "RBIF11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": null,
+      "price": 79.03,
+      "dy": 14.22,
+      "p_vp": 0.89,
+      "liquidity": 231690,
+      "last_dividend": 0.95,
+      "vacancy": 0,
+      "score": 8,
+      "strategies": [
+        "INFRA_INCOME"
+      ],
+      "magicNumber": 85,
+      "magicCost": 6717.55,
+      "selic": 15,
+      "num_properties": 0,
+      "market_cap": 500000000,
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)"
+    },
+    {
       "ticker": "VGHF11",
       "segment": "Outros",
       "price": 7.2,
@@ -5584,9 +7060,9 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [
-        "PAPEL_YIELD"
+        "MULTI_DISCOUNT"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 8,
       "selic": 15,
       "magicNumber": 91,
@@ -5676,10 +7152,9 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [
-        "PAPEL_YIELD",
         "SAFE_INCOME"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 8,
       "selic": 15,
       "magicNumber": 97,
@@ -5745,36 +7220,13 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 8,
       "selic": 15,
       "magicNumber": 105,
       "magicCost": 10054.800000000001,
       "last_dividend": 0.86,
       "external_segment": "Títulos e Valores Mobiliários"
-    },
-    {
-      "ticker": "VINO11",
-      "segment": "Multicategoria",
-      "price": 5.53,
-      "ffo_yield": 11.47,
-      "dy": 11.26,
-      "p_vp": 0.56,
-      "market_cap": 458029000,
-      "liquidity": 1015770,
-      "num_properties": 9,
-      "cap_rate": 15.47,
-      "vacancy": 10.25,
-      "strategies": [
-        "TIJOLO_VALUE"
-      ],
-      "type": "TIJOLO",
-      "score": 8,
-      "selic": 15,
-      "magicNumber": 107,
-      "magicCost": 591.71,
-      "last_dividend": 0.05,
-      "external_segment": "Lajes Corporativas"
     },
     {
       "ticker": "TEPP11",
@@ -5836,9 +7288,10 @@ window.INVEST_DATA = {
       "cap_rate": 11.85,
       "vacancy": 5.35,
       "strategies": [
+        "TIJOLO_VALUE",
         "SAFE_INCOME"
       ],
-      "type": "MULTI",
+      "type": "TIJOLO",
       "score": 8,
       "selic": 15,
       "magicNumber": 112,
@@ -5884,7 +7337,7 @@ window.INVEST_DATA = {
       "strategies": [
         "SAFE_INCOME"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 8,
       "selic": 15,
       "magicNumber": 123,
@@ -6018,10 +7471,9 @@ window.INVEST_DATA = {
       "cap_rate": 6.86,
       "vacancy": 0.84,
       "strategies": [
-        "TIJOLO_VALUE",
         "SAFE_INCOME"
       ],
-      "type": "TIJOLO",
+      "type": "MULTI",
       "score": 8,
       "selic": 15,
       "magicNumber": 133,
@@ -6052,6 +7504,26 @@ window.INVEST_DATA = {
     },
     {
       "ticker": "HGLG11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": "Renda",
+      "price": 156.88,
+      "dy": 8.41,
+      "p_vp": 0.94,
+      "liquidity": 14790000,
+      "last_dividend": 1.1,
+      "vacancy": 0,
+      "score": 8,
+      "strategies": [],
+      "magicNumber": 143,
+      "magicCost": 22433.84,
+      "selic": 15,
+      "num_properties": 0,
+      "market_cap": 500000000,
+      "external_segment": "Logístico / Indústria / Galpões"
+    },
+    {
+      "ticker": "HGLG11",
       "segment": "Multicategoria",
       "price": 156.88,
       "ffo_yield": 6.32,
@@ -6062,16 +7534,34 @@ window.INVEST_DATA = {
       "num_properties": 28,
       "cap_rate": 6.99,
       "vacancy": 2.91,
-      "strategies": [
-        "TIJOLO_VALUE"
-      ],
-      "type": "TIJOLO",
+      "strategies": [],
+      "type": "MULTI",
       "score": 8,
       "selic": 15,
       "magicNumber": 144,
       "magicCost": 22590.72,
       "last_dividend": 1.1,
       "external_segment": "Logístico / Indústria / Galpões"
+    },
+    {
+      "ticker": "KNRI11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": "Renda",
+      "price": 166.2,
+      "dy": 7.3,
+      "p_vp": 1.01,
+      "liquidity": 6570000,
+      "last_dividend": 0.88,
+      "vacancy": 0,
+      "score": 8,
+      "strategies": [],
+      "magicNumber": 165,
+      "magicCost": 27422.999999999996,
+      "selic": 15,
+      "num_properties": 0,
+      "market_cap": 500000000,
+      "external_segment": "Híbrido"
     },
     {
       "ticker": "GZIT11",
@@ -6120,6 +7610,30 @@ window.INVEST_DATA = {
       "magicCost": 4128,
       "last_dividend": 1.02,
       "external_segment": "Outros"
+    },
+    {
+      "ticker": "DEVA11",
+      "segment": "Multicategoria",
+      "price": 24.79,
+      "ffo_yield": 19.36,
+      "dy": 18.63,
+      "p_vp": 0.25,
+      "market_cap": 348173000,
+      "liquidity": 942983,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "MULTI_DISCOUNT",
+        "HIGH_VOLATILITY"
+      ],
+      "type": "MULTI",
+      "score": 7,
+      "selic": 15,
+      "magicNumber": 65,
+      "magicCost": 1611.35,
+      "last_dividend": 0.3,
+      "external_segment": "Títulos e Valores Mobiliários"
     },
     {
       "ticker": "VIUR11",
@@ -6205,9 +7719,9 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [
-        "PAPEL_YIELD"
+        "MULTI_DISCOUNT"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 7,
       "selic": 15,
       "magicNumber": 91,
@@ -6252,9 +7766,9 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [
-        "PAPEL_YIELD"
+        "MULTI_DISCOUNT"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 7,
       "selic": 15,
       "magicNumber": 94,
@@ -6340,7 +7854,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 7,
       "selic": 15,
       "magicNumber": 101,
@@ -6579,7 +8093,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "strategies": [],
-      "type": "AGRO",
+      "type": "MULTI",
       "score": 7,
       "selic": 15,
       "magicNumber": 150,
@@ -6685,10 +8199,8 @@ window.INVEST_DATA = {
       "num_properties": 54,
       "cap_rate": 7.97,
       "vacancy": 1.59,
-      "strategies": [
-        "TIJOLO_VALUE"
-      ],
-      "type": "TIJOLO",
+      "strategies": [],
+      "type": "MULTI",
       "score": 7,
       "selic": 15,
       "magicNumber": 195,
@@ -6760,6 +8272,30 @@ window.INVEST_DATA = {
       "external_segment": "Fiagros"
     },
     {
+      "ticker": "ARRI11",
+      "segment": "Multicategoria",
+      "price": 6.65,
+      "ffo_yield": 11.05,
+      "dy": 16.02,
+      "p_vp": 0.8,
+      "market_cap": 137834000,
+      "liquidity": 272602,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "MULTI_DISCOUNT",
+        "HIGH_VOLATILITY"
+      ],
+      "type": "MULTI",
+      "score": 6,
+      "selic": 15,
+      "magicNumber": 75,
+      "magicCost": 498.75,
+      "last_dividend": 0.09,
+      "external_segment": "Títulos e Valores Mobiliários"
+    },
+    {
       "ticker": "VRTM11",
       "segment": "Multicategoria",
       "price": 7.3,
@@ -6818,15 +8354,35 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 100,
       "strategies": [
-        "PAPEL_YIELD"
+        "MULTI_DISCOUNT"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "score": 6,
       "selic": 15,
       "magicNumber": 89,
       "magicCost": 7298,
       "last_dividend": 0.83,
       "external_segment": "Títulos e Valores Mobiliários"
+    },
+    {
+      "ticker": "XPID11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": null,
+      "price": 51.9,
+      "dy": 13.39,
+      "p_vp": 0.56,
+      "liquidity": 230270,
+      "last_dividend": 0.75,
+      "vacancy": 0,
+      "score": 6,
+      "strategies": [],
+      "magicNumber": 90,
+      "magicCost": 4671,
+      "selic": 15,
+      "num_properties": 0,
+      "market_cap": 500000000,
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)"
     },
     {
       "ticker": "HBCR11",
@@ -6847,6 +8403,70 @@ window.INVEST_DATA = {
       "magicNumber": 92,
       "magicCost": 12692.320000000002,
       "last_dividend": 0.54,
+      "external_segment": "Lajes Corporativas"
+    },
+    {
+      "ticker": "BPML11",
+      "segment": "Multicategoria",
+      "price": 91.57,
+      "ffo_yield": 10.32,
+      "dy": 12.52,
+      "p_vp": 0.74,
+      "market_cap": 681441000,
+      "liquidity": 2288740,
+      "num_properties": 4,
+      "cap_rate": 14.23,
+      "vacancy": 8.23,
+      "strategies": [
+        "MULTI_DISCOUNT"
+      ],
+      "type": "MULTI",
+      "score": 6,
+      "selic": 15,
+      "magicNumber": 96,
+      "magicCost": 8790.72,
+      "last_dividend": 0.92,
+      "external_segment": "Shoppings / Varejo"
+    },
+    {
+      "ticker": "VINO11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": "Renda",
+      "price": 5.53,
+      "dy": 11.39,
+      "p_vp": 0.56,
+      "liquidity": 761730,
+      "last_dividend": 0.05,
+      "vacancy": 0,
+      "score": 6,
+      "strategies": [],
+      "magicNumber": 106,
+      "magicCost": 586.1800000000001,
+      "selic": 15,
+      "num_properties": 0,
+      "market_cap": 500000000,
+      "external_segment": "Lajes Corporativas"
+    },
+    {
+      "ticker": "VINO11",
+      "segment": "Multicategoria",
+      "price": 5.53,
+      "ffo_yield": 11.47,
+      "dy": 11.26,
+      "p_vp": 0.56,
+      "market_cap": 458029000,
+      "liquidity": 1015770,
+      "num_properties": 9,
+      "cap_rate": 15.47,
+      "vacancy": 10.25,
+      "strategies": [],
+      "type": "MULTI",
+      "score": 6,
+      "selic": 15,
+      "magicNumber": 107,
+      "magicCost": 591.71,
+      "last_dividend": 0.05,
       "external_segment": "Lajes Corporativas"
     },
     {
@@ -6960,6 +8580,27 @@ window.INVEST_DATA = {
       "external_segment": "Híbrido"
     },
     {
+      "ticker": "APXM11",
+      "segment": "Shoppings",
+      "price": 79.95,
+      "ffo_yield": 4.69,
+      "dy": 5.28,
+      "p_vp": 0.63,
+      "market_cap": 226190000,
+      "liquidity": 402409,
+      "num_properties": 1,
+      "cap_rate": 12.8,
+      "vacancy": 0,
+      "strategies": [],
+      "type": "TIJOLO",
+      "score": 6,
+      "selic": 15,
+      "magicNumber": 228,
+      "magicCost": 18228.600000000002,
+      "last_dividend": 0.49,
+      "external_segment": "Shoppings / Varejo"
+    },
+    {
       "ticker": "BFCC11",
       "segment": "Escrit�rios",
       "price": 100.43,
@@ -6979,98 +8620,6 @@ window.INVEST_DATA = {
       "magicCost": 182682.17,
       "last_dividend": null,
       "external_segment": null
-    },
-    {
-      "ticker": "MANA11",
-      "segment": "Multicategoria",
-      "price": 9.3,
-      "ffo_yield": 10.86,
-      "dy": 27.42,
-      "p_vp": 0.09,
-      "market_cap": 13419300,
-      "liquidity": 1148600,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "strategies": [
-        "HIGH_VOLATILITY"
-      ],
-      "type": "PAPEL",
-      "score": 5,
-      "selic": 15,
-      "magicNumber": 44,
-      "magicCost": 409.20000000000005,
-      "last_dividend": 0.11,
-      "external_segment": "Títulos e Valores Mobiliários"
-    },
-    {
-      "ticker": "HCTR11",
-      "segment": "Multicategoria",
-      "price": 21.51,
-      "ffo_yield": 17.67,
-      "dy": 17.1,
-      "p_vp": 0.2,
-      "market_cap": 475031000,
-      "liquidity": 1082300,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "strategies": [
-        "HIGH_VOLATILITY"
-      ],
-      "type": "PAPEL",
-      "score": 5,
-      "selic": 15,
-      "magicNumber": 71,
-      "magicCost": 1527.21,
-      "last_dividend": 0.27,
-      "external_segment": "Títulos e Valores Mobiliários"
-    },
-    {
-      "ticker": "HABT11",
-      "segment": "Multicategoria",
-      "price": 76.98,
-      "ffo_yield": 15.49,
-      "dy": 15.85,
-      "p_vp": 0.81,
-      "market_cap": 625600000,
-      "liquidity": 1161010,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "strategies": [
-        "SAFE_INCOME"
-      ],
-      "type": "PAPEL",
-      "score": 5,
-      "selic": 15,
-      "magicNumber": 76,
-      "magicCost": 5850.4800000000005,
-      "last_dividend": 0.95,
-      "external_segment": "Títulos e Valores Mobiliários"
-    },
-    {
-      "ticker": "DEVA11",
-      "segment": "Multicategoria",
-      "price": 24.79,
-      "ffo_yield": 19.36,
-      "dy": 18.63,
-      "p_vp": 0.25,
-      "market_cap": 348173000,
-      "liquidity": 942983,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "strategies": [
-        "HIGH_VOLATILITY"
-      ],
-      "type": "PAPEL",
-      "score": 4,
-      "selic": 15,
-      "magicNumber": 65,
-      "magicCost": 1611.35,
-      "last_dividend": 0.3,
-      "external_segment": "Títulos e Valores Mobiliários"
     },
     {
       "ticker": "XPSF11",
@@ -7140,29 +8689,6 @@ window.INVEST_DATA = {
       "magicCost": 4838.400000000001,
       "last_dividend": 1.14,
       "external_segment": "Títulos e Valores Mobiliários"
-    },
-    {
-      "ticker": "ARRI11",
-      "segment": "Multicategoria",
-      "price": 6.65,
-      "ffo_yield": 11.05,
-      "dy": 16.02,
-      "p_vp": 0.8,
-      "market_cap": 137834000,
-      "liquidity": 272602,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "strategies": [
-        "HIGH_VOLATILITY"
-      ],
-      "type": "PAPEL",
-      "score": 3,
-      "selic": 15,
-      "magicNumber": 75,
-      "magicCost": 498.75,
-      "last_dividend": 0.09,
-      "external_segment": "Títulos e Valores Mobiliários"
     }
   ],
   "etfs": [
@@ -7193,6 +8719,260 @@ window.INVEST_DATA = {
     }
   ],
   "fixedIncome": {
+    "tesouro": [
+      {
+        "name": "Tesouro Prefixado 2029",
+        "rate": "12,74%",
+        "minInvest": "R$ 7,09",
+        "price": "R$ 709,23",
+        "maturity": "01/01/2029"
+      },
+      {
+        "name": "Tesouro Prefixado 2032",
+        "rate": "13,40%",
+        "minInvest": "R$ 4,79",
+        "price": "R$ 479,00",
+        "maturity": "01/01/2032"
+      },
+      {
+        "name": "Tesouro Prefixado 2037Juros\n                                                                            Semestrais",
+        "rate": "13,64%",
+        "minInvest": "R$ 8,18",
+        "price": "R$ 818,96",
+        "maturity": "01/01/2037"
+      },
+      {
+        "name": "Tesouro Selic 2031",
+        "rate": "SELIC + 0,0996%",
+        "minInvest": "R$ 182,65",
+        "price": "R$ 18.265,60",
+        "maturity": "01/03/2031"
+      },
+      {
+        "name": "Tesouro Renda+ Aposentadoria Extra 2030",
+        "rate": "IPCA + 7,30%",
+        "minInvest": "R$ 18,84",
+        "price": "R$ 1.884,59",
+        "maturity": "15/12/2049"
+      },
+      {
+        "name": "Tesouro Renda+ Aposentadoria Extra 2035",
+        "rate": "IPCA + 7,17%",
+        "minInvest": "R$ 13,54",
+        "price": "R$ 1.354,72",
+        "maturity": "15/12/2054"
+      },
+      {
+        "name": "Tesouro Renda+ Aposentadoria Extra 2040",
+        "rate": "IPCA + 7,05%",
+        "minInvest": "R$ 9,83",
+        "price": "R$ 983,67",
+        "maturity": "15/12/2059"
+      },
+      {
+        "name": "Tesouro Renda+ Aposentadoria Extra 2045",
+        "rate": "IPCA + 6,98%",
+        "minInvest": "R$ 7,13",
+        "price": "R$ 713,53",
+        "maturity": "15/12/2064"
+      },
+      {
+        "name": "Tesouro Renda+ Aposentadoria Extra 2050",
+        "rate": "IPCA + 6,95%",
+        "minInvest": "R$ 5,14",
+        "price": "R$ 514,78",
+        "maturity": "15/12/2069"
+      },
+      {
+        "name": "Tesouro Renda+ Aposentadoria Extra 2055",
+        "rate": "IPCA + 6,96%",
+        "minInvest": "R$ 3,67",
+        "price": "R$ 367,37",
+        "maturity": "15/12/2074"
+      },
+      {
+        "name": "Tesouro Renda+ Aposentadoria Extra 2060",
+        "rate": "IPCA + 6,97%",
+        "minInvest": "R$ 2,61",
+        "price": "R$ 261,92",
+        "maturity": "15/12/2079"
+      },
+      {
+        "name": "Tesouro Renda+ Aposentadoria Extra 2065",
+        "rate": "IPCA + 6,97%",
+        "minInvest": "R$ 1,87",
+        "price": "R$ 187,39",
+        "maturity": "15/12/2084"
+      },
+      {
+        "name": "Tesouro Educa+ 2027",
+        "rate": "IPCA + 7,67%",
+        "minInvest": "R$ 36,06",
+        "price": "R$ 3.606,99",
+        "maturity": "15/12/2031"
+      },
+      {
+        "name": "Tesouro Educa+ 2028",
+        "rate": "IPCA + 7,61%",
+        "minInvest": "R$ 33,59",
+        "price": "R$ 3.359,33",
+        "maturity": "15/12/2032"
+      },
+      {
+        "name": "Tesouro Educa+ 2029",
+        "rate": "IPCA + 7,59%",
+        "minInvest": "R$ 31,26",
+        "price": "R$ 3.126,17",
+        "maturity": "15/12/2033"
+      },
+      {
+        "name": "Tesouro Educa+ 2030",
+        "rate": "IPCA + 7,57%",
+        "minInvest": "R$ 29,09",
+        "price": "R$ 2.909,72",
+        "maturity": "15/12/2034"
+      },
+      {
+        "name": "Tesouro Educa+ 2031",
+        "rate": "IPCA + 7,54%",
+        "minInvest": "R$ 27,11",
+        "price": "R$ 2.711,21",
+        "maturity": "15/12/2035"
+      },
+      {
+        "name": "Tesouro Educa+ 2032",
+        "rate": "IPCA + 7,51%",
+        "minInvest": "R$ 25,27",
+        "price": "R$ 2.527,84",
+        "maturity": "15/12/2036"
+      },
+      {
+        "name": "Tesouro Educa+ 2033",
+        "rate": "IPCA + 7,48%",
+        "minInvest": "R$ 23,58",
+        "price": "R$ 2.358,34",
+        "maturity": "15/12/2037"
+      },
+      {
+        "name": "Tesouro Educa+ 2034",
+        "rate": "IPCA + 7,45%",
+        "minInvest": "R$ 22,01",
+        "price": "R$ 2.201,82",
+        "maturity": "15/12/2038"
+      },
+      {
+        "name": "Tesouro Educa+ 2035",
+        "rate": "IPCA + 7,41%",
+        "minInvest": "R$ 20,58",
+        "price": "R$ 2.058,93",
+        "maturity": "15/12/2039"
+      },
+      {
+        "name": "Tesouro Educa+ 2036",
+        "rate": "IPCA + 7,38%",
+        "minInvest": "R$ 19,24",
+        "price": "R$ 1.924,11",
+        "maturity": "15/12/2040"
+      },
+      {
+        "name": "Tesouro Educa+ 2037",
+        "rate": "IPCA + 7,34%",
+        "minInvest": "R$ 18,01",
+        "price": "R$ 1.801,27",
+        "maturity": "15/12/2041"
+      },
+      {
+        "name": "Tesouro Educa+ 2038",
+        "rate": "IPCA + 7,30%",
+        "minInvest": "R$ 16,87",
+        "price": "R$ 1.687,55",
+        "maturity": "15/12/2042"
+      },
+      {
+        "name": "Tesouro Educa+ 2039",
+        "rate": "IPCA + 7,26%",
+        "minInvest": "R$ 15,82",
+        "price": "R$ 1.582,04",
+        "maturity": "15/12/2043"
+      },
+      {
+        "name": "Tesouro Educa+ 2040",
+        "rate": "IPCA + 7,22%",
+        "minInvest": "R$ 14,84",
+        "price": "R$ 1.484,34",
+        "maturity": "15/12/2044"
+      },
+      {
+        "name": "Tesouro Educa+ 2041",
+        "rate": "IPCA + 7,18%",
+        "minInvest": "R$ 13,93",
+        "price": "R$ 1.393,83",
+        "maturity": "15/12/2045"
+      },
+      {
+        "name": "Tesouro Educa+ 2042",
+        "rate": "IPCA + 7,15%",
+        "minInvest": "R$ 13,07",
+        "price": "R$ 1.307,68",
+        "maturity": "15/12/2046"
+      },
+      {
+        "name": "Tesouro IPCA+ 2040",
+        "rate": "IPCA + 7,30%",
+        "minInvest": "R$ 16,63",
+        "price": "R$ 1.663,40",
+        "maturity": "15/08/2040"
+      },
+      {
+        "name": "Tesouro Educa+ 2043",
+        "rate": "IPCA + 7,11%",
+        "minInvest": "R$ 12,29",
+        "price": "R$ 1.229,83",
+        "maturity": "15/12/2047"
+      },
+      {
+        "name": "Tesouro IPCA+ 2050",
+        "rate": "IPCA + 6,98%",
+        "minInvest": "R$ 8,88",
+        "price": "R$ 888,75",
+        "maturity": "15/08/2050"
+      },
+      {
+        "name": "Tesouro IPCA+ 2032",
+        "rate": "IPCA + 7,59%",
+        "minInvest": "R$ 28,63",
+        "price": "R$ 2.863,34",
+        "maturity": "15/08/2032"
+      },
+      {
+        "name": "Tesouro Educa+ 2044",
+        "rate": "IPCA + 7,09%",
+        "minInvest": "R$ 11,53",
+        "price": "R$ 1.153,14",
+        "maturity": "15/12/2048"
+      },
+      {
+        "name": "Tesouro IPCA+ 2045Juros\n                                                                            Semestrais",
+        "rate": "IPCA + 7,26%",
+        "minInvest": "R$ 40,99",
+        "price": "R$ 4.099,60",
+        "maturity": "15/05/2045"
+      },
+      {
+        "name": "Tesouro IPCA+ 2060Juros\n                                                                            Semestrais",
+        "rate": "IPCA + 7,15%",
+        "minInvest": "R$ 40,91",
+        "price": "R$ 4.091,54",
+        "maturity": "15/08/2060"
+      },
+      {
+        "name": "Tesouro IPCA+ 2037Juros\n                                                                            Semestrais",
+        "rate": "IPCA + 7,49%",
+        "minInvest": "R$ 41,76",
+        "price": "R$ 4.176,88",
+        "maturity": "15/05/2037"
+      }
+    ],
     "private": [
       {
         "name": "CDB 100% CDI",

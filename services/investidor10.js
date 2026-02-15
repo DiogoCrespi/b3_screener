@@ -43,12 +43,28 @@ async function getFiiMetadata(ticker) {
                 vacancy: 0
             };
 
+            const parseVal = (v) => {
+                if (!v) return 0;
+                let text = v.replace('R$', '').replace(/\./g, '').replace(',', '.').replace('%', '').trim();
+                let multiplier = 1;
+                const upperText = text.toUpperCase();
+                if (upperText.endsWith('M')) {
+                    multiplier = 1000000;
+                    text = text.slice(0, -1);
+                } else if (upperText.endsWith('K')) {
+                    multiplier = 1000;
+                    text = text.slice(0, -1);
+                } else if (upperText.endsWith('B')) {
+                    multiplier = 1000000000;
+                    text = text.slice(0, -1);
+                }
+                return (parseFloat(text) * multiplier) || 0;
+            };
+
             // Metadata scraping
             $('.desc').each((i, el) => {
                 const name = $(el).find('.name').text().trim().toUpperCase();
                 const value = $(el).find('.value span').text().trim();
-
-                const parseVal = (v) => parseFloat(v.replace('R$', '').replace(/\./g, '').replace(',', '.').replace('%', '').trim()) || 0;
 
                 if (name === 'ÚLTIMO RENDIMENTO') metadata.last_dividend = parseVal(value);
                 else if (name === 'TIPO DE FUNDO') metadata.type = value;
@@ -58,20 +74,40 @@ async function getFiiMetadata(ticker) {
 
             // Fallback for Cards if Metadata is missing or for full data
             const parseCardValue = (label) => {
-                // Find the card with the specific label inside _card-header -> span
-                // Then get the value from _card-body -> span
                 try {
-                    const card = $(`.kotacoes div._card-header span:contains('${label}')`).closest('.kotacoes');
-                    const valText = card.find('div._card-body span').text().trim();
-                    return parseFloat(valText.replace('R$', '').replace(/\./g, '').replace(',', '.').replace('%', '').trim()) || 0;
+                    // Try the new structure found in FI-Infra pages (section#cards-ticker)
+                    // Labels are often in ._card-header span
+                    let valueText = '';
+
+                    // Specific logic for label matching in new cards
+                    const card = $('._card').filter((i, el) => {
+                        const headerText = $(el).find('._card-header span').text().trim().toUpperCase();
+                        return headerText.includes(label.toUpperCase());
+                    });
+
+                    if (card.length > 0) {
+                        // For Price, it might be in .value. For others, just in span.
+                        const valueEl = card.find('._card-body span.value').length > 0
+                            ? card.find('._card-body span.value')
+                            : card.find('._card-body span');
+                        valueText = valueEl.first().text().trim();
+                    }
+
+                    // Fallback to the old .kotacoes structure
+                    if (!valueText) {
+                        const oldCard = $(`.kotacoes div._card-header span:contains('${label}')`).closest('.kotacoes');
+                        valueText = oldCard.find('div._card-body span').text().trim();
+                    }
+
+                    return parseVal(valueText);
                 } catch (e) { return 0; }
             };
 
-            metadata.price = parseCardValue('Cotação Atual');
-            metadata.dy = parseCardValue('Dividend Yield');
+            metadata.price = parseCardValue('COTAÇÃO');
+            metadata.dy = parseCardValue('DY');
             metadata.p_vp = parseCardValue('P/VP');
-            metadata.liquidity = parseCardValue('Liquidez Diária');
-            metadata.vacancy = parseCardValue('Vacância');
+            metadata.liquidity = parseCardValue('LIQUIDEZ DIÁRIA');
+            metadata.vacancy = parseCardValue('VACÂNCIA');
 
             // If we found a valid type or price, assume success and return
             if (metadata.type || metadata.price > 0) {
