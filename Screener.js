@@ -1,6 +1,7 @@
 const { getBestStocks } = require('./services/stocks');
 const { getBestFIIs } = require('./services/fiis');
 const { getMultipleFiiMetadata } = require('./services/investidor10');
+const { getFIInfra } = require('./services/fi_infra');
 
 class Screener {
     constructor() {
@@ -81,8 +82,12 @@ class Screener {
                 assets = await getBestStocks(selic);
             } else if (this.config.assetType === 'fii') {
                 // 1. First pass: Get FIIs from Fundamentus
-                console.log('📊 Fetching basic FII data from Fundamentus...');
-                const initialList = await getBestFIIs({}, null, selic);
+                console.log('📊 Fetching basic FII data from Fundamentus and FI-Infra discovery...');
+                const [standardList, infraList] = await Promise.all([
+                    getBestFIIs({}, null, selic),
+                    getFIInfra(selic)
+                ]);
+                const initialList = [...standardList, ...infraList];
 
                 // 2. Filter to just the relevant ones to save time on scraping
                 // We apply the liquidity filter here again just to be safe/efficient

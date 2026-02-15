@@ -71,7 +71,7 @@ jobs:
       - name: Generate data
         env:
           MARKET_DATA_TOKEN: ${{ secrets.MARKET_DATA_TOKEN }}
-        run: node index.js
+        run: node export_data.js
         
       - name: Commit and push if changed
         run: |
