@@ -1,5 +1,5 @@
 window.INVEST_DATA = {
-  "updatedAt": "15/02/2026, 17:23:47",
+  "updatedAt": "15/02/2026, 15:18:53",
   "economy": {
     "dollar": 5.2179,
     "selic": 15
@@ -8452,29 +8452,284 @@ window.INVEST_DATA = {
   ],
   "etfs": [
     {
-      "ticker": "IVVB11",
-      "name": "S&P 500 Brazilian ETF",
-      "type": "International"
+      "ticker": "BOVA11",
+      "price": 182.5,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
     },
     {
-      "ticker": "BOVA11",
-      "name": "Ibovespa Index ETF",
-      "type": "Index"
+      "ticker": "IVVB11",
+      "price": 402.7,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
     },
     {
       "ticker": "SMAL11",
-      "name": "Small Caps ETF",
-      "type": "Small Caps"
+      "price": 124.7,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
     },
     {
       "ticker": "HASH11",
-      "name": "Crypto Index ETF",
-      "type": "Crypto"
+      "price": 47.85,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
+    },
+    {
+      "ticker": "GOLD11",
+      "price": 27.36,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
+    },
+    {
+      "ticker": "XINA11",
+      "price": 8.16,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
+    },
+    {
+      "ticker": "NASD11",
+      "price": 18.14,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
+    },
+    {
+      "ticker": "BBOV11",
+      "price": 97.65,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
+    },
+    {
+      "ticker": "SPYI11",
+      "price": 108,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
+    },
+    {
+      "ticker": "WRLD11",
+      "price": 138.05,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
     },
     {
       "ticker": "DIVO11",
-      "name": "High Dividend ETF",
-      "type": "Diversified"
+      "price": 132.6,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
+    },
+    {
+      "ticker": "NDIV11",
+      "price": 132.88,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
+    },
+    {
+      "ticker": "QQQI11",
+      "price": 94.52,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
+    },
+    {
+      "ticker": "COIN11",
+      "price": 47.72,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
+    },
+    {
+      "ticker": "QBTC11",
+      "price": 21.89,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
+    },
+    {
+      "ticker": "SPXB11",
+      "price": 15.7,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
+    },
+    {
+      "ticker": "DIVD11",
+      "price": 66.5,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
+    },
+    {
+      "ticker": "TECK11",
+      "price": 96,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
+    },
+    {
+      "ticker": "B5P211",
+      "price": 103.51,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
+    },
+    {
+      "ticker": "LFTB11",
+      "price": 117.69,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
+    },
+    {
+      "ticker": "SPXI11",
+      "price": 49.63,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
+    },
+    {
+      "ticker": "BITH11",
+      "price": 81.85,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
+    },
+    {
+      "ticker": "XFIX11",
+      "price": 13.65,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
+    },
+    {
+      "ticker": "AUVP11",
+      "price": 132.67,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
+    },
+    {
+      "ticker": "BBSD11",
+      "price": 146.61,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
+    },
+    {
+      "ticker": "GPUS11",
+      "price": 108.74,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
+    },
+    {
+      "ticker": "LFTS11",
+      "price": 148.05,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
+    },
+    {
+      "ticker": "IMAB11",
+      "price": 110.13,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
+    },
+    {
+      "ticker": "ETHE11",
+      "price": 30.97,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
+    },
+    {
+      "ticker": "NSDV11",
+      "price": 161.48,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
+    },
+    {
+      "ticker": "ESGB11",
+      "price": 132.01,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
+    },
+    {
+      "ticker": "CRPT11",
+      "price": 13.49,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
+    },
+    {
+      "ticker": "BOVB11",
+      "price": 190.44,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
+    },
+    {
+      "ticker": "BOVV11",
+      "price": 191.8,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
+    },
+    {
+      "ticker": "XBOV11",
+      "price": 181.7,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
+    },
+    {
+      "ticker": "ALUG11",
+      "price": 41.76,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
+    },
+    {
+      "ticker": "AREA11",
+      "price": 103.58,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
+    },
+    {
+      "ticker": "IWMI11",
+      "price": 81.76,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
+    },
+    {
+      "ticker": "BEST11",
+      "price": 125.87,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
+    },
+    {
+      "ticker": "QETH11",
+      "price": 7.65,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0
     }
   ],
   "fixedIncome": {

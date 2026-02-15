@@ -494,6 +494,7 @@
                 <div class="download-options" id="downloadOptions">
                     <div class="download-option" onclick="downloadCSV('stocks')">📊 Baixar Ações</div>
                     <div class="download-option" onclick="downloadCSV('fiis')">🏘️ Baixar FIIs</div>
+                    <div class="download-option" onclick="downloadCSV('etfs')">📈 Baixar ETFs</div>
                 </div>
             </div>
             <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">☀️</button>
@@ -576,13 +577,19 @@
 
         function downloadCSV(type) {
             if (!window.INVEST_DATA) return;
-            const data = type === 'stocks' ? window.INVEST_DATA.stocks : window.INVEST_DATA.fiis;
+            let data;
+            if (type === 'stocks') data = window.INVEST_DATA.stocks;
+            else if (type === 'fiis') data = window.INVEST_DATA.fiis;
+            else if (type === 'etfs') data = window.INVEST_DATA.etfs;
+
             if (!data || data.length === 0) return;
 
             // Define priority columns for better organization
             const priorityKeys = type === 'stocks'
                 ? ['ticker', 'category', 'cotacao', 'dividend_yield', 'p_vp', 'score', 'upside', 'pl', 'roe', 'liq_2meses', 'graham_price', 'bazin_price']
-                : ['ticker', 'type', 'price', 'dy', 'p_vp', 'score', 'liquidity', 'vacancy', 'cap_rate', 'magicNumber', 'magicCost', 'last_dividend', 'segment'];
+                : type === 'fiis'
+                    ? ['ticker', 'type', 'price', 'dy', 'p_vp', 'score', 'liquidity', 'vacancy', 'cap_rate', 'magicNumber', 'magicCost', 'last_dividend', 'segment']
+                    : ['ticker', 'price', 'dy', 'market_cap', 'variation_12m'];
 
             const allKeys = new Set(priorityKeys);
             data.forEach(item => {
@@ -1107,21 +1114,74 @@
 
             // Render ETFs
             const etfContainer = document.getElementById('content-etfs');
-            data.etfs.forEach(etf => {
-                const card = document.createElement('div');
-                card.className = 'stock-card';
-                card.style.borderLeftColor = 'var(--accent)';
-                card.innerHTML = `
-                <div class="ticker-info">
-                    <h3>${etf.ticker}</h3>
-                    <span>${etf.type}</span>
+            if (data.etfs) {
+                data.etfs.forEach(etf => {
+                    const card = document.createElement('div');
+                    card.className = 'stock-card fii'; // Reuse FII styling for consistency
+                    card.style.borderLeftColor = 'var(--accent)';
+
+                    card.innerHTML = `
+                <div class="card-main">
+                    <div class="ticker-info">
+                        <h3>
+                            <img src="https://raw.githubusercontent.com/thefintz/icones-b3/main/icones/${etf.ticker}.png" 
+                                 class="stock-logo" 
+                                 onerror="this.style.display='none'"
+                                 alt="${etf.ticker}">
+                            ${etf.ticker} 
+                        </h3>
+                        <span>ETF de Renda Variável</span>
+                    </div>
+                    <div class="metrics">
+                        <div class="price">R$ ${etf.price.toFixed(2)}</div>
+                        <div class="yield" style="color:${etf.dy > 0 ? 'var(--success)' : 'var(--text-muted)'}">
+                            DY ${etf.dy > 0 ? etf.dy.toFixed(2) + '%' : 'N/A'}
+                        </div>
+                    </div>
                 </div>
-                <div class="metrics">
-                    <div class="price">${etf.name}</div>
+                <div class="card-details">
+                    <div class="detail-row"><span class="detail-label">Variação (12m):</span><span class="detail-value" style="color:${etf.variation_12m >= 0 ? 'var(--success)' : 'var(--danger)'}">${etf.variation_12m.toFixed(2)}%</span></div>
+                    <div class="detail-row"><span class="detail-label">Val. Mercado:</span><span class="detail-value">R$ ${(etf.market_cap / 1000000).toFixed(0)}M</span></div>
+                    <div id="chart-${etf.ticker}" class="chart-container"></div>
+                    <a href="${getInvestidor10Url({ ticker: etf.ticker, type: 'ETF' })}" target="_blank" class="external-link-btn">
+                        📊 Ver no Investidor 10
+                    </a>
                 </div>
             `;
-                etfContainer.appendChild(card);
-            });
+                    card.addEventListener('click', () => {
+                        const isExpanded = card.classList.toggle('expanded');
+                        card.querySelector('.card-details').classList.toggle('show');
+
+                        if (isExpanded) {
+                            const chartId = `chart-${etf.ticker}`;
+                            const container = document.getElementById(chartId);
+                            if (container && container.children.length === 0) {
+                                new TradingView.MediumWidget({
+                                    "symbols": [[`${etf.ticker}`, `BMFBOVESPA:${etf.ticker}|1D`]],
+                                    "chartOnly": false,
+                                    "width": "100%",
+                                    "height": 300,
+                                    "locale": "br",
+                                    "colorTheme": "dark",
+                                    "autosize": true,
+                                    "showVolume": false,
+                                    "hideDateRanges": false,
+                                    "scalePosition": "right",
+                                    "scaleMode": "Normal",
+                                    "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
+                                    "noTimeScale": false,
+                                    "valuesTracking": "1",
+                                    "changeMode": "price-and-percent",
+                                    "chartType": "area",
+                                    "adjustment": "dividends",
+                                    "container_id": chartId
+                                });
+                            }
+                        }
+                    });
+                    etfContainer.appendChild(card);
+                });
+            }
         });
 
         function renderSnowball(fiis) {
@@ -1486,6 +1546,7 @@
             const ticker = (item.ticker || item.Ticker || '').toLowerCase();
             const type = item.type;
             if (type === 'AGRO') return `https://investidor10.com.br/fiagros/${ticker}/`;
+            if (type === 'ETF') return `https://investidor10.com.br/etfs/${ticker}/`;
             if (ticker && !type) return `https://investidor10.com.br/acoes/${ticker}/`;
             return `https://investidor10.com.br/fiis/${ticker}/`;
         }

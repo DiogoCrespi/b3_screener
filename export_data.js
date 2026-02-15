@@ -63,11 +63,12 @@ async function exportData() {
             agro: finalFiis.filter(f => f.type === 'AGRO').length,
             papel: finalFiis.filter(f => f.type === 'PAPEL').length,
             tijolo: finalFiis.filter(f => f.type === 'TIJOLO').length,
-            multi: finalFiis.filter(f => f.type === 'MULTI').length
+            multi: finalFiis.filter(f => f.type === 'MULTI').length,
+            etfs: etfs.length
         };
 
         console.log('✅ Data exported successfully!');
-        console.log(`📊 Statistics: ${stats.total} Assets (${stats.tijolo} Tijolo, ${stats.papel} Papel, ${stats.agro} Agro, ${stats.infra} Infra, ${stats.multi} Multi)`);
+        console.log(`📊 Statistics: ${stats.total} FIIs, ${stats.etfs} ETFs (${stats.tijolo} Tijolo, ${stats.papel} Papel, ${stats.agro} Agro, ${stats.infra} Infra, ${stats.multi} Multi)`);
 
     } catch (error) {
         console.error('❌ Error exporting data:', error);
