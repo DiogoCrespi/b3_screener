@@ -1,7 +1,7 @@
 window.INVEST_DATA = {
-  "updatedAt": "15/02/2026, 15:35:36",
+  "updatedAt": "16/02/2026, 13:05:59",
   "economy": {
-    "dollar": 5.2179,
+    "dollar": 5.2291,
     "selic": 15
   },
   "stocks": [
@@ -5185,28 +5185,6 @@ window.INVEST_DATA = {
       "external_segment": "Lajes Corporativas"
     },
     {
-      "ticker": "BDIF11",
-      "type": "INFRA",
-      "segment": "Infraestrutura",
-      "mandate": null,
-      "price": 76.32,
-      "dy": 13.3,
-      "p_vp": 0.91,
-      "liquidity": 3650000,
-      "last_dividend": 0.8,
-      "vacancy": 0,
-      "score": 10,
-      "strategies": [
-        "SAFE_INCOME"
-      ],
-      "magicNumber": 91,
-      "magicCost": 6945.119999999999,
-      "selic": 15,
-      "num_properties": 0,
-      "market_cap": 500000000,
-      "external_segment": "Fundo de Infraestrutura (FI-Infra)"
-    },
-    {
       "ticker": "BODB11",
       "type": "INFRA",
       "segment": "Infraestrutura",
@@ -5274,6 +5252,28 @@ window.INVEST_DATA = {
       "magicCost": 862.08,
       "last_dividend": 0.08,
       "external_segment": "Logístico / Indústria / Galpões"
+    },
+    {
+      "ticker": "BDIF11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": null,
+      "price": 76.32,
+      "dy": 12.12,
+      "p_vp": 0.91,
+      "liquidity": 3650000,
+      "last_dividend": 0.8,
+      "vacancy": 0,
+      "score": 10,
+      "strategies": [
+        "SAFE_INCOME"
+      ],
+      "magicNumber": 100,
+      "magicCost": 7631.999999999999,
+      "selic": 15,
+      "num_properties": 0,
+      "market_cap": 500000000,
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)"
     },
     {
       "ticker": "KDIF11",
