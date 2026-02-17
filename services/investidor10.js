@@ -140,18 +140,33 @@ async function getMultipleFiiMetadata(tickers, delayMs = 200) {
     const results = {};
     console.log(`📡 Fetching metadata for ${tickers.length} assets...`);
 
-    for (let i = 0; i < tickers.length; i++) {
-        const ticker = tickers[i];
-        if (i % 10 === 0 && i > 0) {
-            console.log(`   Progress: ${i}/${tickers.length}...`);
-        }
+    const CONCURRENCY_LIMIT = 5;
+    const queue = [...tickers];
+    const total = tickers.length;
+    let completed = 0;
 
-        results[ticker] = await getFiiMetadata(ticker);
+    const worker = async () => {
+        while (queue.length > 0) {
+            const ticker = queue.shift();
+            results[ticker] = await getFiiMetadata(ticker);
 
-        if (delayMs > 0 && i < tickers.length - 1) {
-            await new Promise(resolve => setTimeout(resolve, delayMs));
+            completed++;
+            if (completed % 10 === 0 || completed === total) {
+                console.log(`   Progress: ${completed}/${total}...`);
+            }
+
+            if (queue.length > 0 && delayMs > 0) {
+                await new Promise(resolve => setTimeout(resolve, delayMs));
+            }
         }
+    };
+
+    const workers = [];
+    for (let i = 0; i < Math.min(CONCURRENCY_LIMIT, tickers.length); i++) {
+        workers.push(worker());
     }
+
+    await Promise.all(workers);
 
     return results;
 }
