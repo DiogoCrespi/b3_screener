@@ -2,6 +2,7 @@
 // services/stocks.js
 const FundamentusStockAdapter = require('./adapters/fundamentus-stock-adapter');
 const { analyzeStock } = require('./logic/stock-rules');
+const { getSelicRate } = require('./economy');
 
 async function getBestStocks(selicParam = null) {
     let rawStocks = [];
@@ -34,11 +35,10 @@ async function getBestStocks(selicParam = null) {
         // 2. Get Context (Selic)
         let selic = selicParam;
         if (!selic) {
-            try {
-                const axios = require('axios');
-                const selicResponse = await axios.get('https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados/ultimos/1?formato=json');
-                selic = parseFloat(selicResponse.data[0]?.valor || 12.75);
-            } catch (e) {
+            const fetchedSelic = await getSelicRate();
+            if (fetchedSelic !== null) {
+                selic = fetchedSelic;
+            } else {
                 console.warn('⚠️  Could not fetch Selic, using default 12.75%.');
                 selic = 12.75;
             }
