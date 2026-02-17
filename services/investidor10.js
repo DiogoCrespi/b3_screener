@@ -2,11 +2,6 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 
 /**
- * Fetches metadata for a FII from Investidor10
- * @param {string} ticker - FII ticker (e.g., 'RZAG11')
- * @returns {Promise<Object>} - Metadata object
- */
-/**
  * Fetches metadata and full data for a FII/Fiagro/Infra from Investidor10
  * @param {string} ticker - FII ticker (e.g., 'RZAG11')
  * @returns {Promise<Object>} - Metadata object with optional full data
