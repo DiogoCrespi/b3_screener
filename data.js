@@ -1,7 +1,7 @@
 window.INVEST_DATA = {
-  "updatedAt": "16/02/2026, 13:05:59",
+  "updatedAt": "17/02/2026, 13:05:53",
   "economy": {
-    "dollar": 5.2291,
+    "dollar": 5.2222,
     "selic": 15
   },
   "stocks": [
@@ -8499,7 +8499,7 @@ window.INVEST_DATA = {
       "variation_12m": 0,
       "liquidity": 1522282,
       "high_52w": 30.14,
-      "low_52w": 17.22
+      "low_52w": 17.34
     },
     {
       "ticker": "XINA11",
@@ -8538,7 +8538,7 @@ window.INVEST_DATA = {
       "market_cap": 0,
       "variation_12m": 0,
       "liquidity": 44921,
-      "high_52w": 121.49,
+      "high_52w": 121.36,
       "low_52w": 98.77
     },
     {
@@ -8639,7 +8639,7 @@ window.INVEST_DATA = {
       "variation_12m": 0,
       "liquidity": 87682,
       "high_52w": 103.8,
-      "low_52w": 93
+      "low_52w": 93.39
     },
     {
       "ticker": "LFTB11",
@@ -8719,7 +8719,7 @@ window.INVEST_DATA = {
       "variation_12m": 0,
       "liquidity": 143145,
       "high_52w": 148.05,
-      "low_52w": 129.37
+      "low_52w": 129.47
     },
     {
       "ticker": "IMAB11",
