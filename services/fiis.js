@@ -179,6 +179,7 @@ async function getBestFIIs(externalMetadata = {}, baseList = null, selicParam = 
                 const rationalYield = Math.min(f.dy, 14); // Teto de 14% para cálculo
                 if (rationalYield > 10) score += 2;
                 else if (rationalYield > 8) score += 1;
+                else if (isTijolo && rationalYield >= MIN_BRICK_DY) score += 0.5; // Small bump for meeting min brick yield
 
                 // --- 3. LIQUIDEZ (A Correção do "Caso GRUL11") ---
                 // Aqui é onde matamos o problema.
@@ -214,6 +215,7 @@ async function getBestFIIs(externalMetadata = {}, baseList = null, selicParam = 
                 // Estratégias Específicas
                 if (isTijolo && f.p_vp < 0.90 && patrimonio > 1000000000) strategies.push('TIJOLO_VALUE');
                 if (isPapel && f.dy > 11 && f.p_vp >= 0.95) strategies.push('PAPEL_CARRY');
+
 
                 score = Math.max(0, Math.min(10, score));
 
