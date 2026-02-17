@@ -477,6 +477,101 @@
             background: var(--card-hover);
             color: var(--primary);
         }
+
+        /* Search Styles */
+        .search-container {
+            position: absolute;
+            top: 120%;
+            right: 0;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+            display: none;
+            align-items: center;
+            gap: 8px;
+            z-index: 2000;
+            width: 320px;
+        }
+
+        .search-container.show {
+            display: flex;
+        }
+
+        .search-input {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 8px 12px;
+            border-radius: 4px;
+            flex: 1;
+            font-size: 0.9rem;
+            min-width: 0;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .search-count {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            white-space: nowrap;
+            min-width: 45px;
+            text-align: center;
+        }
+
+        .search-actions {
+            display: flex;
+            gap: 4px;
+        }
+
+        .search-btn {
+            background: none;
+            border: 1px solid transparent;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 6px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        .search-btn:hover {
+            background: var(--card-hover);
+            color: var(--text-color);
+            border-color: var(--border-color);
+        }
+
+        @keyframes highlight-pulse {
+            0% {
+                box-shadow: 0 0 0 0 var(--primary);
+                border-color: var(--primary);
+            }
+
+            50% {
+                box-shadow: 0 0 20px 0px var(--primary-glow);
+                border-color: var(--accent);
+                transform: scale(1.02);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+                border-color: var(--primary);
+                transform: scale(1);
+            }
+        }
+
+        .card-highlight {
+            animation: highlight-pulse 2s ease-in-out infinite;
+            z-index: 10;
+            position: relative;
+        }
     </style>
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
 </head>
@@ -489,6 +584,19 @@
             <div class="last-update" id="lastUpdate">Atualizando...</div>
         </div>
         <div class="header-actions">
+            <div style="position: relative;">
+                <button class="btn-icon" onclick="toggleSearch()" title="Pesquisar">🔍</button>
+                <div class="search-container" id="searchContainer">
+                    <input type="text" class="search-input" id="searchInput" placeholder="Buscar (ex: PETR4, Tesouro)...">
+                    <span class="search-count" id="searchCount"></span>
+                    <div class="search-actions">
+                        <button class="search-btn" onclick="navigateSearch(-1)" title="Anterior">⬆️</button>
+                        <button class="search-btn" onclick="navigateSearch(1)" title="Próximo">⬇️</button>
+                        <button class="search-btn" onclick="toggleSearch()" title="Fechar">❌</button>
+                    </div>
+                </div>
+            </div>
+
             <div class="download-menu" id="downloadMenu">
                 <button class="btn-icon" onclick="toggleDownloadMenu()" title="Baixar CSV">📥</button>
                 <div class="download-options" id="downloadOptions">
@@ -547,6 +655,93 @@
 
 
     <script>
+        // --- Search Functionality ---
+        let searchResults = [];
+        let currentMatchIndex = 0;
+
+        function toggleSearch() {
+            const container = document.getElementById('searchContainer');
+            container.classList.toggle('show');
+            if (container.classList.contains('show')) {
+                document.getElementById('searchInput').focus();
+            }
+        }
+
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase().trim();
+
+            // Remove previous highlights
+            document.querySelectorAll('.card-highlight').forEach(el => el.classList.remove('card-highlight'));
+
+            if (term.length < 2) {
+                searchResults = [];
+                updateSearchUI();
+                return;
+            }
+
+            // Find all searchable items across all tabs
+            // We query the DOM directly to respect what's actually rendered
+            const allItems = Array.from(document.querySelectorAll('[data-search-term]'));
+
+            searchResults = allItems.filter(item => {
+                const searchData = item.dataset.searchTerm;
+                return searchData.includes(term);
+            });
+
+            currentMatchIndex = 0;
+            updateSearchUI();
+            if (searchResults.length > 0) {
+                highlightCurrentMatch();
+            }
+        });
+
+        function updateSearchUI() {
+            const countEl = document.getElementById('searchCount');
+            if (searchResults.length === 0) {
+                countEl.textContent = '0/0';
+            } else {
+                countEl.textContent = `${currentMatchIndex + 1}/${searchResults.length}`;
+            }
+        }
+
+        function navigateSearch(direction) {
+            if (searchResults.length === 0) return;
+
+            currentMatchIndex += direction;
+            if (currentMatchIndex >= searchResults.length) currentMatchIndex = 0;
+            if (currentMatchIndex < 0) currentMatchIndex = searchResults.length - 1;
+
+            updateSearchUI();
+            highlightCurrentMatch();
+        }
+
+        function highlightCurrentMatch() {
+            // Remove previous highlights
+            document.querySelectorAll('.card-highlight').forEach(el => el.classList.remove('card-highlight'));
+
+            const element = searchResults[currentMatchIndex];
+            if (!element) return;
+
+            // 1. Ensure Tab is visible
+            const parentList = element.closest('.list-container');
+            if (parentList) {
+                const listId = parentList.id;
+                // id is like "content-stocks", "content-fiis"
+                // showTab expects "stocks", "fiis"
+                const tabName = listId.replace('content-', '');
+                showTab(tabName);
+            }
+
+            // 2. Ensure Element is visible (if hidden by filters)
+            if (window.getComputedStyle(element).display === 'none') {
+                element.style.display = 'block';
+            }
+
+            // 3. Scroll and Highlight
+            element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            element.classList.add('card-highlight');
+        }
+
         // Theme Logic
         const themeBtn = document.getElementById('themeBtn');
         const savedTheme = localStorage.getItem('theme');
@@ -793,6 +988,7 @@
             function renderStockCard(stock, container, isStar) {
                 const card = document.createElement('div');
                 card.className = 'stock-card high-upside';
+                card.dataset.searchTerm = `${stock.ticker} acao`.toLowerCase();
 
                 // Add attributes for filtering
                 if (!isStar) {
@@ -951,6 +1147,7 @@
                 fiisOfType.forEach(fii => {
                     const card = document.createElement('div');
                     card.className = 'stock-card fii';
+                    card.dataset.searchTerm = `${fii.ticker} ${fii.segment} fii`.toLowerCase();
                     card.dataset.type = type;
                     card.dataset.strategies = fii.strategies ? fii.strategies.join(',') : '';
 
@@ -1069,6 +1266,7 @@
                 data.fixedIncome.private.forEach(bench => {
                     const card = document.createElement('div');
                     card.className = 'stock-card';
+                    card.dataset.searchTerm = `${bench.name} ${bench.type} renda fixa`.toLowerCase();
                     card.style.borderLeftColor = 'var(--warning)';
                     card.innerHTML = `
                     <div class="ticker-info">
@@ -1096,6 +1294,7 @@
                 data.fixedIncome.tesouro.forEach(bond => {
                     const card = document.createElement('div');
                     card.className = 'stock-card';
+                    card.dataset.searchTerm = `${bond.name} tesouro`.toLowerCase();
                     card.style.borderLeftColor = 'var(--text-color)';
                     card.innerHTML = `
                     <div class="ticker-info">
@@ -1120,6 +1319,7 @@
                 data.etfs.forEach(etf => {
                     const card = document.createElement('div');
                     card.className = 'stock-card fii'; // Reuse FII styling for consistency
+                    card.dataset.searchTerm = `${etf.ticker} etf`.toLowerCase();
                     card.style.borderLeftColor = 'var(--accent)';
 
                     card.innerHTML = `
@@ -1279,6 +1479,7 @@
 
                         const card = document.createElement('div');
                         card.className = 'stock-card';
+                        card.dataset.searchTerm = `${fii.ticker} ${fii.segment} fii bola de neve`.toLowerCase();
                         card.style.borderLeftColor = '#FFD700';
                         card.style.borderLeftWidth = '6px';
 
@@ -1433,6 +1634,7 @@
 
                     const card = document.createElement('div');
                     card.className = 'stock-card';
+                    card.dataset.searchTerm = `${fii.ticker} ${fii.segment} fii bola de neve`.toLowerCase();
                     card.style.borderLeftColor = section.color;
 
                     // Highlight AGRO/INFRA
