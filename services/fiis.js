@@ -71,7 +71,6 @@ async function getBestFIIs(externalMetadata = {}, baseList = null, selicParam = 
         return fiis
             .filter(f => f.liquidity > 200000)
             .map(f => {
-                const strategies = [];
                 const meta = externalMetadata[f.ticker] || {};
 
                 // 1. CLASSIFICATION LOGIC
@@ -149,68 +148,72 @@ async function getBestFIIs(externalMetadata = {}, baseList = null, selicParam = 
                     if (segmentNorm.includes('infra')) type = 'INFRA';
                 }
 
-                // 2. STRATEGY RE-CALCULATION
+                // --- 2. STRATEGY RE-CALCULATION & SCORING SYSTEM (NEW LOGIC) ---
+                let score = 0;
+                const strategies = [];
+                let category = 'STANDARD';
+
                 const isAgro = type === 'AGRO';
                 const isInfra = type === 'INFRA';
                 const isMulti = type === 'MULTI';
                 const isTijolo = type === 'TIJOLO';
                 const isPapel = type === 'PAPEL';
 
-                if (isAgro && f.dy > (selic + 0.5) && f.p_vp < 1.15) strategies.push('AGRO_OPPORTUNITY');
-                if (isInfra && f.dy > (selic - 1.5) && f.p_vp < 1.10) strategies.push('INFRA_INCOME'); // Infra usually has lower dy but tax-free
-                if (isMulti && f.p_vp < 0.95 && f.dy > (selic - 2.5)) strategies.push('MULTI_DISCOUNT');
-
-                const maxVacancy = f.p_vp < 0.80 ? 30 : 15;
-                if (isTijolo && f.p_vp < 1.05 && f.p_vp > 0.55 && f.vacancy < maxVacancy && f.dy > 5.5) {
-                    strategies.push('TIJOLO_VALUE');
+                // --- 1. VALUATION (P/VP) ---
+                // Tijolo: Desconto é bom, mas desconto DEMAIS (0.60) é suspeito.
+                if (isTijolo) {
+                    if (f.p_vp >= 0.70 && f.p_vp <= 0.95) score += 2; // Bom ponto de entrada
+                    else if (f.p_vp > 0.95 && f.p_vp <= 1.05) score += 1; // Preço Justo
+                    // Sem pontuação para P/VP < 0.70 (Risco de imóvel ruim)
+                } else {
+                    // Papel: Preço justo é rei. Desconto é risco.
+                    if (f.p_vp >= 0.90 && f.p_vp <= 1.02) score += 2;
+                    else if (f.p_vp < 0.85) {
+                        score -= 3; // PENALIDADE GRAVE: Risco de Calote
+                        strategies.push('DISTRESSED_RISK');
+                    }
                 }
 
-                const maxPaperPVP = f.liquidity > 2000000 ? 1.10 : MAX_PAPER_PVP;
-                if (isPapel && f.dy > (selic - 3) && f.p_vp > 0.82 && f.p_vp <= maxPaperPVP) {
-                    strategies.push('PAPEL_YIELD');
+                // --- 2. YIELD (Dividendo Racional) ---
+                // O GRUL11 ganhou aqui antes. Agora vamos limitar o impacto.
+                const rationalYield = Math.min(f.dy, 14); // Teto de 14% para cálculo
+                if (rationalYield > 10) score += 2;
+                else if (rationalYield > 8) score += 1;
+
+                // --- 3. LIQUIDEZ (A Correção do "Caso GRUL11") ---
+                // Aqui é onde matamos o problema.
+                if (f.liquidity > 4000000) score += 3;      // Liquidez de "Blue Chip"
+                else if (f.liquidity > 1500000) score += 2; // Liquidez Saudável
+                else if (f.liquidity > 800000) score += 1;  // Liquidez Aceitável
+                else if (f.liquidity < 400000) score -= 2;  // PENALIDADE: Porta de saída estreita (Caso GRUL11)
+
+                // --- 4. TAMANHO/ROBUSTEZ (O Proxy de Concentração) ---
+                // Fundos grandes (>1bi) raramente são mono-imóvel.
+                const patrimonio = f.market_cap || 0;
+
+                if (patrimonio > 2000000000) score += 2;      // Gigante (Muito Seguro)
+                else if (patrimonio > 1000000000) score += 1; // Grande (Seguro)
+                else if (patrimonio < 400000000) score -= 1;  // Pequeno (Risco de ser Monativo)
+
+                // --- 5. VACÂNCIA (Tijolo) ---
+                if (isTijolo) {
+                    if (f.vacancy < 3) score += 1;
+                    else if (f.vacancy > 15) score -= 2; // Prédio vazio é custo
                 }
 
-                const safeYield = Math.max(8, selic * 0.6);
-                if (f.p_vp >= 0.80 && f.p_vp <= 1.15 && f.vacancy < 10 && f.dy > safeYield && f.liquidity > 700000) {
-                    strategies.push('SAFE_INCOME');
+                // --- CATEGORIZAÇÃO ---
+                // Para ser STAR, tem que ter LIQUIDEZ. Não basta yield alto.
+                if (score >= 8 && f.liquidity > 1000000 && patrimonio > 1000000000) {
+                    category = 'STAR'; // O melhor dos mundos (BBIG11 entraria aqui)
+                } else if (score >= 6) {
+                    category = 'OPPORTUNITY'; // GRUL11 cairia para cá ou abaixo
+                } else {
+                    category = 'STANDARD';
                 }
 
-                // 3. SCORING SYSTEM (RE-CALCULATED WITH CORRECT TYPE)
-                // 3. SCORING SYSTEM (RE-CALCULATED WITH CORRECT TYPE)
-                let score = 0;
-                if (f.p_vp >= 0.85 && f.p_vp <= 1.05) score += 2;
-                else if (f.p_vp < 0.85 && isTijolo && f.p_vp > 0.60) score += 1;
-
-                if (isTijolo && f.cap_rate > GOOD_CAP_RATE) score += 2;
-                if (isTijolo && f.cap_rate > 6 && f.cap_rate <= GOOD_CAP_RATE) score += 1;
-
-                const effectiveYield = (isTijolo && f.ffo_yield > 0) ? f.ffo_yield : f.dy;
-                // Infra and Agro get a small bonus for tax exemption (since we don't calculate tax-equivalent yield here)
-                const taxBonus = (isInfra || isAgro) ? 1.5 : 0;
-
-                // DY Capping for Score
-                let effectiveDyForScore = effectiveYield;
-                if (effectiveDyForScore > 16) {
-                    effectiveDyForScore = 16;
-                    strategies.push('HIGH_VOLATILITY');
-                }
-
-                const comparisonYield = effectiveDyForScore + taxBonus;
-
-                if (comparisonYield > MIN_PAPER_DY) score += 4;
-                else if (comparisonYield > 10) score += 3;
-                else if (comparisonYield > 8) score += 2;
-                else if (comparisonYield > 6) score += 1;
-
-                if (f.vacancy < 5) score += 2;
-                else if (f.vacancy < 15) score += 1;
-
-                if (f.liquidity > 1000000) score += 2;
-                else if (f.liquidity > 400000) score += 1;
-
-                if (isPapel && f.p_vp < 0.85) score -= 3; // Penalize Paper below 0.85 (High Risk)
-                if (f.vacancy > 25) score -= 2;
-                if (f.dy < 0.1) score -= 5;
+                // Estratégias Específicas
+                if (isTijolo && f.p_vp < 0.90 && patrimonio > 1000000000) strategies.push('TIJOLO_VALUE');
+                if (isPapel && f.dy > 11 && f.p_vp >= 0.95) strategies.push('PAPEL_CARRY');
 
                 score = Math.max(0, Math.min(10, score));
 
@@ -219,7 +222,7 @@ async function getBestFIIs(externalMetadata = {}, baseList = null, selicParam = 
                 const magicCost = magicNumber * f.price;
 
                 return {
-                    ...f, strategies, type, score, selic, magicNumber, magicCost,
+                    ...f, strategies, type, score, selic, magicNumber, magicCost, category,
                     last_dividend: meta.last_dividend || null,
                     external_segment: meta.segment || null
                 };
