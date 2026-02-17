@@ -2,6 +2,7 @@ const { getBestStocks } = require('./services/stocks');
 const { getBestFIIs } = require('./services/fiis');
 const { getMultipleFiiMetadata } = require('./services/investidor10');
 const { getFIInfra } = require('./services/fi_infra');
+const { saveHistory } = require('./services/storage');
 
 class Screener {
     constructor() {
@@ -150,7 +151,6 @@ class Screener {
         console.log(`✅ Filtered down to: ${results.length} items.`);
 
         if (this.config.shouldSave) {
-            const { saveHistory } = require('./services/storage');
             saveHistory(results, this.config.assetType, this.config.economy);
         }
 
