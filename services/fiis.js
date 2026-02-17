@@ -1,5 +1,6 @@
 const cheerio = require('cheerio');
 const { getFiiMetadata } = require('./investidor10');
+const { NEVER_INFRA, KNOWN_FIAGROS, KNOWN_INFRAS } = require('./config/fii_lists');
 
 const FII_URL = 'https://www.fundamentus.com.br/fii_resultado.php';
 
@@ -48,8 +49,6 @@ async function getBestFIIs(externalMetadata = {}, baseList = null, selicParam = 
 
 
             // Dynamic discovery is now handled primarily by export_data.js calling getFIInfra()
-            // Here we only keep a few core extras if needed, or just skip
-            const EXTRA_TICKERS = [];
         }
 
         let selic = selicParam;
@@ -88,7 +87,6 @@ async function getBestFIIs(externalMetadata = {}, baseList = null, selicParam = 
                 let type = f.type || 'OUTROS';
 
                 // Defensive check: Well-known non-infra tickers should never be tagged as INFRA
-                const NEVER_INFRA = ['MXRF11', 'HGLG11', 'KNRI11', 'XPLG11', 'VISC11', 'VINO11', 'BCFF11', 'XPML11', 'BTLG11', 'TRXF11', 'KNCR11', 'RECR11'];
                 if (NEVER_INFRA.includes(f.ticker)) {
                     if (type === 'OUTROS' || type === 'INFRA') type = 'MULTI';
                 }
@@ -142,8 +140,6 @@ async function getBestFIIs(externalMetadata = {}, baseList = null, selicParam = 
                 }
 
                 // Explicitly check for known Fiagros/Infras if still "OUTROS"
-                const KNOWN_FIAGROS = ['SNAG11', 'KNCA11', 'VGIA11', 'RURA11', 'FGAA11', 'RZAG11', 'OIAG11', 'AGRX11', 'NCRA11', 'XPCA11', 'BTRA11'];
-                const KNOWN_INFRAS = ['BDIF11', 'JURO11', 'KDIF11', 'CPTI11', 'VIGT11', 'BIDB11', 'CDII11', 'IFRA11', 'IFRI11', 'BINC11', 'BODB11', 'JMBI11'];
                 if (type === 'OUTROS' || type === 'MULTI') {
                     if (KNOWN_FIAGROS.includes(f.ticker)) type = 'AGRO';
                     if (KNOWN_INFRAS.includes(f.ticker)) type = 'INFRA';

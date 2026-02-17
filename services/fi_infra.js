@@ -1,6 +1,7 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 const { getFiiMetadata } = require('./investidor10');
+const { KNOWN_INFRAS } = require('./config/fii_lists');
 
 /**
  * FI-Infra Service
@@ -48,7 +49,7 @@ async function getFIInfra(selicParam = null) {
     } catch (err) {
         console.error('❌ Error discovering FI-Infra tickers:', err.message);
         // Minimal fallback list if scraping fails completely
-        tickers = ["CDII11", "KDIF11", "JURO11", "IFRA11", "BDIF11", "CPTI11", "IFRI11", "BODB11", "BINC11", "JMBI11", "XPID11"];
+        tickers = KNOWN_INFRAS;
     }
 
     // Fetch details for each ticker
