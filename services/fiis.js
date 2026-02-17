@@ -1,5 +1,6 @@
 const cheerio = require('cheerio');
 const { getFiiMetadata } = require('./investidor10');
+const { getSelicRate } = require('./economy');
 const { NEVER_INFRA, KNOWN_FIAGROS, KNOWN_INFRAS } = require('./config/fii_lists');
 
 const FII_URL = 'https://www.fundamentus.com.br/fii_resultado.php';
@@ -53,15 +54,12 @@ async function getBestFIIs(externalMetadata = {}, baseList = null, selicParam = 
 
         let selic = selicParam;
         if (!selic) {
-            selic = 12.75;
-            try {
-                const selicResponse = await fetch('https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados/ultimos/1?formato=json');
-                if (selicResponse.ok) {
-                    const selicData = await selicResponse.json();
-                    selic = parseFloat(selicData[0]?.valor || 12.75);
-                }
-            } catch (e) {
+            const fetchedSelic = await getSelicRate();
+            if (fetchedSelic !== null && !isNaN(fetchedSelic)) {
+                selic = fetchedSelic;
+            } else {
                 console.warn('⚠️  Could not fetch Selic for FIIs, using default 12.75%.');
+                selic = 12.75;
             }
         }
 
