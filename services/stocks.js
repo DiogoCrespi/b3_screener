@@ -1,6 +1,7 @@
 
 // services/stocks.js
 const FundamentusStockAdapter = require('./adapters/fundamentus-stock-adapter');
+const BrapiStockAdapter = require('./adapters/brapi-stock-adapter');
 const { analyzeStock } = require('./logic/stock-rules');
 
 async function getBestStocks(selicParam = null) {
@@ -17,7 +18,6 @@ async function getBestStocks(selicParam = null) {
         console.log('🔄 Switching to Brapi.dev backup...');
 
         try {
-            const BrapiStockAdapter = require('./adapters/brapi-stock-adapter');
             const brapiAdapter = new BrapiStockAdapter();
             rawStocks = await brapiAdapter.getStocks();
             console.log(`✅ Successfully fetched ${rawStocks.length} stocks from Brapi.dev`);
