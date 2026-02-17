@@ -655,6 +655,16 @@
 
 
     <script>
+        function escapeHTML(str) {
+            if (typeof str !== 'string') return str;
+            return str
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
         // --- Search Functionality ---
         let searchResults = [];
         let currentMatchIndex = 0;
@@ -988,59 +998,59 @@
             function renderStockCard(stock, container, isStar) {
                 const card = document.createElement('div');
                 card.className = 'stock-card high-upside';
-                card.dataset.searchTerm = `${stock.ticker} acao`.toLowerCase();
+                card.dataset.searchTerm = `${escapeHTML(stock.ticker)} acao`.toLowerCase();
 
                 // Add attributes for filtering
                 if (!isStar) {
                     card.dataset.type = 'opportunity';
                     // stock.strategies is an array, join it for the attribute
-                    card.dataset.strategies = stock.strategies ? stock.strategies.join(',') : '';
+                    card.dataset.strategies = stock.strategies ? escapeHTML(stock.strategies.join(',')) : '';
                 }
 
                 if (isStar) card.style.borderLeftColor = '#FFD700'; // Gold border for stars
 
                 const badge = isStar
-                    ? `<span class="badge" style="background:#FFD700; color:black">⭐ ${stock.score}/12</span>`
-                    : `<span class="badge" style="background:var(--card-hover); color:var(--text-muted)">${stock.score}/12</span>`;
+                    ? `<span class="badge" style="background:#FFD700; color:black">⭐ ${escapeHTML(String(stock.score))}/12</span>`
+                    : `<span class="badge" style="background:var(--card-hover); color:var(--text-muted)">${escapeHTML(String(stock.score))}/12</span>`;
 
                 card.innerHTML = `
                 <div class="card-main">
                     <div class="ticker-info">
                         <h3>
-                            <img src="https://raw.githubusercontent.com/thefintz/icones-b3/main/icones/${stock.ticker}.png" 
+                            <img src="https://raw.githubusercontent.com/thefintz/icones-b3/main/icones/${escapeHTML(stock.ticker)}.png"
                                  class="stock-logo" 
                                  onerror="this.style.display='none'"
-                                 alt="${stock.ticker}">
-                            ${stock.ticker} 
+                                 alt="${escapeHTML(stock.ticker)}">
+                            ${escapeHTML(stock.ticker)}
                             ${badge}
                         </h3>
-                        <span>Graham: R$ ${stock.graham_price.toFixed(2)} | Bazin: R$ ${stock.bazin_price.toFixed(2)}</span>
+                        <span>Graham: R$ ${escapeHTML(stock.graham_price.toFixed(2))} | Bazin: R$ ${escapeHTML(stock.bazin_price.toFixed(2))}</span>
 
                     </div>
                     <div class="metrics">
-                        <div class="price">R$ ${stock.cotacao.toFixed(2)}</div>
-                        <div class="yield">DY ${stock.dividend_yield}%</div>
-                        <div style="font-size:0.7rem; color:var(--text-muted)">Upside: +${stock.upside.toFixed(0)}%</div>
+                        <div class="price">R$ ${escapeHTML(stock.cotacao.toFixed(2))}</div>
+                        <div class="yield">DY ${escapeHTML(String(stock.dividend_yield))}%</div>
+                        <div style="font-size:0.7rem; color:var(--text-muted)">Upside: +${escapeHTML(stock.upside.toFixed(0))}%</div>
                     </div>
                 </div>
                 <div class="card-details">
-                    <div class="detail-row"><span class="detail-label">P/L:</span><span class="detail-value">${stock.pl?.toFixed(2) || 'N/A'} ${getTrendArrow(stock.pl, 'pl')}</span></div>
-                    <div class="detail-row"><span class="detail-label">P/VP:</span><span class="detail-value">${stock.p_vp?.toFixed(2) || 'N/A'} ${getTrendArrow(stock.p_vp, 'pvp')}</span></div>
-                    <div class="detail-row"><span class="detail-label">EV/EBIT:</span><span class="detail-value">${stock.ev_ebit?.toFixed(2) || 'N/A'}</span></div>
-                    <div class="detail-row"><span class="detail-label">PSR:</span><span class="detail-value">${stock.psr?.toFixed(2) || 'N/A'}</span></div>
-                    <div class="detail-row"><span class="detail-label">PEG Ratio:</span><span class="detail-value">${(stock.peg_ratio && stock.peg_ratio < 50) ? stock.peg_ratio.toFixed(2) : 'N/A'} ${stock.peg_ratio < 0.5 ? '<span class="arrow-up">🌟 DREAM</span>' : stock.peg_ratio < 1 ? '<span class="arrow-up">✓ OK</span>' : ''}</span></div>
-                    <div class="detail-row"><span class="detail-label">ROE:</span><span class="detail-value">${stock.roe?.toFixed(2) || 'N/A'}% ${getTrendArrow(stock.roe, 'roe')}</span></div>
-                    <div class="detail-row"><span class="detail-label">ROIC:</span><span class="detail-value">${stock.roic?.toFixed(2) || 'N/A'}% ${getTrendArrow(stock.roic, 'roe')}</span></div>
-                    <div class="detail-row"><span class="detail-label">M. Líquida:</span><span class="detail-value">${stock.mrg_liq?.toFixed(1) || 'N/A'}% ${getTrendArrow(stock.mrg_liq, 'roe')}</span></div>
-                    <div class="detail-row"><span class="detail-label">Liquidez (2m):</span><span class="detail-value">R$ ${(stock.liq_2meses / 1000000).toFixed(1)}M ${getTrendArrow(stock.liq_2meses, 'liq')}</span></div>
-                    <div class="detail-row"><span class="detail-label">Dív/Patrim:</span><span class="detail-value">${stock.div_br_patrim?.toFixed(2) || 'N/A'} ${getTrendArrow(stock.div_br_patrim, 'div_patrim')}</span></div>
-                    <div class="detail-row"><span class="detail-label">Cresc. 5a:</span><span class="detail-value">${stock.cresc_5a?.toFixed(2) || 'N/A'}% ${getTrendArrow(stock.cresc_5a, 'cresc')}</span></div>
-                    <div class="detail-row"><span class="detail-label">Preço Teto (Bazin):</span><span class="detail-value">R$ ${stock.bazin_price?.toFixed(2) || 'N/A'}</span></div>
-                    <div class="detail-row"><span class="detail-label">Dividend Yield:</span><span class="detail-value">${stock.dividend_yield?.toFixed(2) || 'N/A'}% ${getTrendArrow(stock.dividend_yield, 'dy')}</span></div>
-                    <div class="detail-row"><span class="detail-label">Payout:</span><span class="detail-value">${stock.payout ? stock.payout.toFixed(1) + '%' : 'N/A'} ${stock.payout > 100 ? '<span class="arrow-down">🚨</span>' : stock.payout > 80 ? '<span class="arrow-down">⚠️</span>' : stock.payout >= 30 && stock.payout <= 60 ? '<span class="arrow-up">✓</span>' : ''}</span></div>
-                    <div class="detail-row"><span class="detail-label">Graham Price:</span><span class="detail-value">R$ ${stock.graham_price?.toFixed(2) || 'N/A'}</span></div>
+                    <div class="detail-row"><span class="detail-label">P/L:</span><span class="detail-value">${escapeHTML(stock.pl?.toFixed(2) || 'N/A')} ${getTrendArrow(stock.pl, 'pl')}</span></div>
+                    <div class="detail-row"><span class="detail-label">P/VP:</span><span class="detail-value">${escapeHTML(stock.p_vp?.toFixed(2) || 'N/A')} ${getTrendArrow(stock.p_vp, 'pvp')}</span></div>
+                    <div class="detail-row"><span class="detail-label">EV/EBIT:</span><span class="detail-value">${escapeHTML(stock.ev_ebit?.toFixed(2) || 'N/A')}</span></div>
+                    <div class="detail-row"><span class="detail-label">PSR:</span><span class="detail-value">${escapeHTML(stock.psr?.toFixed(2) || 'N/A')}</span></div>
+                    <div class="detail-row"><span class="detail-label">PEG Ratio:</span><span class="detail-value">${escapeHTML((stock.peg_ratio && stock.peg_ratio < 50) ? stock.peg_ratio.toFixed(2) : 'N/A')} ${stock.peg_ratio < 0.5 ? '<span class="arrow-up">🌟 DREAM</span>' : stock.peg_ratio < 1 ? '<span class="arrow-up">✓ OK</span>' : ''}</span></div>
+                    <div class="detail-row"><span class="detail-label">ROE:</span><span class="detail-value">${escapeHTML(stock.roe?.toFixed(2) || 'N/A')}% ${getTrendArrow(stock.roe, 'roe')}</span></div>
+                    <div class="detail-row"><span class="detail-label">ROIC:</span><span class="detail-value">${escapeHTML(stock.roic?.toFixed(2) || 'N/A')}% ${getTrendArrow(stock.roic, 'roe')}</span></div>
+                    <div class="detail-row"><span class="detail-label">M. Líquida:</span><span class="detail-value">${escapeHTML(stock.mrg_liq?.toFixed(1) || 'N/A')}% ${getTrendArrow(stock.mrg_liq, 'roe')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Liquidez (2m):</span><span class="detail-value">R$ ${escapeHTML((stock.liq_2meses / 1000000).toFixed(1))}M ${getTrendArrow(stock.liq_2meses, 'liq')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Dív/Patrim:</span><span class="detail-value">${escapeHTML(stock.div_br_patrim?.toFixed(2) || 'N/A')} ${getTrendArrow(stock.div_br_patrim, 'div_patrim')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Cresc. 5a:</span><span class="detail-value">${escapeHTML(stock.cresc_5a?.toFixed(2) || 'N/A')}% ${getTrendArrow(stock.cresc_5a, 'cresc')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Preço Teto (Bazin):</span><span class="detail-value">R$ ${escapeHTML(stock.bazin_price?.toFixed(2) || 'N/A')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Dividend Yield:</span><span class="detail-value">${escapeHTML(stock.dividend_yield?.toFixed(2) || 'N/A')}% ${getTrendArrow(stock.dividend_yield, 'dy')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Payout:</span><span class="detail-value">${escapeHTML(stock.payout ? stock.payout.toFixed(1) + '%' : 'N/A')} ${stock.payout > 100 ? '<span class="arrow-down">🚨</span>' : stock.payout > 80 ? '<span class="arrow-down">⚠️</span>' : stock.payout >= 30 && stock.payout <= 60 ? '<span class="arrow-up">✓</span>' : ''}</span></div>
+                    <div class="detail-row"><span class="detail-label">Graham Price:</span><span class="detail-value">R$ ${escapeHTML(stock.graham_price?.toFixed(2) || 'N/A')}</span></div>
 
-                    <div id="chart-${stock.ticker}" class="chart-container"></div>
+                    <div id="chart-${escapeHTML(stock.ticker)}" class="chart-container"></div>
                     <a href="${getInvestidor10Url(stock)}" target="_blank" class="external-link-btn">
                         📊 Ver no Investidor 10
                     </a>
@@ -1165,32 +1175,32 @@
                 <div class="card-main">
                     <div class="ticker-info">
                         <h3>
-                            <img src="https://raw.githubusercontent.com/thefintz/icones-b3/main/icones/${fii.ticker}.png" 
+                            <img src="https://raw.githubusercontent.com/thefintz/icones-b3/main/icones/${escapeHTML(fii.ticker)}.png"
                                  class="stock-logo" 
                                  onerror="this.style.display='none'"
-                                 alt="${fii.ticker}">
-                            ${fii.ticker} 
+                                 alt="${escapeHTML(fii.ticker)}">
+                            ${escapeHTML(fii.ticker)}
                             ${typeBadge}
                             <span class="badge" style="background:${scoreColor}20; color:${scoreColor}; border:1px solid ${scoreColor}">
-                                ⭐ ${fii.score}/10
+                                ⭐ ${escapeHTML(String(fii.score))}/10
                             </span>
                         </h3>
-                        <span>${fii.segment}</span>
+                        <span>${escapeHTML(fii.segment)}</span>
                     </div>
                     <div class="metrics">
-                        <div class="price">R$ ${fii.price.toFixed(2)}</div>
-                        <div class="yield">DY ${fii.dy}%</div>
-                        <div style="font-size:0.7rem; color:var(--text-muted)">P/VP: ${(fii.p_vp || fii.pvp || 0).toFixed(2)}</div>
+                        <div class="price">R$ ${escapeHTML(fii.price.toFixed(2))}</div>
+                        <div class="yield">DY ${escapeHTML(String(fii.dy))}%</div>
+                        <div style="font-size:0.7rem; color:var(--text-muted)">P/VP: ${escapeHTML((fii.p_vp || fii.pvp || 0).toFixed(2))}</div>
                     </div>
                 </div>
                 <div class="card-details">
-                    <div class="detail-row"><span class="detail-label">FFO Yield:</span><span class="detail-value">${fii.ffo_yield || 'N/A'}% ${getTrendArrow(fii.ffo_yield, 'roe')}</span></div>
-                    <div class="detail-row"><span class="detail-label">Cap Rate:</span><span class="detail-value">${fii.cap_rate || 'N/A'}% ${getTrendArrow(fii.cap_rate, 'roe')}</span></div>
-                    <div class="detail-row"><span class="detail-label">Vacância:</span><span class="detail-value">${fii.vacancy}% ${getTrendArrow(fii.vacancy, 'vacancy')}</span></div>
-                    <div class="detail-row"><span class="detail-label">Imóveis:</span><span class="detail-value">${fii.num_properties || 'N/A'} ${getTrendArrow(fii.num_properties, 'cresc')}</span></div>
-                    <div class="detail-row"><span class="detail-label">Liquidez (2m):</span><span class="detail-value">R$ ${(fii.liquidity / 1000).toFixed(0)}k ${getTrendArrow(fii.liquidity, 'liq-fii')}</span></div>
-                    <div class="detail-row"><span class="detail-label">Val. Mercado:</span><span class="detail-value">R$ ${(fii.market_cap / 1000000).toFixed(0)}M ${getTrendArrow(fii.market_cap, 'mkt-cap')}</span></div>
-                    <div id="chart-${fii.ticker}" class="chart-container"></div>
+                    <div class="detail-row"><span class="detail-label">FFO Yield:</span><span class="detail-value">${escapeHTML(String(fii.ffo_yield || 'N/A'))}% ${getTrendArrow(fii.ffo_yield, 'roe')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Cap Rate:</span><span class="detail-value">${escapeHTML(String(fii.cap_rate || 'N/A'))}% ${getTrendArrow(fii.cap_rate, 'roe')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Vacância:</span><span class="detail-value">${escapeHTML(String(fii.vacancy))}% ${getTrendArrow(fii.vacancy, 'vacancy')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Imóveis:</span><span class="detail-value">${escapeHTML(String(fii.num_properties || 'N/A'))} ${getTrendArrow(fii.num_properties, 'cresc')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Liquidez (2m):</span><span class="detail-value">R$ ${escapeHTML((fii.liquidity / 1000).toFixed(0))}k ${getTrendArrow(fii.liquidity, 'liq-fii')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Val. Mercado:</span><span class="detail-value">R$ ${escapeHTML((fii.market_cap / 1000000).toFixed(0))}M ${getTrendArrow(fii.market_cap, 'mkt-cap')}</span></div>
+                    <div id="chart-${escapeHTML(fii.ticker)}" class="chart-container"></div>
                     <a href="${getInvestidor10Url(fii)}" target="_blank" class="external-link-btn">
                         📊 Ver no Investidor 10
                     </a>
@@ -1201,7 +1211,7 @@
                         card.querySelector('.card-details').classList.toggle('show');
 
                         if (isExpanded) {
-                            const chartId = `chart-${fii.ticker}`;
+                            const chartId = `chart-${escapeHTML(fii.ticker)}`;
                             const container = document.getElementById(chartId);
                             if (container && container.children.length === 0) {
                                 new TradingView.MediumWidget({
@@ -1266,15 +1276,15 @@
                 data.fixedIncome.private.forEach(bench => {
                     const card = document.createElement('div');
                     card.className = 'stock-card';
-                    card.dataset.searchTerm = `${bench.name} ${bench.type} renda fixa`.toLowerCase();
+                    card.dataset.searchTerm = `${escapeHTML(bench.name)} ${escapeHTML(bench.type)} renda fixa`.toLowerCase();
                     card.style.borderLeftColor = 'var(--warning)';
                     card.innerHTML = `
                     <div class="ticker-info">
-                        <h3>${bench.name}</h3>
-                        <span>${bench.type}</span>
+                        <h3>${escapeHTML(bench.name)}</h3>
+                        <span>${escapeHTML(bench.type)}</span>
                     </div>
                     <div class="metrics">
-                        <div class="price" style="color:var(--success)">${bench.rate}</div>
+                        <div class="price" style="color:var(--success)">${escapeHTML(bench.rate)}</div>
                     </div>
                 `;
                     fixedContainer.appendChild(card);
@@ -1294,16 +1304,16 @@
                 data.fixedIncome.tesouro.forEach(bond => {
                     const card = document.createElement('div');
                     card.className = 'stock-card';
-                    card.dataset.searchTerm = `${bond.name} tesouro`.toLowerCase();
+                    card.dataset.searchTerm = `${escapeHTML(bond.name)} tesouro`.toLowerCase();
                     card.style.borderLeftColor = 'var(--text-color)';
                     card.innerHTML = `
                     <div class="ticker-info">
-                        <h3>${bond.name}</h3>
-                        <span>Vence: ${bond.maturity}</span>
+                        <h3>${escapeHTML(bond.name)}</h3>
+                        <span>Vence: ${escapeHTML(bond.maturity)}</span>
                     </div>
                     <div class="metrics">
-                        <div class="price">${bond.rate}</div>
-                        <div style="font-size:0.8rem; color:var(--text-muted)">Min: ${bond.minInvest}</div>
+                        <div class="price">${escapeHTML(bond.rate)}</div>
+                        <div style="font-size:0.8rem; color:var(--text-muted)">Min: ${escapeHTML(bond.minInvest)}</div>
                     </div>
                 `;
                     fixedContainer.appendChild(card);
@@ -1326,27 +1336,27 @@
                 <div class="card-main">
                     <div class="ticker-info">
                         <h3>
-                            <img src="https://raw.githubusercontent.com/thefintz/icones-b3/main/icones/${etf.ticker}.png" 
+                            <img src="https://raw.githubusercontent.com/thefintz/icones-b3/main/icones/${escapeHTML(etf.ticker)}.png"
                                  class="stock-logo" 
                                  onerror="this.style.display='none'"
-                                 alt="${etf.ticker}">
-                            ${etf.ticker} 
+                                 alt="${escapeHTML(etf.ticker)}">
+                            ${escapeHTML(etf.ticker)}
                         </h3>
                         <span>ETF de Renda Variável</span>
                     </div>
                     <div class="metrics">
-                        <div class="price">R$ ${etf.price.toFixed(2)}</div>
+                        <div class="price">R$ ${escapeHTML(etf.price.toFixed(2))}</div>
                         <div class="yield" style="color:${etf.dy > 0 ? 'var(--success)' : 'var(--text-muted)'}">
-                            DY ${etf.dy > 0 ? etf.dy.toFixed(2) + '%' : 'N/A'}
+                            DY ${etf.dy > 0 ? escapeHTML(etf.dy.toFixed(2)) + '%' : 'N/A'}
                         </div>
                     </div>
                 </div>
                 <div class="card-details">
-                    <div class="detail-row"><span class="detail-label">Liq. Diária:</span><span class="detail-value">R$ ${(etf.liquidity / 1000000).toFixed(1)}M</span></div>
-                    <div class="detail-row"><span class="detail-label">Variação (12m):</span><span class="detail-value" style="color:${etf.variation_12m >= 0 ? 'var(--success)' : 'var(--danger)'}">${etf.variation_12m.toFixed(2)}%</span></div>
-                    <div class="detail-row"><span class="detail-label">Min 52s:</span><span class="detail-value">R$ ${etf.low_52w.toFixed(2)}</span></div>
-                    <div class="detail-row"><span class="detail-label">Max 52s:</span><span class="detail-value">R$ ${etf.high_52w.toFixed(2)}</span></div>
-                    <div id="chart-${etf.ticker}" class="chart-container"></div>
+                    <div class="detail-row"><span class="detail-label">Liq. Diária:</span><span class="detail-value">R$ ${escapeHTML((etf.liquidity / 1000000).toFixed(1))}M</span></div>
+                    <div class="detail-row"><span class="detail-label">Variação (12m):</span><span class="detail-value" style="color:${etf.variation_12m >= 0 ? 'var(--success)' : 'var(--danger)'}">${escapeHTML(etf.variation_12m.toFixed(2))}%</span></div>
+                    <div class="detail-row"><span class="detail-label">Min 52s:</span><span class="detail-value">R$ ${escapeHTML(etf.low_52w.toFixed(2))}</span></div>
+                    <div class="detail-row"><span class="detail-label">Max 52s:</span><span class="detail-value">R$ ${escapeHTML(etf.high_52w.toFixed(2))}</span></div>
+                    <div id="chart-${escapeHTML(etf.ticker)}" class="chart-container"></div>
                     <a href="${getInvestidor10Url({ ticker: etf.ticker, type: 'ETF' })}" target="_blank" class="external-link-btn">
                         📊 Ver no Investidor 10
                     </a>
@@ -1357,7 +1367,7 @@
                         card.querySelector('.card-details').classList.toggle('show');
 
                         if (isExpanded) {
-                            const chartId = `chart-${etf.ticker}`;
+                            const chartId = `chart-${escapeHTML(etf.ticker)}`;
                             const container = document.getElementById(chartId);
                             if (container && container.children.length === 0) {
                                 new TradingView.MediumWidget({
@@ -1492,57 +1502,57 @@
                                 <div class="ticker-info">
                                     <h3>
                                         <span style="color:#FFD700; font-weight:bold; margin-right:0.5rem">#${index + 1}</span>
-                                        <img src="https://raw.githubusercontent.com/thefintz/icones-b3/main/icones/${fii.ticker}.png" 
+                                        <img src="https://raw.githubusercontent.com/thefintz/icones-b3/main/icones/${escapeHTML(fii.ticker)}.png"
                                             class="stock-logo" 
                                             onerror="this.style.display='none'"
-                                            alt="${fii.ticker}">
-                                        ${fii.ticker} 
-                                        <span class="badge" style="background:#FFD70020; color:#FFD700">⭐ ${fii.score}</span>
+                                            alt="${escapeHTML(fii.ticker)}">
+                                        ${escapeHTML(fii.ticker)}
+                                        <span class="badge" style="background:#FFD70020; color:#FFD700">⭐ ${escapeHTML(String(fii.score))}</span>
                                         ${fii.type === 'TIJOLO' ? '<span class="badge" style="background:#7f7f7f; color:white">🧱 Tijolo</span>' : ''}
                                         ${fii.type === 'PAPEL' ? '<span class="badge" style="background:#3498db; color:white">📄 PAPEL</span>' : ''}
                                         ${fii.type === 'MULTI' ? '<span class="badge" style="background:#9b59b6; color:white">🔄 MULTI</span>' : ''}
                                         ${fii.type === 'AGRO' ? '<span class="badge" style="background:#fba94c; color:black">🌾 AGRO</span>' : ''}
                                         ${fii.type === 'INFRA' ? '<span class="badge" style="background:#00d4ff; color:black">⚡ INFRA</span>' : ''}
                                     </h3>
-                                    <span style="color:var(--accent); font-weight:bold; font-size:1rem;">❄️ Meta: ${magicNumber} cotas</span>
-                                    <span style="font-size:0.75rem">Com ${magicNumber} cotas, o dividendo paga +1 cota</span>
+                                    <span style="color:var(--accent); font-weight:bold; font-size:1rem;">❄️ Meta: ${escapeHTML(String(magicNumber))} cotas</span>
+                                    <span style="font-size:0.75rem">Com ${escapeHTML(String(magicNumber))} cotas, o dividendo paga +1 cota</span>
                                 </div>
                                 <div class="metrics">
-                                    <div class="price">R$ ${fii.price.toFixed(2)}</div>
-                                    <div class="yield">DY ${fii.dy}%</div>
-                                    <div style="font-size:0.7rem; color:var(--text-muted)">~R$ ${monthlyDiv.toFixed(2)} /cota</div>
+                                    <div class="price">R$ ${escapeHTML(fii.price.toFixed(2))}</div>
+                                    <div class="yield">DY ${escapeHTML(String(fii.dy))}%</div>
+                                    <div style="font-size:0.7rem; color:var(--text-muted)">~R$ ${escapeHTML(monthlyDiv.toFixed(2))} /cota</div>
                                 </div>
                             </div>
                             <div class="card-details">
                                 <div class="detail-row">
                                     <span class="detail-label">Investimento Total (Meta):</span>
-                                    <span class="detail-value" style="color:var(--warning)">R$ ${totalInvest.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span>
+                                    <span class="detail-value" style="color:var(--warning)">R$ ${escapeHTML(totalInvest.toLocaleString('pt-BR', { minimumFractionDigits: 2 }))}</span>
                                 </div>
                                 <div class="detail-row">
                                     <span class="detail-label">Último Rendimento:</span>
-                                    <span class="detail-value" style="color:var(--success)">${fii.last_dividend ? `R$ ${fii.last_dividend.toFixed(2)}` : 'N/A'}</span>
+                                    <span class="detail-value" style="color:var(--success)">${fii.last_dividend ? `R$ ${escapeHTML(fii.last_dividend.toFixed(2))}` : 'N/A'}</span>
                                 </div>
                                 <div class="detail-row">
                                     <span class="detail-label">Renda Mensal na Meta:</span>
-                                    <span class="detail-value" style="color:var(--success)">R$ ${totalMonthly.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span>
+                                    <span class="detail-value" style="color:var(--success)">R$ ${escapeHTML(totalMonthly.toLocaleString('pt-BR', { minimumFractionDigits: 2 }))}</span>
                                 </div>
                                 <div class="detail-row">
                                     <span class="detail-label">Renda Anual na Meta:</span>
-                                    <span class="detail-value">R$ ${(totalMonthly * 12).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span>
+                                    <span class="detail-value">R$ ${escapeHTML((totalMonthly * 12).toLocaleString('pt-BR', { minimumFractionDigits: 2 }))}</span>
                                 </div>
                                 <div class="detail-row">
                                     <span class="detail-label">Liquidez Diária:</span>
-                                    <span class="detail-value" style="color:var(--accent)">${formatLiquidity(fii.liquidity)}</span>
+                                    <span class="detail-value" style="color:var(--accent)">${escapeHTML(formatLiquidity(fii.liquidity))}</span>
                                 </div>
                                 <div class="detail-row">
                                     <span class="detail-label">Segmento:</span>
-                                    <span class="detail-value">${fii.segment}</span>
+                                    <span class="detail-value">${escapeHTML(fii.segment)}</span>
                                 </div>
                                 <div class="detail-row">
                                     <span class="detail-label">P/VP:</span>
-                                    <span class="detail-value">${(fii.p_vp || fii.pvp || 0).toFixed(2)}</span>
+                                    <span class="detail-value">${escapeHTML((fii.p_vp || fii.pvp || 0).toFixed(2))}</span>
                                 </div>
-                                <div id="chart-snow-top-${fii.ticker}" class="chart-container"></div>
+                                <div id="chart-snow-top-${escapeHTML(fii.ticker)}" class="chart-container"></div>
                                 <a href="${getInvestidor10Url(fii)}" target="_blank" class="external-link-btn">
                                     📊 Ver no Investidor 10
                                 </a>
@@ -1554,7 +1564,7 @@
                             card.querySelector('.card-details').classList.toggle('show');
 
                             if (isExpanded) {
-                                const chartId = `chart-snow-top-${fii.ticker}`;
+                                const chartId = `chart-snow-top-${escapeHTML(fii.ticker)}`;
                                 const container = document.getElementById(chartId);
                                 if (container && !container.hasChildNodes()) {
                                     new TradingView.widget({
@@ -1645,57 +1655,57 @@
                         <div class="card-main">
                             <div class="ticker-info">
                                 <h3>
-                                    <img src="https://raw.githubusercontent.com/thefintz/icones-b3/main/icones/${fii.ticker}.png" 
+                                    <img src="https://raw.githubusercontent.com/thefintz/icones-b3/main/icones/${escapeHTML(fii.ticker)}.png"
                                         class="stock-logo" 
                                         onerror="this.style.display='none'"
-                                        alt="${fii.ticker}">
-                                    ${fii.ticker} 
-                                    <span class="badge" style="background:${section.color}20; color:${section.color}">⭐ ${fii.score}</span>
+                                        alt="${escapeHTML(fii.ticker)}">
+                                    ${escapeHTML(fii.ticker)}
+                                    <span class="badge" style="background:${section.color}20; color:${section.color}">⭐ ${escapeHTML(String(fii.score))}</span>
                                     ${fii.type === 'TIJOLO' ? '<span class="badge" style="background:#7f7f7f; color:white">🧱 Tijolo</span>' : ''}
                                     ${fii.type === 'PAPEL' ? '<span class="badge" style="background:#3498db; color:white">📄 Papel</span>' : ''}
                                     ${fii.type === 'MULTI' ? '<span class="badge" style="background:#9b59b6; color:white">🔄 Multi</span>' : ''}
                                     ${fii.type === 'AGRO' ? '<span class="badge" style="background:#fba94c; color:black">🌾 Agro</span>' : ''}
                                     ${fii.type === 'INFRA' ? '<span class="badge" style="background:#00d4ff; color:black">⚡ Infra</span>' : ''}
                                 </h3>
-                                <span style="color:var(--accent); font-weight:bold; font-size:1rem;">❄️ Meta: ${magicNumber} cotas</span>
-                                <span style="font-size:0.75rem">Com ${magicNumber} cotas, o dividendo paga +1 cota</span>
+                                <span style="color:var(--accent); font-weight:bold; font-size:1rem;">❄️ Meta: ${escapeHTML(String(magicNumber))} cotas</span>
+                                <span style="font-size:0.75rem">Com ${escapeHTML(String(magicNumber))} cotas, o dividendo paga +1 cota</span>
                             </div>
                             <div class="metrics">
-                                <div class="price">R$ ${fii.price.toFixed(2)}</div>
-                                <div class="yield">DY ${fii.dy}%</div>
-                                <div style="font-size:0.7rem; color:var(--text-muted)">~R$ ${monthlyDiv.toFixed(2)} /cota</div>
+                                <div class="price">R$ ${escapeHTML(fii.price.toFixed(2))}</div>
+                                <div class="yield">DY ${escapeHTML(String(fii.dy))}%</div>
+                                <div style="font-size:0.7rem; color:var(--text-muted)">~R$ ${escapeHTML(monthlyDiv.toFixed(2))} /cota</div>
                             </div>
                         </div>
                         <div class="card-details">
                             <div class="detail-row">
                                 <span class="detail-label">Investimento Total (Meta):</span>
-                                <span class="detail-value" style="color:var(--warning)">R$ ${totalInvest.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span>
+                                <span class="detail-value" style="color:var(--warning)">R$ ${escapeHTML(totalInvest.toLocaleString('pt-BR', { minimumFractionDigits: 2 }))}</span>
                             </div>
                             <div class="detail-row">
                                 <span class="detail-label">Último Rendimento:</span>
-                                <span class="detail-value" style="color:var(--success)">${fii.last_dividend ? `R$ ${fii.last_dividend.toFixed(2)}` : 'N/A'}</span>
+                                <span class="detail-value" style="color:var(--success)">${fii.last_dividend ? `R$ ${escapeHTML(fii.last_dividend.toFixed(2))}` : 'N/A'}</span>
                             </div>
                             <div class="detail-row">
                                 <span class="detail-label">Renda Mensal na Meta:</span>
-                                <span class="detail-value" style="color:var(--success)">R$ ${totalMonthly.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span>
+                                <span class="detail-value" style="color:var(--success)">R$ ${escapeHTML(totalMonthly.toLocaleString('pt-BR', { minimumFractionDigits: 2 }))}</span>
                             </div>
                             <div class="detail-row">
                                 <span class="detail-label">Renda Anual na Meta:</span>
-                                <span class="detail-value">R$ ${(totalMonthly * 12).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span>
+                                <span class="detail-value">R$ ${escapeHTML((totalMonthly * 12).toLocaleString('pt-BR', { minimumFractionDigits: 2 }))}</span>
                             </div>
                             <div class="detail-row">
                                 <span class="detail-label">Segmento:</span>
-                                <span class="detail-value">${fii.segment}</span>
+                                <span class="detail-value">${escapeHTML(fii.segment)}</span>
                             </div>
                             <div class="detail-row">
                                 <span class="detail-label">P/VP:</span>
-                                <span class="detail-value">${(fii.p_vp || fii.pvp || 0).toFixed(2)}</span>
+                                <span class="detail-value">${escapeHTML((fii.p_vp || fii.pvp || 0).toFixed(2))}</span>
                             </div>
                             <div class="detail-row">
                                 <span class="detail-label">Liquidez Diária:</span>
-                                <span class="detail-value" style="color:var(--accent)">${formatLiquidity(fii.liquidity)}</span>
+                                <span class="detail-value" style="color:var(--accent)">${escapeHTML(formatLiquidity(fii.liquidity))}</span>
                             </div>
-                            <div id="chart-snow-${fii.ticker}" class="chart-container"></div>
+                            <div id="chart-snow-${escapeHTML(fii.ticker)}" class="chart-container"></div>
                             <a href="${getInvestidor10Url(fii)}" target="_blank" class="external-link-btn">
                                 📊 Ver no Investidor 10
                             </a>
@@ -1707,7 +1717,7 @@
                         card.querySelector('.card-details').classList.toggle('show');
 
                         if (isExpanded) {
-                            const chartId = `chart-snow-${fii.ticker}`;
+                            const chartId = `chart-snow-${escapeHTML(fii.ticker)}`;
                             const container = document.getElementById(chartId);
                             if (container && container.children.length === 0) {
                                 new TradingView.MediumWidget({
