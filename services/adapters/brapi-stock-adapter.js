@@ -25,16 +25,30 @@ class BrapiStockAdapter {
 
             // Fetch detailed fundamentals for all stocks
             // Brapi allows batch requests with comma-separated tickers
-            const tickerString = tickers.slice(0, 100).join(','); // Limit to avoid URL length issues
+            const results = [];
+            const BATCH_SIZE = 75; // Limit to avoid URL length issues
 
-            const detailsResponse = await fetch(`${this.baseUrl}/quote/${tickerString}?fundamental=true`);
+            for (let i = 0; i < tickers.length; i += BATCH_SIZE) {
+                const batch = tickers.slice(i, i + BATCH_SIZE);
+                const tickerString = batch.join(',');
 
-            if (!detailsResponse.ok) {
-                throw new Error(`Brapi details error: ${detailsResponse.status}`);
+                try {
+                    const detailsResponse = await fetch(`${this.baseUrl}/quote/${tickerString}?fundamental=true`);
+
+                    if (!detailsResponse.ok) {
+                        console.warn(`Brapi details error for batch starting with ${batch[0]}: ${detailsResponse.status}`);
+                        continue;
+                    }
+
+                    const detailsData = await detailsResponse.json();
+                    if (detailsData.results) {
+                        results.push(...detailsData.results);
+                    }
+                } catch (batchError) {
+                    console.error(`Error fetching batch starting with ${batch[0]}:`, batchError.message);
+                    // Continue with next batch
+                }
             }
-
-            const detailsData = await detailsResponse.json();
-            const results = detailsData.results || [];
 
             // Transform Brapi format to our internal format
             return results.map(stock => this.transformStock(stock)).filter(s => s !== null);
