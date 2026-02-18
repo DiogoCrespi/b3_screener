@@ -226,7 +226,9 @@ async function getBestFIIs(externalMetadata = {}, baseList = null, selicParam = 
                 return {
                     ...f, strategies, type, score, selic, magicNumber, magicCost, category,
                     last_dividend: meta.last_dividend || null,
-                    external_segment: meta.segment || null
+                    external_segment: meta.segment || null,
+                    data_com: meta.data_com || null,
+                    data_pagamento: meta.data_pagamento || null
                 };
             })
             // Filter: Allow more items in the re-classification stage

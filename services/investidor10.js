@@ -2,12 +2,15 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 
 /**
- * Fetches metadata and full data for a FII/Fiagro/Infra from Investidor10
- * @param {string} ticker - FII ticker (e.g., 'RZAG11')
- * @returns {Promise<Object>} - Metadata object with optional full data
+ * Fetches metadata and full data for a FII/Fiagro/Infra/Stock from Investidor10
+ * @param {string} ticker - Asset ticker (e.g., 'RZAG11', 'PETR4')
+ * @returns {Promise<Object>} - Metadata object
  */
-async function getFiiMetadata(ticker) {
-    const paths = [`fiis/${ticker.toLowerCase()}/`, `fiagros/${ticker.toLowerCase()}/`, `fi-infra/${ticker.toLowerCase()}/`];
+async function getAssetMetadata(ticker) {
+    const isStock = !ticker.endsWith('11');
+    const paths = isStock
+        ? [`acoes/${ticker.toLowerCase()}/`]
+        : [`fiis/${ticker.toLowerCase()}/`, `fiagros/${ticker.toLowerCase()}/`, `fi-infra/${ticker.toLowerCase()}/`];
 
     // Common headers to bypass WAF
     const headers = {
@@ -35,7 +38,9 @@ async function getFiiMetadata(ticker) {
                 p_vp: 0,
                 liquidity: 0,
                 last_dividend: 0,
-                vacancy: 0
+                vacancy: 0,
+                data_com: null,
+                data_pagamento: null
             };
 
             const parseVal = (v) => {
@@ -67,28 +72,39 @@ async function getFiiMetadata(ticker) {
                 else if (name === 'MANDATO') metadata.mandate = value;
             });
 
+            // Scrape Dividend Dates from Table
+            const dividendTable = $('table').filter((i, el) => {
+                const text = $(el).text().toUpperCase();
+                return text.includes('DATA COM') && text.includes('PAGAMENTO');
+            }).first();
+
+            if (dividendTable.length > 0) {
+                const firstRow = dividendTable.find('tbody tr').first();
+                const tds = firstRow.find('td');
+
+                // Usually: Type, Data Com, Pagamento, Valor
+                if (tds.length >= 3) {
+                    metadata.data_com = $(tds.get(1)).text().trim();
+                    metadata.data_pagamento = $(tds.get(2)).text().trim();
+                }
+            }
+
             // Fallback for Cards if Metadata is missing or for full data
             const parseCardValue = (label) => {
                 try {
-                    // Try the new structure found in FI-Infra pages (section#cards-ticker)
-                    // Labels are often in ._card-header span
                     let valueText = '';
-
-                    // Specific logic for label matching in new cards
                     const card = $('._card').filter((i, el) => {
                         const headerText = $(el).find('._card-header span').text().trim().toUpperCase();
                         return headerText.includes(label.toUpperCase());
                     });
 
                     if (card.length > 0) {
-                        // For Price, it might be in .value. For others, just in span.
                         const valueEl = card.find('._card-body span.value').length > 0
                             ? card.find('._card-body span.value')
                             : card.find('._card-body span');
                         valueText = valueEl.first().text().trim();
                     }
 
-                    // Fallback to the old .kotacoes structure
                     if (!valueText) {
                         const oldCard = $(`.kotacoes div._card-header span:contains('${label}')`).closest('.kotacoes');
                         valueText = oldCard.find('div._card-body span').text().trim();
@@ -104,34 +120,32 @@ async function getFiiMetadata(ticker) {
             metadata.liquidity = parseCardValue('LIQUIDEZ DIÁRIA');
             metadata.vacancy = parseCardValue('VACÂNCIA');
 
-            // If we found a valid type or price, assume success and return
-            if (metadata.type || metadata.price > 0) {
+            if (metadata.type || metadata.price > 0 || metadata.data_com) {
                 return metadata;
             }
 
         } catch (error) {
-            // Ignore 404/403 and try next path
             if (error.response && error.response.status !== 404 && error.response.status !== 403) {
                 console.warn(`Error fetching ${ticker} on path ${path}: ${error.message}`);
             }
         }
     }
 
-    // Return empty if all failed
     return {
         ticker: ticker.toUpperCase(),
         type: null, segment: null, mandate: null,
-        price: 0, dy: 0, p_vp: 0, liquidity: 0, last_dividend: 0, vacancy: 0
+        price: 0, dy: 0, p_vp: 0, liquidity: 0, last_dividend: 0, vacancy: 0,
+        data_com: null, data_pagamento: null
     };
 }
 
 /**
- * Fetches metadata for multiple FIIs with rate limiting
- * @param {string[]} tickers - Array of FII tickers
+ * Fetches metadata for multiple assets with rate limiting
+ * @param {string[]} tickers - Array of asset tickers
  * @param {number} delayMs - Delay between requests
  * @returns {Promise<Object>} - Object mapping ticker to metadata
  */
-async function getMultipleFiiMetadata(tickers, delayMs = 200) {
+async function getMultipleAssetMetadata(tickers, delayMs = 200) {
     const results = {};
     console.log(`📡 Fetching metadata for ${tickers.length} assets...`);
 
@@ -143,7 +157,7 @@ async function getMultipleFiiMetadata(tickers, delayMs = 200) {
     const worker = async () => {
         while (queue.length > 0) {
             const ticker = queue.shift();
-            results[ticker] = await getFiiMetadata(ticker);
+            results[ticker] = await getAssetMetadata(ticker);
 
             completed++;
             if (completed % 10 === 0 || completed === total) {
@@ -166,4 +180,9 @@ async function getMultipleFiiMetadata(tickers, delayMs = 200) {
     return results;
 }
 
-module.exports = { getFiiMetadata, getMultipleFiiMetadata };
+module.exports = {
+    getAssetMetadata,
+    getFiiMetadata: getAssetMetadata, // Backward compatibility
+    getMultipleFiiMetadata: getMultipleAssetMetadata, // Backward compatibility
+    getMultipleAssetMetadata
+};

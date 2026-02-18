@@ -587,7 +587,8 @@
             <div style="position: relative;">
                 <button class="btn-icon" onclick="toggleSearch()" title="Pesquisar">🔍</button>
                 <div class="search-container" id="searchContainer">
-                    <input type="text" class="search-input" id="searchInput" placeholder="Buscar (ex: PETR4, Tesouro)...">
+                    <input type="text" class="search-input" id="searchInput"
+                        placeholder="Buscar (ex: PETR4, Tesouro)...">
                     <span class="search-count" id="searchCount"></span>
                     <div class="search-actions">
                         <button class="search-btn" onclick="navigateSearch(-1)" title="Anterior">⬆️</button>
@@ -791,9 +792,9 @@
 
             // Define priority columns for better organization
             const priorityKeys = type === 'stocks'
-                ? ['ticker', 'category', 'cotacao', 'dividend_yield', 'p_vp', 'score', 'upside', 'pl', 'roe', 'liq_2meses', 'graham_price', 'bazin_price']
+                ? ['ticker', 'category', 'cotacao', 'dividend_yield', 'p_vp', 'score', 'upside', 'pl', 'roe', 'liq_2meses', 'graham_price', 'bazin_price', 'data_com', 'data_pagamento']
                 : type === 'fiis'
-                    ? ['ticker', 'type', 'price', 'dy', 'p_vp', 'score', 'liquidity', 'vacancy', 'cap_rate', 'magicNumber', 'magicCost', 'last_dividend', 'segment']
+                    ? ['ticker', 'type', 'price', 'dy', 'p_vp', 'score', 'liquidity', 'vacancy', 'cap_rate', 'magicNumber', 'magicCost', 'last_dividend', 'segment', 'data_com', 'data_pagamento']
                     : ['ticker', 'price', 'dy', 'liquidity', 'high_52w', 'low_52w', 'variation_12m'];
 
             const allKeys = new Set(priorityKeys);
@@ -1034,6 +1035,8 @@
                     </div>
                 </div>
                 <div class="card-details">
+                    <div class="detail-row"><span class="detail-label">Próx. Data Com:</span><span class="detail-value" style="color:var(--warning)">${stock.data_com || 'N/A'}</span></div>
+                    <div class="detail-row"><span class="detail-label">Próx. Pagamento:</span><span class="detail-value" style="color:var(--success)">${stock.data_pagamento || 'N/A'}</span></div>
                     <div class="detail-row"><span class="detail-label">P/L:</span><span class="detail-value">${escapeHTML(stock.pl?.toFixed(2) || 'N/A')} ${getTrendArrow(stock.pl, 'pl')}</span></div>
                     <div class="detail-row"><span class="detail-label">P/VP:</span><span class="detail-value">${escapeHTML(stock.p_vp?.toFixed(2) || 'N/A')} ${getTrendArrow(stock.p_vp, 'pvp')}</span></div>
                     <div class="detail-row"><span class="detail-label">EV/EBIT:</span><span class="detail-value">${escapeHTML(stock.ev_ebit?.toFixed(2) || 'N/A')}</span></div>
@@ -1194,6 +1197,8 @@
                     </div>
                 </div>
                 <div class="card-details">
+                    <div class="detail-row"><span class="detail-label">Próx. Data Com:</span><span class="detail-value" style="color:var(--warning)">${fii.data_com || 'N/A'}</span></div>
+                    <div class="detail-row"><span class="detail-label">Próx. Pagamento:</span><span class="detail-value" style="color:var(--success)">${fii.data_pagamento || 'N/A'}</span></div>
                     <div class="detail-row"><span class="detail-label">FFO Yield:</span><span class="detail-value">${escapeHTML(String(fii.ffo_yield || 'N/A'))}% ${getTrendArrow(fii.ffo_yield, 'roe')}</span></div>
                     <div class="detail-row"><span class="detail-label">Cap Rate:</span><span class="detail-value">${escapeHTML(String(fii.cap_rate || 'N/A'))}% ${getTrendArrow(fii.cap_rate, 'roe')}</span></div>
                     <div class="detail-row"><span class="detail-label">Vacância:</span><span class="detail-value">${escapeHTML(String(fii.vacancy))}% ${getTrendArrow(fii.vacancy, 'vacancy')}</span></div>
@@ -1524,6 +1529,14 @@
                                 </div>
                             </div>
                             <div class="card-details">
+                                <div class="detail-row">
+                                    <span class="detail-label">Próx. Data Com:</span>
+                                    <span class="detail-value" style="color:var(--warning)">${fii.data_com || 'N/A'}</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Próx. Pagamento:</span>
+                                    <span class="detail-value" style="color:var(--success)">${fii.data_pagamento || 'N/A'}</span>
+                                </div>
                                 <div class="detail-row">
                                     <span class="detail-label">Investimento Total (Meta):</span>
                                     <span class="detail-value" style="color:var(--warning)">R$ ${escapeHTML(totalInvest.toLocaleString('pt-BR', { minimumFractionDigits: 2 }))}</span>

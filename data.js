@@ -1,7 +1,7 @@
 window.INVEST_DATA = {
-  "updatedAt": "18/02/2026, 13:05:37",
+  "updatedAt": "18/02/2026, 11:10:32",
   "economy": {
-    "dollar": 5.222,
+    "dollar": 5.2215,
     "selic": 15
   },
   "stocks": [
@@ -32,7 +32,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "STAR",
-      "peg_ratio": 1.0453752181500873
+      "peg_ratio": 1.0453752181500873,
+      "data_com": "19/12/2025",
+      "data_pagamento": "26/12/2025"
     },
     {
       "ticker": "CYRE3",
@@ -62,7 +64,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "STAR",
-      "peg_ratio": 0.44476576055523426
+      "peg_ratio": 0.44476576055523426,
+      "data_com": "30/12/2025",
+      "data_pagamento": "06/01/2026"
     },
     {
       "ticker": "AZZA3",
@@ -91,7 +95,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "STAR",
-      "peg_ratio": 0.1540050493458802
+      "peg_ratio": 0.1540050493458802,
+      "data_com": "19/12/2025",
+      "data_pagamento": "30/12/2025"
     },
     {
       "ticker": "BAZA3",
@@ -121,7 +127,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "STAR",
-      "peg_ratio": 0.28463476070528965
+      "peg_ratio": 0.28463476070528965,
+      "data_com": "28/04/2025",
+      "data_pagamento": "08/05/2025"
     },
     {
       "ticker": "PETR4",
@@ -151,7 +159,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "STAR",
-      "peg_ratio": 2.5020408163265304
+      "peg_ratio": 2.5020408163265304,
+      "data_com": "22/12/2025",
+      "data_pagamento": "20/03/2026"
     },
     {
       "ticker": "BRSR6",
@@ -180,7 +190,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "STAR",
-      "peg_ratio": 0.580964153275649
+      "peg_ratio": 0.580964153275649,
+      "data_com": "26/12/2025",
+      "data_pagamento": "09/01/2026"
     },
     {
       "ticker": "RANI3",
@@ -209,7 +221,9 @@ window.INVEST_DATA = {
         "MAGIC"
       ],
       "category": "STAR",
-      "peg_ratio": 2.6504854368932036
+      "peg_ratio": 2.6504854368932036,
+      "data_com": "10/11/2025",
+      "data_pagamento": "25/11/2025"
     },
     {
       "ticker": "PETR3",
@@ -239,7 +253,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "STAR",
-      "peg_ratio": 2.6938775510204076
+      "peg_ratio": 2.6938775510204076,
+      "data_com": "22/12/2025",
+      "data_pagamento": "20/03/2026"
     },
     {
       "ticker": "EZTC3",
@@ -269,7 +285,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "STAR",
-      "peg_ratio": 0.5568904593639575
+      "peg_ratio": 0.5568904593639575,
+      "data_com": "09/12/2025",
+      "data_pagamento": "11/12/2025"
     },
     {
       "ticker": "LEVE3",
@@ -298,7 +316,9 @@ window.INVEST_DATA = {
         "MAGIC"
       ],
       "category": "STAR",
-      "peg_ratio": 0.8234106962663976
+      "peg_ratio": 0.8234106962663976,
+      "data_com": "16/12/2025",
+      "data_pagamento": "27/05/2026"
     },
     {
       "ticker": "PFRM3",
@@ -327,7 +347,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "STAR",
-      "peg_ratio": 0.593994778067885
+      "peg_ratio": 0.593994778067885,
+      "data_com": "30/12/2025",
+      "data_pagamento": "15/01/2026"
     },
     {
       "ticker": "BLAU3",
@@ -356,7 +378,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "STAR",
-      "peg_ratio": 1.0185676392572944
+      "peg_ratio": 1.0185676392572944,
+      "data_com": "05/01/2026",
+      "data_pagamento": "08/01/2026"
     },
     {
       "ticker": "CSED3",
@@ -384,7 +408,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "STAR",
-      "peg_ratio": 0.8345132743362831
+      "peg_ratio": 0.8345132743362831,
+      "data_com": "18/12/2025",
+      "data_pagamento": "30/12/2025"
     },
     {
       "ticker": "ISAE4",
@@ -414,7 +440,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "STAR",
-      "peg_ratio": 0.3724176437744277
+      "peg_ratio": 0.3724176437744277,
+      "data_com": "26/02/2026",
+      "data_pagamento": "31/03/2026"
     },
     {
       "ticker": "ENGI11",
@@ -440,7 +468,9 @@ window.INVEST_DATA = {
       "score": 10,
       "strategies": [],
       "category": "STAR",
-      "peg_ratio": 0.9077277970011535
+      "peg_ratio": 0.9077277970011535,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "WIZC3",
@@ -470,7 +500,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "STAR",
-      "peg_ratio": 0.5705750560119491
+      "peg_ratio": 0.5705750560119491,
+      "data_com": "26/12/2025",
+      "data_pagamento": "Provisionado"
     },
     {
       "ticker": "EUCA4",
@@ -498,7 +530,9 @@ window.INVEST_DATA = {
         "VALUE"
       ],
       "category": "STAR",
-      "peg_ratio": 0.9008498583569406
+      "peg_ratio": 0.9008498583569406,
+      "data_com": "30/12/2025",
+      "data_pagamento": "Provisionado"
     },
     {
       "ticker": "COGN3",
@@ -526,7 +560,9 @@ window.INVEST_DATA = {
         "VALUE"
       ],
       "category": "STAR",
-      "peg_ratio": 0.42641209228321403
+      "peg_ratio": 0.42641209228321403,
+      "data_com": "23/12/2025",
+      "data_pagamento": "30/12/2025"
     },
     {
       "ticker": "TECN3",
@@ -555,7 +591,9 @@ window.INVEST_DATA = {
         "MAGIC"
       ],
       "category": "STAR",
-      "peg_ratio": 0.9936788874841972
+      "peg_ratio": 0.9936788874841972,
+      "data_com": "30/12/2025",
+      "data_pagamento": "Provisionado"
     },
     {
       "ticker": "SAPR4",
@@ -583,7 +621,9 @@ window.INVEST_DATA = {
         "QUALITY"
       ],
       "category": "STAR",
-      "peg_ratio": 0.6824696802646086
+      "peg_ratio": 0.6824696802646086,
+      "data_com": "30/12/2025",
+      "data_pagamento": "Provisionado"
     },
     {
       "ticker": "VIVA3",
@@ -613,7 +653,9 @@ window.INVEST_DATA = {
         "MAGIC"
       ],
       "category": "STAR",
-      "peg_ratio": 0.4491244675816375
+      "peg_ratio": 0.4491244675816375,
+      "data_com": "19/12/2025",
+      "data_pagamento": "30/12/2025"
     },
     {
       "ticker": "GMAT3",
@@ -641,7 +683,9 @@ window.INVEST_DATA = {
         "GROWTH"
       ],
       "category": "STAR",
-      "peg_ratio": 0.2676685621445979
+      "peg_ratio": 0.2676685621445979,
+      "data_com": "19/11/2025",
+      "data_pagamento": "30/12/2025"
     },
     {
       "ticker": "CEAB3",
@@ -669,7 +713,9 @@ window.INVEST_DATA = {
         "MAGIC"
       ],
       "category": "STAR",
-      "peg_ratio": 0.6260434056761268
+      "peg_ratio": 0.6260434056761268,
+      "data_com": "23/12/2025",
+      "data_pagamento": "Provisionado"
     },
     {
       "ticker": "SAPR11",
@@ -697,7 +743,9 @@ window.INVEST_DATA = {
         "QUALITY"
       ],
       "category": "STAR",
-      "peg_ratio": 0.7221609702315325
+      "peg_ratio": 0.7221609702315325,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "PSSA3",
@@ -726,7 +774,9 @@ window.INVEST_DATA = {
         "MAGIC"
       ],
       "category": "STAR",
-      "peg_ratio": 0.5810488676996424
+      "peg_ratio": 0.5810488676996424,
+      "data_com": "26/12/2025",
+      "data_pagamento": "Provisionado"
     },
     {
       "ticker": "PLPL3",
@@ -755,7 +805,9 @@ window.INVEST_DATA = {
         "MAGIC"
       ],
       "category": "STAR",
-      "peg_ratio": 0.3965317919075144
+      "peg_ratio": 0.3965317919075144,
+      "data_com": "29/12/2025",
+      "data_pagamento": "01/07/2026"
     },
     {
       "ticker": "MILS3",
@@ -784,7 +836,9 @@ window.INVEST_DATA = {
         "MAGIC"
       ],
       "category": "STAR",
-      "peg_ratio": 0.43884358784284655
+      "peg_ratio": 0.43884358784284655,
+      "data_com": "20/04/2026",
+      "data_pagamento": "30/04/2026"
     },
     {
       "ticker": "VTRU3",
@@ -814,7 +868,9 @@ window.INVEST_DATA = {
         "MAGIC"
       ],
       "category": "STAR",
-      "peg_ratio": 0.4892167990919409
+      "peg_ratio": 0.4892167990919409,
+      "data_com": "30/04/2025",
+      "data_pagamento": "18/06/2025"
     },
     {
       "ticker": "CASH3",
@@ -842,7 +898,9 @@ window.INVEST_DATA = {
         "VALUE"
       ],
       "category": "STAR",
-      "peg_ratio": 0.4915368991198375
+      "peg_ratio": 0.4915368991198375,
+      "data_com": "02/09/2024",
+      "data_pagamento": "13/09/2024"
     },
     {
       "ticker": "CYRE4",
@@ -870,7 +928,9 @@ window.INVEST_DATA = {
         "GROWTH"
       ],
       "category": "STAR",
-      "peg_ratio": 0.42220936957779065
+      "peg_ratio": 0.42220936957779065,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "RECV3",
@@ -900,7 +960,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "STAR",
-      "peg_ratio": 0.5348595213319459
+      "peg_ratio": 0.5348595213319459,
+      "data_com": "08/01/2026",
+      "data_pagamento": "31/12/2026"
     },
     {
       "ticker": "ABCB4",
@@ -929,7 +991,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "STAR",
-      "peg_ratio": 0.544251447477254
+      "peg_ratio": 0.544251447477254,
+      "data_com": "29/12/2025",
+      "data_pagamento": "11/02/2026"
     },
     {
       "ticker": "CMIG4",
@@ -957,7 +1021,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "STAR",
-      "peg_ratio": 1.0955497382198953
+      "peg_ratio": 1.0955497382198953,
+      "data_com": "23/12/2025",
+      "data_pagamento": "Provisionado"
     },
     {
       "ticker": "CPFE3",
@@ -985,7 +1051,9 @@ window.INVEST_DATA = {
         "MAGIC"
       ],
       "category": "STAR",
-      "peg_ratio": 2.772609819121447
+      "peg_ratio": 2.772609819121447,
+      "data_com": "29/04/2025",
+      "data_pagamento": "19/11/2025"
     },
     {
       "ticker": "TEND3",
@@ -1011,7 +1079,9 @@ window.INVEST_DATA = {
       "score": 9,
       "strategies": [],
       "category": "STAR",
-      "peg_ratio": 0.876040703052729
+      "peg_ratio": 0.876040703052729,
+      "data_com": "23/12/2025",
+      "data_pagamento": "07/01/2026"
     },
     {
       "ticker": "SOJA3",
@@ -1037,7 +1107,9 @@ window.INVEST_DATA = {
       "score": 9,
       "strategies": [],
       "category": "STAR",
-      "peg_ratio": 0.48334036271615355
+      "peg_ratio": 0.48334036271615355,
+      "data_com": "18/12/2025",
+      "data_pagamento": "30/12/2025"
     },
     {
       "ticker": "MULT3",
@@ -1066,7 +1138,9 @@ window.INVEST_DATA = {
         "GROWTH"
       ],
       "category": "STAR",
-      "peg_ratio": 0.7229033840117705
+      "peg_ratio": 0.7229033840117705,
+      "data_com": "29/12/2025",
+      "data_pagamento": "Provisionado"
     },
     {
       "ticker": "ECOR3",
@@ -1094,7 +1168,9 @@ window.INVEST_DATA = {
         "GROWTH"
       ],
       "category": "STAR",
-      "peg_ratio": 0.2903703703703704
+      "peg_ratio": 0.2903703703703704,
+      "data_com": "04/08/2025",
+      "data_pagamento": "29/08/2025"
     },
     {
       "ticker": "TFCO4",
@@ -1123,7 +1199,9 @@ window.INVEST_DATA = {
         "GROWTH"
       ],
       "category": "STAR",
-      "peg_ratio": 0.7545081967213115
+      "peg_ratio": 0.7545081967213115,
+      "data_com": "23/12/2025",
+      "data_pagamento": "29/05/2026"
     },
     {
       "ticker": "SHUL4",
@@ -1152,7 +1230,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "STAR",
-      "peg_ratio": 1.7674418604651163
+      "peg_ratio": 1.7674418604651163,
+      "data_com": "29/12/2025",
+      "data_pagamento": "25/02/2026"
     },
     {
       "ticker": "BMGB4",
@@ -1181,7 +1261,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "STAR",
-      "peg_ratio": 6.472527472527472
+      "peg_ratio": 6.472527472527472,
+      "data_com": "22/12/2025",
+      "data_pagamento": "14/01/2026"
     },
     {
       "ticker": "HBOR3",
@@ -1210,7 +1292,9 @@ window.INVEST_DATA = {
         "VALUE"
       ],
       "category": "STAR",
-      "peg_ratio": 1.3856304985337242
+      "peg_ratio": 1.3856304985337242,
+      "data_com": "05/01/2026",
+      "data_pagamento": "Provisionado"
     },
     {
       "ticker": "MYPK3",
@@ -1238,7 +1322,9 @@ window.INVEST_DATA = {
         "VALUE"
       ],
       "category": "STAR",
-      "peg_ratio": 2.4906832298136643
+      "peg_ratio": 2.4906832298136643,
+      "data_com": "03/10/2025",
+      "data_pagamento": "30/04/2026"
     },
     {
       "ticker": "PINE4",
@@ -1266,7 +1352,9 @@ window.INVEST_DATA = {
         "GROWTH"
       ],
       "category": "STAR",
-      "peg_ratio": 0.16628365068942877
+      "peg_ratio": 0.16628365068942877,
+      "data_com": "08/01/2026",
+      "data_pagamento": "16/01/2026"
     },
     {
       "ticker": "NEOE3",
@@ -1292,7 +1380,9 @@ window.INVEST_DATA = {
       "score": 8,
       "strategies": [],
       "category": "STAR",
-      "peg_ratio": 1.445054945054945
+      "peg_ratio": 1.445054945054945,
+      "data_com": "30/12/2025",
+      "data_pagamento": "09/02/2026"
     },
     {
       "ticker": "SBFG3",
@@ -1318,7 +1408,9 @@ window.INVEST_DATA = {
       "score": 8,
       "strategies": [],
       "category": "STAR",
-      "peg_ratio": 0.7128082736674622
+      "peg_ratio": 0.7128082736674622,
+      "data_com": "25/04/2025",
+      "data_pagamento": "07/05/2025"
     },
     {
       "ticker": "SAPR3",
@@ -1346,7 +1438,9 @@ window.INVEST_DATA = {
         "QUALITY"
       ],
       "category": "STAR",
-      "peg_ratio": 0.8820286659316428
+      "peg_ratio": 0.8820286659316428,
+      "data_com": "30/12/2025",
+      "data_pagamento": "Provisionado"
     },
     {
       "ticker": "SMTO3",
@@ -1374,7 +1468,9 @@ window.INVEST_DATA = {
         "VALUE"
       ],
       "category": "STAR",
-      "peg_ratio": 0.891711229946524
+      "peg_ratio": 0.891711229946524,
+      "data_com": "30/07/2025",
+      "data_pagamento": "08/08/2025"
     },
     {
       "ticker": "TTEN3",
@@ -1402,7 +1498,9 @@ window.INVEST_DATA = {
         "GROWTH"
       ],
       "category": "STAR",
-      "peg_ratio": 0.24952535937076215
+      "peg_ratio": 0.24952535937076215,
+      "data_com": "30/12/2025",
+      "data_pagamento": "13/01/2026"
     },
     {
       "ticker": "TOTS3",
@@ -1431,7 +1529,9 @@ window.INVEST_DATA = {
         "GROWTH"
       ],
       "category": "STAR",
-      "peg_ratio": 1.6218274111675126
+      "peg_ratio": 1.6218274111675126,
+      "data_com": "15/12/2025",
+      "data_pagamento": "30/12/2025"
     },
     {
       "ticker": "PRIO3",
@@ -1459,7 +1559,9 @@ window.INVEST_DATA = {
         "GROWTH"
       ],
       "category": "STAR",
-      "peg_ratio": 0.1089605734767025
+      "peg_ratio": 0.1089605734767025,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "BRAV3",
@@ -1487,7 +1589,9 @@ window.INVEST_DATA = {
         "VALUE"
       ],
       "category": "STAR",
-      "peg_ratio": 0.07750091608647858
+      "peg_ratio": 0.07750091608647858,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "LPSB3",
@@ -1515,7 +1619,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "STAR",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "INTB3",
@@ -1543,7 +1649,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "STAR",
-      "peg_ratio": 0.733446519524618
+      "peg_ratio": 0.733446519524618,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "POSI3",
@@ -1572,7 +1680,9 @@ window.INVEST_DATA = {
         "TURNAROUND"
       ],
       "category": "STAR",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "BBDC3",
@@ -1600,7 +1710,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "STAR",
-      "peg_ratio": 23.02941176470588
+      "peg_ratio": 23.02941176470588,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "CLSC4",
@@ -1626,7 +1738,9 @@ window.INVEST_DATA = {
       "score": 7,
       "strategies": [],
       "category": "STAR",
-      "peg_ratio": 9.85
+      "peg_ratio": 9.85,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "LREN3",
@@ -1654,7 +1768,9 @@ window.INVEST_DATA = {
         "MAGIC"
       ],
       "category": "STAR",
-      "peg_ratio": 1.048158640226629
+      "peg_ratio": 1.048158640226629,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "SBSP3",
@@ -1683,7 +1799,9 @@ window.INVEST_DATA = {
         "GROWTH"
       ],
       "category": "STAR",
-      "peg_ratio": 0.8095756256800871
+      "peg_ratio": 0.8095756256800871,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "COCE5",
@@ -1711,7 +1829,9 @@ window.INVEST_DATA = {
         "VALUE"
       ],
       "category": "STAR",
-      "peg_ratio": 2.8354430379746836
+      "peg_ratio": 2.8354430379746836,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "B3SA3",
@@ -1737,7 +1857,9 @@ window.INVEST_DATA = {
       "score": 7,
       "strategies": [],
       "category": "STAR",
-      "peg_ratio": 13.425531914893618
+      "peg_ratio": 13.425531914893618,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "BMEB4",
@@ -1765,7 +1887,9 @@ window.INVEST_DATA = {
         "GROWTH"
       ],
       "category": "STAR",
-      "peg_ratio": 0.34205693296602385
+      "peg_ratio": 0.34205693296602385,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "RADL3",
@@ -1793,7 +1917,9 @@ window.INVEST_DATA = {
         "GROWTH"
       ],
       "category": "STAR",
-      "peg_ratio": 2.084923076923077
+      "peg_ratio": 2.084923076923077,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "SUZB3",
@@ -1819,7 +1945,9 @@ window.INVEST_DATA = {
       "score": 7,
       "strategies": [],
       "category": "STAR",
-      "peg_ratio": 1.5277777777777777
+      "peg_ratio": 1.5277777777777777,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "ODPV3",
@@ -1850,7 +1978,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "STAR",
-      "peg_ratio": 1.5284552845528454
+      "peg_ratio": 1.5284552845528454,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "RIAA3",
@@ -1879,7 +2009,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 0.38344226579520696
+      "peg_ratio": 0.38344226579520696,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "POMO3",
@@ -1910,7 +2042,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 0.21977240398293027
+      "peg_ratio": 0.21977240398293027,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "POMO4",
@@ -1941,7 +2075,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 0.23506401137980085
+      "peg_ratio": 0.23506401137980085,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "TGMA3",
@@ -1972,7 +2108,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 0.43264014466546113
+      "peg_ratio": 0.43264014466546113,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "VULC3",
@@ -2002,7 +2140,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 0.2766934557979334
+      "peg_ratio": 0.2766934557979334,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "LAVV3",
@@ -2032,7 +2172,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 0.2536031892057651
+      "peg_ratio": 0.2536031892057651,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "CSUD3",
@@ -2061,7 +2203,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 1.9585253456221199
+      "peg_ratio": 1.9585253456221199,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "MDNE3",
@@ -2090,7 +2234,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 0.27972853349070526
+      "peg_ratio": 0.27972853349070526,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "ALLD3",
@@ -2119,7 +2265,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "LOGG3",
@@ -2148,7 +2296,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 0.642134314627415
+      "peg_ratio": 0.642134314627415,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "FIQE3",
@@ -2178,7 +2328,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 0.5016674606955693
+      "peg_ratio": 0.5016674606955693,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "CURY3",
@@ -2209,7 +2361,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 0.44114949556710487
+      "peg_ratio": 0.44114949556710487,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "TAEE11",
@@ -2235,7 +2389,9 @@ window.INVEST_DATA = {
       "score": 6,
       "strategies": [],
       "category": "OPPORTUNITY",
-      "peg_ratio": 1.3907496012759173
+      "peg_ratio": 1.3907496012759173,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "TAEE4",
@@ -2261,7 +2417,9 @@ window.INVEST_DATA = {
       "score": 6,
       "strategies": [],
       "category": "OPPORTUNITY",
-      "peg_ratio": 1.4003189792663477
+      "peg_ratio": 1.4003189792663477,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "BBDC4",
@@ -2289,7 +2447,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 26.61764705882353
+      "peg_ratio": 26.61764705882353,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "MOTV3",
@@ -2315,7 +2475,9 @@ window.INVEST_DATA = {
       "score": 6,
       "strategies": [],
       "category": "OPPORTUNITY",
-      "peg_ratio": 0.968299711815562
+      "peg_ratio": 0.968299711815562,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "ANIM3",
@@ -2341,7 +2503,9 @@ window.INVEST_DATA = {
       "score": 6,
       "strategies": [],
       "category": "OPPORTUNITY",
-      "peg_ratio": 0.9057315233785822
+      "peg_ratio": 0.9057315233785822,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "LIGT3",
@@ -2369,7 +2533,9 @@ window.INVEST_DATA = {
         "VALUE"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "MELK3",
@@ -2398,7 +2564,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 0.6557377049180327
+      "peg_ratio": 0.6557377049180327,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "CGRA4",
@@ -2427,7 +2595,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 1.13768115942029
+      "peg_ratio": 1.13768115942029,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "VLID3",
@@ -2455,7 +2625,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 63.666666666666664
+      "peg_ratio": 63.666666666666664,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "TRIS3",
@@ -2484,7 +2656,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 0.5445094217024042
+      "peg_ratio": 0.5445094217024042,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "MTRE3",
@@ -2513,7 +2687,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 0.43518974864465254
+      "peg_ratio": 0.43518974864465254,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "CMIN3",
@@ -2542,7 +2718,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 50.5
+      "peg_ratio": 50.5,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "ROMI3",
@@ -2571,7 +2749,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "LWSA3",
@@ -2600,7 +2780,9 @@ window.INVEST_DATA = {
         "TURNAROUND"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "TAEE3",
@@ -2626,7 +2808,9 @@ window.INVEST_DATA = {
       "score": 5,
       "strategies": [],
       "category": "OPPORTUNITY",
-      "peg_ratio": 1.3732057416267942
+      "peg_ratio": 1.3732057416267942,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "SANB4",
@@ -2654,7 +2838,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "UGPA3",
@@ -2680,7 +2866,9 @@ window.INVEST_DATA = {
       "score": 5,
       "strategies": [],
       "category": "OPPORTUNITY",
-      "peg_ratio": 1.925855513307985
+      "peg_ratio": 1.925855513307985,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "SANB11",
@@ -2708,7 +2896,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "SANB3",
@@ -2736,7 +2926,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "CMIG3",
@@ -2762,7 +2954,9 @@ window.INVEST_DATA = {
       "score": 5,
       "strategies": [],
       "category": "OPPORTUNITY",
-      "peg_ratio": 1.4214659685863875
+      "peg_ratio": 1.4214659685863875,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "MDIA3",
@@ -2788,7 +2982,9 @@ window.INVEST_DATA = {
       "score": 5,
       "strategies": [],
       "category": "OPPORTUNITY",
-      "peg_ratio": 1.733425414364641
+      "peg_ratio": 1.733425414364641,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "CAML3",
@@ -2814,7 +3010,9 @@ window.INVEST_DATA = {
       "score": 5,
       "strategies": [],
       "category": "OPPORTUNITY",
-      "peg_ratio": 1.7151589242053789
+      "peg_ratio": 1.7151589242053789,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "GOAU4",
@@ -2840,7 +3038,9 @@ window.INVEST_DATA = {
       "score": 5,
       "strategies": [],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "BPAC11",
@@ -2866,7 +3066,9 @@ window.INVEST_DATA = {
       "score": 5,
       "strategies": [],
       "category": "OPPORTUNITY",
-      "peg_ratio": 0.9877717391304347
+      "peg_ratio": 0.9877717391304347,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "BPAC3",
@@ -2892,7 +3094,9 @@ window.INVEST_DATA = {
       "score": 5,
       "strategies": [],
       "category": "OPPORTUNITY",
-      "peg_ratio": 2.1474184782608696
+      "peg_ratio": 2.1474184782608696,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "ETER3",
@@ -2920,7 +3124,9 @@ window.INVEST_DATA = {
         "VALUE"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 2.871657754010695
+      "peg_ratio": 2.871657754010695,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "HAPV3",
@@ -2948,7 +3154,9 @@ window.INVEST_DATA = {
         "TURNAROUND"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "SCAR3",
@@ -2977,7 +3185,9 @@ window.INVEST_DATA = {
         "TURNAROUND"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "GRND3",
@@ -3005,7 +3215,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 2.175824175824176
+      "peg_ratio": 2.175824175824176,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "ITUB3",
@@ -3034,7 +3246,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 0.10639777468706538
+      "peg_ratio": 0.10639777468706538,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "ITUB4",
@@ -3063,7 +3277,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 0.11464335386449433
+      "peg_ratio": 0.11464335386449433,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "EVEN3",
@@ -3092,7 +3308,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "KEPL3",
@@ -3121,7 +3339,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 1.5455764075067024
+      "peg_ratio": 1.5455764075067024,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "VITT3",
@@ -3149,7 +3369,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 6.7894736842105265
+      "peg_ratio": 6.7894736842105265,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "JHSF3",
@@ -3175,7 +3397,9 @@ window.INVEST_DATA = {
       "score": 4,
       "strategies": [],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "BBAS3",
@@ -3203,7 +3427,9 @@ window.INVEST_DATA = {
         "VALUE"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "ALUP11",
@@ -3229,7 +3455,9 @@ window.INVEST_DATA = {
       "score": 4,
       "strategies": [],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "GGBR3",
@@ -3255,7 +3483,9 @@ window.INVEST_DATA = {
       "score": 4,
       "strategies": [],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "GOAU3",
@@ -3281,7 +3511,9 @@ window.INVEST_DATA = {
       "score": 4,
       "strategies": [],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "GGBR4",
@@ -3307,7 +3539,9 @@ window.INVEST_DATA = {
       "score": 4,
       "strategies": [],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "BEEF3",
@@ -3336,7 +3570,9 @@ window.INVEST_DATA = {
         "TURNAROUND"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "SEER3",
@@ -3362,7 +3598,9 @@ window.INVEST_DATA = {
       "score": 4,
       "strategies": [],
       "category": "OPPORTUNITY",
-      "peg_ratio": 1.2048494983277591
+      "peg_ratio": 1.2048494983277591,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "HBRE3",
@@ -3390,7 +3628,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 1.6417971970321514
+      "peg_ratio": 1.6417971970321514,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "BRAP3",
@@ -3419,7 +3659,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "DIRR3",
@@ -3447,7 +3689,9 @@ window.INVEST_DATA = {
         "GROWTH"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 0.4792746113989637
+      "peg_ratio": 0.4792746113989637,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "TPIS3",
@@ -3475,7 +3719,9 @@ window.INVEST_DATA = {
         "TURNAROUND"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "CXSE3",
@@ -3503,7 +3749,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "EQTL3",
@@ -3531,7 +3779,9 @@ window.INVEST_DATA = {
         "GROWTH"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 0.6385191347753744
+      "peg_ratio": 0.6385191347753744,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "TASA4",
@@ -3559,7 +3809,9 @@ window.INVEST_DATA = {
         "VALUE"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "SIMH3",
@@ -3587,7 +3839,9 @@ window.INVEST_DATA = {
         "TURNAROUND"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "CVCB3",
@@ -3615,7 +3869,9 @@ window.INVEST_DATA = {
         "TURNAROUND"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "TUPY3",
@@ -3643,7 +3899,9 @@ window.INVEST_DATA = {
         "TURNAROUND"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "AALR3",
@@ -3671,7 +3929,9 @@ window.INVEST_DATA = {
         "TURNAROUND"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "DASA3",
@@ -3699,7 +3959,9 @@ window.INVEST_DATA = {
         "TURNAROUND"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "AMOB3",
@@ -3727,7 +3989,9 @@ window.INVEST_DATA = {
         "TURNAROUND"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "OPCT3",
@@ -3753,7 +4017,9 @@ window.INVEST_DATA = {
       "score": 3,
       "strategies": [],
       "category": "OPPORTUNITY",
-      "peg_ratio": 0.9548248309772588
+      "peg_ratio": 0.9548248309772588,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "SYNE3",
@@ -3781,7 +4047,9 @@ window.INVEST_DATA = {
         "VALUE"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "BBSE3",
@@ -3809,7 +4077,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "BRAP4",
@@ -3837,7 +4107,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "AXIA3",
@@ -3866,7 +4138,9 @@ window.INVEST_DATA = {
         "TURNAROUND"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "AXIA6",
@@ -3894,7 +4168,9 @@ window.INVEST_DATA = {
         "TURNAROUND"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "MATD3",
@@ -3920,7 +4196,9 @@ window.INVEST_DATA = {
       "score": 2,
       "strategies": [],
       "category": "OPPORTUNITY",
-      "peg_ratio": 2.286403085824494
+      "peg_ratio": 2.286403085824494,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "PGMN3",
@@ -3946,7 +4224,9 @@ window.INVEST_DATA = {
       "score": 2,
       "strategies": [],
       "category": "OPPORTUNITY",
-      "peg_ratio": 1.3258117776554759
+      "peg_ratio": 1.3258117776554759,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "DESK3",
@@ -3972,7 +4252,9 @@ window.INVEST_DATA = {
       "score": 2,
       "strategies": [],
       "category": "OPPORTUNITY",
-      "peg_ratio": 1.127557683935568
+      "peg_ratio": 1.127557683935568,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "AURA33",
@@ -4000,7 +4282,9 @@ window.INVEST_DATA = {
         "TURNAROUND"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "AURE3",
@@ -4028,7 +4312,9 @@ window.INVEST_DATA = {
         "TURNAROUND"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "NATU3",
@@ -4056,7 +4342,9 @@ window.INVEST_DATA = {
         "TURNAROUND"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "MRVE3",
@@ -4084,7 +4372,9 @@ window.INVEST_DATA = {
         "TURNAROUND"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "CSAN3",
@@ -4112,7 +4402,9 @@ window.INVEST_DATA = {
         "TURNAROUND"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "ONCO3",
@@ -4140,7 +4432,9 @@ window.INVEST_DATA = {
         "TURNAROUND"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "UNIP6",
@@ -4168,7 +4462,9 @@ window.INVEST_DATA = {
         "MAGIC"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "SLCE3",
@@ -4194,7 +4490,9 @@ window.INVEST_DATA = {
       "score": 1,
       "strategies": [],
       "category": "OPPORTUNITY",
-      "peg_ratio": 1.5232815964523283
+      "peg_ratio": 1.5232815964523283,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "SMFT3",
@@ -4222,7 +4520,9 @@ window.INVEST_DATA = {
         "GROWTH"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 0.4911484339536995
+      "peg_ratio": 0.4911484339536995,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "HBSA3",
@@ -4250,7 +4550,9 @@ window.INVEST_DATA = {
         "TURNAROUND"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "CSNA3",
@@ -4278,7 +4580,9 @@ window.INVEST_DATA = {
         "TURNAROUND"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "USIM3",
@@ -4306,7 +4610,9 @@ window.INVEST_DATA = {
         "TURNAROUND"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "USIM5",
@@ -4334,7 +4640,9 @@ window.INVEST_DATA = {
         "TURNAROUND"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "PTBL3",
@@ -4362,7 +4670,9 @@ window.INVEST_DATA = {
         "TURNAROUND"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "PCAR3",
@@ -4390,7 +4700,9 @@ window.INVEST_DATA = {
         "TURNAROUND"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "UNIP3",
@@ -4418,7 +4730,9 @@ window.INVEST_DATA = {
         "MAGIC"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "ALOS3",
@@ -4444,7 +4758,9 @@ window.INVEST_DATA = {
       "score": 0,
       "strategies": [],
       "category": "OPPORTUNITY",
-      "peg_ratio": 0.5345096004151532
+      "peg_ratio": 0.5345096004151532,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "BHIA3",
@@ -4472,7 +4788,9 @@ window.INVEST_DATA = {
         "TURNAROUND"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "ARML3",
@@ -4498,7 +4816,9 @@ window.INVEST_DATA = {
       "score": -1,
       "strategies": [],
       "category": "OPPORTUNITY",
-      "peg_ratio": 1.115670436187399
+      "peg_ratio": 1.115670436187399,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "FESA4",
@@ -4526,7 +4846,9 @@ window.INVEST_DATA = {
         "BAZIN"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "YDUQ3",
@@ -4552,7 +4874,9 @@ window.INVEST_DATA = {
       "score": -1,
       "strategies": [],
       "category": "OPPORTUNITY",
-      "peg_ratio": 2.1584454409566516
+      "peg_ratio": 2.1584454409566516,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "AGRO3",
@@ -4580,7 +4904,9 @@ window.INVEST_DATA = {
         "TURNAROUND"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "BPAN4",
@@ -4606,7 +4932,9 @@ window.INVEST_DATA = {
       "score": -1,
       "strategies": [],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "VALE3",
@@ -4634,7 +4962,9 @@ window.INVEST_DATA = {
         "MAGIC"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "LAND3",
@@ -4662,7 +4992,9 @@ window.INVEST_DATA = {
         "TURNAROUND"
       ],
       "category": "OPPORTUNITY",
-      "peg_ratio": 999
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "RAIL3",
@@ -4688,7 +5020,9 @@ window.INVEST_DATA = {
       "score": -4,
       "strategies": [],
       "category": "OPPORTUNITY",
-      "peg_ratio": 4.724561403508772
+      "peg_ratio": 4.724561403508772,
+      "data_com": null,
+      "data_pagamento": null
     }
   ],
   "fiis": [
@@ -4712,7 +5046,9 @@ window.INVEST_DATA = {
       "magicCost": 8937.599999999999,
       "category": "STAR",
       "last_dividend": 0.93,
-      "external_segment": "Híbrido"
+      "external_segment": "Híbrido",
+      "data_com": "30/01/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "GGRC11",
@@ -4734,7 +5070,9 @@ window.INVEST_DATA = {
       "magicCost": 1025.1000000000001,
       "category": "STAR",
       "last_dividend": 0.1,
-      "external_segment": "Logístico / Indústria / Galpões"
+      "external_segment": "Logístico / Indústria / Galpões",
+      "data_com": "02/02/2026",
+      "data_pagamento": "09/02/2026"
     },
     {
       "ticker": "GARE11",
@@ -4756,7 +5094,9 @@ window.INVEST_DATA = {
       "magicCost": 899.85,
       "category": "STAR",
       "last_dividend": 0.08,
-      "external_segment": "Híbrido"
+      "external_segment": "Híbrido",
+      "data_com": "30/01/2026",
+      "data_pagamento": "06/02/2026"
     },
     {
       "ticker": "KNHY11",
@@ -4778,7 +5118,9 @@ window.INVEST_DATA = {
       "magicCost": 10746.01,
       "category": "STAR",
       "last_dividend": 0.96,
-      "external_segment": "Títulos e Valores Mobiliários"
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "30/01/2026",
+      "data_pagamento": "12/02/2026"
     },
     {
       "ticker": "KNIP11",
@@ -4800,7 +5142,9 @@ window.INVEST_DATA = {
       "magicCost": 10242.4,
       "category": "STAR",
       "last_dividend": 0.7,
-      "external_segment": "Títulos e Valores Mobiliários"
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "30/01/2026",
+      "data_pagamento": "12/02/2026"
     },
     {
       "ticker": "VGIR11",
@@ -4822,7 +5166,9 @@ window.INVEST_DATA = {
       "magicCost": 770.25,
       "category": "STAR",
       "last_dividend": 0.13,
-      "external_segment": "Títulos e Valores Mobiliários"
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "11/02/2026",
+      "data_pagamento": "20/02/2026"
     },
     {
       "ticker": "RBRY11",
@@ -4844,7 +5190,9 @@ window.INVEST_DATA = {
       "magicCost": 8257.75,
       "category": "STAR",
       "last_dividend": 1.15,
-      "external_segment": "Títulos e Valores Mobiliários"
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "10/02/2026",
+      "data_pagamento": "19/02/2026"
     },
     {
       "ticker": "PCIP11",
@@ -4866,7 +5214,9 @@ window.INVEST_DATA = {
       "magicCost": 7386.719999999999,
       "category": "STAR",
       "last_dividend": 0.83,
-      "external_segment": "Híbrido"
+      "external_segment": "Híbrido",
+      "data_com": "09/02/2026",
+      "data_pagamento": "18/02/2026"
     },
     {
       "ticker": "RECR11",
@@ -4888,7 +5238,9 @@ window.INVEST_DATA = {
       "magicCost": 7298,
       "category": "STAR",
       "last_dividend": 0.83,
-      "external_segment": "Títulos e Valores Mobiliários"
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "06/02/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "MCRE11",
@@ -4910,7 +5262,9 @@ window.INVEST_DATA = {
       "magicCost": 874.8000000000001,
       "category": "STAR",
       "last_dividend": 0.11,
-      "external_segment": "Títulos e Valores Mobiliários"
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "16/01/2026",
+      "data_pagamento": "23/01/2026"
     },
     {
       "ticker": "PSEC11",
@@ -4934,7 +5288,9 @@ window.INVEST_DATA = {
       "magicCost": 5956.78,
       "category": "STAR",
       "last_dividend": 0.65,
-      "external_segment": "Títulos e Valores Mobiliários"
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "09/02/2026",
+      "data_pagamento": "18/02/2026"
     },
     {
       "ticker": "KNSC11",
@@ -4956,7 +5312,9 @@ window.INVEST_DATA = {
       "magicCost": 864,
       "category": "STAR",
       "last_dividend": 0.09,
-      "external_segment": "Títulos e Valores Mobiliários"
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "30/01/2026",
+      "data_pagamento": "12/02/2026"
     },
     {
       "ticker": "MCCI11",
@@ -4978,7 +5336,9 @@ window.INVEST_DATA = {
       "magicCost": 9271.35,
       "category": "STAR",
       "last_dividend": 1,
-      "external_segment": "Títulos e Valores Mobiliários"
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "11/02/2026",
+      "data_pagamento": "20/02/2026"
     },
     {
       "ticker": "RBRR11",
@@ -5000,7 +5360,9 @@ window.INVEST_DATA = {
       "magicCost": 8580,
       "category": "STAR",
       "last_dividend": 0.8,
-      "external_segment": "Títulos e Valores Mobiliários"
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "10/02/2026",
+      "data_pagamento": "19/02/2026"
     },
     {
       "ticker": "KNHF11",
@@ -5022,7 +5384,9 @@ window.INVEST_DATA = {
       "magicCost": 9993.960000000001,
       "category": "STAR",
       "last_dividend": 1,
-      "external_segment": "Híbrido"
+      "external_segment": "Híbrido",
+      "data_com": "30/01/2026",
+      "data_pagamento": "11/02/2026"
     },
     {
       "ticker": "BTHF11",
@@ -5044,7 +5408,9 @@ window.INVEST_DATA = {
       "magicCost": 958.8000000000001,
       "category": "STAR",
       "last_dividend": 0.1,
-      "external_segment": "Híbrido"
+      "external_segment": "Híbrido",
+      "data_com": "06/02/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "HGRU11",
@@ -5066,7 +5432,9 @@ window.INVEST_DATA = {
       "magicCost": 15751.25,
       "category": "STAR",
       "last_dividend": 0.95,
-      "external_segment": "Híbrido"
+      "external_segment": "Híbrido",
+      "data_com": "30/01/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "XPLG11",
@@ -5088,7 +5456,9 @@ window.INVEST_DATA = {
       "magicCost": 12874.68,
       "category": "STAR",
       "last_dividend": 0.82,
-      "external_segment": "Logístico / Indústria / Galpões"
+      "external_segment": "Logístico / Indústria / Galpões",
+      "data_com": "30/01/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "BTLG11",
@@ -5110,7 +5480,9 @@ window.INVEST_DATA = {
       "magicCost": 13697.67,
       "category": "STAR",
       "last_dividend": 0.8,
-      "external_segment": "Logístico / Indústria / Galpões"
+      "external_segment": "Logístico / Indústria / Galpões",
+      "data_com": "13/02/2026",
+      "data_pagamento": "25/02/2026"
     },
     {
       "ticker": "BRCO11",
@@ -5132,7 +5504,9 @@ window.INVEST_DATA = {
       "magicCost": 15986.7,
       "category": "STAR",
       "last_dividend": 0.87,
-      "external_segment": "Logístico / Indústria / Galpões"
+      "external_segment": "Logístico / Indústria / Galpões",
+      "data_com": "30/01/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "VISC11",
@@ -5154,7 +5528,9 @@ window.INVEST_DATA = {
       "magicCost": 14781.84,
       "category": "STAR",
       "last_dividend": 0.84,
-      "external_segment": "Shoppings / Varejo"
+      "external_segment": "Shoppings / Varejo",
+      "data_com": "30/01/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "HGLG11",
@@ -5176,7 +5552,9 @@ window.INVEST_DATA = {
       "magicCost": 22590.72,
       "category": "STAR",
       "last_dividend": 1.1,
-      "external_segment": "Logístico / Indústria / Galpões"
+      "external_segment": "Logístico / Indústria / Galpões",
+      "data_com": "30/01/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "LVBI11",
@@ -5198,7 +5576,9 @@ window.INVEST_DATA = {
       "magicCost": 15984.08,
       "category": "STAR",
       "last_dividend": 0.75,
-      "external_segment": "Logístico / Indústria / Galpões"
+      "external_segment": "Logístico / Indústria / Galpões",
+      "data_com": "30/01/2026",
+      "data_pagamento": "06/02/2026"
     },
     {
       "ticker": "KORE11",
@@ -5220,7 +5600,9 @@ window.INVEST_DATA = {
       "magicCost": 4655.07,
       "category": "OPPORTUNITY",
       "last_dividend": 0.6,
-      "external_segment": "Lajes Corporativas"
+      "external_segment": "Lajes Corporativas",
+      "data_com": "30/01/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "LASC11",
@@ -5242,7 +5624,9 @@ window.INVEST_DATA = {
       "magicCost": 8463.75,
       "category": "OPPORTUNITY",
       "last_dividend": 0.75,
-      "external_segment": "Shoppings / Varejo"
+      "external_segment": "Shoppings / Varejo",
+      "data_com": "30/01/2026",
+      "data_pagamento": "06/02/2026"
     },
     {
       "ticker": "KNUQ11",
@@ -5264,7 +5648,9 @@ window.INVEST_DATA = {
       "magicCost": 8759.82,
       "category": "OPPORTUNITY",
       "last_dividend": 1.3,
-      "external_segment": "Títulos e Valores Mobiliários"
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "30/01/2026",
+      "data_pagamento": "11/02/2026"
     },
     {
       "ticker": "KNCR11",
@@ -5286,7 +5672,9 @@ window.INVEST_DATA = {
       "magicCost": 9442.9,
       "category": "OPPORTUNITY",
       "last_dividend": 1.2,
-      "external_segment": "Títulos e Valores Mobiliários"
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "30/01/2026",
+      "data_pagamento": "12/02/2026"
     },
     {
       "ticker": "MXRF11",
@@ -5308,7 +5696,9 @@ window.INVEST_DATA = {
       "magicCost": 896.08,
       "category": "OPPORTUNITY",
       "last_dividend": 0.1,
-      "external_segment": "Híbrido"
+      "external_segment": "Híbrido",
+      "data_com": "30/01/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "CPTS11",
@@ -5330,7 +5720,9 @@ window.INVEST_DATA = {
       "magicCost": 752,
       "category": "OPPORTUNITY",
       "last_dividend": 0.09,
-      "external_segment": "Títulos e Valores Mobiliários"
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "11/02/2026",
+      "data_pagamento": "20/02/2026"
     },
     {
       "ticker": "HGCR11",
@@ -5354,7 +5746,9 @@ window.INVEST_DATA = {
       "magicCost": 9136.15,
       "category": "OPPORTUNITY",
       "last_dividend": 0.95,
-      "external_segment": "Títulos e Valores Mobiliários"
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "30/01/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "TVRI11",
@@ -5376,7 +5770,9 @@ window.INVEST_DATA = {
       "magicCost": 9432,
       "category": "OPPORTUNITY",
       "last_dividend": 1.05,
-      "external_segment": "Agências Bancárias"
+      "external_segment": "Agências Bancárias",
+      "data_com": "30/01/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "GTWR11",
@@ -5400,7 +5796,9 @@ window.INVEST_DATA = {
       "magicCost": 8098.53,
       "category": "OPPORTUNITY",
       "last_dividend": 0.9,
-      "external_segment": "Lajes Corporativas"
+      "external_segment": "Lajes Corporativas",
+      "data_com": "30/01/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "CPSH11",
@@ -5422,7 +5820,9 @@ window.INVEST_DATA = {
       "magicCost": 1133.6000000000001,
       "category": "OPPORTUNITY",
       "last_dividend": 0.11,
-      "external_segment": "Shoppings / Varejo"
+      "external_segment": "Shoppings / Varejo",
+      "data_com": "19/01/2026",
+      "data_pagamento": "26/01/2026"
     },
     {
       "ticker": "RBVA11",
@@ -5444,7 +5844,9 @@ window.INVEST_DATA = {
       "magicCost": 1111.04,
       "category": "OPPORTUNITY",
       "last_dividend": 0.09,
-      "external_segment": "Híbrido"
+      "external_segment": "Híbrido",
+      "data_com": "30/01/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "PMLL11",
@@ -5466,7 +5868,9 @@ window.INVEST_DATA = {
       "magicCost": 13361.25,
       "category": "OPPORTUNITY",
       "last_dividend": 1,
-      "external_segment": "Shoppings / Varejo"
+      "external_segment": "Shoppings / Varejo",
+      "data_com": "30/01/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "HGBS11",
@@ -5488,7 +5892,9 @@ window.INVEST_DATA = {
       "magicCost": 2663.7599999999998,
       "category": "OPPORTUNITY",
       "last_dividend": 0.16,
-      "external_segment": "Shoppings / Varejo"
+      "external_segment": "Shoppings / Varejo",
+      "data_com": "30/01/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "VILG11",
@@ -5510,7 +5916,9 @@ window.INVEST_DATA = {
       "magicCost": 14733.45,
       "category": "OPPORTUNITY",
       "last_dividend": 0.8,
-      "external_segment": "Logístico / Indústria / Galpões"
+      "external_segment": "Logístico / Indústria / Galpões",
+      "data_com": "30/01/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "KNRI11",
@@ -5532,7 +5940,9 @@ window.INVEST_DATA = {
       "magicCost": 27653.940000000002,
       "category": "OPPORTUNITY",
       "last_dividend": 0.88,
-      "external_segment": "Híbrido"
+      "external_segment": "Híbrido",
+      "data_com": "30/01/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "GSFI11",
@@ -5556,7 +5966,9 @@ window.INVEST_DATA = {
       "magicCost": 109889.01000000001,
       "category": "OPPORTUNITY",
       "last_dividend": null,
-      "external_segment": "Shoppings / Varejo"
+      "external_segment": "Shoppings / Varejo",
+      "data_com": null,
+      "data_pagamento": null
     },
     {
       "ticker": "RZAK11",
@@ -5578,7 +5990,9 @@ window.INVEST_DATA = {
       "magicCost": 6790.68,
       "category": "OPPORTUNITY",
       "last_dividend": 1.1,
-      "external_segment": "Títulos e Valores Mobiliários"
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "13/02/2026",
+      "data_pagamento": "24/02/2026"
     },
     {
       "ticker": "RVBI11",
@@ -5600,49 +6014,9 @@ window.INVEST_DATA = {
       "magicCost": 5151.4,
       "category": "OPPORTUNITY",
       "last_dividend": 0.7,
-      "external_segment": "Títulos e Valores Mobiliários"
-    },
-    {
-      "ticker": "IFRI11",
-      "type": "INFRA",
-      "segment": "Infraestrutura",
-      "mandate": "Híbridos",
-      "price": 103.38,
-      "dy": 13.98,
-      "p_vp": 0.99,
-      "liquidity": 1890000,
-      "last_dividend": 1.35,
-      "vacancy": 0,
-      "score": 6,
-      "strategies": [],
-      "magicNumber": 86,
-      "magicCost": 8890.68,
-      "selic": 15,
-      "num_properties": 0,
-      "market_cap": 500000000,
-      "category": "OPPORTUNITY",
-      "external_segment": "Fundo de Infraestrutura (FI-Infra)"
-    },
-    {
-      "ticker": "CPTI11",
-      "type": "INFRA",
-      "segment": "Infraestrutura",
-      "mandate": null,
-      "price": 89.9,
-      "dy": 13.52,
-      "p_vp": 0.95,
-      "liquidity": 1670000,
-      "last_dividend": 1.15,
-      "vacancy": 0,
-      "score": 6,
-      "strategies": [],
-      "magicNumber": 89,
-      "magicCost": 8001.1,
-      "selic": 15,
-      "num_properties": 0,
-      "market_cap": 500000000,
-      "category": "OPPORTUNITY",
-      "external_segment": "Fundo de Infraestrutura (FI-Infra)"
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "08/10/2025",
+      "data_pagamento": "15/10/2025"
     },
     {
       "ticker": "XPCI11",
@@ -5664,7 +6038,9 @@ window.INVEST_DATA = {
       "magicCost": 7709.700000000001,
       "category": "OPPORTUNITY",
       "last_dividend": 0.88,
-      "external_segment": "Títulos e Valores Mobiliários"
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "30/01/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "BBIG11",
@@ -5686,7 +6062,9 @@ window.INVEST_DATA = {
       "magicCost": 687.27,
       "category": "OPPORTUNITY",
       "last_dividend": 0.09,
-      "external_segment": "Shoppings / Varejo"
+      "external_segment": "Shoppings / Varejo",
+      "data_com": "30/01/2026",
+      "data_pagamento": "18/02/2026"
     },
     {
       "ticker": "VRTA11",
@@ -5708,7 +6086,9 @@ window.INVEST_DATA = {
       "magicCost": 7507.85,
       "category": "OPPORTUNITY",
       "last_dividend": 0.85,
-      "external_segment": "Títulos e Valores Mobiliários"
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "30/01/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "BTCI11",
@@ -5730,28 +6110,9 @@ window.INVEST_DATA = {
       "magicCost": 910.42,
       "category": "OPPORTUNITY",
       "last_dividend": 0.09,
-      "external_segment": "Títulos e Valores Mobiliários"
-    },
-    {
-      "ticker": "BDIF11",
-      "type": "INFRA",
-      "segment": "Infraestrutura",
-      "mandate": null,
-      "price": 76.32,
-      "dy": 12.12,
-      "p_vp": 0.91,
-      "liquidity": 3650000,
-      "last_dividend": 0.8,
-      "vacancy": 0,
-      "score": 6,
-      "strategies": [],
-      "magicNumber": 100,
-      "magicCost": 7631.999999999999,
-      "selic": 15,
-      "num_properties": 0,
-      "market_cap": 500000000,
-      "category": "OPPORTUNITY",
-      "external_segment": "Fundo de Infraestrutura (FI-Infra)"
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "06/02/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "RBRX11",
@@ -5773,70 +6134,9 @@ window.INVEST_DATA = {
       "magicCost": 864,
       "category": "OPPORTUNITY",
       "last_dividend": 0.09,
-      "external_segment": "Títulos e Valores Mobiliários"
-    },
-    {
-      "ticker": "KDIF11",
-      "type": "INFRA",
-      "segment": "Infraestrutura",
-      "mandate": null,
-      "price": 128.48,
-      "dy": 12.05,
-      "p_vp": 1.02,
-      "liquidity": 2600000,
-      "last_dividend": 1.45,
-      "vacancy": 0,
-      "score": 6,
-      "strategies": [],
-      "magicNumber": 100,
-      "magicCost": 12847.999999999998,
-      "selic": 15,
-      "num_properties": 0,
-      "market_cap": 500000000,
-      "category": "OPPORTUNITY",
-      "external_segment": "Fundo de Infraestrutura (FI-Infra)"
-    },
-    {
-      "ticker": "JURO11",
-      "type": "INFRA",
-      "segment": "Infraestrutura",
-      "mandate": null,
-      "price": 102.85,
-      "dy": 11.67,
-      "p_vp": 1.02,
-      "liquidity": 3760000,
-      "last_dividend": 1,
-      "vacancy": 0,
-      "score": 6,
-      "strategies": [],
-      "magicNumber": 103,
-      "magicCost": 10593.55,
-      "selic": 15,
-      "num_properties": 0,
-      "market_cap": 500000000,
-      "category": "OPPORTUNITY",
-      "external_segment": "Fundo de Infraestrutura (FI-Infra)"
-    },
-    {
-      "ticker": "IFRA11",
-      "type": "INFRA",
-      "segment": "Infraestrutura",
-      "mandate": null,
-      "price": 102.79,
-      "dy": 11.43,
-      "p_vp": 1.02,
-      "liquidity": 1740000,
-      "last_dividend": 0.86,
-      "vacancy": 0,
-      "score": 6,
-      "strategies": [],
-      "magicNumber": 105,
-      "magicCost": 10792.95,
-      "selic": 15,
-      "num_properties": 0,
-      "market_cap": 500000000,
-      "category": "OPPORTUNITY",
-      "external_segment": "Fundo de Infraestrutura (FI-Infra)"
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "13/02/2026",
+      "data_pagamento": "25/02/2026"
     },
     {
       "ticker": "TEPP11",
@@ -5858,7 +6158,9 @@ window.INVEST_DATA = {
       "magicCost": 986.0400000000001,
       "category": "OPPORTUNITY",
       "last_dividend": 0.08,
-      "external_segment": "Lajes Corporativas"
+      "external_segment": "Lajes Corporativas",
+      "data_com": "30/01/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "XPML11",
@@ -5880,7 +6182,9 @@ window.INVEST_DATA = {
       "magicCost": 13542,
       "category": "OPPORTUNITY",
       "last_dividend": 0.92,
-      "external_segment": "Shoppings / Varejo"
+      "external_segment": "Shoppings / Varejo",
+      "data_com": "16/01/2026",
+      "data_pagamento": "23/01/2026"
     },
     {
       "ticker": "ALZR11",
@@ -5902,7 +6206,9 @@ window.INVEST_DATA = {
       "magicCost": 1417.42,
       "category": "OPPORTUNITY",
       "last_dividend": 0.09,
-      "external_segment": "Híbrido"
+      "external_segment": "Híbrido",
+      "data_com": "16/01/2026",
+      "data_pagamento": "23/01/2026"
     },
     {
       "ticker": "MALL11",
@@ -5926,7 +6232,9 @@ window.INVEST_DATA = {
       "magicCost": 13504.05,
       "category": "OPPORTUNITY",
       "last_dividend": 0.86,
-      "external_segment": "Shoppings / Varejo"
+      "external_segment": "Shoppings / Varejo",
+      "data_com": "30/06/2025",
+      "data_pagamento": "14/07/2025"
     },
     {
       "ticker": "KNCA11",
@@ -5948,7 +6256,9 @@ window.INVEST_DATA = {
       "magicCost": 21526.399999999998,
       "category": "OPPORTUNITY",
       "last_dividend": 1.1,
-      "external_segment": "Fiagros"
+      "external_segment": "Fiagros",
+      "data_com": "30/01/2026",
+      "data_pagamento": "12/02/2026"
     },
     {
       "ticker": "PVBI11",
@@ -5972,7 +6282,9 @@ window.INVEST_DATA = {
       "magicCost": 13449.02,
       "category": "STANDARD",
       "last_dividend": 0.45,
-      "external_segment": "Lajes Corporativas"
+      "external_segment": "Lajes Corporativas",
+      "data_com": "30/01/2026",
+      "data_pagamento": "06/02/2026"
     },
     {
       "ticker": "IRIM11",
@@ -5996,7 +6308,9 @@ window.INVEST_DATA = {
       "magicCost": 5320.9800000000005,
       "category": "STANDARD",
       "last_dividend": 0.69,
-      "external_segment": "Híbrido"
+      "external_segment": "Híbrido",
+      "data_com": "10/02/2026",
+      "data_pagamento": "19/02/2026"
     },
     {
       "ticker": "HGRE11",
@@ -6020,7 +6334,9 @@ window.INVEST_DATA = {
       "magicCost": 15074.18,
       "category": "STANDARD",
       "last_dividend": 0.85,
-      "external_segment": "Lajes Corporativas"
+      "external_segment": "Lajes Corporativas",
+      "data_com": "30/01/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "HSML11",
@@ -6044,7 +6360,9 @@ window.INVEST_DATA = {
       "magicCost": 12989.2,
       "category": "STANDARD",
       "last_dividend": 0.7,
-      "external_segment": "Shoppings / Varejo"
+      "external_segment": "Shoppings / Varejo",
+      "data_com": "30/01/2026",
+      "data_pagamento": "06/02/2026"
     },
     {
       "ticker": "TGAR11",
@@ -6068,7 +6386,9 @@ window.INVEST_DATA = {
       "magicCost": 6724.2,
       "category": "STANDARD",
       "last_dividend": 0.71,
-      "external_segment": "Híbrido"
+      "external_segment": "Híbrido",
+      "data_com": "30/01/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "VGHF11",
@@ -6092,7 +6412,9 @@ window.INVEST_DATA = {
       "magicCost": 633.6,
       "category": "STANDARD",
       "last_dividend": 0.07,
-      "external_segment": "Híbrido"
+      "external_segment": "Híbrido",
+      "data_com": "30/01/2026",
+      "data_pagamento": "06/02/2026"
     },
     {
       "ticker": "MCLO11",
@@ -6116,7 +6438,9 @@ window.INVEST_DATA = {
       "magicCost": 1080,
       "category": "STANDARD",
       "last_dividend": 0.1,
-      "external_segment": "Logístico / Indústria / Galpões"
+      "external_segment": "Logístico / Indústria / Galpões",
+      "data_com": "04/02/2026",
+      "data_pagamento": "11/02/2026"
     },
     {
       "ticker": "BRCR11",
@@ -6140,7 +6464,9 @@ window.INVEST_DATA = {
       "magicCost": 5581.92,
       "category": "STANDARD",
       "last_dividend": 0.41,
-      "external_segment": "Híbrido"
+      "external_segment": "Híbrido",
+      "data_com": "06/02/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "MFII11",
@@ -6164,7 +6490,9 @@ window.INVEST_DATA = {
       "magicCost": 5624.65,
       "category": "STANDARD",
       "last_dividend": 1.05,
-      "external_segment": "Híbrido"
+      "external_segment": "Híbrido",
+      "data_com": "30/01/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "BPML11",
@@ -6188,7 +6516,9 @@ window.INVEST_DATA = {
       "magicCost": 8790.72,
       "category": "STANDARD",
       "last_dividend": 0.92,
-      "external_segment": "Shoppings / Varejo"
+      "external_segment": "Shoppings / Varejo",
+      "data_com": "16/01/2026",
+      "data_pagamento": "23/01/2026"
     },
     {
       "ticker": "JSRE11",
@@ -6212,7 +6542,9 @@ window.INVEST_DATA = {
       "magicCost": 9452.640000000001,
       "category": "STANDARD",
       "last_dividend": 0.48,
-      "external_segment": "Híbrido"
+      "external_segment": "Híbrido",
+      "data_com": "30/01/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "MANA11",
@@ -6236,7 +6568,9 @@ window.INVEST_DATA = {
       "magicCost": 409.20000000000005,
       "category": "STANDARD",
       "last_dividend": 0.11,
-      "external_segment": "Títulos e Valores Mobiliários"
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "30/01/2026",
+      "data_pagamento": "24/02/2026"
     },
     {
       "ticker": "GZIT11",
@@ -6260,7 +6594,9 @@ window.INVEST_DATA = {
       "magicCost": 2883.92,
       "category": "STANDARD",
       "last_dividend": 0.78,
-      "external_segment": "Híbrido"
+      "external_segment": "Híbrido",
+      "data_com": "23/01/2026",
+      "data_pagamento": "30/01/2026"
     },
     {
       "ticker": "CACR11",
@@ -6284,7 +6620,9 @@ window.INVEST_DATA = {
       "magicCost": 4699.8,
       "category": "STANDARD",
       "last_dividend": 1.2,
-      "external_segment": "Híbrido"
+      "external_segment": "Híbrido",
+      "data_com": "30/01/2026",
+      "data_pagamento": "09/02/2026"
     },
     {
       "ticker": "SMRE11",
@@ -6308,7 +6646,9 @@ window.INVEST_DATA = {
       "magicCost": 4128,
       "category": "STANDARD",
       "last_dividend": 1.02,
-      "external_segment": "Outros"
+      "external_segment": "Outros",
+      "data_com": "30/01/2026",
+      "data_pagamento": "10/02/2026"
     },
     {
       "ticker": "DEVA11",
@@ -6332,7 +6672,9 @@ window.INVEST_DATA = {
       "magicCost": 1611.35,
       "category": "STANDARD",
       "last_dividend": 0.3,
-      "external_segment": "Títulos e Valores Mobiliários"
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "06/02/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "IBCR11",
@@ -6356,7 +6698,9 @@ window.INVEST_DATA = {
       "magicCost": 3435.36,
       "category": "STANDARD",
       "last_dividend": 0.6,
-      "external_segment": "Títulos e Valores Mobiliários"
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "10/02/2026",
+      "data_pagamento": "19/02/2026"
     },
     {
       "ticker": "HCTR11",
@@ -6380,7 +6724,9 @@ window.INVEST_DATA = {
       "magicCost": 1527.21,
       "category": "STANDARD",
       "last_dividend": 0.27,
-      "external_segment": "Títulos e Valores Mobiliários"
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "06/02/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "KIVO11",
@@ -6404,7 +6750,9 @@ window.INVEST_DATA = {
       "magicCost": 4838.400000000001,
       "category": "STANDARD",
       "last_dividend": 1.14,
-      "external_segment": "Títulos e Valores Mobiliários"
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "30/01/2026",
+      "data_pagamento": "18/02/2026"
     },
     {
       "ticker": "VIUR11",
@@ -6428,7 +6776,9 @@ window.INVEST_DATA = {
       "magicCost": 432.15999999999997,
       "category": "STANDARD",
       "last_dividend": 0.21,
-      "external_segment": "Outros"
+      "external_segment": "Outros",
+      "data_com": "30/01/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "ARRI11",
@@ -6452,7 +6802,9 @@ window.INVEST_DATA = {
       "magicCost": 498.75,
       "category": "STANDARD",
       "last_dividend": 0.09,
-      "external_segment": "Títulos e Valores Mobiliários"
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "30/01/2026",
+      "data_pagamento": "06/02/2026"
     },
     {
       "ticker": "HABT11",
@@ -6476,7 +6828,9 @@ window.INVEST_DATA = {
       "magicCost": 5850.4800000000005,
       "category": "STANDARD",
       "last_dividend": 0.95,
-      "external_segment": "Títulos e Valores Mobiliários"
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "30/01/2026",
+      "data_pagamento": "12/02/2026"
     },
     {
       "ticker": "OUJP11",
@@ -6500,7 +6854,9 @@ window.INVEST_DATA = {
       "magicCost": 6791.849999999999,
       "category": "STANDARD",
       "last_dividend": 1.06,
-      "external_segment": "Híbrido"
+      "external_segment": "Híbrido",
+      "data_com": "30/01/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "URPR11",
@@ -6524,7 +6880,9 @@ window.INVEST_DATA = {
       "magicCost": 3110.4,
       "category": "STANDARD",
       "last_dividend": 0.35,
-      "external_segment": "Outros"
+      "external_segment": "Outros",
+      "data_com": "30/01/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "BCRI11",
@@ -6548,7 +6906,9 @@ window.INVEST_DATA = {
       "magicCost": 5414.849999999999,
       "category": "STANDARD",
       "last_dividend": 0.75,
-      "external_segment": "Títulos e Valores Mobiliários"
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "30/01/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "VRTM11",
@@ -6572,7 +6932,9 @@ window.INVEST_DATA = {
       "magicCost": 605.9,
       "category": "STANDARD",
       "last_dividend": 0.09,
-      "external_segment": "Híbrido"
+      "external_segment": "Híbrido",
+      "data_com": "30/01/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "RELG11",
@@ -6596,7 +6958,9 @@ window.INVEST_DATA = {
       "magicCost": 5620.2,
       "category": "STANDARD",
       "last_dividend": 0.8,
-      "external_segment": "Híbrido"
+      "external_segment": "Híbrido",
+      "data_com": "06/02/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "RBHG11",
@@ -6620,30 +6984,9 @@ window.INVEST_DATA = {
       "magicCost": 5958.629999999999,
       "category": "STANDARD",
       "last_dividend": 0.8,
-      "external_segment": "Títulos e Valores Mobiliários"
-    },
-    {
-      "ticker": "XPID11",
-      "type": "INFRA",
-      "segment": "Infraestrutura",
-      "mandate": null,
-      "price": 51.9,
-      "dy": 13.39,
-      "p_vp": 0.56,
-      "liquidity": 230270,
-      "last_dividend": 0.75,
-      "vacancy": 0,
-      "score": 0,
-      "strategies": [
-        "DISTRESSED_RISK"
-      ],
-      "magicNumber": 90,
-      "magicCost": 4671,
-      "selic": 15,
-      "num_properties": 0,
-      "market_cap": 500000000,
-      "category": "STANDARD",
-      "external_segment": "Fundo de Infraestrutura (FI-Infra)"
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "30/01/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "BLMG11",
@@ -6667,7 +7010,9 @@ window.INVEST_DATA = {
       "magicCost": 3385.2999999999997,
       "category": "STANDARD",
       "last_dividend": 0.4,
-      "external_segment": "Outros"
+      "external_segment": "Outros",
+      "data_com": "06/02/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "CXCO11",
@@ -6691,7 +7036,9 @@ window.INVEST_DATA = {
       "magicCost": 7004.25,
       "category": "STANDARD",
       "last_dividend": 0.75,
-      "external_segment": "Lajes Corporativas"
+      "external_segment": "Lajes Corporativas",
+      "data_com": "30/01/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "RECT11",
@@ -6715,7 +7062,9 @@ window.INVEST_DATA = {
       "magicCost": 3847,
       "category": "STANDARD",
       "last_dividend": 0.45,
-      "external_segment": "Híbrido"
+      "external_segment": "Híbrido",
+      "data_com": "06/02/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "KISU11",
@@ -6739,7 +7088,9 @@ window.INVEST_DATA = {
       "magicCost": 708.01,
       "category": "STANDARD",
       "last_dividend": 0.07,
-      "external_segment": "Títulos e Valores Mobiliários"
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "30/01/2026",
+      "data_pagamento": "18/02/2026"
     },
     {
       "ticker": "RBFF11",
@@ -6763,7 +7114,9 @@ window.INVEST_DATA = {
       "magicCost": 1128.9,
       "category": "STANDARD",
       "last_dividend": 0.2,
-      "external_segment": "Títulos e Valores Mobiliários"
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "30/12/2025",
+      "data_pagamento": "15/01/2026"
     },
     {
       "ticker": "KOPA11",
@@ -6787,7 +7140,9 @@ window.INVEST_DATA = {
       "magicCost": 64554,
       "category": "STANDARD",
       "last_dividend": 9,
-      "external_segment": "Fiagros"
+      "external_segment": "Fiagros",
+      "data_com": "15/01/2026",
+      "data_pagamento": "22/01/2026"
     },
     {
       "ticker": "VINO11",
@@ -6811,7 +7166,9 @@ window.INVEST_DATA = {
       "magicCost": 591.71,
       "category": "STANDARD",
       "last_dividend": 0.05,
-      "external_segment": "Lajes Corporativas"
+      "external_segment": "Lajes Corporativas",
+      "data_com": "30/01/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "XPSF11",
@@ -6835,7 +7192,9 @@ window.INVEST_DATA = {
       "magicCost": 735.4799999999999,
       "category": "STANDARD",
       "last_dividend": 0.07,
-      "external_segment": "Títulos e Valores Mobiliários"
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "30/01/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "FIIP11",
@@ -6859,7 +7218,9 @@ window.INVEST_DATA = {
       "magicCost": 16767.3,
       "category": "STANDARD",
       "last_dividend": 1.4,
-      "external_segment": "Híbrido"
+      "external_segment": "Híbrido",
+      "data_com": "30/01/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "BROF11",
@@ -6883,7 +7244,9 @@ window.INVEST_DATA = {
       "magicCost": 6720,
       "category": "STANDARD",
       "last_dividend": 0.55,
-      "external_segment": "Híbrido"
+      "external_segment": "Híbrido",
+      "data_com": "19/01/2026",
+      "data_pagamento": "26/01/2026"
     },
     {
       "ticker": "FIIB11",
@@ -6907,7 +7270,9 @@ window.INVEST_DATA = {
       "magicCost": 56713.200000000004,
       "category": "STANDARD",
       "last_dividend": 3.1,
-      "external_segment": "Logístico / Indústria / Galpões"
+      "external_segment": "Logístico / Indústria / Galpões",
+      "data_com": "30/01/2026",
+      "data_pagamento": "10/02/2026"
     },
     {
       "ticker": "GCRA11",
@@ -6931,7 +7296,9 @@ window.INVEST_DATA = {
       "magicCost": 7488.419999999999,
       "category": "STANDARD",
       "last_dividend": 0.68,
-      "external_segment": "Fiagros"
+      "external_segment": "Fiagros",
+      "data_com": "06/02/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "AGRX11",
@@ -6955,7 +7322,9 @@ window.INVEST_DATA = {
       "magicCost": 1275.84,
       "category": "STANDARD",
       "last_dividend": 0.13,
-      "external_segment": "Fiagros"
+      "external_segment": "Fiagros",
+      "data_com": "06/02/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "JGPX11",
@@ -6979,7 +7348,9 @@ window.INVEST_DATA = {
       "magicCost": 12798.5,
       "category": "STANDARD",
       "last_dividend": 1.12,
-      "external_segment": "Fiagros"
+      "external_segment": "Fiagros",
+      "data_com": "30/01/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "MAXR11",
@@ -7003,7 +7374,9 @@ window.INVEST_DATA = {
       "magicCost": 11655,
       "category": "STANDARD",
       "last_dividend": 0.55,
-      "external_segment": "Outros"
+      "external_segment": "Outros",
+      "data_com": "06/02/2026",
+      "data_pagamento": "13/02/2026"
     },
     {
       "ticker": "BTRA11",
@@ -7027,7 +7400,9 @@ window.INVEST_DATA = {
       "magicCost": 13051.1,
       "category": "STANDARD",
       "last_dividend": 0.8,
-      "external_segment": "Fiagros"
+      "external_segment": "Fiagros",
+      "data_com": "23/01/2026",
+      "data_pagamento": "30/01/2026"
     },
     {
       "ticker": "VCRA11",
@@ -7051,7 +7426,9 @@ window.INVEST_DATA = {
       "magicCost": 14101.500000000002,
       "category": "STANDARD",
       "last_dividend": 0.95,
-      "external_segment": "Fiagros"
+      "external_segment": "Fiagros",
+      "data_com": "30/01/2026",
+      "data_pagamento": "12/02/2026"
     }
   ],
   "etfs": [

@@ -5,7 +5,7 @@ const { getBestFIIs } = require('./services/fiis');
 const { getFIInfra } = require('./services/fi_infra');
 const { getETFs } = require('./services/etfs');
 const { getTesouroDirect, getPrivateBenchmarks } = require('./services/fixed_income');
-const { getMultipleFiiMetadata } = require('./services/investidor10');
+const { getMultipleAssetMetadata } = require('./services/investidor10');
 
 async function exportData() {
     console.log('🚀 Starting Data Export for B3 Screener...');
@@ -26,21 +26,35 @@ async function exportData() {
 
         // 2. Combine all discovered FIIs to fetch metadata
         const combinedRaw = [...rawStandardFiis, ...rawInfraFiis];
-        const allTickers = [...new Set(combinedRaw.map(f => f.ticker))];
-        console.log(`🔍 Found ${allTickers.length} unique tickers. Fetching verified metadata from Investidor 10...`);
+        const allFiiTickers = [...new Set(combinedRaw.map(f => f.ticker))];
 
-        // 3. Fetch verified metadata from Investidor 10
-        const metadataMap = await getMultipleFiiMetadata(allTickers, 150);
+        // 3. Select top-ranked stocks to fetch metadata (to save time/requests)
+        const stockTickers = stocks.slice(0, 50).map(s => s.ticker);
+        const allTickers = [...allFiiTickers, ...stockTickers];
 
-        // 4. Second Pass: Re-process the combined list through the business logic
-        // This ensures all assets (Standard, Infra, Agro) use the SAME scoring and classification rules
+        console.log(`🔍 Found ${allFiiTickers.length} FIIs and ${stockTickers.length} sample stocks. Fetching verified metadata from Investidor 10...`);
+
+        // 4. Fetch verified metadata from Investidor 10
+        const metadataMap = await getMultipleAssetMetadata(allTickers, 150);
+
+        // 5. Second Pass: Re-process the combined list through the business logic
         console.log('⚖️  Re-processing all FIIs/Infras with verified metadata...');
         const finalFiis = await getBestFIIs(metadataMap, combinedRaw, selic);
+
+        // 6. Enrich stocks with metadata (Dividend Dates)
+        const finalStocks = stocks.map(s => {
+            const meta = metadataMap[s.ticker] || {};
+            return {
+                ...s,
+                data_com: meta.data_com || null,
+                data_pagamento: meta.data_pagamento || null
+            };
+        });
 
         const data = {
             updatedAt: new Date().toLocaleString('pt-BR'),
             economy: { dollar, selic },
-            stocks: stocks,
+            stocks: finalStocks,
             fiis: finalFiis,
             etfs,
             fixedIncome: {
