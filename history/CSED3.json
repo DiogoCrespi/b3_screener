@@ -1,0 +1,42 @@
+{
+  "ticker": "CSED3",
+  "updatedAt": "2026-02-18T14:33:03.171Z",
+  "history": [
+    {
+      "type": "Dividendos",
+      "data_com": "18/12/2025",
+      "data_pagamento": "30/12/2025",
+      "value": 0.2743164
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "30/04/2025",
+      "data_pagamento": "30/06/2025",
+      "value": 0.21122362
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "27/08/2024",
+      "data_pagamento": "03/09/2024",
+      "value": 0.16458
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "14/11/2023",
+      "data_pagamento": "08/12/2023",
+      "value": 0.16459
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "28/04/2023",
+      "data_pagamento": "27/06/2023",
+      "value": 0.068804
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "29/04/2022",
+      "data_pagamento": "28/05/2022",
+      "value": 0.13095
+    }
+  ]
+}

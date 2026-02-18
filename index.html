@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>B3 Screener Mobile</title>
     <script src="data.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
             /* Base Colors */
@@ -628,7 +629,8 @@
             <button class="tab-btn" onclick="showTab('fiis')">FIIs</button>
             <button class="tab-btn" onclick="showTab('snowball')">❄️ Bola de Neve</button>
             <button class="tab-btn" onclick="showTab('fixed')">Renda Fixa</button>
-            <button class="tab-btn" onclick="showTab('etfs')">ETFs</button>
+            <button class="tab-btn" onclick="showTab('etfs')">📈 ETFs</button>
+            <button class="tab-btn" onclick="showTab('analysis')">📊 Análise</button>
         </div>
 
         <div class="list-container" id="content-stocks">
@@ -649,6 +651,56 @@
 
         <div class="list-container hidden" id="content-etfs">
             <!-- ETF list goes here -->
+        </div>
+
+        <div class="list-container hidden" id="content-analysis">
+            <div class="analysis-controls"
+                style="grid-column: 1 / -1; background: var(--card-bg); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; border: 1px solid var(--border-color);">
+                <h2 style="margin-top: 0; color: var(--primary);">📊 Análise de Proventos</h2>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <div style="flex: 1; position: relative; min-width: 200px;">
+                        <input type="text" id="analysis-ticker-input" placeholder="Digite o ticker (ex: PETR4)..."
+                            list="analysis-tickers-list"
+                            style="width: 100%; padding: 10px; border-radius: 8px; background: var(--bg-color); color: var(--text-color); border: 1px solid var(--border-color); box-sizing: border-box;">
+                        <datalist id="analysis-tickers-list">
+                        </datalist>
+                    </div>
+                    <button onclick="loadAnalysis()"
+                        style="padding: 10px 20px; border-radius: 8px; background: var(--primary); color: white; border: none; cursor: pointer; font-weight: bold;">Analisar</button>
+                </div>
+            </div>
+
+            <div id="analysis-results" style="grid-column: 1 / -1; display: none;">
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 2rem;">
+                    <div class="metric-card" style="max-width: 100%;">
+                        <div class="metric-label">Preço Teto (Bazin)</div>
+                        <div id="analysis-bazin" class="metric-value">R$ 0,00</div>
+                    </div>
+                    <div class="metric-card" style="max-width: 100%;">
+                        <div class="metric-label">Média Dividendos (5 anos)</div>
+                        <div id="analysis-avg-div" class="metric-value">R$ 0,00</div>
+                    </div>
+                    <div class="metric-card" style="max-width: 100%;">
+                        <div class="metric-label">Graham (Valor Justo)</div>
+                        <div id="analysis-graham" class="metric-value">R$ 0,00</div>
+                    </div>
+                </div>
+
+                <div
+                    style="background: var(--card-bg); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); margin-bottom: 2rem;">
+                    <h3>📈 Histórico de Proventos (Anual)</h3>
+                    <div style="height: 400px; width: 100%;">
+                        <canvas id="dividendChart"></canvas>
+                    </div>
+                </div>
+
+                <div id="analysis-insights"
+                    style="background: var(--card-bg); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color);">
+                    <h3>💡 Insights do Analisador</h3>
+                    <div id="insights-content" style="line-height: 1.6;"></div>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -1763,8 +1815,9 @@
 
         function showTab(tabName) {
             // Hide all
-            ['stocks', 'fiis', 'snowball', 'fixed', 'etfs'].forEach(t => {
-                document.getElementById(`content-${t}`).classList.add('hidden');
+            ['stocks', 'fiis', 'snowball', 'fixed', 'etfs', 'analysis'].forEach(t => {
+                const el = document.getElementById(`content-${t}`);
+                if (el) el.classList.add('hidden');
             });
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
 
@@ -1773,10 +1826,16 @@
 
             // Highlight active tab
             document.querySelectorAll('.tab-btn').forEach(btn => {
-                if (btn.textContent.toLowerCase().includes(tabName === 'snowball' ? 'bola de neve' : tabName)) {
+                const text = btn.textContent.toLowerCase();
+                const target = tabName === 'snowball' ? 'bola de neve' : (tabName === 'analysis' ? 'análise' : tabName);
+                if (text.includes(target)) {
                     btn.classList.add('active');
                 }
             });
+
+            if (tabName === 'analysis' && document.getElementById('analysis-tickers-list').children.length === 0) {
+                initAnalysis();
+            }
         }
 
         function getInvestidor10Url(item) {
@@ -1786,6 +1845,150 @@
             if (type === 'ETF') return `https://investidor10.com.br/etfs/${ticker}/`;
             if (ticker && !type) return `https://investidor10.com.br/acoes/${ticker}/`;
             return `https://investidor10.com.br/fiis/${ticker}/`;
+        }
+
+        // --- ANALYSIS SYSTEM ---
+        let dividendChart = null;
+
+        function initAnalysis() {
+            const list = document.getElementById('analysis-tickers-list');
+            const data = window.INVEST_DATA;
+            if (!data) return;
+
+            const allTickers = [
+                ...data.stocks.map(s => s.ticker),
+                ...data.fiis.map(f => f.ticker)
+            ].sort();
+
+            allTickers.forEach(ticker => {
+                const opt = document.createElement('option');
+                opt.value = ticker;
+                list.appendChild(opt);
+            });
+        }
+
+        async function loadAnalysis() {
+            const tickerInput = document.getElementById('analysis-ticker-input');
+            const ticker = tickerInput.value.toUpperCase().trim();
+            const resultsDiv = document.getElementById('analysis-results');
+            const insightsDiv = document.getElementById('insights-content');
+
+            if (!ticker) return;
+
+            // Show loading state
+            insightsDiv.innerHTML = '<p style="color:var(--primary)">⏳ Carregando dados de ' + ticker + '...</p>';
+            resultsDiv.style.display = 'block';
+            document.getElementById('analysis-avg-div').textContent = '...';
+            document.getElementById('analysis-bazin').textContent = '...';
+            document.getElementById('analysis-graham').textContent = '...';
+
+            try {
+                const response = await fetch(`history/${ticker}.json`);
+                if (!response.ok) throw new Error('Histórico não encontrado para este ativo. Tente ativos como PETR4 ou MXRF11 que foram processados.');
+
+                const json = await response.json();
+                const rawHistory = json.history;
+
+                // Process history for Chart (group by year)
+                const annually = {};
+                rawHistory.forEach(reg => {
+                    const year = reg.data_com.split('/').pop();
+                    annually[year] = (annually[year] || 0) + reg.value;
+                });
+
+                const sortedYears = Object.keys(annually).sort();
+                const chartData = sortedYears.map(y => annually[y]);
+
+                renderDividendChart(sortedYears, chartData, ticker);
+
+                // Calculate Metrics
+                const data = window.INVEST_DATA;
+                const latestPrice = [...data.stocks, ...data.fiis].find(a => a.ticker === ticker)?.price
+                    || [...data.stocks, ...data.fiis].find(a => a.ticker === ticker)?.cotacao || 0;
+
+                // Bazin: Last 5 years average * 0.06
+                const last5Years = sortedYears.slice(-5);
+                const avgDiv = last5Years.reduce((acc, y) => acc + annually[y], 0) / (last5Years.length || 1);
+                const bazinPrice = avgDiv / 0.06;
+
+                document.getElementById('analysis-results').style.display = 'block';
+                document.getElementById('analysis-avg-div').textContent = `R$ ${avgDiv.toFixed(2)}`;
+                document.getElementById('analysis-bazin').textContent = `R$ ${bazinPrice.toFixed(2)}`;
+
+                const stockData = data.stocks.find(s => s.ticker === ticker);
+                if (stockData) {
+                    document.getElementById('analysis-graham').textContent = `R$ ${stockData.graham_price.toFixed(2)}`;
+                } else {
+                    document.getElementById('analysis-graham').textContent = 'N/A (FII)';
+                }
+
+                // Insights
+                let insightHtml = `<p>O ativo <strong>${ticker}</strong> paga em média <strong>R$ ${avgDiv.toFixed(2)}</strong> por ano nos últimos 5 anos.</p>`;
+                if (latestPrice < bazinPrice) {
+                    insightHtml += `<p style="color:var(--success)">✅ Pela metodologia de <strong>Décio Bazin</strong>, o ativo está com preço atrativo para renda (Preço Teto R$ ${bazinPrice.toFixed(2)} vs R$ ${latestPrice.toFixed(2)}).</p>`;
+                } else {
+                    insightHtml += `<p style="color:var(--warning)">⚠️ O preço atual está acima do teto de Bazin (R$ ${bazinPrice.toFixed(2)}).</p>`;
+                }
+
+                document.getElementById('insights-content').innerHTML = insightHtml;
+
+            } catch (error) {
+                console.error('Analysis Error:', error);
+                let msg = error.message;
+                if (msg.includes('Failed to fetch') || msg.includes('origin \'null\'')) {
+                    msg = '⚠️ Erro de Segurança (CORS): Browsers bloqueiam acesso a arquivos locais. Por favor, rode a aplicação em um servidor (ex: npx serve) ou use a versão hospedada.';
+                }
+                insightsDiv.innerHTML = `<p style="color:var(--danger)">${msg}</p>`;
+            }
+        }
+
+        function renderDividendChart(labels, values, ticker) {
+            const ctx = document.getElementById('dividendChart').getContext('2d');
+
+            if (typeof Chart === 'undefined') {
+                const parent = document.getElementById('dividendChart').parentElement;
+                if (parent) {
+                    parent.innerHTML = '<p style="color:var(--warning); padding: 20px;">⚠️ Erro: Biblioteca de Gráficos (Chart.js) não carregada. Verifique sua conexão.</p>';
+                }
+                return;
+            }
+
+            if (dividendChart) {
+                dividendChart.destroy();
+            }
+
+            dividendChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: `Proventos Anuais ${ticker}`,
+                        data: values,
+                        backgroundColor: '#8257e5',
+                        borderColor: '#8257e5',
+                        borderWidth: 1,
+                        borderRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: '#323238' },
+                            ticks: { color: '#a8a8b3' }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: '#a8a8b3' }
+                        }
+                    },
+                    plugins: {
+                        legend: { labels: { color: '#e1e1e6' } }
+                    }
+                }
+            });
         }
     </script>
 

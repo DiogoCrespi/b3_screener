@@ -1,0 +1,24 @@
+{
+  "ticker": "CASH3",
+  "updatedAt": "2026-02-18T14:33:22.703Z",
+  "history": [
+    {
+      "type": "Red. Cap.",
+      "data_com": "02/09/2024",
+      "data_pagamento": "13/09/2024",
+      "value": 2.52713564
+    },
+    {
+      "type": "Red. Cap.",
+      "data_com": "01/04/2024",
+      "data_pagamento": "11/04/2024",
+      "value": 2.41496025
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "30/04/2021",
+      "data_pagamento": "31/05/2021",
+      "value": 0.06176667
+    }
+  ]
+}

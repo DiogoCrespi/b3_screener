@@ -1,0 +1,510 @@
+{
+  "ticker": "ISAE4",
+  "updatedAt": "2026-02-18T14:33:04.499Z",
+  "history": [
+    {
+      "type": "JSCP",
+      "data_com": "26/02/2026",
+      "data_pagamento": "31/03/2026",
+      "value": 0.250553
+    },
+    {
+      "type": "JSCP",
+      "data_com": "29/01/2026",
+      "data_pagamento": "25/02/2026",
+      "value": 0.250553
+    },
+    {
+      "type": "JSCP",
+      "data_com": "29/12/2025",
+      "data_pagamento": "28/01/2026",
+      "value": 0.250553
+    },
+    {
+      "type": "JSCP",
+      "data_com": "17/12/2025",
+      "data_pagamento": "30/12/2025",
+      "value": 0.224999
+    },
+    {
+      "type": "JSCP",
+      "data_com": "24/11/2025",
+      "data_pagamento": "12/12/2025",
+      "value": 0.224999
+    },
+    {
+      "type": "JSCP",
+      "data_com": "30/10/2025",
+      "data_pagamento": "28/11/2025",
+      "value": 0.224999
+    },
+    {
+      "type": "JSCP",
+      "data_com": "11/03/2025",
+      "data_pagamento": "21/03/2025",
+      "value": 0.786945
+    },
+    {
+      "type": "JSCP",
+      "data_com": "11/02/2025",
+      "data_pagamento": "21/02/2025",
+      "value": 0.786945
+    },
+    {
+      "type": "JSCP",
+      "data_com": "09/01/2025",
+      "data_pagamento": "21/01/2025",
+      "value": 0.786945
+    },
+    {
+      "type": "JSCP",
+      "data_com": "13/12/2023",
+      "data_pagamento": "15/01/2024",
+      "value": 0.242836
+    },
+    {
+      "type": "JSCP",
+      "data_com": "13/12/2023",
+      "data_pagamento": "10/04/2024",
+      "value": 1.961247
+    },
+    {
+      "type": "JSCP",
+      "data_com": "26/12/2022",
+      "data_pagamento": "11/04/2023",
+      "value": 1.062404
+    },
+    {
+      "type": "JSCP",
+      "data_com": "22/12/2021",
+      "data_pagamento": "18/01/2022",
+      "value": 0.173896
+    },
+    {
+      "type": "JSCP",
+      "data_com": "03/11/2021",
+      "data_pagamento": "17/11/2021",
+      "value": 0.780915
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "03/11/2021",
+      "data_pagamento": "17/11/2021",
+      "value": 0.529386
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "06/07/2021",
+      "data_pagamento": "15/07/2021",
+      "value": 0.502542
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "30/03/2021",
+      "data_pagamento": "21/05/2021",
+      "value": 0.795967
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "25/02/2021",
+      "data_pagamento": "21/05/2021",
+      "value": 0.806156
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "16/12/2020",
+      "data_pagamento": "18/01/2021",
+      "value": 0.176055
+    },
+    {
+      "type": "JSCP",
+      "data_com": "16/12/2020",
+      "data_pagamento": "18/01/2021",
+      "value": 0.661494
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "04/11/2020",
+      "data_pagamento": "13/11/2020",
+      "value": 0.522095
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "06/07/2020",
+      "data_pagamento": "16/07/2020",
+      "value": 0.151772
+    },
+    {
+      "type": "JSCP",
+      "data_com": "16/04/2020",
+      "data_pagamento": "29/04/2020",
+      "value": 0.228164
+    },
+    {
+      "type": "JSCP",
+      "data_com": "13/12/2019",
+      "data_pagamento": "20/01/2020",
+      "value": 0.163679
+    },
+    {
+      "type": "JSCP",
+      "data_com": "08/11/2019",
+      "data_pagamento": "03/12/2019",
+      "value": 0.339126
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "08/11/2019",
+      "data_pagamento": "03/12/2019",
+      "value": 0.445535
+    },
+    {
+      "type": "JSCP",
+      "data_com": "02/08/2019",
+      "data_pagamento": "19/08/2019",
+      "value": 0.562186
+    },
+    {
+      "type": "JSCP",
+      "data_com": "06/12/2018",
+      "data_pagamento": "17/12/2018",
+      "value": 0.89849
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "06/12/2018",
+      "data_pagamento": "17/12/2018",
+      "value": 0.9607165
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "05/06/2018",
+      "data_pagamento": "18/06/2018",
+      "value": 1.153932
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "17/04/2018",
+      "data_pagamento": "15/06/2018",
+      "value": 0.128541
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "17/11/2017",
+      "data_pagamento": "28/11/2017",
+      "value": 0.55457475
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "01/06/2017",
+      "data_pagamento": "13/06/2017",
+      "value": 0.20489225
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "02/12/2016",
+      "data_pagamento": "20/01/2017",
+      "value": 0.2086865
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "21/06/2016",
+      "data_pagamento": "30/06/2016",
+      "value": 0.16694925
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "25/11/2015",
+      "data_pagamento": "07/12/2015",
+      "value": 0.3474215
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "26/05/2015",
+      "data_pagamento": "08/06/2015",
+      "value": 0.17171875
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "06/05/2015",
+      "data_pagamento": "30/06/2015",
+      "value": 0.04810425
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "24/11/2014",
+      "data_pagamento": "05/12/2014",
+      "value": 0.255799
+    },
+    {
+      "type": "JSCP",
+      "data_com": "12/08/2014",
+      "data_pagamento": "29/08/2014",
+      "value": 0.0491285
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "01/04/2014",
+      "data_pagamento": "31/07/2014",
+      "value": 0.0491285
+    },
+    {
+      "type": "JSCP",
+      "data_com": "23/12/2013",
+      "data_pagamento": "30/01/2014",
+      "value": 0.327522
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "29/06/2012",
+      "data_pagamento": "27/07/2012",
+      "value": 0.104725
+    },
+    {
+      "type": "JSCP",
+      "data_com": "29/06/2012",
+      "data_pagamento": "27/07/2012",
+      "value": 0.15893025
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "16/04/2012",
+      "data_pagamento": "30/04/2012",
+      "value": 0.051325
+    },
+    {
+      "type": "JSCP",
+      "data_com": "16/04/2012",
+      "data_pagamento": "30/04/2012",
+      "value": 0.02618125
+    },
+    {
+      "type": "JSCP",
+      "data_com": "16/01/2012",
+      "data_pagamento": "30/01/2012",
+      "value": 0.105066
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "16/01/2012",
+      "data_pagamento": "30/01/2012",
+      "value": 0.27813475
+    },
+    {
+      "type": "JSCP",
+      "data_com": "10/10/2011",
+      "data_pagamento": "31/10/2011",
+      "value": 0.10081825
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "10/10/2011",
+      "data_pagamento": "31/10/2011",
+      "value": 0.28448375
+    },
+    {
+      "type": "JSCP",
+      "data_com": "06/07/2011",
+      "data_pagamento": "28/07/2011",
+      "value": 0.10449375
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "06/07/2011",
+      "data_pagamento": "28/07/2011",
+      "value": 0.26431875
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "29/04/2011",
+      "data_pagamento": "28/07/2011",
+      "value": 0.0275035
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "06/04/2011",
+      "data_pagamento": "29/04/2011",
+      "value": 0.2985385
+    },
+    {
+      "type": "JSCP",
+      "data_com": "06/04/2011",
+      "data_pagamento": "29/04/2011",
+      "value": 0.108169
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "14/01/2011",
+      "data_pagamento": "28/01/2011",
+      "value": 0.184538
+    },
+    {
+      "type": "JSCP",
+      "data_com": "14/01/2011",
+      "data_pagamento": "28/01/2011",
+      "value": 0.10377975
+    },
+    {
+      "type": "JSCP",
+      "data_com": "07/10/2010",
+      "data_pagamento": "25/10/2010",
+      "value": 0.1049205
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "07/10/2010",
+      "data_pagamento": "25/10/2010",
+      "value": 0.24086325
+    },
+    {
+      "type": "JSCP",
+      "data_com": "07/07/2010",
+      "data_pagamento": "23/07/2010",
+      "value": 0.103613
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "07/07/2010",
+      "data_pagamento": "23/07/2010",
+      "value": 0.104841
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "04/05/2010",
+      "data_pagamento": "23/07/2010",
+      "value": 0.12728575
+    },
+    {
+      "type": "JSCP",
+      "data_com": "08/04/2010",
+      "data_pagamento": "20/04/2010",
+      "value": 0.1027505
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "08/04/2010",
+      "data_pagamento": "20/04/2010",
+      "value": 0.215689
+    },
+    {
+      "type": "JSCP",
+      "data_com": "11/01/2010",
+      "data_pagamento": "22/01/2010",
+      "value": 0.267164
+    },
+    {
+      "type": "JSCP",
+      "data_com": "15/12/2009",
+      "data_pagamento": "30/12/2009",
+      "value": 0.1018555
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "06/10/2009",
+      "data_pagamento": "21/10/2009",
+      "value": 0.17165625
+    },
+    {
+      "type": "JSCP",
+      "data_com": "06/10/2009",
+      "data_pagamento": "21/10/2009",
+      "value": 0.102975
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "06/07/2009",
+      "data_pagamento": "21/07/2009",
+      "value": 0.10188925
+    },
+    {
+      "type": "JSCP",
+      "data_com": "22/06/2009",
+      "data_pagamento": "01/07/2009",
+      "value": 0.10707425
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "15/04/2009",
+      "data_pagamento": "24/04/2009",
+      "value": 0.17732975
+    },
+    {
+      "type": "JSCP",
+      "data_com": "13/04/2009",
+      "data_pagamento": "24/04/2009",
+      "value": 0.1058975
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "12/01/2009",
+      "data_pagamento": "20/01/2009",
+      "value": 0.2051445
+    },
+    {
+      "type": "JSCP",
+      "data_com": "12/12/2008",
+      "data_pagamento": "30/12/2008",
+      "value": 0.0999225
+    },
+    {
+      "type": "JSCP",
+      "data_com": "09/10/2008",
+      "data_pagamento": "17/10/2008",
+      "value": 0.101129
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "09/10/2008",
+      "data_pagamento": "17/10/2008",
+      "value": 0.09145575
+    },
+    {
+      "type": "JSCP",
+      "data_com": "08/07/2008",
+      "data_pagamento": "17/07/2008",
+      "value": 0.097651
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "08/07/2008",
+      "data_pagamento": "17/07/2008",
+      "value": 0.24282425
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "10/04/2008",
+      "data_pagamento": "18/04/2008",
+      "value": 0.1122015
+    },
+    {
+      "type": "JSCP",
+      "data_com": "31/03/2008",
+      "data_pagamento": "18/04/2008",
+      "value": 0.10304275
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "21/01/2008",
+      "data_pagamento": "11/02/2008",
+      "value": 0.2846905
+    },
+    {
+      "type": "JSCP",
+      "data_com": "13/12/2007",
+      "data_pagamento": "18/01/2008",
+      "value": 0.0655165
+    },
+    {
+      "type": "JSCP",
+      "data_com": "05/11/2007",
+      "data_pagamento": "19/11/2007",
+      "value": 0.33428475
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "01/10/2007",
+      "data_pagamento": "17/10/2007",
+      "value": 0.29057075
+    }
+  ]
+}

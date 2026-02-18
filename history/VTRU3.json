@@ -1,0 +1,12 @@
+{
+  "ticker": "VTRU3",
+  "updatedAt": "2026-02-18T14:33:21.513Z",
+  "history": [
+    {
+      "type": "Dividendos",
+      "data_com": "30/04/2025",
+      "data_pagamento": "18/06/2025",
+      "value": 0.021604
+    }
+  ]
+}

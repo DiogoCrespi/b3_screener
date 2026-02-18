@@ -1,0 +1,324 @@
+{
+  "ticker": "MCRE11",
+  "updatedAt": "2026-02-18T14:33:34.568Z",
+  "history": [
+    {
+      "type": "Dividendos",
+      "data_com": "16/01/2026",
+      "data_pagamento": "23/01/2026",
+      "value": 0.11
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "15/12/2025",
+      "data_pagamento": "22/12/2025",
+      "value": 0.11
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "17/11/2025",
+      "data_pagamento": "25/11/2025",
+      "value": 0.11
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "15/10/2025",
+      "data_pagamento": "22/10/2025",
+      "value": 0.11
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "15/09/2025",
+      "data_pagamento": "22/09/2025",
+      "value": 0.11
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "15/08/2025",
+      "data_pagamento": "22/08/2025",
+      "value": 0.11
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "15/07/2025",
+      "data_pagamento": "22/07/2025",
+      "value": 0.11
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "16/06/2025",
+      "data_pagamento": "24/06/2025",
+      "value": 0.11
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "16/05/2025",
+      "data_pagamento": "23/05/2025",
+      "value": 0.11
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "15/04/2025",
+      "data_pagamento": "24/04/2025",
+      "value": 0.11
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "19/03/2025",
+      "data_pagamento": "26/03/2025",
+      "value": 0.11
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "17/02/2025",
+      "data_pagamento": "24/02/2025",
+      "value": 0.11
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "16/01/2025",
+      "data_pagamento": "23/01/2025",
+      "value": 0.1
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "16/12/2024",
+      "data_pagamento": "23/12/2024",
+      "value": 0.1
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "18/11/2024",
+      "data_pagamento": "26/11/2024",
+      "value": 0.1
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "15/10/2024",
+      "data_pagamento": "22/10/2024",
+      "value": 0.1
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "16/09/2024",
+      "data_pagamento": "23/09/2024",
+      "value": 0.1
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "15/08/2024",
+      "data_pagamento": "22/08/2024",
+      "value": 0.1
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "15/07/2024",
+      "data_pagamento": "22/07/2024",
+      "value": 0.11
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "17/06/2024",
+      "data_pagamento": "24/06/2024",
+      "value": 0.11
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "16/05/2024",
+      "data_pagamento": "23/05/2024",
+      "value": 0.11
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "15/04/2024",
+      "data_pagamento": "22/04/2024",
+      "value": 0.11
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "06/03/2024",
+      "data_pagamento": "13/03/2024",
+      "value": 0.11
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "19/02/2024",
+      "data_pagamento": "26/02/2024",
+      "value": 0.11
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "16/01/2024",
+      "data_pagamento": "23/01/2024",
+      "value": 0.13
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "15/12/2023",
+      "data_pagamento": "22/12/2023",
+      "value": 0.13
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "17/11/2023",
+      "data_pagamento": "24/11/2023",
+      "value": 0.13
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "17/10/2023",
+      "data_pagamento": "24/10/2023",
+      "value": 0.13
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "18/09/2023",
+      "data_pagamento": "25/09/2023",
+      "value": 0.13
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "15/08/2023",
+      "data_pagamento": "22/08/2023",
+      "value": 0.13
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "17/07/2023",
+      "data_pagamento": "24/07/2023",
+      "value": 0.14
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "16/06/2023",
+      "data_pagamento": "23/06/2023",
+      "value": 0.14
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "16/05/2023",
+      "data_pagamento": "23/05/2023",
+      "value": 0.14
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "18/04/2023",
+      "data_pagamento": "26/04/2023",
+      "value": 0.14
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "15/03/2023",
+      "data_pagamento": "22/03/2023",
+      "value": 0.14
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "15/02/2023",
+      "data_pagamento": "24/02/2023",
+      "value": 0.14
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "16/01/2023",
+      "data_pagamento": "23/01/2023",
+      "value": 0.14
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "21/12/2022",
+      "data_pagamento": "28/12/2022",
+      "value": 0.34
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "17/11/2022",
+      "data_pagamento": "24/11/2022",
+      "value": 0.14
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "18/10/2022",
+      "data_pagamento": "25/10/2022",
+      "value": 0.14
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "16/09/2022",
+      "data_pagamento": "23/09/2022",
+      "value": 0.14
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "15/08/2022",
+      "data_pagamento": "22/08/2022",
+      "value": 0.14
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "15/07/2022",
+      "data_pagamento": "22/07/2022",
+      "value": 0.14
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "15/06/2022",
+      "data_pagamento": "23/06/2022",
+      "value": 0.14
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "16/05/2022",
+      "data_pagamento": "23/05/2022",
+      "value": 0.15
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "18/04/2022",
+      "data_pagamento": "26/04/2022",
+      "value": 0.13
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "16/03/2022",
+      "data_pagamento": "23/03/2022",
+      "value": 0.13
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "15/02/2022",
+      "data_pagamento": "22/02/2022",
+      "value": 0.13
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "17/01/2022",
+      "data_pagamento": "24/01/2022",
+      "value": 0.13
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "15/12/2021",
+      "data_pagamento": "22/12/2021",
+      "value": 0.13
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "17/11/2021",
+      "data_pagamento": "24/11/2021",
+      "value": 0.13
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "18/10/2021",
+      "data_pagamento": "25/10/2021",
+      "value": 0.13
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "16/09/2021",
+      "data_pagamento": "23/09/2021",
+      "value": 0.131
+    }
+  ]
+}

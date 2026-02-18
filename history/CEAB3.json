@@ -1,0 +1,30 @@
+{
+  "ticker": "CEAB3",
+  "updatedAt": "2026-02-18T14:33:15.202Z",
+  "history": [
+    {
+      "type": "JSCP",
+      "data_com": "23/12/2025",
+      "data_pagamento": "Provisionado",
+      "value": 0.52159962
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "30/04/2025",
+      "data_pagamento": "23/12/2025",
+      "value": 0.03777797
+    },
+    {
+      "type": "JSCP",
+      "data_com": "30/12/2024",
+      "data_pagamento": "23/12/2025",
+      "value": 0.344691
+    },
+    {
+      "type": "JSCP",
+      "data_com": "30/12/2019",
+      "data_pagamento": "23/12/2020",
+      "value": 0.25347738
+    }
+  ]
+}

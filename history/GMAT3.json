@@ -1,0 +1,54 @@
+{
+  "ticker": "GMAT3",
+  "updatedAt": "2026-02-18T14:33:13.955Z",
+  "history": [
+    {
+      "type": "JSCP",
+      "data_com": "19/11/2025",
+      "data_pagamento": "30/12/2025",
+      "value": 0.04957386
+    },
+    {
+      "type": "JSCP",
+      "data_com": "25/09/2025",
+      "data_pagamento": "31/12/2025",
+      "value": 0.07257565
+    },
+    {
+      "type": "JSCP",
+      "data_com": "26/06/2025",
+      "data_pagamento": "31/12/2025",
+      "value": 0.067047
+    },
+    {
+      "type": "JSCP",
+      "data_com": "26/03/2025",
+      "data_pagamento": "31/12/2025",
+      "value": 0.060127
+    },
+    {
+      "type": "JSCP",
+      "data_com": "11/11/2024",
+      "data_pagamento": "20/12/2024",
+      "value": 0.04356738
+    },
+    {
+      "type": "JSCP",
+      "data_com": "26/09/2024",
+      "data_pagamento": "20/12/2024",
+      "value": 0.04544
+    },
+    {
+      "type": "JSCP",
+      "data_com": "14/06/2024",
+      "data_pagamento": "20/12/2024",
+      "value": 0.061046
+    },
+    {
+      "type": "JSCP",
+      "data_com": "28/03/2024",
+      "data_pagamento": "20/12/2024",
+      "value": 0.043583
+    }
+  ]
+}

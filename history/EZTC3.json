@@ -1,0 +1,222 @@
+{
+  "ticker": "EZTC3",
+  "updatedAt": "2026-02-18T14:32:58.467Z",
+  "history": [
+    {
+      "type": "Bonificação",
+      "data_com": "09/12/2025",
+      "data_pagamento": "11/12/2025",
+      "value": 0.271555
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "18/11/2025",
+      "data_pagamento": "17/12/2025",
+      "value": 0.60909443
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "18/11/2025",
+      "data_pagamento": "28/11/2025",
+      "value": 0.39949831
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "14/08/2025",
+      "data_pagamento": "29/08/2025",
+      "value": 0.30466792
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "22/05/2025",
+      "data_pagamento": "30/05/2025",
+      "value": 0.1024571
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "20/03/2025",
+      "data_pagamento": "31/03/2025",
+      "value": 0.13789754
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "05/11/2024",
+      "data_pagamento": "14/11/2024",
+      "value": 0.8320408
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "08/08/2024",
+      "data_pagamento": "30/08/2024",
+      "value": 0.0965391
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "09/05/2024",
+      "data_pagamento": "31/05/2024",
+      "value": 0.06174246
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "21/03/2024",
+      "data_pagamento": "28/03/2024",
+      "value": 0.09015243
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "16/11/2023",
+      "data_pagamento": "30/11/2023",
+      "value": 0.04258396
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "17/08/2023",
+      "data_pagamento": "31/08/2023",
+      "value": 0.08202503
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "18/05/2023",
+      "data_pagamento": "31/05/2023",
+      "value": 0.045975
+    },
+    {
+      "type": "JSCP",
+      "data_com": "23/03/2023",
+      "data_pagamento": "31/03/2023",
+      "value": 0.03430974
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "17/11/2022",
+      "data_pagamento": "30/11/2022",
+      "value": 0.11478987
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "16/08/2022",
+      "data_pagamento": "31/08/2022",
+      "value": 0.090504
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "17/05/2022",
+      "data_pagamento": "31/05/2022",
+      "value": 0.112467
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "22/03/2022",
+      "data_pagamento": "31/03/2022",
+      "value": 0.460337
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "29/04/2021",
+      "data_pagamento": "21/05/2021",
+      "value": 0.423955
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "28/04/2020",
+      "data_pagamento": "02/10/2020",
+      "value": 0.294083
+    },
+    {
+      "type": "Bonificação",
+      "data_com": "26/04/2019",
+      "data_pagamento": "03/05/2019",
+      "value": 0.2121
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "26/04/2019",
+      "data_pagamento": "04/10/2019",
+      "value": 0.140397
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "27/04/2018",
+      "data_pagamento": "31/08/2018",
+      "value": 0.516489
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "06/12/2017",
+      "data_pagamento": "15/12/2017",
+      "value": 2.67
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "28/04/2017",
+      "data_pagamento": "15/09/2017",
+      "value": 1.092192
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "29/04/2016",
+      "data_pagamento": "10/05/2016",
+      "value": 0.9898
+    },
+    {
+      "type": "Bonificação",
+      "data_com": "29/04/2016",
+      "data_pagamento": "02/05/2016",
+      "value": 0.050575
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "30/04/2015",
+      "data_pagamento": "07/07/2015",
+      "value": 1.1086
+    },
+    {
+      "type": "Bonificação",
+      "data_com": "30/04/2015",
+      "data_pagamento": "07/05/2015",
+      "value": 0.070433
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "30/04/2014",
+      "data_pagamento": "28/11/2014",
+      "value": 0.9485
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "26/04/2013",
+      "data_pagamento": "29/11/2013",
+      "value": 0.5441
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "27/04/2012",
+      "data_pagamento": "31/07/2012",
+      "value": 0.5325
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "26/04/2011",
+      "data_pagamento": "31/05/2011",
+      "value": 0.3945
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "29/04/2010",
+      "data_pagamento": "31/05/2010",
+      "value": 0.2701
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "17/04/2009",
+      "data_pagamento": "16/06/2009",
+      "value": 0.1264
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "15/04/2008",
+      "data_pagamento": "30/04/2008",
+      "value": 0.0731
+    }
+  ]
+}

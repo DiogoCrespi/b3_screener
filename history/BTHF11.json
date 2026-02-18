@@ -1,0 +1,96 @@
+{
+  "ticker": "BTHF11",
+  "updatedAt": "2026-02-18T14:33:41.002Z",
+  "history": [
+    {
+      "type": "Dividendos",
+      "data_com": "06/02/2026",
+      "data_pagamento": "13/02/2026",
+      "value": 0.101
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "08/01/2026",
+      "data_pagamento": "15/01/2026",
+      "value": 0.10599
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "05/12/2025",
+      "data_pagamento": "12/12/2025",
+      "value": 0.092
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "07/11/2025",
+      "data_pagamento": "14/11/2025",
+      "value": 0.092
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "07/10/2025",
+      "data_pagamento": "14/10/2025",
+      "value": 0.092
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "05/09/2025",
+      "data_pagamento": "12/09/2025",
+      "value": 0.092
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "07/08/2025",
+      "data_pagamento": "14/08/2025",
+      "value": 0.092
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "07/07/2025",
+      "data_pagamento": "14/07/2025",
+      "value": 0.092
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "06/06/2025",
+      "data_pagamento": "13/06/2025",
+      "value": 0.092
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "08/05/2025",
+      "data_pagamento": "15/05/2025",
+      "value": 0.092
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "07/04/2025",
+      "data_pagamento": "14/04/2025",
+      "value": 0.092
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "11/03/2025",
+      "data_pagamento": "18/03/2025",
+      "value": 0.092
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "07/02/2025",
+      "data_pagamento": "14/02/2025",
+      "value": 0.097
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "08/01/2025",
+      "data_pagamento": "15/01/2025",
+      "value": 0.097347
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "18/12/2024",
+      "data_pagamento": "27/12/2024",
+      "value": 0.097
+    }
+  ]
+}

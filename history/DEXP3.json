@@ -1,0 +1,90 @@
+{
+  "ticker": "DEXP3",
+  "updatedAt": "2026-02-18T14:32:51.610Z",
+  "history": [
+    {
+      "type": "Bonificação",
+      "data_com": "19/12/2025",
+      "data_pagamento": "26/12/2025",
+      "value": 0.125
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "16/12/2025",
+      "data_pagamento": "29/12/2025",
+      "value": 0.558517
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "28/04/2025",
+      "data_pagamento": "22/05/2025",
+      "value": 0.383482
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "16/12/2024",
+      "data_pagamento": "27/12/2024",
+      "value": 0.142828
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "29/04/2024",
+      "data_pagamento": "24/05/2024",
+      "value": 0.38842172
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "19/12/2023",
+      "data_pagamento": "28/12/2023",
+      "value": 0.12246
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "28/04/2023",
+      "data_pagamento": "25/05/2023",
+      "value": 0.089473
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "28/04/2023",
+      "data_pagamento": "18/08/2023",
+      "value": 0.178945
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "28/04/2022",
+      "data_pagamento": "25/05/2022",
+      "value": 0.13
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "28/04/2022",
+      "data_pagamento": "16/12/2022",
+      "value": 0.119311
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "28/04/2022",
+      "data_pagamento": "28/09/2022",
+      "value": 0.1355
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "28/04/2021",
+      "data_pagamento": "28/04/2021",
+      "value": 0.23303033
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "28/04/2021",
+      "data_pagamento": "07/05/2021",
+      "value": 0.04733333
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "28/07/2020",
+      "data_pagamento": "20/10/2020",
+      "value": 0.020448
+    }
+  ]
+}

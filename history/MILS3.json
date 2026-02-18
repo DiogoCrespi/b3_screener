@@ -1,0 +1,198 @@
+{
+  "ticker": "MILS3",
+  "updatedAt": "2026-02-18T14:33:20.552Z",
+  "history": [
+    {
+      "type": "Dividendos",
+      "data_com": "20/04/2026",
+      "data_pagamento": "30/04/2026",
+      "value": 0.661738
+    },
+    {
+      "type": "JSCP",
+      "data_com": "17/11/2025",
+      "data_pagamento": "27/11/2025",
+      "value": 0.18766116
+    },
+    {
+      "type": "JSCP",
+      "data_com": "19/08/2025",
+      "data_pagamento": "29/08/2025",
+      "value": 0.21574547
+    },
+    {
+      "type": "JSCP",
+      "data_com": "11/04/2025",
+      "data_pagamento": "25/04/2025",
+      "value": 0.06060163
+    },
+    {
+      "type": "JSCP",
+      "data_com": "30/12/2024",
+      "data_pagamento": "15/01/2025",
+      "value": 0.22877558
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "19/08/2024",
+      "data_pagamento": "30/08/2024",
+      "value": 0.13793185
+    },
+    {
+      "type": "JSCP",
+      "data_com": "19/08/2024",
+      "data_pagamento": "30/08/2024",
+      "value": 0.07551372
+    },
+    {
+      "type": "JSCP",
+      "data_com": "27/06/2024",
+      "data_pagamento": "15/07/2024",
+      "value": 0.09389421
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "02/05/2024",
+      "data_pagamento": "30/05/2024",
+      "value": 0.00662607
+    },
+    {
+      "type": "JSCP",
+      "data_com": "26/03/2024",
+      "data_pagamento": "15/04/2024",
+      "value": 0.080581
+    },
+    {
+      "type": "JSCP",
+      "data_com": "27/12/2023",
+      "data_pagamento": "19/01/2024",
+      "value": 0.07079877
+    },
+    {
+      "type": "JSCP",
+      "data_com": "26/06/2023",
+      "data_pagamento": "14/07/2023",
+      "value": 0.152512
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "27/04/2023",
+      "data_pagamento": "12/05/2023",
+      "value": 0.005016
+    },
+    {
+      "type": "JSCP",
+      "data_com": "31/03/2023",
+      "data_pagamento": "27/04/2023",
+      "value": 0.07672374
+    },
+    {
+      "type": "JSCP",
+      "data_com": "06/12/2022",
+      "data_pagamento": "28/12/2022",
+      "value": 0.063595
+    },
+    {
+      "type": "JSCP",
+      "data_com": "06/09/2022",
+      "data_pagamento": "30/09/2022",
+      "value": 0.056551
+    },
+    {
+      "type": "JSCP",
+      "data_com": "08/06/2022",
+      "data_pagamento": "30/06/2022",
+      "value": 0.08886
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "29/04/2022",
+      "data_pagamento": "13/05/2022",
+      "value": 0.053273
+    },
+    {
+      "type": "JSCP",
+      "data_com": "17/11/2021",
+      "data_pagamento": "30/11/2021",
+      "value": 0.08242993
+    },
+    {
+      "type": "JSCP",
+      "data_com": "17/08/2021",
+      "data_pagamento": "30/08/2021",
+      "value": 0.048765
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "17/08/2021",
+      "data_pagamento": "30/08/2021",
+      "value": 0.032646
+    },
+    {
+      "type": "JSCP",
+      "data_com": "26/05/2021",
+      "data_pagamento": "15/06/2021",
+      "value": 0.023523
+    },
+    {
+      "type": "JSCP",
+      "data_com": "23/06/2014",
+      "data_pagamento": "06/05/2015",
+      "value": 0.1959
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "25/04/2014",
+      "data_pagamento": "08/05/2014",
+      "value": 0.0273
+    },
+    {
+      "type": "JSCP",
+      "data_com": "23/12/2013",
+      "data_pagamento": "14/06/2014",
+      "value": 0.1536
+    },
+    {
+      "type": "JSCP",
+      "data_com": "21/06/2013",
+      "data_pagamento": "14/06/2014",
+      "value": 0.1845
+    },
+    {
+      "type": "JSCP",
+      "data_com": "02/01/2013",
+      "data_pagamento": "30/04/2013",
+      "value": 0.1582
+    },
+    {
+      "type": "JSCP",
+      "data_com": "21/06/2012",
+      "data_pagamento": "30/04/2013",
+      "value": 0.1727
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "20/04/2012",
+      "data_pagamento": "30/04/2012",
+      "value": 0.0075
+    },
+    {
+      "type": "JSCP",
+      "data_com": "21/12/2011",
+      "data_pagamento": "30/04/2012",
+      "value": 0.0191
+    },
+    {
+      "type": "JSCP",
+      "data_com": "28/09/2011",
+      "data_pagamento": "30/04/2012",
+      "value": 0.1752
+    },
+    {
+      "type": "JSCP",
+      "data_com": "28/12/2010",
+      "data_pagamento": "30/04/2011",
+      "value": 0.2024
+    }
+  ]
+}

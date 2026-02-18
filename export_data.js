@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 const { getDollarRate, getSelicRate } = require('./services/economy');
 const { getBestStocks } = require('./services/stocks');
 const { getBestFIIs } = require('./services/fiis');
@@ -6,9 +7,13 @@ const { getFIInfra } = require('./services/fi_infra');
 const { getETFs } = require('./services/etfs');
 const { getTesouroDirect, getPrivateBenchmarks } = require('./services/fixed_income');
 const { getMultipleAssetMetadata } = require('./services/investidor10');
+const { getDividendHistory, saveHistory } = require('./services/dividend_history');
 
 async function exportData() {
     console.log('🚀 Starting Data Export for B3 Screener...');
+    // Create history directory if not exists
+    const historyDir = path.join(__dirname, 'history');
+    if (!fs.existsSync(historyDir)) fs.mkdirSync(historyDir, { recursive: true });
 
     try {
         // 1. Initial Data Fetch
@@ -50,6 +55,33 @@ async function exportData() {
                 data_pagamento: meta.data_pagamento || null
             };
         });
+
+        // 7. Fetch Dividend History for Top Assets (for Chart Analysis)
+        console.log('📈 Fetching Dividend History for top assets...');
+        const topStocks = finalStocks.filter(s => s.category === 'STAR').slice(0, 30);
+        const topFiis = finalFiis.filter(f => f.category === 'STAR' || f.score >= 5).slice(0, 30);
+        const historyCandidates = [...topStocks, ...topFiis];
+
+        for (const asset of historyCandidates) {
+            const historyPath = path.join(historyDir, `${asset.ticker}.json`);
+
+            // Basic cache: skip if file exists and was updated in the last 24h
+            let shouldUpdate = true;
+            if (fs.existsSync(historyPath)) {
+                const stats = fs.statSync(historyPath);
+                const ageHours = (Date.now() - stats.mtimeMs) / (1000 * 60 * 60);
+                if (ageHours < 24) shouldUpdate = false;
+            }
+
+            if (shouldUpdate) {
+                console.log(`   History for ${asset.ticker}...`);
+                const history = await getDividendHistory(asset.ticker);
+                if (history.length > 0) {
+                    await saveHistory(asset.ticker, history);
+                }
+                await new Promise(r => setTimeout(r, 500)); // Rate limit
+            }
+        }
 
         const data = {
             updatedAt: new Date().toLocaleString('pt-BR'),

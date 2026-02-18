@@ -1,0 +1,36 @@
+{
+  "ticker": "PCIP11",
+  "updatedAt": "2026-02-18T14:33:32.088Z",
+  "history": [
+    {
+      "type": "Dividendos",
+      "data_com": "09/02/2026",
+      "data_pagamento": "18/02/2026",
+      "value": 0.83
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "09/01/2026",
+      "data_pagamento": "16/01/2026",
+      "value": 0.88
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "08/12/2025",
+      "data_pagamento": "15/12/2025",
+      "value": 0.83
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "10/11/2025",
+      "data_pagamento": "17/11/2025",
+      "value": 0.9
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "08/10/2025",
+      "data_pagamento": "15/10/2025",
+      "value": 0.85
+    }
+  ]
+}
