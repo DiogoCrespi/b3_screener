@@ -1035,8 +1035,8 @@
                     </div>
                 </div>
                 <div class="card-details">
-                    <div class="detail-row"><span class="detail-label">Próx. Data Com:</span><span class="detail-value" style="color:var(--warning)">${stock.data_com || 'N/A'}</span></div>
-                    <div class="detail-row"><span class="detail-label">Próx. Pagamento:</span><span class="detail-value" style="color:var(--success)">${stock.data_pagamento || 'N/A'}</span></div>
+                    <div class="detail-row"><span class="detail-label">Última Data Com:</span><span class="detail-value" style="color:var(--warning)">${stock.data_com || 'N/A'}</span></div>
+                    <div class="detail-row"><span class="detail-label">Último Pagamento:</span><span class="detail-value" style="color:var(--success)">${stock.data_pagamento || 'N/A'}</span></div>
                     <div class="detail-row"><span class="detail-label">P/L:</span><span class="detail-value">${escapeHTML(stock.pl?.toFixed(2) || 'N/A')} ${getTrendArrow(stock.pl, 'pl')}</span></div>
                     <div class="detail-row"><span class="detail-label">P/VP:</span><span class="detail-value">${escapeHTML(stock.p_vp?.toFixed(2) || 'N/A')} ${getTrendArrow(stock.p_vp, 'pvp')}</span></div>
                     <div class="detail-row"><span class="detail-label">EV/EBIT:</span><span class="detail-value">${escapeHTML(stock.ev_ebit?.toFixed(2) || 'N/A')}</span></div>
@@ -1197,8 +1197,8 @@
                     </div>
                 </div>
                 <div class="card-details">
-                    <div class="detail-row"><span class="detail-label">Próx. Data Com:</span><span class="detail-value" style="color:var(--warning)">${fii.data_com || 'N/A'}</span></div>
-                    <div class="detail-row"><span class="detail-label">Próx. Pagamento:</span><span class="detail-value" style="color:var(--success)">${fii.data_pagamento || 'N/A'}</span></div>
+                    <div class="detail-row"><span class="detail-label">Última Data Com:</span><span class="detail-value" style="color:var(--warning)">${fii.data_com || 'N/A'}</span></div>
+                    <div class="detail-row"><span class="detail-label">Último Pagamento:</span><span class="detail-value" style="color:var(--success)">${fii.data_pagamento || 'N/A'}</span></div>
                     <div class="detail-row"><span class="detail-label">FFO Yield:</span><span class="detail-value">${escapeHTML(String(fii.ffo_yield || 'N/A'))}% ${getTrendArrow(fii.ffo_yield, 'roe')}</span></div>
                     <div class="detail-row"><span class="detail-label">Cap Rate:</span><span class="detail-value">${escapeHTML(String(fii.cap_rate || 'N/A'))}% ${getTrendArrow(fii.cap_rate, 'roe')}</span></div>
                     <div class="detail-row"><span class="detail-label">Vacância:</span><span class="detail-value">${escapeHTML(String(fii.vacancy))}% ${getTrendArrow(fii.vacancy, 'vacancy')}</span></div>
@@ -1530,11 +1530,11 @@
                             </div>
                             <div class="card-details">
                                 <div class="detail-row">
-                                    <span class="detail-label">Próx. Data Com:</span>
+                                    <span class="detail-label">Última Data Com:</span>
                                     <span class="detail-value" style="color:var(--warning)">${fii.data_com || 'N/A'}</span>
                                 </div>
                                 <div class="detail-row">
-                                    <span class="detail-label">Próx. Pagamento:</span>
+                                    <span class="detail-label">Último Pagamento:</span>
                                     <span class="detail-value" style="color:var(--success)">${fii.data_pagamento || 'N/A'}</span>
                                 </div>
                                 <div class="detail-row">
@@ -1690,6 +1690,14 @@
                             </div>
                         </div>
                         <div class="card-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Última Data Com:</span>
+                                <span class="detail-value" style="color:var(--warning)">${fii.data_com || 'N/A'}</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Último Pagamento:</span>
+                                <span class="detail-value" style="color:var(--success)">${fii.data_pagamento || 'N/A'}</span>
+                            </div>
                             <div class="detail-row">
                                 <span class="detail-label">Investimento Total (Meta):</span>
                                 <span class="detail-value" style="color:var(--warning)">R$ ${escapeHTML(totalInvest.toLocaleString('pt-BR', { minimumFractionDigits: 2 }))}</span>
