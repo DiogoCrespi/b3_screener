@@ -58,8 +58,8 @@ async function exportData() {
 
         // 7. Fetch Dividend History for Top Assets (for Chart Analysis)
         console.log('📈 Fetching Dividend History for top assets...');
-        const topStocks = finalStocks.filter(s => s.category === 'STAR').slice(0, 30);
-        const topFiis = finalFiis.filter(f => f.category === 'STAR' || f.score >= 5).slice(0, 30);
+        const topStocks = finalStocks.filter(s => s.category === 'STAR').slice(0, 100);
+        const topFiis = finalFiis.filter(f => f.category === 'STAR' || f.score >= 5).slice(0, 100);
         const historyCandidates = [...topStocks, ...topFiis];
 
         for (const asset of historyCandidates) {

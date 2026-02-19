@@ -7,6 +7,7 @@
     <title>B3 Screener Mobile</title>
     <script src="data.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
     <style>
         :root {
             /* Base Colors */
@@ -573,6 +574,37 @@
             z-index: 10;
             position: relative;
         }
+
+        .range-buttons {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+            overflow-x: auto;
+            padding-bottom: 5px;
+        }
+
+        .range-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 4px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .range-btn:hover {
+            border-color: var(--accent);
+            color: var(--text-main);
+        }
+
+        .range-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
     </style>
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
 </head>
@@ -681,9 +713,26 @@
                         <div class="metric-label">Média Dividendos (5 anos)</div>
                         <div id="analysis-avg-div" class="metric-value">R$ 0,00</div>
                     </div>
-                    <div class="metric-card" style="max-width: 100%;">
+                    <div id="graham-card" class="metric-card" style="max-width: 100%;">
                         <div class="metric-label">Graham (Valor Justo)</div>
                         <div id="analysis-graham" class="metric-value">R$ 0,00</div>
+                    </div>
+                </div>
+
+                <div class="metric-card" style="max-width: 100%; margin-bottom: 2rem;">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                        <div class="metric-label">📈 Gráfico de Preço (Candlestick) + Tendência</div>
+                        <div class="range-buttons" id="range-buttons-container">
+                            <button class="range-btn" onclick="changeRange('1d', '5m', this)">1D</button>
+                            <button class="range-btn" onclick="changeRange('1mo', '1d', this)">1M</button>
+                            <button class="range-btn active" onclick="changeRange('1y', '1d', this)">1A</button>
+                            <button class="range-btn" onclick="changeRange('5y', '1wk', this)">5A</button>
+                            <button class="range-btn" onclick="changeRange('max', '1mo', this)">Tudo</button>
+                        </div>
+                    </div>
+                    <div id="price-chart-container"
+                        style="height: 400px; margin-top: 1rem; border-radius: 8px; overflow: hidden; background: #131722;">
                     </div>
                 </div>
 
@@ -1883,8 +1932,19 @@
             document.getElementById('analysis-graham').textContent = '...';
 
             try {
-                const response = await fetch(`history/${ticker}.json`);
-                if (!response.ok) throw new Error('Histórico não encontrado para este ativo. Tente ativos como PETR4 ou MXRF11 que foram processados.');
+                let response = await fetch(`history/${ticker}.json`);
+
+                if (!response.ok) {
+                    const isStaticHost = window.location.hostname.includes('github.io');
+                    if (isStaticHost) {
+                        throw new Error(`O histórico de ${ticker} não está disponível no servidor estático. Atualmente apenas os 200 principais ativos possuem histórico pré-processado.`);
+                    } else {
+                        console.log(`History file not found for ${ticker}. Trying API...`);
+                        response = await fetch(`/api/history/${ticker}`);
+                    }
+                }
+
+                if (!response.ok) throw new Error('Histórico não encontrado para ' + ticker + '. Verifique se o ticker está correto.');
 
                 const json = await response.json();
                 const rawHistory = json.history;
@@ -1916,10 +1976,12 @@
                 document.getElementById('analysis-bazin').textContent = `R$ ${bazinPrice.toFixed(2)}`;
 
                 const stockData = data.stocks.find(s => s.ticker === ticker);
-                if (stockData) {
+                const grahamCard = document.getElementById('graham-card');
+                if (stockData && stockData.graham_price > 0) {
                     document.getElementById('analysis-graham').textContent = `R$ ${stockData.graham_price.toFixed(2)}`;
+                    grahamCard.style.display = 'block';
                 } else {
-                    document.getElementById('analysis-graham').textContent = 'N/A (FII)';
+                    grahamCard.style.display = 'none';
                 }
 
                 // Insights
@@ -1932,15 +1994,81 @@
 
                 document.getElementById('insights-content').innerHTML = insightHtml;
 
+                // 2. Fetch Price History and Render Candlestick
+                lastAnalyzedTicker = ticker;
+
+                // Reset buttons to 1Y default
+                document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('active'));
+                const defaultBtn = document.querySelector('.range-btn[onclick*="1y"]');
+                if (defaultBtn) defaultBtn.classList.add('active');
+
+                await fetchAndRenderPrice(ticker, '1y', '1d');
+
             } catch (error) {
                 console.error('Analysis Error:', error);
                 let msg = error.message;
                 if (msg.includes('Failed to fetch') || msg.includes('origin \'null\'')) {
-                    msg = '⚠️ Erro de Segurança (CORS): Browsers bloqueiam acesso a arquivos locais. Por favor, rode a aplicação em um servidor (ex: npx serve) ou use a versão hospedada.';
+                    msg = '⚠️ Erro de Segurança (CORS): Browsers bloqueiam acesso a arquivos locais. Por favor, rode o comando <strong>npm run dev</strong> no seu terminal e acesse por http://localhost:3000.';
                 }
                 insightsDiv.innerHTML = `<p style="color:var(--danger)">${msg}</p>`;
             }
         }
+
+        let lastAnalyzedTicker = null;
+
+        async function fetchAndRenderPrice(ticker, range, interval) {
+            console.log(`🔍 fetchAndRenderPrice: ${ticker}, range: ${range}, interval: ${interval}`);
+            try {
+                let pData = null;
+                const priceResponse = await fetch(`/api/price-history/${ticker}?range=${range}&interval=${interval}`);
+
+                if (priceResponse.ok) {
+                    pData = await priceResponse.json();
+                    console.log('Fetched from local proxy:', pData ? 'Success' : 'Empty');
+                } else {
+                    console.log(`Local proxy failed (${priceResponse.status}), trying direct Brapi fetch...`);
+                    const brapiRes = await fetch(`https://brapi.dev/api/quote/${ticker}?range=${range}&interval=${interval}`);
+                    if (brapiRes.ok) {
+                        const brapiRaw = await brapiRes.json();
+                        console.log('Direct Brapi fetch successful');
+                        pData = brapiRaw?.results?.[0];
+                    } else {
+                        console.error('Direct Brapi fetch failed:', brapiRes.status);
+                    }
+                }
+
+                if (pData && pData.historicalDataPrice && pData.historicalDataPrice.length > 0) {
+                    console.log(`Data points found: ${pData.historicalDataPrice.length}`);
+                    const formattedPrice = pData.historicalDataPrice.map(d => ({
+                        time: d.date,
+                        open: d.open,
+                        high: d.high,
+                        low: d.low,
+                        close: d.close
+                    })).filter(d => d.open && d.close && d.time)
+                        .sort((a, b) => a.time - b.time);
+
+                    renderPriceChart(formattedPrice, ticker);
+                } else {
+                    console.warn('No historical data in response:', pData);
+                    document.getElementById('price-chart-container').innerHTML =
+                        '<p style="color:var(--warning); padding: 20px;">⚠️ Histórico de preços não disponível para este ativo/período.</p>';
+                }
+            } catch (pe) {
+                console.error('fetchAndRenderPrice exception:', pe);
+            }
+        }
+
+        window.changeRange = function (range, interval, btn) {
+            const ticker = lastAnalyzedTicker;
+            if (!ticker) return;
+
+            // Update UI
+            document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+
+            fetchAndRenderPrice(ticker, range, interval);
+        };
 
         function renderDividendChart(labels, values, ticker) {
             const ctx = document.getElementById('dividendChart').getContext('2d');
@@ -1990,6 +2118,77 @@
                 }
             });
         }
+
+        let priceChart = null;
+
+        function renderPriceChart(data, ticker) {
+            const container = document.getElementById('price-chart-container');
+            container.innerHTML = '';
+
+            const chart = LightweightCharts.createChart(container, {
+                layout: {
+                    background: { color: '#131722' },
+                    textColor: '#d1d4dc',
+                },
+                grid: {
+                    vertLines: { color: 'rgba(42, 46, 57, 0.5)' },
+                    horzLines: { color: 'rgba(42, 46, 57, 0.5)' },
+                },
+                timeScale: {
+                    borderColor: 'rgba(197, 203, 206, 0.8)',
+                    timeVisible: true,
+                },
+                width: container.clientWidth,
+                height: 400
+            });
+
+            // FIXED: Use addSeries for Lightweight Charts v5.x
+            const candlestickSeries = chart.addSeries(LightweightCharts.CandlestickSeries, {
+                upColor: '#26a69a', downColor: '#ef5350', borderVisible: false,
+                wickUpColor: '#26a69a', wickDownColor: '#ef5350',
+            });
+
+            candlestickSeries.setData(data);
+
+            // Linear Regression Calculation
+            const n = data.length;
+            if (n > 1) {
+                let sumX = 0, sumY = 0, sumXY = 0, sumX2 = 0;
+                for (let i = 0; i < n; i++) {
+                    sumX += i;
+                    sumY += data[i].close;
+                    sumXY += i * data[i].close;
+                    sumX2 += i * i;
+                }
+                const b = (n * sumXY - sumX * sumY) / (n * sumX2 - sumX * sumX);
+                const a = (sumY - b * sumX) / n;
+
+                const trendData = data.map((d, i) => ({
+                    time: d.time,
+                    value: a + b * i
+                }));
+
+                // FIXED: Use addSeries for trend line
+                const trendSeries = chart.addSeries(LightweightCharts.LineSeries, {
+                    color: b > 0 ? '#26a69a' : '#ef5350',
+                    lineWidth: 2,
+                    lineStyle: 1, // Dotted/Dashed
+                    title: 'Projeção (Tendência Linear)'
+                });
+
+                trendSeries.setData(trendData);
+            }
+
+            chart.timeScale().fitContent();
+            priceChart = chart;
+        }
+
+        window.addEventListener('resize', () => {
+            if (priceChart) {
+                const container = document.getElementById('price-chart-container');
+                priceChart.applyOptions({ width: container.clientWidth });
+            }
+        });
     </script>
 
 </body>

@@ -10,10 +10,11 @@
 function analyzeStock(s, selic) {
     const YIELD_THRESHOLD = Math.max(6, selic * 0.5);
 
-    // Graham Fair Value
+    // Graham Fair Value (Benjamin Graham Formula)
     let graham_fair_price = 0;
+    // P/L and P/VP must be positive for the square root to work
     if (s.pl > 0 && s.p_vp > 0) {
-        graham_fair_price = s.cotacao * Math.sqrt(22.5 / (s.pl * s.p_vp));
+        graham_fair_price = Math.sqrt(22.5 * (s.cotacao / s.pl) * (s.cotacao / s.p_vp));
     }
     const upside = graham_fair_price > 0 ? ((graham_fair_price - s.cotacao) / s.cotacao) * 100 : 0;
 

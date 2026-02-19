@@ -1,0 +1,84 @@
+{
+  "ticker": "AURA33",
+  "updatedAt": "2026-02-19T13:25:50.085Z",
+  "history": [
+    {
+      "type": "Dividendos",
+      "data_com": "17/11/2025",
+      "data_pagamento": "02/12/2025",
+      "value": 0.855984
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "05/08/2025",
+      "data_pagamento": "05/09/2025",
+      "value": 0.5932112
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "13/05/2025",
+      "data_pagamento": "30/05/2025",
+      "value": 0.784879
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "24/06/2024",
+      "data_pagamento": "29/05/2025",
+      "value": 0.00439267
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "06/03/2025",
+      "data_pagamento": "28/03/2025",
+      "value": 0.478283
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "14/11/2024",
+      "data_pagamento": "18/12/2024",
+      "value": 0.4542
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "20/06/2024",
+      "data_pagamento": "09/07/2024",
+      "value": 0.61333333
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "11/12/2023",
+      "data_pagamento": "28/12/2023",
+      "value": 0.409325
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "21/06/2023",
+      "data_pagamento": "12/07/2023",
+      "value": 0.23
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "15/12/2022",
+      "data_pagamento": "10/01/2023",
+      "value": 0.24365989
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "23/06/2022",
+      "data_pagamento": "07/07/2022",
+      "value": 0.24304623
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "09/12/2021",
+      "data_pagamento": "23/12/2021",
+      "value": 0.6542
+    },
+    {
+      "type": "Dividendos",
+      "data_com": "26/03/2021",
+      "data_pagamento": "16/04/2021",
+      "value": 1.53106667
+    }
+  ]
+}

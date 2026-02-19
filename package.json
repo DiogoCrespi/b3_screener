@@ -5,6 +5,7 @@
   "main": "screener.js",
   "scripts": {
     "start": "node index.js",
+    "dev": "node server.js",
     "test": "node --test services/adapters/*.test.js"
   },
   "dependencies": {
