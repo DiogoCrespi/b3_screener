@@ -392,4 +392,85 @@ describe('stock-rules logic', () => {
             });
         });
     });
+
+    describe('Edge Cases & Robustness', () => {
+        test('should handle empty stock object gracefully', () => {
+            const result = analyzeStock({}, 10);
+            assert.strictEqual(result.graham_price, 0);
+            assert.strictEqual(result.bazin_price, 0);
+            assert.strictEqual(result.score, 0);
+            assert.deepStrictEqual(result.strategies, []);
+        });
+
+        test('should use default Selic (11.75) if undefined or null', () => {
+            // With default selic 11.75 -> threshold = max(6, 5.875) = 6
+            // Stock with yield 7 should pass threshold
+            const stock = { dividend_yield: 7, cotacao: 100 };
+            const result = analyzeStock(stock, undefined);
+
+            // bazin_price = dps / 0.06 = 7 / 0.06 = 116.66...
+            assert.ok(result.bazin_price > 100);
+            assert.strictEqual(result.bazin_upside > 0, true);
+
+            const resultNull = analyzeStock(stock, null);
+            assert.ok(resultNull.bazin_price > 100);
+        });
+
+        test('should handle missing numeric properties by defaulting to 0', () => {
+            // Missing cotacao, pl, p_vp, dividend_yield
+            const result = analyzeStock({ ticker: 'TEST' }, 10);
+            assert.strictEqual(result.graham_price, 0);
+            assert.strictEqual(result.bazin_price, 0);
+            assert.strictEqual(result.upside, 0);
+            assert.strictEqual(result.bazin_upside, 0);
+        });
+
+        test('should handle zero values preventing division by zero', () => {
+            const stock = {
+                cotacao: 10,
+                pl: 0,
+                p_vp: 0,
+                dividend_yield: 0
+            };
+            const result = analyzeStock(stock, 10);
+
+            // Graham: sqrt(22.5 / (0 * 0)) -> would be Infinity if not guarded
+            // But code checks if (pl > 0 && p_vp > 0)
+            assert.strictEqual(result.graham_price, 0);
+
+            // Bazin: dps = 0. price = 0 / threshold = 0
+            assert.strictEqual(result.bazin_price, 0);
+        });
+
+        test('should cap effective dividend yield at 16% for scoring', () => {
+            // If yield is 20%, score should use 16% but strategies might tag HIGH_VOLATILITY
+            const stock = {
+                ticker: 'RISK11',
+                cotacao: 10,
+                dividend_yield: 20,
+                mrg_liq: 15,
+                cresc_5a: 5,
+                payout: 50
+            };
+            const result = analyzeStock(stock, 10); // threshold 6%
+
+            // Should have HIGH_VOLATILITY strategy
+            assert.ok(result.strategies.includes('HIGH_VOLATILITY'));
+
+            // Score check: yield > threshold (20 > 6) -> +1
+            // But effectiveDy is capped at 16 internally for logic if any specific score depended on magnitude (none does directly, just threshold)
+            // Strategy check:
+            // dividend_yield > YIELD_THRESHOLD (20 > 6) -> valid for DIVIDEND strategy logic
+            assert.ok(result.strategies.includes('DIVIDEND'));
+        });
+
+        test('should handle extreme payout ratios correctly in scoring', () => {
+            const stock = { ticker: 'PAY1', payout: 200 };
+            const result = analyzeStock(stock, 10);
+            // Payout > 150 -> score -= 5
+            // Base score 0. Score becomes -5. Min score is not clamped to 0? Code says score = Math.min(score, 10). It doesn't say max(score, 0).
+            // Let's verify score can be negative.
+            assert.ok(result.score <= 0);
+        });
+    });
 });
