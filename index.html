@@ -929,7 +929,8 @@
                     { id: 'VALUE', label: '📉 Valor/Desconto' },
                     { id: 'GROWTH', label: '🚀 Crescimento' },
                     { id: 'MAGIC', label: '🪄 Magic Formula' },
-                    { id: 'TURNAROUND', label: '🔄 Turnaround' }
+                    { id: 'TURNAROUND', label: '🔄 Turnaround' },
+                    { id: 'HIGH_VOLATILITY', label: '⚠️ Volatilidade' }
 
                 ];
 
@@ -1014,6 +1015,10 @@
                     ? `<span class="badge" style="background:#FFD700; color:black">⭐ ${escapeHTML(String(stock.score))}/12</span>`
                     : `<span class="badge" style="background:var(--card-hover); color:var(--text-muted)">${escapeHTML(String(stock.score))}/12</span>`;
 
+                const volBadge = (stock.strategies && stock.strategies.includes('HIGH_VOLATILITY'))
+                    ? `<span class="badge" style="background:var(--danger); color:white" title="Dividend Yield > 16% (Risco de não recorrência)">⚠️ Volatilidade</span>`
+                    : '';
+
                 card.innerHTML = `
                 <div class="card-main">
                     <div class="ticker-info">
@@ -1024,6 +1029,7 @@
                                  alt="${escapeHTML(stock.ticker)}">
                             ${escapeHTML(stock.ticker)}
                             ${badge}
+                            ${volBadge}
                         </h3>
                         <span>Graham: R$ ${escapeHTML(stock.graham_price.toFixed(2))} | Bazin: R$ ${escapeHTML(stock.bazin_price.toFixed(2))}</span>
 

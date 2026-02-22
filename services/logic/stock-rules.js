@@ -94,7 +94,7 @@ function analyzeStock(s, selic) {
     let effectiveDy = s.dividend_yield;
     if (effectiveDy > 16) {
         effectiveDy = 16;
-        // strategies.push('HIGH_VOLATILITY'); // Optional: Add alert tag if needed, but score is the main goal here
+        strategies.push('HIGH_VOLATILITY'); // Alert tag for extremely high yields
     }
     if (effectiveDy > YIELD_THRESHOLD) score++;
 
