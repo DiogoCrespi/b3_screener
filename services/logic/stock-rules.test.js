@@ -234,5 +234,162 @@ describe('stock-rules logic', () => {
             const noGrowthStock = { ...defaultStock, cresc_5a: 0 };
             assert.strictEqual(analyzeStock(noGrowthStock, defaultSelic).peg_ratio, 999);
         });
+
+        describe('Detailed Strategy Rules', () => {
+            describe('QUALITY Strategy', () => {
+                test('should qualify via Capital Intensive path (ROE > 15, ROIC > 10)', () => {
+                    const stock = {
+                        ...defaultStock,
+                        mrg_liq: 15, div_br_patrim: 0.5, cresc_5a: 6, // Base requirements
+                        roe: 16, roic: 11
+                    };
+                    const result = analyzeStock(stock, defaultSelic);
+                    assert.ok(result.strategies.includes('QUALITY'));
+                });
+
+                test('should qualify via High Efficiency path (ROE > 12, ROIC > 15)', () => {
+                    const stock = {
+                        ...defaultStock,
+                        mrg_liq: 15, div_br_patrim: 0.5, cresc_5a: 6, // Base requirements
+                        roe: 13, roic: 16
+                    };
+                    const result = analyzeStock(stock, defaultSelic);
+                    assert.ok(result.strategies.includes('QUALITY'));
+                });
+
+                test('should fail if margins are too low', () => {
+                    const stock = {
+                        ...defaultStock,
+                        mrg_liq: 10, // Threshold is > 10
+                        div_br_patrim: 0.5, cresc_5a: 6,
+                        roe: 20, roic: 20
+                    };
+                    const result = analyzeStock(stock, defaultSelic);
+                    assert.ok(!result.strategies.includes('QUALITY'));
+                });
+
+                test('should fail if debt is too high', () => {
+                    const stock = {
+                        ...defaultStock,
+                        mrg_liq: 15,
+                        div_br_patrim: 1.0, // Threshold is < 1
+                        cresc_5a: 6,
+                        roe: 20, roic: 20
+                    };
+                    const result = analyzeStock(stock, defaultSelic);
+                    assert.ok(!result.strategies.includes('QUALITY'));
+                });
+            });
+
+            describe('DIVIDEND Strategy', () => {
+                test('should detect HIGH_VOLATILITY if yield > 16%', () => {
+                    const stock = {
+                        ...defaultStock,
+                        dividend_yield: 17
+                    };
+                    const result = analyzeStock(stock, defaultSelic);
+                    assert.ok(result.strategies.includes('HIGH_VOLATILITY'));
+                });
+
+                test('should allow Perenne stocks (High Margin + Stable ROE) to have payout up to 100%', () => {
+                    const perenneStock = {
+                        ...defaultStock,
+                        dividend_yield: 8, // > 6
+                        mrg_liq: 16, // > 15 (Perenne condition)
+                        roe: 13,     // > 12 (Perenne condition)
+                        cresc_5a: 1,
+                        payout: 95   // > 90 but <= 100
+                    };
+                    const result = analyzeStock(perenneStock, defaultSelic);
+                    assert.ok(result.strategies.includes('DIVIDEND'), 'Should include DIVIDEND tag for perenne with 95% payout');
+                });
+
+                test('should disqualifiy Perenne stocks if payout > 100%', () => {
+                    const perenneStock = {
+                        ...defaultStock,
+                        dividend_yield: 8,
+                        mrg_liq: 16,
+                        roe: 13,
+                        cresc_5a: 1,
+                        payout: 101
+                    };
+                    const result = analyzeStock(perenneStock, defaultSelic);
+                    assert.ok(!result.strategies.includes('DIVIDEND'));
+                });
+
+                test('should disqualify standard stocks if payout > 90%', () => {
+                    const standardStock = {
+                        ...defaultStock,
+                        dividend_yield: 8,
+                        mrg_liq: 12, // Not perenne (< 15)
+                        roe: 10,
+                        cresc_5a: 1,
+                        payout: 91
+                    };
+                    const result = analyzeStock(standardStock, defaultSelic);
+                    assert.ok(!result.strategies.includes('DIVIDEND'));
+                });
+            });
+
+            describe('Payout Scoring Penalties', () => {
+                const baseScoreStock = {
+                   ...defaultStock,
+                   // Set baseline to predictable values to isolate scoring
+                   pl: 12, p_vp: 1.2, ev_ebit: 10, psr: 3, // No valuation points
+                   roe: 9, roic: 9, mrg_liq: 9, // No efficiency points
+                   dividend_yield: 2, // No yield point
+                   cresc_5a: 0, // No growth point
+                   div_br_patrim: 2, liq_2meses: 50000, // No health points
+                   payout: 0 // Reset payout
+                };
+
+                test('should give +2 for ideal payout (30-60)', () => {
+                    const stock = { ...baseScoreStock, payout: 40 };
+                    const result = analyzeStock(stock, defaultSelic);
+                    // Base score 0 + 2 = 2
+                    assert.strictEqual(result.score, 2);
+                });
+
+                test('should give +1 for acceptable payout (60-80)', () => {
+                    const stock = { ...baseScoreStock, payout: 70 };
+                    const result = analyzeStock(stock, defaultSelic);
+                    assert.strictEqual(result.score, 1);
+                });
+
+                test('should penalize -1 for risky payout (80-90) if not perenne', () => {
+                     const stock = { ...baseScoreStock, payout: 85, mrg_liq: 10 }; // Not perenne
+                     const result = analyzeStock(stock, defaultSelic);
+                     assert.strictEqual(result.score, -1);
+                });
+
+                test('should NOT penalize payout 80-90 if perenne', () => {
+                     const stock = { ...baseScoreStock, payout: 85, mrg_liq: 16, roe: 13 }; // Perenne
+                     // Perenne gets mrg_liq > 10 (+1) and roe > 10 (+1). Base score = 2.
+                     // Payout > 80 check says: else if (s.payout > 80 && !isLikelyPerenne).
+                     // So it should SKIP the penalty.
+                     // Score should be 2.
+                     const result = analyzeStock(stock, defaultSelic);
+                     assert.strictEqual(result.score, 2);
+                });
+
+                test('should penalize -2 for high risk payout (>90)', () => {
+                    const stock = { ...baseScoreStock, payout: 95 };
+                    const result = analyzeStock(stock, defaultSelic);
+                    assert.strictEqual(result.score, -2);
+                });
+
+                test('should penalize -4 for unsustainable payout (>100)', () => {
+                    const stock = { ...baseScoreStock, payout: 105 };
+                    const result = analyzeStock(stock, defaultSelic);
+                    assert.strictEqual(result.score, -4);
+                });
+
+                test('should penalize -5 for extreme payout (>150)', () => {
+                    const stock = { ...baseScoreStock, payout: 160 };
+                    const result = analyzeStock(stock, defaultSelic);
+                    assert.strictEqual(result.score, -5);
+                });
+            });
+        });
     });
 });
