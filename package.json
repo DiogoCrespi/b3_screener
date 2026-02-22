@@ -5,7 +5,7 @@
   "main": "screener.js",
   "scripts": {
     "start": "node index.js",
-    "test": "node --test services/adapters/*.test.js"
+    "test": "node --test services/**/*.test.js"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.12",
