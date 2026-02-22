@@ -625,7 +625,7 @@
 
         <div class="tabs">
             <button class="tab-btn active" onclick="showTab('stocks')">Ações</button>
-            <button class="tab-btn" onclick="showTab('fiis')">FIIs</button>
+            <button class="tab-btn" onclick="showTab('fiis')" style="display: none;">FIIs</button>
             <button class="tab-btn" onclick="showTab('snowball')">❄️ Bola de Neve</button>
             <button class="tab-btn" onclick="showTab('fixed')">Renda Fixa</button>
             <button class="tab-btn" onclick="showTab('etfs')">ETFs</button>
@@ -695,6 +695,9 @@
             const allItems = Array.from(document.querySelectorAll('[data-search-term]'));
 
             searchResults = allItems.filter(item => {
+                // Exclude items in the hidden FIIs tab
+                if (item.closest('#content-fiis')) return false;
+
                 const searchData = item.dataset.searchTerm;
                 return searchData.includes(term);
             });
