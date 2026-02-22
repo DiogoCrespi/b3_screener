@@ -135,21 +135,4 @@ async function getETFs() {
     }
 }
 
-function parseVal(valStr) {
-    if (!valStr) return 0;
-    let clean = valStr.replace('R$', '').replace(/\./g, '').replace(',', '.').trim();
-    let multiplier = 1;
-    if (clean.toUpperCase().includes('B')) {
-        multiplier = 1000000000;
-        clean = clean.replace(/B/i, '');
-    } else if (clean.toUpperCase().includes('M')) {
-        multiplier = 1000000;
-        clean = clean.replace(/M/i, '');
-    } else if (clean.toUpperCase().includes('K')) {
-        multiplier = 1000;
-        clean = clean.replace(/K/i, '');
-    }
-    return (parseFloat(clean) || 0) * multiplier;
-}
-
 module.exports = { getETFs };
