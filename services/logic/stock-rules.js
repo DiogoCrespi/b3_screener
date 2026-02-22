@@ -8,19 +8,27 @@
  * @returns {Object} Enriched stock object
  */
 function analyzeStock(s, selic) {
-    const YIELD_THRESHOLD = Math.max(6, selic * 0.5);
+    // Robustness: Default selic if missing
+    const safeSelic = (selic !== null && selic !== undefined && !isNaN(selic)) ? selic : 11.75;
+    const YIELD_THRESHOLD = Math.max(6, safeSelic * 0.5);
+
+    // Robustness: Ensure numeric values for calculations
+    const cotacao = s.cotacao || 0;
+    const pl = s.pl || 0;
+    const p_vp = s.p_vp || 0;
+    const dividend_yield = s.dividend_yield || 0;
 
     // Graham Fair Value
     let graham_fair_price = 0;
-    if (s.pl > 0 && s.p_vp > 0) {
-        graham_fair_price = s.cotacao * Math.sqrt(22.5 / (s.pl * s.p_vp));
+    if (pl > 0 && p_vp > 0) {
+        graham_fair_price = cotacao * Math.sqrt(22.5 / (pl * p_vp));
     }
-    const upside = graham_fair_price > 0 ? ((graham_fair_price - s.cotacao) / s.cotacao) * 100 : 0;
+    const upside = (graham_fair_price > 0 && cotacao > 0) ? ((graham_fair_price - cotacao) / cotacao) * 100 : 0;
 
     // Bazin Price (Ceiling Price @ YIELD_THRESHOLD)
-    const dps = (s.dividend_yield / 100) * s.cotacao;
-    const bazin_price = dps / (YIELD_THRESHOLD / 100);
-    const bazin_upside = bazin_price > 0 ? ((bazin_price - s.cotacao) / s.cotacao) * 100 : 0;
+    const dps = (dividend_yield / 100) * cotacao;
+    const bazin_price = YIELD_THRESHOLD > 0 ? dps / (YIELD_THRESHOLD / 100) : 0;
+    const bazin_upside = (bazin_price > 0 && cotacao > 0) ? ((bazin_price - cotacao) / cotacao) * 100 : 0;
 
     // --- STRATEGY CLASSIFICATION ---
     const strategies = [];
