@@ -1008,8 +1008,22 @@
 
             const data = window.INVEST_DATA;
 
-            // Header
-            document.getElementById('lastUpdate').textContent = `Atualizado em: ${data.updatedAt}`;
+            // Make FormatLiquidity global BEFORE render functions use it
+            window.formatLiquidity = function (value) {
+                if (!value || value === 0) return 'N/A';
+                if (value >= 1000000) return `R$ ${(value / 1000000).toFixed(2)}M`;
+                if (value >= 1000) return `R$ ${(value / 1000).toFixed(0)}K`;
+                return `R$ ${value.toFixed(2)}`;
+            };
+
+            const containerStocks = document.getElementById('stocksGrid');
+            const containerFiis = document.getElementById('fiisGrid');
+            const containerSnowball = document.getElementById('snowballGrid');
+            const containerFixed = document.getElementById('fixedGrid');
+            const containerEtfs = document.getElementById('etfsGrid');
+
+            // Set Last Update specific for index.html
+            document.getElementById('lastUpdate').textContent = `Atualizado em: ${data.updatedAt || 'Data Desconhecida'}`;
             document.getElementById('dollarVal').textContent = data.economy.dollar ? `R$ ${data.economy.dollar.toFixed(2)}` : '---';
 
             const selic = data.economy.selic;
@@ -1025,8 +1039,6 @@
             selicContext.style.marginBottom = '15px';
             selicContext.innerHTML = `Filtro DY Atual: <strong style="color:var(--success)">>${minDY}%</strong> (Selic ${selic > 10 ? 'Alta' : 'Normal'})`;
             document.querySelector('.dashboard').after(selicContext);
-
-
 
             // Render Stocks
             const stockContainer = document.getElementById('content-stocks');
@@ -1276,7 +1288,7 @@
                                         <div class="detail-row"><span class="detail-label">M. Líquida</span><span class="detail-value">${escapeHTML(stock.mrg_liq?.toFixed(1) || 'N/A')}% ${getTrendArrow(stock.mrg_liq, 'mrg_liq')}</span></div>
                                     </div>
                                     <div class="detail-box">
-                                        <div class="detail-row"><span class="detail-label">Liquidez (2m)</span><span class="detail-value">${stock.liq_2meses ? escapeHTML(formatLiquidity(stock.liq_2meses)) : 'N/A'} ${getTrendArrow(stock.liq_2meses, 'liq_2meses')}</span></div>
+                                        <div class="detail-row"><span class="detail-label">Liquidez (2m)</span><span class="detail-value">${stock.liq_2meses ? escapeHTML(window.formatLiquidity(stock.liq_2meses)) : 'N/A'} ${getTrendArrow(stock.liq_2meses, 'liq_2meses')}</span></div>
                                     </div>
                                     <div class="detail-box">
                                         <div class="detail-row"><span class="detail-label">Dív/Patrim</span><span class="detail-value">${escapeHTML(stock.div_br_patrim?.toFixed(2) || 'N/A')} ${getTrendArrow(stock.div_br_patrim, 'div_br_patrim')}</span></div>
@@ -1827,7 +1839,7 @@
                                                     <div class="detail-row"><span class="detail-label">Último Rendimento</span><span class="detail-value" style="color:var(--success)">${fii.last_dividend ? `R$ ${escapeHTML(fii.last_dividend.toFixed(2))}` : 'N/A'}</span></div>
                                                 </div>
                                                 <div class="detail-box">
-                                                    <div class="detail-row"><span class="detail-label">Liq. Diária</span><span class="detail-value" style="color:var(--accent)">${escapeHTML(formatLiquidity(fii.liquidity))}</span></div>
+                                                    <div class="detail-row"><span class="detail-label">Liq. Diária</span><span class="detail-value" style="color:var(--accent)">${escapeHTML(window.formatLiquidity(fii.liquidity))}</span></div>
                                                 </div>
                                                 <div class="detail-box">
                                                     <div class="detail-row"><span class="detail-label">P/VP</span><span class="detail-value" style="color:${(fii.p_vp || fii.pvp || 0) > 0 && (fii.p_vp || fii.pvp || 0) <= 1.0 ? 'var(--success)' : ''}">${escapeHTML((fii.p_vp || fii.pvp || 0).toFixed(2))}</span></div>
@@ -2014,7 +2026,7 @@
                                                 <div class="detail-row"><span class="detail-label">Último Rendimento</span><span class="detail-value" style="color:var(--success)">${fii.last_dividend ? `R$ ${escapeHTML(fii.last_dividend.toFixed(2))}` : 'N/A'}</span></div>
                                             </div>
                                             <div class="detail-box">
-                                                <div class="detail-row"><span class="detail-label">Liq. Diária</span><span class="detail-value" style="color:var(--accent)">${escapeHTML(formatLiquidity(fii.liquidity))}</span></div>
+                                                <div class="detail-row"><span class="detail-label">Liq. Diária</span><span class="detail-value" style="color:var(--accent)">${escapeHTML(window.formatLiquidity(fii.liquidity))}</span></div>
                                             </div>
                                             <div class="detail-box">
                                                 <div class="detail-row"><span class="detail-label">P/VP</span><span class="detail-value" style="color:${(fii.p_vp || fii.pvp || 0) > 0 && (fii.p_vp || fii.pvp || 0) <= 1.0 ? 'var(--success)' : ''}">${escapeHTML((fii.p_vp || fii.pvp || 0).toFixed(2))}</span></div>
@@ -2180,6 +2192,9 @@
                 window.event.stopPropagation();
             }
         }
+
+        // Initialization
+        showTab('stocks'); // Initialize the first tab to prevent blank screen
     </script>
 
 </body>
