@@ -134,10 +134,26 @@
         }
 
         .metric-label {
-            font-size: 0.9rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 1px;
+        }
+
+        .summary-banner {
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 10px 1rem;
+            margin: 0 -1rem 1.5rem -1rem;
+            display: flex;
+            justify-content: space-around;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .summary-item strong {
+            color: var(--accent);
+            margin-left: 4px;
         }
 
         .tabs {
@@ -220,21 +236,38 @@
         }
 
         .card-details.show {
-            max-height: 800px;
+            max-height: 1200px;
             margin-top: 12px;
             padding-top: 12px;
             border-top: 1px solid var(--border-color);
         }
 
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .detail-box {
+            background: var(--bg-color);
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+        }
+
         .detail-row {
             display: flex;
-            justify-content: space-between;
-            padding: 4px 0;
+            flex-direction: column;
+            gap: 2px;
             font-size: 0.85rem;
         }
 
         .detail-label {
             color: var(--text-muted);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .detail-value {
@@ -265,12 +298,12 @@
         }
 
         .stock-logo {
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             border-radius: 4px;
             object-fit: contain;
             background: white;
-            padding: 2px;
+            padding: 1px;
         }
 
         .ticker-info span {
@@ -298,16 +331,63 @@
 
         .badge {
             background: var(--card-hover);
-            padding: 2px 8px;
+            padding: 2px 6px;
             border-radius: 4px;
-            font-size: 0.75rem;
-            margin-left: 8px;
-            vertical-align: middle;
+            font-size: 0.7rem;
             color: var(--text-muted);
             white-space: nowrap;
             display: inline-flex;
             align-items: center;
-            gap: 4px;
+            gap: 2px;
+            border: 1px solid var(--border-color);
+        }
+
+        .price-badge {
+            background: transparent;
+            color: var(--success);
+            border-color: var(--success);
+            font-weight: bold;
+            font-size: 0.85rem;
+            padding: 4px 8px;
+        }
+
+        .score-indicator {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.85rem;
+            border: 2px solid transparent;
+            position: relative;
+        }
+
+        .score-indicator::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 50%;
+            border: 2px solid currentColor;
+            opacity: 0.2;
+        }
+
+        .score-good {
+            color: var(--success);
+        }
+
+        .score-warning {
+            color: var(--warning);
+        }
+
+        .score-danger {
+            color: var(--danger);
+        }
+
+        .score-star {
+            color: #FFD700;
+            border-color: #FFD700;
         }
 
         @media (max-width: 480px) {
@@ -548,6 +628,83 @@
             border-color: var(--border-color);
         }
 
+        /* Carousel Styles */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.3s ease-in-out;
+            width: 100%;
+        }
+
+        .carousel-slide {
+            flex: 0 0 100%;
+            width: 100%;
+            padding: 0 4px;
+            box-sizing: border-box;
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin-top: 12px;
+            padding-bottom: 8px;
+        }
+
+        .carousel-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .carousel-btn:hover {
+            background: var(--card-hover);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .carousel-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            border-color: var(--border-color);
+            background: var(--card-bg);
+            color: var(--text-color);
+        }
+
+        .carousel-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .carousel-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--border-color);
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .carousel-dot.active {
+            background: var(--primary);
+            transform: scale(1.2);
+        }
+
         @keyframes highlight-pulse {
             0% {
                 box-shadow: 0 0 0 0 var(--primary);
@@ -625,7 +782,7 @@
 
         <div class="tabs">
             <button class="tab-btn active" onclick="showTab('stocks')">Ações</button>
-            <button class="tab-btn" onclick="showTab('fiis')" style="display: none;">FIIs</button>
+            <button class="tab-btn" onclick="showTab('fiis')">FIIs</button>
             <button class="tab-btn" onclick="showTab('snowball')">❄️ Bola de Neve</button>
             <button class="tab-btn" onclick="showTab('fixed')">Renda Fixa</button>
             <button class="tab-btn" onclick="showTab('etfs')">ETFs</button>
@@ -665,6 +822,13 @@
                 .replace(/"/g, '&quot;')
                 .replace(/'/g, '&#039;');
         }
+
+        const formatLiquidity = (value) => {
+            if (!value || value === 0) return 'N/A';
+            if (value >= 1000000) return `R$ ${(value / 1000000).toFixed(2)}M`;
+            if (value >= 1000) return `R$ ${(value / 1000).toFixed(0)}K`;
+            return `R$ ${value.toFixed(2)}`;
+        };
 
         // --- Search Functionality ---
         let searchResults = [];
@@ -869,6 +1033,8 @@
             selicContext.innerHTML = `Filtro DY Atual: <strong style="color:var(--success)">>${minDY}%</strong> (Selic ${selic > 10 ? 'Alta' : 'Normal'})`;
             document.querySelector('.dashboard').after(selicContext);
 
+
+
             // Render Stocks
             const stockContainer = document.getElementById('content-stocks');
 
@@ -1031,41 +1197,105 @@
                                  onerror="this.style.display='none'"
                                  alt="${escapeHTML(stock.ticker)}">
                             ${escapeHTML(stock.ticker)}
-                            ${badge}
                             ${volBadge}
                         </h3>
-                        <span>Graham: R$ ${escapeHTML(stock.graham_price.toFixed(2))} | Bazin: R$ ${escapeHTML(stock.bazin_price.toFixed(2))}</span>
-
+                        <span style="font-size:0.8rem; color:var(--text-muted)">Graham: R$ ${escapeHTML(stock.graham_price.toFixed(2))} | Bazin: R$ ${escapeHTML(stock.bazin_price.toFixed(2))}</span>
                     </div>
-                    <div class="metrics">
-                        <div class="price">R$ ${escapeHTML(stock.cotacao.toFixed(2))}</div>
-                        <div class="yield">DY ${escapeHTML(String(stock.dividend_yield))}%</div>
-                        <div style="font-size:0.7rem; color:var(--text-muted)">Upside: +${escapeHTML(stock.upside.toFixed(0))}%</div>
+                    <div class="metrics" style="display:flex; align-items:center; gap:12px;">
+                        <div style="text-align:right">
+                            <div class="price">R$ ${escapeHTML(stock.cotacao.toFixed(2))}</div>
+                            <div style="display:flex; gap:4px; justify-content:flex-end; margin-top:4px;">
+                                <span class="badge ${stock.dividend_yield > 8 ? 'price-badge' : ''}">DY ${escapeHTML(String(stock.dividend_yield))}%</span>
+                                <span class="badge ${stock.p_vp && stock.p_vp <= 1.0 ? 'price-badge' : ''}">P/VP ${escapeHTML(stock.p_vp?.toFixed(1) || 'N/A')}</span>
+                            </div>
+                        </div>
+                        <div class="score-indicator ${isStar ? 'score-star' : (stock.score >= 8 ? 'score-good' : stock.score >= 6 ? 'score-warning' : 'score-danger')}">
+                            ${escapeHTML(String(stock.score))}
+                        </div>
                     </div>
                 </div>
                 <div class="card-details">
-                    <div class="detail-row"><span class="detail-label">Última Data Com:</span><span class="detail-value" style="color:var(--warning)">${stock.data_com || 'N/A'}</span></div>
-                    <div class="detail-row"><span class="detail-label">Último Pagamento:</span><span class="detail-value" style="color:var(--success)">${stock.data_pagamento || 'N/A'}</span></div>
-                    <div class="detail-row"><span class="detail-label">P/L:</span><span class="detail-value">${escapeHTML(stock.pl?.toFixed(2) || 'N/A')} ${getTrendArrow(stock.pl, 'pl')}</span></div>
-                    <div class="detail-row"><span class="detail-label">P/VP:</span><span class="detail-value">${escapeHTML(stock.p_vp?.toFixed(2) || 'N/A')} ${getTrendArrow(stock.p_vp, 'pvp')}</span></div>
-                    <div class="detail-row"><span class="detail-label">EV/EBIT:</span><span class="detail-value">${escapeHTML(stock.ev_ebit?.toFixed(2) || 'N/A')}</span></div>
-                    <div class="detail-row"><span class="detail-label">PSR:</span><span class="detail-value">${escapeHTML(stock.psr?.toFixed(2) || 'N/A')}</span></div>
-                    <div class="detail-row"><span class="detail-label">PEG Ratio:</span><span class="detail-value">${escapeHTML((stock.peg_ratio && stock.peg_ratio < 50) ? stock.peg_ratio.toFixed(2) : 'N/A')} ${stock.peg_ratio < 0.5 ? '<span class="arrow-up">🌟 DREAM</span>' : stock.peg_ratio < 1 ? '<span class="arrow-up">✓ OK</span>' : ''}</span></div>
-                    <div class="detail-row"><span class="detail-label">ROE:</span><span class="detail-value">${escapeHTML(stock.roe?.toFixed(2) || 'N/A')}% ${getTrendArrow(stock.roe, 'roe')}</span></div>
-                    <div class="detail-row"><span class="detail-label">ROIC:</span><span class="detail-value">${escapeHTML(stock.roic?.toFixed(2) || 'N/A')}% ${getTrendArrow(stock.roic, 'roe')}</span></div>
-                    <div class="detail-row"><span class="detail-label">M. Líquida:</span><span class="detail-value">${escapeHTML(stock.mrg_liq?.toFixed(1) || 'N/A')}% ${getTrendArrow(stock.mrg_liq, 'roe')}</span></div>
-                    <div class="detail-row"><span class="detail-label">Liquidez (2m):</span><span class="detail-value">R$ ${escapeHTML((stock.liq_2meses / 1000000).toFixed(1))}M ${getTrendArrow(stock.liq_2meses, 'liq')}</span></div>
-                    <div class="detail-row"><span class="detail-label">Dív/Patrim:</span><span class="detail-value">${escapeHTML(stock.div_br_patrim?.toFixed(2) || 'N/A')} ${getTrendArrow(stock.div_br_patrim, 'div_patrim')}</span></div>
-                    <div class="detail-row"><span class="detail-label">Cresc. 5a:</span><span class="detail-value">${escapeHTML(stock.cresc_5a?.toFixed(2) || 'N/A')}% ${getTrendArrow(stock.cresc_5a, 'cresc')}</span></div>
-                    <div class="detail-row"><span class="detail-label">Preço Teto (Bazin):</span><span class="detail-value">R$ ${escapeHTML(stock.bazin_price?.toFixed(2) || 'N/A')}</span></div>
-                    <div class="detail-row"><span class="detail-label">Dividend Yield:</span><span class="detail-value">${escapeHTML(stock.dividend_yield?.toFixed(2) || 'N/A')}% ${getTrendArrow(stock.dividend_yield, 'dy')}</span></div>
-                    <div class="detail-row"><span class="detail-label">Payout:</span><span class="detail-value">${escapeHTML(stock.payout ? stock.payout.toFixed(1) + '%' : 'N/A')} ${stock.payout > 100 ? '<span class="arrow-down">🚨</span>' : stock.payout > 80 ? '<span class="arrow-down">⚠️</span>' : stock.payout >= 30 && stock.payout <= 60 ? '<span class="arrow-up">✓</span>' : ''}</span></div>
-                    <div class="detail-row"><span class="detail-label">Graham Price:</span><span class="detail-value">R$ ${escapeHTML(stock.graham_price?.toFixed(2) || 'N/A')}</span></div>
+                    <div class="carousel-container">
+                        <div class="carousel-track" id="track-${escapeHTML(stock.ticker)}">
+                            <!-- Slide 1: General Details -->
+                            <div class="carousel-slide">
+                                <div class="detail-grid">
+                                    <div class="detail-box">
+                                        <div class="detail-row"><span class="detail-label">P/L</span><span class="detail-value">${escapeHTML(stock.pl?.toFixed(2) || 'N/A')} ${getTrendArrow(stock.pl, 'pl')}</span></div>
+                                    </div>
+                                    <div class="detail-box">
+                                        <div class="detail-row"><span class="detail-label">ROE</span><span class="detail-value">${escapeHTML(stock.roe?.toFixed(1) || 'N/A')}% ${getTrendArrow(stock.roe, 'roe')}</span></div>
+                                    </div>
+                                    <div class="detail-box">
+                                        <div class="detail-row"><span class="detail-label">Graham Price</span><span class="detail-value">R$ ${escapeHTML(stock.graham_price?.toFixed(2) || 'N/A')}</span></div>
+                                    </div>
+                                    <div class="detail-box">
+                                        <div class="detail-row"><span class="detail-label">Bazin Price</span><span class="detail-value">R$ ${escapeHTML(stock.bazin_price?.toFixed(2) || 'N/A')}</span></div>
+                                    </div>
+                                    <div class="detail-box">
+                                        <div class="detail-row"><span class="detail-label">Upside Graham</span><span class="detail-value" style="color:${stock.upside > 20 ? 'var(--success)' : ''}">+${escapeHTML(stock.upside.toFixed(0))}%</span></div>
+                                    </div>
+                                    <div class="detail-box">
+                                        <div class="detail-row"><span class="detail-label">PSR</span><span class="detail-value">${escapeHTML(stock.psr?.toFixed(2) || 'N/A')}</span></div>
+                                    </div>
+                                </div>
 
-                    <div id="chart-${escapeHTML(stock.ticker)}" class="chart-container"></div>
-                    <a href="${getInvestidor10Url(stock)}" target="_blank" class="external-link-btn">
-                        📊 Ver no Investidor 10
-                    </a>
+                                <div class="detail-row" style="flex-direction:row; justify-content:space-between; margin-bottom:8px;">
+                                    <span class="detail-label">Última Data Com:</span>
+                                    <span class="detail-value" style="color:var(--warning)">${stock.data_com || 'N/A'}</span>
+                                </div>
+                                <div class="detail-row" style="flex-direction:row; justify-content:space-between; margin-bottom:8px;">
+                                    <span class="detail-label">Último Pagamento:</span>
+                                    <span class="detail-value" style="color:var(--success)">${stock.data_pagamento || 'N/A'}</span>
+                                </div>
+
+                                <div class="detail-grid" style="grid-template-columns: 1fr 1fr 1fr; gap:8px;">
+                                    <div class="detail-box"><div class="detail-row"><span class="detail-label">PEG</span><span class="detail-value">${escapeHTML((stock.peg_ratio && stock.peg_ratio < 50) ? stock.peg_ratio.toFixed(2) : 'N/A')}</span></div></div>
+                                    <div class="detail-box"><div class="detail-row"><span class="detail-label">ROIC</span><span class="detail-value">${escapeHTML(stock.roic?.toFixed(1) || 'N/A')}%</span></div></div>
+                                    <div class="detail-box"><div class="detail-row"><span class="detail-label">Payout</span><span class="detail-value">${escapeHTML(stock.payout ? stock.payout.toFixed(0) + '%' : 'N/A')}</span></div></div>
+                                </div>
+
+                                <div id="chart-${escapeHTML(stock.ticker)}" class="chart-container"></div>
+                                <a href="${getInvestidor10Url(stock)}" target="_blank" class="external-link-btn">
+                                    📊 Ver no Investidor 10
+                                </a>
+                            </div>
+
+                            <!-- SLIDE 2: Secondary Metrics -->
+                            <div class="carousel-slide">
+                                <h4 style="margin: 0 0 10px 0; font-size: 0.9rem; color: var(--text-muted); text-align: center;">Indicadores Adicionais</h4>
+                                <div class="detail-grid">
+                                    <div class="detail-box">
+                                        <div class="detail-row"><span class="detail-label">P/VP</span><span class="detail-value">${escapeHTML(stock.p_vp?.toFixed(2) || 'N/A')} ${getTrendArrow(stock.p_vp, 'pvp')}</span></div>
+                                    </div>
+                                    <div class="detail-box">
+                                        <div class="detail-row"><span class="detail-label">EV/EBIT</span><span class="detail-value">${escapeHTML(stock.ev_ebit?.toFixed(2) || 'N/A')}</span></div>
+                                    </div>
+                                    <div class="detail-box">
+                                        <div class="detail-row"><span class="detail-label">M. Líquida</span><span class="detail-value">${escapeHTML(stock.mrg_liq?.toFixed(1) || 'N/A')}% ${getTrendArrow(stock.mrg_liq, 'mrg_liq')}</span></div>
+                                    </div>
+                                    <div class="detail-box">
+                                        <div class="detail-row"><span class="detail-label">Liquidez (2m)</span><span class="detail-value">${stock.liq_2meses ? escapeHTML(formatLiquidity(stock.liq_2meses)) : 'N/A'} ${getTrendArrow(stock.liq_2meses, 'liq_2meses')}</span></div>
+                                    </div>
+                                    <div class="detail-box">
+                                        <div class="detail-row"><span class="detail-label">Dív/Patrim</span><span class="detail-value">${escapeHTML(stock.div_br_patrim?.toFixed(2) || 'N/A')} ${getTrendArrow(stock.div_br_patrim, 'div_br_patrim')}</span></div>
+                                    </div>
+                                    <div class="detail-box">
+                                        <div class="detail-row"><span class="detail-label">Cresc. 5a</span><span class="detail-value">${escapeHTML(stock.cresc_5a?.toFixed(2) || 'N/A')}% ${getTrendArrow(stock.cresc_5a, 'cresc_5a')}</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-controls">
+                        <button class="carousel-btn prev-btn" onclick="moveSlide('${escapeHTML(stock.ticker)}', -1)" disabled>❮</button>
+                        <div class="carousel-dots" id="dots-${escapeHTML(stock.ticker)}">
+                            <div class="carousel-dot active" onclick="goToSlide('${escapeHTML(stock.ticker)}', 0)"></div>
+                            <div class="carousel-dot" onclick="goToSlide('${escapeHTML(stock.ticker)}', 1)"></div>
+                        </div>
+                        <button class="carousel-btn next-btn" onclick="moveSlide('${escapeHTML(stock.ticker)}', 1)">❯</button>
+                    </div>
                 </div>
             `;
                 card.addEventListener('click', () => {
@@ -1193,27 +1423,53 @@
                                  alt="${escapeHTML(fii.ticker)}">
                             ${escapeHTML(fii.ticker)}
                             ${typeBadge}
-                            <span class="badge" style="background:${scoreColor}20; color:${scoreColor}; border:1px solid ${scoreColor}">
-                                ⭐ ${escapeHTML(String(fii.score))}/10
-                            </span>
                         </h3>
-                        <span>${escapeHTML(fii.segment)}</span>
+                        <span style="font-size:0.8rem; color:var(--text-muted)">${escapeHTML(fii.segment)}</span>
                     </div>
-                    <div class="metrics">
-                        <div class="price">R$ ${escapeHTML(fii.price.toFixed(2))}</div>
-                        <div class="yield">DY ${escapeHTML(String(fii.dy))}%</div>
-                        <div style="font-size:0.7rem; color:var(--text-muted)">P/VP: ${escapeHTML((fii.p_vp || fii.pvp || 0).toFixed(2))}</div>
+                    <div class="metrics" style="display:flex; align-items:center; gap:12px;">
+                        <div style="text-align:right">
+                            <div class="price">R$ ${escapeHTML(fii.price.toFixed(2))}</div>
+                            <div style="display:flex; gap:4px; justify-content:flex-end; margin-top:4px;">
+                                <span class="badge ${fii.dy > 8 ? 'price-badge' : ''}">DY ${escapeHTML(String(fii.dy))}%</span>
+                                <span class="badge ${(fii.p_vp || fii.pvp || 0) > 0 && (fii.p_vp || fii.pvp || 0) <= 1.0 ? 'price-badge' : ''}">P/VP ${escapeHTML((fii.p_vp || fii.pvp || 0).toFixed(2))}</span>
+                            </div>
+                        </div>
+                        <div class="score-indicator ${fii.score >= 8 ? 'score-good' : (fii.score >= 6 ? 'score-warning' : 'score-danger')}">
+                            ${escapeHTML(String(fii.score))}
+                        </div>
                     </div>
                 </div>
                 <div class="card-details">
-                    <div class="detail-row"><span class="detail-label">Última Data Com:</span><span class="detail-value" style="color:var(--warning)">${fii.data_com || 'N/A'}</span></div>
-                    <div class="detail-row"><span class="detail-label">Último Pagamento:</span><span class="detail-value" style="color:var(--success)">${fii.data_pagamento || 'N/A'}</span></div>
-                    <div class="detail-row"><span class="detail-label">FFO Yield:</span><span class="detail-value">${escapeHTML(String(fii.ffo_yield || 'N/A'))}% ${getTrendArrow(fii.ffo_yield, 'roe')}</span></div>
-                    <div class="detail-row"><span class="detail-label">Cap Rate:</span><span class="detail-value">${escapeHTML(String(fii.cap_rate || 'N/A'))}% ${getTrendArrow(fii.cap_rate, 'roe')}</span></div>
-                    <div class="detail-row"><span class="detail-label">Vacância:</span><span class="detail-value">${escapeHTML(String(fii.vacancy))}% ${getTrendArrow(fii.vacancy, 'vacancy')}</span></div>
-                    <div class="detail-row"><span class="detail-label">Imóveis:</span><span class="detail-value">${escapeHTML(String(fii.num_properties || 'N/A'))} ${getTrendArrow(fii.num_properties, 'cresc')}</span></div>
-                    <div class="detail-row"><span class="detail-label">Liquidez (2m):</span><span class="detail-value">R$ ${escapeHTML((fii.liquidity / 1000).toFixed(0))}k ${getTrendArrow(fii.liquidity, 'liq-fii')}</span></div>
-                    <div class="detail-row"><span class="detail-label">Val. Mercado:</span><span class="detail-value">R$ ${escapeHTML((fii.market_cap / 1000000).toFixed(0))}M ${getTrendArrow(fii.market_cap, 'mkt-cap')}</span></div>
+                    <div class="detail-grid">
+                        <div class="detail-box">
+                            <div class="detail-row"><span class="detail-label">FFO Yield</span><span class="detail-value">${escapeHTML(String(fii.ffo_yield || 'N/A'))}% ${getTrendArrow(fii.ffo_yield, 'roe')}</span></div>
+                        </div>
+                        <div class="detail-box">
+                            <div class="detail-row"><span class="detail-label">Cap Rate</span><span class="detail-value">${escapeHTML(String(fii.cap_rate || 'N/A'))}% ${getTrendArrow(fii.cap_rate, 'roe')}</span></div>
+                        </div>
+                        <div class="detail-box">
+                            <div class="detail-row"><span class="detail-label">Vacância</span><span class="detail-value">${escapeHTML(String(fii.vacancy))}% ${getTrendArrow(fii.vacancy, 'vacancy')}</span></div>
+                        </div>
+                        <div class="detail-box">
+                            <div class="detail-row"><span class="detail-label">Imóveis</span><span class="detail-value">${escapeHTML(String(fii.num_properties || 'N/A'))} ${getTrendArrow(fii.num_properties, 'cresc')}</span></div>
+                        </div>
+                        <div class="detail-box">
+                            <div class="detail-row"><span class="detail-label">Liquidez Diária</span><span class="detail-value">R$ ${escapeHTML((fii.liquidity / 1000).toFixed(0))}k ${getTrendArrow(fii.liquidity, 'liq-fii')}</span></div>
+                        </div>
+                        <div class="detail-box">
+                            <div class="detail-row"><span class="detail-label">V. Mercado</span><span class="detail-value">R$ ${escapeHTML((fii.market_cap / 1000000).toFixed(0))}M ${getTrendArrow(fii.market_cap, 'mkt-cap')}</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-row" style="flex-direction:row; justify-content:space-between; margin-bottom:8px;">
+                        <span class="detail-label">Última Data Com:</span>
+                        <span class="detail-value" style="color:var(--warning)">${fii.data_com || 'N/A'}</span>
+                    </div>
+                    <div class="detail-row" style="flex-direction:row; justify-content:space-between; margin-bottom:8px;">
+                        <span class="detail-label">Último Pagamento:</span>
+                        <span class="detail-value" style="color:var(--success)">${fii.data_pagamento || 'N/A'}</span>
+                    </div>
+
                     <div id="chart-${escapeHTML(fii.ticker)}" class="chart-container"></div>
                     <a href="${getInvestidor10Url(fii)}" target="_blank" class="external-link-btn">
                         📊 Ver no Investidor 10
@@ -1356,20 +1612,32 @@
                                  alt="${escapeHTML(etf.ticker)}">
                             ${escapeHTML(etf.ticker)}
                         </h3>
-                        <span>ETF de Renda Variável</span>
+                        <span style="font-size:0.8rem; color:var(--text-muted)">ETF de Renda Variável</span>
                     </div>
-                    <div class="metrics">
-                        <div class="price">R$ ${escapeHTML(etf.price.toFixed(2))}</div>
-                        <div class="yield" style="color:${etf.dy > 0 ? 'var(--success)' : 'var(--text-muted)'}">
-                            DY ${etf.dy > 0 ? escapeHTML(etf.dy.toFixed(2)) + '%' : 'N/A'}
+                    <div class="metrics" style="display:flex; align-items:center; gap:12px;">
+                        <div style="text-align:right">
+                            <div class="price">R$ ${escapeHTML(etf.price.toFixed(2))}</div>
+                            <div style="display:flex; gap:4px; justify-content:flex-end; margin-top:4px;">
+                                <span class="badge ${etf.dy > 0 ? 'price-badge' : ''}">DY ${etf.dy > 0 ? escapeHTML(etf.dy.toFixed(2)) + '%' : 'N/A'}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="card-details">
-                    <div class="detail-row"><span class="detail-label">Liq. Diária:</span><span class="detail-value">R$ ${escapeHTML((etf.liquidity / 1000000).toFixed(1))}M</span></div>
-                    <div class="detail-row"><span class="detail-label">Variação (12m):</span><span class="detail-value" style="color:${etf.variation_12m >= 0 ? 'var(--success)' : 'var(--danger)'}">${escapeHTML(etf.variation_12m.toFixed(2))}%</span></div>
-                    <div class="detail-row"><span class="detail-label">Min 52s:</span><span class="detail-value">R$ ${escapeHTML(etf.low_52w.toFixed(2))}</span></div>
-                    <div class="detail-row"><span class="detail-label">Max 52s:</span><span class="detail-value">R$ ${escapeHTML(etf.high_52w.toFixed(2))}</span></div>
+                    <div class="detail-grid">
+                        <div class="detail-box">
+                            <div class="detail-row"><span class="detail-label">Liq. Diária</span><span class="detail-value">R$ ${escapeHTML((etf.liquidity / 1000000).toFixed(1))}M</span></div>
+                        </div>
+                        <div class="detail-box">
+                            <div class="detail-row"><span class="detail-label">Var. 12m</span><span class="detail-value" style="color:${etf.variation_12m >= 0 ? 'var(--success)' : 'var(--danger)'}">${escapeHTML(etf.variation_12m.toFixed(2))}%</span></div>
+                        </div>
+                        <div class="detail-box">
+                            <div class="detail-row"><span class="detail-label">Min 52s</span><span class="detail-value">R$ ${escapeHTML(etf.low_52w.toFixed(2))}</span></div>
+                        </div>
+                        <div class="detail-box">
+                            <div class="detail-row"><span class="detail-label">Max 52s</span><span class="detail-value">R$ ${escapeHTML(etf.high_52w.toFixed(2))}</span></div>
+                        </div>
+                    </div>
                     <div id="chart-${escapeHTML(etf.ticker)}" class="chart-container"></div>
                     <a href="${getInvestidor10Url({ ticker: etf.ticker, type: 'ETF' })}" target="_blank" class="external-link-btn">
                         📊 Ver no Investidor 10
@@ -1493,14 +1761,6 @@
                         const magicNumber = fii.magicNumber || (monthlyDiv > 0 ? Math.ceil(price / monthlyDiv) : 0);
                         const totalInvest = magicNumber * price;
                         const totalMonthly = magicNumber * monthlyDiv;
-
-                        const formatLiquidity = (value) => {
-                            if (!value || value === 0) return 'N/A';
-                            if (value >= 1000000) return `R$ ${(value / 1000000).toFixed(2)}M`;
-                            if (value >= 1000) return `R$ ${(value / 1000).toFixed(0)}K`;
-                            return `R$ ${value.toFixed(2)}`;
-                        };
-
                         const card = document.createElement('div');
                         card.className = 'stock-card';
                         card.dataset.searchTerm = `${fii.ticker} ${fii.segment} fii bola de neve`.toLowerCase();
@@ -1521,63 +1781,81 @@
                                             onerror="this.style.display='none'"
                                             alt="${escapeHTML(fii.ticker)}">
                                         ${escapeHTML(fii.ticker)}
-                                        <span class="badge" style="background:#FFD70020; color:#FFD700">⭐ ${escapeHTML(String(fii.score))}</span>
                                         ${fii.type === 'TIJOLO' ? '<span class="badge" style="background:#7f7f7f; color:white">🧱 Tijolo</span>' : ''}
                                         ${fii.type === 'PAPEL' ? '<span class="badge" style="background:#3498db; color:white">📄 PAPEL</span>' : ''}
                                         ${fii.type === 'MULTI' ? '<span class="badge" style="background:#9b59b6; color:white">🔄 MULTI</span>' : ''}
                                         ${fii.type === 'AGRO' ? '<span class="badge" style="background:#fba94c; color:black">🌾 AGRO</span>' : ''}
                                         ${fii.type === 'INFRA' ? '<span class="badge" style="background:#00d4ff; color:black">⚡ INFRA</span>' : ''}
                                     </h3>
-                                    <span style="color:var(--accent); font-weight:bold; font-size:1rem;">❄️ Meta: ${escapeHTML(String(magicNumber))} cotas</span>
-                                    <span style="font-size:0.75rem">Com ${escapeHTML(String(magicNumber))} cotas, o dividendo paga +1 cota</span>
+                                    <span style="font-size:0.75rem; color:var(--text-muted)">Com <strong style="color:var(--success)">${escapeHTML(String(magicNumber))} cotas</strong>, o dividendo paga +1 cota</span>
                                 </div>
-                                <div class="metrics">
-                                    <div class="price">R$ ${escapeHTML(fii.price.toFixed(2))}</div>
-                                    <div class="yield">DY ${escapeHTML(String(fii.dy))}%</div>
-                                    <div style="font-size:0.7rem; color:var(--text-muted)">~R$ ${escapeHTML(monthlyDiv.toFixed(2))} /cota</div>
+                                <div class="metrics" style="display:flex; align-items:center; gap:12px;">
+                                    <div style="text-align:right">
+                                        <div class="price">R$ ${escapeHTML(fii.price.toFixed(2))}</div>
+                                        <div style="display:flex; gap:4px; justify-content:flex-end; margin-top:4px;">
+                                            <span class="badge ${fii.dy > 8 ? 'price-badge' : ''}">DY ${escapeHTML(String(fii.dy))}%</span>
+                                            <span class="badge">~R$ ${escapeHTML(monthlyDiv.toFixed(2))} /cota</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="card-details">
-                                <div class="detail-row">
-                                    <span class="detail-label">Última Data Com:</span>
-                                    <span class="detail-value" style="color:var(--warning)">${fii.data_com || 'N/A'}</span>
+                                <div class="carousel-container">
+                                    <div class="carousel-track" id="track-snow-top-${escapeHTML(fii.ticker)}">
+                                        <!-- Slide 1: General Details -->
+                                        <div class="carousel-slide">
+                                            <div class="detail-grid">
+                                                <div class="detail-box">
+                                                    <div class="detail-row"><span class="detail-label">Invest. Total (Meta)</span><span class="detail-value" style="color:var(--warning)">R$ ${escapeHTML(totalInvest.toLocaleString('pt-BR', { minimumFractionDigits: 2 }))}</span></div>
+                                                </div>
+                                                <div class="detail-box">
+                                                    <div class="detail-row"><span class="detail-label">Renda Anual (Meta)</span><span class="detail-value">R$ ${escapeHTML((totalMonthly * 12).toLocaleString('pt-BR', { minimumFractionDigits: 2 }))}</span></div>
+                                                </div>
+                                                <div class="detail-box">
+                                                    <div class="detail-row"><span class="detail-label">Renda Mensal (Meta)</span><span class="detail-value" style="color:var(--success)">R$ ${escapeHTML(totalMonthly.toLocaleString('pt-BR', { minimumFractionDigits: 2 }))}</span></div>
+                                                </div>
+                                                <div class="detail-box">
+                                                    <div class="detail-row"><span class="detail-label">Último Rendimento</span><span class="detail-value" style="color:var(--success)">${fii.last_dividend ? `R$ ${escapeHTML(fii.last_dividend.toFixed(2))}` : 'N/A'}</span></div>
+                                                </div>
+                                                <div class="detail-box">
+                                                    <div class="detail-row"><span class="detail-label">Liq. Diária</span><span class="detail-value" style="color:var(--accent)">${escapeHTML(formatLiquidity(fii.liquidity))}</span></div>
+                                                </div>
+                                                <div class="detail-box">
+                                                    <div class="detail-row"><span class="detail-label">P/VP</span><span class="detail-value" style="color:${(fii.p_vp || fii.pvp || 0) > 0 && (fii.p_vp || fii.pvp || 0) <= 1.0 ? 'var(--success)' : ''}">${escapeHTML((fii.p_vp || fii.pvp || 0).toFixed(2))}</span></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="detail-row" style="flex-direction:row; justify-content:space-between; margin-bottom:8px;">
+                                                <span class="detail-label">Última Data Com:</span>
+                                                <span class="detail-value" style="color:var(--warning)">${fii.data_com || 'N/A'}</span>
+                                            </div>
+                                            <div class="detail-row" style="flex-direction:row; justify-content:space-between; margin-bottom:8px;">
+                                                <span class="detail-label">Último Pagamento:</span>
+                                                <span class="detail-value" style="color:var(--success)">${fii.data_pagamento || 'N/A'}</span>
+                                            </div>
+                                            <div id="chart-snow-top-${escapeHTML(fii.ticker)}" class="chart-container"></div>
+                                            <a href="${getInvestidor10Url(fii)}" target="_blank" class="external-link-btn">
+                                                📊 Ver no Investidor 10
+                                            </a>
+                                        </div>
+
+                                        <!-- SLIDE 2: Future News Integration -->
+                                        <div class="carousel-slide" style="display:flex; flex-direction:column; align-items:center; justify-content:center; padding: 20px; text-align:center; color: var(--text-muted)">
+                                            <span style="font-size: 2rem; margin-bottom: 10px;">📰</span>
+                                            <h4>Central de Notícias</h4>
+                                            <p style="font-size: 0.8rem; margin-top: 5px;">Espaço reservado para futuras integrações de notícias e fatos relevantes sobre este fechamento.</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="detail-row">
-                                    <span class="detail-label">Último Pagamento:</span>
-                                    <span class="detail-value" style="color:var(--success)">${fii.data_pagamento || 'N/A'}</span>
+                                
+                                <div class="carousel-controls">
+                                    <button class="carousel-btn prev-btn" onclick="moveSlide('snow-top-${escapeHTML(fii.ticker)}', -1)" disabled>❮</button>
+                                    <div class="carousel-dots" id="dots-snow-top-${escapeHTML(fii.ticker)}">
+                                        <div class="carousel-dot active" onclick="goToSlide('snow-top-${escapeHTML(fii.ticker)}', 0)"></div>
+                                        <div class="carousel-dot" onclick="goToSlide('snow-top-${escapeHTML(fii.ticker)}', 1)"></div>
+                                    </div>
+                                    <button class="carousel-btn next-btn" onclick="moveSlide('snow-top-${escapeHTML(fii.ticker)}', 1)">❯</button>
                                 </div>
-                                <div class="detail-row">
-                                    <span class="detail-label">Investimento Total (Meta):</span>
-                                    <span class="detail-value" style="color:var(--warning)">R$ ${escapeHTML(totalInvest.toLocaleString('pt-BR', { minimumFractionDigits: 2 }))}</span>
-                                </div>
-                                <div class="detail-row">
-                                    <span class="detail-label">Último Rendimento:</span>
-                                    <span class="detail-value" style="color:var(--success)">${fii.last_dividend ? `R$ ${escapeHTML(fii.last_dividend.toFixed(2))}` : 'N/A'}</span>
-                                </div>
-                                <div class="detail-row">
-                                    <span class="detail-label">Renda Mensal na Meta:</span>
-                                    <span class="detail-value" style="color:var(--success)">R$ ${escapeHTML(totalMonthly.toLocaleString('pt-BR', { minimumFractionDigits: 2 }))}</span>
-                                </div>
-                                <div class="detail-row">
-                                    <span class="detail-label">Renda Anual na Meta:</span>
-                                    <span class="detail-value">R$ ${escapeHTML((totalMonthly * 12).toLocaleString('pt-BR', { minimumFractionDigits: 2 }))}</span>
-                                </div>
-                                <div class="detail-row">
-                                    <span class="detail-label">Liquidez Diária:</span>
-                                    <span class="detail-value" style="color:var(--accent)">${escapeHTML(formatLiquidity(fii.liquidity))}</span>
-                                </div>
-                                <div class="detail-row">
-                                    <span class="detail-label">Segmento:</span>
-                                    <span class="detail-value">${escapeHTML(fii.segment)}</span>
-                                </div>
-                                <div class="detail-row">
-                                    <span class="detail-label">P/VP:</span>
-                                    <span class="detail-value">${escapeHTML((fii.p_vp || fii.pvp || 0).toFixed(2))}</span>
-                                </div>
-                                <div id="chart-snow-top-${escapeHTML(fii.ticker)}" class="chart-container"></div>
-                                <a href="${getInvestidor10Url(fii)}" target="_blank" class="external-link-btn">
-                                    📊 Ver no Investidor 10
-                                </a>
                             </div>
                         `;
 
@@ -1655,15 +1933,6 @@
                     const magicNumber = fii.magicNumber || (monthlyDiv > 0 ? Math.ceil(price / monthlyDiv) : 0);
                     const totalInvest = magicNumber * price;
                     const totalMonthly = magicNumber * monthlyDiv;
-
-                    // Format liquidity
-                    const formatLiquidity = (value) => {
-                        if (!value || value === 0) return 'N/A';
-                        if (value >= 1000000) return `R$ ${(value / 1000000).toFixed(2)}M`;
-                        if (value >= 1000) return `R$ ${(value / 1000).toFixed(0)}K`;
-                        return `R$ ${value.toFixed(2)}`;
-                    };
-
                     const card = document.createElement('div');
                     card.className = 'stock-card';
                     card.dataset.searchTerm = `${fii.ticker} ${fii.segment} fii bola de neve`.toLowerCase();
@@ -1682,63 +1951,81 @@
                                         onerror="this.style.display='none'"
                                         alt="${escapeHTML(fii.ticker)}">
                                     ${escapeHTML(fii.ticker)}
-                                    <span class="badge" style="background:${section.color}20; color:${section.color}">⭐ ${escapeHTML(String(fii.score))}</span>
                                     ${fii.type === 'TIJOLO' ? '<span class="badge" style="background:#7f7f7f; color:white">🧱 Tijolo</span>' : ''}
                                     ${fii.type === 'PAPEL' ? '<span class="badge" style="background:#3498db; color:white">📄 Papel</span>' : ''}
                                     ${fii.type === 'MULTI' ? '<span class="badge" style="background:#9b59b6; color:white">🔄 Multi</span>' : ''}
                                     ${fii.type === 'AGRO' ? '<span class="badge" style="background:#fba94c; color:black">🌾 Agro</span>' : ''}
                                     ${fii.type === 'INFRA' ? '<span class="badge" style="background:#00d4ff; color:black">⚡ Infra</span>' : ''}
                                 </h3>
-                                <span style="color:var(--accent); font-weight:bold; font-size:1rem;">❄️ Meta: ${escapeHTML(String(magicNumber))} cotas</span>
-                                <span style="font-size:0.75rem">Com ${escapeHTML(String(magicNumber))} cotas, o dividendo paga +1 cota</span>
+                                <span style="font-size:0.75rem; color:var(--text-muted)">Com <strong style="color:var(--success)">${escapeHTML(String(magicNumber))} cotas</strong>, o dividendo paga +1 cota</span>
                             </div>
-                            <div class="metrics">
-                                <div class="price">R$ ${escapeHTML(fii.price.toFixed(2))}</div>
-                                <div class="yield">DY ${escapeHTML(String(fii.dy))}%</div>
-                                <div style="font-size:0.7rem; color:var(--text-muted)">~R$ ${escapeHTML(monthlyDiv.toFixed(2))} /cota</div>
+                            <div class="metrics" style="display:flex; align-items:center; gap:12px;">
+                                <div style="text-align:right">
+                                    <div class="price">R$ ${escapeHTML(fii.price.toFixed(2))}</div>
+                                    <div style="display:flex; gap:4px; justify-content:flex-end; margin-top:4px;">
+                                        <span class="badge ${fii.dy > 8 ? 'price-badge' : ''}">DY ${escapeHTML(String(fii.dy))}%</span>
+                                        <span class="badge">~R$ ${escapeHTML(monthlyDiv.toFixed(2))} /cota</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="card-details">
-                            <div class="detail-row">
-                                <span class="detail-label">Última Data Com:</span>
-                                <span class="detail-value" style="color:var(--warning)">${fii.data_com || 'N/A'}</span>
+                            <div class="carousel-container">
+                                <div class="carousel-track" id="track-snow-${escapeHTML(fii.ticker)}">
+                                    <!-- Slide 1 -->
+                                    <div class="carousel-slide">
+                                        <div class="detail-grid">
+                                            <div class="detail-box">
+                                                <div class="detail-row"><span class="detail-label">Invest. Total (Meta)</span><span class="detail-value" style="color:var(--warning)">R$ ${escapeHTML(totalInvest.toLocaleString('pt-BR', { minimumFractionDigits: 2 }))}</span></div>
+                                            </div>
+                                            <div class="detail-box">
+                                                <div class="detail-row"><span class="detail-label">Renda Anual (Meta)</span><span class="detail-value">R$ ${escapeHTML((totalMonthly * 12).toLocaleString('pt-BR', { minimumFractionDigits: 2 }))}</span></div>
+                                            </div>
+                                            <div class="detail-box">
+                                                <div class="detail-row"><span class="detail-label">Renda Mensal (Meta)</span><span class="detail-value" style="color:var(--success)">R$ ${escapeHTML(totalMonthly.toLocaleString('pt-BR', { minimumFractionDigits: 2 }))}</span></div>
+                                            </div>
+                                            <div class="detail-box">
+                                                <div class="detail-row"><span class="detail-label">Último Rendimento</span><span class="detail-value" style="color:var(--success)">${fii.last_dividend ? `R$ ${escapeHTML(fii.last_dividend.toFixed(2))}` : 'N/A'}</span></div>
+                                            </div>
+                                            <div class="detail-box">
+                                                <div class="detail-row"><span class="detail-label">Liq. Diária</span><span class="detail-value" style="color:var(--accent)">${escapeHTML(formatLiquidity(fii.liquidity))}</span></div>
+                                            </div>
+                                            <div class="detail-box">
+                                                <div class="detail-row"><span class="detail-label">P/VP</span><span class="detail-value" style="color:${(fii.p_vp || fii.pvp || 0) > 0 && (fii.p_vp || fii.pvp || 0) <= 1.0 ? 'var(--success)' : ''}">${escapeHTML((fii.p_vp || fii.pvp || 0).toFixed(2))}</span></div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="detail-row" style="flex-direction:row; justify-content:space-between; margin-bottom:8px;">
+                                            <span class="detail-label">Última Data Com:</span>
+                                            <span class="detail-value" style="color:var(--warning)">${fii.data_com || 'N/A'}</span>
+                                        </div>
+                                        <div class="detail-row" style="flex-direction:row; justify-content:space-between; margin-bottom:8px;">
+                                            <span class="detail-label">Último Pagamento:</span>
+                                            <span class="detail-value" style="color:var(--success)">${fii.data_pagamento || 'N/A'}</span>
+                                        </div>
+                                        <div id="chart-snow-${escapeHTML(fii.ticker)}" class="chart-container"></div>
+                                        <a href="${getInvestidor10Url(fii)}" target="_blank" class="external-link-btn">
+                                            📊 Ver no Investidor 10
+                                        </a>
+                                    </div>
+
+                                    <!-- Slide 2 -->
+                                    <div class="carousel-slide" style="display:flex; flex-direction:column; align-items:center; justify-content:center; padding: 20px; text-align:center; color: var(--text-muted)">
+                                        <span style="font-size: 2rem; margin-bottom: 10px;">📰</span>
+                                        <h4>Central de Notícias</h4>
+                                        <p style="font-size: 0.8rem; margin-top: 5px;">Espaço reservado para futuras integrações de notícias e fatos relevantes sobre este fechamento.</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="detail-row">
-                                <span class="detail-label">Último Pagamento:</span>
-                                <span class="detail-value" style="color:var(--success)">${fii.data_pagamento || 'N/A'}</span>
+
+                            <div class="carousel-controls">
+                                <button class="carousel-btn prev-btn" onclick="moveSlide('snow-${escapeHTML(fii.ticker)}', -1)" disabled>❮</button>
+                                <div class="carousel-dots" id="dots-snow-${escapeHTML(fii.ticker)}">
+                                    <div class="carousel-dot active" onclick="goToSlide('snow-${escapeHTML(fii.ticker)}', 0)"></div>
+                                    <div class="carousel-dot" onclick="goToSlide('snow-${escapeHTML(fii.ticker)}', 1)"></div>
+                                </div>
+                                <button class="carousel-btn next-btn" onclick="moveSlide('snow-${escapeHTML(fii.ticker)}', 1)">❯</button>
                             </div>
-                            <div class="detail-row">
-                                <span class="detail-label">Investimento Total (Meta):</span>
-                                <span class="detail-value" style="color:var(--warning)">R$ ${escapeHTML(totalInvest.toLocaleString('pt-BR', { minimumFractionDigits: 2 }))}</span>
-                            </div>
-                            <div class="detail-row">
-                                <span class="detail-label">Último Rendimento:</span>
-                                <span class="detail-value" style="color:var(--success)">${fii.last_dividend ? `R$ ${escapeHTML(fii.last_dividend.toFixed(2))}` : 'N/A'}</span>
-                            </div>
-                            <div class="detail-row">
-                                <span class="detail-label">Renda Mensal na Meta:</span>
-                                <span class="detail-value" style="color:var(--success)">R$ ${escapeHTML(totalMonthly.toLocaleString('pt-BR', { minimumFractionDigits: 2 }))}</span>
-                            </div>
-                            <div class="detail-row">
-                                <span class="detail-label">Renda Anual na Meta:</span>
-                                <span class="detail-value">R$ ${escapeHTML((totalMonthly * 12).toLocaleString('pt-BR', { minimumFractionDigits: 2 }))}</span>
-                            </div>
-                            <div class="detail-row">
-                                <span class="detail-label">Segmento:</span>
-                                <span class="detail-value">${escapeHTML(fii.segment)}</span>
-                            </div>
-                            <div class="detail-row">
-                                <span class="detail-label">P/VP:</span>
-                                <span class="detail-value">${escapeHTML((fii.p_vp || fii.pvp || 0).toFixed(2))}</span>
-                            </div>
-                            <div class="detail-row">
-                                <span class="detail-label">Liquidez Diária:</span>
-                                <span class="detail-value" style="color:var(--accent)">${escapeHTML(formatLiquidity(fii.liquidity))}</span>
-                            </div>
-                            <div id="chart-snow-${escapeHTML(fii.ticker)}" class="chart-container"></div>
-                            <a href="${getInvestidor10Url(fii)}" target="_blank" class="external-link-btn">
-                                📊 Ver no Investidor 10
-                            </a>
                         </div>
                     `;
 
@@ -1747,7 +2034,7 @@
                         card.querySelector('.card-details').classList.toggle('show');
 
                         if (isExpanded) {
-                            const chartId = `chart-snow-${escapeHTML(fii.ticker)}`;
+                            const chartId = `chart - snow - ${escapeHTML(fii.ticker)} `;
                             const container = document.getElementById(chartId);
                             if (container && container.children.length === 0) {
                                 new TradingView.MediumWidget({
@@ -1773,12 +2060,14 @@
         function showTab(tabName) {
             // Hide all
             ['stocks', 'fiis', 'snowball', 'fixed', 'etfs'].forEach(t => {
-                document.getElementById(`content-${t}`).classList.add('hidden');
+                const el = document.getElementById(`content-${t}`);
+                if (el) el.classList.add('hidden');
             });
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
 
             // Show selected
-            document.getElementById(`content-${tabName}`).classList.remove('hidden');
+            const selected = document.getElementById(`content-${tabName}`);
+            if (selected) selected.classList.remove('hidden');
 
             // Highlight active tab
             document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -1795,6 +2084,67 @@
             if (type === 'ETF') return `https://investidor10.com.br/etfs/${ticker}/`;
             if (ticker && !type) return `https://investidor10.com.br/acoes/${ticker}/`;
             return `https://investidor10.com.br/fiis/${ticker}/`;
+        }
+
+        // --- CAROUSEL LOGIC ---
+        // Store current slide index for each track
+        const carouselStates = {};
+
+        window.moveSlide = function (trackId, direction) {
+            const track = document.getElementById(`track-${trackId}`);
+            if (!track) return;
+
+            // Initialize state if it doesn't exist
+            if (carouselStates[trackId] === undefined) {
+                carouselStates[trackId] = 0;
+            }
+
+            // Note: Since all cards currently have exactly 2 slides
+            const maxSlides = 2;
+            let currentIndex = carouselStates[trackId];
+
+            // Calculate new index
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = 0;
+            if (currentIndex >= maxSlides) currentIndex = maxSlides - 1;
+
+            updateCarousel(trackId, currentIndex);
+        };
+
+        window.goToSlide = function (trackId, index) {
+            updateCarousel(trackId, index);
+        };
+
+        function updateCarousel(trackId, index) {
+            const track = document.getElementById(`track-${trackId}`);
+            if (!track) return;
+
+            // Save state
+            carouselStates[trackId] = index;
+
+            // Move track horizontally
+            track.style.transform = `translateX(-${index * 100}%)`;
+
+            // Update controls styling
+            const cardDetails = track.closest('.card-details');
+            if (cardDetails) {
+                // Update dots
+                const dots = cardDetails.querySelectorAll('.carousel-dot');
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+
+                // Update buttons state
+                const prevBtn = cardDetails.querySelector('.prev-btn');
+                const nextBtn = cardDetails.querySelector('.next-btn');
+                if (prevBtn) prevBtn.disabled = index === 0;
+                if (nextBtn) nextBtn.disabled = index === 1; // Assuming max 2 slides
+            }
+
+            // Stop click event propagation to prevent the card from collapsing
+            if (window.event) {
+                window.event.stopPropagation();
+            }
         }
     </script>
 
