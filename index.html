@@ -823,13 +823,6 @@
                 .replace(/'/g, '&#039;');
         }
 
-        const formatLiquidity = (value) => {
-            if (!value || value === 0) return 'N/A';
-            if (value >= 1000000) return `R$ ${(value / 1000000).toFixed(2)}M`;
-            if (value >= 1000) return `R$ ${(value / 1000).toFixed(0)}K`;
-            return `R$ ${value.toFixed(2)}`;
-        };
-
         // --- Search Functionality ---
         let searchResults = [];
         let currentMatchIndex = 0;
@@ -1256,9 +1249,17 @@
                                 </div>
 
                                 <div id="chart-${escapeHTML(stock.ticker)}" class="chart-container"></div>
-                                <a href="${getInvestidor10Url(stock)}" target="_blank" class="external-link-btn">
-                                    📊 Ver no Investidor 10
-                                </a>
+                                <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 12px; margin-top: 10px;">
+                                    <a href="${getInvestidor10Url(stock)}" target="_blank" class="external-link-btn" style="margin: 0; padding: 6px 12px; font-size: 0.8rem;" title="Investidor 10">
+                                        📊 Investidor 10
+                                    </a>
+                                    <a href="https://br.tradingview.com/symbols/BMFBOVESPA-${escapeHTML(stock.ticker)}/" target="_blank" class="external-link-btn" style="margin: 0; padding: 6px 12px; font-size: 0.8rem; background: #2962FF; border-color: rgba(255,255,255,0.2);" title="TradingView">
+                                        📈 TradingView
+                                    </a>
+                                    <a href="https://br.investing.com/search/?q=${escapeHTML(stock.ticker)}" target="_blank" class="external-link-btn" style="margin: 0; padding: 6px 12px; font-size: 0.8rem; background: #FF9800; border-color: rgba(255,255,255,0.2); color: #fff;" title="Investing.com">
+                                        🌐 Investing
+                                    </a>
+                                </div>
                             </div>
 
                             <!-- SLIDE 2: Secondary Metrics -->
@@ -1761,6 +1762,14 @@
                         const magicNumber = fii.magicNumber || (monthlyDiv > 0 ? Math.ceil(price / monthlyDiv) : 0);
                         const totalInvest = magicNumber * price;
                         const totalMonthly = magicNumber * monthlyDiv;
+
+                        const formatLiquidity = (value) => {
+                            if (!value || value === 0) return 'N/A';
+                            if (value >= 1000000) return `R$ ${(value / 1000000).toFixed(2)}M`;
+                            if (value >= 1000) return `R$ ${(value / 1000).toFixed(0)}K`;
+                            return `R$ ${value.toFixed(2)}`;
+                        };
+
                         const card = document.createElement('div');
                         card.className = 'stock-card';
                         card.dataset.searchTerm = `${fii.ticker} ${fii.segment} fii bola de neve`.toLowerCase();
@@ -1834,9 +1843,17 @@
                                                 <span class="detail-value" style="color:var(--success)">${fii.data_pagamento || 'N/A'}</span>
                                             </div>
                                             <div id="chart-snow-top-${escapeHTML(fii.ticker)}" class="chart-container"></div>
-                                            <a href="${getInvestidor10Url(fii)}" target="_blank" class="external-link-btn">
-                                                📊 Ver no Investidor 10
-                                            </a>
+                                            <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 12px; margin-top: 10px;">
+                                                <a href="${getInvestidor10Url(fii)}" target="_blank" class="external-link-btn" style="margin: 0; padding: 6px 12px; font-size: 0.8rem;" title="Investidor 10">
+                                                    📊 Investidor 10
+                                                </a>
+                                                <a href="https://br.tradingview.com/symbols/BMFBOVESPA-${escapeHTML(fii.ticker)}/" target="_blank" class="external-link-btn" style="margin: 0; padding: 6px 12px; font-size: 0.8rem; background: #2962FF; border-color: rgba(255,255,255,0.2);" title="TradingView">
+                                                    📈 TradingView
+                                                </a>
+                                                <a href="https://br.investing.com/search/?q=${escapeHTML(fii.ticker)}" target="_blank" class="external-link-btn" style="margin: 0; padding: 6px 12px; font-size: 0.8rem; background: #FF9800; border-color: rgba(255,255,255,0.2); color: #fff;" title="Investing.com">
+                                                    🌐 Investing
+                                                </a>
+                                            </div>
                                         </div>
 
                                         <!-- SLIDE 2: Future News Integration -->
@@ -1933,6 +1950,15 @@
                     const magicNumber = fii.magicNumber || (monthlyDiv > 0 ? Math.ceil(price / monthlyDiv) : 0);
                     const totalInvest = magicNumber * price;
                     const totalMonthly = magicNumber * monthlyDiv;
+
+                    // Format liquidity
+                    const formatLiquidity = (value) => {
+                        if (!value || value === 0) return 'N/A';
+                        if (value >= 1000000) return `R$ ${(value / 1000000).toFixed(2)}M`;
+                        if (value >= 1000) return `R$ ${(value / 1000).toFixed(0)}K`;
+                        return `R$ ${value.toFixed(2)}`;
+                    };
+
                     const card = document.createElement('div');
                     card.className = 'stock-card';
                     card.dataset.searchTerm = `${fii.ticker} ${fii.segment} fii bola de neve`.toLowerCase();
@@ -2004,9 +2030,17 @@
                                             <span class="detail-value" style="color:var(--success)">${fii.data_pagamento || 'N/A'}</span>
                                         </div>
                                         <div id="chart-snow-${escapeHTML(fii.ticker)}" class="chart-container"></div>
-                                        <a href="${getInvestidor10Url(fii)}" target="_blank" class="external-link-btn">
-                                            📊 Ver no Investidor 10
-                                        </a>
+                                        <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 12px; margin-top: 10px;">
+                                            <a href="${getInvestidor10Url(fii)}" target="_blank" class="external-link-btn" style="margin: 0; padding: 6px 12px; font-size: 0.8rem;" title="Investidor 10">
+                                                📊 Investidor 10
+                                            </a>
+                                            <a href="https://br.tradingview.com/symbols/BMFBOVESPA-${escapeHTML(fii.ticker)}/" target="_blank" class="external-link-btn" style="margin: 0; padding: 6px 12px; font-size: 0.8rem; background: #2962FF; border-color: rgba(255,255,255,0.2);" title="TradingView">
+                                                📈 TradingView
+                                            </a>
+                                            <a href="https://br.investing.com/search/?q=${escapeHTML(fii.ticker)}" target="_blank" class="external-link-btn" style="margin: 0; padding: 6px 12px; font-size: 0.8rem; background: #FF9800; border-color: rgba(255,255,255,0.2); color: #fff;" title="Investing.com">
+                                                🌐 Investing
+                                            </a>
+                                        </div>
                                     </div>
 
                                     <!-- Slide 2 -->
