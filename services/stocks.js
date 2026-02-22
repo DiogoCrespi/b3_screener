@@ -5,13 +5,21 @@ const BrapiStockAdapter = require('./adapters/brapi-stock-adapter');
 const { analyzeStock } = require('./logic/stock-rules');
 const { getSelicRate } = require('./economy');
 
-async function getBestStocks(selicParam = null) {
+async function getBestStocks(selicParam = null, dependencies = {}) {
+    // Inject dependencies for testing
+    const {
+        FundamentusAdapter = FundamentusStockAdapter,
+        BrapiAdapter = BrapiStockAdapter,
+        stockAnalyzer = analyzeStock,
+        selicFetcher = getSelicRate
+    } = dependencies;
+
     let rawStocks = [];
 
     // 1. Fetch Data (Adapter Pattern with Failover)
     try {
         console.log('📊 Attempting to fetch from Fundamentus...');
-        const fundamentusAdapter = new FundamentusStockAdapter();
+        const fundamentusAdapter = new FundamentusAdapter();
         rawStocks = await fundamentusAdapter.getStocks();
         console.log(`✅ Successfully fetched ${rawStocks.length} stocks from Fundamentus`);
     } catch (fundamentusError) {
@@ -19,7 +27,7 @@ async function getBestStocks(selicParam = null) {
         console.log('🔄 Switching to Brapi.dev backup...');
 
         try {
-            const brapiAdapter = new BrapiStockAdapter();
+            const brapiAdapter = new BrapiAdapter();
             rawStocks = await brapiAdapter.getStocks();
             console.log(`✅ Successfully fetched ${rawStocks.length} stocks from Brapi.dev`);
         } catch (brapiError) {
@@ -35,7 +43,7 @@ async function getBestStocks(selicParam = null) {
         // 2. Get Context (Selic)
         let selic = selicParam;
         if (!selic) {
-            const fetchedSelic = await getSelicRate();
+            const fetchedSelic = await selicFetcher();
             if (fetchedSelic !== null) {
                 selic = fetchedSelic;
             } else {
@@ -47,7 +55,7 @@ async function getBestStocks(selicParam = null) {
         // 3. Apply Business Logic (Strategy Pattern)
         const enrichedStocks = rawStocks
             .filter(s => s.liq_2meses > 200000) // Basic liquidity filter
-            .map(s => analyzeStock(s, selic))   // Apply rules/scoring
+            .map(s => stockAnalyzer(s, selic))   // Apply rules/scoring
             .filter(s => s.category !== null)   // Remove junk
             .sort((a, b) => {
                 // Sort: STARS first, then by Score
