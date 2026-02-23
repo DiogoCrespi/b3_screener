@@ -1,834 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B3 Screener Mobile</title>
-    <script src="data.js"></script>
-    <style>
-        :root {
-            /* Base Colors */
-            --bg-color: #121214;
-            --card-bg: #202024;
-            --card-hover: #29292e;
-            --text-color: #e1e1e6;
-            --text-muted: #a8a8b3;
-            --border-color: #323238;
-
-            /* Brand Colors */
-            --primary: #8257e5;
-            /* Purple */
-            --primary-glow: rgba(130, 87, 229, 0.3);
-
-            /* Status Colors */
-            --success: #04d361;
-            /* Green */
-            --danger: #f75a68;
-            /* Red */
-            --warning: #fba94c;
-            /* Orange */
-            --accent: #50fa7b;
-            /* Neon Green */
-
-            /* Gradient */
-            --card-gradient: linear-gradient(135deg, #2d2d35 0%, #202024 100%);
-        }
-
-        .light-mode {
-            --bg-color: #f0f2f5;
-            --card-bg: #ffffff;
-            --card-hover: #f8f9fa;
-            --text-color: #333333;
-            --text-muted: #666666;
-            --border-color: #e1e4e8;
-            --card-gradient: linear-gradient(135deg, #ffffff 0%, #f0f2f5 100%);
-            --primary-glow: rgba(130, 87, 229, 0.15);
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        header {
-            background-color: var(--card-bg);
-            padding: 1rem;
-            text-align: center;
-            border-bottom: 2px solid var(--primary);
-            position: relative;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        h1 {
-            margin: 0;
-            font-size: 1.2rem;
-            color: var(--primary);
-        }
-
-        .header-content {
-            text-align: left;
-        }
-
-        .theme-toggle {
-            background: none;
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-            padding: 5px 10px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 1.2rem;
-            transition: all 0.2s;
-            line-height: 1;
-        }
-
-        .theme-toggle:hover {
-            background: var(--bg-color);
-        }
-
-
-
-        .last-update {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-top: 0.2rem;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-        .dashboard {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 1.5rem 0;
-            flex-wrap: wrap;
-        }
-
-        .metric-card {
-            background: var(--card-gradient);
-            padding: 1.5rem;
-            border-radius: 12px;
-            min-width: 150px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            border: 1px solid var(--border-color);
-            flex: 1;
-            max-width: 300px;
-        }
-
-        .metric-value {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--accent);
-            margin-top: 5px;
-        }
-
-        .metric-label {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .summary-banner {
-            background: var(--card-bg);
-            border-bottom: 1px solid var(--border-color);
-            padding: 10px 1rem;
-            margin: 0 -1rem 1.5rem -1rem;
-            display: flex;
-            justify-content: space-around;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-
-        .summary-item strong {
-            color: var(--accent);
-            margin-left: 4px;
-        }
-
-        .tabs {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .tab-btn {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-muted);
-            padding: 1rem 0.5rem;
-            border-radius: 8px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-weight: 600;
-            flex: 1;
-            /* Grow to fill space */
-            min-width: 140px;
-            /* Ensure 2 per row on small phones, 4 per row on desktop if space allows */
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .tab-btn:hover {
-            border-color: var(--primary);
-            color: var(--text-color);
-        }
-
-        .tab-btn.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-            box-shadow: 0 0 15px var(--primary-glow);
-        }
-
-        .list-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 20px;
-            padding-bottom: 4rem;
-        }
-
-        .stock-card {
-            background: var(--card-bg);
-            border-radius: 8px;
-            padding: 12px;
-            border-left: 4px solid var(--primary);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-            transition: all 0.2s;
-            cursor: pointer;
-        }
-
-        .card-main {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .stock-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-        }
-
-        .stock-card.expanded {
-            background: var(--bg-color);
-        }
-
-        .card-details {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-            margin-top: 0;
-        }
-
-        .card-details.show {
-            max-height: 1200px;
-            margin-top: 12px;
-            padding-top: 12px;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .detail-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 12px;
-        }
-
-        .detail-box {
-            background: var(--bg-color);
-            padding: 8px;
-            border-radius: 4px;
-            border: 1px solid var(--border-color);
-        }
-
-        .detail-row {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-            font-size: 0.85rem;
-        }
-
-        .detail-label {
-            color: var(--text-muted);
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .detail-value {
-            color: var(--text-color);
-            font-weight: 500;
-        }
-
-        .stock-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-            border-color: var(--accent);
-        }
-
-        .stock-card.high-upside {
-            border-left-color: var(--success);
-        }
-
-        .stock-card.fii {
-            border-left-color: var(--warning);
-        }
-
-        .ticker-info h3 {
-            margin: 0;
-            font-size: 1.3rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .stock-logo {
-            width: 28px;
-            height: 28px;
-            border-radius: 4px;
-            object-fit: contain;
-            background: white;
-            padding: 1px;
-        }
-
-        .ticker-info span {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            display: block;
-            margin-top: 4px;
-        }
-
-        .metrics {
-            text-align: right;
-        }
-
-        .price {
-            font-size: 1.3rem;
-            font-weight: bold;
-        }
-
-        .yield {
-            color: var(--success);
-            font-size: 1rem;
-            font-weight: 500;
-            margin: 4px 0;
-        }
-
-        .badge {
-            background: var(--card-hover);
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            white-space: nowrap;
-            display: inline-flex;
-            align-items: center;
-            gap: 2px;
-            border: 1px solid var(--border-color);
-        }
-
-        .price-badge {
-            background: transparent;
-            color: var(--success);
-            border-color: var(--success);
-            font-weight: bold;
-            font-size: 0.85rem;
-            padding: 4px 8px;
-        }
-
-        .score-indicator {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 0.85rem;
-            border: 2px solid transparent;
-            position: relative;
-        }
-
-        .score-indicator::after {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            border-radius: 50%;
-            border: 2px solid currentColor;
-            opacity: 0.2;
-        }
-
-        .score-good {
-            color: var(--success);
-        }
-
-        .score-warning {
-            color: var(--warning);
-        }
-
-        .score-danger {
-            color: var(--danger);
-        }
-
-        .score-star {
-            color: #FFD700;
-            border-color: #FFD700;
-        }
-
-        @media (max-width: 480px) {
-            .badge {
-                font-size: 0.65rem;
-                padding: 1px 4px;
-                margin-left: 4px;
-            }
-
-            .ticker-info h3 {
-                font-size: 1.05rem;
-                flex-wrap: nowrap;
-                overflow: hidden;
-            }
-
-            .stock-logo {
-                width: 24px;
-                height: 24px;
-            }
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .arrow-up {
-            color: var(--success);
-            font-weight: bold;
-            display: inline-block;
-        }
-
-        .arrow-down {
-            color: var(--danger);
-            font-weight: bold;
-            display: inline-block;
-        }
-
-        .chart-container {
-            height: 300px;
-            width: 100%;
-            margin-top: 1rem;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        .opp-filters {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-bottom: 1.5rem;
-            width: 100%;
-        }
-
-        .filter-btn {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-muted);
-            padding: 8px 16px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: all 0.2s;
-            font-weight: 500;
-        }
-
-        .filter-btn:hover {
-            border-color: var(--primary);
-            color: var(--text-color);
-            background: var(--card-hover);
-        }
-
-        .filter-btn.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-            box-shadow: 0 0 10px var(--primary-glow);
-        }
-
-        .external-link-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            background: rgba(255, 255, 255, 0.05);
-            /* Glassmorphism base */
-            color: var(--text-color) !important;
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            text-decoration: none;
-            margin-top: 10px;
-            margin-bottom: 12px;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            width: fit-content;
-            backdrop-filter: blur(4px);
-        }
-
-        .external-link-btn:hover {
-            transform: translateY(-2px);
-            background: var(--card-hover);
-            color: white !important;
-        }
-
-        .external-link-btn.btn-inv10:hover {
-            border-color: var(--primary);
-            box-shadow: 0 4px 15px var(--primary-glow);
-        }
-
-        .external-link-btn.btn-tv:hover {
-            border-color: #2962FF;
-            box-shadow: 0 4px 15px rgba(41, 98, 255, 0.25);
-        }
-
-        .external-link-btn.btn-investing:hover {
-            border-color: #FF9800;
-            box-shadow: 0 4px 15px rgba(255, 152, 0, 0.25);
-        }
-
-        .header-actions {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-
-        .btn-icon {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-            padding: 8px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.2rem;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-        }
-
-        .btn-icon:hover {
-            background: var(--card-hover);
-            border-color: var(--primary);
-            transform: translateY(-2px);
-        }
-
-        .download-menu {
-            position: relative;
-        }
-
-        .download-options {
-            position: absolute;
-            right: 0;
-            top: 100%;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 8px 0;
-            margin-top: 8px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-            z-index: 1000;
-            min-width: 150px;
-            display: none;
-        }
-
-        .download-options.show {
-            display: block;
-        }
-
-        .download-option {
-            padding: 10px 16px;
-            cursor: pointer;
-            transition: background 0.2s;
-            color: var(--text-color);
-            font-size: 0.9rem;
-            text-align: left;
-            white-space: nowrap;
-        }
-
-        .download-option:hover {
-            background: var(--card-hover);
-            color: var(--primary);
-        }
-
-        /* Search Styles */
-        .search-container {
-            position: absolute;
-            top: 120%;
-            right: 0;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 8px;
-            border-radius: 8px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-            display: none;
-            align-items: center;
-            gap: 8px;
-            z-index: 2000;
-            width: 320px;
-        }
-
-        .search-container.show {
-            display: flex;
-        }
-
-        .search-input {
-            background: var(--bg-color);
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-            padding: 8px 12px;
-            border-radius: 4px;
-            flex: 1;
-            font-size: 0.9rem;
-            min-width: 0;
-        }
-
-        .search-input:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-
-        .search-count {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            white-space: nowrap;
-            min-width: 45px;
-            text-align: center;
-        }
-
-        .search-actions {
-            display: flex;
-            gap: 4px;
-        }
-
-        .search-btn {
-            background: none;
-            border: 1px solid transparent;
-            color: var(--text-muted);
-            cursor: pointer;
-            padding: 6px;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            transition: all 0.2s;
-        }
-
-        .search-btn:hover {
-            background: var(--card-hover);
-            color: var(--text-color);
-            border-color: var(--border-color);
-        }
-
-        /* Carousel Styles */
-        .carousel-container {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            margin-top: 10px;
-        }
-
-        .carousel-track {
-            display: flex;
-            transition: transform 0.3s ease-in-out;
-            width: 100%;
-        }
-
-        .carousel-slide {
-            flex: 0 0 100%;
-            width: 100%;
-            padding: 0 4px;
-            box-sizing: border-box;
-        }
-
-        .carousel-controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 12px;
-            margin-top: 12px;
-            padding-bottom: 8px;
-        }
-
-        .carousel-btn {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s ease;
-        }
-
-        .carousel-btn:hover {
-            background: var(--card-hover);
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
-        .carousel-btn:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-            border-color: var(--border-color);
-            background: var(--card-bg);
-            color: var(--text-color);
-        }
-
-        .carousel-dots {
-            display: flex;
-            gap: 6px;
-        }
-
-        .carousel-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--border-color);
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .carousel-dot.active {
-            background: var(--primary);
-            transform: scale(1.2);
-        }
-
-        @keyframes highlight-pulse {
-            0% {
-                box-shadow: 0 0 0 0 var(--primary);
-                border-color: var(--primary);
-            }
-
-            50% {
-                box-shadow: 0 0 20px 0px var(--primary-glow);
-                border-color: var(--accent);
-                transform: scale(1.02);
-            }
-
-            100% {
-                box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-                border-color: var(--primary);
-                transform: scale(1);
-            }
-        }
-
-        .card-highlight {
-            animation: highlight-pulse 2s ease-in-out infinite;
-            z-index: 10;
-            position: relative;
-        }
-    </style>
-    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-</head>
-
-<body>
-
-    <header>
-        <div class="header-content">
-            <h1>🚀 B3 Screener</h1>
-            <div class="last-update" id="lastUpdate">Atualizando...</div>
-        </div>
-        <div class="header-actions">
-            <div style="position: relative;">
-                <button class="btn-icon" onclick="toggleSearch()" title="Pesquisar">🔍</button>
-                <div class="search-container" id="searchContainer">
-                    <input type="text" class="search-input" id="searchInput"
-                        placeholder="Buscar (ex: PETR4, Tesouro)...">
-                    <span class="search-count" id="searchCount"></span>
-                    <div class="search-actions">
-                        <button class="search-btn" onclick="navigateSearch(-1)" title="Anterior">⬆️</button>
-                        <button class="search-btn" onclick="navigateSearch(1)" title="Próximo">⬇️</button>
-                        <button class="search-btn" onclick="toggleSearch()" title="Fechar">❌</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="download-menu" id="downloadMenu">
-                <button class="btn-icon" onclick="toggleDownloadMenu()" title="Baixar CSV">📥</button>
-                <div class="download-options" id="downloadOptions">
-                    <div class="download-option" onclick="downloadCSV('stocks')">📊 Baixar Ações</div>
-                    <div class="download-option" onclick="downloadCSV('fiis')">🏘️ Baixar FIIs</div>
-                    <div class="download-option" onclick="downloadCSV('etfs')">📈 Baixar ETFs</div>
-                </div>
-            </div>
-            <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">☀️</button>
-        </div>
-    </header>
-
-    <div class="container">
-
-        <div class="dashboard">
-            <div class="metric-card">
-                <div class="metric-label">DÓLAR PTAX</div>
-                <div class="metric-value" id="dollarVal">---</div>
-            </div>
-            <div class="metric-card">
-                <div class="metric-label">META SELIC</div>
-                <div class="metric-value" id="selicVal">---</div>
-            </div>
-        </div>
-
-        <div class="tabs">
-            <button class="tab-btn active" onclick="showTab('stocks')">Ações</button>
-            <button class="tab-btn" onclick="showTab('fiis')">FIIs</button>
-            <button class="tab-btn" onclick="showTab('snowball')">❄️ Bola de Neve</button>
-            <button class="tab-btn" onclick="showTab('fixed')">Renda Fixa</button>
-            <button class="tab-btn" onclick="showTab('etfs')">ETFs</button>
-        </div>
-
-        <div class="list-container" id="content-stocks">
-            <!-- Stock list goes here -->
-        </div>
-
-        <div class="list-container hidden" id="content-fiis">
-            <!-- FII list goes here -->
-        </div>
-
-        <div class="list-container hidden" id="content-snowball">
-            <!-- Snowball list goes here -->
-        </div>
-
-        <div class="list-container hidden" id="content-fixed">
-            <!-- Fixed Income list goes here -->
-        </div>
-
-        <div class="list-container hidden" id="content-etfs">
-            <!-- ETF list goes here -->
-        </div>
-
-    </div>
-
-
-
-    <script>
         function escapeHTML(str) {
             if (typeof str !== 'string') return str;
             return str
@@ -1024,22 +194,8 @@
 
             const data = window.INVEST_DATA;
 
-            // Make FormatLiquidity global BEFORE render functions use it
-            window.formatLiquidity = function (value) {
-                if (!value || value === 0) return 'N/A';
-                if (value >= 1000000) return `R$ ${(value / 1000000).toFixed(2)}M`;
-                if (value >= 1000) return `R$ ${(value / 1000).toFixed(0)}K`;
-                return `R$ ${value.toFixed(2)}`;
-            };
-
-            const containerStocks = document.getElementById('stocksGrid');
-            const containerFiis = document.getElementById('fiisGrid');
-            const containerSnowball = document.getElementById('snowballGrid');
-            const containerFixed = document.getElementById('fixedGrid');
-            const containerEtfs = document.getElementById('etfsGrid');
-
-            // Set Last Update specific for index.html
-            document.getElementById('lastUpdate').textContent = `Atualizado em: ${data.updatedAt || 'Data Desconhecida'}`;
+            // Header
+            document.getElementById('lastUpdate').textContent = `Atualizado em: ${data.updatedAt}`;
             document.getElementById('dollarVal').textContent = data.economy.dollar ? `R$ ${data.economy.dollar.toFixed(2)}` : '---';
 
             const selic = data.economy.selic;
@@ -1056,10 +212,12 @@
             selicContext.innerHTML = `Filtro DY Atual: <strong style="color:var(--success)">>${minDY}%</strong> (Selic ${selic > 10 ? 'Alta' : 'Normal'})`;
             document.querySelector('.dashboard').after(selicContext);
 
+
+
             // Render Stocks
             const stockContainer = document.getElementById('content-stocks');
 
-            window.getTrendArrow = (value, type) => {
+            const getTrendArrow = (value, type) => {
                 if (value === undefined || value === null) return '';
                 const up = '<span class="arrow-up">↑</span>';
                 const down = '<span class="arrow-down">↓</span>';
@@ -1076,7 +234,6 @@
                     default: return '';
                 }
             };
-            const getTrendArrow = window.getTrendArrow;
 
             const stars = data.stocks.filter(s => s.category === 'STAR');
             const opportunities = data.stocks.filter(s => s.category === 'OPPORTUNITY');
@@ -1219,6 +376,7 @@
                                  onerror="this.style.display='none'"
                                  alt="${escapeHTML(stock.ticker)}">
                             ${escapeHTML(stock.ticker)}
+                            ${badge}
                             ${volBadge}
                         </h3>
                         <span style="font-size:0.8rem; color:var(--text-muted)">Graham: R$ ${escapeHTML(stock.graham_price.toFixed(2))} | Bazin: R$ ${escapeHTML(stock.bazin_price.toFixed(2))}</span>
@@ -1228,7 +386,7 @@
                             <div class="price">R$ ${escapeHTML(stock.cotacao.toFixed(2))}</div>
                             <div style="display:flex; gap:4px; justify-content:flex-end; margin-top:4px;">
                                 <span class="badge ${stock.dividend_yield > 8 ? 'price-badge' : ''}">DY ${escapeHTML(String(stock.dividend_yield))}%</span>
-                                <span class="badge ${stock.p_vp && stock.p_vp <= 1.0 ? 'price-badge' : ''}">P/VP ${escapeHTML(stock.p_vp?.toFixed(1) || 'N/A')}</span>
+                                <span class="badge">P/VP ${escapeHTML(stock.p_vp?.toFixed(1) || 'N/A')}</span>
                             </div>
                         </div>
                         <div class="score-indicator ${isStar ? 'score-star' : (stock.score >= 8 ? 'score-good' : stock.score >= 6 ? 'score-warning' : 'score-danger')}">
@@ -1237,95 +395,46 @@
                     </div>
                 </div>
                 <div class="card-details">
-                    <div class="carousel-container">
-                        <div class="carousel-track" id="track-${escapeHTML(stock.ticker)}">
-                            <!-- Slide 1: General Details -->
-                            <div class="carousel-slide">
-                                <div class="detail-grid">
-                                    <div class="detail-box">
-                                        <div class="detail-row"><span class="detail-label">P/L</span><span class="detail-value">${escapeHTML(stock.pl?.toFixed(2) || 'N/A')} ${getTrendArrow(stock.pl, 'pl')}</span></div>
-                                    </div>
-                                    <div class="detail-box">
-                                        <div class="detail-row"><span class="detail-label">ROE</span><span class="detail-value">${escapeHTML(stock.roe?.toFixed(1) || 'N/A')}% ${getTrendArrow(stock.roe, 'roe')}</span></div>
-                                    </div>
-                                    <div class="detail-box">
-                                        <div class="detail-row"><span class="detail-label">Graham Price</span><span class="detail-value">R$ ${escapeHTML(stock.graham_price?.toFixed(2) || 'N/A')}</span></div>
-                                    </div>
-                                    <div class="detail-box">
-                                        <div class="detail-row"><span class="detail-label">Bazin Price</span><span class="detail-value">R$ ${escapeHTML(stock.bazin_price?.toFixed(2) || 'N/A')}</span></div>
-                                    </div>
-                                    <div class="detail-box">
-                                        <div class="detail-row"><span class="detail-label">Upside Graham</span><span class="detail-value" style="color:${stock.upside > 20 ? 'var(--success)' : ''}">+${escapeHTML(stock.upside.toFixed(0))}%</span></div>
-                                    </div>
-                                    <div class="detail-box">
-                                        <div class="detail-row"><span class="detail-label">PSR</span><span class="detail-value">${escapeHTML(stock.psr?.toFixed(2) || 'N/A')}</span></div>
-                                    </div>
-                                </div>
-
-                                <div class="detail-row" style="flex-direction:row; justify-content:space-between; margin-bottom:8px;">
-                                    <span class="detail-label">Última Data Com:</span>
-                                    <span class="detail-value" style="color:var(--warning)">${stock.data_com || 'N/A'}</span>
-                                </div>
-                                <div class="detail-row" style="flex-direction:row; justify-content:space-between; margin-bottom:8px;">
-                                    <span class="detail-label">Último Pagamento:</span>
-                                    <span class="detail-value" style="color:var(--success)">${stock.data_pagamento || 'N/A'}</span>
-                                </div>
-
-                                <div class="detail-grid" style="grid-template-columns: 1fr 1fr 1fr; gap:8px;">
-                                    <div class="detail-box"><div class="detail-row"><span class="detail-label">PEG</span><span class="detail-value">${escapeHTML((stock.peg_ratio && stock.peg_ratio < 50) ? stock.peg_ratio.toFixed(2) : 'N/A')}</span></div></div>
-                                    <div class="detail-box"><div class="detail-row"><span class="detail-label">ROIC</span><span class="detail-value">${escapeHTML(stock.roic?.toFixed(1) || 'N/A')}%</span></div></div>
-                                    <div class="detail-box"><div class="detail-row"><span class="detail-label">Payout</span><span class="detail-value">${escapeHTML(stock.payout ? stock.payout.toFixed(0) + '%' : 'N/A')}</span></div></div>
-                                </div>
-
-                                <div id="chart-${escapeHTML(stock.ticker)}" class="chart-container"></div>
-                                <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 12px; margin-top: 10px;">
-                                    <a href="${getInvestidor10Url(stock)}" target="_blank" class="external-link-btn btn-inv10" title="Investidor 10">
-                                        📊 Investidor 10
-                                    </a>
-                                    <a href="https://br.tradingview.com/symbols/BMFBOVESPA-${escapeHTML(stock.ticker)}/" target="_blank" class="external-link-btn btn-tv" title="TradingView">
-                                        📈 TradingView
-                                    </a>
-                                    <a href="https://br.investing.com/search/?q=${escapeHTML(stock.ticker)}" target="_blank" class="external-link-btn btn-investing" title="Investing.com">
-                                        🌐 Investing
-                                    </a>
-                                </div>
-                            </div>
-
-                            <!-- SLIDE 2: Secondary Metrics -->
-                            <div class="carousel-slide">
-                                <h4 style="margin: 0 0 10px 0; font-size: 0.9rem; color: var(--text-muted); text-align: center;">Indicadores Adicionais</h4>
-                                <div class="detail-grid">
-                                    <div class="detail-box">
-                                        <div class="detail-row"><span class="detail-label">P/VP</span><span class="detail-value">${escapeHTML(stock.p_vp?.toFixed(2) || 'N/A')} ${getTrendArrow(stock.p_vp, 'pvp')}</span></div>
-                                    </div>
-                                    <div class="detail-box">
-                                        <div class="detail-row"><span class="detail-label">EV/EBIT</span><span class="detail-value">${escapeHTML(stock.ev_ebit?.toFixed(2) || 'N/A')}</span></div>
-                                    </div>
-                                    <div class="detail-box">
-                                        <div class="detail-row"><span class="detail-label">M. Líquida</span><span class="detail-value">${escapeHTML(stock.mrg_liq?.toFixed(1) || 'N/A')}% ${getTrendArrow(stock.mrg_liq, 'mrg_liq')}</span></div>
-                                    </div>
-                                    <div class="detail-box">
-                                        <div class="detail-row"><span class="detail-label">Liquidez (2m)</span><span class="detail-value">${stock.liq_2meses ? escapeHTML(window.formatLiquidity(stock.liq_2meses)) : 'N/A'} ${getTrendArrow(stock.liq_2meses, 'liq_2meses')}</span></div>
-                                    </div>
-                                    <div class="detail-box">
-                                        <div class="detail-row"><span class="detail-label">Dív/Patrim</span><span class="detail-value">${escapeHTML(stock.div_br_patrim?.toFixed(2) || 'N/A')} ${getTrendArrow(stock.div_br_patrim, 'div_br_patrim')}</span></div>
-                                    </div>
-                                    <div class="detail-box">
-                                        <div class="detail-row"><span class="detail-label">Cresc. 5a</span><span class="detail-value">${escapeHTML(stock.cresc_5a?.toFixed(2) || 'N/A')}% ${getTrendArrow(stock.cresc_5a, 'cresc_5a')}</span></div>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="detail-grid">
+                        <div class="detail-box">
+                            <div class="detail-row"><span class="detail-label">P/L</span><span class="detail-value">${escapeHTML(stock.pl?.toFixed(2) || 'N/A')} ${getTrendArrow(stock.pl, 'pl')}</span></div>
+                        </div>
+                        <div class="detail-box">
+                            <div class="detail-row"><span class="detail-label">ROE</span><span class="detail-value">${escapeHTML(stock.roe?.toFixed(1) || 'N/A')}% ${getTrendArrow(stock.roe, 'roe')}</span></div>
+                        </div>
+                        <div class="detail-box">
+                            <div class="detail-row"><span class="detail-label">Graham Price</span><span class="detail-value">R$ ${escapeHTML(stock.graham_price?.toFixed(2) || 'N/A')}</span></div>
+                        </div>
+                        <div class="detail-box">
+                            <div class="detail-row"><span class="detail-label">Bazin Price</span><span class="detail-value">R$ ${escapeHTML(stock.bazin_price?.toFixed(2) || 'N/A')}</span></div>
+                        </div>
+                        <div class="detail-box">
+                            <div class="detail-row"><span class="detail-label">Upside Graham</span><span class="detail-value" style="color:${stock.upside > 20 ? 'var(--success)' : ''}">+${escapeHTML(stock.upside.toFixed(0))}%</span></div>
+                        </div>
+                        <div class="detail-box">
+                            <div class="detail-row"><span class="detail-label">PSR</span><span class="detail-value">${escapeHTML(stock.psr?.toFixed(2) || 'N/A')}</span></div>
                         </div>
                     </div>
-                    
-                    <div class="carousel-controls">
-                        <button class="carousel-btn prev-btn" onclick="moveSlide('${escapeHTML(stock.ticker)}', -1)" disabled>❮</button>
-                        <div class="carousel-dots" id="dots-${escapeHTML(stock.ticker)}">
-                            <div class="carousel-dot active" onclick="goToSlide('${escapeHTML(stock.ticker)}', 0)"></div>
-                            <div class="carousel-dot" onclick="goToSlide('${escapeHTML(stock.ticker)}', 1)"></div>
-                        </div>
-                        <button class="carousel-btn next-btn" onclick="moveSlide('${escapeHTML(stock.ticker)}', 1)">❯</button>
+
+                    <div class="detail-row" style="flex-direction:row; justify-content:space-between; margin-bottom:8px;">
+                        <span class="detail-label">Última Data Com:</span>
+                        <span class="detail-value" style="color:var(--warning)">${stock.data_com || 'N/A'}</span>
                     </div>
+                    <div class="detail-row" style="flex-direction:row; justify-content:space-between; margin-bottom:8px;">
+                        <span class="detail-label">Último Pagamento:</span>
+                        <span class="detail-value" style="color:var(--success)">${stock.data_pagamento || 'N/A'}</span>
+                    </div>
+
+                    <div class="detail-grid" style="grid-template-columns: 1fr 1fr 1fr; gap:8px;">
+                        <div class="detail-box"><div class="detail-row"><span class="detail-label">PEG</span><span class="detail-value">${escapeHTML((stock.peg_ratio && stock.peg_ratio < 50) ? stock.peg_ratio.toFixed(2) : 'N/A')}</span></div></div>
+                        <div class="detail-box"><div class="detail-row"><span class="detail-label">ROIC</span><span class="detail-value">${escapeHTML(stock.roic?.toFixed(1) || 'N/A')}%</span></div></div>
+                        <div class="detail-box"><div class="detail-row"><span class="detail-label">Payout</span><span class="detail-value">${escapeHTML(stock.payout ? stock.payout.toFixed(0) + '%' : 'N/A')}</span></div></div>
+                    </div>
+
+                    <div id="chart-${escapeHTML(stock.ticker)}" class="chart-container"></div>
+                    <a href="${getInvestidor10Url(stock)}" target="_blank" class="external-link-btn">
+                        📊 Ver no Investidor 10
+                    </a>
                 </div>
             `;
                 card.addEventListener('click', () => {
@@ -1461,7 +570,7 @@
                             <div class="price">R$ ${escapeHTML(fii.price.toFixed(2))}</div>
                             <div style="display:flex; gap:4px; justify-content:flex-end; margin-top:4px;">
                                 <span class="badge ${fii.dy > 8 ? 'price-badge' : ''}">DY ${escapeHTML(String(fii.dy))}%</span>
-                                <span class="badge ${(fii.p_vp || fii.pvp || 0) > 0 && (fii.p_vp || fii.pvp || 0) <= 1.0 ? 'price-badge' : ''}">P/VP ${escapeHTML((fii.p_vp || fii.pvp || 0).toFixed(2))}</span>
+                                <span class="badge">P/VP ${escapeHTML((fii.p_vp || fii.pvp || 0).toFixed(2))}</span>
                             </div>
                         </div>
                         <div class="score-indicator ${fii.score >= 8 ? 'score-good' : (fii.score >= 6 ? 'score-warning' : 'score-danger')}">
@@ -1825,8 +934,7 @@
                                         ${fii.type === 'AGRO' ? '<span class="badge" style="background:#fba94c; color:black">🌾 AGRO</span>' : ''}
                                         ${fii.type === 'INFRA' ? '<span class="badge" style="background:#00d4ff; color:black">⚡ INFRA</span>' : ''}
                                     </h3>
-                                    <span style="font-size:0.75rem; color:var(--text-muted)">Com <strong style="color:var(--success)">${escapeHTML(String(magicNumber))} cotas</strong>, o dividendo paga +1 cota</span>
-                                    ${(fii.p_vp && fii.p_vp > 0) ? `<span style="font-size:0.8rem; color:var(--text-muted)">VP: R$ ${escapeHTML((fii.price / fii.p_vp).toFixed(2))} | Bazin: R$ ${escapeHTML(((fii.dy / 100 * fii.price) / 0.06).toFixed(2))}</span>` : ''}
+                                    <span style="font-size:0.75rem; color:var(--text-muted)">Com ${escapeHTML(String(magicNumber))} cotas, o dividendo paga +1 cota</span>
                                 </div>
                                 <div class="metrics" style="display:flex; align-items:center; gap:12px;">
                                     <div style="text-align:right">
@@ -1836,78 +944,48 @@
                                             <span class="badge">~R$ ${escapeHTML(monthlyDiv.toFixed(2))} /cota</span>
                                         </div>
                                     </div>
+                                    <div class="score-indicator score-star" title="Meta de Cotas">
+                                        <div style="display:flex; flex-direction:column; align-items:center; line-height:1;">
+                                            <span style="font-size:0.6rem; color:var(--text-muted)">META</span>
+                                            <span>${escapeHTML(String(magicNumber))}</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="card-details">
-                                <div class="carousel-container">
-                                    <div class="carousel-track" id="track-snow-top-${escapeHTML(fii.ticker)}">
-                                        <!-- Slide 1: General Details -->
-                                        <div class="carousel-slide">
-                                            <div class="detail-grid">
-                                                <div class="detail-box">
-                                                    <div class="detail-row"><span class="detail-label">Invest. Total (Meta)</span><span class="detail-value" style="color:var(--warning)">R$ ${escapeHTML(totalInvest.toLocaleString('pt-BR', { minimumFractionDigits: 2 }))}</span></div>
-                                                </div>
-                                                <div class="detail-box">
-                                                    <div class="detail-row"><span class="detail-label">Renda Anual (Meta)</span><span class="detail-value">R$ ${escapeHTML((totalMonthly * 12).toLocaleString('pt-BR', { minimumFractionDigits: 2 }))}</span></div>
-                                                </div>
-                                                <div class="detail-box">
-                                                    <div class="detail-row"><span class="detail-label">Renda Mensal (Meta)</span><span class="detail-value" style="color:var(--success)">R$ ${escapeHTML(totalMonthly.toLocaleString('pt-BR', { minimumFractionDigits: 2 }))}</span></div>
-                                                </div>
-                                                <div class="detail-box">
-                                                    <div class="detail-row"><span class="detail-label">Último Rendimento</span><span class="detail-value" style="color:var(--success)">${fii.last_dividend ? `R$ ${escapeHTML(fii.last_dividend.toFixed(2))}` : 'N/A'}</span></div>
-                                                </div>
-                                                <div class="detail-box">
-                                                    <div class="detail-row"><span class="detail-label">Liq. Diária</span><span class="detail-value" style="color:var(--accent)">${escapeHTML(window.formatLiquidity(fii.liquidity))}</span></div>
-                                                </div>
-                                                <div class="detail-box">
-                                                    <div class="detail-row"><span class="detail-label">P/VP</span><span class="detail-value" style="color:${(fii.p_vp || fii.pvp || 0) > 0 && (fii.p_vp || fii.pvp || 0) <= 1.0 ? 'var(--success)' : ''}">${escapeHTML((fii.p_vp || fii.pvp || 0).toFixed(2))}</span></div>
-                                                </div>
-                                                ${fii.ffo_yield ? `<div class="detail-box"><div class="detail-row"><span class="detail-label">FFO Yield</span><span class="detail-value" style="color:var(--success)">${fii.ffo_yield.toFixed(2)}% ${getTrendArrow(fii.ffo_yield, 'liq')}</span></div></div>` : ''}
-                                                ${fii.cap_rate ? `<div class="detail-box"><div class="detail-row"><span class="detail-label">Cap Rate</span><span class="detail-value">${fii.cap_rate.toFixed(2)}%</span></div></div>` : ''}
-                                                ${fii.vacancy != null ? `<div class="detail-box"><div class="detail-row"><span class="detail-label">Vacância</span><span class="detail-value" style="color:${fii.vacancy < 10 ? 'var(--success)' : 'var(--warning)'}">${fii.vacancy.toFixed(1)}% ${getTrendArrow(fii.vacancy, 'vacancy')}</span></div></div>` : ''}
-                                                ${fii.num_properties ? `<div class="detail-box"><div class="detail-row"><span class="detail-label">Imóveis</span><span class="detail-value">${fii.num_properties}</span></div></div>` : ''}
-                                                ${fii.market_cap ? `<div class="detail-box"><div class="detail-row"><span class="detail-label">V. Mercado</span><span class="detail-value">${escapeHTML(window.formatLiquidity(fii.market_cap))}</span></div></div>` : ''}
-                                            </div>
-
-                                            <div class="detail-row" style="flex-direction:row; justify-content:space-between; margin-bottom:8px;">
-                                                <span class="detail-label">Última Data Com:</span>
-                                                <span class="detail-value" style="color:var(--warning)">${fii.data_com || 'N/A'}</span>
-                                            </div>
-                                            <div class="detail-row" style="flex-direction:row; justify-content:space-between; margin-bottom:8px;">
-                                                <span class="detail-label">Último Pagamento:</span>
-                                                <span class="detail-value" style="color:var(--success)">${fii.data_pagamento || 'N/A'}</span>
-                                            </div>
-                                            <div id="chart-snow-top-${escapeHTML(fii.ticker)}" class="chart-container"></div>
-                                            <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 12px; margin-top: 10px;">
-                                                <a href="${getInvestidor10Url(fii)}" target="_blank" class="external-link-btn btn-inv10" title="Investidor 10">
-                                                    📊 Investidor 10
-                                                </a>
-                                                <a href="https://br.tradingview.com/symbols/BMFBOVESPA-${escapeHTML(fii.ticker)}/" target="_blank" class="external-link-btn btn-tv" title="TradingView">
-                                                    📈 TradingView
-                                                </a>
-                                                <a href="https://br.investing.com/search/?q=${escapeHTML(fii.ticker)}" target="_blank" class="external-link-btn btn-investing" title="Investing.com">
-                                                    🌐 Investing
-                                                </a>
-                                            </div>
-                                        </div>
-
-                                        <!-- SLIDE 2: Future News Integration -->
-                                        <div class="carousel-slide" style="display:flex; flex-direction:column; align-items:center; justify-content:center; padding: 20px; text-align:center; color: var(--text-muted)">
-                                            <span style="font-size: 2rem; margin-bottom: 10px;">📰</span>
-                                            <h4>Central de Notícias</h4>
-                                            <p style="font-size: 0.8rem; margin-top: 5px;">Espaço reservado para futuras integrações de notícias e fatos relevantes sobre este fechamento.</p>
-                                        </div>
+                                <div class="detail-grid">
+                                    <div class="detail-box">
+                                        <div class="detail-row"><span class="detail-label">Invest. Total (Meta)</span><span class="detail-value" style="color:var(--warning)">R$ ${escapeHTML(totalInvest.toLocaleString('pt-BR', { minimumFractionDigits: 2 }))}</span></div>
+                                    </div>
+                                    <div class="detail-box">
+                                        <div class="detail-row"><span class="detail-label">Renda Anual (Meta)</span><span class="detail-value">R$ ${escapeHTML((totalMonthly * 12).toLocaleString('pt-BR', { minimumFractionDigits: 2 }))}</span></div>
+                                    </div>
+                                    <div class="detail-box">
+                                        <div class="detail-row"><span class="detail-label">Renda Mensal (Meta)</span><span class="detail-value" style="color:var(--success)">R$ ${escapeHTML(totalMonthly.toLocaleString('pt-BR', { minimumFractionDigits: 2 }))}</span></div>
+                                    </div>
+                                    <div class="detail-box">
+                                        <div class="detail-row"><span class="detail-label">Último Rendimento</span><span class="detail-value" style="color:var(--success)">${fii.last_dividend ? `R$ ${escapeHTML(fii.last_dividend.toFixed(2))}` : 'N/A'}</span></div>
+                                    </div>
+                                    <div class="detail-box">
+                                        <div class="detail-row"><span class="detail-label">Liq. Diária</span><span class="detail-value" style="color:var(--accent)">${escapeHTML(formatLiquidity(fii.liquidity))}</span></div>
+                                    </div>
+                                    <div class="detail-box">
+                                        <div class="detail-row"><span class="detail-label">P/VP</span><span class="detail-value">${escapeHTML((fii.p_vp || fii.pvp || 0).toFixed(2))}</span></div>
                                     </div>
                                 </div>
-                                
-                                <div class="carousel-controls">
-                                    <button class="carousel-btn prev-btn" onclick="moveSlide('snow-top-${escapeHTML(fii.ticker)}', -1)" disabled>❮</button>
-                                    <div class="carousel-dots" id="dots-snow-top-${escapeHTML(fii.ticker)}">
-                                        <div class="carousel-dot active" onclick="goToSlide('snow-top-${escapeHTML(fii.ticker)}', 0)"></div>
-                                        <div class="carousel-dot" onclick="goToSlide('snow-top-${escapeHTML(fii.ticker)}', 1)"></div>
-                                    </div>
-                                    <button class="carousel-btn next-btn" onclick="moveSlide('snow-top-${escapeHTML(fii.ticker)}', 1)">❯</button>
+
+                                <div class="detail-row" style="flex-direction:row; justify-content:space-between; margin-bottom:8px;">
+                                    <span class="detail-label">Última Data Com:</span>
+                                    <span class="detail-value" style="color:var(--warning)">${fii.data_com || 'N/A'}</span>
                                 </div>
+                                <div class="detail-row" style="flex-direction:row; justify-content:space-between; margin-bottom:8px;">
+                                    <span class="detail-label">Último Pagamento:</span>
+                                    <span class="detail-value" style="color:var(--success)">${fii.data_pagamento || 'N/A'}</span>
+                                </div>
+                                <div id="chart-snow-top-${escapeHTML(fii.ticker)}" class="chart-container"></div>
+                                <a href="${getInvestidor10Url(fii)}" target="_blank" class="external-link-btn">
+                                    📊 Ver no Investidor 10
+                                </a>
                             </div>
                         `;
 
@@ -2018,8 +1096,7 @@
                                     ${fii.type === 'AGRO' ? '<span class="badge" style="background:#fba94c; color:black">🌾 Agro</span>' : ''}
                                     ${fii.type === 'INFRA' ? '<span class="badge" style="background:#00d4ff; color:black">⚡ Infra</span>' : ''}
                                 </h3>
-                                <span style="font-size:0.75rem; color:var(--text-muted)">Com <strong style="color:var(--success)">${escapeHTML(String(magicNumber))} cotas</strong>, o dividendo paga +1 cota</span>
-                                ${(fii.p_vp && fii.p_vp > 0) ? `<span style="font-size:0.8rem; color:var(--text-muted)">VP: R$ ${escapeHTML((fii.price / fii.p_vp).toFixed(2))} | Bazin: R$ ${escapeHTML(((fii.dy / 100 * fii.price) / 0.06).toFixed(2))}</span>` : ''}
+                                <span style="font-size:0.75rem; color:var(--text-muted)">Com ${escapeHTML(String(magicNumber))} cotas, o dividendo paga +1 cota</span>
                             </div>
                             <div class="metrics" style="display:flex; align-items:center; gap:12px;">
                                 <div style="text-align:right">
@@ -2029,78 +1106,48 @@
                                         <span class="badge">~R$ ${escapeHTML(monthlyDiv.toFixed(2))} /cota</span>
                                     </div>
                                 </div>
+                                <div class="score-indicator score-star" title="Meta de Cotas" style="border-color:${section.color}; color:${section.color}">
+                                    <div style="display:flex; flex-direction:column; align-items:center; line-height:1;">
+                                        <span style="font-size:0.6rem; color:var(--text-muted)">META</span>
+                                        <span>${escapeHTML(String(magicNumber))}</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="card-details">
-                            <div class="carousel-container">
-                                <div class="carousel-track" id="track-snow-${escapeHTML(fii.ticker)}">
-                                    <!-- Slide 1 -->
-                                    <div class="carousel-slide">
-                                        <div class="detail-grid">
-                                            <div class="detail-box">
-                                                <div class="detail-row"><span class="detail-label">Invest. Total (Meta)</span><span class="detail-value" style="color:var(--warning)">R$ ${escapeHTML(totalInvest.toLocaleString('pt-BR', { minimumFractionDigits: 2 }))}</span></div>
-                                            </div>
-                                            <div class="detail-box">
-                                                <div class="detail-row"><span class="detail-label">Renda Anual (Meta)</span><span class="detail-value">R$ ${escapeHTML((totalMonthly * 12).toLocaleString('pt-BR', { minimumFractionDigits: 2 }))}</span></div>
-                                            </div>
-                                            <div class="detail-box">
-                                                <div class="detail-row"><span class="detail-label">Renda Mensal (Meta)</span><span class="detail-value" style="color:var(--success)">R$ ${escapeHTML(totalMonthly.toLocaleString('pt-BR', { minimumFractionDigits: 2 }))}</span></div>
-                                            </div>
-                                            <div class="detail-box">
-                                                <div class="detail-row"><span class="detail-label">Último Rendimento</span><span class="detail-value" style="color:var(--success)">${fii.last_dividend ? `R$ ${escapeHTML(fii.last_dividend.toFixed(2))}` : 'N/A'}</span></div>
-                                            </div>
-                                            <div class="detail-box">
-                                                <div class="detail-row"><span class="detail-label">Liq. Diária</span><span class="detail-value" style="color:var(--accent)">${escapeHTML(window.formatLiquidity(fii.liquidity))}</span></div>
-                                            </div>
-                                            <div class="detail-box">
-                                                <div class="detail-row"><span class="detail-label">P/VP</span><span class="detail-value" style="color:${(fii.p_vp || fii.pvp || 0) > 0 && (fii.p_vp || fii.pvp || 0) <= 1.0 ? 'var(--success)' : ''}">${escapeHTML((fii.p_vp || fii.pvp || 0).toFixed(2))}</span></div>
-                                            </div>
-                                            ${fii.ffo_yield ? `<div class="detail-box"><div class="detail-row"><span class="detail-label">FFO Yield</span><span class="detail-value" style="color:var(--success)">${fii.ffo_yield.toFixed(2)}% ${getTrendArrow(fii.ffo_yield, 'liq')}</span></div></div>` : ''}
-                                            ${fii.cap_rate ? `<div class="detail-box"><div class="detail-row"><span class="detail-label">Cap Rate</span><span class="detail-value">${fii.cap_rate.toFixed(2)}%</span></div></div>` : ''}
-                                            ${fii.vacancy != null ? `<div class="detail-box"><div class="detail-row"><span class="detail-label">Vacância</span><span class="detail-value" style="color:${fii.vacancy < 10 ? 'var(--success)' : 'var(--warning)'}">${fii.vacancy.toFixed(1)}% ${getTrendArrow(fii.vacancy, 'vacancy')}</span></div></div>` : ''}
-                                            ${fii.num_properties ? `<div class="detail-box"><div class="detail-row"><span class="detail-label">Imóveis</span><span class="detail-value">${fii.num_properties}</span></div></div>` : ''}
-                                            ${fii.market_cap ? `<div class="detail-box"><div class="detail-row"><span class="detail-label">V. Mercado</span><span class="detail-value">${escapeHTML(window.formatLiquidity(fii.market_cap))}</span></div></div>` : ''}
-                                        </div>
-                                        
-                                        <div class="detail-row" style="flex-direction:row; justify-content:space-between; margin-bottom:8px;">
-                                            <span class="detail-label">Última Data Com:</span>
-                                            <span class="detail-value" style="color:var(--warning)">${fii.data_com || 'N/A'}</span>
-                                        </div>
-                                        <div class="detail-row" style="flex-direction:row; justify-content:space-between; margin-bottom:8px;">
-                                            <span class="detail-label">Último Pagamento:</span>
-                                            <span class="detail-value" style="color:var(--success)">${fii.data_pagamento || 'N/A'}</span>
-                                        </div>
-                                        <div id="chart-snow-${escapeHTML(fii.ticker)}" class="chart-container"></div>
-                                        <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 12px; margin-top: 10px;">
-                                            <a href="${getInvestidor10Url(fii)}" target="_blank" class="external-link-btn btn-inv10" title="Investidor 10">
-                                                📊 Investidor 10
-                                            </a>
-                                            <a href="https://br.tradingview.com/symbols/BMFBOVESPA-${escapeHTML(fii.ticker)}/" target="_blank" class="external-link-btn btn-tv" title="TradingView">
-                                                📈 TradingView
-                                            </a>
-                                            <a href="https://br.investing.com/search/?q=${escapeHTML(fii.ticker)}" target="_blank" class="external-link-btn btn-investing" title="Investing.com">
-                                                🌐 Investing
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <!-- Slide 2 -->
-                                    <div class="carousel-slide" style="display:flex; flex-direction:column; align-items:center; justify-content:center; padding: 20px; text-align:center; color: var(--text-muted)">
-                                        <span style="font-size: 2rem; margin-bottom: 10px;">📰</span>
-                                        <h4>Central de Notícias</h4>
-                                        <p style="font-size: 0.8rem; margin-top: 5px;">Espaço reservado para futuras integrações de notícias e fatos relevantes sobre este fechamento.</p>
-                                    </div>
+                            <div class="detail-grid">
+                                <div class="detail-box">
+                                    <div class="detail-row"><span class="detail-label">Invest. Total (Meta)</span><span class="detail-value" style="color:var(--warning)">R$ ${escapeHTML(totalInvest.toLocaleString('pt-BR', { minimumFractionDigits: 2 }))}</span></div>
+                                </div>
+                                <div class="detail-box">
+                                    <div class="detail-row"><span class="detail-label">Renda Anual (Meta)</span><span class="detail-value">R$ ${escapeHTML((totalMonthly * 12).toLocaleString('pt-BR', { minimumFractionDigits: 2 }))}</span></div>
+                                </div>
+                                <div class="detail-box">
+                                    <div class="detail-row"><span class="detail-label">Renda Mensal (Meta)</span><span class="detail-value" style="color:var(--success)">R$ ${escapeHTML(totalMonthly.toLocaleString('pt-BR', { minimumFractionDigits: 2 }))}</span></div>
+                                </div>
+                                <div class="detail-box">
+                                    <div class="detail-row"><span class="detail-label">Último Rendimento</span><span class="detail-value" style="color:var(--success)">${fii.last_dividend ? `R$ ${escapeHTML(fii.last_dividend.toFixed(2))}` : 'N/A'}</span></div>
+                                </div>
+                                <div class="detail-box">
+                                    <div class="detail-row"><span class="detail-label">Liq. Diária</span><span class="detail-value" style="color:var(--accent)">${escapeHTML(formatLiquidity(fii.liquidity))}</span></div>
+                                </div>
+                                <div class="detail-box">
+                                    <div class="detail-row"><span class="detail-label">P/VP</span><span class="detail-value">${escapeHTML((fii.p_vp || fii.pvp || 0).toFixed(2))}</span></div>
                                 </div>
                             </div>
-
-                            <div class="carousel-controls">
-                                <button class="carousel-btn prev-btn" onclick="moveSlide('snow-${escapeHTML(fii.ticker)}', -1)" disabled>❮</button>
-                                <div class="carousel-dots" id="dots-snow-${escapeHTML(fii.ticker)}">
-                                    <div class="carousel-dot active" onclick="goToSlide('snow-${escapeHTML(fii.ticker)}', 0)"></div>
-                                    <div class="carousel-dot" onclick="goToSlide('snow-${escapeHTML(fii.ticker)}', 1)"></div>
-                                </div>
-                                <button class="carousel-btn next-btn" onclick="moveSlide('snow-${escapeHTML(fii.ticker)}', 1)">❯</button>
+                            
+                            <div class="detail-row" style="flex-direction:row; justify-content:space-between; margin-bottom:8px;">
+                                <span class="detail-label">Última Data Com:</span>
+                                <span class="detail-value" style="color:var(--warning)">${fii.data_com || 'N/A'}</span>
                             </div>
+                            <div class="detail-row" style="flex-direction:row; justify-content:space-between; margin-bottom:8px;">
+                                <span class="detail-label">Último Pagamento:</span>
+                                <span class="detail-value" style="color:var(--success)">${fii.data_pagamento || 'N/A'}</span>
+                            </div>
+                            <div id="chart-snow-${escapeHTML(fii.ticker)}" class="chart-container"></div>
+                            <a href="${getInvestidor10Url(fii)}" target="_blank" class="external-link-btn">
+                                📊 Ver no Investidor 10
+                            </a>
                         </div>
                     `;
 
@@ -2109,11 +1156,11 @@
                         card.querySelector('.card-details').classList.toggle('show');
 
                         if (isExpanded) {
-                            const chartId = `chart-snow-${escapeHTML(fii.ticker)}`;
+                            const chartId = `chart - snow - ${escapeHTML(fii.ticker)} `;
                             const container = document.getElementById(chartId);
                             if (container && container.children.length === 0) {
                                 new TradingView.MediumWidget({
-                                    "symbols": [[`${fii.ticker}`, `BMFBOVESPA:${fii.ticker}|1D`]],
+                                    "symbols": [[`${fii.ticker} `, `BMFBOVESPA:${fii.ticker}| 1D`]],
                                     "chartOnly": false,
                                     "width": "100%",
                                     "height": 300,
@@ -2135,14 +1182,12 @@
         function showTab(tabName) {
             // Hide all
             ['stocks', 'fiis', 'snowball', 'fixed', 'etfs'].forEach(t => {
-                const el = document.getElementById(`content-${t}`);
-                if (el) el.classList.add('hidden');
+                document.getElementById(`content - ${t} `).classList.add('hidden');
             });
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
 
             // Show selected
-            const selected = document.getElementById(`content-${tabName}`);
-            if (selected) selected.classList.remove('hidden');
+            document.getElementById(`content - ${tabName} `).classList.remove('hidden');
 
             // Highlight active tab
             document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -2160,72 +1205,4 @@
             if (ticker && !type) return `https://investidor10.com.br/acoes/${ticker}/`;
             return `https://investidor10.com.br/fiis/${ticker}/`;
         }
-
-        // --- CAROUSEL LOGIC ---
-        // Store current slide index for each track
-        const carouselStates = {};
-
-        window.moveSlide = function (trackId, direction) {
-            const track = document.getElementById(`track-${trackId}`);
-            if (!track) return;
-
-            // Initialize state if it doesn't exist
-            if (carouselStates[trackId] === undefined) {
-                carouselStates[trackId] = 0;
-            }
-
-            // Note: Since all cards currently have exactly 2 slides
-            const maxSlides = 2;
-            let currentIndex = carouselStates[trackId];
-
-            // Calculate new index
-            currentIndex += direction;
-            if (currentIndex < 0) currentIndex = 0;
-            if (currentIndex >= maxSlides) currentIndex = maxSlides - 1;
-
-            updateCarousel(trackId, currentIndex);
-        };
-
-        window.goToSlide = function (trackId, index) {
-            updateCarousel(trackId, index);
-        };
-
-        function updateCarousel(trackId, index) {
-            const track = document.getElementById(`track-${trackId}`);
-            if (!track) return;
-
-            // Save state
-            carouselStates[trackId] = index;
-
-            // Move track horizontally
-            track.style.transform = `translateX(-${index * 100}%)`;
-
-            // Update controls styling
-            const cardDetails = track.closest('.card-details');
-            if (cardDetails) {
-                // Update dots
-                const dots = cardDetails.querySelectorAll('.carousel-dot');
-                dots.forEach((dot, i) => {
-                    dot.classList.toggle('active', i === index);
-                });
-
-                // Update buttons state
-                const prevBtn = cardDetails.querySelector('.prev-btn');
-                const nextBtn = cardDetails.querySelector('.next-btn');
-                if (prevBtn) prevBtn.disabled = index === 0;
-                if (nextBtn) nextBtn.disabled = index === 1; // Assuming max 2 slides
-            }
-
-            // Stop click event propagation to prevent the card from collapsing
-            if (window.event) {
-                window.event.stopPropagation();
-            }
-        }
-
-        // Initialization
-        showTab('stocks'); // Initialize the first tab to prevent blank screen
-    </script>
-
-</body>
-
-</html>
+    
