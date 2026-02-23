@@ -470,21 +470,34 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
+            gap: 4px;
             background: rgba(255, 255, 255, 0.05);
-            /* Glassmorphism base */
             color: var(--text-color) !important;
-            padding: 8px 12px;
+            padding: 8px 6px;
             border-radius: 8px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-decoration: none;
             margin-top: 10px;
             margin-bottom: 12px;
             transition: all 0.3s ease;
             font-weight: 500;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            width: fit-content;
+            flex: 1 1 0;
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
             backdrop-filter: blur(4px);
+        }
+
+        .external-links-row {
+            display: flex;
+            gap: 6px;
+            justify-content: stretch;
+            flex-wrap: nowrap;
+            margin-bottom: 12px;
+            margin-top: 10px;
+            width: 100%;
         }
 
         .external-link-btn:hover {
@@ -798,9 +811,9 @@
 
         <div class="tabs">
             <button class="tab-btn active" onclick="showTab('stocks')">Ações</button>
-            <button class="tab-btn" onclick="showTab('fiis')">FIIs</button>
+            <button class="tab-btn" onclick="showTab('fiis')" style="display:none">FIIs</button>
             <button class="tab-btn" onclick="showTab('snowball')">❄️ Bola de Neve</button>
-            <button class="tab-btn" onclick="showTab('fixed')">Renda Fixa</button>
+            <button class="tab-btn" onclick="showTab('fixed')" style="display:none">Renda Fixa</button>
             <button class="tab-btn" onclick="showTab('etfs')">ETFs</button>
         </div>
 
@@ -1278,7 +1291,7 @@
                                 </div>
 
                                 <div id="chart-${escapeHTML(stock.ticker)}" class="chart-container"></div>
-                                <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 12px; margin-top: 10px;">
+                                <div class="external-links-row">
                                     <a href="${getInvestidor10Url(stock)}" target="_blank" class="external-link-btn btn-inv10" title="Investidor 10">
                                         📊 Investidor 10
                                     </a>
@@ -1560,38 +1573,11 @@
                     }
                 });
             };
+
             // Render Fixed Income
             const fixedContainer = document.getElementById('content-fixed');
 
-            // 1. Private Benchmarks (shown first)
-            if (data.fixedIncome && data.fixedIncome.private) {
-                const title = document.createElement('h2');
-                title.textContent = '🏦 Referências (Benchmarks)';
-                title.style.width = '100%';
-                title.style.gridColumn = '1 / -1'; // Force full width in grid
-                title.style.margin = '1rem 0 0.5rem 0';
-                title.style.color = 'var(--warning)';
-                fixedContainer.appendChild(title);
-
-                data.fixedIncome.private.forEach(bench => {
-                    const card = document.createElement('div');
-                    card.className = 'stock-card';
-                    card.dataset.searchTerm = `${escapeHTML(bench.name)} ${escapeHTML(bench.type)} renda fixa`.toLowerCase();
-                    card.style.borderLeftColor = 'var(--warning)';
-                    card.innerHTML = `
-                    <div class="ticker-info">
-                        <h3>${escapeHTML(bench.name)}</h3>
-                        <span>${escapeHTML(bench.type)}</span>
-                    </div>
-                    <div class="metrics">
-                        <div class="price" style="color:var(--success)">${escapeHTML(bench.rate)}</div>
-                    </div>
-                `;
-                    fixedContainer.appendChild(card);
-                });
-            }
-
-            // 2. Tesouro Direto (shown second)
+            // 2. Tesouro Direto
             if (data.fixedIncome && data.fixedIncome.tesouro) {
                 const title = document.createElement('h2');
                 title.textContent = '🏛️ Tesouro Direto';
@@ -1625,6 +1611,44 @@
 
             // Render ETFs
             const etfContainer = document.getElementById('content-etfs');
+
+            // Benchmarks (at the top of ETFs tab)
+            if (data.fixedIncome && data.fixedIncome.private) {
+                const benchTitle = document.createElement('h2');
+                benchTitle.textContent = '🏦 Referências (Benchmarks)';
+                benchTitle.style.width = '100%';
+                benchTitle.style.gridColumn = '1 / -1';
+                benchTitle.style.margin = '1rem 0 0.5rem 0';
+                benchTitle.style.color = 'var(--warning)';
+                etfContainer.appendChild(benchTitle);
+
+                data.fixedIncome.private.forEach(bench => {
+                    const card = document.createElement('div');
+                    card.className = 'stock-card';
+                    card.dataset.searchTerm = `${escapeHTML(bench.name)} ${escapeHTML(bench.type)} benchmark`.toLowerCase();
+                    card.style.borderLeftColor = 'var(--warning)';
+                    card.innerHTML = `
+                    <div class="ticker-info">
+                        <h3>${escapeHTML(bench.name)}</h3>
+                        <span>${escapeHTML(bench.type)}</span>
+                    </div>
+                    <div class="metrics">
+                        <div class="price" style="color:var(--success)">${escapeHTML(bench.rate)}</div>
+                    </div>
+                `;
+                    etfContainer.appendChild(card);
+                });
+
+                // Separator before ETFs
+                const etfTitle = document.createElement('h2');
+                etfTitle.textContent = '📊 ETFs';
+                etfTitle.style.width = '100%';
+                etfTitle.style.gridColumn = '1 / -1';
+                etfTitle.style.margin = '2rem 0 0.5rem 0';
+                etfTitle.style.color = 'var(--accent)';
+                etfContainer.appendChild(etfTitle);
+            }
+
             if (data.etfs) {
                 data.etfs.forEach(etf => {
                     const card = document.createElement('div');
@@ -1728,8 +1752,7 @@
                 { id: 'AGRO', label: '🌾 Fiagro/Agro' },
                 { id: 'MULTI', label: '🔄 Multimercado' },
                 { id: 'INFRA', label: '⚡ Infra' },
-                { id: 'BASE10', label: '🪙 Base 10' },
-                { id: 'SAFE_INCOME', label: '🛡️ Seguro' }
+                { id: 'BASE10', label: '🪙 Base 10' }
             ];
 
             strategies.forEach(s => {
@@ -1825,7 +1848,7 @@
                                         ${fii.type === 'AGRO' ? '<span class="badge" style="background:#fba94c; color:black">🌾 AGRO</span>' : ''}
                                         ${fii.type === 'INFRA' ? '<span class="badge" style="background:#00d4ff; color:black">⚡ INFRA</span>' : ''}
                                     </h3>
-                                    <span style="font-size:0.75rem; color:var(--text-muted)">Com <strong style="color:var(--success)">${escapeHTML(String(magicNumber))} cotas</strong>, o dividendo paga +1 cota</span>
+                                    <span style="font-size:0.75rem; color:var(--text-muted)">Com <strong style="color:var(--success)">${escapeHTML(String(magicNumber))} cotas</strong>, O FII paga +1 cota</span>
                                     ${(fii.p_vp && fii.p_vp > 0) ? `<span style="font-size:0.8rem; color:var(--text-muted)">VP: R$ ${escapeHTML((fii.price / fii.p_vp).toFixed(2))} | Bazin: R$ ${escapeHTML(((fii.dy / 100 * fii.price) / 0.06).toFixed(2))}</span>` : ''}
                                 </div>
                                 <div class="metrics" style="display:flex; align-items:center; gap:12px;">
@@ -1878,7 +1901,7 @@
                                                 <span class="detail-value" style="color:var(--success)">${fii.data_pagamento || 'N/A'}</span>
                                             </div>
                                             <div id="chart-snow-top-${escapeHTML(fii.ticker)}" class="chart-container"></div>
-                                            <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 12px; margin-top: 10px;">
+                                            <div class="external-links-row">
                                                 <a href="${getInvestidor10Url(fii)}" target="_blank" class="external-link-btn btn-inv10" title="Investidor 10">
                                                     📊 Investidor 10
                                                 </a>
@@ -2071,7 +2094,7 @@
                                             <span class="detail-value" style="color:var(--success)">${fii.data_pagamento || 'N/A'}</span>
                                         </div>
                                         <div id="chart-snow-${escapeHTML(fii.ticker)}" class="chart-container"></div>
-                                        <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 12px; margin-top: 10px;">
+                                        <div class="external-links-row">
                                             <a href="${getInvestidor10Url(fii)}" target="_blank" class="external-link-btn btn-inv10" title="Investidor 10">
                                                 📊 Investidor 10
                                             </a>
