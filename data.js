@@ -1,7 +1,7 @@
 window.INVEST_DATA = {
-  "updatedAt": "23/02/2026, 13:05:56",
+  "updatedAt": "23/02/2026, 20:53:22",
   "economy": {
-    "dollar": 5.182,
+    "dollar": 5.1637,
     "selic": 15
   },
   "stocks": [
@@ -6000,7 +6000,7 @@ window.INVEST_DATA = {
       "segment": "Infraestrutura",
       "mandate": "Híbridos",
       "price": 103.1,
-      "dy": 14.02,
+      "dy": 13.95,
       "p_vp": 0.99,
       "liquidity": 1890000,
       "last_dividend": 1.35,
@@ -6009,31 +6009,8 @@ window.INVEST_DATA = {
       "data_pagamento": "06/02/2026",
       "score": 6,
       "strategies": [],
-      "magicNumber": 86,
-      "magicCost": 8866.6,
-      "selic": 15,
-      "num_properties": 0,
-      "market_cap": 500000000,
-      "category": "OPPORTUNITY",
-      "external_segment": "Fundo de Infraestrutura (FI-Infra)"
-    },
-    {
-      "ticker": "CPTI11",
-      "type": "INFRA",
-      "segment": "Infraestrutura",
-      "mandate": null,
-      "price": 90.09,
-      "dy": 13.49,
-      "p_vp": 0.95,
-      "liquidity": 1670000,
-      "last_dividend": 1.15,
-      "vacancy": 0,
-      "data_com": "30/01/2026",
-      "data_pagamento": "13/02/2026",
-      "score": 6,
-      "strategies": [],
-      "magicNumber": 89,
-      "magicCost": 8018.01,
+      "magicNumber": 87,
+      "magicCost": 8969.699999999999,
       "selic": 15,
       "num_properties": 0,
       "market_cap": 500000000,
@@ -6045,8 +6022,8 @@ window.INVEST_DATA = {
       "type": "INFRA",
       "segment": "Infraestrutura",
       "mandate": null,
-      "price": 75,
-      "dy": 13.47,
+      "price": 74.91,
+      "dy": 13.48,
       "p_vp": 0.9,
       "liquidity": 3650000,
       "last_dividend": 0.85,
@@ -6056,7 +6033,30 @@ window.INVEST_DATA = {
       "score": 6,
       "strategies": [],
       "magicNumber": 90,
-      "magicCost": 6750,
+      "magicCost": 6741.9,
+      "selic": 15,
+      "num_properties": 0,
+      "market_cap": 500000000,
+      "category": "OPPORTUNITY",
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)"
+    },
+    {
+      "ticker": "CPTI11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": null,
+      "price": 90.06,
+      "dy": 13.48,
+      "p_vp": 0.95,
+      "liquidity": 1670000,
+      "last_dividend": 1.15,
+      "vacancy": 0,
+      "data_com": "30/01/2026",
+      "data_pagamento": "13/02/2026",
+      "score": 6,
+      "strategies": [],
+      "magicNumber": 90,
+      "magicCost": 8105.400000000001,
       "selic": 15,
       "num_properties": 0,
       "market_cap": 500000000,
@@ -6236,8 +6236,8 @@ window.INVEST_DATA = {
       "type": "INFRA",
       "segment": "Infraestrutura",
       "mandate": null,
-      "price": 128.59,
-      "dy": 12.04,
+      "price": 129,
+      "dy": 12,
       "p_vp": 1.02,
       "liquidity": 2600000,
       "last_dividend": 1.45,
@@ -6247,7 +6247,7 @@ window.INVEST_DATA = {
       "score": 6,
       "strategies": [],
       "magicNumber": 100,
-      "magicCost": 12859,
+      "magicCost": 12900,
       "selic": 15,
       "num_properties": 0,
       "market_cap": 500000000,
@@ -6259,8 +6259,8 @@ window.INVEST_DATA = {
       "type": "INFRA",
       "segment": "Infraestrutura",
       "mandate": null,
-      "price": 103.13,
-      "dy": 11.64,
+      "price": 103,
+      "dy": 11.65,
       "p_vp": 1.02,
       "liquidity": 3760000,
       "last_dividend": 1,
@@ -6270,7 +6270,7 @@ window.INVEST_DATA = {
       "score": 6,
       "strategies": [],
       "magicNumber": 104,
-      "magicCost": 10725.52,
+      "magicCost": 10712,
       "selic": 15,
       "num_properties": 0,
       "market_cap": 500000000,
@@ -7030,8 +7030,8 @@ window.INVEST_DATA = {
       "type": "INFRA",
       "segment": "Infraestrutura",
       "mandate": null,
-      "price": 52.54,
-      "dy": 13.23,
+      "price": 52.21,
+      "dy": 13.33,
       "p_vp": 0.56,
       "liquidity": 230270,
       "last_dividend": 0.75,
@@ -7043,7 +7043,7 @@ window.INVEST_DATA = {
         "DISTRESSED_RISK"
       ],
       "magicNumber": 91,
-      "magicCost": 4781.14,
+      "magicCost": 4751.11,
       "selic": 15,
       "num_properties": 0,
       "market_cap": 500000000,
@@ -7448,8 +7448,8 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
-      "high_52w": 187,
+      "liquidity": 3081306,
+      "high_52w": 187.39,
       "low_52w": 119.3
     },
     {
@@ -7458,7 +7458,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 123625,
       "high_52w": 433.61,
       "low_52w": 319.86
     },
@@ -7468,9 +7468,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 2264983,
       "high_52w": 128.71,
-      "low_52w": 0
+      "low_52w": 87.18
     },
     {
       "ticker": "HASH11",
@@ -7478,9 +7478,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 901688,
       "high_52w": 94.9,
-      "low_52w": 44.02
+      "low_52w": 43.91
     },
     {
       "ticker": "GOLD11",
@@ -7488,7 +7488,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 999647,
       "high_52w": 30.14,
       "low_52w": 17.34
     },
@@ -7498,9 +7498,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 197297,
       "high_52w": 9.26,
-      "low_52w": 0
+      "low_52w": 6.83
     },
     {
       "ticker": "NASD11",
@@ -7508,9 +7508,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 251307,
       "high_52w": 19.96,
-      "low_52w": 0
+      "low_52w": 13.6
     },
     {
       "ticker": "BBOV11",
@@ -7518,9 +7518,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
-      "high_52w": 99.97,
-      "low_52w": 0
+      "liquidity": 43089,
+      "high_52w": 100.19,
+      "low_52w": 63.98
     },
     {
       "ticker": "SPYI11",
@@ -7528,9 +7528,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 171016,
       "high_52w": 120.07,
-      "low_52w": 0
+      "low_52w": 98.77
     },
     {
       "ticker": "WRLD11",
@@ -7538,9 +7538,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 35369,
       "high_52w": 148.49,
-      "low_52w": 0
+      "low_52w": 106.2
     },
     {
       "ticker": "DIVO11",
@@ -7548,7 +7548,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 64853,
       "high_52w": 135.96,
       "low_52w": 90.23
     },
@@ -7558,9 +7558,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 13685,
       "high_52w": 136.28,
-      "low_52w": 0
+      "low_52w": 100.37
     },
     {
       "ticker": "QQQI11",
@@ -7568,9 +7568,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 29554,
       "high_52w": 107.2,
-      "low_52w": 0
+      "low_52w": 84.8
     },
     {
       "ticker": "COIN11",
@@ -7578,9 +7578,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 197109,
       "high_52w": 97.67,
-      "low_52w": 44.09
+      "low_52w": 43.05
     },
     {
       "ticker": "QBTC11",
@@ -7588,9 +7588,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 466669,
       "high_52w": 40.48,
-      "low_52w": 0
+      "low_52w": 20.2
     },
     {
       "ticker": "SPXB11",
@@ -7598,9 +7598,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 14943,
       "high_52w": 17.1,
-      "low_52w": 0
+      "low_52w": 12.5
     },
     {
       "ticker": "DIVD11",
@@ -7608,7 +7608,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 13337,
       "high_52w": 68.12,
       "low_52w": 49.16
     },
@@ -7618,9 +7618,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 131487,
       "high_52w": 120.48,
-      "low_52w": 0
+      "low_52w": 75.82
     },
     {
       "ticker": "B5P211",
@@ -7628,9 +7628,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 70646,
       "high_52w": 104.06,
-      "low_52w": 0
+      "low_52w": 93.39
     },
     {
       "ticker": "LFTB11",
@@ -7638,8 +7638,8 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
-      "high_52w": 117.81,
+      "liquidity": 583987,
+      "high_52w": 118.03,
       "low_52w": 100.02
     },
     {
@@ -7648,9 +7648,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 53014,
       "high_52w": 52.959,
-      "low_52w": 0
+      "low_52w": 38.881
     },
     {
       "ticker": "BITH11",
@@ -7658,9 +7658,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 251321,
       "high_52w": 152.45,
-      "low_52w": 75.16
+      "low_52w": 75.08
     },
     {
       "ticker": "XFIX11",
@@ -7668,9 +7668,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 10564,
       "high_52w": 13.72,
-      "low_52w": 0
+      "low_52w": 10.96
     },
     {
       "ticker": "AUVP11",
@@ -7678,9 +7678,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 11492,
       "high_52w": 139.99,
-      "low_52w": 0
+      "low_52w": 93.5
     },
     {
       "ticker": "BBSD11",
@@ -7688,9 +7688,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
-      "high_52w": 151.6,
-      "low_52w": 0
+      "liquidity": 230,
+      "high_52w": 152.04,
+      "low_52w": 98.66
     },
     {
       "ticker": "GPUS11",
@@ -7698,7 +7698,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 12969,
       "high_52w": 117.45,
       "low_52w": 98.55
     },
@@ -7708,8 +7708,8 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
-      "high_52w": 148.24,
+      "liquidity": 164416,
+      "high_52w": 148.32,
       "low_52w": 129.71
     },
     {
@@ -7718,8 +7718,8 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
-      "high_52w": 110.59,
+      "liquidity": 71159,
+      "high_52w": 110.69,
       "low_52w": 97.27
     },
     {
@@ -7728,7 +7728,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 416362,
       "high_52w": 76.4,
       "low_52w": 25.31
     },
@@ -7738,9 +7738,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 8727,
       "high_52w": 166,
-      "low_52w": 0
+      "low_52w": 112.93
     },
     {
       "ticker": "ESGB11",
@@ -7748,7 +7748,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 2,
       "high_52w": 136.63,
       "low_52w": 92.38
     },
@@ -7758,8 +7758,8 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
-      "high_52w": 194.91,
+      "liquidity": 6553,
+      "high_52w": 194.93,
       "low_52w": 124.5
     },
     {
@@ -7768,9 +7768,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 146976,
       "high_52w": 25.4,
-      "low_52w": 11.7
+      "low_52w": 11.67
     },
     {
       "ticker": "BOVV11",
@@ -7778,8 +7778,8 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
-      "high_52w": 196.26,
+      "liquidity": 575494,
+      "high_52w": 196.45,
       "low_52w": 125.3
     },
     {
@@ -7788,9 +7788,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 107,
       "high_52w": 185.58,
-      "low_52w": 0
+      "low_52w": 120.63
     },
     {
       "ticker": "ALUG11",
@@ -7798,9 +7798,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 24132,
       "high_52w": 46,
-      "low_52w": 0
+      "low_52w": 39.03
     },
     {
       "ticker": "AREA11",
@@ -7808,9 +7808,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 2166,
       "high_52w": 105.55,
-      "low_52w": 0
+      "low_52w": 99.33
     },
     {
       "ticker": "IWMI11",
@@ -7818,7 +7818,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 2896,
       "high_52w": 88.8,
       "low_52w": 71.5
     },
@@ -7828,9 +7828,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 3814,
       "high_52w": 129.35,
-      "low_52w": 0
+      "low_52w": 99.89
     },
     {
       "ticker": "QETH11",
@@ -7838,9 +7838,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 181822,
       "high_52w": 18.56,
-      "low_52w": 0
+      "low_52w": 6.21
     }
   ],
   "fixedIncome": {
