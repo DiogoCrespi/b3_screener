@@ -1,7 +1,7 @@
 window.INVEST_DATA = {
-  "updatedAt": "22/02/2026, 12:51:41",
+  "updatedAt": "23/02/2026, 13:05:56",
   "economy": {
-    "dollar": 5.1765,
+    "dollar": 5.182,
     "selic": 15
   },
   "stocks": [
@@ -197,21 +197,21 @@ window.INVEST_DATA = {
     {
       "ticker": "RANI3",
       "cotacao": 9.5,
-      "pl": 5.61,
-      "p_vp": 1.53,
-      "psr": 1.292,
+      "pl": 9.05,
+      "p_vp": 1.51,
+      "psr": 1.299,
       "dividend_yield": 8.01,
-      "ev_ebit": 7.2,
-      "mrg_ebit": 26.79,
-      "mrg_liq": 23.03,
-      "roic": 15.32,
-      "roe": 27.22,
+      "ev_ebit": 7.16,
+      "mrg_ebit": 26.99,
+      "mrg_liq": 14.35,
+      "roic": 15.38,
+      "roe": 16.67,
       "liq_2meses": 5282300,
-      "div_br_patrim": 1.23,
-      "cresc_5a": 2.06,
-      "payout": 44.9361,
-      "graham_price": 15.381111424559448,
-      "upside": 61.906436047994184,
+      "div_br_patrim": 1.32,
+      "cresc_5a": 0.62,
+      "payout": 72.4905,
+      "graham_price": 12.189954963508555,
+      "upside": 28.315315405353207,
       "bazin_price": 10.146,
       "bazin_upside": 6.800000000000009,
       "selic": 15,
@@ -221,7 +221,7 @@ window.INVEST_DATA = {
         "MAGIC"
       ],
       "category": "STAR",
-      "peg_ratio": 2.7233009708737863,
+      "peg_ratio": 14.596774193548388,
       "data_com": "10/11/2025",
       "data_pagamento": "25/11/2025"
     },
@@ -895,7 +895,8 @@ window.INVEST_DATA = {
       "strategies": [
         "DIVIDEND",
         "VALUE",
-        "BAZIN"
+        "BAZIN",
+        "HIGH_VOLATILITY"
       ],
       "category": "STAR",
       "peg_ratio": 0.5754422476586889,
@@ -2010,6 +2011,38 @@ window.INVEST_DATA = {
       "data_pagamento": null
     },
     {
+      "ticker": "ALLD3",
+      "cotacao": 7.55,
+      "pl": 2.05,
+      "p_vp": 0.43,
+      "psr": 0.134,
+      "dividend_yield": 40.06,
+      "ev_ebit": 3.68,
+      "mrg_ebit": 2.84,
+      "mrg_liq": 6.55,
+      "roic": 8.23,
+      "roe": 20.88,
+      "liq_2meses": 4824270,
+      "div_br_patrim": 0.27,
+      "cresc_5a": -0.99,
+      "payout": 82.12299999999999,
+      "graham_price": 38.14407190133009,
+      "upside": 405.21949538185555,
+      "bazin_price": 40.32706666666667,
+      "bazin_upside": 434.1333333333334,
+      "selic": 15,
+      "score": 6,
+      "strategies": [
+        "VALUE",
+        "BAZIN",
+        "HIGH_VOLATILITY"
+      ],
+      "category": "STAR",
+      "peg_ratio": 999,
+      "data_com": null,
+      "data_pagamento": null
+    },
+    {
       "ticker": "ODPV3",
       "cotacao": 12.25,
       "pl": 11.64,
@@ -2068,7 +2101,8 @@ window.INVEST_DATA = {
         "QUALITY",
         "GROWTH",
         "MAGIC",
-        "BAZIN"
+        "BAZIN",
+        "HIGH_VOLATILITY"
       ],
       "category": "OPPORTUNITY",
       "peg_ratio": 0.23613086770981506,
@@ -2101,7 +2135,8 @@ window.INVEST_DATA = {
         "QUALITY",
         "GROWTH",
         "MAGIC",
-        "BAZIN"
+        "BAZIN",
+        "HIGH_VOLATILITY"
       ],
       "category": "OPPORTUNITY",
       "peg_ratio": 0.2414651493598862,
@@ -2164,7 +2199,8 @@ window.INVEST_DATA = {
       "selic": 15,
       "score": 8,
       "strategies": [
-        "BAZIN"
+        "BAZIN",
+        "HIGH_VOLATILITY"
       ],
       "category": "OPPORTUNITY",
       "peg_ratio": 0.3954248366013072,
@@ -2196,7 +2232,8 @@ window.INVEST_DATA = {
       "strategies": [
         "QUALITY",
         "GROWTH",
-        "BAZIN"
+        "BAZIN",
+        "HIGH_VOLATILITY"
       ],
       "category": "OPPORTUNITY",
       "peg_ratio": 0.296211251435132,
@@ -2231,37 +2268,6 @@ window.INVEST_DATA = {
       ],
       "category": "OPPORTUNITY",
       "peg_ratio": 1.9976958525345623,
-      "data_com": null,
-      "data_pagamento": null
-    },
-    {
-      "ticker": "ALLD3",
-      "cotacao": 7.55,
-      "pl": 2.05,
-      "p_vp": 0.43,
-      "psr": 0.134,
-      "dividend_yield": 40.06,
-      "ev_ebit": 3.68,
-      "mrg_ebit": 2.84,
-      "mrg_liq": 6.55,
-      "roic": 8.23,
-      "roe": 20.88,
-      "liq_2meses": 4824270,
-      "div_br_patrim": 0.27,
-      "cresc_5a": -0.99,
-      "payout": 82.12299999999999,
-      "graham_price": 38.14407190133009,
-      "upside": 405.21949538185555,
-      "bazin_price": 40.32706666666667,
-      "bazin_upside": 434.1333333333334,
-      "selic": 15,
-      "score": 6,
-      "strategies": [
-        "VALUE",
-        "BAZIN"
-      ],
-      "category": "OPPORTUNITY",
-      "peg_ratio": 999,
       "data_com": null,
       "data_pagamento": null
     },
@@ -2647,7 +2653,8 @@ window.INVEST_DATA = {
       "score": 5,
       "strategies": [
         "VALUE",
-        "BAZIN"
+        "BAZIN",
+        "HIGH_VOLATILITY"
       ],
       "category": "OPPORTUNITY",
       "peg_ratio": 0.6738567730802416,
@@ -2678,7 +2685,8 @@ window.INVEST_DATA = {
       "score": 5,
       "strategies": [
         "VALUE",
-        "BAZIN"
+        "BAZIN",
+        "HIGH_VOLATILITY"
       ],
       "category": "OPPORTUNITY",
       "peg_ratio": 1.1449275362318843,
@@ -3234,6 +3242,7 @@ window.INVEST_DATA = {
       "score": 4,
       "strategies": [
         "BAZIN",
+        "HIGH_VOLATILITY",
         "TURNAROUND"
       ],
       "category": "OPPORTUNITY",
@@ -3264,7 +3273,8 @@ window.INVEST_DATA = {
       "selic": 15,
       "score": 4,
       "strategies": [
-        "BAZIN"
+        "BAZIN",
+        "HIGH_VOLATILITY"
       ],
       "category": "OPPORTUNITY",
       "peg_ratio": 2.2234432234432235,
@@ -3584,7 +3594,8 @@ window.INVEST_DATA = {
       "selic": 15,
       "score": 3,
       "strategies": [
-        "BAZIN"
+        "BAZIN",
+        "HIGH_VOLATILITY"
       ],
       "category": "OPPORTUNITY",
       "peg_ratio": 1.6887881286067599,
@@ -4420,7 +4431,8 @@ window.INVEST_DATA = {
       "selic": 15,
       "score": 1,
       "strategies": [
-        "MAGIC"
+        "MAGIC",
+        "HIGH_VOLATILITY"
       ],
       "category": "OPPORTUNITY",
       "peg_ratio": 999,
@@ -4655,7 +4667,9 @@ window.INVEST_DATA = {
       "bazin_upside": 735.7333333333333,
       "selic": 15,
       "score": 0,
-      "strategies": [],
+      "strategies": [
+        "HIGH_VOLATILITY"
+      ],
       "category": "OPPORTUNITY",
       "peg_ratio": 999,
       "data_com": null,
@@ -4684,7 +4698,8 @@ window.INVEST_DATA = {
       "selic": 15,
       "score": 0,
       "strategies": [
-        "MAGIC"
+        "MAGIC",
+        "HIGH_VOLATILITY"
       ],
       "category": "OPPORTUNITY",
       "peg_ratio": 999,
@@ -6305,10 +6320,10 @@ window.INVEST_DATA = {
       "magicNumber": 130,
       "magicCost": 1397.5,
       "category": "OPPORTUNITY",
-      "last_dividend": 0.09,
+      "last_dividend": 0.08,
       "external_segment": "Híbrido",
-      "data_com": "16/01/2026",
-      "data_pagamento": "23/01/2026"
+      "data_com": "18/02/2026",
+      "data_pagamento": "25/02/2026"
     },
     {
       "ticker": "MALL11",
@@ -7435,7 +7450,7 @@ window.INVEST_DATA = {
       "variation_12m": 0,
       "liquidity": 0,
       "high_52w": 187,
-      "low_52w": 0
+      "low_52w": 119.3
     },
     {
       "ticker": "IVVB11",
@@ -7445,7 +7460,7 @@ window.INVEST_DATA = {
       "variation_12m": 0,
       "liquidity": 0,
       "high_52w": 433.61,
-      "low_52w": 0
+      "low_52w": 319.86
     },
     {
       "ticker": "SMAL11",
@@ -7465,7 +7480,7 @@ window.INVEST_DATA = {
       "variation_12m": 0,
       "liquidity": 0,
       "high_52w": 94.9,
-      "low_52w": 0
+      "low_52w": 44.02
     },
     {
       "ticker": "GOLD11",
@@ -7475,7 +7490,7 @@ window.INVEST_DATA = {
       "variation_12m": 0,
       "liquidity": 0,
       "high_52w": 30.14,
-      "low_52w": 0
+      "low_52w": 17.34
     },
     {
       "ticker": "XINA11",
@@ -7535,7 +7550,7 @@ window.INVEST_DATA = {
       "variation_12m": 0,
       "liquidity": 0,
       "high_52w": 135.96,
-      "low_52w": 0
+      "low_52w": 90.23
     },
     {
       "ticker": "NDIV11",
@@ -7565,7 +7580,7 @@ window.INVEST_DATA = {
       "variation_12m": 0,
       "liquidity": 0,
       "high_52w": 97.67,
-      "low_52w": 0
+      "low_52w": 44.09
     },
     {
       "ticker": "QBTC11",
@@ -7595,7 +7610,7 @@ window.INVEST_DATA = {
       "variation_12m": 0,
       "liquidity": 0,
       "high_52w": 68.12,
-      "low_52w": 0
+      "low_52w": 49.16
     },
     {
       "ticker": "TECK11",
@@ -7624,8 +7639,8 @@ window.INVEST_DATA = {
       "market_cap": 0,
       "variation_12m": 0,
       "liquidity": 0,
-      "high_52w": 100.32,
-      "low_52w": 0
+      "high_52w": 117.81,
+      "low_52w": 100.02
     },
     {
       "ticker": "SPXI11",
@@ -7645,7 +7660,7 @@ window.INVEST_DATA = {
       "variation_12m": 0,
       "liquidity": 0,
       "high_52w": 152.45,
-      "low_52w": 0
+      "low_52w": 75.16
     },
     {
       "ticker": "XFIX11",
@@ -7685,7 +7700,7 @@ window.INVEST_DATA = {
       "variation_12m": 0,
       "liquidity": 0,
       "high_52w": 117.45,
-      "low_52w": 0
+      "low_52w": 98.55
     },
     {
       "ticker": "LFTS11",
@@ -7695,7 +7710,7 @@ window.INVEST_DATA = {
       "variation_12m": 0,
       "liquidity": 0,
       "high_52w": 148.24,
-      "low_52w": 0
+      "low_52w": 129.71
     },
     {
       "ticker": "IMAB11",
@@ -7705,7 +7720,7 @@ window.INVEST_DATA = {
       "variation_12m": 0,
       "liquidity": 0,
       "high_52w": 110.59,
-      "low_52w": 0
+      "low_52w": 97.27
     },
     {
       "ticker": "ETHE11",
@@ -7715,7 +7730,7 @@ window.INVEST_DATA = {
       "variation_12m": 0,
       "liquidity": 0,
       "high_52w": 76.4,
-      "low_52w": 0
+      "low_52w": 25.31
     },
     {
       "ticker": "NSDV11",
@@ -7735,17 +7750,7 @@ window.INVEST_DATA = {
       "variation_12m": 0,
       "liquidity": 0,
       "high_52w": 136.63,
-      "low_52w": 0
-    },
-    {
-      "ticker": "CRPT11",
-      "price": 12.46,
-      "dy": 0,
-      "market_cap": 0,
-      "variation_12m": 0,
-      "liquidity": 0,
-      "high_52w": 25.4,
-      "low_52w": 0
+      "low_52w": 92.38
     },
     {
       "ticker": "BOVB11",
@@ -7755,7 +7760,17 @@ window.INVEST_DATA = {
       "variation_12m": 0,
       "liquidity": 0,
       "high_52w": 194.91,
-      "low_52w": 0
+      "low_52w": 124.5
+    },
+    {
+      "ticker": "CRPT11",
+      "price": 12.46,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0,
+      "liquidity": 0,
+      "high_52w": 25.4,
+      "low_52w": 11.7
     },
     {
       "ticker": "BOVV11",
@@ -7765,7 +7780,7 @@ window.INVEST_DATA = {
       "variation_12m": 0,
       "liquidity": 0,
       "high_52w": 196.26,
-      "low_52w": 0
+      "low_52w": 125.3
     },
     {
       "ticker": "XBOV11",
@@ -7805,7 +7820,7 @@ window.INVEST_DATA = {
       "variation_12m": 0,
       "liquidity": 0,
       "high_52w": 88.8,
-      "low_52w": 0
+      "low_52w": 71.5
     },
     {
       "ticker": "BEST11",
@@ -7832,254 +7847,254 @@ window.INVEST_DATA = {
     "tesouro": [
       {
         "name": "Tesouro Prefixado 2029",
-        "rate": "12,74%",
-        "minInvest": "R$ 7,09",
-        "price": "R$ 709,23",
+        "rate": "12,66%",
+        "minInvest": "R$ 7,13",
+        "price": "R$ 713,37",
         "maturity": "01/01/2029"
       },
       {
         "name": "Tesouro Prefixado 2032",
-        "rate": "13,40%",
-        "minInvest": "R$ 4,79",
-        "price": "R$ 479,00",
+        "rate": "13,34%",
+        "minInvest": "R$ 4,82",
+        "price": "R$ 482,40",
         "maturity": "01/01/2032"
       },
       {
         "name": "Tesouro Prefixado 2037Juros\n                                                                            Semestrais",
-        "rate": "13,64%",
-        "minInvest": "R$ 8,18",
-        "price": "R$ 818,96",
+        "rate": "13,60%",
+        "minInvest": "R$ 8,24",
+        "price": "R$ 824,12",
         "maturity": "01/01/2037"
       },
       {
         "name": "Tesouro Selic 2031",
-        "rate": "SELIC + 0,0996%",
-        "minInvest": "R$ 182,65",
-        "price": "R$ 18.265,60",
+        "rate": "SELIC + 0,1009%",
+        "minInvest": "R$ 183,45",
+        "price": "R$ 18.345,71",
         "maturity": "01/03/2031"
       },
       {
         "name": "Tesouro Renda+ Aposentadoria Extra 2030",
-        "rate": "IPCA + 7,30%",
-        "minInvest": "R$ 18,84",
-        "price": "R$ 1.884,59",
+        "rate": "IPCA + 7,22%",
+        "minInvest": "R$ 19,08",
+        "price": "R$ 1.908,78",
         "maturity": "15/12/2049"
       },
       {
         "name": "Tesouro Renda+ Aposentadoria Extra 2035",
-        "rate": "IPCA + 7,17%",
-        "minInvest": "R$ 13,54",
-        "price": "R$ 1.354,72",
+        "rate": "IPCA + 7,07%",
+        "minInvest": "R$ 13,81",
+        "price": "R$ 1.381,47",
         "maturity": "15/12/2054"
       },
       {
         "name": "Tesouro Renda+ Aposentadoria Extra 2040",
-        "rate": "IPCA + 7,05%",
-        "minInvest": "R$ 9,83",
-        "price": "R$ 983,67",
+        "rate": "IPCA + 6,95%",
+        "minInvest": "R$ 10,07",
+        "price": "R$ 1.007,78",
         "maturity": "15/12/2059"
       },
       {
         "name": "Tesouro Renda+ Aposentadoria Extra 2045",
-        "rate": "IPCA + 6,98%",
-        "minInvest": "R$ 7,13",
-        "price": "R$ 713,53",
+        "rate": "IPCA + 6,91%",
+        "minInvest": "R$ 7,28",
+        "price": "R$ 728,99",
         "maturity": "15/12/2064"
       },
       {
         "name": "Tesouro Renda+ Aposentadoria Extra 2050",
-        "rate": "IPCA + 6,95%",
-        "minInvest": "R$ 5,14",
-        "price": "R$ 514,78",
+        "rate": "IPCA + 6,90%",
+        "minInvest": "R$ 5,24",
+        "price": "R$ 524,55",
         "maturity": "15/12/2069"
       },
       {
         "name": "Tesouro Renda+ Aposentadoria Extra 2055",
-        "rate": "IPCA + 6,96%",
-        "minInvest": "R$ 3,67",
-        "price": "R$ 367,37",
+        "rate": "IPCA + 6,93%",
+        "minInvest": "R$ 3,72",
+        "price": "R$ 372,66",
         "maturity": "15/12/2074"
       },
       {
         "name": "Tesouro Renda+ Aposentadoria Extra 2060",
-        "rate": "IPCA + 6,97%",
-        "minInvest": "R$ 2,61",
-        "price": "R$ 261,92",
+        "rate": "IPCA + 6,96%",
+        "minInvest": "R$ 2,64",
+        "price": "R$ 264,00",
         "maturity": "15/12/2079"
       },
       {
         "name": "Tesouro Renda+ Aposentadoria Extra 2065",
-        "rate": "IPCA + 6,97%",
-        "minInvest": "R$ 1,87",
-        "price": "R$ 187,39",
+        "rate": "IPCA + 6,96%",
+        "minInvest": "R$ 1,88",
+        "price": "R$ 188,97",
         "maturity": "15/12/2084"
       },
       {
         "name": "Tesouro Educa+ 2027",
-        "rate": "IPCA + 7,67%",
-        "minInvest": "R$ 36,06",
-        "price": "R$ 3.606,99",
+        "rate": "IPCA + 7,66%",
+        "minInvest": "R$ 36,23",
+        "price": "R$ 3.623,49",
         "maturity": "15/12/2031"
       },
       {
         "name": "Tesouro Educa+ 2028",
         "rate": "IPCA + 7,61%",
-        "minInvest": "R$ 33,59",
-        "price": "R$ 3.359,33",
+        "minInvest": "R$ 33,73",
+        "price": "R$ 3.373,64",
         "maturity": "15/12/2032"
       },
       {
         "name": "Tesouro Educa+ 2029",
-        "rate": "IPCA + 7,59%",
-        "minInvest": "R$ 31,26",
-        "price": "R$ 3.126,17",
+        "rate": "IPCA + 7,58%",
+        "minInvest": "R$ 31,40",
+        "price": "R$ 3.140,97",
         "maturity": "15/12/2033"
       },
       {
         "name": "Tesouro Educa+ 2030",
-        "rate": "IPCA + 7,57%",
-        "minInvest": "R$ 29,09",
-        "price": "R$ 2.909,72",
+        "rate": "IPCA + 7,56%",
+        "minInvest": "R$ 29,23",
+        "price": "R$ 2.923,75",
         "maturity": "15/12/2034"
       },
       {
         "name": "Tesouro Educa+ 2031",
-        "rate": "IPCA + 7,54%",
-        "minInvest": "R$ 27,11",
-        "price": "R$ 2.711,21",
+        "rate": "IPCA + 7,52%",
+        "minInvest": "R$ 27,26",
+        "price": "R$ 2.726,33",
         "maturity": "15/12/2035"
       },
       {
         "name": "Tesouro Educa+ 2032",
-        "rate": "IPCA + 7,51%",
-        "minInvest": "R$ 25,27",
-        "price": "R$ 2.527,84",
+        "rate": "IPCA + 7,48%",
+        "minInvest": "R$ 25,44",
+        "price": "R$ 2.544,31",
         "maturity": "15/12/2036"
       },
       {
         "name": "Tesouro Educa+ 2033",
-        "rate": "IPCA + 7,48%",
-        "minInvest": "R$ 23,58",
-        "price": "R$ 2.358,34",
+        "rate": "IPCA + 7,45%",
+        "minInvest": "R$ 23,74",
+        "price": "R$ 2.374,35",
         "maturity": "15/12/2037"
       },
       {
         "name": "Tesouro Educa+ 2034",
-        "rate": "IPCA + 7,45%",
-        "minInvest": "R$ 22,01",
-        "price": "R$ 2.201,82",
+        "rate": "IPCA + 7,40%",
+        "minInvest": "R$ 22,21",
+        "price": "R$ 2.221,55",
         "maturity": "15/12/2038"
       },
       {
         "name": "Tesouro Educa+ 2035",
-        "rate": "IPCA + 7,41%",
-        "minInvest": "R$ 20,58",
-        "price": "R$ 2.058,93",
+        "rate": "IPCA + 7,36%",
+        "minInvest": "R$ 20,78",
+        "price": "R$ 2.078,32",
         "maturity": "15/12/2039"
       },
       {
         "name": "Tesouro Educa+ 2036",
-        "rate": "IPCA + 7,38%",
-        "minInvest": "R$ 19,24",
-        "price": "R$ 1.924,11",
+        "rate": "IPCA + 7,31%",
+        "minInvest": "R$ 19,47",
+        "price": "R$ 1.947,52",
         "maturity": "15/12/2040"
       },
       {
         "name": "Tesouro Educa+ 2037",
-        "rate": "IPCA + 7,34%",
-        "minInvest": "R$ 18,01",
-        "price": "R$ 1.801,27",
+        "rate": "IPCA + 7,26%",
+        "minInvest": "R$ 18,26",
+        "price": "R$ 1.826,59",
         "maturity": "15/12/2041"
       },
       {
         "name": "Tesouro Educa+ 2038",
-        "rate": "IPCA + 7,30%",
-        "minInvest": "R$ 16,87",
-        "price": "R$ 1.687,55",
+        "rate": "IPCA + 7,20%",
+        "minInvest": "R$ 17,17",
+        "price": "R$ 1.717,03",
         "maturity": "15/12/2042"
       },
       {
         "name": "Tesouro Educa+ 2039",
-        "rate": "IPCA + 7,26%",
-        "minInvest": "R$ 15,82",
-        "price": "R$ 1.582,04",
+        "rate": "IPCA + 7,15%",
+        "minInvest": "R$ 16,13",
+        "price": "R$ 1.613,44",
         "maturity": "15/12/2043"
       },
       {
         "name": "Tesouro Educa+ 2040",
-        "rate": "IPCA + 7,22%",
-        "minInvest": "R$ 14,84",
-        "price": "R$ 1.484,34",
+        "rate": "IPCA + 7,10%",
+        "minInvest": "R$ 15,17",
+        "price": "R$ 1.517,63",
         "maturity": "15/12/2044"
       },
       {
         "name": "Tesouro Educa+ 2041",
-        "rate": "IPCA + 7,18%",
-        "minInvest": "R$ 13,93",
-        "price": "R$ 1.393,83",
+        "rate": "IPCA + 7,05%",
+        "minInvest": "R$ 14,28",
+        "price": "R$ 1.428,95",
         "maturity": "15/12/2045"
       },
       {
         "name": "Tesouro Educa+ 2042",
-        "rate": "IPCA + 7,15%",
-        "minInvest": "R$ 13,07",
-        "price": "R$ 1.307,68",
+        "rate": "IPCA + 7,01%",
+        "minInvest": "R$ 13,44",
+        "price": "R$ 1.344,52",
         "maturity": "15/12/2046"
       },
       {
         "name": "Tesouro IPCA+ 2040",
-        "rate": "IPCA + 7,30%",
-        "minInvest": "R$ 16,63",
-        "price": "R$ 1.663,40",
+        "rate": "IPCA + 7,20%",
+        "minInvest": "R$ 16,92",
+        "price": "R$ 1.692,90",
         "maturity": "15/08/2040"
       },
       {
         "name": "Tesouro Educa+ 2043",
-        "rate": "IPCA + 7,11%",
-        "minInvest": "R$ 12,29",
-        "price": "R$ 1.229,83",
+        "rate": "IPCA + 6,98%",
+        "minInvest": "R$ 12,63",
+        "price": "R$ 1.263,86",
         "maturity": "15/12/2047"
       },
       {
         "name": "Tesouro IPCA+ 2050",
-        "rate": "IPCA + 6,98%",
-        "minInvest": "R$ 8,88",
-        "price": "R$ 888,75",
+        "rate": "IPCA + 6,89%",
+        "minInvest": "R$ 9,10",
+        "price": "R$ 910,82",
         "maturity": "15/08/2050"
       },
       {
         "name": "Tesouro IPCA+ 2032",
-        "rate": "IPCA + 7,59%",
-        "minInvest": "R$ 28,63",
-        "price": "R$ 2.863,34",
+        "rate": "IPCA + 7,57%",
+        "minInvest": "R$ 28,78",
+        "price": "R$ 2.878,95",
         "maturity": "15/08/2032"
       },
       {
         "name": "Tesouro Educa+ 2044",
-        "rate": "IPCA + 7,09%",
-        "minInvest": "R$ 11,53",
-        "price": "R$ 1.153,14",
+        "rate": "IPCA + 6,96%",
+        "minInvest": "R$ 11,86",
+        "price": "R$ 1.186,47",
         "maturity": "15/12/2048"
       },
       {
         "name": "Tesouro IPCA+ 2045Juros\n                                                                            Semestrais",
-        "rate": "IPCA + 7,26%",
-        "minInvest": "R$ 40,99",
-        "price": "R$ 4.099,60",
+        "rate": "IPCA + 7,15%",
+        "minInvest": "R$ 41,63",
+        "price": "R$ 4.163,16",
         "maturity": "15/05/2045"
       },
       {
         "name": "Tesouro IPCA+ 2060Juros\n                                                                            Semestrais",
-        "rate": "IPCA + 7,15%",
-        "minInvest": "R$ 40,91",
-        "price": "R$ 4.091,54",
+        "rate": "IPCA + 7,09%",
+        "minInvest": "R$ 40,02",
+        "price": "R$ 4.002,74",
         "maturity": "15/08/2060"
       },
       {
         "name": "Tesouro IPCA+ 2037Juros\n                                                                            Semestrais",
-        "rate": "IPCA + 7,49%",
-        "minInvest": "R$ 41,76",
-        "price": "R$ 4.176,88",
+        "rate": "IPCA + 7,44%",
+        "minInvest": "R$ 42,10",
+        "price": "R$ 4.210,11",
         "maturity": "15/05/2037"
       }
     ],
