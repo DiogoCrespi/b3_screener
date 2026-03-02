@@ -1,7 +1,7 @@
 window.INVEST_DATA = {
-  "updatedAt": "01/03/2026, 12:50:40",
+  "updatedAt": "02/03/2026, 13:00:10",
   "economy": {
-    "dollar": 5.1296,
+    "dollar": 5.1943,
     "selic": 15
   },
   "stocks": [
@@ -5557,29 +5557,6 @@ window.INVEST_DATA = {
       "data_pagamento": "13/03/2026"
     },
     {
-      "ticker": "CDII11",
-      "type": "INFRA",
-      "segment": "Infraestrutura",
-      "mandate": null,
-      "price": 105.38,
-      "dy": 16.42,
-      "p_vp": 1.02,
-      "liquidity": 7750000,
-      "last_dividend": 1.32,
-      "vacancy": 0,
-      "data_com": "30/01/2026",
-      "data_pagamento": "13/02/2026",
-      "score": 7,
-      "strategies": [],
-      "magicNumber": 74,
-      "magicCost": 7798.12,
-      "selic": 15,
-      "num_properties": 0,
-      "market_cap": 500000000,
-      "category": "OPPORTUNITY",
-      "external_segment": "Fundo de Infraestrutura (FI-Infra)"
-    },
-    {
       "ticker": "LASC11",
       "segment": "Shoppings",
       "price": 112.49,
@@ -5602,6 +5579,29 @@ window.INVEST_DATA = {
       "external_segment": "Shoppings / Varejo",
       "data_com": "27/02/2026",
       "data_pagamento": "06/03/2026"
+    },
+    {
+      "ticker": "CDII11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": null,
+      "price": 105.38,
+      "dy": 15.32,
+      "p_vp": 1.02,
+      "liquidity": 7750000,
+      "last_dividend": 1.32,
+      "vacancy": 0,
+      "data_com": "30/01/2026",
+      "data_pagamento": "13/02/2026",
+      "score": 7,
+      "strategies": [],
+      "magicNumber": 79,
+      "magicCost": 8325.02,
+      "selic": 15,
+      "num_properties": 0,
+      "market_cap": 500000000,
+      "category": "OPPORTUNITY",
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)"
     },
     {
       "ticker": "KNUQ11",
@@ -5750,29 +5750,6 @@ window.INVEST_DATA = {
       "data_pagamento": "13/03/2026"
     },
     {
-      "ticker": "JURO11",
-      "type": "INFRA",
-      "segment": "Infraestrutura",
-      "mandate": null,
-      "price": 104.5,
-      "dy": 11.48,
-      "p_vp": 1.02,
-      "liquidity": 4450000,
-      "last_dividend": 1,
-      "vacancy": 0,
-      "data_com": "30/01/2026",
-      "data_pagamento": "13/02/2026",
-      "score": 7,
-      "strategies": [],
-      "magicNumber": 105,
-      "magicCost": 10972.5,
-      "selic": 15,
-      "num_properties": 0,
-      "market_cap": 500000000,
-      "category": "OPPORTUNITY",
-      "external_segment": "Fundo de Infraestrutura (FI-Infra)"
-    },
-    {
       "ticker": "RBVA11",
       "segment": "Varejo",
       "price": 9.93,
@@ -5795,6 +5772,29 @@ window.INVEST_DATA = {
       "external_segment": "Híbrido",
       "data_com": "27/02/2026",
       "data_pagamento": "13/03/2026"
+    },
+    {
+      "ticker": "JURO11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": null,
+      "price": 104.5,
+      "dy": 10.53,
+      "p_vp": 1.02,
+      "liquidity": 4450000,
+      "last_dividend": 1,
+      "vacancy": 0,
+      "data_com": "30/01/2026",
+      "data_pagamento": "13/02/2026",
+      "score": 7,
+      "strategies": [],
+      "magicNumber": 114,
+      "magicCost": 11913,
+      "selic": 15,
+      "num_properties": 0,
+      "market_cap": 500000000,
+      "category": "OPPORTUNITY",
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)"
     },
     {
       "ticker": "PMLL11",
@@ -5839,10 +5839,10 @@ window.INVEST_DATA = {
       "magicNumber": 147,
       "magicCost": 15185.1,
       "category": "OPPORTUNITY",
-      "last_dividend": 0.8,
+      "last_dividend": 0.82,
       "external_segment": "Logístico / Indústria / Galpões",
-      "data_com": "30/01/2026",
-      "data_pagamento": "13/02/2026"
+      "data_com": "27/02/2026",
+      "data_pagamento": "13/03/2026"
     },
     {
       "ticker": "LVBI11",
@@ -5943,29 +5943,6 @@ window.INVEST_DATA = {
       "data_pagamento": "15/10/2025"
     },
     {
-      "ticker": "IFRI11",
-      "type": "INFRA",
-      "segment": "Infraestrutura",
-      "mandate": "Híbridos",
-      "price": 105.04,
-      "dy": 13.76,
-      "p_vp": 0.99,
-      "liquidity": 2089999.9999999998,
-      "last_dividend": 1.35,
-      "vacancy": 0,
-      "data_com": "30/01/2026",
-      "data_pagamento": "06/02/2026",
-      "score": 6,
-      "strategies": [],
-      "magicNumber": 88,
-      "magicCost": 9243.52,
-      "selic": 15,
-      "num_properties": 0,
-      "market_cap": 500000000,
-      "category": "OPPORTUNITY",
-      "external_segment": "Fundo de Infraestrutura (FI-Infra)"
-    },
-    {
       "ticker": "VGIP11",
       "segment": "Multicategoria",
       "price": 81.89,
@@ -5988,29 +5965,6 @@ window.INVEST_DATA = {
       "external_segment": "Títulos e Valores Mobiliários",
       "data_com": "11/02/2026",
       "data_pagamento": "20/02/2026"
-    },
-    {
-      "ticker": "CPTI11",
-      "type": "INFRA",
-      "segment": "Infraestrutura",
-      "mandate": null,
-      "price": 90.67,
-      "dy": 13.4,
-      "p_vp": 0.95,
-      "liquidity": 2610000,
-      "last_dividend": 1.15,
-      "vacancy": 0,
-      "data_com": "30/01/2026",
-      "data_pagamento": "13/02/2026",
-      "score": 6,
-      "strategies": [],
-      "magicNumber": 90,
-      "magicCost": 8160.3,
-      "selic": 15,
-      "num_properties": 0,
-      "market_cap": 500000000,
-      "category": "OPPORTUNITY",
-      "external_segment": "Fundo de Infraestrutura (FI-Infra)"
     },
     {
       "ticker": "BDIF11",
@@ -6078,10 +6032,33 @@ window.INVEST_DATA = {
       "magicNumber": 94,
       "magicCost": 703.12,
       "category": "OPPORTUNITY",
-      "last_dividend": 0.09,
+      "last_dividend": 0.07,
       "external_segment": "Shoppings / Varejo",
-      "data_com": "30/01/2026",
-      "data_pagamento": "18/02/2026"
+      "data_com": "27/02/2026",
+      "data_pagamento": "16/03/2026"
+    },
+    {
+      "ticker": "IFRI11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": "Híbridos",
+      "price": 105.04,
+      "dy": 12.76,
+      "p_vp": 0.99,
+      "liquidity": 2089999.9999999998,
+      "last_dividend": 1.1,
+      "vacancy": 0,
+      "data_com": "27/02/2026",
+      "data_pagamento": "06/03/2026",
+      "score": 6,
+      "strategies": [],
+      "magicNumber": 95,
+      "magicCost": 9978.800000000001,
+      "selic": 15,
+      "num_properties": 0,
+      "market_cap": 500000000,
+      "category": "OPPORTUNITY",
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)"
     },
     {
       "ticker": "BTCI11",
@@ -6106,6 +6083,29 @@ window.INVEST_DATA = {
       "external_segment": "Títulos e Valores Mobiliários",
       "data_com": "06/02/2026",
       "data_pagamento": "13/02/2026"
+    },
+    {
+      "ticker": "CPTI11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": null,
+      "price": 90.67,
+      "dy": 12.3,
+      "p_vp": 0.95,
+      "liquidity": 2610000,
+      "last_dividend": 1.15,
+      "vacancy": 0,
+      "data_com": "30/01/2026",
+      "data_pagamento": "13/02/2026",
+      "score": 6,
+      "strategies": [],
+      "magicNumber": 98,
+      "magicCost": 8885.66,
+      "selic": 15,
+      "num_properties": 0,
+      "market_cap": 500000000,
+      "category": "OPPORTUNITY",
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)"
     },
     {
       "ticker": "RBRX11",
@@ -6180,29 +6180,6 @@ window.INVEST_DATA = {
       "data_pagamento": "13/03/2026"
     },
     {
-      "ticker": "IFRA11",
-      "type": "INFRA",
-      "segment": "Infraestrutura",
-      "mandate": null,
-      "price": 102.3,
-      "dy": 11.49,
-      "p_vp": 0.99,
-      "liquidity": 2820000,
-      "last_dividend": 0.86,
-      "vacancy": 0,
-      "data_com": "30/01/2026",
-      "data_pagamento": "06/02/2026",
-      "score": 6,
-      "strategies": [],
-      "magicNumber": 105,
-      "magicCost": 10741.5,
-      "selic": 15,
-      "num_properties": 0,
-      "market_cap": 500000000,
-      "category": "OPPORTUNITY",
-      "external_segment": "Fundo de Infraestrutura (FI-Infra)"
-    },
-    {
       "ticker": "TEPP11",
       "segment": "Outros",
       "price": 9.28,
@@ -6223,8 +6200,31 @@ window.INVEST_DATA = {
       "category": "OPPORTUNITY",
       "last_dividend": 0.08,
       "external_segment": "Lajes Corporativas",
-      "data_com": "30/01/2026",
-      "data_pagamento": "13/02/2026"
+      "data_com": "27/02/2026",
+      "data_pagamento": "13/03/2026"
+    },
+    {
+      "ticker": "IFRA11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": null,
+      "price": 102.3,
+      "dy": 10.51,
+      "p_vp": 0.99,
+      "liquidity": 2820000,
+      "last_dividend": 0.84,
+      "vacancy": 0,
+      "data_com": "27/02/2026",
+      "data_pagamento": "06/03/2026",
+      "score": 6,
+      "strategies": [],
+      "magicNumber": 115,
+      "magicCost": 11764.5,
+      "selic": 15,
+      "num_properties": 0,
+      "market_cap": 500000000,
+      "category": "OPPORTUNITY",
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)"
     },
     {
       "ticker": "ALZR11",
@@ -6367,10 +6367,10 @@ window.INVEST_DATA = {
       "magicNumber": 230,
       "magicCost": 22733.2,
       "category": "OPPORTUNITY",
-      "last_dividend": 1.1,
+      "last_dividend": 1,
       "external_segment": "Fiagros",
-      "data_com": "30/01/2026",
-      "data_pagamento": "12/02/2026"
+      "data_com": "27/02/2026",
+      "data_pagamento": "12/03/2026"
     },
     {
       "ticker": "IRIM11",
@@ -6811,8 +6811,8 @@ window.INVEST_DATA = {
       "category": "STANDARD",
       "last_dividend": 0.95,
       "external_segment": "Títulos e Valores Mobiliários",
-      "data_com": "30/01/2026",
-      "data_pagamento": "12/02/2026"
+      "data_com": "27/02/2026",
+      "data_pagamento": "12/03/2026"
     },
     {
       "ticker": "ARRI11",
@@ -6967,8 +6967,8 @@ window.INVEST_DATA = {
       "category": "STANDARD",
       "last_dividend": 0.09,
       "external_segment": "Títulos e Valores Mobiliários",
-      "data_com": "30/01/2026",
-      "data_pagamento": "13/02/2026"
+      "data_com": "27/02/2026",
+      "data_pagamento": "13/03/2026"
     },
     {
       "ticker": "RBHG11",
@@ -6995,31 +6995,6 @@ window.INVEST_DATA = {
       "external_segment": "Títulos e Valores Mobiliários",
       "data_com": "27/02/2026",
       "data_pagamento": "13/03/2026"
-    },
-    {
-      "ticker": "XPID11",
-      "type": "INFRA",
-      "segment": "Infraestrutura",
-      "mandate": null,
-      "price": 53.95,
-      "dy": 12.88,
-      "p_vp": 0.58,
-      "liquidity": 217160,
-      "last_dividend": 0.75,
-      "vacancy": 0,
-      "data_com": "30/01/2026",
-      "data_pagamento": "13/02/2026",
-      "score": 0,
-      "strategies": [
-        "DISTRESSED_RISK"
-      ],
-      "magicNumber": 94,
-      "magicCost": 5071.3,
-      "selic": 15,
-      "num_properties": 0,
-      "market_cap": 500000000,
-      "category": "STANDARD",
-      "external_segment": "Fundo de Infraestrutura (FI-Infra)"
     },
     {
       "ticker": "BLMG11",
@@ -7074,6 +7049,31 @@ window.INVEST_DATA = {
       "data_pagamento": "13/02/2026"
     },
     {
+      "ticker": "XPID11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": null,
+      "price": 53.95,
+      "dy": 11.58,
+      "p_vp": 0.58,
+      "liquidity": 217160,
+      "last_dividend": 0.75,
+      "vacancy": 0,
+      "data_com": "30/01/2026",
+      "data_pagamento": "13/02/2026",
+      "score": 0,
+      "strategies": [
+        "DISTRESSED_RISK"
+      ],
+      "magicNumber": 104,
+      "magicCost": 5610.8,
+      "selic": 15,
+      "num_properties": 0,
+      "market_cap": 500000000,
+      "category": "STANDARD",
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)"
+    },
+    {
       "ticker": "FIIP11",
       "segment": "Log�stica",
       "price": 145.95,
@@ -7120,10 +7120,10 @@ window.INVEST_DATA = {
       "magicNumber": 107,
       "magicCost": 592.78,
       "category": "STANDARD",
-      "last_dividend": 0.05,
+      "last_dividend": 0.04,
       "external_segment": "Lajes Corporativas",
-      "data_com": "30/01/2026",
-      "data_pagamento": "13/02/2026"
+      "data_com": "27/02/2026",
+      "data_pagamento": "13/03/2026"
     },
     {
       "ticker": "KOPA11",
@@ -7278,8 +7278,8 @@ window.INVEST_DATA = {
       "category": "STANDARD",
       "last_dividend": 1.12,
       "external_segment": "Fiagros",
-      "data_com": "30/01/2026",
-      "data_pagamento": "13/02/2026"
+      "data_com": "27/02/2026",
+      "data_pagamento": "13/03/2026"
     },
     {
       "ticker": "VCRA11",
@@ -7302,10 +7302,10 @@ window.INVEST_DATA = {
       "magicNumber": 217,
       "magicCost": 15059.800000000001,
       "category": "STANDARD",
-      "last_dividend": 0.95,
+      "last_dividend": 0.85,
       "external_segment": "Fiagros",
-      "data_com": "30/01/2026",
-      "data_pagamento": "12/02/2026"
+      "data_com": "27/02/2026",
+      "data_pagamento": "12/03/2026"
     }
   ],
   "etfs": [
@@ -7714,254 +7714,254 @@ window.INVEST_DATA = {
     "tesouro": [
       {
         "name": "Tesouro Prefixado 2029",
-        "rate": "12,68%",
-        "minInvest": "R$ 7,14",
-        "price": "R$ 714,70",
+        "rate": "12,79%",
+        "minInvest": "R$ 7,13",
+        "price": "R$ 713,09",
         "maturity": "01/01/2029"
       },
       {
         "name": "Tesouro Prefixado 2032",
-        "rate": "13,27%",
-        "minInvest": "R$ 4,85",
-        "price": "R$ 485,34",
+        "rate": "13,39%",
+        "minInvest": "R$ 4,82",
+        "price": "R$ 482,61",
         "maturity": "01/01/2032"
       },
       {
         "name": "Tesouro Prefixado 2037Juros\n                                                                            Semestrais",
-        "rate": "13,50%",
-        "minInvest": "R$ 8,30",
-        "price": "R$ 830,81",
+        "rate": "13,61%",
+        "minInvest": "R$ 8,26",
+        "price": "R$ 826,17",
         "maturity": "01/01/2037"
       },
       {
         "name": "Tesouro Selic 2031",
-        "rate": "SELIC + 0,1001%",
-        "minInvest": "R$ 183,97",
-        "price": "R$ 18.397,42",
+        "rate": "SELIC + 0,0996%",
+        "minInvest": "R$ 184,08",
+        "price": "R$ 18.408,10",
         "maturity": "01/03/2031"
       },
       {
         "name": "Tesouro Renda+ Aposentadoria Extra 2030",
-        "rate": "IPCA + 7,02%",
-        "minInvest": "R$ 19,55",
-        "price": "R$ 1.955,28",
+        "rate": "IPCA + 7,11%",
+        "minInvest": "R$ 19,39",
+        "price": "R$ 1.939,29",
         "maturity": "15/12/2049"
       },
       {
         "name": "Tesouro Renda+ Aposentadoria Extra 2035",
-        "rate": "IPCA + 6,88%",
-        "minInvest": "R$ 14,26",
-        "price": "R$ 1.426,24",
+        "rate": "IPCA + 6,97%",
+        "minInvest": "R$ 14,08",
+        "price": "R$ 1.408,60",
         "maturity": "15/12/2054"
       },
       {
         "name": "Tesouro Renda+ Aposentadoria Extra 2040",
-        "rate": "IPCA + 6,78%",
-        "minInvest": "R$ 10,45",
-        "price": "R$ 1.045,52",
+        "rate": "IPCA + 6,87%",
+        "minInvest": "R$ 10,28",
+        "price": "R$ 1.028,23",
         "maturity": "15/12/2059"
       },
       {
         "name": "Tesouro Renda+ Aposentadoria Extra 2045",
-        "rate": "IPCA + 6,75%",
-        "minInvest": "R$ 7,60",
-        "price": "R$ 760,40",
+        "rate": "IPCA + 6,83%",
+        "minInvest": "R$ 7,46",
+        "price": "R$ 746,55",
         "maturity": "15/12/2064"
       },
       {
         "name": "Tesouro Renda+ Aposentadoria Extra 2050",
-        "rate": "IPCA + 6,75%",
-        "minInvest": "R$ 5,49",
-        "price": "R$ 549,62",
+        "rate": "IPCA + 6,82%",
+        "minInvest": "R$ 5,39",
+        "price": "R$ 539,19",
         "maturity": "15/12/2069"
       },
       {
         "name": "Tesouro Renda+ Aposentadoria Extra 2055",
-        "rate": "IPCA + 6,77%",
-        "minInvest": "R$ 3,94",
-        "price": "R$ 394,55",
+        "rate": "IPCA + 6,84%",
+        "minInvest": "R$ 3,85",
+        "price": "R$ 385,80",
         "maturity": "15/12/2074"
       },
       {
         "name": "Tesouro Renda+ Aposentadoria Extra 2060",
-        "rate": "IPCA + 6,78%",
-        "minInvest": "R$ 2,83",
-        "price": "R$ 283,78",
+        "rate": "IPCA + 6,85%",
+        "minInvest": "R$ 2,76",
+        "price": "R$ 276,60",
         "maturity": "15/12/2079"
       },
       {
         "name": "Tesouro Renda+ Aposentadoria Extra 2065",
-        "rate": "IPCA + 6,78%",
-        "minInvest": "R$ 2,04",
-        "price": "R$ 204,84",
+        "rate": "IPCA + 6,85%",
+        "minInvest": "R$ 1,99",
+        "price": "R$ 199,00",
         "maturity": "15/12/2084"
       },
       {
         "name": "Tesouro Educa+ 2027",
-        "rate": "IPCA + 7,56%",
-        "minInvest": "R$ 36,43",
-        "price": "R$ 3.643,55",
+        "rate": "IPCA + 7,60%",
+        "minInvest": "R$ 36,44",
+        "price": "R$ 3.644,85",
         "maturity": "15/12/2031"
       },
       {
         "name": "Tesouro Educa+ 2028",
-        "rate": "IPCA + 7,48%",
-        "minInvest": "R$ 33,99",
-        "price": "R$ 3.399,37",
+        "rate": "IPCA + 7,53%",
+        "minInvest": "R$ 33,97",
+        "price": "R$ 3.397,99",
         "maturity": "15/12/2032"
       },
       {
         "name": "Tesouro Educa+ 2029",
-        "rate": "IPCA + 7,42%",
-        "minInvest": "R$ 31,73",
-        "price": "R$ 3.173,27",
+        "rate": "IPCA + 7,48%",
+        "minInvest": "R$ 31,69",
+        "price": "R$ 3.169,00",
         "maturity": "15/12/2033"
       },
       {
         "name": "Tesouro Educa+ 2030",
-        "rate": "IPCA + 7,37%",
-        "minInvest": "R$ 29,63",
-        "price": "R$ 2.963,28",
+        "rate": "IPCA + 7,45%",
+        "minInvest": "R$ 29,54",
+        "price": "R$ 2.954,26",
         "maturity": "15/12/2034"
       },
       {
         "name": "Tesouro Educa+ 2031",
-        "rate": "IPCA + 7,32%",
-        "minInvest": "R$ 27,69",
-        "price": "R$ 2.769,90",
+        "rate": "IPCA + 7,40%",
+        "minInvest": "R$ 27,59",
+        "price": "R$ 2.759,40",
         "maturity": "15/12/2035"
       },
       {
         "name": "Tesouro Educa+ 2032",
-        "rate": "IPCA + 7,27%",
-        "minInvest": "R$ 25,91",
-        "price": "R$ 2.591,73",
+        "rate": "IPCA + 7,36%",
+        "minInvest": "R$ 25,78",
+        "price": "R$ 2.578,03",
         "maturity": "15/12/2036"
       },
       {
         "name": "Tesouro Educa+ 2033",
-        "rate": "IPCA + 7,22%",
-        "minInvest": "R$ 24,27",
-        "price": "R$ 2.427,45",
+        "rate": "IPCA + 7,32%",
+        "minInvest": "R$ 24,10",
+        "price": "R$ 2.410,53",
         "maturity": "15/12/2037"
       },
       {
         "name": "Tesouro Educa+ 2034",
-        "rate": "IPCA + 7,17%",
-        "minInvest": "R$ 22,76",
-        "price": "R$ 2.276,07",
+        "rate": "IPCA + 7,27%",
+        "minInvest": "R$ 22,58",
+        "price": "R$ 2.258,10",
         "maturity": "15/12/2038"
       },
       {
         "name": "Tesouro Educa+ 2035",
-        "rate": "IPCA + 7,13%",
-        "minInvest": "R$ 21,33",
-        "price": "R$ 2.133,85",
+        "rate": "IPCA + 7,22%",
+        "minInvest": "R$ 21,17",
+        "price": "R$ 2.117,24",
         "maturity": "15/12/2039"
       },
       {
         "name": "Tesouro Educa+ 2036",
-        "rate": "IPCA + 7,08%",
-        "minInvest": "R$ 20,03",
-        "price": "R$ 2.003,84",
+        "rate": "IPCA + 7,17%",
+        "minInvest": "R$ 19,86",
+        "price": "R$ 1.986,56",
         "maturity": "15/12/2040"
       },
       {
         "name": "Tesouro Educa+ 2037",
-        "rate": "IPCA + 7,03%",
-        "minInvest": "R$ 18,83",
-        "price": "R$ 1.883,43",
+        "rate": "IPCA + 7,12%",
+        "minInvest": "R$ 18,65",
+        "price": "R$ 1.865,62",
         "maturity": "15/12/2041"
       },
       {
         "name": "Tesouro Educa+ 2038",
-        "rate": "IPCA + 6,98%",
-        "minInvest": "R$ 17,71",
-        "price": "R$ 1.771,94",
+        "rate": "IPCA + 7,06%",
+        "minInvest": "R$ 17,56",
+        "price": "R$ 1.756,00",
         "maturity": "15/12/2042"
       },
       {
         "name": "Tesouro Educa+ 2039",
-        "rate": "IPCA + 6,93%",
-        "minInvest": "R$ 16,68",
-        "price": "R$ 1.668,46",
+        "rate": "IPCA + 7,02%",
+        "minInvest": "R$ 16,49",
+        "price": "R$ 1.649,88",
         "maturity": "15/12/2043"
       },
       {
         "name": "Tesouro Educa+ 2040",
-        "rate": "IPCA + 6,89%",
-        "minInvest": "R$ 15,70",
-        "price": "R$ 1.570,24",
+        "rate": "IPCA + 6,98%",
+        "minInvest": "R$ 15,51",
+        "price": "R$ 1.551,45",
         "maturity": "15/12/2044"
       },
       {
         "name": "Tesouro Educa+ 2041",
-        "rate": "IPCA + 6,85%",
-        "minInvest": "R$ 14,79",
-        "price": "R$ 1.479,02",
+        "rate": "IPCA + 6,94%",
+        "minInvest": "R$ 14,60",
+        "price": "R$ 1.460,08",
         "maturity": "15/12/2045"
       },
       {
         "name": "Tesouro Educa+ 2042",
-        "rate": "IPCA + 6,83%",
-        "minInvest": "R$ 13,89",
-        "price": "R$ 1.389,51",
+        "rate": "IPCA + 6,92%",
+        "minInvest": "R$ 13,70",
+        "price": "R$ 1.370,56",
         "maturity": "15/12/2046"
       },
       {
         "name": "Tesouro IPCA+ 2040",
-        "rate": "IPCA + 6,96%",
-        "minInvest": "R$ 17,52",
-        "price": "R$ 1.752,72",
+        "rate": "IPCA + 7,04%",
+        "minInvest": "R$ 17,36",
+        "price": "R$ 1.736,60",
         "maturity": "15/08/2040"
       },
       {
         "name": "Tesouro Educa+ 2043",
-        "rate": "IPCA + 6,80%",
-        "minInvest": "R$ 13,08",
-        "price": "R$ 1.308,34",
+        "rate": "IPCA + 6,89%",
+        "minInvest": "R$ 12,89",
+        "price": "R$ 1.289,42",
         "maturity": "15/12/2047"
       },
       {
         "name": "Tesouro IPCA+ 2050",
-        "rate": "IPCA + 6,73%",
-        "minInvest": "R$ 9,46",
-        "price": "R$ 946,91",
+        "rate": "IPCA + 6,82%",
+        "minInvest": "R$ 9,29",
+        "price": "R$ 929,10",
         "maturity": "15/08/2050"
       },
       {
         "name": "Tesouro IPCA+ 2032",
-        "rate": "IPCA + 7,39%",
-        "minInvest": "R$ 29,17",
-        "price": "R$ 2.917,57",
+        "rate": "IPCA + 7,45%",
+        "minInvest": "R$ 29,11",
+        "price": "R$ 2.911,56",
         "maturity": "15/08/2032"
       },
       {
         "name": "Tesouro Educa+ 2044",
-        "rate": "IPCA + 6,78%",
-        "minInvest": "R$ 12,30",
-        "price": "R$ 1.230,28",
+        "rate": "IPCA + 6,88%",
+        "minInvest": "R$ 12,09",
+        "price": "R$ 1.209,20",
         "maturity": "15/12/2048"
       },
       {
         "name": "Tesouro IPCA+ 2045Juros\n                                                                            Semestrais",
-        "rate": "IPCA + 6,96%",
-        "minInvest": "R$ 42,55",
-        "price": "R$ 4.255,85",
+        "rate": "IPCA + 7,05%",
+        "minInvest": "R$ 42,22",
+        "price": "R$ 4.222,94",
         "maturity": "15/05/2045"
       },
       {
         "name": "Tesouro IPCA+ 2060Juros\n                                                                            Semestrais",
-        "rate": "IPCA + 6,91%",
-        "minInvest": "R$ 41,07",
-        "price": "R$ 4.107,11",
+        "rate": "IPCA + 6,99%",
+        "minInvest": "R$ 40,70",
+        "price": "R$ 4.070,81",
         "maturity": "15/08/2060"
       },
       {
         "name": "Tesouro IPCA+ 2037Juros\n                                                                            Semestrais",
-        "rate": "IPCA + 7,23%",
-        "minInvest": "R$ 42,87",
-        "price": "R$ 4.287,23",
+        "rate": "IPCA + 7,32%",
+        "minInvest": "R$ 42,65",
+        "price": "R$ 4.265,09",
         "maturity": "15/05/2037"
       }
     ],
