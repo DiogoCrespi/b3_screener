@@ -6,6 +6,7 @@ const { getFIInfra } = require('./services/fi_infra');
 const { getETFs } = require('./services/etfs');
 const { getTesouroDirect, getPrivateBenchmarks } = require('./services/fixed_income');
 const { getMultipleAssetMetadata } = require('./services/investidor10');
+const { saveHistory } = require('./services/storage');
 
 async function exportData() {
     console.log('🚀 Starting Data Export for B3 Screener...');
@@ -70,6 +71,12 @@ async function exportData() {
 
         const fileContent = `window.INVEST_DATA = ${JSON.stringify(data, null, 2)};`;
         fs.writeFileSync('data.js', fileContent);
+
+        // --- Save History ---
+        saveHistory(finalStocks, 'stock', { dollar, selic });
+        saveHistory(finalFiis, 'fii', { dollar, selic });
+        saveHistory(etfs, 'etf', { dollar, selic });
+        saveHistory(data.fixedIncome, 'fixed', { dollar, selic });
 
         const stats = {
             total: finalFiis.length,
