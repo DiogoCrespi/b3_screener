@@ -1,5 +1,5 @@
 {
-  "date": "2026-03-08T16:28:30.043Z",
+  "date": "2026-03-08T22:45:38.832Z",
   "count": 40,
   "economy": {
     "dollar": 5.2435,
@@ -178,16 +178,6 @@
       "low_52w": 0
     },
     {
-      "ticker": "B5P211",
-      "price": 104.17,
-      "dy": 0,
-      "market_cap": 0,
-      "variation_12m": 0,
-      "liquidity": 0,
-      "high_52w": 104.54,
-      "low_52w": 0
-    },
-    {
       "ticker": "LFTB11",
       "price": 118.38,
       "dy": 0,
@@ -195,6 +185,16 @@
       "variation_12m": 0,
       "liquidity": 0,
       "high_52w": 100.32,
+      "low_52w": 0
+    },
+    {
+      "ticker": "B5P211",
+      "price": 104.17,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0,
+      "liquidity": 0,
+      "high_52w": 104.54,
       "low_52w": 0
     },
     {

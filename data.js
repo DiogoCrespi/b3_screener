@@ -1,5 +1,5 @@
 window.INVEST_DATA = {
-  "updatedAt": "08/03/2026, 16:28:30",
+  "updatedAt": "08/03/2026, 22:45:38",
   "economy": {
     "dollar": 5.2435,
     "selic": 15
@@ -7897,16 +7897,6 @@ window.INVEST_DATA = {
       "low_52w": 0
     },
     {
-      "ticker": "B5P211",
-      "price": 104.17,
-      "dy": 0,
-      "market_cap": 0,
-      "variation_12m": 0,
-      "liquidity": 0,
-      "high_52w": 104.54,
-      "low_52w": 0
-    },
-    {
       "ticker": "LFTB11",
       "price": 118.38,
       "dy": 0,
@@ -7914,6 +7904,16 @@ window.INVEST_DATA = {
       "variation_12m": 0,
       "liquidity": 0,
       "high_52w": 100.32,
+      "low_52w": 0
+    },
+    {
+      "ticker": "B5P211",
+      "price": 104.17,
+      "dy": 0,
+      "market_cap": 0,
+      "variation_12m": 0,
+      "liquidity": 0,
+      "high_52w": 104.54,
       "low_52w": 0
     },
     {
