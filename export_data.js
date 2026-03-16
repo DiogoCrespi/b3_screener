@@ -75,8 +75,6 @@ async function exportData() {
         // --- Save History ---
         saveHistory(finalStocks, 'stock', { dollar, selic });
         saveHistory(finalFiis, 'fii', { dollar, selic });
-        saveHistory(etfs, 'etf', { dollar, selic });
-        saveHistory(data.fixedIncome, 'fixed', { dollar, selic });
 
         const stats = {
             total: finalFiis.length,

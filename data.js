@@ -1,7 +1,7 @@
 window.INVEST_DATA = {
-  "updatedAt": "16/03/2026, 13:14:31",
+  "updatedAt": "16/03/2026, 16:17:08",
   "economy": {
-    "dollar": 5.2653,
+    "dollar": null,
     "selic": 15
   },
   "stocks": [
@@ -5747,8 +5747,8 @@ window.INVEST_DATA = {
       "type": "INFRA",
       "segment": "Infraestrutura",
       "mandate": null,
-      "price": 103.2,
-      "dy": 16.75,
+      "price": 103.23,
+      "dy": 16.74,
       "p_vp": 0.99,
       "liquidity": 7750000,
       "last_dividend": 1.14,
@@ -5758,7 +5758,7 @@ window.INVEST_DATA = {
       "score": 7,
       "strategies": [],
       "magicNumber": 72,
-      "magicCost": 7430.400000000001,
+      "magicCost": 7432.56,
       "selic": 15,
       "num_properties": 0,
       "market_cap": 500000000,
@@ -5990,7 +5990,7 @@ window.INVEST_DATA = {
       "type": "INFRA",
       "segment": "Infraestrutura",
       "mandate": null,
-      "price": 102.17,
+      "price": 102.42,
       "dy": 11.75,
       "p_vp": 1,
       "liquidity": 4450000,
@@ -6001,7 +6001,7 @@ window.INVEST_DATA = {
       "score": 7,
       "strategies": [],
       "magicNumber": 103,
-      "magicCost": 10523.51,
+      "magicCost": 10549.26,
       "selic": 15,
       "num_properties": 0,
       "market_cap": 500000000,
@@ -6207,9 +6207,9 @@ window.INVEST_DATA = {
       "type": "INFRA",
       "segment": "Infraestrutura",
       "mandate": null,
-      "price": 75.86,
-      "dy": 14.33,
-      "p_vp": 0.91,
+      "price": 75.5,
+      "dy": 14.43,
+      "p_vp": 0.9,
       "liquidity": 2840000,
       "last_dividend": 0.85,
       "vacancy": 0,
@@ -6218,7 +6218,7 @@ window.INVEST_DATA = {
       "score": 6,
       "strategies": [],
       "magicNumber": 84,
-      "magicCost": 6372.24,
+      "magicCost": 6342,
       "selic": 15,
       "num_properties": 0,
       "market_cap": 500000000,
@@ -6230,8 +6230,8 @@ window.INVEST_DATA = {
       "type": "INFRA",
       "segment": "Infraestrutura",
       "mandate": "Híbridos",
-      "price": 102.6,
-      "dy": 14.13,
+      "price": 102.32,
+      "dy": 14.17,
       "p_vp": 0.97,
       "liquidity": 2089999.9999999998,
       "last_dividend": 1.1,
@@ -6241,7 +6241,7 @@ window.INVEST_DATA = {
       "score": 6,
       "strategies": [],
       "magicNumber": 85,
-      "magicCost": 8721,
+      "magicCost": 8697.199999999999,
       "selic": 15,
       "num_properties": 0,
       "market_cap": 500000000,
@@ -6301,9 +6301,9 @@ window.INVEST_DATA = {
       "type": "INFRA",
       "segment": "Infraestrutura",
       "mandate": null,
-      "price": 89.51,
-      "dy": 13.74,
-      "p_vp": 0.93,
+      "price": 89.71,
+      "dy": 13.69,
+      "p_vp": 0.94,
       "liquidity": 2610000,
       "last_dividend": 1.15,
       "vacancy": 0,
@@ -6312,7 +6312,7 @@ window.INVEST_DATA = {
       "score": 6,
       "strategies": [],
       "magicNumber": 88,
-      "magicCost": 7876.88,
+      "magicCost": 7894.48,
       "selic": 15,
       "num_properties": 0,
       "market_cap": 500000000,
@@ -6444,7 +6444,7 @@ window.INVEST_DATA = {
       "type": "INFRA",
       "segment": "Infraestrutura",
       "mandate": null,
-      "price": 99.61,
+      "price": 99.49,
       "dy": 11.64,
       "p_vp": 0.97,
       "liquidity": 2820000,
@@ -6455,7 +6455,7 @@ window.INVEST_DATA = {
       "score": 6,
       "strategies": [],
       "magicNumber": 104,
-      "magicCost": 10359.44,
+      "magicCost": 10346.96,
       "selic": 15,
       "num_properties": 0,
       "market_cap": 500000000,
@@ -7290,7 +7290,7 @@ window.INVEST_DATA = {
       "segment": "Infraestrutura",
       "mandate": null,
       "price": 53.28,
-      "dy": 13.14,
+      "dy": 13.21,
       "p_vp": 0.57,
       "liquidity": 217160,
       "last_dividend": 0.75,
@@ -7301,8 +7301,8 @@ window.INVEST_DATA = {
       "strategies": [
         "DISTRESSED_RISK"
       ],
-      "magicNumber": 92,
-      "magicCost": 4901.76,
+      "magicNumber": 91,
+      "magicCost": 4848.4800000000005,
       "selic": 15,
       "num_properties": 0,
       "market_cap": 500000000,
@@ -7733,7 +7733,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 1189832,
       "high_52w": 188.96,
       "low_52w": 120.06
     },
@@ -7743,7 +7743,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 77941,
       "high_52w": 433.61,
       "low_52w": 319.86
     },
@@ -7753,7 +7753,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 675734,
       "high_52w": 130.44,
       "low_52w": 89.34
     },
@@ -7763,7 +7763,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 258886,
       "high_52w": 94.9,
       "low_52w": 43.07
     },
@@ -7773,7 +7773,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 505730,
       "high_52w": 30.14,
       "low_52w": 17.8
     },
@@ -7783,7 +7783,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 81937,
       "high_52w": 9.26,
       "low_52w": 6.83
     },
@@ -7793,7 +7793,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 238790,
       "high_52w": 19.96,
       "low_52w": 13.6
     },
@@ -7803,9 +7803,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 135,
       "high_52w": 100.92,
-      "low_52w": 0
+      "low_52w": 64.38
     },
     {
       "ticker": "SPYI11",
@@ -7813,7 +7813,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 32607,
       "high_52w": 118.37,
       "low_52w": 98.77
     },
@@ -7823,7 +7823,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 17690,
       "high_52w": 148.49,
       "low_52w": 106.2
     },
@@ -7833,7 +7833,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 15260,
       "high_52w": 137.62,
       "low_52w": 90.68
     },
@@ -7843,7 +7843,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 4121,
       "high_52w": 137.1,
       "low_52w": 100.37
     },
@@ -7853,7 +7853,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 3785,
       "high_52w": 105.89,
       "low_52w": 84.8
     },
@@ -7863,7 +7863,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 73593,
       "high_52w": 97.67,
       "low_52w": 42.41
     },
@@ -7873,7 +7873,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 144354,
       "high_52w": 40.48,
       "low_52w": 19.83
     },
@@ -7883,7 +7883,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 7656,
       "high_52w": 17.1,
       "low_52w": 12.5
     },
@@ -7893,7 +7893,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 7903,
       "high_52w": 68.89,
       "low_52w": 49.16
     },
@@ -7903,8 +7903,8 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
-      "high_52w": 118.62,
+      "liquidity": 246524,
+      "high_52w": 118.81,
       "low_52w": 100.02
     },
     {
@@ -7913,9 +7913,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 32434,
       "high_52w": 104.54,
-      "low_52w": 0
+      "low_52w": 93.76
     },
     {
       "ticker": "TECK11",
@@ -7923,7 +7923,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 3047,
       "high_52w": 120.48,
       "low_52w": 75.82
     },
@@ -7933,7 +7933,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 12907,
       "high_52w": 52.959,
       "low_52w": 38.881
     },
@@ -7943,7 +7943,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 87625,
       "high_52w": 152.45,
       "low_52w": 73.67
     },
@@ -7953,7 +7953,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 3320,
       "high_52w": 14.1,
       "low_52w": 11.4
     },
@@ -7963,9 +7963,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 4161,
       "high_52w": 139.99,
-      "low_52w": 0
+      "low_52w": 93.5
     },
     {
       "ticker": "BBSD11",
@@ -7973,9 +7973,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 18,
       "high_52w": 153.09,
-      "low_52w": 0
+      "low_52w": 98.66
     },
     {
       "ticker": "GPUS11",
@@ -7983,7 +7983,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 1398,
       "high_52w": 117.45,
       "low_52w": 98.55
     },
@@ -7993,8 +7993,8 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
-      "high_52w": 149.5,
+      "liquidity": 41082,
+      "high_52w": 149.59,
       "low_52w": 130.54
     },
     {
@@ -8003,7 +8003,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 41124,
       "high_52w": 113,
       "low_52w": 98.73
     },
@@ -8013,7 +8013,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 233843,
       "high_52w": 76.4,
       "low_52w": 25.31
     },
@@ -8023,7 +8023,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 1913,
       "high_52w": 168.1,
       "low_52w": 112.93
     },
@@ -8033,7 +8033,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 20,
       "high_52w": 136.63,
       "low_52w": 95.41
     },
@@ -8043,7 +8043,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 857,
       "high_52w": 196.92,
       "low_52w": 125.28
     },
@@ -8053,7 +8053,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 9290,
       "high_52w": 25.4,
       "low_52w": 11.5
     },
@@ -8063,7 +8063,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 17712,
       "high_52w": 198.3,
       "low_52w": 125.75
     },
@@ -8073,9 +8073,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 2349,
       "high_52w": 106.5,
-      "low_52w": 0
+      "low_52w": 99.33
     },
     {
       "ticker": "ALUG11",
@@ -8083,9 +8083,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 3445,
       "high_52w": 43.79,
-      "low_52w": 0
+      "low_52w": 39.03
     },
     {
       "ticker": "XBOV11",
@@ -8093,7 +8093,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 1,
       "high_52w": 187.8,
       "low_52w": 121.7
     },
@@ -8103,7 +8103,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 1073,
       "high_52w": 87.71,
       "low_52w": 71.5
     },
@@ -8113,7 +8113,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 12917,
       "high_52w": 130.76,
       "low_52w": 99.89
     },
@@ -8123,7 +8123,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 214900,
       "high_52w": 18.56,
       "low_52w": 6.21
     }
@@ -8132,23 +8132,23 @@ window.INVEST_DATA = {
     "tesouro": [
       {
         "name": "Tesouro Prefixado 2029",
-        "rate": "13,73%",
+        "rate": "13,74%",
         "minInvest": "R$ 7,00",
-        "price": "R$ 700,22",
+        "price": "R$ 700,05",
         "maturity": "01/01/2029"
       },
       {
         "name": "Tesouro Prefixado 2032",
-        "rate": "14,07%",
+        "rate": "14,08%",
         "minInvest": "R$ 4,68",
-        "price": "R$ 468,60",
+        "price": "R$ 468,37",
         "maturity": "01/01/2032"
       },
       {
         "name": "Tesouro Prefixado 2037Juros\n                                                                            Semestrais",
-        "rate": "14,06%",
-        "minInvest": "R$ 8,10",
-        "price": "R$ 810,19",
+        "rate": "14,07%",
+        "minInvest": "R$ 8,09",
+        "price": "R$ 809,75",
         "maturity": "01/01/2037"
       },
       {
@@ -8160,37 +8160,37 @@ window.INVEST_DATA = {
       },
       {
         "name": "Tesouro Renda+ Aposentadoria Extra 2030",
-        "rate": "IPCA + 7,42%",
-        "minInvest": "R$ 18,87",
-        "price": "R$ 1.887,85",
+        "rate": "IPCA + 7,44%",
+        "minInvest": "R$ 18,83",
+        "price": "R$ 1.883,84",
         "maturity": "15/12/2049"
       },
       {
         "name": "Tesouro Renda+ Aposentadoria Extra 2035",
-        "rate": "IPCA + 7,23%",
-        "minInvest": "R$ 13,61",
-        "price": "R$ 1.361,77",
+        "rate": "IPCA + 7,25%",
+        "minInvest": "R$ 13,57",
+        "price": "R$ 1.357,60",
         "maturity": "15/12/2054"
       },
       {
         "name": "Tesouro Renda+ Aposentadoria Extra 2040",
-        "rate": "IPCA + 7,11%",
-        "minInvest": "R$ 9,85",
-        "price": "R$ 985,91",
+        "rate": "IPCA + 7,13%",
+        "minInvest": "R$ 9,81",
+        "price": "R$ 981,96",
         "maturity": "15/12/2059"
       },
       {
         "name": "Tesouro Renda+ Aposentadoria Extra 2045",
-        "rate": "IPCA + 7,06%",
-        "minInvest": "R$ 7,09",
-        "price": "R$ 709,59",
+        "rate": "IPCA + 7,07%",
+        "minInvest": "R$ 7,07",
+        "price": "R$ 707,84",
         "maturity": "15/12/2064"
       },
       {
         "name": "Tesouro Renda+ Aposentadoria Extra 2050",
-        "rate": "IPCA + 7,03%",
-        "minInvest": "R$ 5,10",
-        "price": "R$ 510,02",
+        "rate": "IPCA + 7,04%",
+        "minInvest": "R$ 5,08",
+        "price": "R$ 508,53",
         "maturity": "15/12/2069"
       },
       {
@@ -8202,51 +8202,51 @@ window.INVEST_DATA = {
       },
       {
         "name": "Tesouro Renda+ Aposentadoria Extra 2060",
-        "rate": "IPCA + 7,05%",
-        "minInvest": "R$ 2,57",
-        "price": "R$ 257,58",
+        "rate": "IPCA + 7,04%",
+        "minInvest": "R$ 2,58",
+        "price": "R$ 258,58",
         "maturity": "15/12/2079"
       },
       {
         "name": "Tesouro Renda+ Aposentadoria Extra 2065",
-        "rate": "IPCA + 7,05%",
-        "minInvest": "R$ 1,83",
-        "price": "R$ 183,60",
+        "rate": "IPCA + 7,04%",
+        "minInvest": "R$ 1,84",
+        "price": "R$ 184,40",
         "maturity": "15/12/2084"
       },
       {
         "name": "Tesouro Educa+ 2027",
-        "rate": "IPCA + 8,17%",
-        "minInvest": "R$ 36,08",
-        "price": "R$ 3.608,61",
+        "rate": "IPCA + 8,15%",
+        "minInvest": "R$ 36,10",
+        "price": "R$ 3.610,68",
         "maturity": "15/12/2031"
       },
       {
         "name": "Tesouro Educa+ 2028",
-        "rate": "IPCA + 8,09%",
-        "minInvest": "R$ 33,47",
-        "price": "R$ 3.347,70",
+        "rate": "IPCA + 8,07%",
+        "minInvest": "R$ 33,50",
+        "price": "R$ 3.350,24",
         "maturity": "15/12/2032"
       },
       {
         "name": "Tesouro Educa+ 2029",
-        "rate": "IPCA + 8,01%",
-        "minInvest": "R$ 31,10",
-        "price": "R$ 3.110,31",
+        "rate": "IPCA + 7,99%",
+        "minInvest": "R$ 31,13",
+        "price": "R$ 3.113,24",
         "maturity": "15/12/2033"
       },
       {
         "name": "Tesouro Educa+ 2030",
-        "rate": "IPCA + 7,93%",
-        "minInvest": "R$ 28,93",
-        "price": "R$ 2.893,46",
+        "rate": "IPCA + 7,92%",
+        "minInvest": "R$ 28,95",
+        "price": "R$ 2.895,09",
         "maturity": "15/12/2034"
       },
       {
         "name": "Tesouro Educa+ 2031",
-        "rate": "IPCA + 7,83%",
-        "minInvest": "R$ 26,99",
-        "price": "R$ 2.699,40",
+        "rate": "IPCA + 7,82%",
+        "minInvest": "R$ 27,01",
+        "price": "R$ 2.701,17",
         "maturity": "15/12/2035"
       },
       {
@@ -8265,79 +8265,79 @@ window.INVEST_DATA = {
       },
       {
         "name": "Tesouro Educa+ 2034",
-        "rate": "IPCA + 7,57%",
-        "minInvest": "R$ 22,09",
-        "price": "R$ 2.209,33",
+        "rate": "IPCA + 7,59%",
+        "minInvest": "R$ 22,05",
+        "price": "R$ 2.205,19",
         "maturity": "15/12/2038"
       },
       {
         "name": "Tesouro Educa+ 2035",
-        "rate": "IPCA + 7,50%",
-        "minInvest": "R$ 20,69",
-        "price": "R$ 2.069,96",
+        "rate": "IPCA + 7,52%",
+        "minInvest": "R$ 20,65",
+        "price": "R$ 2.065,70",
         "maturity": "15/12/2039"
       },
       {
         "name": "Tesouro Educa+ 2036",
-        "rate": "IPCA + 7,44%",
-        "minInvest": "R$ 19,39",
-        "price": "R$ 1.939,28",
+        "rate": "IPCA + 7,47%",
+        "minInvest": "R$ 19,32",
+        "price": "R$ 1.932,76",
         "maturity": "15/12/2040"
       },
       {
         "name": "Tesouro Educa+ 2037",
-        "rate": "IPCA + 7,38%",
-        "minInvest": "R$ 18,18",
-        "price": "R$ 1.818,81",
+        "rate": "IPCA + 7,41%",
+        "minInvest": "R$ 18,12",
+        "price": "R$ 1.812,18",
         "maturity": "15/12/2041"
       },
       {
         "name": "Tesouro Educa+ 2038",
-        "rate": "IPCA + 7,33%",
-        "minInvest": "R$ 17,05",
-        "price": "R$ 1.705,51",
+        "rate": "IPCA + 7,36%",
+        "minInvest": "R$ 16,98",
+        "price": "R$ 1.698,82",
         "maturity": "15/12/2042"
       },
       {
         "name": "Tesouro Educa+ 2039",
-        "rate": "IPCA + 7,28%",
-        "minInvest": "R$ 16,00",
-        "price": "R$ 1.600,62",
+        "rate": "IPCA + 7,32%",
+        "minInvest": "R$ 15,91",
+        "price": "R$ 1.591,66",
         "maturity": "15/12/2043"
       },
       {
         "name": "Tesouro Educa+ 2040",
-        "rate": "IPCA + 7,25%",
-        "minInvest": "R$ 14,99",
-        "price": "R$ 1.499,20",
+        "rate": "IPCA + 7,28%",
+        "minInvest": "R$ 14,92",
+        "price": "R$ 1.492,48",
         "maturity": "15/12/2044"
       },
       {
         "name": "Tesouro Educa+ 2041",
-        "rate": "IPCA + 7,22%",
-        "minInvest": "R$ 14,05",
-        "price": "R$ 1.405,09",
+        "rate": "IPCA + 7,25%",
+        "minInvest": "R$ 13,98",
+        "price": "R$ 1.398,41",
         "maturity": "15/12/2045"
       },
       {
         "name": "Tesouro Educa+ 2042",
-        "rate": "IPCA + 7,19%",
-        "minInvest": "R$ 13,17",
-        "price": "R$ 1.317,72",
+        "rate": "IPCA + 7,22%",
+        "minInvest": "R$ 13,11",
+        "price": "R$ 1.311,09",
         "maturity": "15/12/2046"
       },
       {
         "name": "Tesouro IPCA+ 2040",
-        "rate": "IPCA + 7,31%",
-        "minInvest": "R$ 16,85",
-        "price": "R$ 1.685,47",
+        "rate": "IPCA + 7,35%",
+        "minInvest": "R$ 16,76",
+        "price": "R$ 1.676,49",
         "maturity": "15/08/2040"
       },
       {
         "name": "Tesouro Educa+ 2043",
-        "rate": "IPCA + 7,16%",
-        "minInvest": "R$ 12,36",
-        "price": "R$ 1.236,57",
+        "rate": "IPCA + 7,19%",
+        "minInvest": "R$ 12,30",
+        "price": "R$ 1.230,00",
         "maturity": "15/12/2047"
       },
       {
@@ -8349,37 +8349,37 @@ window.INVEST_DATA = {
       },
       {
         "name": "Tesouro IPCA+ 2032",
-        "rate": "IPCA + 7,92%",
-        "minInvest": "R$ 28,49",
-        "price": "R$ 2.849,75",
+        "rate": "IPCA + 7,90%",
+        "minInvest": "R$ 28,53",
+        "price": "R$ 2.853,12",
         "maturity": "15/08/2032"
       },
       {
         "name": "Tesouro Educa+ 2044",
-        "rate": "IPCA + 7,14%",
-        "minInvest": "R$ 11,58",
-        "price": "R$ 1.158,89",
+        "rate": "IPCA + 7,16%",
+        "minInvest": "R$ 11,54",
+        "price": "R$ 1.154,57",
         "maturity": "15/12/2048"
       },
       {
         "name": "Tesouro IPCA+ 2045Juros\n                                                                            Semestrais",
-        "rate": "IPCA + 7,36%",
-        "minInvest": "R$ 41,17",
-        "price": "R$ 4.117,58",
+        "rate": "IPCA + 7,38%",
+        "minInvest": "R$ 41,09",
+        "price": "R$ 4.109,29",
         "maturity": "15/05/2045"
       },
       {
         "name": "Tesouro IPCA+ 2060Juros\n                                                                            Semestrais",
-        "rate": "IPCA + 7,26%",
-        "minInvest": "R$ 39,57",
-        "price": "R$ 3.957,70",
+        "rate": "IPCA + 7,27%",
+        "minInvest": "R$ 39,52",
+        "price": "R$ 3.952,73",
         "maturity": "15/08/2060"
       },
       {
         "name": "Tesouro IPCA+ 2037Juros\n                                                                            Semestrais",
-        "rate": "IPCA + 7,63%",
-        "minInvest": "R$ 41,95",
-        "price": "R$ 4.195,30",
+        "rate": "IPCA + 7,64%",
+        "minInvest": "R$ 41,92",
+        "price": "R$ 4.192,23",
         "maturity": "15/05/2037"
       }
     ],
