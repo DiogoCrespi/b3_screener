@@ -65,13 +65,16 @@ class BrapiStockAdapter {
             const price = brapiStock.regularMarketPrice || 0;
 
             // Brapi uses different field names, we need to map them
+            const dividend_yield = Math.round((fundamentals.dividendYield || 0) * 100 * 100) / 100; // Brapi returns as decimal
+            const pl = fundamentals.trailingPE || 0;
+
             return {
                 ticker: brapiStock.symbol || '',
                 cotacao: price,
-                pl: fundamentals.trailingPE || 0,
+                pl,
                 p_vp: fundamentals.priceToBook || 0,
                 psr: fundamentals.priceToSalesTrailing12Months || 0,
-                dividend_yield: Math.round((fundamentals.dividendYield || 0) * 100 * 100) / 100, // Brapi returns as decimal
+                dividend_yield,
                 ev_ebit: fundamentals.enterpriseToEbitda || 0,
                 mrg_ebit: Math.round((fundamentals.ebitdaMargins || 0) * 100 * 100) / 100,
                 mrg_liq: Math.round((fundamentals.profitMargins || 0) * 100 * 100) / 100,
@@ -79,7 +82,8 @@ class BrapiStockAdapter {
                 roe: Math.round((fundamentals.returnOnEquity || 0) * 100 * 100) / 100,
                 liq_2meses: brapiStock.averageDailyVolume10Day || 0,
                 div_br_patrim: fundamentals.debtToEquity || 0,
-                cresc_5a: Math.round((fundamentals.earningsQuarterlyGrowth || 0) * 100 * 100) / 100 // Approximation
+                cresc_5a: Math.round((fundamentals.earningsQuarterlyGrowth || 0) * 100 * 100) / 100, // Approximation
+                payout: (pl > 0 && dividend_yield > 0) ? (dividend_yield * pl) : 0
             };
         } catch (e) {
             console.warn(`Failed to transform stock ${brapiStock?.symbol || 'unknown'}:`, e.message);
