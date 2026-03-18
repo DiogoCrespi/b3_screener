@@ -1,7 +1,7 @@
 const { test, describe, beforeEach, afterEach } = require('node:test');
 const assert = require('node:assert');
 const axios = require('axios');
-const { getDollarRate, getSelicRate } = require('./economy');
+const { getDollarRate, getSelicRate, DOLLAR_RATE_API_URL, SELIC_RATE_API_URL } = require('./economy');
 
 describe('Economy Service', () => {
     let originalGet;
@@ -23,7 +23,7 @@ describe('Economy Service', () => {
     describe('getDollarRate', () => {
         test('should fetch and parse Dollar rate correctly', async () => {
             axios.get = async (url) => {
-                if (url === 'https://economia.awesomeapi.com.br/last/USD-BRL') {
+                if (url === DOLLAR_RATE_API_URL) {
                     return {
                         data: {
                             USDBRL: {
@@ -55,7 +55,7 @@ describe('Economy Service', () => {
     describe('getSelicRate', () => {
         test('should fetch and parse Selic rate correctly', async () => {
             axios.get = async (url) => {
-                if (url === 'https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados/ultimos/1?formato=json') {
+                if (url === SELIC_RATE_API_URL) {
                     return {
                         data: [
                             {
