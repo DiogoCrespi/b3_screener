@@ -2,6 +2,7 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const { getFiiMetadata } = require('./investidor10');
 const { KNOWN_INFRAS } = require('./config/fii_lists');
+const { getSelicRate } = require('./economy');
 
 /**
  * FI-Infra Service
@@ -71,8 +72,10 @@ async function getFIInfra(selicParam = null) {
     if (!selic) {
         selic = 12.75;
         try {
-            const selicResponse = await axios.get('https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados/ultimos/1?formato=json');
-            selic = parseFloat(selicResponse.data[0]?.valor || 12.75);
+            const fetchedSelic = await getSelicRate();
+            if (fetchedSelic !== null) {
+                selic = fetchedSelic;
+            }
         } catch (e) { }
     }
 
