@@ -22,10 +22,12 @@ async function getBestStocks(selicParam = null, dependencies = {}) {
         rawStocks = await fundamentusAdapter.getStocks();
     } catch (fundamentusError) {
         console.warn('⚠️  Fundamentus failed:', fundamentusError.message);
+        console.log('🔄 Switching to Brapi.dev backup...');
 
         try {
             const brapiAdapter = new BrapiAdapter();
             rawStocks = await brapiAdapter.getStocks();
+            console.log(`✅ Successfully fetched ${rawStocks.length} stocks from Brapi.dev`);
         } catch (brapiError) {
             console.error('❌ Both data sources failed!');
             console.error('Fundamentus:', fundamentusError.message);

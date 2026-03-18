@@ -60,15 +60,34 @@ describe('Stocks Service', () => {
         const mockAnalyze = (s) => ({ ...s, category: 'OPPORTUNITY', score: 8 });
         const mockSelic = async () => 10.0;
 
-        const stocks = await getBestStocks(null, {
-            FundamentusAdapter: MockFundamentus,
-            BrapiAdapter: MockBrapi,
-            stockAnalyzer: mockAnalyze,
-            selicFetcher: mockSelic
-        });
+        // Mock console.log and console.warn to verify fallback messages
+        const originalLog = console.log;
+        const originalWarn = console.warn;
+        const logs = [];
+        const warns = [];
+        console.log = (msg) => logs.push(msg);
+        console.warn = (msg, err) => warns.push(`${msg} ${err}`);
+
+        let stocks;
+        try {
+            stocks = await getBestStocks(null, {
+                FundamentusAdapter: MockFundamentus,
+                BrapiAdapter: MockBrapi,
+                stockAnalyzer: mockAnalyze,
+                selicFetcher: mockSelic
+            });
+        } finally {
+            console.log = originalLog;
+            console.warn = originalWarn;
+        }
 
         assert.strictEqual(stocks.length, 1);
         assert.strictEqual(stocks[0].ticker, 'VALE3');
+
+        // Verify fallback messages are logged correctly
+        assert.ok(warns.some(w => w.includes('⚠️  Fundamentus failed: Fundamentus Down')), 'Should warn about Fundamentus failure');
+        assert.ok(logs.some(l => l.includes('🔄 Switching to Brapi.dev backup...')), 'Should log switching message');
+        assert.ok(logs.some(l => l.includes('✅ Successfully fetched 1 stocks from Brapi.dev')), 'Should log successful Brapi fetch message');
     });
 
     test('should return empty array when both adapters fail', async () => {
