@@ -51,7 +51,14 @@ class BrapiStockAdapter {
             }
 
             // Transform Brapi format to our internal format
-            return results.map(stock => this.transformStock(stock)).filter(s => s !== null);
+            const transformedStocks = [];
+            for (const stock of results) {
+                const transformed = this.transformStock(stock);
+                if (transformed !== null) {
+                    transformedStocks.push(transformed);
+                }
+            }
+            return transformedStocks;
 
         } catch (error) {
             console.error('Error in BrapiStockAdapter:', error.message);

@@ -40,7 +40,8 @@ describe('BrapiStockAdapter', () => {
                 roe: 30,
                 liq_2meses: 1000000,
                 div_br_patrim: 0.6,
-                cresc_5a: 5
+                cresc_5a: 5,
+                payout: 85.25
             };
 
             const result = adapter.transformStock(input);
