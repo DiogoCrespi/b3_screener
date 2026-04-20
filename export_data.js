@@ -14,7 +14,11 @@ async function exportData() {
     try {
         // 1. Initial Data Fetch
         // Fetch Selic first to avoid redundant requests in parallel calls
-        const selic = await getSelicRate();
+        let selic = await getSelicRate();
+        if (selic === null || isNaN(selic)) {
+            console.warn('⚠️ Central Bank API timeout for Selic. Using default 10.75% globally.');
+            selic = 10.75;
+        }
         const [dollar, stocks, rawStandardFiis, rawInfraFiis, etfs, tesouro, privateFixed] = await Promise.all([
             getDollarRate(),
             getBestStocks(selic),
