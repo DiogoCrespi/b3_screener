@@ -1,7 +1,7 @@
 window.INVEST_DATA = {
-  "updatedAt": "21/04/2026, 01:17:35",
+  "updatedAt": "20/04/2026, 19:59:33",
   "economy": {
-    "dollar": 4.9716,
+    "dollar": 4.9731,
     "selic": 14.75
   },
   "stocks": [
@@ -4919,7 +4919,7 @@ window.INVEST_DATA = {
     {
       "ticker": "PSEC11",
       "segment": "Outros",
-      "price": 62.3,
+      "price": 62.29,
       "ffo_yield": 8.61,
       "dy": 13.08,
       "p_vp": 0.83,
@@ -4935,7 +4935,7 @@ window.INVEST_DATA = {
       "score": 8,
       "selic": 14.75,
       "magicNumber": 92,
-      "magicCost": 5731.599999999999,
+      "magicCost": 5730.68,
       "category": "STAR",
       "last_dividend": 0.65,
       "external_segment": "Títulos e Valores Mobiliários",
@@ -5543,9 +5543,9 @@ window.INVEST_DATA = {
     {
       "ticker": "XPCI11",
       "segment": "Outros",
-      "price": 84.2,
+      "price": 84.36,
       "ffo_yield": 12.27,
-      "dy": 13,
+      "dy": 12.99,
       "p_vp": 0.94,
       "market_cap": 731975000,
       "liquidity": 2560000,
@@ -5557,7 +5557,7 @@ window.INVEST_DATA = {
       "score": 6,
       "selic": 14.75,
       "magicNumber": 93,
-      "magicCost": 7830.6,
+      "magicCost": 7845.48,
       "category": "OPPORTUNITY",
       "last_dividend": 0.85,
       "external_segment": "Títulos e Valores Mobiliários",
@@ -6576,6 +6576,32 @@ window.INVEST_DATA = {
       "data_pagamento": "15/04/2026"
     },
     {
+      "ticker": "GCRI11",
+      "segment": "Multicategoria",
+      "price": 67.73,
+      "ffo_yield": 12.75,
+      "dy": 14.85,
+      "p_vp": 0.74,
+      "market_cap": 98847900,
+      "liquidity": 307140,
+      "num_properties": 1,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "DISTRESSED_RISK"
+      ],
+      "type": "MULTI",
+      "score": 0,
+      "selic": 14.75,
+      "magicNumber": 81,
+      "magicCost": 5486.13,
+      "category": "STANDARD",
+      "last_dividend": 0.85,
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "14/04/2026",
+      "data_pagamento": "22/04/2026"
+    },
+    {
       "ticker": "GCRA11",
       "segment": "Multicategoria",
       "price": 54.34,
@@ -6600,32 +6626,6 @@ window.INVEST_DATA = {
       "external_segment": "Fiagros",
       "data_com": "08/04/2026",
       "data_pagamento": "15/04/2026"
-    },
-    {
-      "ticker": "GCRI11",
-      "segment": "Multicategoria",
-      "price": 67.75,
-      "ffo_yield": 12.75,
-      "dy": 14.81,
-      "p_vp": 0.74,
-      "market_cap": 98847900,
-      "liquidity": 307140,
-      "num_properties": 1,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "strategies": [
-        "DISTRESSED_RISK"
-      ],
-      "type": "MULTI",
-      "score": 0,
-      "selic": 14.75,
-      "magicNumber": 82,
-      "magicCost": 5555.5,
-      "category": "STANDARD",
-      "last_dividend": 0.85,
-      "external_segment": "Títulos e Valores Mobiliários",
-      "data_com": "14/04/2026",
-      "data_pagamento": "22/04/2026"
     },
     {
       "ticker": "VRTM11",
@@ -7072,9 +7072,9 @@ window.INVEST_DATA = {
     {
       "ticker": "BTRA11",
       "segment": "Outros",
-      "price": 67.39,
+      "price": 67.35,
       "ffo_yield": 9.37,
-      "dy": 9.57,
+      "dy": 9.54,
       "p_vp": 0.58,
       "market_cap": 224786000,
       "liquidity": 236820,
@@ -7088,7 +7088,7 @@ window.INVEST_DATA = {
       "score": 0,
       "selic": 14.75,
       "magicNumber": 126,
-      "magicCost": 8491.14,
+      "magicCost": 8486.099999999999,
       "category": "STANDARD",
       "last_dividend": 0.9,
       "external_segment": "Fiagros",
@@ -7181,7 +7181,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 2507424,
+      "liquidity": 2577373,
       "high_52w": 195.73,
       "low_52w": 125.6
     },
@@ -7191,7 +7191,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 67720,
+      "liquidity": 71812,
       "high_52w": 433.61,
       "low_52w": 336.01
     },
@@ -7201,7 +7201,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 2913868,
+      "liquidity": 2957101,
       "high_52w": 130.44,
       "low_52w": 96.65
     },
@@ -7211,7 +7211,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 343760,
+      "liquidity": 345543,
       "high_52w": 94.9,
       "low_52w": 43.07
     },
@@ -7221,7 +7221,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 439419,
+      "liquidity": 460654,
       "high_52w": 30.14,
       "low_52w": 18.6
     },
@@ -7231,7 +7231,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 130403,
+      "liquidity": 130917,
       "high_52w": 9.26,
       "low_52w": 7.35
     },
@@ -7241,7 +7241,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 480102,
+      "liquidity": 494035,
       "high_52w": 19.96,
       "low_52w": 14.44
     },
@@ -7251,7 +7251,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 37771,
+      "liquidity": 38901,
       "high_52w": 118.37,
       "low_52w": 99.24
     },
@@ -7261,7 +7261,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 1671,
+      "liquidity": 1670,
       "high_52w": 104.8,
       "low_52w": 67.19
     },
@@ -7271,7 +7271,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 30486,
+      "liquidity": 31127,
       "high_52w": 148.49,
       "low_52w": 110.05
     },
@@ -7281,7 +7281,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 23363,
+      "liquidity": 25044,
       "high_52w": 142.37,
       "low_52w": 94.26
     },
@@ -7291,7 +7291,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 10268,
+      "liquidity": 10298,
       "high_52w": 138,
       "low_52w": 103.74
     },
@@ -7301,7 +7301,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 17927,
+      "liquidity": 18081,
       "high_52w": 105.89,
       "low_52w": 86.39
     },
@@ -7311,7 +7311,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 205213,
+      "liquidity": 207137,
       "high_52w": 97.67,
       "low_52w": 42.41
     },
@@ -7321,7 +7321,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 11769,
+      "liquidity": 11822,
       "high_52w": 17.1,
       "low_52w": 13.13
     },
@@ -7331,7 +7331,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 197960,
+      "liquidity": 199438,
       "high_52w": 40.48,
       "low_52w": 19.83
     },
@@ -7341,7 +7341,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 13909,
+      "liquidity": 14214,
       "high_52w": 70.95,
       "low_52w": 51.07
     },
@@ -7351,7 +7351,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 584578,
+      "liquidity": 592514,
       "high_52w": 120.88,
       "low_52w": 100.02
     },
@@ -7361,7 +7361,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 71879,
+      "liquidity": 73080,
       "high_52w": 107.38,
       "low_52w": 94.89
     },
@@ -7371,7 +7371,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 38626,
+      "liquidity": 38682,
       "high_52w": 52.959,
       "low_52w": 40.865
     },
@@ -7381,7 +7381,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 45182,
+      "liquidity": 53186,
       "high_52w": 120.48,
       "low_52w": 82.27
     },
@@ -7391,7 +7391,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 5335,
+      "liquidity": 5945,
       "high_52w": 139.99,
       "low_52w": 93.5
     },
@@ -7401,7 +7401,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 10889,
+      "liquidity": 11322,
       "high_52w": 14.1,
       "low_52w": 11.78
     },
@@ -7411,7 +7411,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 112731,
+      "liquidity": 113114,
       "high_52w": 152.45,
       "low_52w": 73.67
     },
@@ -7431,7 +7431,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 6831,
+      "liquidity": 7234,
       "high_52w": 117.45,
       "low_52w": 98.55
     },
@@ -7441,7 +7441,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 138926,
+      "liquidity": 140727,
       "high_52w": 151.6,
       "low_52w": 132.12
     },
@@ -7451,7 +7451,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 28003,
+      "liquidity": 29209,
       "high_52w": 114.75,
       "low_52w": 99.5
     },
@@ -7461,7 +7461,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 188769,
+      "liquidity": 191517,
       "high_52w": 76.4,
       "low_52w": 27.07
     },
@@ -7471,7 +7471,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 1519,
+      "liquidity": 1805,
       "high_52w": 169.48,
       "low_52w": 117.58
     },
@@ -7491,7 +7491,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 2496,
+      "liquidity": 6382,
       "high_52w": 203.69,
       "low_52w": 131.11
     },
@@ -7501,7 +7501,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 1209,
+      "liquidity": 1240,
       "high_52w": 107.96,
       "low_52w": 99.33
     },
@@ -7521,7 +7521,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 2757,
+      "liquidity": 2745,
       "high_52w": 134,
       "low_52w": 99.89
     },
@@ -7531,7 +7531,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 54520,
+      "liquidity": 93692,
       "high_52w": 205.42,
       "low_52w": 131.44
     },
@@ -7541,7 +7541,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 2366,
+      "liquidity": 2409,
       "high_52w": 87.71,
       "low_52w": 74.09
     },
@@ -7551,7 +7551,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 72192,
+      "liquidity": 74372,
       "high_52w": 105.54,
       "low_52w": 100.09
     },
@@ -7561,7 +7561,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 7466,
+      "liquidity": 7511,
       "high_52w": 43.4,
       "low_52w": 38.61
     },

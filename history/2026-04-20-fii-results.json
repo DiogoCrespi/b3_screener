@@ -1,8 +1,8 @@
 {
-  "date": "2026-04-20T19:47:36.163Z",
+  "date": "2026-04-20T19:59:33.429Z",
   "count": 100,
   "economy": {
-    "dollar": 4.9716,
+    "dollar": 4.9731,
     "selic": 14.75
   },
   "type": "fii",
@@ -250,7 +250,7 @@
     {
       "ticker": "PSEC11",
       "segment": "Outros",
-      "price": 62.3,
+      "price": 62.29,
       "ffo_yield": 8.61,
       "dy": 13.08,
       "p_vp": 0.83,
@@ -266,7 +266,7 @@
       "score": 8,
       "selic": 14.75,
       "magicNumber": 92,
-      "magicCost": 5731.599999999999,
+      "magicCost": 5730.68,
       "category": "STAR",
       "last_dividend": 0.65,
       "external_segment": "Títulos e Valores Mobiliários",
@@ -874,9 +874,9 @@
     {
       "ticker": "XPCI11",
       "segment": "Outros",
-      "price": 84.2,
+      "price": 84.36,
       "ffo_yield": 12.27,
-      "dy": 13,
+      "dy": 12.99,
       "p_vp": 0.94,
       "market_cap": 731975000,
       "liquidity": 2560000,
@@ -888,7 +888,7 @@
       "score": 6,
       "selic": 14.75,
       "magicNumber": 93,
-      "magicCost": 7830.6,
+      "magicCost": 7845.48,
       "category": "OPPORTUNITY",
       "last_dividend": 0.85,
       "external_segment": "Títulos e Valores Mobiliários",
@@ -1907,6 +1907,32 @@
       "data_pagamento": "15/04/2026"
     },
     {
+      "ticker": "GCRI11",
+      "segment": "Multicategoria",
+      "price": 67.73,
+      "ffo_yield": 12.75,
+      "dy": 14.85,
+      "p_vp": 0.74,
+      "market_cap": 98847900,
+      "liquidity": 307140,
+      "num_properties": 1,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "DISTRESSED_RISK"
+      ],
+      "type": "MULTI",
+      "score": 0,
+      "selic": 14.75,
+      "magicNumber": 81,
+      "magicCost": 5486.13,
+      "category": "STANDARD",
+      "last_dividend": 0.85,
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "14/04/2026",
+      "data_pagamento": "22/04/2026"
+    },
+    {
       "ticker": "GCRA11",
       "segment": "Multicategoria",
       "price": 54.34,
@@ -1931,32 +1957,6 @@
       "external_segment": "Fiagros",
       "data_com": "08/04/2026",
       "data_pagamento": "15/04/2026"
-    },
-    {
-      "ticker": "GCRI11",
-      "segment": "Multicategoria",
-      "price": 67.75,
-      "ffo_yield": 12.75,
-      "dy": 14.81,
-      "p_vp": 0.74,
-      "market_cap": 98847900,
-      "liquidity": 307140,
-      "num_properties": 1,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "strategies": [
-        "DISTRESSED_RISK"
-      ],
-      "type": "MULTI",
-      "score": 0,
-      "selic": 14.75,
-      "magicNumber": 82,
-      "magicCost": 5555.5,
-      "category": "STANDARD",
-      "last_dividend": 0.85,
-      "external_segment": "Títulos e Valores Mobiliários",
-      "data_com": "14/04/2026",
-      "data_pagamento": "22/04/2026"
     },
     {
       "ticker": "VRTM11",
@@ -2403,9 +2403,9 @@
     {
       "ticker": "BTRA11",
       "segment": "Outros",
-      "price": 67.39,
+      "price": 67.35,
       "ffo_yield": 9.37,
-      "dy": 9.57,
+      "dy": 9.54,
       "p_vp": 0.58,
       "market_cap": 224786000,
       "liquidity": 236820,
@@ -2419,7 +2419,7 @@
       "score": 0,
       "selic": 14.75,
       "magicNumber": 126,
-      "magicCost": 8491.14,
+      "magicCost": 8486.099999999999,
       "category": "STANDARD",
       "last_dividend": 0.9,
       "external_segment": "Fiagros",
