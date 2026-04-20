@@ -165,7 +165,7 @@ async function getBestFIIs(externalMetadata = {}, baseList = null, selicParam = 
                 const isAgro = type === 'AGRO';
                 const isInfra = type === 'INFRA';
                 const isMulti = type === 'MULTI';
-                const isTijolo = type === 'TIJOLO';
+                const isTijolo = type === 'TIJOLO' || f.num_properties > 0;
                 const isPapel = type === 'PAPEL';
 
                 // --- 1. VALUATION (P/VP) ---
