@@ -1,9 +1,9 @@
 {
-  "date": "2026-04-20T20:54:42.644Z",
+  "date": "2026-04-20T21:25:38.987Z",
   "count": 155,
   "economy": {
-    "dollar": 4.9723,
-    "selic": 14.75
+    "dollar": 4.9674,
+    "selic": null
   },
   "type": "stock",
   "items": [

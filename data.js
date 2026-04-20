@@ -1,8 +1,8 @@
 window.INVEST_DATA = {
-  "updatedAt": "21/04/2026, 02:41:35",
+  "updatedAt": "20/04/2026, 21:25:38",
   "economy": {
-    "dollar": 4.9631,
-    "selic": 14.75
+    "dollar": 4.9674,
+    "selic": null
   },
   "stocks": [
     {
@@ -4805,7 +4805,7 @@ window.INVEST_DATA = {
       "segment": "Shoppings",
       "price": 10.64,
       "ffo_yield": 4.28,
-      "dy": 12.3,
+      "dy": 12.31,
       "p_vp": 0.92,
       "market_cap": 1011600000,
       "liquidity": 5150000,
@@ -5445,7 +5445,7 @@ window.INVEST_DATA = {
       "segment": "Infraestrutura",
       "mandate": null,
       "price": 102.75,
-      "dy": 11.66,
+      "dy": 11.68,
       "p_vp": 1.01,
       "liquidity": 4260000,
       "last_dividend": 1,
@@ -6430,9 +6430,9 @@ window.INVEST_DATA = {
     {
       "ticker": "BBFO11",
       "segment": "Multicategoria",
-      "price": 73.19,
+      "price": 72.95,
       "ffo_yield": 14.71,
-      "dy": 12.69,
+      "dy": 12.64,
       "p_vp": 0.97,
       "market_cap": 292685000,
       "liquidity": 542990,
@@ -6446,7 +6446,7 @@ window.INVEST_DATA = {
       "score": 3,
       "selic": 14.75,
       "magicNumber": 95,
-      "magicCost": 6953.05,
+      "magicCost": 6930.25,
       "category": "STANDARD",
       "last_dividend": 0.91,
       "external_segment": "Títulos e Valores Mobiliários",
@@ -6952,7 +6952,7 @@ window.INVEST_DATA = {
       "segment": "Outros",
       "price": 10.83,
       "ffo_yield": 12.5,
-      "dy": 2.98,
+      "dy": 2.97,
       "p_vp": 0.82,
       "market_cap": 202458000,
       "liquidity": 211210,
@@ -6965,8 +6965,8 @@ window.INVEST_DATA = {
       "type": "MULTI",
       "score": 0,
       "selic": 14.75,
-      "magicNumber": 403,
-      "magicCost": 4364.49,
+      "magicNumber": 405,
+      "magicCost": 4386.15,
       "category": "STANDARD",
       "last_dividend": 0.11,
       "external_segment": "Híbrido",
