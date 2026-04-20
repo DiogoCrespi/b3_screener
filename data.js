@@ -1,7 +1,7 @@
 window.INVEST_DATA = {
-  "updatedAt": "21/04/2026, 02:15:15",
+  "updatedAt": "20/04/2026, 20:54:42",
   "economy": {
-    "dollar": 4.9694,
+    "dollar": 4.9723,
     "selic": 14.75
   },
   "stocks": [
@@ -6555,7 +6555,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 1018996,
+      "liquidity": 943977,
       "high_52w": 30.14,
       "low_52w": 18.6
     },
@@ -6795,7 +6795,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 212288,
+      "liquidity": 212243,
       "high_52w": 76.4,
       "low_52w": 27.07
     },
@@ -6815,7 +6815,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 478,
+      "liquidity": 477,
       "high_52w": 136.63,
       "low_52w": 101.74
     },
