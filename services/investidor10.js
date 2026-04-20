@@ -38,7 +38,7 @@ async function getAssetMetadata(ticker) {
                 p_vp: 0,
                 liquidity: 0,
                 last_dividend: 0,
-                vacancy: 0,
+                vacancy: null,
                 data_com: null,
                 data_pagamento: null
             };
@@ -48,15 +48,15 @@ async function getAssetMetadata(ticker) {
                 let text = v.replace('R$', '').replace(/\./g, '').replace(',', '.').replace('%', '').trim();
                 let multiplier = 1;
                 const upperText = text.toUpperCase();
-                if (upperText.endsWith('M')) {
-                    multiplier = 1000000;
-                    text = text.slice(0, -1);
-                } else if (upperText.endsWith('K')) {
-                    multiplier = 1000;
-                    text = text.slice(0, -1);
-                } else if (upperText.endsWith('B')) {
+                if (upperText.includes('B')) { // Handles B, Bilhão, Bilhões
                     multiplier = 1000000000;
-                    text = text.slice(0, -1);
+                    text = text.replace(/[^0-9.]/g, '').trim();
+                } else if (upperText.includes('M')) { // Handles M, Milhão, Milhões
+                    multiplier = 1000000;
+                    text = text.replace(/[^0-9.]/g, '').trim();
+                } else if (upperText.includes('K')) {
+                    multiplier = 1000;
+                    text = text.replace(/[^0-9.]/g, '').trim();
                 }
                 return (parseFloat(text) * multiplier) || 0;
             };
@@ -70,6 +70,9 @@ async function getAssetMetadata(ticker) {
                 else if (name === 'TIPO DE FUNDO') metadata.type = value;
                 else if (name === 'SEGMENTO') metadata.segment = value;
                 else if (name === 'MANDATO') metadata.mandate = value;
+                else if (name === 'VACÂNCIA') metadata.vacancy = parseVal(value);
+                else if (name.includes('PATRIMÔNIO LÍQUIDO')) metadata.market_cap = parseVal(value); // Use as fallback for market_cap if needed
+                else if (name.includes('VALOR DE MERCADO')) metadata.market_cap = parseVal(value); // Priority for market_cap
             });
 
             // Scrape Dividend Dates from Table
@@ -118,7 +121,9 @@ async function getAssetMetadata(ticker) {
             metadata.dy = parseCardValue('DY');
             metadata.p_vp = parseCardValue('P/VP');
             metadata.liquidity = parseCardValue('LIQUIDEZ DIÁRIA');
-            metadata.vacancy = parseCardValue('VACÂNCIA');
+            
+            const vcncy = parseCardValue('VACÂNCIA');
+            if (vcncy > 0 || !metadata.vacancy) metadata.vacancy = vcncy;
 
             if (metadata.type || metadata.price > 0 || metadata.data_com) {
                 return metadata;
@@ -134,7 +139,7 @@ async function getAssetMetadata(ticker) {
     return {
         ticker: ticker.toUpperCase(),
         type: null, segment: null, mandate: null,
-        price: 0, dy: 0, p_vp: 0, liquidity: 0, last_dividend: 0, vacancy: 0,
+        price: 0, dy: 0, p_vp: 0, liquidity: 0, last_dividend: 0, vacancy: null,
         data_com: null, data_pagamento: null
     };
 }

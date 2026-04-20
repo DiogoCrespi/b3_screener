@@ -73,6 +73,15 @@ async function getBestFIIs(externalMetadata = {}, baseList = null, selicParam = 
             .map(f => {
                 const meta = externalMetadata[f.ticker] || {};
 
+                // Enrich with verified metadata from Investidor 10
+                // Fundamentus data is often outdated, so we prioritize Investidor 10
+                if (meta.vacancy !== undefined && meta.vacancy !== null) f.vacancy = meta.vacancy;
+                if (meta.dy > 0) f.dy = meta.dy;
+                if (meta.p_vp > 0) f.p_vp = meta.p_vp;
+                if (meta.price > 0) f.price = meta.price;
+                if (meta.liquidity > 0) f.liquidity = meta.liquidity;
+                if (meta.market_cap > 0) f.market_cap = meta.market_cap;
+                
                 // 1. CLASSIFICATION LOGIC
                 // Normalization helper (removes accents and toLowerCase)
                 const norm = (s) => s ? s.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase() : "";
