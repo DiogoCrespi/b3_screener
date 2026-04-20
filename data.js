@@ -1,5 +1,5 @@
 window.INVEST_DATA = {
-  "updatedAt": "21/04/2026, 01:40:27",
+  "updatedAt": "21/04/2026, 01:45:34",
   "economy": {
     "dollar": 4.9731,
     "selic": 14.75
@@ -4908,7 +4908,9 @@ window.INVEST_DATA = {
       "num_properties": 0,
       "cap_rate": 0,
       "vacancy": 0,
-      "strategies": [],
+      "strategies": [
+        "PAPEL_CARRY"
+      ],
       "type": "MULTI",
       "score": 8,
       "selic": 14.75,
@@ -5004,7 +5006,9 @@ window.INVEST_DATA = {
       "num_properties": 0,
       "cap_rate": 0,
       "vacancy": 0,
-      "strategies": [],
+      "strategies": [
+        "PAPEL_CARRY"
+      ],
       "type": "MULTI",
       "score": 8,
       "selic": 14.75,
@@ -5054,7 +5058,9 @@ window.INVEST_DATA = {
       "num_properties": 0,
       "cap_rate": 0,
       "vacancy": 0,
-      "strategies": [],
+      "strategies": [
+        "PAPEL_CARRY"
+      ],
       "type": "MULTI",
       "score": 8,
       "selic": 14.75,
@@ -5247,7 +5253,9 @@ window.INVEST_DATA = {
       "num_properties": 0,
       "cap_rate": 0,
       "vacancy": 0,
-      "strategies": [],
+      "strategies": [
+        "PAPEL_CARRY"
+      ],
       "type": "MULTI",
       "score": 7,
       "selic": 14.75,
@@ -5393,7 +5401,9 @@ window.INVEST_DATA = {
       "num_properties": 0,
       "cap_rate": 0,
       "vacancy": 0,
-      "strategies": [],
+      "strategies": [
+        "PAPEL_CARRY"
+      ],
       "type": "MULTI",
       "score": 7,
       "selic": 14.75,
@@ -5730,7 +5740,9 @@ window.INVEST_DATA = {
       "num_properties": 0,
       "cap_rate": 0,
       "vacancy": 0,
-      "strategies": [],
+      "strategies": [
+        "PAPEL_CARRY"
+      ],
       "type": "MULTI",
       "score": 6,
       "selic": 14.75,
@@ -5897,7 +5909,9 @@ window.INVEST_DATA = {
       "num_properties": 0,
       "cap_rate": 0,
       "vacancy": 0,
-      "strategies": [],
+      "strategies": [
+        "PAPEL_CARRY"
+      ],
       "type": "MULTI",
       "score": 6,
       "selic": 14.75,
@@ -6180,6 +6194,32 @@ window.INVEST_DATA = {
       "data_pagamento": "08/04/2026"
     },
     {
+      "ticker": "RZAK11",
+      "segment": "Multicategoria",
+      "price": 85.12,
+      "ffo_yield": 12.91,
+      "dy": 15.65,
+      "p_vp": 0.96,
+      "market_cap": 748582000,
+      "liquidity": 1390000,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "PAPEL_CARRY"
+      ],
+      "type": "MULTI",
+      "score": 5,
+      "selic": 14.75,
+      "magicNumber": 77,
+      "magicCost": 6554.240000000001,
+      "category": "STANDARD",
+      "last_dividend": 1.1,
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "15/04/2026",
+      "data_pagamento": "23/04/2026"
+    },
+    {
       "ticker": "BRCR11",
       "segment": "Multicategoria",
       "price": 47.85,
@@ -6310,6 +6350,32 @@ window.INVEST_DATA = {
       "data_pagamento": "17/04/2026"
     },
     {
+      "ticker": "AFHI11",
+      "segment": "Multicategoria",
+      "price": 96.51,
+      "ffo_yield": 11.43,
+      "dy": 12.52,
+      "p_vp": 1.01,
+      "market_cap": 459235000,
+      "liquidity": 743290,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "PAPEL_CARRY"
+      ],
+      "type": "MULTI",
+      "score": 4,
+      "selic": 14.75,
+      "magicNumber": 96,
+      "magicCost": 9264.960000000001,
+      "category": "STANDARD",
+      "last_dividend": 0.98,
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "15/04/2026",
+      "data_pagamento": "23/04/2026"
+    },
+    {
       "ticker": "MALL11",
       "segment": "Shoppings",
       "price": 99.9,
@@ -6334,6 +6400,32 @@ window.INVEST_DATA = {
       "external_segment": "Shoppings / Varejo",
       "data_com": "30/06/2025",
       "data_pagamento": "14/07/2025"
+    },
+    {
+      "ticker": "BBFO11",
+      "segment": "Multicategoria",
+      "price": 72.92,
+      "ffo_yield": 14.71,
+      "dy": 12.68,
+      "p_vp": 0.97,
+      "market_cap": 292685000,
+      "liquidity": 542990,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "PAPEL_CARRY"
+      ],
+      "type": "MULTI",
+      "score": 3,
+      "selic": 14.75,
+      "magicNumber": 95,
+      "magicCost": 6927.400000000001,
+      "category": "STANDARD",
+      "last_dividend": 0.91,
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "31/03/2026",
+      "data_pagamento": "15/04/2026"
     },
     {
       "ticker": "VGHF11",
@@ -6362,6 +6454,32 @@ window.INVEST_DATA = {
       "data_pagamento": "08/04/2026"
     },
     {
+      "ticker": "RINV11",
+      "segment": "Multicategoria",
+      "price": 108.89,
+      "ffo_yield": 10.07,
+      "dy": 11.99,
+      "p_vp": 1.01,
+      "market_cap": 428639000,
+      "liquidity": 285970,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "PAPEL_CARRY"
+      ],
+      "type": "MULTI",
+      "score": 2,
+      "selic": 14.75,
+      "magicNumber": 101,
+      "magicCost": 10997.89,
+      "category": "STANDARD",
+      "last_dividend": 1.1,
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "14/04/2026",
+      "data_pagamento": "22/04/2026"
+    },
+    {
       "ticker": "HABT11",
       "segment": "Multicategoria",
       "price": 77.55,
@@ -6388,6 +6506,32 @@ window.INVEST_DATA = {
       "data_pagamento": "14/04/2026"
     },
     {
+      "ticker": "TRXY11",
+      "segment": "Multicategoria",
+      "price": 8.99,
+      "ffo_yield": 4.8,
+      "dy": 14.98,
+      "p_vp": 0.98,
+      "market_cap": 317784000,
+      "liquidity": 99040,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "PAPEL_CARRY"
+      ],
+      "type": "MULTI",
+      "score": 1,
+      "selic": 14.75,
+      "magicNumber": 81,
+      "magicCost": 728.19,
+      "category": "STANDARD",
+      "last_dividend": 0.11,
+      "external_segment": "Híbrido",
+      "data_com": "31/03/2026",
+      "data_pagamento": "15/04/2026"
+    },
+    {
       "ticker": "JSAF11",
       "segment": "Multicategoria",
       "price": 7.91,
@@ -6412,6 +6556,32 @@ window.INVEST_DATA = {
       "external_segment": "Títulos e Valores Mobiliários",
       "data_com": "31/03/2026",
       "data_pagamento": "15/04/2026"
+    },
+    {
+      "ticker": "KCRE11",
+      "segment": "Multicategoria",
+      "price": 9.23,
+      "ffo_yield": 14.81,
+      "dy": 12.58,
+      "p_vp": 0.98,
+      "market_cap": 332280000,
+      "liquidity": 339080,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "PAPEL_CARRY"
+      ],
+      "type": "MULTI",
+      "score": 1,
+      "selic": 14.75,
+      "magicNumber": 96,
+      "magicCost": 886.08,
+      "category": "STANDARD",
+      "last_dividend": 0.1,
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "31/03/2026",
+      "data_pagamento": "14/04/2026"
     },
     {
       "ticker": "RBRL11",
@@ -6863,7 +7033,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 2651944,
+      "liquidity": 2660951,
       "high_52w": 195.73,
       "low_52w": 125.6
     },
@@ -6873,7 +7043,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 73449,
+      "liquidity": 73450,
       "high_52w": 433.61,
       "low_52w": 336.01
     },
@@ -6893,7 +7063,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 364899,
+      "liquidity": 365036,
       "high_52w": 94.9,
       "low_52w": 43.07
     },
@@ -6903,7 +7073,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 473333,
+      "liquidity": 477546,
       "high_52w": 30.14,
       "low_52w": 18.6
     },
@@ -6913,7 +7083,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 131182,
+      "liquidity": 134765,
       "high_52w": 9.26,
       "low_52w": 7.35
     },
@@ -6923,7 +7093,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 503443,
+      "liquidity": 508220,
       "high_52w": 19.96,
       "low_52w": 14.44
     },
@@ -6953,7 +7123,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 31586,
+      "liquidity": 34240,
       "high_52w": 148.49,
       "low_52w": 110.05
     },
@@ -6993,7 +7163,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 209650,
+      "liquidity": 209533,
       "high_52w": 97.67,
       "low_52w": 42.41
     },
@@ -7003,7 +7173,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 11902,
+      "liquidity": 13398,
       "high_52w": 17.1,
       "low_52w": 13.13
     },
@@ -7013,7 +7183,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 206692,
+      "liquidity": 207268,
       "high_52w": 40.48,
       "low_52w": 19.83
     },
@@ -7043,7 +7213,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 74367,
+      "liquidity": 76229,
       "high_52w": 107.38,
       "low_52w": 94.89
     },
@@ -7053,7 +7223,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 39779,
+      "liquidity": 40063,
       "high_52w": 52.959,
       "low_52w": 40.865
     },
@@ -7073,7 +7243,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 5987,
+      "liquidity": 5975,
       "high_52w": 139.99,
       "low_52w": 93.5
     },
@@ -7093,7 +7263,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 113844,
+      "liquidity": 113820,
       "high_52w": 152.45,
       "low_52w": 73.67
     },
@@ -7123,7 +7293,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 149389,
+      "liquidity": 149721,
       "high_52w": 151.6,
       "low_52w": 132.12
     },
@@ -7143,7 +7313,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 198027,
+      "liquidity": 197997,
       "high_52w": 76.4,
       "low_52w": 27.07
     },
@@ -7173,7 +7343,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 9538,
+      "liquidity": 9525,
       "high_52w": 203.69,
       "low_52w": 131.11
     },
@@ -7183,7 +7353,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 1260,
+      "liquidity": 1250,
       "high_52w": 107.96,
       "low_52w": 99.33
     },
@@ -7193,7 +7363,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 5327,
+      "liquidity": 5317,
       "high_52w": 25.4,
       "low_52w": 11.5
     },
@@ -7203,7 +7373,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 2837,
+      "liquidity": 2799,
       "high_52w": 134,
       "low_52w": 99.89
     },
@@ -7213,7 +7383,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 108292,
+      "liquidity": 109271,
       "high_52w": 205.42,
       "low_52w": 131.44
     },
@@ -7233,7 +7403,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 74809,
+      "liquidity": 74741,
       "high_52w": 105.54,
       "low_52w": 100.09
     },
@@ -7243,7 +7413,7 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 7668,
+      "liquidity": 7665,
       "high_52w": 43.4,
       "low_52w": 38.61
     },

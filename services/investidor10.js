@@ -112,9 +112,11 @@ async function getAssetMetadata(ticker) {
                         const oldCard = $(`.kotacoes div._card-header span:contains('${label}')`).closest('.kotacoes');
                         valueText = oldCard.find('div._card-body span').text().trim();
                     }
+                    
+                    if (!valueText) return null; // Differentiate between not found and actual 0
 
                     return parseVal(valueText);
-                } catch (e) { return 0; }
+                } catch (e) { return null; }
             };
 
             metadata.price = parseCardValue('COTAÇÃO');
@@ -123,7 +125,9 @@ async function getAssetMetadata(ticker) {
             metadata.liquidity = parseCardValue('LIQUIDEZ DIÁRIA');
             
             const vcncy = parseCardValue('VACÂNCIA');
-            if (vcncy > 0 || !metadata.vacancy) metadata.vacancy = vcncy;
+            if (metadata.vacancy === null && vcncy !== null) {
+                metadata.vacancy = vcncy;
+            }
 
             if (metadata.type || metadata.price > 0 || metadata.data_com) {
                 return metadata;
