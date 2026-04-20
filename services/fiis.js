@@ -69,7 +69,6 @@ async function getBestFIIs(externalMetadata = {}, baseList = null, selicParam = 
         const MAX_PAPER_PVP = 1.05;
 
         return fiis
-            .filter(f => f.liquidity > 200000)
             .map(f => {
                 const meta = externalMetadata[f.ticker] || {};
 
@@ -195,7 +194,7 @@ async function getBestFIIs(externalMetadata = {}, baseList = null, selicParam = 
                 if (f.liquidity > 4000000) score += 3;      // Liquidez de "Blue Chip"
                 else if (f.liquidity > 1500000) score += 2; // Liquidez Saudável
                 else if (f.liquidity > 800000) score += 1;  // Liquidez Aceitável
-                else if (f.liquidity < 400000) score -= 2;  // PENALIDADE: Porta de saída estreita (Caso GRUL11)
+                else if (f.liquidity > 0 && f.liquidity < 400000) score -= 2;  // PENALIDADE: Porta de saída estreita (Caso GRUL11)
 
                 // --- 4. TAMANHO/ROBUSTEZ (O Proxy de Concentração) ---
                 // Fundos grandes (>1bi) raramente são mono-imóvel.
@@ -203,10 +202,10 @@ async function getBestFIIs(externalMetadata = {}, baseList = null, selicParam = 
 
                 if (patrimonio > 2000000000) score += 2;      // Gigante (Muito Seguro)
                 else if (patrimonio > 1000000000) score += 1; // Grande (Seguro)
-                else if (patrimonio < 400000000) score -= 1;  // Pequeno (Risco de ser Monativo)
+                else if (patrimonio > 0 && patrimonio < 400000000) score -= 1;  // Pequeno (Risco de ser Monativo)
 
                 // --- 5. VACÂNCIA (Tijolo) ---
-                if (isTijolo) {
+                if (isTijolo && f.vacancy !== null && f.vacancy !== undefined) {
                     if (f.vacancy < 3) score += 1;
                     else if (f.vacancy > 15) score -= 2; // Prédio vazio é custo
                 }
@@ -240,7 +239,8 @@ async function getBestFIIs(externalMetadata = {}, baseList = null, selicParam = 
                     data_pagamento: meta.data_pagamento || null
                 };
             })
-            // Filter: Allow more items in the re-classification stage
+            // Filter: Now liquidity filtering happens AFTER metadata enrichment
+            .filter(f => f.liquidity > 200000)
             .filter(f => f.strategies.length > 0 || f.score >= 5.5)
             .sort((a, b) => b.score - a.score || b.dy - a.dy);
 
