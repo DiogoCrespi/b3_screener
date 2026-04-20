@@ -73,6 +73,8 @@ async function getAssetMetadata(ticker) {
                 else if (name === 'VACÂNCIA') metadata.vacancy = parseVal(value);
                 else if (name.includes('PATRIMÔNIO LÍQUIDO')) metadata.market_cap = parseVal(value); // Use as fallback for market_cap if needed
                 else if (name.includes('VALOR DE MERCADO')) metadata.market_cap = parseVal(value); // Priority for market_cap
+                else if (name.includes('PATRIMÔNIO LÍQUIDO')) metadata.market_cap = parseVal(value); // Use as fallback for market_cap if needed
+                else if (name.includes('VALOR DE MERCADO')) metadata.market_cap = parseVal(value); // Priority for market_cap
             });
 
             // Scrape Dividend Dates from Table
