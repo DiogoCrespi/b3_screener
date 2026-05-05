@@ -34,13 +34,13 @@ class FundamentusStockAdapter {
                     psr: parseNumber($(tds[4]).text().trim()), // Column 4 is PSR
                     dividend_yield: parseNumber($(tds[5]).text().trim()),
                     ev_ebit: parseNumber($(tds[10]).text().trim()),
-                    mrg_ebit: parseNumber($(tds[12]).text().trim()),
-                    mrg_liq: parseNumber($(tds[13]).text().trim()),
-                    roic: parseNumber($(tds[15]).text().trim()),
-                    roe: parseNumber($(tds[16]).text().trim()),
-                    liq_2meses: parseNumber($(tds[17]).text().trim()),
-                    div_br_patrim: parseNumber($(tds[19]).text().trim()),
-                    cresc_5a: parseNumber($(tds[20]).text().trim())
+                    mrg_ebit: parseNumber($(tds[13]).text().trim()),
+                    mrg_liq: parseNumber($(tds[14]).text().trim()),
+                    roic: parseNumber($(tds[16]).text().trim()),
+                    roe: parseNumber($(tds[17]).text().trim()),
+                    liq_2meses: parseNumber($(tds[18]).text().trim()),
+                    div_br_patrim: parseNumber($(tds[20]).text().trim()),
+                    cresc_5a: parseNumber($(tds[21]).text().trim())
                 };
 
                 if (stock.pl > 0 && stock.dividend_yield > 0) {
