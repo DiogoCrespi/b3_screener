@@ -1,8 +1,8 @@
 {
-  "date": "2026-05-08T13:49:54.929Z",
+  "date": "2026-05-08T21:06:48.480Z",
   "count": 166,
   "economy": {
-    "dollar": 4.925,
+    "dollar": 4.9103,
     "selic": 14.5
   },
   "type": "stock",
@@ -1340,8 +1340,8 @@
       ],
       "category": "STAR",
       "peg_ratio": 2.744493392070485,
-      "data_com": null,
-      "data_pagamento": null
+      "data_com": "19/12/2025",
+      "data_pagamento": "26/12/2025"
     },
     {
       "ticker": "PETR3",
