@@ -1,7 +1,7 @@
 window.INVEST_DATA = {
-  "updatedAt": "19/05/2026, 12:56:22",
+  "updatedAt": "19/05/2026, 15:22:57",
   "economy": {
-    "dollar": 4.9923,
+    "dollar": 5.0633,
     "selic": 14.5
   },
   "stocks": [
@@ -5174,9 +5174,9 @@ window.INVEST_DATA = {
     {
       "ticker": "RBRX11",
       "segment": "Multicategoria",
-      "price": 8.33,
+      "price": 8.2,
       "ffo_yield": 5.27,
-      "dy": 13.26,
+      "dy": 13.25,
       "p_vp": 0.83,
       "market_cap": 1210350000,
       "liquidity": 12910000,
@@ -5190,7 +5190,7 @@ window.INVEST_DATA = {
       "score": 9,
       "selic": 14.5,
       "magicNumber": 91,
-      "magicCost": 758.03,
+      "magicCost": 746.1999999999999,
       "category": "STAR",
       "last_dividend": 0.09,
       "external_segment": "Títulos e Valores Mobiliários",
@@ -5298,10 +5298,10 @@ window.INVEST_DATA = {
     {
       "ticker": "RBRY11",
       "segment": "Multicategoria",
-      "price": 91.6,
+      "price": 92.03,
       "ffo_yield": 11.73,
-      "dy": 15.26,
-      "p_vp": 0.91,
+      "dy": 15.16,
+      "p_vp": 0.92,
       "market_cap": 1175820000,
       "liquidity": 7160000,
       "num_properties": 0,
@@ -5311,13 +5311,37 @@ window.INVEST_DATA = {
       "type": "MULTI",
       "score": 8,
       "selic": 14.5,
-      "magicNumber": 79,
-      "magicCost": 7236.4,
+      "magicNumber": 80,
+      "magicCost": 7362.4,
       "category": "STAR",
       "last_dividend": 1,
       "external_segment": "Títulos e Valores Mobiliários",
       "data_com": "12/05/2026",
       "data_pagamento": "19/05/2026"
+    },
+    {
+      "ticker": "MCRE11",
+      "segment": "Multicategoria",
+      "price": 9.42,
+      "ffo_yield": 9.63,
+      "dy": 14.01,
+      "p_vp": 0.92,
+      "market_cap": 1063540000,
+      "liquidity": 2590000,
+      "num_properties": 1,
+      "cap_rate": 7.94,
+      "vacancy": 0,
+      "strategies": [],
+      "type": "MULTI",
+      "score": 8,
+      "selic": 14.5,
+      "magicNumber": 86,
+      "magicCost": 810.12,
+      "category": "STAR",
+      "last_dividend": 0.11,
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "18/05/2026",
+      "data_pagamento": "25/05/2026"
     },
     {
       "ticker": "PSEC11",
@@ -5394,30 +5418,6 @@ window.INVEST_DATA = {
       "external_segment": "Shoppings / Varejo",
       "data_com": "17/04/2026",
       "data_pagamento": "27/04/2026"
-    },
-    {
-      "ticker": "MCRE11",
-      "segment": "Multicategoria",
-      "price": 9.71,
-      "ffo_yield": 9.63,
-      "dy": 12.46,
-      "p_vp": 0.95,
-      "market_cap": 1063540000,
-      "liquidity": 2590000,
-      "num_properties": 1,
-      "cap_rate": 7.94,
-      "vacancy": 0,
-      "strategies": [],
-      "type": "MULTI",
-      "score": 8,
-      "selic": 14.5,
-      "magicNumber": 97,
-      "magicCost": 941.8700000000001,
-      "category": "STAR",
-      "last_dividend": 0.11,
-      "external_segment": "Títulos e Valores Mobiliários",
-      "data_com": "18/05/2026",
-      "data_pagamento": "25/05/2026"
     },
     {
       "ticker": "KNHF11",
@@ -5620,7 +5620,7 @@ window.INVEST_DATA = {
       "type": "INFRA",
       "segment": "Infraestrutura",
       "mandate": null,
-      "price": 100.2,
+      "price": 100.19,
       "dy": 17.49,
       "p_vp": 0.98,
       "liquidity": 6180000,
@@ -5631,7 +5631,7 @@ window.INVEST_DATA = {
       "score": 7,
       "strategies": [],
       "magicNumber": 69,
-      "magicCost": 6913.8,
+      "magicCost": 6913.11,
       "selic": 14.5,
       "num_properties": 0,
       "market_cap": 500000000,
@@ -5961,10 +5961,10 @@ window.INVEST_DATA = {
     {
       "ticker": "TRXB11",
       "segment": "Multicategoria",
-      "price": 180.74,
+      "price": 178.42,
       "ffo_yield": 4.71,
-      "dy": 15.49,
-      "p_vp": 1.83,
+      "dy": 15.69,
+      "p_vp": 1.81,
       "market_cap": 734893000,
       "liquidity": 5760000,
       "num_properties": 11,
@@ -5974,8 +5974,8 @@ window.INVEST_DATA = {
       "type": "MULTI",
       "score": 6,
       "selic": 14.5,
-      "magicNumber": 78,
-      "magicCost": 14097.720000000001,
+      "magicNumber": 77,
+      "magicCost": 13738.339999999998,
       "category": "OPPORTUNITY",
       "last_dividend": 0.85,
       "external_segment": "Híbrido",
@@ -6128,12 +6128,36 @@ window.INVEST_DATA = {
       "data_pagamento": "15/05/2026"
     },
     {
+      "ticker": "BTCI11",
+      "segment": "Outros",
+      "price": 9.19,
+      "ffo_yield": 12.53,
+      "dy": 12.62,
+      "p_vp": 0.9,
+      "market_cap": 917585000,
+      "liquidity": 2900000,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [],
+      "type": "PAPEL",
+      "score": 6,
+      "selic": 14.5,
+      "magicNumber": 96,
+      "magicCost": 882.24,
+      "category": "OPPORTUNITY",
+      "last_dividend": 0.1,
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "08/05/2026",
+      "data_pagamento": "15/05/2026"
+    },
+    {
       "ticker": "KDIF11",
       "type": "INFRA",
       "segment": "Infraestrutura",
       "mandate": null,
-      "price": 123.1,
-      "dy": 12.62,
+      "price": 124.49,
+      "dy": 12.57,
       "p_vp": 0.99,
       "liquidity": 3210000,
       "last_dividend": 1.45,
@@ -6143,36 +6167,12 @@ window.INVEST_DATA = {
       "score": 6,
       "strategies": [],
       "magicNumber": 96,
-      "magicCost": 11817.599999999999,
+      "magicCost": 11951.039999999999,
       "selic": 14.5,
       "num_properties": 0,
       "market_cap": 500000000,
       "category": "OPPORTUNITY",
       "external_segment": "Fundo de Infraestrutura (FI-Infra)"
-    },
-    {
-      "ticker": "BTCI11",
-      "segment": "Outros",
-      "price": 9.23,
-      "ffo_yield": 12.53,
-      "dy": 12.57,
-      "p_vp": 0.91,
-      "market_cap": 917585000,
-      "liquidity": 2040000,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "strategies": [],
-      "type": "PAPEL",
-      "score": 6,
-      "selic": 14.5,
-      "magicNumber": 96,
-      "magicCost": 886.08,
-      "category": "OPPORTUNITY",
-      "last_dividend": 0.1,
-      "external_segment": "Títulos e Valores Mobiliários",
-      "data_com": "08/05/2026",
-      "data_pagamento": "15/05/2026"
     },
     {
       "ticker": "KNSC11",
@@ -6205,8 +6205,8 @@ window.INVEST_DATA = {
       "type": "INFRA",
       "segment": "Infraestrutura",
       "mandate": null,
-      "price": 96.57,
-      "dy": 12.25,
+      "price": 97.59,
+      "dy": 12.19,
       "p_vp": 0.97,
       "liquidity": 1960000,
       "last_dividend": 1.1,
@@ -6215,8 +6215,8 @@ window.INVEST_DATA = {
       "data_pagamento": "08/05/2026",
       "score": 6,
       "strategies": [],
-      "magicNumber": 98,
-      "magicCost": 9463.859999999999,
+      "magicNumber": 99,
+      "magicCost": 9661.41,
       "selic": 14.5,
       "num_properties": 0,
       "market_cap": 500000000,
@@ -6275,10 +6275,10 @@ window.INVEST_DATA = {
     {
       "ticker": "HSLG11",
       "segment": "Log�stica",
-      "price": 91.26,
+      "price": 89.9,
       "ffo_yield": 10.15,
-      "dy": 9.16,
-      "p_vp": 0.83,
+      "dy": 9.28,
+      "p_vp": 0.82,
       "market_cap": 1138140000,
       "liquidity": 822160,
       "num_properties": 6,
@@ -6290,8 +6290,8 @@ window.INVEST_DATA = {
       "type": "TIJOLO",
       "score": 6,
       "selic": 14.5,
-      "magicNumber": 132,
-      "magicCost": 12046.320000000002,
+      "magicNumber": 130,
+      "magicCost": 11687,
       "category": "OPPORTUNITY",
       "last_dividend": 0.73,
       "external_segment": "Logístico / Indústria / Galpões",
@@ -6509,9 +6509,9 @@ window.INVEST_DATA = {
     {
       "ticker": "VCJR11",
       "segment": "Outros",
-      "price": 77.63,
+      "price": 76.04,
       "ffo_yield": 13.15,
-      "dy": 13.9,
+      "dy": 14.02,
       "p_vp": 0.81,
       "market_cap": 1125060000,
       "liquidity": 2460000,
@@ -6524,8 +6524,8 @@ window.INVEST_DATA = {
       "type": "PAPEL",
       "score": 2,
       "selic": 14.5,
-      "magicNumber": 87,
-      "magicCost": 6753.8099999999995,
+      "magicNumber": 86,
+      "magicCost": 6539.4400000000005,
       "category": "STANDARD",
       "last_dividend": 1,
       "external_segment": "Títulos e Valores Mobiliários",
@@ -6535,9 +6535,9 @@ window.INVEST_DATA = {
     {
       "ticker": "RINV11",
       "segment": "Multicategoria",
-      "price": 107.5,
+      "price": 106.79,
       "ffo_yield": 10.69,
-      "dy": 12.28,
+      "dy": 12.26,
       "p_vp": 0.99,
       "market_cap": 418821000,
       "liquidity": 285970,
@@ -6551,7 +6551,7 @@ window.INVEST_DATA = {
       "score": 2,
       "selic": 14.5,
       "magicNumber": 98,
-      "magicCost": 10535,
+      "magicCost": 10465.42,
       "category": "STANDARD",
       "last_dividend": 1.1,
       "external_segment": "Títulos e Valores Mobiliários",
@@ -6561,10 +6561,10 @@ window.INVEST_DATA = {
     {
       "ticker": "HFOF11",
       "segment": "Multicategoria",
-      "price": 6.5,
+      "price": 6.29,
       "ffo_yield": 11.89,
-      "dy": 10.85,
-      "p_vp": 0.8,
+      "dy": 11.04,
+      "p_vp": 0.79,
       "market_cap": 1406470000,
       "liquidity": 2400000,
       "num_properties": 0,
@@ -6576,8 +6576,8 @@ window.INVEST_DATA = {
       "type": "MULTI",
       "score": 2,
       "selic": 14.5,
-      "magicNumber": 111,
-      "magicCost": 721.5,
+      "magicNumber": 109,
+      "magicCost": 685.61,
       "category": "STANDARD",
       "last_dividend": 0.06,
       "external_segment": "Títulos e Valores Mobiliários",
@@ -6613,9 +6613,9 @@ window.INVEST_DATA = {
     {
       "ticker": "JSAF11",
       "segment": "Multicategoria",
-      "price": 7.66,
+      "price": 7.52,
       "ffo_yield": 12.4,
-      "dy": 13.26,
+      "dy": 13.3,
       "p_vp": 0.81,
       "market_cap": 586851000,
       "liquidity": 1580000,
@@ -6629,7 +6629,7 @@ window.INVEST_DATA = {
       "score": 1,
       "selic": 14.5,
       "magicNumber": 91,
-      "magicCost": 697.0600000000001,
+      "magicCost": 684.3199999999999,
       "category": "STANDARD",
       "last_dividend": 0.08,
       "external_segment": "Títulos e Valores Mobiliários",
@@ -6691,7 +6691,7 @@ window.INVEST_DATA = {
     {
       "ticker": "KOPA11",
       "segment": "T�tulos e Val. Mob.",
-      "price": 382.98,
+      "price": 392,
       "ffo_yield": 30.3,
       "dy": 30.22,
       "p_vp": 0.69,
@@ -6707,7 +6707,7 @@ window.INVEST_DATA = {
       "score": 0,
       "selic": 14.5,
       "magicNumber": 40,
-      "magicCost": 15319.2,
+      "magicCost": 15680,
       "category": "STANDARD",
       "last_dividend": 8,
       "external_segment": "Fiagros",
@@ -6769,10 +6769,10 @@ window.INVEST_DATA = {
     {
       "ticker": "ARRI11",
       "segment": "Multicategoria",
-      "price": 5.25,
+      "price": 5.17,
       "ffo_yield": 13.02,
-      "dy": 20.31,
-      "p_vp": 0.61,
+      "dy": 20.12,
+      "p_vp": 0.62,
       "market_cap": 107780000,
       "liquidity": 383350,
       "num_properties": 0,
@@ -6785,7 +6785,7 @@ window.INVEST_DATA = {
       "score": 0,
       "selic": 14.5,
       "magicNumber": 60,
-      "magicCost": 315,
+      "magicCost": 310.2,
       "category": "STANDARD",
       "last_dividend": 0.07,
       "external_segment": "Títulos e Valores Mobiliários",
@@ -6847,9 +6847,9 @@ window.INVEST_DATA = {
     {
       "ticker": "KIVO11",
       "segment": "Outros",
-      "price": 61.61,
+      "price": 62.05,
       "ffo_yield": 17.08,
-      "dy": 18.07,
+      "dy": 18.02,
       "p_vp": 0.73,
       "market_cap": 138476000,
       "liquidity": 370770,
@@ -6863,7 +6863,7 @@ window.INVEST_DATA = {
       "score": 0,
       "selic": 14.5,
       "magicNumber": 67,
-      "magicCost": 4127.87,
+      "magicCost": 4157.349999999999,
       "category": "STANDARD",
       "last_dividend": 0.85,
       "external_segment": "Títulos e Valores Mobiliários",
@@ -6951,9 +6951,9 @@ window.INVEST_DATA = {
     {
       "ticker": "XPCA11",
       "segment": "Multicategoria",
-      "price": 8.1,
+      "price": 8,
       "ffo_yield": 12.62,
-      "dy": 16.52,
+      "dy": 16.54,
       "p_vp": 0.83,
       "market_cap": 367371000,
       "liquidity": 938540,
@@ -6967,7 +6967,7 @@ window.INVEST_DATA = {
       "score": 0,
       "selic": 14.5,
       "magicNumber": 73,
-      "magicCost": 591.3,
+      "magicCost": 584,
       "category": "STANDARD",
       "last_dividend": 0.1,
       "external_segment": "Fiagros",
@@ -6975,14 +6975,14 @@ window.INVEST_DATA = {
       "data_pagamento": "15/05/2026"
     },
     {
-      "ticker": "BCRI11",
+      "ticker": "RBHY11",
       "segment": "Outros",
-      "price": 60.8,
-      "ffo_yield": 15.41,
-      "dy": 16.35,
-      "p_vp": 0.71,
-      "market_cap": 376974000,
-      "liquidity": 467850,
+      "price": 77.22,
+      "ffo_yield": 7.44,
+      "dy": 16.4,
+      "p_vp": 0.84,
+      "market_cap": 145838000,
+      "liquidity": 399540,
       "num_properties": 0,
       "cap_rate": 0,
       "vacancy": 0,
@@ -6993,9 +6993,9 @@ window.INVEST_DATA = {
       "score": 0,
       "selic": 14.5,
       "magicNumber": 74,
-      "magicCost": 4499.2,
+      "magicCost": 5714.28,
       "category": "STANDARD",
-      "last_dividend": 0.7,
+      "last_dividend": 1.05,
       "external_segment": "Títulos e Valores Mobiliários",
       "data_com": "30/04/2026",
       "data_pagamento": "15/05/2026"
@@ -7003,9 +7003,9 @@ window.INVEST_DATA = {
     {
       "ticker": "HABT11",
       "segment": "Multicategoria",
-      "price": 74.67,
+      "price": 73.31,
       "ffo_yield": 15.45,
-      "dy": 16.31,
+      "dy": 16.29,
       "p_vp": 0.77,
       "market_cap": 596587000,
       "liquidity": 1060000,
@@ -7019,7 +7019,7 @@ window.INVEST_DATA = {
       "score": 0,
       "selic": 14.5,
       "magicNumber": 74,
-      "magicCost": 5525.58,
+      "magicCost": 5424.9400000000005,
       "category": "STANDARD",
       "last_dividend": 0.95,
       "external_segment": "Títulos e Valores Mobiliários",
@@ -7053,6 +7053,32 @@ window.INVEST_DATA = {
       "data_pagamento": "20/05/2026"
     },
     {
+      "ticker": "BCRI11",
+      "segment": "Outros",
+      "price": 60.8,
+      "ffo_yield": 15.41,
+      "dy": 16.25,
+      "p_vp": 0.71,
+      "market_cap": 376974000,
+      "liquidity": 467850,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "DISTRESSED_RISK"
+      ],
+      "type": "PAPEL",
+      "score": 0,
+      "selic": 14.5,
+      "magicNumber": 74,
+      "magicCost": 4499.2,
+      "category": "STANDARD",
+      "last_dividend": 0.7,
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "30/04/2026",
+      "data_pagamento": "15/05/2026"
+    },
+    {
       "ticker": "VCRI11",
       "segment": "Outros",
       "price": 7.45,
@@ -7079,37 +7105,11 @@ window.INVEST_DATA = {
       "data_pagamento": "15/05/2026"
     },
     {
-      "ticker": "BBGO11",
-      "segment": "Outros",
-      "price": 72.41,
-      "ffo_yield": 20.67,
-      "dy": 15.06,
-      "p_vp": 0.77,
-      "market_cap": 289173000,
-      "liquidity": 247330,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "strategies": [
-        "DISTRESSED_RISK"
-      ],
-      "type": "AGRO",
-      "score": 0,
-      "selic": 14.5,
-      "magicNumber": 80,
-      "magicCost": 5792.799999999999,
-      "category": "STANDARD",
-      "last_dividend": 0.85,
-      "external_segment": "Fiagros",
-      "data_com": "30/04/2026",
-      "data_pagamento": "15/05/2026"
-    },
-    {
       "ticker": "GCRA11",
       "segment": "Multicategoria",
-      "price": 53.84,
+      "price": 52.87,
       "ffo_yield": 13.3,
-      "dy": 15.05,
+      "dy": 15.02,
       "p_vp": 0.61,
       "market_cap": 93951400,
       "liquidity": 283660,
@@ -7123,7 +7123,7 @@ window.INVEST_DATA = {
       "score": 0,
       "selic": 14.5,
       "magicNumber": 80,
-      "magicCost": 4307.200000000001,
+      "magicCost": 4229.599999999999,
       "category": "STANDARD",
       "last_dividend": 0.68,
       "external_segment": "Fiagros",
@@ -7131,11 +7131,37 @@ window.INVEST_DATA = {
       "data_pagamento": "15/05/2026"
     },
     {
+      "ticker": "BBGO11",
+      "segment": "Outros",
+      "price": 72.03,
+      "ffo_yield": 20.67,
+      "dy": 14.93,
+      "p_vp": 0.77,
+      "market_cap": 289173000,
+      "liquidity": 247330,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "strategies": [
+        "DISTRESSED_RISK"
+      ],
+      "type": "AGRO",
+      "score": 0,
+      "selic": 14.5,
+      "magicNumber": 81,
+      "magicCost": 5834.43,
+      "category": "STANDARD",
+      "last_dividend": 0.85,
+      "external_segment": "Fiagros",
+      "data_com": "30/04/2026",
+      "data_pagamento": "15/05/2026"
+    },
+    {
       "ticker": "RBHG11",
       "segment": "Outros",
-      "price": 66.76,
+      "price": 65.04,
       "ffo_yield": 12.82,
-      "dy": 14.74,
+      "dy": 14.72,
       "p_vp": 0.76,
       "market_cap": 142413000,
       "liquidity": 261610,
@@ -7149,7 +7175,7 @@ window.INVEST_DATA = {
       "score": 0,
       "selic": 14.5,
       "magicNumber": 82,
-      "magicCost": 5474.320000000001,
+      "magicCost": 5333.280000000001,
       "category": "STANDARD",
       "last_dividend": 0.8,
       "external_segment": "Títulos e Valores Mobiliários",
@@ -7211,9 +7237,9 @@ window.INVEST_DATA = {
     {
       "ticker": "PMIS11",
       "segment": "Outros",
-      "price": 8.01,
+      "price": 7.92,
       "ffo_yield": 14.78,
-      "dy": 14.54,
+      "dy": 14.43,
       "p_vp": 0.84,
       "market_cap": 117834000,
       "liquidity": 294900,
@@ -7226,8 +7252,8 @@ window.INVEST_DATA = {
       "type": "MULTI",
       "score": 0,
       "selic": 14.5,
-      "magicNumber": 83,
-      "magicCost": 664.8299999999999,
+      "magicNumber": 84,
+      "magicCost": 665.28,
       "category": "STANDARD",
       "last_dividend": 0.09,
       "external_segment": "Híbrido",
@@ -7289,10 +7315,10 @@ window.INVEST_DATA = {
     {
       "ticker": "RBRL11",
       "segment": "Log�stica",
-      "price": 83.82,
+      "price": 82.77,
       "ffo_yield": 8.96,
-      "dy": 10.56,
-      "p_vp": 0.83,
+      "dy": 10.7,
+      "p_vp": 0.82,
       "market_cap": 556963000,
       "liquidity": 1100000,
       "num_properties": 0,
@@ -7304,8 +7330,8 @@ window.INVEST_DATA = {
       "type": "MULTI",
       "score": 0,
       "selic": 14.5,
-      "magicNumber": 114,
-      "magicCost": 9555.48,
+      "magicNumber": 113,
+      "magicCost": 9353.01,
       "category": "STANDARD",
       "last_dividend": 0.6,
       "external_segment": "Logístico / Indústria / Galpões",
@@ -7346,9 +7372,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 13746,
       "high_52w": 433.61,
-      "low_52w": 0
+      "low_52w": 367.04
     },
     {
       "ticker": "GOLD11",
@@ -7356,9 +7382,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 153393,
       "high_52w": 30.14,
-      "low_52w": 0
+      "low_52w": 18.63
     },
     {
       "ticker": "BOVA11",
@@ -7366,9 +7392,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 696124,
       "high_52w": 195.73,
-      "low_52w": 0
+      "low_52w": 128.7
     },
     {
       "ticker": "NASD11",
@@ -7376,9 +7402,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 98220,
       "high_52w": 20.71,
-      "low_52w": 0
+      "low_52w": 16.47
     },
     {
       "ticker": "HASH11",
@@ -7386,9 +7412,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 100766,
       "high_52w": 94.9,
-      "low_52w": 0
+      "low_52w": 43.07
     },
     {
       "ticker": "SPYI11",
@@ -7396,9 +7422,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 3895,
       "high_52w": 118.37,
-      "low_52w": 0
+      "low_52w": 99.24
     },
     {
       "ticker": "BBOV11",
@@ -7406,9 +7432,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 496,
       "high_52w": 104.8,
-      "low_52w": 0
+      "low_52w": 68.55
     },
     {
       "ticker": "DIVO11",
@@ -7416,9 +7442,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 16368,
       "high_52w": 142.37,
-      "low_52w": 0
+      "low_52w": 98.17
     },
     {
       "ticker": "WRLD11",
@@ -7426,9 +7452,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 6540,
       "high_52w": 148.49,
-      "low_52w": 0
+      "low_52w": 122.08
     },
     {
       "ticker": "SMAL11",
@@ -7436,9 +7462,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 935544,
       "high_52w": 130.44,
-      "low_52w": 0
+      "low_52w": 100.95
     },
     {
       "ticker": "XINA11",
@@ -7446,9 +7472,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 24418,
       "high_52w": 9.26,
-      "low_52w": 0
+      "low_52w": 7.26
     },
     {
       "ticker": "NDIV11",
@@ -7456,9 +7482,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 6230,
       "high_52w": 138,
-      "low_52w": 0
+      "low_52w": 103.74
     },
     {
       "ticker": "QQQI11",
@@ -7466,9 +7492,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 3450,
       "high_52w": 105.89,
-      "low_52w": 0
+      "low_52w": 86.39
     },
     {
       "ticker": "COIN11",
@@ -7476,9 +7502,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 32763,
       "high_52w": 97.67,
-      "low_52w": 0
+      "low_52w": 42.41
     },
     {
       "ticker": "SPXB11",
@@ -7486,9 +7512,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 1948,
       "high_52w": 17.1,
-      "low_52w": 0
+      "low_52w": 14.31
     },
     {
       "ticker": "DIVD11",
@@ -7496,9 +7522,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 30152,
       "high_52w": 70.95,
-      "low_52w": 0
+      "low_52w": 51.77
     },
     {
       "ticker": "QBTC11",
@@ -7506,9 +7532,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 127977,
       "high_52w": 40.48,
-      "low_52w": 0
+      "low_52w": 19.83
     },
     {
       "ticker": "LFTB11",
@@ -7516,9 +7542,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
-      "high_52w": 100.32,
-      "low_52w": 0
+      "liquidity": 106369,
+      "high_52w": 121.49,
+      "low_52w": 100.02
     },
     {
       "ticker": "B5P211",
@@ -7526,9 +7552,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 11889,
       "high_52w": 107.65,
-      "low_52w": 0
+      "low_52w": 95.49
     },
     {
       "ticker": "SPXI11",
@@ -7536,9 +7562,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 11976,
       "high_52w": 52.959,
-      "low_52w": 0
+      "low_52w": 44.607
     },
     {
       "ticker": "TECK11",
@@ -7546,9 +7572,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 34011,
       "high_52w": 120.48,
-      "low_52w": 0
+      "low_52w": 89.69
     },
     {
       "ticker": "AUVP11",
@@ -7556,9 +7582,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 3542,
       "high_52w": 139.99,
-      "low_52w": 0
+      "low_52w": 93.5
     },
     {
       "ticker": "XFIX11",
@@ -7566,9 +7592,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 14184,
       "high_52w": 14.1,
-      "low_52w": 0
+      "low_52w": 11.95
     },
     {
       "ticker": "BITH11",
@@ -7576,9 +7602,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 43344,
       "high_52w": 152.45,
-      "low_52w": 0
+      "low_52w": 73.67
     },
     {
       "ticker": "GPUS11",
@@ -7586,9 +7612,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 1267,
       "high_52w": 117.45,
-      "low_52w": 0
+      "low_52w": 98.55
     },
     {
       "ticker": "BBSD11",
@@ -7596,9 +7622,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 446,
       "high_52w": 155.02,
-      "low_52w": 0
+      "low_52w": 107.83
     },
     {
       "ticker": "LFTS11",
@@ -7606,9 +7632,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
-      "high_52w": 153.01,
-      "low_52w": 0
+      "liquidity": 45129,
+      "high_52w": 153.09,
+      "low_52w": 133.44
     },
     {
       "ticker": "IMAB11",
@@ -7616,9 +7642,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 6439,
       "high_52w": 114.87,
-      "low_52w": 0
+      "low_52w": 102.47
     },
     {
       "ticker": "ETHE11",
@@ -7626,9 +7652,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 40587,
       "high_52w": 76.4,
-      "low_52w": 0
+      "low_52w": 27.07
     },
     {
       "ticker": "NSDV11",
@@ -7636,9 +7662,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 9042,
       "high_52w": 169.48,
-      "low_52w": 0
+      "low_52w": 119.7
     },
     {
       "ticker": "AUPO11",
@@ -7646,9 +7672,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 16925,
       "high_52w": 106.08,
-      "low_52w": 0
+      "low_52w": 100.09
     },
     {
       "ticker": "BEST11",
@@ -7656,9 +7682,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 1444,
       "high_52w": 134,
-      "low_52w": 0
+      "low_52w": 99.89
     },
     {
       "ticker": "AREA11",
@@ -7666,9 +7692,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 3845,
       "high_52w": 107.96,
-      "low_52w": 0
+      "low_52w": 99.33
     },
     {
       "ticker": "BOVB11",
@@ -7676,9 +7702,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 5142,
       "high_52w": 203.69,
-      "low_52w": 0
+      "low_52w": 134.48
     },
     {
       "ticker": "ESGB11",
@@ -7688,7 +7714,7 @@ window.INVEST_DATA = {
       "variation_12m": 0,
       "liquidity": 0,
       "high_52w": 136.63,
-      "low_52w": 0
+      "low_52w": 103.76
     },
     {
       "ticker": "IWMI11",
@@ -7696,9 +7722,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 429,
       "high_52w": 87.71,
-      "low_52w": 0
+      "low_52w": 74.09
     },
     {
       "ticker": "BOVV11",
@@ -7706,9 +7732,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 30173,
       "high_52w": 205.42,
-      "low_52w": 0
+      "low_52w": 134.94
     },
     {
       "ticker": "CRPT11",
@@ -7716,9 +7742,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 1007,
       "high_52w": 25.4,
-      "low_52w": 0
+      "low_52w": 11.5
     },
     {
       "ticker": "ALUG11",
@@ -7726,9 +7752,9 @@ window.INVEST_DATA = {
       "dy": 0,
       "market_cap": 0,
       "variation_12m": 0,
-      "liquidity": 0,
+      "liquidity": 3979,
       "high_52w": 43.4,
-      "low_52w": 0
+      "low_52w": 38.61
     },
     {
       "ticker": "XBOV11",
@@ -7738,30 +7764,30 @@ window.INVEST_DATA = {
       "variation_12m": 0,
       "liquidity": 0,
       "high_52w": 193.98,
-      "low_52w": 0
+      "low_52w": 129.4
     }
   ],
   "fixedIncome": {
     "tesouro": [
       {
         "name": "Tesouro Prefixado 2029",
-        "rate": "14,08%",
-        "minInvest": "14,20%",
-        "price": "R$ 710,06",
+        "rate": "14,14%",
+        "minInvest": "14,26%",
+        "price": "R$ 709,09",
         "maturity": "01/01/2029"
       },
       {
         "name": "Tesouro Prefixado 2032",
-        "rate": "14,33%",
-        "minInvest": "14,45%",
-        "price": "R$ 473,19",
+        "rate": "14,41%",
+        "minInvest": "14,53%",
+        "price": "R$ 471,35",
         "maturity": "01/01/2032"
       },
       {
         "name": "Tesouro Prefixado 2037\n                                            \n                                                                                            \n                                                                                    \n                                                                                    \n                                                Juros Semestrais",
-        "rate": "14,40%",
-        "minInvest": "14,52%",
-        "price": "R$ 813,92",
+        "rate": "14,47%",
+        "minInvest": "14,59%",
+        "price": "R$ 810,95",
         "maturity": "01/01/2037"
       },
       {
@@ -7773,184 +7799,184 @@ window.INVEST_DATA = {
       },
       {
         "name": "Tesouro Renda+ Aposentadoria Extra 2030",
-        "rate": "IPCA + 7,41%",
-        "minInvest": "IPCA + 7,53%",
-        "price": "R$ 1.944,01",
+        "rate": "IPCA + 7,43%",
+        "minInvest": "IPCA + 7,55%",
+        "price": "R$ 1.939,94",
         "maturity": "15/12/2049"
       },
       {
         "name": "Tesouro Renda+ Aposentadoria Extra 2035",
-        "rate": "IPCA + 7,24%",
-        "minInvest": "IPCA + 7,36%",
-        "price": "R$ 1.398,26",
+        "rate": "IPCA + 7,25%",
+        "minInvest": "IPCA + 7,37%",
+        "price": "R$ 1.396,14",
         "maturity": "15/12/2054"
       },
       {
         "name": "Tesouro Renda+ Aposentadoria Extra 2040",
-        "rate": "IPCA + 7,12%",
-        "minInvest": "IPCA + 7,24%",
-        "price": "R$ 1.011,66",
+        "rate": "IPCA + 7,13%",
+        "minInvest": "IPCA + 7,25%",
+        "price": "R$ 1.009,65",
         "maturity": "15/12/2059"
       },
       {
         "name": "Tesouro Renda+ Aposentadoria Extra 2045",
-        "rate": "IPCA + 7,05%",
-        "minInvest": "IPCA + 7,17%",
-        "price": "R$ 731,31",
+        "rate": "IPCA + 7,06%",
+        "minInvest": "IPCA + 7,18%",
+        "price": "R$ 729,52",
         "maturity": "15/12/2064"
       },
       {
         "name": "Tesouro Renda+ Aposentadoria Extra 2050",
-        "rate": "IPCA + 7,01%",
-        "minInvest": "IPCA + 7,13%",
-        "price": "R$ 527,39",
+        "rate": "IPCA + 7,03%",
+        "minInvest": "IPCA + 7,15%",
+        "price": "R$ 524,32",
         "maturity": "15/12/2069"
       },
       {
         "name": "Tesouro Renda+ Aposentadoria Extra 2055",
-        "rate": "IPCA + 7,00%",
-        "minInvest": "IPCA + 7,12%",
-        "price": "R$ 377,89",
+        "rate": "IPCA + 7,03%",
+        "minInvest": "IPCA + 7,15%",
+        "price": "R$ 374,07",
         "maturity": "15/12/2074"
       },
       {
         "name": "Tesouro Renda+ Aposentadoria Extra 2060",
-        "rate": "IPCA + 7,00%",
-        "minInvest": "IPCA + 7,12%",
-        "price": "R$ 269,95",
+        "rate": "IPCA + 7,03%",
+        "minInvest": "IPCA + 7,15%",
+        "price": "R$ 266,86",
         "maturity": "15/12/2079"
       },
       {
         "name": "Tesouro Renda+ Aposentadoria Extra 2065",
-        "rate": "IPCA + 7,00%",
-        "minInvest": "IPCA + 7,12%",
-        "price": "R$ 192,87",
+        "rate": "IPCA + 7,03%",
+        "minInvest": "IPCA + 7,15%",
+        "price": "R$ 190,39",
         "maturity": "15/12/2084"
       },
       {
         "name": "Tesouro Educa+ 2027",
-        "rate": "IPCA + 7,96%",
-        "minInvest": "IPCA + 8,08%",
-        "price": "R$ 3.737,72",
+        "rate": "IPCA + 7,99%",
+        "minInvest": "IPCA + 8,11%",
+        "price": "R$ 3.734,67",
         "maturity": "15/12/2031"
       },
       {
         "name": "Tesouro Educa+ 2028",
-        "rate": "IPCA + 7,92%",
-        "minInvest": "IPCA + 8,04%",
-        "price": "R$ 3.468,71",
+        "rate": "IPCA + 7,96%",
+        "minInvest": "IPCA + 8,08%",
+        "price": "R$ 3.463,67",
         "maturity": "15/12/2032"
       },
       {
         "name": "Tesouro Educa+ 2029",
-        "rate": "IPCA + 7,88%",
-        "minInvest": "IPCA + 8,00%",
-        "price": "R$ 3.221,51",
+        "rate": "IPCA + 7,92%",
+        "minInvest": "IPCA + 8,04%",
+        "price": "R$ 3.215,64",
         "maturity": "15/12/2033"
       },
       {
         "name": "Tesouro Educa+ 2030",
-        "rate": "IPCA + 7,83%",
-        "minInvest": "IPCA + 7,95%",
-        "price": "R$ 2.995,21",
+        "rate": "IPCA + 7,88%",
+        "minInvest": "IPCA + 8,00%",
+        "price": "R$ 2.987,00",
         "maturity": "15/12/2034"
       },
       {
         "name": "Tesouro Educa+ 2031",
-        "rate": "IPCA + 7,77%",
-        "minInvest": "IPCA + 7,89%",
-        "price": "R$ 2.789,30",
+        "rate": "IPCA + 7,81%",
+        "minInvest": "IPCA + 7,93%",
+        "price": "R$ 2.782,15",
         "maturity": "15/12/2035"
       },
       {
         "name": "Tesouro Educa+ 2032",
-        "rate": "IPCA + 7,71%",
-        "minInvest": "IPCA + 7,83%",
-        "price": "R$ 2.600,64",
+        "rate": "IPCA + 7,74%",
+        "minInvest": "IPCA + 7,86%",
+        "price": "R$ 2.594,92",
         "maturity": "15/12/2036"
       },
       {
         "name": "Tesouro Educa+ 2033",
-        "rate": "IPCA + 7,64%",
-        "minInvest": "IPCA + 7,76%",
-        "price": "R$ 2.429,62",
+        "rate": "IPCA + 7,67%",
+        "minInvest": "IPCA + 7,79%",
+        "price": "R$ 2.423,60",
         "maturity": "15/12/2037"
       },
       {
         "name": "Tesouro Educa+ 2034",
-        "rate": "IPCA + 7,57%",
-        "minInvest": "IPCA + 7,69%",
-        "price": "R$ 2.273,20",
+        "rate": "IPCA + 7,60%",
+        "minInvest": "IPCA + 7,72%",
+        "price": "R$ 2.266,94",
         "maturity": "15/12/2038"
       },
       {
         "name": "Tesouro Educa+ 2035",
-        "rate": "IPCA + 7,50%",
-        "minInvest": "IPCA + 7,62%",
-        "price": "R$ 2.129,57",
+        "rate": "IPCA + 7,53%",
+        "minInvest": "IPCA + 7,65%",
+        "price": "R$ 2.123,10",
         "maturity": "15/12/2039"
       },
       {
         "name": "Tesouro Educa+ 2036",
-        "rate": "IPCA + 7,44%",
-        "minInvest": "IPCA + 7,56%",
-        "price": "R$ 1.994,93",
+        "rate": "IPCA + 7,47%",
+        "minInvest": "IPCA + 7,59%",
+        "price": "R$ 1.988,32",
         "maturity": "15/12/2040"
       },
       {
         "name": "Tesouro Educa+ 2037",
-        "rate": "IPCA + 7,39%",
-        "minInvest": "IPCA + 7,51%",
-        "price": "R$ 1.868,58",
+        "rate": "IPCA + 7,41%",
+        "minInvest": "IPCA + 7,53%",
+        "price": "R$ 1.864,10",
         "maturity": "15/12/2041"
       },
       {
         "name": "Tesouro Educa+ 2038",
-        "rate": "IPCA + 7,34%",
-        "minInvest": "IPCA + 7,46%",
-        "price": "R$ 1.751,88",
+        "rate": "IPCA + 7,36%",
+        "minInvest": "IPCA + 7,48%",
+        "price": "R$ 1.747,35",
         "maturity": "15/12/2042"
       },
       {
         "name": "Tesouro Educa+ 2039",
-        "rate": "IPCA + 7,30%",
-        "minInvest": "IPCA + 7,42%",
-        "price": "R$ 1.641,57",
+        "rate": "IPCA + 7,32%",
+        "minInvest": "IPCA + 7,44%",
+        "price": "R$ 1.637,03",
         "maturity": "15/12/2043"
       },
       {
         "name": "Tesouro Educa+ 2040",
-        "rate": "IPCA + 7,27%",
-        "minInvest": "IPCA + 7,39%",
-        "price": "R$ 1.537,20",
+        "rate": "IPCA + 7,28%",
+        "minInvest": "IPCA + 7,40%",
+        "price": "R$ 1.534,93",
         "maturity": "15/12/2044"
       },
       {
         "name": "Tesouro Educa+ 2041",
-        "rate": "IPCA + 7,24%",
-        "minInvest": "IPCA + 7,36%",
-        "price": "R$ 1.440,37",
+        "rate": "IPCA + 7,25%",
+        "minInvest": "IPCA + 7,37%",
+        "price": "R$ 1.438,11",
         "maturity": "15/12/2045"
       },
       {
         "name": "Tesouro Educa+ 2042",
-        "rate": "IPCA + 7,21%",
-        "minInvest": "IPCA + 7,33%",
-        "price": "R$ 1.350,49",
+        "rate": "IPCA + 7,22%",
+        "minInvest": "IPCA + 7,34%",
+        "price": "R$ 1.348,24",
         "maturity": "15/12/2046"
       },
       {
         "name": "Tesouro IPCA+ 2040",
-        "rate": "IPCA + 7,33%",
-        "minInvest": "IPCA + 7,45%",
-        "price": "R$ 1.728,91",
+        "rate": "IPCA + 7,35%",
+        "minInvest": "IPCA + 7,47%",
+        "price": "R$ 1.724,36",
         "maturity": "15/08/2040"
       },
       {
         "name": "Tesouro Educa+ 2043",
-        "rate": "IPCA + 7,18%",
-        "minInvest": "IPCA + 7,30%",
-        "price": "R$ 1.267,02",
+        "rate": "IPCA + 7,19%",
+        "minInvest": "IPCA + 7,31%",
+        "price": "R$ 1.264,80",
         "maturity": "15/12/2047"
       },
       {
@@ -7962,37 +7988,37 @@ window.INVEST_DATA = {
       },
       {
         "name": "Tesouro IPCA+ 2032",
-        "rate": "IPCA + 7,84%",
-        "minInvest": "IPCA + 7,96%",
-        "price": "R$ 2.947,30",
+        "rate": "IPCA + 7,88%",
+        "minInvest": "IPCA + 8,00%",
+        "price": "R$ 2.940,53",
         "maturity": "15/08/2032"
       },
       {
         "name": "Tesouro Educa+ 2044",
-        "rate": "IPCA + 7,15%",
-        "minInvest": "IPCA + 7,27%",
-        "price": "R$ 1.189,38",
+        "rate": "IPCA + 7,16%",
+        "minInvest": "IPCA + 7,28%",
+        "price": "R$ 1.187,18",
         "maturity": "15/12/2048"
       },
       {
         "name": "Tesouro IPCA+ 2045\n                                            \n                                                                                            \n                                                                                    \n                                                                                    \n                                                Juros Semestrais",
-        "rate": "IPCA + 7,35%",
-        "minInvest": "IPCA + 7,47%",
-        "price": "R$ 4.100,11",
+        "rate": "IPCA + 7,37%",
+        "minInvest": "IPCA + 7,49%",
+        "price": "R$ 4.091,71",
         "maturity": "15/05/2045"
       },
       {
         "name": "Tesouro IPCA+ 2060\n                                            \n                                                                                            \n                                                                                    \n                                                                                    \n                                                Juros Semestrais",
-        "rate": "IPCA + 7,23%",
-        "minInvest": "IPCA + 7,35%",
-        "price": "R$ 4.085,34",
+        "rate": "IPCA + 7,25%",
+        "minInvest": "IPCA + 7,37%",
+        "price": "R$ 4.075,18",
         "maturity": "15/08/2060"
       },
       {
         "name": "Tesouro IPCA+ 2037\n                                            \n                                                                                            \n                                                                                    \n                                                                                    \n                                                Juros Semestrais",
-        "rate": "IPCA + 7,59%",
-        "minInvest": "IPCA + 7,71%",
-        "price": "R$ 4.190,11",
+        "rate": "IPCA + 7,62%",
+        "minInvest": "IPCA + 7,74%",
+        "price": "R$ 4.180,79",
         "maturity": "15/05/2037"
       }
     ],
