@@ -6,8 +6,10 @@ async function getTesouroDirect() {
     try {
         console.log('Fetching Tesouro Direto data...');
         const response = await fetch('https://investidor10.com.br/tesouro-direto/', {
+            signal: AbortSignal.timeout(15000),
             headers: { 'User-Agent': 'Mozilla/5.0' }
         });
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         const html = await response.text();
         const $ = cheerio.load(html);
 

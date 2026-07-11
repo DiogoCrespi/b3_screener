@@ -106,8 +106,9 @@ async function getFIInfra(selicParam = null) {
             selic,
             num_properties: 0,
             vacancy: 0,
-            liquidity: f.liquidity || 500000,
-            market_cap: 500000000 // Placeholder
+            liquidity: f.liquidity || 0,
+            market_cap: f.market_cap || 0,
+            data_quality: (f.liquidity && f.market_cap) ? 'complete' : 'incomplete'
         };
     });
 }

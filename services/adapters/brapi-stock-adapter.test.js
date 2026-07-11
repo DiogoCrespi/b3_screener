@@ -33,15 +33,17 @@ describe('BrapiStockAdapter', () => {
                 p_vp: 1.2,
                 psr: 0.8,
                 dividend_yield: 15.5,
-                ev_ebit: 3.5,
+                ev_ebit: 0,
                 mrg_ebit: 45,
                 mrg_liq: 25,
-                roic: 0.12,
+                roic: 0,
                 roe: 30,
-                liq_2meses: 1000000,
+                liq_2meses: 35500000,
                 div_br_patrim: 0.6,
-                cresc_5a: 5,
-                payout: 85.25
+                cresc_5a: 0,
+                payout: 85.25,
+                data_source: 'brapi',
+                unavailable_metrics: ['ev_ebit', 'roic', 'cresc_5a']
             };
 
             const result = adapter.transformStock(input);
@@ -100,7 +102,7 @@ describe('BrapiStockAdapter', () => {
             assert.strictEqual(result.mrg_ebit, 32.1);
             assert.strictEqual(result.mrg_liq, 18.7);
             assert.strictEqual(result.roe, 15.4);
-            assert.strictEqual(result.cresc_5a, 8.2);
+            assert.strictEqual(result.cresc_5a, 0);
         });
 
         test('should return null if transformation fails unexpectedly', () => {

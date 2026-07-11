@@ -19,6 +19,7 @@ async function getBestFIIs(externalMetadata = {}, baseList = null, selicParam = 
             fiis = baseList;
         } else {
             const response = await fetch(FII_URL, {
+                signal: AbortSignal.timeout(15000),
                 headers: { 'User-Agent': 'Mozilla/5.0' }
             });
 

@@ -14,7 +14,9 @@ class BrapiStockAdapter {
         try {
             // Brapi.dev provides a list endpoint for all stocks
             // We'll fetch the list first, then get details for each
-            const listResponse = await fetch(`${this.baseUrl}/quote/list`);
+            const listResponse = await fetch(`${this.baseUrl}/quote/list`, {
+                signal: AbortSignal.timeout(15000)
+            });
 
             if (!listResponse.ok) {
                 throw new Error(`Brapi API error: ${listResponse.status}`);
@@ -33,7 +35,9 @@ class BrapiStockAdapter {
                 const tickerString = batch.join(',');
 
                 try {
-                    const detailsResponse = await fetch(`${this.baseUrl}/quote/${tickerString}?fundamental=true`);
+                    const detailsResponse = await fetch(`${this.baseUrl}/quote/${tickerString}?fundamental=true`, {
+                        signal: AbortSignal.timeout(15000)
+                    });
 
                     if (!detailsResponse.ok) {
                         console.warn(`Brapi details error for batch starting with ${batch[0]}: ${detailsResponse.status}`);
@@ -70,6 +74,8 @@ class BrapiStockAdapter {
         try {
             const fundamentals = brapiStock.summaryProfile || {};
             const price = brapiStock.regularMarketPrice || 0;
+            const averageVolume = brapiStock.averageDailyVolume10Day || 0;
+            const rawDebtToEquity = fundamentals.debtToEquity || 0;
 
             // Brapi uses different field names, we need to map them
             const dividend_yield = Math.round((fundamentals.dividendYield || 0) * 100 * 100) / 100; // Brapi returns as decimal
@@ -82,15 +88,19 @@ class BrapiStockAdapter {
                 p_vp: fundamentals.priceToBook || 0,
                 psr: fundamentals.priceToSalesTrailing12Months || 0,
                 dividend_yield,
-                ev_ebit: fundamentals.enterpriseToEbitda || 0,
+                // Brapi exposes EV/EBITDA here, which is not interchangeable with EV/EBIT.
+                ev_ebit: 0,
                 mrg_ebit: Math.round((fundamentals.ebitdaMargins || 0) * 100 * 100) / 100,
                 mrg_liq: Math.round((fundamentals.profitMargins || 0) * 100 * 100) / 100,
-                roic: fundamentals.returnOnAssets || 0, // Approximation
+                // ROA and quarterly growth must not be scored as ROIC and five-year CAGR.
+                roic: 0,
                 roe: Math.round((fundamentals.returnOnEquity || 0) * 100 * 100) / 100,
-                liq_2meses: brapiStock.averageDailyVolume10Day || 0,
-                div_br_patrim: fundamentals.debtToEquity || 0,
-                cresc_5a: Math.round((fundamentals.earningsQuarterlyGrowth || 0) * 100 * 100) / 100, // Approximation
-                payout: (pl > 0 && dividend_yield > 0) ? (dividend_yield * pl) : 0
+                liq_2meses: averageVolume * price,
+                div_br_patrim: rawDebtToEquity > 10 ? rawDebtToEquity / 100 : rawDebtToEquity,
+                cresc_5a: 0,
+                payout: (pl > 0 && dividend_yield > 0) ? (dividend_yield * pl) : 0,
+                data_source: 'brapi',
+                unavailable_metrics: ['ev_ebit', 'roic', 'cresc_5a']
             };
         } catch (e) {
             console.warn(`Failed to transform stock ${brapiStock?.symbol || 'unknown'}:`, e.message);

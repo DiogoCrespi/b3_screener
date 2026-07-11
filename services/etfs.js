@@ -23,6 +23,7 @@ async function fetchETFDetails(ticker) {
         try {
             const detailUrl = `https://investidor10.com.br/etfs/${ticker.toLowerCase()}/`;
             const detailRes = await axios.get(detailUrl, {
+                timeout: 10000,
                 headers: { 'User-Agent': 'Mozilla/5.0' }
             });
             const $d = cheerio.load(detailRes.data);
@@ -40,6 +41,7 @@ async function fetchETFDetails(ticker) {
         try {
             const yahooUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${ticker}.SA?interval=1d&range=1d`;
             const yahooRes = await axios.get(yahooUrl, {
+                timeout: 10000,
                 headers: { 'User-Agent': 'Mozilla/5.0' }
             });
             const result = yahooRes.data.chart.result[0];
@@ -71,6 +73,7 @@ async function getETFs() {
 
     try {
         const response = await axios.get('https://investidor10.com.br/etfs/', {
+            timeout: 10000,
             headers: {
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
             }
