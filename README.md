@@ -1,45 +1,63 @@
 # B3 Screener 🇧🇷
 
-Um screener completo do mercado brasileiro com interface mobile-first.
+Screener do mercado brasileiro com coleta automatizada, análise fundamentalista e dashboard responsivo.
 
-## 🚀 Funcionalidades
+## Funcionalidades
 
-- **Ações**: Filtro Graham + Análise Fundamentalista
-- **FIIs**: Análise de Fundos Imobiliários com vacância e FFO Yield
-- **ETFs**: Principais ETFs do mercado
-- **Renda Fixa**: Tesouro Direto + Benchmarks de mercado (CDB, LCI, Poupança)
-- **Interface Mobile**: PWA responsivo com tema claro/escuro
-- **Cards Expansíveis**: Clique para ver detalhes completos
+- Ações: estratégias de qualidade, dividendos, valor, crescimento, Graham e Bazin.
+- FIIs, FI-Infra e Fiagros: classificação, liquidez, patrimônio, vacância e dividendos.
+- ETFs e referências de renda fixa.
+- Dashboard responsivo com tema claro/escuro e exportação CSV.
+- Histórico diário dos resultados.
 
-## 📦 Instalação
+## Requisitos
+
+- Node.js 20 ou superior.
+
+## Instalação
 
 ```bash
-npm install
+npm ci
 ```
 
-## 🔧 Uso
+Use `npm install` apenas ao alterar dependências e atualizar o `package-lock.json`.
 
-### 1. Gerar dados
+## Uso
+
+Gere `data.js` e os arquivos de histórico:
+
 ```bash
-node export_data.js
+npm run generate
 ```
 
-### 2. Abrir interface
-Abra `mobile.html` no navegador
+Depois abra `index.html` no navegador. O comando `npm start` executa o dashboard de terminal e também atualiza `data.js`.
 
-## 📊 Fontes de Dados
+## Testes
 
-- **Ações e FIIs**: Fundamentus
-- **Tesouro Direto**: Investidor10
-- **Dólar/Selic**: AwesomeAPI
+```bash
+npm test
+```
 
-## 🎨 Interface
+## Fontes de dados
 
-- Tema escuro/claro com toggle
-- Cards expansíveis com detalhes
-- Responsivo (mobile e desktop)
-- Filtros inteligentes
+- Fundamentus: fonte principal de ações e FIIs.
+- Brapi: contingência para ações, com métricas não equivalentes explicitamente omitidas.
+- Investidor10: metadados, FI-Infra, ETFs e Tesouro Direto.
+- AwesomeAPI: dólar.
+- Banco Central do Brasil: meta Selic.
 
-## 📝 Licença
+As páginas externas podem mudar sem aviso. Requisições possuem timeout e a geração falha quando ocorre um erro não recuperável, evitando publicar uma atualização incompleta como se fosse válida.
+
+## Automação
+
+O workflow diário instala dependências pelo lockfile, executa os testes, gera os dados e só então publica alterações em `data.js` e `history/`.
+
+Os históricos são mantidos para auditoria. Caso o volume se torne excessivo, a retenção deve ser alterada em um PR separado para evitar exclusões acidentais.
+
+## Aviso
+
+Os resultados são indicadores quantitativos e não constituem recomendação de investimento.
+
+## Licença
 
 MIT

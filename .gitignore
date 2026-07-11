@@ -1,6 +1,5 @@
 # Dependencies
 node_modules/
-package-lock.json
 
 # Generated data - REMOVED: data.js is now tracked for GitHub Actions
 *.html.backup
