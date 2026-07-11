@@ -48,7 +48,7 @@ async function main() {
     // --- EXPORT TO DATA.JS FOR FRONTEND ---
     try {
         const investData = {
-            updatedAt: new Date().toLocaleString('pt-BR'),
+            updatedAt: new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' }),
             economy: { dollar, selic },
             stocks: stocks,
             fiis: fiis,

@@ -29,6 +29,10 @@ async function exportData() {
             getPrivateBenchmarks(selic)
         ]);
 
+        if (dollar === null || Number.isNaN(dollar)) {
+            throw new Error('Dollar rate is unavailable; refusing to publish incomplete economy data.');
+        }
+
         // 2. Combine all discovered FIIs to fetch metadata
         const combinedRaw = [...rawStandardFiis, ...rawInfraFiis];
         const allFiiTickers = [...new Set(combinedRaw.map(f => f.ticker))];
@@ -57,7 +61,7 @@ async function exportData() {
         });
 
         const data = {
-            updatedAt: new Date().toLocaleString('pt-BR'),
+            updatedAt: new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' }),
             economy: { dollar, selic },
             stocks: finalStocks,
             fiis: finalFiis,

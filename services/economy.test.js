@@ -50,6 +50,23 @@ describe('Economy Service', () => {
             assert.strictEqual(consoleErrors[0][0], 'Error fetching Dollar rate:');
             assert.strictEqual(consoleErrors[0][1], 'Network Error');
         });
+
+        test('should retry a rate-limited Dollar request', async () => {
+            let attempts = 0;
+            axios.get = async () => {
+                attempts++;
+                if (attempts === 1) {
+                    const error = new Error('Too Many Requests');
+                    error.response = { status: 429 };
+                    throw error;
+                }
+                return { data: { USDBRL: { bid: '5.10' } } };
+            };
+
+            const rate = await getDollarRate();
+            assert.strictEqual(rate, 5.10);
+            assert.strictEqual(attempts, 2);
+        });
     });
 
     describe('getSelicRate', () => {
