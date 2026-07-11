@@ -1,7 +1,7 @@
 
 const { test, describe } = require('node:test');
 const assert = require('node:assert');
-const { getBestStocks } = require('./stocks');
+const { getBestStocks, demoteDuplicateIssuerRecommendations } = require('./stocks');
 
 describe('Stocks Service', () => {
 
@@ -178,4 +178,16 @@ describe('Stocks Service', () => {
          assert.strictEqual(stocks.length, 1);
          assert.strictEqual(stocks[0].ticker, 'STAR_HIGH_LIQ');
    });
+});
+
+describe('issuer deduplication', () => {
+    test('keeps only the strongest share class as a top pick', () => {
+        const result = demoteDuplicateIssuerRecommendations([
+            { ticker: 'PETR4', issuer_key: 'PETR', signal: 'TOP_PICK', category: 'STAR', warnings: [] },
+            { ticker: 'PETR3', issuer_key: 'PETR', signal: 'TOP_PICK', category: 'STAR', warnings: [] }
+        ]);
+        assert.strictEqual(result[0].signal, 'TOP_PICK');
+        assert.strictEqual(result[1].signal, 'WATCHLIST');
+        assert.ok(result[1].warnings.includes('DUPLICATE_ISSUER_SHARE_CLASS'));
+    });
 });

@@ -32,6 +32,15 @@ describe('fund classification', () => {
         assert.strictEqual(result.type, 'TIJOLO');
     });
 
+    test('does not mistake the CRI letters inside escritorios for credit exposure', () => {
+        const result = classifyFund(
+            { ticker: 'HGRE11', segment: 'Escritï¿½rios', num_properties: 12 },
+            { segment: 'Lajes Corporativas', mandate: 'Títulos e Valores Mobiliários' }
+        );
+        assert.strictEqual(result.exposure, 'REAL_ESTATE_PHYSICAL');
+        assert.strictEqual(result.type, 'TIJOLO');
+    });
+
     test('does not treat an isolated property count as physical when credit evidence is explicit', () => {
         const result = classifyFund(
             { ticker: 'RECR11', segment: 'Multicategoria', num_properties: 1 },

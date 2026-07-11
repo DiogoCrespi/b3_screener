@@ -5,6 +5,23 @@ const BrapiStockAdapter = require('./adapters/brapi-stock-adapter');
 const { analyzeStock } = require('./logic/stock-rules');
 const { getSelicRate } = require('./economy');
 
+function demoteDuplicateIssuerRecommendations(stocks) {
+    const selectedIssuers = new Set();
+    return stocks.map(stock => {
+        if (stock.signal !== 'TOP_PICK' || !stock.issuer_key) return stock;
+        if (!selectedIssuers.has(stock.issuer_key)) {
+            selectedIssuers.add(stock.issuer_key);
+            return stock;
+        }
+        return {
+            ...stock,
+            signal: 'WATCHLIST',
+            category: null,
+            warnings: [...(stock.warnings || []), 'DUPLICATE_ISSUER_SHARE_CLASS']
+        };
+    });
+}
+
 async function getBestStocks(selicParam = null, dependencies = {}) {
     // Inject dependencies for testing
     const {
@@ -64,9 +81,10 @@ async function getBestStocks(selicParam = null, dependencies = {}) {
 
         // CRITICAL: Differentiated liquidity for STARS vs OPPORTUNITIES
         // STARS need 300k+ (captures quality small caps), OPPORTUNITIES can have 200k+ (value investing tolerance)
-        const stars = enrichedStocks.filter(s => s.category === 'STAR' && s.liq_2meses > 300000);
-        const opportunities = enrichedStocks.filter(s => s.category === 'OPPORTUNITY');
-        const review = enrichedStocks.filter(s => !['STAR', 'OPPORTUNITY'].includes(s.category));
+        const deduplicatedStocks = demoteDuplicateIssuerRecommendations(enrichedStocks);
+        const stars = deduplicatedStocks.filter(s => s.category === 'STAR' && s.liq_2meses > 300000);
+        const opportunities = deduplicatedStocks.filter(s => s.category === 'OPPORTUNITY');
+        const review = deduplicatedStocks.filter(s => !['STAR', 'OPPORTUNITY'].includes(s.category));
 
         return [...stars, ...opportunities, ...review];
 
@@ -76,4 +94,4 @@ async function getBestStocks(selicParam = null, dependencies = {}) {
     }
 }
 
-module.exports = { getBestStocks };
+module.exports = { getBestStocks, demoteDuplicateIssuerRecommendations };

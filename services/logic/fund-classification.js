@@ -7,7 +7,7 @@ const PHYSICAL_TERMS = [
     'agencia bancaria', 'renda urbana', 'imoveis'
 ];
 const CREDIT_TERMS = [
-    'titulos e valores mobiliarios', 'titulos e val', 'recebiveis', 'cri',
+    'titulos e valores mobiliarios', 'titulos e val', 'recebiveis',
     'credito imobiliario', 'credito estruturado'
 ];
 const FOF_TERMS = ['fundo de fundos', 'fundos de fundos', 'fof', 'cotas de fii', 'cotas de fiis'];
