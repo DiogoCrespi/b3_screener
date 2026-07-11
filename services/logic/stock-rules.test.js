@@ -474,3 +474,44 @@ describe('stock-rules logic', () => {
         });
     });
 });
+
+describe('stock decision regressions', () => {
+    test('never promotes a company with negative equity and ROE to STAR', () => {
+        const result = analyzeStock({
+            ticker: 'AZUL3', cotacao: 23.5, pl: 1.93, p_vp: -2.29,
+            roe: -119, roic: 8, mrg_liq: 2, mrg_ebit: 5,
+            dividend_yield: 0, payout: 0, cresc_5a: 5,
+            div_br_patrim: -1, liq_2meses: 10000000, psr: 0.5, ev_ebit: 4
+        }, 14.25);
+
+        assert.strictEqual(result.signal, 'DISTRESSED');
+        assert.strictEqual(result.category, null);
+        assert.ok(result.blockers.includes('NON_POSITIVE_EQUITY'));
+    });
+
+    test('routes extraordinary yield and payout to review instead of opportunity', () => {
+        const result = analyzeStock({
+            ticker: 'EVENT3', cotacao: 10, pl: 5, p_vp: 0.8,
+            roe: 20, roic: 15, mrg_liq: 15, dividend_yield: 40,
+            payout: 200, cresc_5a: 5, div_br_patrim: 0.5,
+            liq_2meses: 2000000, psr: 1, ev_ebit: 6
+        }, 14.25);
+
+        assert.strictEqual(result.signal, 'REVIEW');
+        assert.strictEqual(result.category, null);
+        assert.ok(result.warnings.includes('EXTREME_TRAILING_YIELD'));
+    });
+
+    test('exposes independent analysis pillars', () => {
+        const result = analyzeStock({
+            ticker: 'GOOD3', cotacao: 20, pl: 7, p_vp: 0.9,
+            roe: 22, roic: 17, mrg_liq: 18, dividend_yield: 9,
+            payout: 55, cresc_5a: 12, div_br_patrim: 0.6,
+            liq_2meses: 3000000, psr: 1, ev_ebit: 6
+        }, 14.25);
+
+        assert.deepStrictEqual(Object.keys(result.pillars), ['quality', 'valuation', 'income', 'safety']);
+        assert.ok(result.overall_score >= 7);
+        assert.strictEqual(result.signal, 'TOP_PICK');
+    });
+});

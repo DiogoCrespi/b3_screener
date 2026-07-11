@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "generate": "node export_data.js",
-    "test": "node --test Screener.test.js services/storage.test.js services/stocks.test.js services/logic/stock-rules.test.js services/fixed_income.test.js services/etfs.test.js services/economy.test.js services/adapters/brapi-stock-adapter.test.js"
+    "test": "node --test Screener.test.js services/storage.test.js services/stocks.test.js services/fiis.test.js services/logic/stock-rules.test.js services/logic/fund-classification.test.js services/logic/fund-analysis.test.js services/fixed_income.test.js services/etfs.test.js services/economy.test.js services/adapters/brapi-stock-adapter.test.js"
   },
   "engines": {
     "node": ">=20"

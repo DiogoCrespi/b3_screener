@@ -27,6 +27,8 @@ describe('BrapiStockAdapter', () => {
             };
 
             const expected = {
+                issuer_key: 'PETR',
+                share_class: '4',
                 ticker: 'PETR4',
                 cotacao: 35.50,
                 pl: 5.5,
@@ -43,10 +45,12 @@ describe('BrapiStockAdapter', () => {
                 cresc_5a: 0,
                 payout: 85.25,
                 data_source: 'brapi',
+                collected_at: null,
                 unavailable_metrics: ['ev_ebit', 'roic', 'cresc_5a']
             };
 
             const result = adapter.transformStock(input);
+            expected.collected_at = result.collected_at;
             assert.deepStrictEqual(result, expected);
         });
 

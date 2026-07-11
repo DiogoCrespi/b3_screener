@@ -1,5 +1,105 @@
 
 // logic/stock-rules.js
+const { clamp, finiteNumber } = require('./analysis-utils');
+
+function buildStockDecision(s, yieldThreshold) {
+    const price = finiteNumber(s.cotacao);
+    const pl = finiteNumber(s.pl);
+    const pvp = finiteNumber(s.p_vp);
+    const roe = finiteNumber(s.roe);
+    const roic = finiteNumber(s.roic);
+    const margin = finiteNumber(s.mrg_liq);
+    const growth = finiteNumber(s.cresc_5a);
+    const debt = finiteNumber(s.div_br_patrim);
+    const dy = finiteNumber(s.dividend_yield);
+    const payout = finiteNumber(s.payout);
+    const liquidity = finiteNumber(s.liq_2meses);
+    const evEbit = finiteNumber(s.ev_ebit);
+    const psr = finiteNumber(s.psr);
+    const warnings = [];
+    const blockers = [];
+
+    if (price <= 0) blockers.push('INVALID_PRICE');
+    if (pl <= 0) blockers.push('NON_POSITIVE_EARNINGS');
+    if (pvp <= 0) blockers.push('NON_POSITIVE_EQUITY');
+    if (roe <= 0) blockers.push('NON_POSITIVE_ROE');
+    if (margin <= 0) blockers.push('NON_POSITIVE_MARGIN');
+    if (dy > 25) warnings.push('EXTREME_TRAILING_YIELD');
+    if (payout > 100) warnings.push('UNSUSTAINABLE_OR_NON_RECURRING_PAYOUT');
+    if (debt < 0) warnings.push('NEGATIVE_OR_UNRELIABLE_DEBT_RATIO');
+    if (growth < 0) warnings.push('NEGATIVE_FIVE_YEAR_GROWTH');
+    if (liquidity <= 0) warnings.push('MISSING_LIQUIDITY');
+
+    const required = [price, pl, pvp, roe, margin, liquidity];
+    const missingCount = required.filter(value => !Number.isFinite(value) || value === 0).length;
+    const dataQuality = missingCount >= 3 ? 'INSUFFICIENT' : missingCount > 0 ? 'PARTIAL' : 'COMPLETE';
+
+    let eligibility = 'ELIGIBLE';
+    if (dataQuality === 'INSUFFICIENT') eligibility = 'INSUFFICIENT_DATA';
+    else if (blockers.length > 0) eligibility = 'DISTRESSED';
+    else if (warnings.includes('EXTREME_TRAILING_YIELD') || warnings.includes('UNSUSTAINABLE_OR_NON_RECURRING_PAYOUT')) eligibility = 'REVIEW';
+
+    let quality = 0;
+    if (roe >= 20) quality += 3; else if (roe >= 12) quality += 2; else if (roe > 0) quality += 1;
+    if (roic >= 15) quality += 2; else if (roic >= 8) quality += 1;
+    if (margin >= 15) quality += 2; else if (margin >= 8) quality += 1;
+    if (growth >= 10) quality += 2; else if (growth >= 3) quality += 1;
+    if (debt >= 0 && debt <= 1.5) quality += 1;
+
+    let valuation = 0;
+    if (pl > 0 && pl <= 8) valuation += 3; else if (pl <= 12) valuation += 2; else if (pl <= 18) valuation += 1;
+    if (pvp > 0 && pvp <= 1) valuation += 3; else if (pvp <= 1.8) valuation += 2; else if (pvp <= 3) valuation += 1;
+    if (evEbit > 0 && evEbit <= 8) valuation += 2; else if (evEbit <= 12) valuation += 1;
+    if (psr > 0 && psr <= 1.5) valuation += 2; else if (psr <= 3) valuation += 1;
+
+    let income = 0;
+    if (dy >= yieldThreshold && dy <= 16) income += 4; else if (dy >= 4 && dy <= 20) income += 2;
+    if (payout >= 25 && payout <= 80) income += 3; else if (payout > 0 && payout <= 100) income += 1;
+    if (growth > 0) income += 1;
+    if (margin > 10) income += 1;
+    if (dy > 25 || payout > 100) income -= 4;
+
+    let safety = 0;
+    if (liquidity >= 1000000) safety += 3; else if (liquidity >= 200000) safety += 2;
+    if (debt >= 0 && debt <= 1) safety += 3; else if (debt <= 2) safety += 1;
+    if (payout === 0 || payout <= 80) safety += 2;
+    if (growth >= 0) safety += 1;
+    if (pvp > 0 && roe > 0) safety += 1;
+    if (warnings.length > 0) safety -= warnings.length;
+
+    const pillars = {
+        quality: clamp(quality),
+        valuation: clamp(valuation),
+        income: clamp(income),
+        safety: clamp(safety)
+    };
+    const overall = clamp(
+        pillars.quality * 0.35 + pillars.valuation * 0.30 +
+        pillars.income * 0.20 + pillars.safety * 0.15
+    );
+
+    let signal = 'WATCHLIST';
+    if (eligibility === 'INSUFFICIENT_DATA') signal = 'INSUFFICIENT_DATA';
+    else if (eligibility === 'DISTRESSED') signal = 'DISTRESSED';
+    else if (eligibility === 'REVIEW') signal = 'REVIEW';
+    else if (overall >= 7 && pillars.quality >= 6 && pillars.safety >= 6) signal = 'TOP_PICK';
+    else if (overall >= 5.5 && pillars.valuation >= 6 && pillars.safety >= 4) signal = 'OPPORTUNITY';
+
+    return {
+        eligibility,
+        signal,
+        risk_level: signal === 'DISTRESSED' ? 'CRITICAL'
+            : eligibility === 'REVIEW' ? 'HIGH'
+                : pillars.safety >= 7 ? 'LOW'
+                    : pillars.safety >= 5 ? 'MEDIUM' : 'HIGH',
+        data_quality: dataQuality,
+        pillars,
+        overall_score: Number(overall.toFixed(2)),
+        blockers,
+        warnings,
+        payout_is_estimated: true
+    };
+}
 
 /**
  * Analyzes a single stock and attaches strategies, scores, and categories.
@@ -155,6 +255,11 @@ function analyzeStock(s, selic) {
         if (!category) category = 'OPPORTUNITY';
     }
 
+    const decision = buildStockDecision(s, YIELD_THRESHOLD);
+    if (decision.signal === 'TOP_PICK') category = 'STAR';
+    else if (decision.signal === 'OPPORTUNITY') category = 'OPPORTUNITY';
+    else category = null;
+
     return {
         ...s,
         graham_price: graham_fair_price,
@@ -165,8 +270,9 @@ function analyzeStock(s, selic) {
         score,
         strategies,
         category,
-        peg_ratio
+        peg_ratio,
+        ...decision
     };
 }
 
-module.exports = { analyzeStock };
+module.exports = { analyzeStock, buildStockDecision };

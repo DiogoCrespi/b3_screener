@@ -1,6 +1,7 @@
 
 // adapters/fundamentus-stock-adapter.js
 const cheerio = require('cheerio');
+const { parseB3Ticker } = require('../logic/analysis-utils');
 
 const FUNDAMENTUS_URL = 'https://www.fundamentus.com.br/resultado.php';
 
@@ -43,6 +44,10 @@ class FundamentusStockAdapter {
                     div_br_patrim: parseNumber($(tds[20]).text().trim()),
                     cresc_5a: parseNumber($(tds[21]).text().trim())
                 };
+                Object.assign(stock, parseB3Ticker(stock.ticker), {
+                    data_source: 'fundamentus',
+                    collected_at: new Date().toISOString()
+                });
 
                 if (stock.pl > 0 && stock.dividend_yield > 0) {
                     stock.payout = stock.dividend_yield * stock.pl;

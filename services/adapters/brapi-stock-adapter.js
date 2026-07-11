@@ -1,5 +1,6 @@
 
 // adapters/brapi-stock-adapter.js
+const { parseB3Ticker } = require('../logic/analysis-utils');
 
 /**
  * Adapter for Brapi.dev API
@@ -82,6 +83,7 @@ class BrapiStockAdapter {
             const pl = fundamentals.trailingPE || 0;
 
             return {
+                ...parseB3Ticker(brapiStock.symbol),
                 ticker: brapiStock.symbol || '',
                 cotacao: price,
                 pl,
@@ -100,6 +102,7 @@ class BrapiStockAdapter {
                 cresc_5a: 0,
                 payout: (pl > 0 && dividend_yield > 0) ? (dividend_yield * pl) : 0,
                 data_source: 'brapi',
+                collected_at: new Date().toISOString(),
                 unavailable_metrics: ['ev_ebit', 'roic', 'cresc_5a']
             };
         } catch (e) {

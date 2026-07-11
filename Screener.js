@@ -9,7 +9,7 @@ function filterAssets(assets, config) {
         const itemLiquidity = item.liq_2meses || item.liquidity || 0;
         const itemYield = item.dividend_yield || item.dy || 0;
         const itemP_VP = item.p_vp || 0;
-        const itemScore = item.score || 0;
+        const itemScore = item.overall_score ?? item.score ?? 0;
         const itemDebt = item.div_br_patrim || 0;
         const itemStrategies = item.strategies || [item.category].filter(Boolean);
 

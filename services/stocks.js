@@ -54,20 +54,21 @@ async function getBestStocks(selicParam = null, dependencies = {}) {
         const enrichedStocks = rawStocks
             .filter(s => s.liq_2meses > 200000) // Basic liquidity filter
             .map(s => stockAnalyzer(s, selic))   // Apply rules/scoring
-            .filter(s => s.category !== null)   // Remove junk
+            .filter(s => s.signal ? s.signal !== 'INSUFFICIENT_DATA' : s.category !== null)
             .sort((a, b) => {
-                // Sort: STARS first, then by Score
-                if (a.category === 'STAR' && b.category !== 'STAR') return -1;
-                if (a.category !== 'STAR' && b.category === 'STAR') return 1;
-                return b.score - a.score || b.dividend_yield - a.dividend_yield;
+                const order = { TOP_PICK: 0, OPPORTUNITY: 1, WATCHLIST: 2, REVIEW: 3, DISTRESSED: 4 };
+                const aOrder = a.signal ? (order[a.signal] ?? 5) : (a.category === 'STAR' ? 0 : 1);
+                const bOrder = b.signal ? (order[b.signal] ?? 5) : (b.category === 'STAR' ? 0 : 1);
+                return aOrder - bOrder || (b.overall_score ?? b.score) - (a.overall_score ?? a.score);
             });
 
         // CRITICAL: Differentiated liquidity for STARS vs OPPORTUNITIES
         // STARS need 300k+ (captures quality small caps), OPPORTUNITIES can have 200k+ (value investing tolerance)
         const stars = enrichedStocks.filter(s => s.category === 'STAR' && s.liq_2meses > 300000);
         const opportunities = enrichedStocks.filter(s => s.category === 'OPPORTUNITY');
+        const review = enrichedStocks.filter(s => !['STAR', 'OPPORTUNITY'].includes(s.category));
 
-        return [...stars, ...opportunities];
+        return [...stars, ...opportunities, ...review];
 
     } catch (error) {
         console.error('Error in stock analysis/filtering:', error.message);
