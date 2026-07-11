@@ -63,4 +63,16 @@ describe('fund classification', () => {
         assert.strictEqual(result.exposure, 'HYBRID');
         assert.strictEqual(result.classification_confidence, 'MEDIUM');
     });
+
+    test('classifies MXRF11 as credit based on external type despite incorrect base segment from Fundamentus', () => {
+        const result = classifyFund(
+            { ticker: 'MXRF11', segment: 'Logística', num_properties: 0 },
+            { type: 'Fundo de Papel', segment: 'Híbrido', mandate: 'Híbridos' }
+        );
+        assert.strictEqual(result.regulatory_class, 'FII');
+        assert.strictEqual(result.exposure, 'REAL_ESTATE_CREDIT');
+        assert.strictEqual(result.type, 'PAPEL');
+        assert.strictEqual(result.classification_confidence, 'HIGH');
+    });
 });
+

@@ -183,16 +183,46 @@ describe('stock-rules logic', () => {
         });
 
         describe('Category', () => {
-            test('should assign STAR category for high scoring stocks', () => {
+            test('should assign STAR_GROWTH category for high scoring growing stocks', () => {
                 const starStock = {
                     ...defaultStock,
                     roe: 20,
                     roic: 20,
                     pl: 5,
-                    p_vp: 0.8
+                    p_vp: 0.8,
+                    cresc_5a: 10
                 };
                 const result = analyzeStock(starStock, defaultSelic);
-                assert.strictEqual(result.category, 'STAR');
+                assert.strictEqual(result.category, 'STAR_GROWTH');
+                assert.strictEqual(result.is_star_growth, true);
+            });
+
+            test('should assign STAR_INCOME category for high scoring dividend stocks', () => {
+                const incomeStock = {
+                    ...defaultStock,
+                    roe: 12,
+                    pl: 8,
+                    dividend_yield: 8, // > threshold 6
+                    payout: 50,
+                    div_br_patrim: 0.5
+                };
+                const result = analyzeStock(incomeStock, defaultSelic);
+                assert.strictEqual(result.category, 'STAR_INCOME');
+                assert.strictEqual(result.is_star_income, true);
+            });
+
+            test('should assign STAR_VALUE category for high scoring value stocks', () => {
+                const valueStock = {
+                    ...defaultStock,
+                    pl: 5,
+                    p_vp: 0.8,
+                    dividend_yield: 2, // low yield, not income star
+                    cresc_5a: 2, // low growth, not growth star
+                    cotacao: 10 // Graham price = 10 * sqrt(22.5 / (5 * 0.8)) = 10 * sqrt(5.625) = 23.7 (upside > 0)
+                };
+                const result = analyzeStock(valueStock, defaultSelic);
+                assert.strictEqual(result.category, 'STAR_VALUE');
+                assert.strictEqual(result.is_star_value, true);
             });
 
             test('should NOT assign STAR if payout is unsustainable', () => {
@@ -202,7 +232,9 @@ describe('stock-rules logic', () => {
                     payout: 110
                 };
                 const result = analyzeStock(highPayoutStock, defaultSelic);
-                assert.notStrictEqual(result.category, 'STAR');
+                assert.strictEqual(result.is_star_income, false);
+                assert.strictEqual(result.is_star_growth, false);
+                assert.strictEqual(result.is_star_value, false);
             });
 
             test('should assign OPPORTUNITY for decent but not star stocks', () => {
@@ -224,6 +256,46 @@ describe('stock-rules logic', () => {
                 };
                 const result = analyzeStock(oppStock, defaultSelic);
                 assert.strictEqual(result.category, 'OPPORTUNITY');
+            });
+
+            describe('Specialized Scores', () => {
+                test('should calculate specialized scores correctly', () => {
+                    const testStock = {
+                        ...defaultStock,
+                        cotacao: 10,
+                        pl: 10,
+                        p_vp: 1.0,
+                        dividend_yield: 8.0,
+                        cresc_5a: 10.0,
+                        roe: 15.0
+                    };
+                    const result = analyzeStock(testStock, defaultSelic);
+                    assert.ok(Math.abs(result.score_income - 8.7) < 0.1);
+                    assert.strictEqual(result.score_growth, 7.5);
+                    assert.strictEqual(result.score_value, 7.5);
+                });
+
+                test('should apply penalty in Value Score if divida_ebitda > 3.5 or dividends_last_3_years === 0', () => {
+                    const highDebtStock = {
+                        ...defaultStock,
+                        pl: 10,
+                        p_vp: 1.0,
+                        divida_ebitda: 4.0,
+                        dividends_last_3_years: 5
+                    };
+                    const resultDebt = analyzeStock(highDebtStock, defaultSelic);
+                    assert.ok(resultDebt.score_value < 5.0);
+
+                    const zeroDivStock = {
+                        ...defaultStock,
+                        pl: 10,
+                        p_vp: 1.0,
+                        divida_ebitda: 1.0,
+                        dividends_last_3_years: 0
+                    };
+                    const resultDiv = analyzeStock(zeroDivStock, defaultSelic);
+                    assert.ok(resultDiv.score_value < 5.0);
+                });
             });
         });
 

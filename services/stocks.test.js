@@ -29,7 +29,7 @@ describe('Stocks Service', () => {
             }
         }
 
-        const mockAnalyze = (s) => ({ ...s, category: 'STAR', score: 10 });
+        const mockAnalyze = (s) => ({ ...s, category: 'STAR_INCOME', score: 10 });
         const mockSelic = async () => 10.0;
 
         const stocks = await getBestStocks(null, {
@@ -128,12 +128,12 @@ describe('Stocks Service', () => {
 
         // Mock Logic
         const mockAnalyze = (s) => {
-            if (s.ticker === 'STAR1') return { ...s, category: 'STAR', score: 9 };
-            if (s.ticker === 'STAR2') return { ...s, category: 'STAR', score: 8 };
+            if (s.ticker === 'STAR1') return { ...s, category: 'STAR_INCOME', score: 9 };
+            if (s.ticker === 'STAR2') return { ...s, category: 'STAR_INCOME', score: 8 };
             if (s.ticker === 'OPP1') return { ...s, category: 'OPPORTUNITY', score: 9 };
             if (s.ticker === 'JUNK1') return { ...s, category: null, score: 0 };
             // Pass through LOWLIQ to see if it gets filtered before
-            if (s.ticker === 'LOWLIQ') return { ...s, category: 'STAR', score: 10 };
+            if (s.ticker === 'LOWLIQ') return { ...s, category: 'STAR_INCOME', score: 10 };
             return { ...s, category: null }; // Fallback
         };
 
@@ -167,7 +167,7 @@ describe('Stocks Service', () => {
              async getStocks() { return rawStocks; }
          }
 
-         const mockAnalyze = (s) => ({ ...s, category: 'STAR' });
+         const mockAnalyze = (s) => ({ ...s, category: 'STAR_INCOME' });
 
          const stocks = await getBestStocks(10.0, {
              FundamentusAdapter: MockFundamentus,
@@ -183,8 +183,8 @@ describe('Stocks Service', () => {
 describe('issuer deduplication', () => {
     test('keeps only the strongest share class as a top pick', () => {
         const result = demoteDuplicateIssuerRecommendations([
-            { ticker: 'PETR4', issuer_key: 'PETR', signal: 'TOP_PICK', category: 'STAR', warnings: [] },
-            { ticker: 'PETR3', issuer_key: 'PETR', signal: 'TOP_PICK', category: 'STAR', warnings: [] }
+            { ticker: 'PETR4', issuer_key: 'PETR', signal: 'TOP_PICK', category: 'STAR_INCOME', warnings: [] },
+            { ticker: 'PETR3', issuer_key: 'PETR', signal: 'TOP_PICK', category: 'STAR_INCOME', warnings: [] }
         ]);
         assert.strictEqual(result[0].signal, 'TOP_PICK');
         assert.strictEqual(result[1].signal, 'WATCHLIST');

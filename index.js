@@ -69,52 +69,71 @@ async function main() {
     }
 
     // --- STOCK DISPLAY ---
-    const starStocks = stocks.filter(s => s.category === 'STAR');
+    const starIncome = stocks.filter(s => s.is_star_income);
+    const starGrowth = stocks.filter(s => s.is_star_growth);
+    const starValue = stocks.filter(s => s.is_star_value);
     const opportunityStocks = stocks.filter(s => s.category === 'OPPORTUNITY');
 
-    // STARS
-    console.log('\n--- ⭐ TOP 10 STARS (Strict Quality + Growth + Income) ---');
-    console.log('Criteria: Liquidity > 100k, ROE > 10%, CAGR > 5%, DY > 6%');
-    console.log('-'.repeat(105));
-    console.log(
-        'Ticket'.padEnd(8) +
-        'Price'.padEnd(9) +
-        'P/VP'.padEnd(6) +
-        'DY%'.padEnd(7) +
-        'CAGR%'.padEnd(8) +
-        'D/Eq'.padEnd(6) +
-        'Graham'.padEnd(9) +
-        'Bazin'.padEnd(9) +
-        'Upside'.padEnd(8) +
-        'EV/EBIT'.padEnd(8) +
-        'Score'.padEnd(6) +
-        'PSR'.padEnd(6) +
-        'PEG'
-    );
-    console.log('-'.repeat(110));
+    const printHeader = (title, criteria) => {
+        console.log(`\n--- ${title} ---`);
+        console.log(`Criteria: ${criteria}`);
+        console.log('-'.repeat(110));
+        console.log(
+            'Ticket'.padEnd(8) +
+            'Price'.padEnd(9) +
+            'P/VP'.padEnd(6) +
+            'DY%'.padEnd(7) +
+            'CAGR%'.padEnd(8) +
+            'D/Eq'.padEnd(6) +
+            'Graham'.padEnd(9) +
+            'Bazin'.padEnd(9) +
+            'Upside'.padEnd(8) +
+            'EV/EBIT'.padEnd(8) +
+            'Score'.padEnd(6) +
+            'PSR'.padEnd(6) +
+            'PEG'
+        );
+        console.log('-'.repeat(110));
+    };
 
-    if (starStocks.length > 0) {
-        starStocks.slice(0, 10).forEach(s => {
-            console.log(
-                s.ticker.padEnd(8) +
-                s.cotacao.toFixed(2).padEnd(9) +
-                s.p_vp.toFixed(2).padEnd(6) +
-                (s.dividend_yield.toFixed(1) + '%').padEnd(7) +
-                (s.cresc_5a.toFixed(1) + '%').padEnd(8) +
-                s.div_br_patrim.toFixed(2).padEnd(6) +
-                s.graham_price.toFixed(2).padEnd(9) +
-                s.bazin_price.toFixed(2).padEnd(9) +
-                (s.upside.toFixed(0) + '%').padEnd(8) +
-                (s.ev_ebit ? s.ev_ebit.toFixed(2) : 'N/A').padEnd(8) +
-                (s.score + '/10').padEnd(6) +
-                (s.psr ? s.psr.toFixed(2) : 'N/A').padEnd(6) +
-                ((s.peg_ratio && s.peg_ratio !== 999) ? s.peg_ratio.toFixed(2) : 'N/A')
-            );
-        });
-    } else {
-        console.log('No STARS found. Market is tough!');
-    }
-    console.log('\n');
+    const printStocks = (list, type) => {
+        if (list.length > 0) {
+            list.slice(0, 10).forEach(s => {
+                let displayScore = s.score;
+                if (type === 'income') displayScore = s.score_income ?? s.score;
+                else if (type === 'growth') displayScore = s.score_growth ?? s.score;
+                else if (type === 'value') displayScore = s.score_value ?? s.score;
+
+                console.log(
+                    s.ticker.padEnd(8) +
+                    s.cotacao.toFixed(2).padEnd(9) +
+                    s.p_vp.toFixed(2).padEnd(6) +
+                    (s.dividend_yield.toFixed(1) + '%').padEnd(7) +
+                    (s.cresc_5a.toFixed(1) + '%').padEnd(8) +
+                    s.div_br_patrim.toFixed(2).padEnd(6) +
+                    s.graham_price.toFixed(2).padEnd(9) +
+                    s.bazin_price.toFixed(2).padEnd(9) +
+                    (s.upside.toFixed(0) + '%').padEnd(8) +
+                    (s.ev_ebit ? s.ev_ebit.toFixed(2) : 'N/A').padEnd(8) +
+                    (displayScore.toFixed(1) + '/10').padEnd(6) +
+                    (s.psr ? s.psr.toFixed(2) : 'N/A').padEnd(6) +
+                    ((s.peg_ratio && s.peg_ratio !== 999) ? s.peg_ratio.toFixed(2) : 'N/A')
+                );
+            });
+        } else {
+            console.log('No assets found matching this category.');
+        }
+        console.log('\n');
+    };
+
+    printHeader('⭐ STARS - RENDA (Dividendos)', 'Liquidity > 300k, Yield >= dynamic threshold, Payout <= 100%, D/Eq <= 1.5');
+    printStocks(starIncome, 'income');
+
+    printHeader('🚀 STARS - CRESCIMENTO (Qualidade + Crescimento)', 'Liquidity > 300k, CAGR >= 8%, ROE >= 12%, ROIC >= 10%');
+    printStocks(starGrowth, 'growth');
+
+    printHeader('📉 STARS - VALOR (Desconto Patrimonial)', 'Liquidity > 300k, P/L <= 12, P/VP <= 1.5, Graham Upside > 0%');
+    printStocks(starValue, 'value');
 
     // OPPORTUNITIES
     console.log('--- 📈 OPPORTUNITIES (Profitable & Value) ---');

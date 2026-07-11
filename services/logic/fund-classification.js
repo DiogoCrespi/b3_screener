@@ -38,38 +38,63 @@ function classifyFund(fund, metadata = {}) {
     let exposure = 'UNKNOWN';
     let confidence = 'LOW';
 
-    if (hasAny(segmentText, FOF_TERMS)) {
-        exposure = 'FUND_OF_FUNDS';
-        confidence = 'HIGH';
-        reasons.push('Fund-of-funds exposure found in segment.');
-    } else if (hasAny(segmentText, CREDIT_TERMS)) {
-        exposure = regulatoryClass === 'FIAGRO' ? 'AGRO_CREDIT'
-            : regulatoryClass === 'FI_INFRA' ? 'INFRA_CREDIT'
-                : 'REAL_ESTATE_CREDIT';
-        confidence = 'HIGH';
-        reasons.push('Credit exposure found in segment.');
-    } else if (hasAny(segmentText, PHYSICAL_TERMS)) {
-        exposure = regulatoryClass === 'FIAGRO' ? 'AGRO_LAND' : 'REAL_ESTATE_PHYSICAL';
-        confidence = 'HIGH';
-        reasons.push('Physical-asset exposure found in segment.');
-    } else if (hasAny(combined, FOF_TERMS)) {
-        exposure = 'FUND_OF_FUNDS';
-        confidence = 'MEDIUM';
-        reasons.push('Fund-of-funds exposure inferred from type or mandate.');
-    } else if (hasAny(combined, CREDIT_TERMS)) {
-        exposure = regulatoryClass === 'FIAGRO' ? 'AGRO_CREDIT'
-            : regulatoryClass === 'FI_INFRA' ? 'INFRA_CREDIT'
-                : 'REAL_ESTATE_CREDIT';
-        confidence = 'MEDIUM';
-        reasons.push('Credit exposure inferred from type or mandate.');
-    } else if (hasAny(combined, HYBRID_TERMS)) {
-        exposure = 'HYBRID';
-        confidence = 'MEDIUM';
-        reasons.push('Hybrid exposure declared without a more specific segment.');
+    if (source.externalType) {
+        if (source.externalType.includes('papel')) {
+            exposure = regulatoryClass === 'FIAGRO' ? 'AGRO_CREDIT'
+                : regulatoryClass === 'FI_INFRA' ? 'INFRA_CREDIT'
+                    : 'REAL_ESTATE_CREDIT';
+            confidence = 'HIGH';
+            reasons.push(`Classified as credit based on external fund type: ${metadata.type}`);
+        } else if (source.externalType.includes('tijolo')) {
+            exposure = regulatoryClass === 'FIAGRO' ? 'AGRO_LAND' : 'REAL_ESTATE_PHYSICAL';
+            confidence = 'HIGH';
+            reasons.push(`Classified as physical based on external fund type: ${metadata.type}`);
+        } else if (source.externalType.includes('fundos') || source.externalType.includes('fof')) {
+            exposure = 'FUND_OF_FUNDS';
+            confidence = 'HIGH';
+            reasons.push(`Classified as FOF based on external fund type: ${metadata.type}`);
+        } else if (source.externalType.includes('misto') || source.externalType.includes('hibrido')) {
+            exposure = 'HYBRID';
+            confidence = 'HIGH';
+            reasons.push(`Classified as hybrid based on external fund type: ${metadata.type}`);
+        }
+    }
+
+    if (exposure === 'UNKNOWN') {
+        if (hasAny(segmentText, FOF_TERMS)) {
+            exposure = 'FUND_OF_FUNDS';
+            confidence = 'HIGH';
+            reasons.push('Fund-of-funds exposure found in segment.');
+        } else if (hasAny(segmentText, CREDIT_TERMS)) {
+            exposure = regulatoryClass === 'FIAGRO' ? 'AGRO_CREDIT'
+                : regulatoryClass === 'FI_INFRA' ? 'INFRA_CREDIT'
+                    : 'REAL_ESTATE_CREDIT';
+            confidence = 'HIGH';
+            reasons.push('Credit exposure found in segment.');
+        } else if (hasAny(segmentText, PHYSICAL_TERMS)) {
+            exposure = regulatoryClass === 'FIAGRO' ? 'AGRO_LAND' : 'REAL_ESTATE_PHYSICAL';
+            confidence = 'HIGH';
+            reasons.push('Physical-asset exposure found in segment.');
+        } else if (hasAny(combined, FOF_TERMS)) {
+            exposure = 'FUND_OF_FUNDS';
+            confidence = 'MEDIUM';
+            reasons.push('Fund-of-funds exposure inferred from type or mandate.');
+        } else if (hasAny(combined, CREDIT_TERMS)) {
+            exposure = regulatoryClass === 'FIAGRO' ? 'AGRO_CREDIT'
+                : regulatoryClass === 'FI_INFRA' ? 'INFRA_CREDIT'
+                    : 'REAL_ESTATE_CREDIT';
+            confidence = 'MEDIUM';
+            reasons.push('Credit exposure inferred from type or mandate.');
+        } else if (hasAny(combined, HYBRID_TERMS)) {
+            exposure = 'HYBRID';
+            confidence = 'MEDIUM';
+            reasons.push('Hybrid exposure declared without a more specific segment.');
+        }
     }
 
     const physicalEvidence = hasAny(segmentText, PHYSICAL_TERMS);
     const creditEvidence = hasAny(segmentText, CREDIT_TERMS);
+
     if (physicalEvidence && creditEvidence) {
         exposure = 'HYBRID';
         confidence = 'MEDIUM';

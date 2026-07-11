@@ -1,5 +1,5 @@
 {
-  "date": "2026-07-11T14:42:12.724Z",
+  "date": "2026-07-11T20:40:08.081Z",
   "count": 189,
   "economy": {
     "dollar": 5.1064,
@@ -7,6 +7,56 @@
   },
   "type": "fii",
   "items": [
+    {
+      "ticker": "TRXF11",
+      "segment": "Multicategoria",
+      "price": 91.1,
+      "ffo_yield": 4.66,
+      "dy": 12.93,
+      "p_vp": 0.93,
+      "market_cap": 5687440000,
+      "liquidity": 20410000,
+      "num_properties": 97,
+      "cap_rate": 3.41,
+      "vacancy": 0.67,
+      "data_source": "fundamentus",
+      "collected_at": "2026-07-11T20:39:12.314Z",
+      "regulatory_class": "FII",
+      "exposure": "REAL_ESTATE_PHYSICAL",
+      "classification_confidence": "HIGH",
+      "classification_reasons": [
+        "Classified as physical based on external fund type: Fundo de Tijolo"
+      ],
+      "type": "TIJOLO",
+      "eligibility": "ELIGIBLE",
+      "signal": "TOP_PICK",
+      "risk_level": "LOW",
+      "data_quality": "COMPLETE",
+      "pillars": {
+        "valuation": 9,
+        "income": 9,
+        "liquidity": 10,
+        "safety": 10
+      },
+      "overall_score": 9.5,
+      "blockers": [],
+      "warnings": [],
+      "yield_is_trailing": true,
+      "score": 9.5,
+      "category": "STAR",
+      "strategies": [],
+      "selic": 14.25,
+      "magicNumber": 93,
+      "magicCost": 8472.3,
+      "last_dividend": 1.5,
+      "external_segment": "Híbrido",
+      "data_com": "30/06/2026",
+      "data_pagamento": "14/07/2026",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
     {
       "ticker": "GGRC11",
       "segment": "Multicategoria",
@@ -20,12 +70,12 @@
       "cap_rate": 7.46,
       "vacancy": 0.19,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -60,24 +110,24 @@
       ]
     },
     {
-      "ticker": "MXRF11",
-      "segment": "Log�stica",
-      "price": 9.74,
-      "ffo_yield": 10.78,
-      "dy": 12.24,
-      "p_vp": 1.04,
-      "market_cap": 4483030000,
-      "liquidity": 14100000,
-      "num_properties": 0,
-      "cap_rate": 0,
+      "ticker": "GARE11",
+      "segment": "Multicategoria",
+      "price": 8.15,
+      "ffo_yield": 5.25,
+      "dy": 12.22,
+      "p_vp": 0.88,
+      "market_cap": 2356870000,
+      "liquidity": 11890000,
+      "num_properties": 3,
+      "cap_rate": 7.54,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -85,25 +135,27 @@
       "risk_level": "LOW",
       "data_quality": "COMPLETE",
       "pillars": {
-        "valuation": 7,
+        "valuation": 9,
         "income": 9,
         "liquidity": 10,
         "safety": 10
       },
-      "overall_score": 9,
+      "overall_score": 9.5,
       "blockers": [],
       "warnings": [],
       "yield_is_trailing": true,
-      "score": 9,
+      "score": 9.5,
       "category": "STAR",
-      "strategies": [],
+      "strategies": [
+        "PHYSICAL_VALUE"
+      ],
       "selic": 14.25,
       "magicNumber": 99,
-      "magicCost": 964.26,
-      "last_dividend": 0.1,
+      "magicCost": 806.85,
+      "last_dividend": 0.08,
       "external_segment": "Híbrido",
       "data_com": "30/06/2026",
-      "data_pagamento": "14/07/2026",
+      "data_pagamento": "07/07/2026",
       "data_sources": [
         "fundamentus",
         "investidor10"
@@ -122,12 +174,12 @@
       "cap_rate": 10.18,
       "vacancy": 4.8,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -172,12 +224,12 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "ELIGIBLE",
@@ -224,12 +276,12 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "ELIGIBLE",
@@ -276,12 +328,12 @@
       "cap_rate": 11.28,
       "vacancy": 2.9,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -328,12 +380,12 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "ELIGIBLE",
@@ -380,12 +432,12 @@
       "cap_rate": 10.88,
       "vacancy": 4.1,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -432,12 +484,12 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "ELIGIBLE",
@@ -482,12 +534,12 @@
       "cap_rate": 6.66,
       "vacancy": 8.1,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -534,12 +586,12 @@
       "cap_rate": 11.49,
       "vacancy": 3.8,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -586,12 +638,12 @@
       "cap_rate": 6.65,
       "vacancy": 5.7,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -624,74 +676,24 @@
       ]
     },
     {
-      "ticker": "TRXF11",
+      "ticker": "KNHF11",
       "segment": "Multicategoria",
-      "price": 91.1,
-      "ffo_yield": 4.66,
-      "dy": 12.93,
-      "p_vp": 0.93,
-      "market_cap": 5687440000,
-      "liquidity": 20410000,
-      "num_properties": 97,
-      "cap_rate": 3.41,
-      "vacancy": 0.67,
-      "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
-      "regulatory_class": "FII",
-      "exposure": "HYBRID",
-      "classification_confidence": "MEDIUM",
-      "classification_reasons": [
-        "Hybrid exposure declared without a more specific segment."
-      ],
-      "type": "MULTI",
-      "eligibility": "ELIGIBLE",
-      "signal": "TOP_PICK",
-      "risk_level": "LOW",
-      "data_quality": "COMPLETE",
-      "pillars": {
-        "valuation": 8,
-        "income": 9,
-        "liquidity": 10,
-        "safety": 8
-      },
-      "overall_score": 8.65,
-      "blockers": [],
-      "warnings": [],
-      "yield_is_trailing": true,
-      "score": 8.65,
-      "category": "STAR",
-      "strategies": [],
-      "selic": 14.25,
-      "magicNumber": 93,
-      "magicCost": 8472.3,
-      "last_dividend": 1.5,
-      "external_segment": "Híbrido",
-      "data_com": "30/06/2026",
-      "data_pagamento": "14/07/2026",
-      "data_sources": [
-        "fundamentus",
-        "investidor10"
-      ]
-    },
-    {
-      "ticker": "GARE11",
-      "segment": "Multicategoria",
-      "price": 8.15,
-      "ffo_yield": 5.25,
-      "dy": 12.22,
-      "p_vp": 0.88,
-      "market_cap": 2356870000,
-      "liquidity": 11890000,
-      "num_properties": 3,
-      "cap_rate": 7.54,
+      "price": 94.98,
+      "ffo_yield": 13.49,
+      "dy": 12.63,
+      "p_vp": 0.94,
+      "market_cap": 1867610000,
+      "liquidity": 4080000,
+      "num_properties": 6,
+      "cap_rate": 8.05,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
-      "classification_confidence": "MEDIUM",
+      "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Hybrid exposure declared without a more specific segment."
+        "Classified as hybrid based on external fund type: Fundo Misto"
       ],
       "type": "MULTI",
       "eligibility": "ELIGIBLE",
@@ -712,12 +714,12 @@
       "category": "STAR",
       "strategies": [],
       "selic": 14.25,
-      "magicNumber": 99,
-      "magicCost": 806.85,
-      "last_dividend": 0.08,
+      "magicNumber": 96,
+      "magicCost": 9118.08,
+      "last_dividend": 1,
       "external_segment": "Híbrido",
       "data_com": "30/06/2026",
-      "data_pagamento": "07/07/2026",
+      "data_pagamento": "10/07/2026",
       "data_sources": [
         "fundamentus",
         "investidor10"
@@ -736,12 +738,12 @@
       "cap_rate": 8.6,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "ELIGIBLE",
@@ -776,6 +778,58 @@
       ]
     },
     {
+      "ticker": "BTHF11",
+      "segment": "Outros",
+      "price": 9.02,
+      "ffo_yield": 11.63,
+      "dy": 12.99,
+      "p_vp": 0.9,
+      "market_cap": 1856740000,
+      "liquidity": 2910000,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "data_source": "fundamentus",
+      "collected_at": "2026-07-11T20:39:12.314Z",
+      "regulatory_class": "FII",
+      "exposure": "REAL_ESTATE_CREDIT",
+      "classification_confidence": "HIGH",
+      "classification_reasons": [
+        "Classified as credit based on external fund type: Fundo de Papel"
+      ],
+      "type": "PAPEL",
+      "eligibility": "ELIGIBLE",
+      "signal": "TOP_PICK",
+      "risk_level": "LOW",
+      "data_quality": "COMPLETE",
+      "pillars": {
+        "valuation": 9,
+        "income": 9,
+        "liquidity": 8,
+        "safety": 8
+      },
+      "overall_score": 8.5,
+      "blockers": [],
+      "warnings": [],
+      "yield_is_trailing": true,
+      "score": 8.5,
+      "category": "STAR",
+      "strategies": [
+        "CREDIT_CARRY"
+      ],
+      "selic": 14.25,
+      "magicNumber": 93,
+      "magicCost": 838.86,
+      "last_dividend": 0.1,
+      "external_segment": "Híbrido",
+      "data_com": "07/07/2026",
+      "data_pagamento": "14/07/2026",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
       "ticker": "HGCR11",
       "segment": "Outros",
       "price": 92.29,
@@ -788,12 +842,12 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "ELIGIBLE",
@@ -840,12 +894,12 @@
       "cap_rate": 11.97,
       "vacancy": 6.5,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -892,12 +946,12 @@
       "cap_rate": 9.25,
       "vacancy": 4.1,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -942,12 +996,12 @@
       "cap_rate": 7.42,
       "vacancy": 3,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -992,12 +1046,12 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "ELIGIBLE",
@@ -1042,12 +1096,12 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "ELIGIBLE",
@@ -1094,12 +1148,12 @@
       "cap_rate": 14.12,
       "vacancy": 3.2,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -1134,56 +1188,6 @@
       ]
     },
     {
-      "ticker": "KNHF11",
-      "segment": "Multicategoria",
-      "price": 94.98,
-      "ffo_yield": 13.49,
-      "dy": 12.63,
-      "p_vp": 0.94,
-      "market_cap": 1867610000,
-      "liquidity": 4080000,
-      "num_properties": 6,
-      "cap_rate": 8.05,
-      "vacancy": 0,
-      "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
-      "regulatory_class": "FII",
-      "exposure": "HYBRID",
-      "classification_confidence": "MEDIUM",
-      "classification_reasons": [
-        "Hybrid exposure declared without a more specific segment."
-      ],
-      "type": "MULTI",
-      "eligibility": "ELIGIBLE",
-      "signal": "TOP_PICK",
-      "risk_level": "LOW",
-      "data_quality": "COMPLETE",
-      "pillars": {
-        "valuation": 8,
-        "income": 9,
-        "liquidity": 10,
-        "safety": 7
-      },
-      "overall_score": 8.35,
-      "blockers": [],
-      "warnings": [],
-      "yield_is_trailing": true,
-      "score": 8.35,
-      "category": "STAR",
-      "strategies": [],
-      "selic": 14.25,
-      "magicNumber": 96,
-      "magicCost": 9118.08,
-      "last_dividend": 1,
-      "external_segment": "Híbrido",
-      "data_com": "30/06/2026",
-      "data_pagamento": "10/07/2026",
-      "data_sources": [
-        "fundamentus",
-        "investidor10"
-      ]
-    },
-    {
       "ticker": "BTCI11",
       "segment": "Outros",
       "price": 9.19,
@@ -1196,12 +1200,12 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "ELIGIBLE",
@@ -1236,6 +1240,56 @@
       ]
     },
     {
+      "ticker": "ALZR11",
+      "segment": "Multicategoria",
+      "price": 10.15,
+      "ffo_yield": 7.47,
+      "dy": 10,
+      "p_vp": 0.95,
+      "market_cap": 1669800000,
+      "liquidity": 3630000,
+      "num_properties": 22,
+      "cap_rate": 8.39,
+      "vacancy": 0,
+      "data_source": "fundamentus",
+      "collected_at": "2026-07-11T20:39:12.314Z",
+      "regulatory_class": "FII",
+      "exposure": "REAL_ESTATE_PHYSICAL",
+      "classification_confidence": "HIGH",
+      "classification_reasons": [
+        "Classified as physical based on external fund type: Fundo de Tijolo"
+      ],
+      "type": "TIJOLO",
+      "eligibility": "ELIGIBLE",
+      "signal": "TOP_PICK",
+      "risk_level": "LOW",
+      "data_quality": "COMPLETE",
+      "pillars": {
+        "valuation": 9,
+        "income": 7,
+        "liquidity": 8,
+        "safety": 9
+      },
+      "overall_score": 8.3,
+      "blockers": [],
+      "warnings": [],
+      "yield_is_trailing": true,
+      "score": 8.3,
+      "category": "STAR",
+      "strategies": [],
+      "selic": 14.25,
+      "magicNumber": 120,
+      "magicCost": 1218,
+      "last_dividend": 0.08,
+      "external_segment": "Híbrido",
+      "data_com": "18/06/2026",
+      "data_pagamento": "25/06/2026",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
       "ticker": "VILG11",
       "segment": "Log�stica",
       "price": 95.7,
@@ -1248,12 +1302,12 @@
       "cap_rate": 13.67,
       "vacancy": 0.5,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -1288,6 +1342,56 @@
       ]
     },
     {
+      "ticker": "RBRX11",
+      "segment": "Multicategoria",
+      "price": 8.16,
+      "ffo_yield": 5.34,
+      "dy": 13.28,
+      "p_vp": 0.84,
+      "market_cap": 1194250000,
+      "liquidity": 2350000,
+      "num_properties": 1,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "data_source": "fundamentus",
+      "collected_at": "2026-07-11T20:39:12.314Z",
+      "regulatory_class": "FII",
+      "exposure": "FUND_OF_FUNDS",
+      "classification_confidence": "HIGH",
+      "classification_reasons": [
+        "Classified as FOF based on external fund type: Fundo de Fundos"
+      ],
+      "type": "MULTI",
+      "eligibility": "ELIGIBLE",
+      "signal": "TOP_PICK",
+      "risk_level": "LOW",
+      "data_quality": "COMPLETE",
+      "pillars": {
+        "valuation": 8,
+        "income": 9,
+        "liquidity": 8,
+        "safety": 8
+      },
+      "overall_score": 8.25,
+      "blockers": [],
+      "warnings": [],
+      "yield_is_trailing": true,
+      "score": 8.25,
+      "category": "STAR",
+      "strategies": [],
+      "selic": 14.25,
+      "magicNumber": 91,
+      "magicCost": 742.5600000000001,
+      "last_dividend": 0.09,
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "15/06/2026",
+      "data_pagamento": "23/06/2026",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
       "ticker": "HGLG11",
       "segment": "Multicategoria",
       "price": 149.3,
@@ -1300,12 +1404,12 @@
       "cap_rate": 7.6,
       "vacancy": 3.9,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -1350,12 +1454,12 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "ELIGIBLE",
@@ -1402,12 +1506,12 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "ELIGIBLE",
@@ -1442,24 +1546,24 @@
       ]
     },
     {
-      "ticker": "BTHF11",
-      "segment": "Outros",
-      "price": 9.02,
-      "ffo_yield": 11.63,
-      "dy": 12.99,
-      "p_vp": 0.9,
-      "market_cap": 1856740000,
-      "liquidity": 2910000,
+      "ticker": "MXRF11",
+      "segment": "Log�stica",
+      "price": 9.74,
+      "ffo_yield": 10.78,
+      "dy": 12.24,
+      "p_vp": 1.04,
+      "market_cap": 4483030000,
+      "liquidity": 14100000,
       "num_properties": 0,
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
-      "classification_confidence": "MEDIUM",
+      "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure inferred from type or mandate."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "ELIGIBLE",
@@ -1467,10 +1571,10 @@
       "risk_level": "LOW",
       "data_quality": "COMPLETE",
       "pillars": {
-        "valuation": 9,
+        "valuation": 5,
         "income": 9,
-        "liquidity": 8,
-        "safety": 7
+        "liquidity": 10,
+        "safety": 9
       },
       "overall_score": 8.2,
       "blockers": [],
@@ -1482,11 +1586,11 @@
         "CREDIT_CARRY"
       ],
       "selic": 14.25,
-      "magicNumber": 93,
-      "magicCost": 838.86,
+      "magicNumber": 99,
+      "magicCost": 964.26,
       "last_dividend": 0.1,
       "external_segment": "Híbrido",
-      "data_com": "07/07/2026",
+      "data_com": "30/06/2026",
       "data_pagamento": "14/07/2026",
       "data_sources": [
         "fundamentus",
@@ -1506,12 +1610,12 @@
       "cap_rate": 9.51,
       "vacancy": 1.51,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -1558,12 +1662,12 @@
       "cap_rate": 7.5,
       "vacancy": 11,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -1608,12 +1712,12 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "ELIGIBLE",
@@ -1658,7 +1762,7 @@
       "cap_rate": 7.79,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -1708,12 +1812,12 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "ELIGIBLE",
@@ -1760,12 +1864,12 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "ELIGIBLE",
@@ -1812,12 +1916,12 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "ELIGIBLE",
@@ -1864,7 +1968,7 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FIAGRO",
       "exposure": "AGRO_CREDIT",
       "classification_confidence": "MEDIUM",
@@ -1915,12 +2019,12 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "ELIGIBLE",
@@ -1953,56 +2057,6 @@
       ]
     },
     {
-      "ticker": "RBRX11",
-      "segment": "Multicategoria",
-      "price": 8.16,
-      "ffo_yield": 5.34,
-      "dy": 13.28,
-      "p_vp": 0.84,
-      "market_cap": 1194250000,
-      "liquidity": 2350000,
-      "num_properties": 1,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
-      "regulatory_class": "FII",
-      "exposure": "REAL_ESTATE_CREDIT",
-      "classification_confidence": "HIGH",
-      "classification_reasons": [
-        "Credit exposure found in segment."
-      ],
-      "type": "PAPEL",
-      "eligibility": "ELIGIBLE",
-      "signal": "TOP_PICK",
-      "risk_level": "LOW",
-      "data_quality": "COMPLETE",
-      "pillars": {
-        "valuation": 6,
-        "income": 9,
-        "liquidity": 8,
-        "safety": 8
-      },
-      "overall_score": 7.75,
-      "blockers": [],
-      "warnings": [],
-      "yield_is_trailing": true,
-      "score": 7.75,
-      "category": "STAR",
-      "strategies": [],
-      "selic": 14.25,
-      "magicNumber": 91,
-      "magicCost": 742.5600000000001,
-      "last_dividend": 0.09,
-      "external_segment": "Títulos e Valores Mobiliários",
-      "data_com": "15/06/2026",
-      "data_pagamento": "23/06/2026",
-      "data_sources": [
-        "fundamentus",
-        "investidor10"
-      ]
-    },
-    {
       "ticker": "RBRR11",
       "segment": "Multicategoria",
       "price": 78,
@@ -2015,12 +2069,12 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "ELIGIBLE",
@@ -2053,6 +2107,106 @@
       ]
     },
     {
+      "ticker": "HFOF11",
+      "segment": "Multicategoria",
+      "price": 6.29,
+      "ffo_yield": 12.1,
+      "dy": 11.08,
+      "p_vp": 0.81,
+      "market_cap": 1381870000,
+      "liquidity": 2420000,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "data_source": "fundamentus",
+      "collected_at": "2026-07-11T20:39:12.314Z",
+      "regulatory_class": "FII",
+      "exposure": "FUND_OF_FUNDS",
+      "classification_confidence": "HIGH",
+      "classification_reasons": [
+        "Classified as FOF based on external fund type: Fundo de Fundos"
+      ],
+      "type": "MULTI",
+      "eligibility": "ELIGIBLE",
+      "signal": "TOP_PICK",
+      "risk_level": "LOW",
+      "data_quality": "COMPLETE",
+      "pillars": {
+        "valuation": 8,
+        "income": 7,
+        "liquidity": 8,
+        "safety": 8
+      },
+      "overall_score": 7.75,
+      "blockers": [],
+      "warnings": [],
+      "yield_is_trailing": true,
+      "score": 7.75,
+      "category": "STAR",
+      "strategies": [],
+      "selic": 14.25,
+      "magicNumber": 109,
+      "magicCost": 685.61,
+      "last_dividend": 0.06,
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "30/06/2026",
+      "data_pagamento": "14/07/2026",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
+      "ticker": "KNRI11",
+      "segment": "Multicategoria",
+      "price": 157.43,
+      "ffo_yield": 7.32,
+      "dy": 8.18,
+      "p_vp": 0.97,
+      "market_cap": 4440160000,
+      "liquidity": 8199999.999999999,
+      "num_properties": 18,
+      "cap_rate": 7.79,
+      "vacancy": 4.09,
+      "data_source": "fundamentus",
+      "collected_at": "2026-07-11T20:39:12.314Z",
+      "regulatory_class": "FII",
+      "exposure": "REAL_ESTATE_PHYSICAL",
+      "classification_confidence": "HIGH",
+      "classification_reasons": [
+        "Classified as physical based on external fund type: Fundo de Tijolo"
+      ],
+      "type": "TIJOLO",
+      "eligibility": "ELIGIBLE",
+      "signal": "TOP_PICK",
+      "risk_level": "LOW",
+      "data_quality": "COMPLETE",
+      "pillars": {
+        "valuation": 7,
+        "income": 4,
+        "liquidity": 10,
+        "safety": 10
+      },
+      "overall_score": 7.75,
+      "blockers": [],
+      "warnings": [],
+      "yield_is_trailing": true,
+      "score": 7.75,
+      "category": "STAR",
+      "strategies": [],
+      "selic": 14.25,
+      "magicNumber": 147,
+      "magicCost": 23142.210000000003,
+      "last_dividend": 1.38,
+      "external_segment": "Híbrido",
+      "data_com": "30/06/2026",
+      "data_pagamento": "14/07/2026",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
       "ticker": "CLIN11",
       "segment": "Outros",
       "price": 90.4,
@@ -2065,12 +2219,12 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "ELIGIBLE",
@@ -2105,6 +2259,56 @@
       ]
     },
     {
+      "ticker": "HGRU11",
+      "segment": "Outros",
+      "price": 129.15,
+      "ffo_yield": 7.7,
+      "dy": 9.21,
+      "p_vp": 1,
+      "market_cap": 3001190000,
+      "liquidity": 5620000,
+      "num_properties": 100,
+      "cap_rate": 9.32,
+      "vacancy": 0.8,
+      "data_source": "fundamentus",
+      "collected_at": "2026-07-11T20:39:12.314Z",
+      "regulatory_class": "FII",
+      "exposure": "HYBRID",
+      "classification_confidence": "HIGH",
+      "classification_reasons": [
+        "Classified as hybrid based on external fund type: Fundo Misto"
+      ],
+      "type": "MULTI",
+      "eligibility": "ELIGIBLE",
+      "signal": "TOP_PICK",
+      "risk_level": "LOW",
+      "data_quality": "COMPLETE",
+      "pillars": {
+        "valuation": 8,
+        "income": 4,
+        "liquidity": 10,
+        "safety": 9
+      },
+      "overall_score": 7.7,
+      "blockers": [],
+      "warnings": [],
+      "yield_is_trailing": true,
+      "score": 7.7,
+      "category": "STAR",
+      "strategies": [],
+      "selic": 14.25,
+      "magicNumber": 131,
+      "magicCost": 16918.65,
+      "last_dividend": 0.95,
+      "external_segment": "Híbrido",
+      "data_com": "30/06/2026",
+      "data_pagamento": "14/07/2026",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
       "ticker": "LVBI11",
       "segment": "Log�stica",
       "price": 103.59,
@@ -2117,12 +2321,12 @@
       "cap_rate": 9.97,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -2157,24 +2361,24 @@
       ]
     },
     {
-      "ticker": "IRIM11",
-      "segment": "Multicategoria",
-      "price": 66.37,
-      "ffo_yield": 3.83,
-      "dy": 15.2,
-      "p_vp": 0.79,
-      "market_cap": 2337950000,
-      "liquidity": 2930000,
-      "num_properties": 1,
+      "ticker": "PSEC11",
+      "segment": "Outros",
+      "price": 56.05,
+      "ffo_yield": 10.52,
+      "dy": 13.74,
+      "p_vp": 0.76,
+      "market_cap": 1031290000,
+      "liquidity": 2990000,
+      "num_properties": 0,
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
-      "exposure": "HYBRID",
-      "classification_confidence": "MEDIUM",
+      "exposure": "FUND_OF_FUNDS",
+      "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Hybrid exposure declared without a more specific segment."
+        "Classified as FOF based on external fund type: Fundo de Fundos"
       ],
       "type": "MULTI",
       "eligibility": "ELIGIBLE",
@@ -2195,12 +2399,12 @@
       "category": "STAR",
       "strategies": [],
       "selic": 14.25,
-      "magicNumber": 79,
-      "magicCost": 5243.2300000000005,
-      "last_dividend": 1.18,
-      "external_segment": "Híbrido",
-      "data_com": "09/07/2026",
-      "data_pagamento": "16/07/2026",
+      "magicNumber": 88,
+      "magicCost": 4932.4,
+      "last_dividend": 0.55,
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "08/07/2026",
+      "data_pagamento": "15/07/2026",
       "data_sources": [
         "fundamentus",
         "investidor10"
@@ -2219,12 +2423,12 @@
       "cap_rate": 10.48,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -2259,106 +2463,6 @@
       ]
     },
     {
-      "ticker": "PCIP11",
-      "segment": "Outros",
-      "price": 78.96,
-      "ffo_yield": 12.58,
-      "dy": 11.13,
-      "p_vp": 0.85,
-      "market_cap": 1343240000,
-      "liquidity": 2530000,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
-      "regulatory_class": "FII",
-      "exposure": "HYBRID",
-      "classification_confidence": "MEDIUM",
-      "classification_reasons": [
-        "Hybrid exposure declared without a more specific segment."
-      ],
-      "type": "MULTI",
-      "eligibility": "ELIGIBLE",
-      "signal": "OPPORTUNITY",
-      "risk_level": "LOW",
-      "data_quality": "COMPLETE",
-      "pillars": {
-        "valuation": 8,
-        "income": 7,
-        "liquidity": 8,
-        "safety": 7
-      },
-      "overall_score": 7.45,
-      "blockers": [],
-      "warnings": [],
-      "yield_is_trailing": true,
-      "score": 7.45,
-      "category": "OPPORTUNITY",
-      "strategies": [],
-      "selic": 14.25,
-      "magicNumber": 108,
-      "magicCost": 8527.679999999998,
-      "last_dividend": 1.07,
-      "external_segment": "Híbrido",
-      "data_com": "08/07/2026",
-      "data_pagamento": "15/07/2026",
-      "data_sources": [
-        "fundamentus",
-        "investidor10"
-      ]
-    },
-    {
-      "ticker": "ALZR11",
-      "segment": "Multicategoria",
-      "price": 10.15,
-      "ffo_yield": 7.47,
-      "dy": 10,
-      "p_vp": 0.95,
-      "market_cap": 1669800000,
-      "liquidity": 3630000,
-      "num_properties": 22,
-      "cap_rate": 8.39,
-      "vacancy": 0,
-      "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
-      "regulatory_class": "FII",
-      "exposure": "HYBRID",
-      "classification_confidence": "MEDIUM",
-      "classification_reasons": [
-        "Hybrid exposure declared without a more specific segment."
-      ],
-      "type": "MULTI",
-      "eligibility": "ELIGIBLE",
-      "signal": "OPPORTUNITY",
-      "risk_level": "LOW",
-      "data_quality": "COMPLETE",
-      "pillars": {
-        "valuation": 8,
-        "income": 7,
-        "liquidity": 8,
-        "safety": 7
-      },
-      "overall_score": 7.45,
-      "blockers": [],
-      "warnings": [],
-      "yield_is_trailing": true,
-      "score": 7.45,
-      "category": "OPPORTUNITY",
-      "strategies": [],
-      "selic": 14.25,
-      "magicNumber": 120,
-      "magicCost": 1218,
-      "last_dividend": 0.08,
-      "external_segment": "Híbrido",
-      "data_com": "18/06/2026",
-      "data_pagamento": "25/06/2026",
-      "data_sources": [
-        "fundamentus",
-        "investidor10"
-      ]
-    },
-    {
       "ticker": "XPIN11",
       "segment": "Log�stica",
       "price": 62.04,
@@ -2371,12 +2475,12 @@
       "cap_rate": 0,
       "vacancy": 4,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -2423,12 +2527,12 @@
       "cap_rate": 13.76,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -2475,12 +2579,12 @@
       "cap_rate": 13.22,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -2527,12 +2631,12 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -2567,106 +2671,6 @@
       ]
     },
     {
-      "ticker": "HGRU11",
-      "segment": "Outros",
-      "price": 129.15,
-      "ffo_yield": 7.7,
-      "dy": 9.21,
-      "p_vp": 1,
-      "market_cap": 3001190000,
-      "liquidity": 5620000,
-      "num_properties": 100,
-      "cap_rate": 9.32,
-      "vacancy": 0.8,
-      "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
-      "regulatory_class": "FII",
-      "exposure": "HYBRID",
-      "classification_confidence": "MEDIUM",
-      "classification_reasons": [
-        "Hybrid exposure declared without a more specific segment."
-      ],
-      "type": "MULTI",
-      "eligibility": "ELIGIBLE",
-      "signal": "OPPORTUNITY",
-      "risk_level": "LOW",
-      "data_quality": "COMPLETE",
-      "pillars": {
-        "valuation": 8,
-        "income": 4,
-        "liquidity": 10,
-        "safety": 8
-      },
-      "overall_score": 7.4,
-      "blockers": [],
-      "warnings": [],
-      "yield_is_trailing": true,
-      "score": 7.4,
-      "category": "OPPORTUNITY",
-      "strategies": [],
-      "selic": 14.25,
-      "magicNumber": 131,
-      "magicCost": 16918.65,
-      "last_dividend": 0.95,
-      "external_segment": "Híbrido",
-      "data_com": "30/06/2026",
-      "data_pagamento": "14/07/2026",
-      "data_sources": [
-        "fundamentus",
-        "investidor10"
-      ]
-    },
-    {
-      "ticker": "KNRI11",
-      "segment": "Multicategoria",
-      "price": 157.43,
-      "ffo_yield": 7.32,
-      "dy": 8.18,
-      "p_vp": 0.97,
-      "market_cap": 4440160000,
-      "liquidity": 8199999.999999999,
-      "num_properties": 18,
-      "cap_rate": 7.79,
-      "vacancy": 4.09,
-      "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
-      "regulatory_class": "FII",
-      "exposure": "HYBRID",
-      "classification_confidence": "MEDIUM",
-      "classification_reasons": [
-        "Hybrid exposure declared without a more specific segment."
-      ],
-      "type": "MULTI",
-      "eligibility": "ELIGIBLE",
-      "signal": "OPPORTUNITY",
-      "risk_level": "LOW",
-      "data_quality": "COMPLETE",
-      "pillars": {
-        "valuation": 8,
-        "income": 4,
-        "liquidity": 10,
-        "safety": 8
-      },
-      "overall_score": 7.4,
-      "blockers": [],
-      "warnings": [],
-      "yield_is_trailing": true,
-      "score": 7.4,
-      "category": "OPPORTUNITY",
-      "strategies": [],
-      "selic": 14.25,
-      "magicNumber": 147,
-      "magicCost": 23142.210000000003,
-      "last_dividend": 1.38,
-      "external_segment": "Híbrido",
-      "data_com": "30/06/2026",
-      "data_pagamento": "14/07/2026",
-      "data_sources": [
-        "fundamentus",
-        "investidor10"
-      ]
-    },
-    {
       "ticker": "SNAG11",
       "segment": "Multicategoria",
       "price": 9.9,
@@ -2679,7 +2683,7 @@
       "cap_rate": 9.65,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FIAGRO",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -2730,12 +2734,12 @@
       "cap_rate": 9.79,
       "vacancy": 3.3,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -2782,7 +2786,7 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -2834,12 +2838,12 @@
       "cap_rate": 7.21,
       "vacancy": 5.69,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -2874,6 +2878,156 @@
       ]
     },
     {
+      "ticker": "ITRI11",
+      "segment": "Outros",
+      "price": 79.16,
+      "ffo_yield": 13.13,
+      "dy": 13.26,
+      "p_vp": 0.84,
+      "market_cap": 494750000,
+      "liquidity": 1140000,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "data_source": "fundamentus",
+      "collected_at": "2026-07-11T20:39:12.314Z",
+      "regulatory_class": "FII",
+      "exposure": "HYBRID",
+      "classification_confidence": "HIGH",
+      "classification_reasons": [
+        "Classified as hybrid based on external fund type: Fundo Misto"
+      ],
+      "type": "MULTI",
+      "eligibility": "ELIGIBLE",
+      "signal": "OPPORTUNITY",
+      "risk_level": "MEDIUM",
+      "data_quality": "COMPLETE",
+      "pillars": {
+        "valuation": 8,
+        "income": 9,
+        "liquidity": 6,
+        "safety": 6
+      },
+      "overall_score": 7.25,
+      "blockers": [],
+      "warnings": [],
+      "yield_is_trailing": true,
+      "score": 7.25,
+      "category": "OPPORTUNITY",
+      "strategies": [],
+      "selic": 14.25,
+      "magicNumber": 91,
+      "magicCost": 7203.5599999999995,
+      "last_dividend": 0.85,
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "30/06/2026",
+      "data_pagamento": "13/07/2026",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
+      "ticker": "KFOF11",
+      "segment": "Multicategoria",
+      "price": 78.7,
+      "ffo_yield": 11.92,
+      "dy": 12.13,
+      "p_vp": 0.86,
+      "market_cap": 552046000,
+      "liquidity": 1280000,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "data_source": "fundamentus",
+      "collected_at": "2026-07-11T20:39:12.314Z",
+      "regulatory_class": "FII",
+      "exposure": "FUND_OF_FUNDS",
+      "classification_confidence": "HIGH",
+      "classification_reasons": [
+        "Classified as FOF based on external fund type: Fundo de Fundos"
+      ],
+      "type": "MULTI",
+      "eligibility": "ELIGIBLE",
+      "signal": "OPPORTUNITY",
+      "risk_level": "MEDIUM",
+      "data_quality": "COMPLETE",
+      "pillars": {
+        "valuation": 8,
+        "income": 9,
+        "liquidity": 6,
+        "safety": 6
+      },
+      "overall_score": 7.25,
+      "blockers": [],
+      "warnings": [],
+      "yield_is_trailing": true,
+      "score": 7.25,
+      "category": "OPPORTUNITY",
+      "strategies": [],
+      "selic": 14.25,
+      "magicNumber": 99,
+      "magicCost": 7791.3,
+      "last_dividend": 0.8,
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "30/06/2026",
+      "data_pagamento": "14/07/2026",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
+      "ticker": "PCIP11",
+      "segment": "Outros",
+      "price": 78.96,
+      "ffo_yield": 12.58,
+      "dy": 11.13,
+      "p_vp": 0.85,
+      "market_cap": 1343240000,
+      "liquidity": 2530000,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "data_source": "fundamentus",
+      "collected_at": "2026-07-11T20:39:12.314Z",
+      "regulatory_class": "FII",
+      "exposure": "REAL_ESTATE_CREDIT",
+      "classification_confidence": "HIGH",
+      "classification_reasons": [
+        "Classified as credit based on external fund type: Fundo de Papel"
+      ],
+      "type": "PAPEL",
+      "eligibility": "ELIGIBLE",
+      "signal": "OPPORTUNITY",
+      "risk_level": "LOW",
+      "data_quality": "COMPLETE",
+      "pillars": {
+        "valuation": 6,
+        "income": 7,
+        "liquidity": 8,
+        "safety": 8
+      },
+      "overall_score": 7.25,
+      "blockers": [],
+      "warnings": [],
+      "yield_is_trailing": true,
+      "score": 7.25,
+      "category": "OPPORTUNITY",
+      "strategies": [],
+      "selic": 14.25,
+      "magicNumber": 108,
+      "magicCost": 8527.679999999998,
+      "last_dividend": 1.07,
+      "external_segment": "Híbrido",
+      "data_com": "08/07/2026",
+      "data_pagamento": "15/07/2026",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
       "ticker": "HGRE11",
       "segment": "Escrit�rios",
       "price": 125.19,
@@ -2886,12 +3040,12 @@
       "cap_rate": 9.35,
       "vacancy": 5.8,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -2926,108 +3080,6 @@
       ]
     },
     {
-      "ticker": "AZPL11",
-      "segment": "Log�stica",
-      "price": 7.5,
-      "ffo_yield": 8.69,
-      "dy": 13.31,
-      "p_vp": 0.86,
-      "market_cap": 314420000,
-      "liquidity": 864050,
-      "num_properties": 1,
-      "cap_rate": 8.83,
-      "vacancy": 0,
-      "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
-      "regulatory_class": "FII",
-      "exposure": "REAL_ESTATE_PHYSICAL",
-      "classification_confidence": "HIGH",
-      "classification_reasons": [
-        "Physical-asset exposure found in segment."
-      ],
-      "type": "TIJOLO",
-      "eligibility": "ELIGIBLE",
-      "signal": "OPPORTUNITY",
-      "risk_level": "MEDIUM",
-      "data_quality": "COMPLETE",
-      "pillars": {
-        "valuation": 9,
-        "income": 9,
-        "liquidity": 6,
-        "safety": 5
-      },
-      "overall_score": 7.2,
-      "blockers": [],
-      "warnings": [],
-      "yield_is_trailing": true,
-      "score": 7.2,
-      "category": "OPPORTUNITY",
-      "strategies": [
-        "PHYSICAL_VALUE"
-      ],
-      "selic": 14.25,
-      "magicNumber": 91,
-      "magicCost": 682.5,
-      "last_dividend": 0.09,
-      "external_segment": "Logístico / Indústria / Galpões",
-      "data_com": "30/06/2026",
-      "data_pagamento": "14/07/2026",
-      "data_sources": [
-        "fundamentus",
-        "investidor10"
-      ]
-    },
-    {
-      "ticker": "BRCR11",
-      "segment": "Multicategoria",
-      "price": 40.82,
-      "ffo_yield": 11.74,
-      "dy": 12.04,
-      "p_vp": 0.52,
-      "market_cap": 1087370000,
-      "liquidity": 1700000,
-      "num_properties": 5,
-      "cap_rate": 16.9,
-      "vacancy": 11.1,
-      "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
-      "regulatory_class": "FII",
-      "exposure": "HYBRID",
-      "classification_confidence": "MEDIUM",
-      "classification_reasons": [
-        "Hybrid exposure declared without a more specific segment."
-      ],
-      "type": "MULTI",
-      "eligibility": "ELIGIBLE",
-      "signal": "OPPORTUNITY",
-      "risk_level": "LOW",
-      "data_quality": "COMPLETE",
-      "pillars": {
-        "valuation": 5,
-        "income": 9,
-        "liquidity": 8,
-        "safety": 7
-      },
-      "overall_score": 7.2,
-      "blockers": [],
-      "warnings": [],
-      "yield_is_trailing": true,
-      "score": 7.2,
-      "category": "OPPORTUNITY",
-      "strategies": [],
-      "selic": 14.25,
-      "magicNumber": 100,
-      "magicCost": 4082,
-      "last_dividend": 0.41,
-      "external_segment": "Híbrido",
-      "data_com": "07/07/2026",
-      "data_pagamento": "15/07/2026",
-      "data_sources": [
-        "fundamentus",
-        "investidor10"
-      ]
-    },
-    {
       "ticker": "MALL11",
       "segment": "Shoppings",
       "price": 99.9,
@@ -3040,12 +3092,12 @@
       "cap_rate": 16.25,
       "vacancy": 3.64,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -3092,7 +3144,7 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FIAGRO",
       "exposure": "AGRO_CREDIT",
       "classification_confidence": "MEDIUM",
@@ -3145,12 +3197,12 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "ELIGIBLE",
@@ -3197,7 +3249,7 @@
       "cap_rate": 15.5,
       "vacancy": 9.4,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -3235,6 +3287,56 @@
       ]
     },
     {
+      "ticker": "IRIM11",
+      "segment": "Multicategoria",
+      "price": 66.37,
+      "ffo_yield": 3.83,
+      "dy": 15.2,
+      "p_vp": 0.79,
+      "market_cap": 2337950000,
+      "liquidity": 2930000,
+      "num_properties": 1,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "data_source": "fundamentus",
+      "collected_at": "2026-07-11T20:39:12.314Z",
+      "regulatory_class": "FII",
+      "exposure": "REAL_ESTATE_CREDIT",
+      "classification_confidence": "HIGH",
+      "classification_reasons": [
+        "Classified as credit based on external fund type: Fundo de Papel"
+      ],
+      "type": "PAPEL",
+      "eligibility": "ELIGIBLE",
+      "signal": "OPPORTUNITY",
+      "risk_level": "LOW",
+      "data_quality": "COMPLETE",
+      "pillars": {
+        "valuation": 2,
+        "income": 9,
+        "liquidity": 8,
+        "safety": 9
+      },
+      "overall_score": 7.05,
+      "blockers": [],
+      "warnings": [],
+      "yield_is_trailing": true,
+      "score": 7.05,
+      "category": "OPPORTUNITY",
+      "strategies": [],
+      "selic": 14.25,
+      "magicNumber": 79,
+      "magicCost": 5243.2300000000005,
+      "last_dividend": 1.18,
+      "external_segment": "Híbrido",
+      "data_com": "09/07/2026",
+      "data_pagamento": "16/07/2026",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
       "ticker": "RZAK11",
       "segment": "Multicategoria",
       "price": 81.7,
@@ -3247,12 +3349,12 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "ELIGIBLE",
@@ -3287,52 +3389,152 @@
       ]
     },
     {
-      "ticker": "IBBP11",
-      "segment": "Log�stica",
-      "price": 7.8,
-      "ffo_yield": 6.82,
-      "dy": 11.66,
-      "p_vp": 0.84,
-      "market_cap": 587891000,
-      "liquidity": 395510,
-      "num_properties": 25,
-      "cap_rate": 4.67,
-      "vacancy": 4,
+      "ticker": "RZLC11",
+      "segment": "Outros",
+      "price": 1004.57,
+      "ffo_yield": 6.99,
+      "dy": 13.47,
+      "p_vp": 1.01,
+      "market_cap": 162703000,
+      "liquidity": 1020000,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
-      "exposure": "REAL_ESTATE_PHYSICAL",
+      "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
-      "type": "TIJOLO",
+      "type": "PAPEL",
       "eligibility": "ELIGIBLE",
-      "signal": "OPPORTUNITY",
-      "risk_level": "LOW",
+      "signal": "WATCHLIST",
+      "risk_level": "HIGH",
       "data_quality": "COMPLETE",
       "pillars": {
         "valuation": 9,
         "income": 9,
-        "liquidity": 2,
-        "safety": 7
+        "liquidity": 6,
+        "safety": 4
       },
-      "overall_score": 7,
+      "overall_score": 6.9,
       "blockers": [],
       "warnings": [],
       "yield_is_trailing": true,
-      "score": 7,
-      "category": "OPPORTUNITY",
+      "score": 6.9,
+      "category": "STANDARD",
       "strategies": [
-        "PHYSICAL_VALUE"
+        "CREDIT_CARRY"
       ],
       "selic": 14.25,
-      "magicNumber": 103,
-      "magicCost": 803.4,
-      "last_dividend": 0.08,
-      "external_segment": "Logístico / Indústria / Galpões",
-      "data_com": "07/07/2026",
-      "data_pagamento": "16/07/2026",
+      "magicNumber": 90,
+      "magicCost": 90411.3,
+      "last_dividend": 12.05,
+      "external_segment": "Outros",
+      "data_com": "03/07/2026",
+      "data_pagamento": "10/07/2026",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
+      "ticker": "RZAT11",
+      "segment": "Multicategoria",
+      "price": 93.95,
+      "ffo_yield": 12.46,
+      "dy": 14.26,
+      "p_vp": 0.91,
+      "market_cap": 397882000,
+      "liquidity": 771860,
+      "num_properties": 8,
+      "cap_rate": 19.92,
+      "vacancy": 0,
+      "data_source": "fundamentus",
+      "collected_at": "2026-07-11T20:39:12.314Z",
+      "regulatory_class": "FII",
+      "exposure": "REAL_ESTATE_PHYSICAL",
+      "classification_confidence": "HIGH",
+      "classification_reasons": [
+        "Classified as physical based on external fund type: Fundo de Tijolo"
+      ],
+      "type": "TIJOLO",
+      "eligibility": "ELIGIBLE",
+      "signal": "OPPORTUNITY",
+      "risk_level": "MEDIUM",
+      "data_quality": "COMPLETE",
+      "pillars": {
+        "valuation": 9,
+        "income": 9,
+        "liquidity": 4,
+        "safety": 5
+      },
+      "overall_score": 6.8,
+      "blockers": [],
+      "warnings": [],
+      "yield_is_trailing": true,
+      "score": 6.8,
+      "category": "OPPORTUNITY",
+      "strategies": [],
+      "selic": 14.25,
+      "magicNumber": 85,
+      "magicCost": 7985.75,
+      "last_dividend": 1.7,
+      "external_segment": "Híbrido",
+      "data_com": "15/06/2026",
+      "data_pagamento": "22/06/2026",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
+      "ticker": "CPOF11",
+      "segment": "Outros",
+      "price": 114.49,
+      "ffo_yield": 3.13,
+      "dy": 3.88,
+      "p_vp": 0.9,
+      "market_cap": 628468000,
+      "liquidity": 9690000,
+      "num_properties": 5,
+      "cap_rate": 7.32,
+      "vacancy": 1.5,
+      "data_source": "fundamentus",
+      "collected_at": "2026-07-11T20:39:12.314Z",
+      "regulatory_class": "FII",
+      "exposure": "HYBRID",
+      "classification_confidence": "HIGH",
+      "classification_reasons": [
+        "Classified as hybrid based on external fund type: Fundo Misto"
+      ],
+      "type": "MULTI",
+      "eligibility": "ELIGIBLE",
+      "signal": "OPPORTUNITY",
+      "risk_level": "MEDIUM",
+      "data_quality": "COMPLETE",
+      "pillars": {
+        "valuation": 8,
+        "income": 4,
+        "liquidity": 10,
+        "safety": 6
+      },
+      "overall_score": 6.8,
+      "blockers": [],
+      "warnings": [],
+      "yield_is_trailing": true,
+      "score": 6.8,
+      "category": "OPPORTUNITY",
+      "strategies": [],
+      "selic": 14.25,
+      "magicNumber": 310,
+      "magicCost": 35491.9,
+      "last_dividend": 0.43,
+      "external_segment": "Híbrido",
+      "data_com": "16/03/2026",
+      "data_pagamento": "23/03/2026",
       "data_sources": [
         "fundamentus",
         "investidor10"
@@ -3351,12 +3553,12 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "ELIGIBLE",
@@ -3401,7 +3603,7 @@
       "cap_rate": 62.42,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -3439,156 +3641,6 @@
       ]
     },
     {
-      "ticker": "PSEC11",
-      "segment": "Outros",
-      "price": 56.05,
-      "ffo_yield": 10.52,
-      "dy": 13.74,
-      "p_vp": 0.76,
-      "market_cap": 1031290000,
-      "liquidity": 2990000,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
-      "regulatory_class": "FII",
-      "exposure": "REAL_ESTATE_CREDIT",
-      "classification_confidence": "HIGH",
-      "classification_reasons": [
-        "Credit exposure found in segment."
-      ],
-      "type": "PAPEL",
-      "eligibility": "ELIGIBLE",
-      "signal": "OPPORTUNITY",
-      "risk_level": "LOW",
-      "data_quality": "COMPLETE",
-      "pillars": {
-        "valuation": 2,
-        "income": 9,
-        "liquidity": 8,
-        "safety": 8
-      },
-      "overall_score": 6.75,
-      "blockers": [],
-      "warnings": [],
-      "yield_is_trailing": true,
-      "score": 6.75,
-      "category": "OPPORTUNITY",
-      "strategies": [],
-      "selic": 14.25,
-      "magicNumber": 88,
-      "magicCost": 4932.4,
-      "last_dividend": 0.55,
-      "external_segment": "Títulos e Valores Mobiliários",
-      "data_com": "08/07/2026",
-      "data_pagamento": "15/07/2026",
-      "data_sources": [
-        "fundamentus",
-        "investidor10"
-      ]
-    },
-    {
-      "ticker": "ITRI11",
-      "segment": "Outros",
-      "price": 79.16,
-      "ffo_yield": 13.13,
-      "dy": 13.26,
-      "p_vp": 0.84,
-      "market_cap": 494750000,
-      "liquidity": 1140000,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
-      "regulatory_class": "FII",
-      "exposure": "REAL_ESTATE_CREDIT",
-      "classification_confidence": "HIGH",
-      "classification_reasons": [
-        "Credit exposure found in segment."
-      ],
-      "type": "PAPEL",
-      "eligibility": "ELIGIBLE",
-      "signal": "OPPORTUNITY",
-      "risk_level": "MEDIUM",
-      "data_quality": "COMPLETE",
-      "pillars": {
-        "valuation": 6,
-        "income": 9,
-        "liquidity": 6,
-        "safety": 6
-      },
-      "overall_score": 6.75,
-      "blockers": [],
-      "warnings": [],
-      "yield_is_trailing": true,
-      "score": 6.75,
-      "category": "OPPORTUNITY",
-      "strategies": [],
-      "selic": 14.25,
-      "magicNumber": 91,
-      "magicCost": 7203.5599999999995,
-      "last_dividend": 0.85,
-      "external_segment": "Títulos e Valores Mobiliários",
-      "data_com": "30/06/2026",
-      "data_pagamento": "13/07/2026",
-      "data_sources": [
-        "fundamentus",
-        "investidor10"
-      ]
-    },
-    {
-      "ticker": "KFOF11",
-      "segment": "Multicategoria",
-      "price": 78.7,
-      "ffo_yield": 11.92,
-      "dy": 12.13,
-      "p_vp": 0.86,
-      "market_cap": 552046000,
-      "liquidity": 1280000,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
-      "regulatory_class": "FII",
-      "exposure": "REAL_ESTATE_CREDIT",
-      "classification_confidence": "HIGH",
-      "classification_reasons": [
-        "Credit exposure found in segment."
-      ],
-      "type": "PAPEL",
-      "eligibility": "ELIGIBLE",
-      "signal": "OPPORTUNITY",
-      "risk_level": "MEDIUM",
-      "data_quality": "COMPLETE",
-      "pillars": {
-        "valuation": 6,
-        "income": 9,
-        "liquidity": 6,
-        "safety": 6
-      },
-      "overall_score": 6.75,
-      "blockers": [],
-      "warnings": [],
-      "yield_is_trailing": true,
-      "score": 6.75,
-      "category": "OPPORTUNITY",
-      "strategies": [],
-      "selic": 14.25,
-      "magicNumber": 99,
-      "magicCost": 7791.3,
-      "last_dividend": 0.8,
-      "external_segment": "Títulos e Valores Mobiliários",
-      "data_com": "30/06/2026",
-      "data_pagamento": "14/07/2026",
-      "data_sources": [
-        "fundamentus",
-        "investidor10"
-      ]
-    },
-    {
       "ticker": "CPTI11",
       "type": "INFRA",
       "segment": "Infraestrutura",
@@ -3601,6 +3653,8 @@
       "vacancy": 0,
       "data_com": "30/06/2026",
       "data_pagamento": "14/07/2026",
+      "divida_ebitda": null,
+      "dividends_last_3_years": 30,
       "score": 6.7,
       "strategies": [
         "CREDIT_CARRY",
@@ -3654,6 +3708,8 @@
       "vacancy": 0,
       "data_com": "30/06/2026",
       "data_pagamento": "07/07/2026",
+      "divida_ebitda": null,
+      "dividends_last_3_years": 30,
       "score": 6.7,
       "strategies": [
         "CREDIT_CARRY",
@@ -3707,7 +3763,7 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -3759,6 +3815,8 @@
       "vacancy": 0,
       "data_com": "30/06/2026",
       "data_pagamento": "07/07/2026",
+      "divida_ebitda": null,
+      "dividends_last_3_years": 35,
       "score": 6.65,
       "strategies": [
         "MISSING_MARKET_CAP"
@@ -3799,6 +3857,106 @@
       ]
     },
     {
+      "ticker": "AZPL11",
+      "segment": "Log�stica",
+      "price": 7.5,
+      "ffo_yield": 8.69,
+      "dy": 13.31,
+      "p_vp": 0.86,
+      "market_cap": 314420000,
+      "liquidity": 864050,
+      "num_properties": 1,
+      "cap_rate": 8.83,
+      "vacancy": 0,
+      "data_source": "fundamentus",
+      "collected_at": "2026-07-11T20:39:12.314Z",
+      "regulatory_class": "FII",
+      "exposure": "HYBRID",
+      "classification_confidence": "HIGH",
+      "classification_reasons": [
+        "Classified as hybrid based on external fund type: Fundo Misto"
+      ],
+      "type": "MULTI",
+      "eligibility": "ELIGIBLE",
+      "signal": "WATCHLIST",
+      "risk_level": "HIGH",
+      "data_quality": "COMPLETE",
+      "pillars": {
+        "valuation": 8,
+        "income": 9,
+        "liquidity": 6,
+        "safety": 4
+      },
+      "overall_score": 6.65,
+      "blockers": [],
+      "warnings": [],
+      "yield_is_trailing": true,
+      "score": 6.65,
+      "category": "STANDARD",
+      "strategies": [],
+      "selic": 14.25,
+      "magicNumber": 91,
+      "magicCost": 682.5,
+      "last_dividend": 0.09,
+      "external_segment": "Logístico / Indústria / Galpões",
+      "data_com": "30/06/2026",
+      "data_pagamento": "14/07/2026",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
+      "ticker": "KISU11",
+      "segment": "Outros",
+      "price": 6.43,
+      "ffo_yield": 13.44,
+      "dy": 11.96,
+      "p_vp": 0.8,
+      "market_cap": 284181000,
+      "liquidity": 954330,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "data_source": "fundamentus",
+      "collected_at": "2026-07-11T20:39:12.314Z",
+      "regulatory_class": "FII",
+      "exposure": "FUND_OF_FUNDS",
+      "classification_confidence": "HIGH",
+      "classification_reasons": [
+        "Classified as FOF based on external fund type: Fundo de Fundos"
+      ],
+      "type": "MULTI",
+      "eligibility": "ELIGIBLE",
+      "signal": "WATCHLIST",
+      "risk_level": "HIGH",
+      "data_quality": "COMPLETE",
+      "pillars": {
+        "valuation": 8,
+        "income": 9,
+        "liquidity": 6,
+        "safety": 4
+      },
+      "overall_score": 6.65,
+      "blockers": [],
+      "warnings": [],
+      "yield_is_trailing": true,
+      "score": 6.65,
+      "category": "STANDARD",
+      "strategies": [],
+      "selic": 14.25,
+      "magicNumber": 101,
+      "magicCost": 649.43,
+      "last_dividend": 0.07,
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "15/06/2026",
+      "data_pagamento": "25/06/2026",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
       "ticker": "GSFI11",
       "segment": "Shoppings",
       "price": 11.16,
@@ -3811,12 +3969,12 @@
       "cap_rate": 0,
       "vacancy": 10.7,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -3863,6 +4021,8 @@
       "vacancy": 0,
       "data_com": "30/06/2026",
       "data_pagamento": "14/07/2026",
+      "divida_ebitda": null,
+      "dividends_last_3_years": 30,
       "score": 6.6,
       "strategies": [
         "CREDIT_CARRY",
@@ -3916,7 +4076,7 @@
       "cap_rate": 10.14,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -3968,7 +4128,7 @@
       "cap_rate": 9.43,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "MEDIUM",
@@ -4020,12 +4180,12 @@
       "cap_rate": 15.04,
       "vacancy": 6.7,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -4060,58 +4220,6 @@
       ]
     },
     {
-      "ticker": "BBFO11",
-      "segment": "Multicategoria",
-      "price": 69.35,
-      "ffo_yield": 15.5,
-      "dy": 14.27,
-      "p_vp": 0.93,
-      "market_cap": 277670000,
-      "liquidity": 586380,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
-      "regulatory_class": "FII",
-      "exposure": "REAL_ESTATE_CREDIT",
-      "classification_confidence": "HIGH",
-      "classification_reasons": [
-        "Credit exposure found in segment."
-      ],
-      "type": "PAPEL",
-      "eligibility": "ELIGIBLE",
-      "signal": "WATCHLIST",
-      "risk_level": "HIGH",
-      "data_quality": "COMPLETE",
-      "pillars": {
-        "valuation": 9,
-        "income": 9,
-        "liquidity": 4,
-        "safety": 4
-      },
-      "overall_score": 6.5,
-      "blockers": [],
-      "warnings": [],
-      "yield_is_trailing": true,
-      "score": 6.5,
-      "category": "STANDARD",
-      "strategies": [
-        "CREDIT_CARRY"
-      ],
-      "selic": 14.25,
-      "magicNumber": 85,
-      "magicCost": 5894.749999999999,
-      "last_dividend": 0.95,
-      "external_segment": "Títulos e Valores Mobiliários",
-      "data_com": "30/06/2026",
-      "data_pagamento": "14/07/2026",
-      "data_sources": [
-        "fundamentus",
-        "investidor10"
-      ]
-    },
-    {
       "ticker": "SNCI11",
       "segment": "Outros",
       "price": 87.1,
@@ -4124,7 +4232,7 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -4176,12 +4284,12 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "ELIGIBLE",
@@ -4216,24 +4324,79 @@
       ]
     },
     {
-      "ticker": "CPOF11",
-      "segment": "Outros",
-      "price": 114.49,
-      "ffo_yield": 3.13,
-      "dy": 3.88,
-      "p_vp": 0.9,
-      "market_cap": 628468000,
-      "liquidity": 9690000,
+      "ticker": "BRCR11",
+      "segment": "Multicategoria",
+      "price": 40.82,
+      "ffo_yield": 11.74,
+      "dy": 12.04,
+      "p_vp": 0.52,
+      "market_cap": 1087370000,
+      "liquidity": 1700000,
       "num_properties": 5,
-      "cap_rate": 7.32,
-      "vacancy": 1.5,
+      "cap_rate": 16.9,
+      "vacancy": 11.1,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
+      "regulatory_class": "FII",
+      "exposure": "REAL_ESTATE_PHYSICAL",
+      "classification_confidence": "HIGH",
+      "classification_reasons": [
+        "Classified as physical based on external fund type: Fundo de Tijolo"
+      ],
+      "type": "TIJOLO",
+      "eligibility": "REVIEW",
+      "signal": "REVIEW",
+      "risk_level": "HIGH",
+      "data_quality": "COMPLETE",
+      "pillars": {
+        "valuation": 2,
+        "income": 9,
+        "liquidity": 8,
+        "safety": 7
+      },
+      "overall_score": 6.45,
+      "blockers": [],
+      "warnings": [
+        "DEEP_PHYSICAL_DISCOUNT"
+      ],
+      "yield_is_trailing": true,
+      "score": 6.45,
+      "category": "STANDARD",
+      "strategies": [
+        "PHYSICAL_VALUE",
+        "DEEP_PHYSICAL_DISCOUNT"
+      ],
+      "selic": 14.25,
+      "magicNumber": 100,
+      "magicCost": 4082,
+      "last_dividend": 0.41,
+      "external_segment": "Híbrido",
+      "data_com": "07/07/2026",
+      "data_pagamento": "15/07/2026",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
+      "ticker": "IBBP11",
+      "segment": "Log�stica",
+      "price": 7.8,
+      "ffo_yield": 6.82,
+      "dy": 11.66,
+      "p_vp": 0.84,
+      "market_cap": 587891000,
+      "liquidity": 395510,
+      "num_properties": 25,
+      "cap_rate": 4.67,
+      "vacancy": 4,
+      "data_source": "fundamentus",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
-      "classification_confidence": "MEDIUM",
+      "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Hybrid exposure declared without a more specific segment."
+        "Classified as hybrid based on external fund type: Fundo Misto"
       ],
       "type": "MULTI",
       "eligibility": "ELIGIBLE",
@@ -4242,24 +4405,74 @@
       "data_quality": "COMPLETE",
       "pillars": {
         "valuation": 8,
-        "income": 4,
-        "liquidity": 10,
-        "safety": 5
+        "income": 9,
+        "liquidity": 2,
+        "safety": 6
       },
-      "overall_score": 6.5,
+      "overall_score": 6.45,
       "blockers": [],
       "warnings": [],
       "yield_is_trailing": true,
-      "score": 6.5,
+      "score": 6.45,
       "category": "OPPORTUNITY",
       "strategies": [],
       "selic": 14.25,
-      "magicNumber": 310,
-      "magicCost": 35491.9,
-      "last_dividend": 0.43,
-      "external_segment": "Híbrido",
-      "data_com": "16/03/2026",
-      "data_pagamento": "23/03/2026",
+      "magicNumber": 103,
+      "magicCost": 803.4,
+      "last_dividend": 0.08,
+      "external_segment": "Logístico / Indústria / Galpões",
+      "data_com": "07/07/2026",
+      "data_pagamento": "16/07/2026",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
+      "ticker": "CCME11",
+      "segment": "Multicategoria",
+      "price": 8.9,
+      "ffo_yield": 11.74,
+      "dy": 11.55,
+      "p_vp": 0.83,
+      "market_cap": 603394000,
+      "liquidity": 292250,
+      "num_properties": 1,
+      "cap_rate": 8.95,
+      "vacancy": 2.3,
+      "data_source": "fundamentus",
+      "collected_at": "2026-07-11T20:39:12.314Z",
+      "regulatory_class": "FII",
+      "exposure": "HYBRID",
+      "classification_confidence": "HIGH",
+      "classification_reasons": [
+        "Classified as hybrid based on external fund type: Fundo Misto"
+      ],
+      "type": "MULTI",
+      "eligibility": "ELIGIBLE",
+      "signal": "OPPORTUNITY",
+      "risk_level": "MEDIUM",
+      "data_quality": "COMPLETE",
+      "pillars": {
+        "valuation": 8,
+        "income": 9,
+        "liquidity": 2,
+        "safety": 6
+      },
+      "overall_score": 6.45,
+      "blockers": [],
+      "warnings": [],
+      "yield_is_trailing": true,
+      "score": 6.45,
+      "category": "OPPORTUNITY",
+      "strategies": [],
+      "selic": 14.25,
+      "magicNumber": 104,
+      "magicCost": 925.6,
+      "last_dividend": 0.09,
+      "external_segment": "Outros",
+      "data_com": "08/07/2026",
+      "data_pagamento": "15/07/2026",
       "data_sources": [
         "fundamentus",
         "investidor10"
@@ -4278,12 +4491,12 @@
       "cap_rate": 13.67,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -4330,7 +4543,7 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FIAGRO",
       "exposure": "AGRO_CREDIT",
       "classification_confidence": "MEDIUM",
@@ -4381,6 +4594,8 @@
       "vacancy": 0,
       "data_com": "30/06/2026",
       "data_pagamento": "14/07/2026",
+      "divida_ebitda": null,
+      "dividends_last_3_years": 16,
       "score": 6.3,
       "strategies": [
         "CREDIT_CARRY",
@@ -4434,12 +4649,12 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "ELIGIBLE",
@@ -4472,47 +4687,97 @@
       ]
     },
     {
-      "ticker": "HFOF11",
+      "ticker": "SNME11",
       "segment": "Multicategoria",
-      "price": 6.29,
-      "ffo_yield": 12.1,
-      "dy": 11.08,
-      "p_vp": 0.81,
-      "market_cap": 1381870000,
-      "liquidity": 2420000,
+      "price": 9.39,
+      "ffo_yield": 11.07,
+      "dy": 15.69,
+      "p_vp": 1,
+      "market_cap": 69657300,
+      "liquidity": 443390,
       "num_properties": 0,
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
-      "exposure": "REAL_ESTATE_CREDIT",
+      "exposure": "HYBRID",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as hybrid based on external fund type: Fundo Misto"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "eligibility": "ELIGIBLE",
-      "signal": "OPPORTUNITY",
-      "risk_level": "LOW",
+      "signal": "WATCHLIST",
+      "risk_level": "HIGH",
       "data_quality": "COMPLETE",
       "pillars": {
-        "valuation": 2,
-        "income": 7,
-        "liquidity": 8,
-        "safety": 8
+        "valuation": 8,
+        "income": 9,
+        "liquidity": 4,
+        "safety": 4
       },
       "overall_score": 6.25,
       "blockers": [],
       "warnings": [],
       "yield_is_trailing": true,
       "score": 6.25,
-      "category": "OPPORTUNITY",
+      "category": "STANDARD",
       "strategies": [],
       "selic": 14.25,
-      "magicNumber": 109,
-      "magicCost": 685.61,
-      "last_dividend": 0.06,
+      "magicNumber": 77,
+      "magicCost": 723.0300000000001,
+      "last_dividend": 0.15,
+      "external_segment": "Híbrido",
+      "data_com": "15/06/2026",
+      "data_pagamento": "25/06/2026",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
+      "ticker": "BBFO11",
+      "segment": "Multicategoria",
+      "price": 69.35,
+      "ffo_yield": 15.5,
+      "dy": 14.27,
+      "p_vp": 0.93,
+      "market_cap": 277670000,
+      "liquidity": 586380,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "data_source": "fundamentus",
+      "collected_at": "2026-07-11T20:39:12.314Z",
+      "regulatory_class": "FII",
+      "exposure": "FUND_OF_FUNDS",
+      "classification_confidence": "HIGH",
+      "classification_reasons": [
+        "Classified as FOF based on external fund type: Fundo de Fundos"
+      ],
+      "type": "MULTI",
+      "eligibility": "ELIGIBLE",
+      "signal": "WATCHLIST",
+      "risk_level": "HIGH",
+      "data_quality": "COMPLETE",
+      "pillars": {
+        "valuation": 8,
+        "income": 9,
+        "liquidity": 4,
+        "safety": 4
+      },
+      "overall_score": 6.25,
+      "blockers": [],
+      "warnings": [],
+      "yield_is_trailing": true,
+      "score": 6.25,
+      "category": "STANDARD",
+      "strategies": [],
+      "selic": 14.25,
+      "magicNumber": 85,
+      "magicCost": 5894.749999999999,
+      "last_dividend": 0.95,
       "external_segment": "Títulos e Valores Mobiliários",
       "data_com": "30/06/2026",
       "data_pagamento": "14/07/2026",
@@ -4522,50 +4787,100 @@
       ]
     },
     {
-      "ticker": "HBCR11",
+      "ticker": "BCIA11",
       "segment": "Multicategoria",
-      "price": 146,
-      "ffo_yield": 5.39,
-      "dy": 10.19,
-      "p_vp": 1.25,
-      "market_cap": 233600000,
-      "liquidity": 6010000,
-      "num_properties": 3,
-      "cap_rate": 10.76,
+      "price": 87.18,
+      "ffo_yield": 12.31,
+      "dy": 11.89,
+      "p_vp": 0.86,
+      "market_cap": 324226000,
+      "liquidity": 405300,
+      "num_properties": 0,
+      "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
-      "exposure": "REAL_ESTATE_PHYSICAL",
+      "exposure": "FUND_OF_FUNDS",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as FOF based on external fund type: Fundo de Fundos"
       ],
-      "type": "TIJOLO",
+      "type": "MULTI",
       "eligibility": "ELIGIBLE",
-      "signal": "OPPORTUNITY",
-      "risk_level": "MEDIUM",
+      "signal": "WATCHLIST",
+      "risk_level": "HIGH",
       "data_quality": "COMPLETE",
       "pillars": {
-        "valuation": 4,
-        "income": 7,
-        "liquidity": 10,
-        "safety": 5
+        "valuation": 8,
+        "income": 9,
+        "liquidity": 4,
+        "safety": 4
       },
       "overall_score": 6.25,
       "blockers": [],
       "warnings": [],
       "yield_is_trailing": true,
       "score": 6.25,
+      "category": "STANDARD",
+      "strategies": [],
+      "selic": 14.25,
+      "magicNumber": 101,
+      "magicCost": 8805.18,
+      "last_dividend": 0.97,
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "30/06/2026",
+      "data_pagamento": "28/07/2026",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
+      "ticker": "GZIT11",
+      "segment": "Multicategoria",
+      "price": 42.95,
+      "ffo_yield": 11.86,
+      "dy": 17.79,
+      "p_vp": 0.49,
+      "market_cap": 1000640000,
+      "liquidity": 430650,
+      "num_properties": 6,
+      "cap_rate": 14.13,
+      "vacancy": 4.2,
+      "data_source": "fundamentus",
+      "collected_at": "2026-07-11T20:39:12.314Z",
+      "regulatory_class": "FII",
+      "exposure": "HYBRID",
+      "classification_confidence": "HIGH",
+      "classification_reasons": [
+        "Classified as hybrid based on external fund type: Fundo Misto"
+      ],
+      "type": "MULTI",
+      "eligibility": "ELIGIBLE",
+      "signal": "OPPORTUNITY",
+      "risk_level": "LOW",
+      "data_quality": "COMPLETE",
+      "pillars": {
+        "valuation": 5,
+        "income": 7,
+        "liquidity": 4,
+        "safety": 8
+      },
+      "overall_score": 6.2,
+      "blockers": [],
+      "warnings": [],
+      "yield_is_trailing": true,
+      "score": 6.2,
       "category": "OPPORTUNITY",
       "strategies": [],
       "selic": 14.25,
-      "magicNumber": 118,
-      "magicCost": 17228,
-      "last_dividend": 0.55,
-      "external_segment": "Lajes Corporativas",
-      "data_com": "15/06/2026",
-      "data_pagamento": "22/06/2026",
+      "magicNumber": 68,
+      "magicCost": 2920.6000000000004,
+      "last_dividend": 0.42,
+      "external_segment": "Híbrido",
+      "data_com": "23/06/2026",
+      "data_pagamento": "30/06/2026",
       "data_sources": [
         "fundamentus",
         "investidor10"
@@ -4584,6 +4899,8 @@
       "vacancy": 0,
       "data_com": "30/06/2026",
       "data_pagamento": "07/07/2026",
+      "divida_ebitda": null,
+      "dividends_last_3_years": 30,
       "score": 6.2,
       "strategies": [
         "CREDIT_CARRY",
@@ -4637,12 +4954,12 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "ELIGIBLE",
@@ -4687,12 +5004,12 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "ELIGIBLE",
@@ -4725,50 +5042,52 @@
       ]
     },
     {
-      "ticker": "CCME11",
-      "segment": "Multicategoria",
-      "price": 8.9,
-      "ffo_yield": 11.74,
-      "dy": 11.55,
-      "p_vp": 0.83,
-      "market_cap": 603394000,
-      "liquidity": 292250,
-      "num_properties": 1,
-      "cap_rate": 8.95,
-      "vacancy": 2.3,
+      "ticker": "GAME11",
+      "segment": "Outros",
+      "price": 8.7,
+      "ffo_yield": 6.49,
+      "dy": 13.45,
+      "p_vp": 0.91,
+      "market_cap": 247307000,
+      "liquidity": 202140,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
-      "exposure": "HYBRID",
-      "classification_confidence": "MEDIUM",
+      "exposure": "REAL_ESTATE_CREDIT",
+      "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Hybrid exposure declared without a more specific segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
-      "type": "MULTI",
+      "type": "PAPEL",
       "eligibility": "ELIGIBLE",
-      "signal": "OPPORTUNITY",
-      "risk_level": "MEDIUM",
+      "signal": "WATCHLIST",
+      "risk_level": "HIGH",
       "data_quality": "COMPLETE",
       "pillars": {
-        "valuation": 8,
+        "valuation": 9,
         "income": 9,
         "liquidity": 2,
-        "safety": 5
+        "safety": 4
       },
-      "overall_score": 6.15,
+      "overall_score": 6.1,
       "blockers": [],
       "warnings": [],
       "yield_is_trailing": true,
-      "score": 6.15,
-      "category": "OPPORTUNITY",
-      "strategies": [],
+      "score": 6.1,
+      "category": "STANDARD",
+      "strategies": [
+        "CREDIT_CARRY"
+      ],
       "selic": 14.25,
-      "magicNumber": 104,
-      "magicCost": 925.6,
-      "last_dividend": 0.09,
+      "magicNumber": 90,
+      "magicCost": 782.9999999999999,
+      "last_dividend": 0.1,
       "external_segment": "Outros",
-      "data_com": "08/07/2026",
-      "data_pagamento": "15/07/2026",
+      "data_com": "09/07/2026",
+      "data_pagamento": "21/07/2026",
       "data_sources": [
         "fundamentus",
         "investidor10"
@@ -4787,12 +5106,12 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "ELIGIBLE",
@@ -4827,56 +5146,6 @@
       ]
     },
     {
-      "ticker": "ADSH11",
-      "segment": "Multicategoria",
-      "price": 10.65,
-      "ffo_yield": 0.35,
-      "dy": 1.46,
-      "p_vp": 1.06,
-      "market_cap": 492850000,
-      "liquidity": 9220000,
-      "num_properties": 6,
-      "cap_rate": 0.29,
-      "vacancy": 0,
-      "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
-      "regulatory_class": "FII",
-      "exposure": "REAL_ESTATE_PHYSICAL",
-      "classification_confidence": "HIGH",
-      "classification_reasons": [
-        "Physical-asset exposure found in segment."
-      ],
-      "type": "TIJOLO",
-      "eligibility": "ELIGIBLE",
-      "signal": "OPPORTUNITY",
-      "risk_level": "LOW",
-      "data_quality": "COMPLETE",
-      "pillars": {
-        "valuation": 4,
-        "income": 4,
-        "liquidity": 10,
-        "safety": 7
-      },
-      "overall_score": 6.1,
-      "blockers": [],
-      "warnings": [],
-      "yield_is_trailing": true,
-      "score": 6.1,
-      "category": "OPPORTUNITY",
-      "strategies": [],
-      "selic": 14.25,
-      "magicNumber": 822,
-      "magicCost": 8754.300000000001,
-      "last_dividend": 0.04,
-      "external_segment": "Shoppings / Varejo",
-      "data_com": "23/06/2026",
-      "data_pagamento": "30/06/2026",
-      "data_sources": [
-        "fundamentus",
-        "investidor10"
-      ]
-    },
-    {
       "ticker": "IFRI11",
       "type": "INFRA",
       "segment": "Infraestrutura",
@@ -4889,6 +5158,8 @@
       "vacancy": 0,
       "data_com": "30/06/2026",
       "data_pagamento": "07/07/2026",
+      "divida_ebitda": null,
+      "dividends_last_3_years": 25,
       "score": 6.05,
       "strategies": [
         "MISSING_MARKET_CAP"
@@ -4941,12 +5212,12 @@
       "cap_rate": 12.45,
       "vacancy": 1.2,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -4981,6 +5252,56 @@
       ]
     },
     {
+      "ticker": "RVBI11",
+      "segment": "Outros",
+      "price": 60.23,
+      "ffo_yield": 13.05,
+      "dy": 3.49,
+      "p_vp": 0.81,
+      "market_cap": 615533000,
+      "liquidity": 1180000,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "data_source": "fundamentus",
+      "collected_at": "2026-07-11T20:39:12.314Z",
+      "regulatory_class": "FII",
+      "exposure": "FUND_OF_FUNDS",
+      "classification_confidence": "HIGH",
+      "classification_reasons": [
+        "Classified as FOF based on external fund type: Fundo de Fundos"
+      ],
+      "type": "MULTI",
+      "eligibility": "ELIGIBLE",
+      "signal": "OPPORTUNITY",
+      "risk_level": "MEDIUM",
+      "data_quality": "COMPLETE",
+      "pillars": {
+        "valuation": 8,
+        "income": 4,
+        "liquidity": 6,
+        "safety": 6
+      },
+      "overall_score": 6,
+      "blockers": [],
+      "warnings": [],
+      "yield_is_trailing": true,
+      "score": 6,
+      "category": "OPPORTUNITY",
+      "strategies": [],
+      "selic": 14.25,
+      "magicNumber": 344,
+      "magicCost": 20719.12,
+      "last_dividend": 0.7,
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "08/10/2025",
+      "data_pagamento": "15/10/2025",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
       "ticker": "KORE11",
       "segment": "Outros",
       "price": 64.25,
@@ -4993,12 +5314,12 @@
       "cap_rate": 17.7,
       "vacancy": 4.52,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -5045,7 +5366,7 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FIAGRO",
       "exposure": "AGRO_CREDIT",
       "classification_confidence": "MEDIUM",
@@ -5084,106 +5405,6 @@
       ]
     },
     {
-      "ticker": "SNME11",
-      "segment": "Multicategoria",
-      "price": 9.39,
-      "ffo_yield": 11.07,
-      "dy": 15.69,
-      "p_vp": 1,
-      "market_cap": 69657300,
-      "liquidity": 443390,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
-      "regulatory_class": "FII",
-      "exposure": "HYBRID",
-      "classification_confidence": "MEDIUM",
-      "classification_reasons": [
-        "Hybrid exposure declared without a more specific segment."
-      ],
-      "type": "MULTI",
-      "eligibility": "ELIGIBLE",
-      "signal": "WATCHLIST",
-      "risk_level": "HIGH",
-      "data_quality": "COMPLETE",
-      "pillars": {
-        "valuation": 8,
-        "income": 9,
-        "liquidity": 4,
-        "safety": 3
-      },
-      "overall_score": 5.95,
-      "blockers": [],
-      "warnings": [],
-      "yield_is_trailing": true,
-      "score": 5.95,
-      "category": "STANDARD",
-      "strategies": [],
-      "selic": 14.25,
-      "magicNumber": 77,
-      "magicCost": 723.0300000000001,
-      "last_dividend": 0.15,
-      "external_segment": "Híbrido",
-      "data_com": "15/06/2026",
-      "data_pagamento": "25/06/2026",
-      "data_sources": [
-        "fundamentus",
-        "investidor10"
-      ]
-    },
-    {
-      "ticker": "RZAT11",
-      "segment": "Multicategoria",
-      "price": 93.95,
-      "ffo_yield": 12.46,
-      "dy": 14.26,
-      "p_vp": 0.91,
-      "market_cap": 397882000,
-      "liquidity": 771860,
-      "num_properties": 8,
-      "cap_rate": 19.92,
-      "vacancy": 0,
-      "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
-      "regulatory_class": "FII",
-      "exposure": "HYBRID",
-      "classification_confidence": "MEDIUM",
-      "classification_reasons": [
-        "Hybrid exposure declared without a more specific segment."
-      ],
-      "type": "MULTI",
-      "eligibility": "ELIGIBLE",
-      "signal": "WATCHLIST",
-      "risk_level": "HIGH",
-      "data_quality": "COMPLETE",
-      "pillars": {
-        "valuation": 8,
-        "income": 9,
-        "liquidity": 4,
-        "safety": 3
-      },
-      "overall_score": 5.95,
-      "blockers": [],
-      "warnings": [],
-      "yield_is_trailing": true,
-      "score": 5.95,
-      "category": "STANDARD",
-      "strategies": [],
-      "selic": 14.25,
-      "magicNumber": 85,
-      "magicCost": 7985.75,
-      "last_dividend": 1.7,
-      "external_segment": "Híbrido",
-      "data_com": "15/06/2026",
-      "data_pagamento": "22/06/2026",
-      "data_sources": [
-        "fundamentus",
-        "investidor10"
-      ]
-    },
-    {
       "ticker": "BDIF11",
       "type": "INFRA",
       "segment": "Infraestrutura",
@@ -5196,6 +5417,8 @@
       "vacancy": 0,
       "data_com": "15/06/2026",
       "data_pagamento": "22/06/2026",
+      "divida_ebitda": null,
+      "dividends_last_3_years": 30,
       "score": 5.95,
       "strategies": [
         "MISSING_MARKET_CAP"
@@ -5236,50 +5459,50 @@
       ]
     },
     {
-      "ticker": "GZIT11",
+      "ticker": "HBCR11",
       "segment": "Multicategoria",
-      "price": 42.95,
-      "ffo_yield": 11.86,
-      "dy": 17.79,
-      "p_vp": 0.49,
-      "market_cap": 1000640000,
-      "liquidity": 430650,
-      "num_properties": 6,
-      "cap_rate": 14.13,
-      "vacancy": 4.2,
+      "price": 146,
+      "ffo_yield": 5.39,
+      "dy": 10.19,
+      "p_vp": 1.25,
+      "market_cap": 233600000,
+      "liquidity": 6010000,
+      "num_properties": 3,
+      "cap_rate": 10.76,
+      "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
-      "classification_confidence": "MEDIUM",
+      "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Hybrid exposure declared without a more specific segment."
+        "Classified as hybrid based on external fund type: Fundo Misto"
       ],
       "type": "MULTI",
       "eligibility": "ELIGIBLE",
       "signal": "WATCHLIST",
-      "risk_level": "LOW",
+      "risk_level": "HIGH",
       "data_quality": "COMPLETE",
       "pillars": {
-        "valuation": 5,
+        "valuation": 4,
         "income": 7,
-        "liquidity": 4,
-        "safety": 7
+        "liquidity": 10,
+        "safety": 4
       },
-      "overall_score": 5.9,
+      "overall_score": 5.95,
       "blockers": [],
       "warnings": [],
       "yield_is_trailing": true,
-      "score": 5.9,
+      "score": 5.95,
       "category": "STANDARD",
       "strategies": [],
       "selic": 14.25,
-      "magicNumber": 68,
-      "magicCost": 2920.6000000000004,
-      "last_dividend": 0.42,
-      "external_segment": "Híbrido",
-      "data_com": "23/06/2026",
-      "data_pagamento": "30/06/2026",
+      "magicNumber": 118,
+      "magicCost": 17228,
+      "last_dividend": 0.55,
+      "external_segment": "Lajes Corporativas",
+      "data_com": "15/06/2026",
+      "data_pagamento": "22/06/2026",
       "data_sources": [
         "fundamentus",
         "investidor10"
@@ -5298,12 +5521,12 @@
       "cap_rate": 9.88,
       "vacancy": 30,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -5352,7 +5575,7 @@
       "cap_rate": 16.63,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -5390,6 +5613,160 @@
       ]
     },
     {
+      "ticker": "VGHF11",
+      "segment": "Outros",
+      "price": 5.92,
+      "ffo_yield": 9.7,
+      "dy": 14.96,
+      "p_vp": 0.71,
+      "market_cap": 975152000,
+      "liquidity": 2620000,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "data_source": "fundamentus",
+      "collected_at": "2026-07-11T20:39:12.314Z",
+      "regulatory_class": "FII",
+      "exposure": "REAL_ESTATE_CREDIT",
+      "classification_confidence": "HIGH",
+      "classification_reasons": [
+        "Classified as credit based on external fund type: Fundo de Papel"
+      ],
+      "type": "PAPEL",
+      "eligibility": "REVIEW",
+      "signal": "REVIEW",
+      "risk_level": "HIGH",
+      "data_quality": "COMPLETE",
+      "pillars": {
+        "valuation": 2,
+        "income": 9,
+        "liquidity": 8,
+        "safety": 5
+      },
+      "overall_score": 5.85,
+      "blockers": [],
+      "warnings": [
+        "DEEP_CREDIT_DISCOUNT"
+      ],
+      "yield_is_trailing": true,
+      "score": 5.85,
+      "category": "STANDARD",
+      "strategies": [
+        "DEEP_CREDIT_DISCOUNT"
+      ],
+      "selic": 14.25,
+      "magicNumber": 81,
+      "magicCost": 479.52,
+      "last_dividend": 0.07,
+      "external_segment": "Híbrido",
+      "data_com": "30/06/2026",
+      "data_pagamento": "07/07/2026",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
+      "ticker": "WHGR11",
+      "segment": "Multicategoria",
+      "price": 9.09,
+      "ffo_yield": 13.27,
+      "dy": 13.59,
+      "p_vp": 0.93,
+      "market_cap": 280994000,
+      "liquidity": 263100,
+      "num_properties": 1,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "data_source": "fundamentus",
+      "collected_at": "2026-07-11T20:39:12.314Z",
+      "regulatory_class": "FII",
+      "exposure": "HYBRID",
+      "classification_confidence": "HIGH",
+      "classification_reasons": [
+        "Classified as hybrid based on external fund type: Fundo Misto"
+      ],
+      "type": "MULTI",
+      "eligibility": "ELIGIBLE",
+      "signal": "WATCHLIST",
+      "risk_level": "HIGH",
+      "data_quality": "COMPLETE",
+      "pillars": {
+        "valuation": 8,
+        "income": 9,
+        "liquidity": 2,
+        "safety": 4
+      },
+      "overall_score": 5.85,
+      "blockers": [],
+      "warnings": [],
+      "yield_is_trailing": true,
+      "score": 5.85,
+      "category": "STANDARD",
+      "strategies": [],
+      "selic": 14.25,
+      "magicNumber": 89,
+      "magicCost": 809.01,
+      "last_dividend": 0.1,
+      "external_segment": "Híbrido",
+      "data_com": "30/06/2026",
+      "data_pagamento": "14/07/2026",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
+      "ticker": "SNFF11",
+      "segment": "Outros",
+      "price": 73.01,
+      "ffo_yield": 9.92,
+      "dy": 13.5,
+      "p_vp": 0.85,
+      "market_cap": 293547000,
+      "liquidity": 307190,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "data_source": "fundamentus",
+      "collected_at": "2026-07-11T20:39:12.314Z",
+      "regulatory_class": "FII",
+      "exposure": "FUND_OF_FUNDS",
+      "classification_confidence": "HIGH",
+      "classification_reasons": [
+        "Classified as FOF based on external fund type: Fundo de Fundos"
+      ],
+      "type": "MULTI",
+      "eligibility": "ELIGIBLE",
+      "signal": "WATCHLIST",
+      "risk_level": "HIGH",
+      "data_quality": "COMPLETE",
+      "pillars": {
+        "valuation": 8,
+        "income": 9,
+        "liquidity": 2,
+        "safety": 4
+      },
+      "overall_score": 5.85,
+      "blockers": [],
+      "warnings": [],
+      "yield_is_trailing": true,
+      "score": 5.85,
+      "category": "STANDARD",
+      "strategies": [],
+      "selic": 14.25,
+      "magicNumber": 89,
+      "magicCost": 6497.89,
+      "last_dividend": 0.72,
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "15/06/2026",
+      "data_pagamento": "25/06/2026",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
       "ticker": "JURO11",
       "type": "INFRA",
       "segment": "Infraestrutura",
@@ -5402,6 +5779,8 @@
       "vacancy": 0,
       "data_com": "29/05/2026",
       "data_pagamento": "15/06/2026",
+      "divida_ebitda": null,
+      "dividends_last_3_years": 29,
       "score": 5.85,
       "strategies": [
         "MISSING_MARKET_CAP"
@@ -5454,7 +5833,7 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FIAGRO",
       "exposure": "AGRO_CREDIT",
       "classification_confidence": "MEDIUM",
@@ -5495,35 +5874,35 @@
       ]
     },
     {
-      "ticker": "GAME11",
-      "segment": "Outros",
-      "price": 8.7,
-      "ffo_yield": 6.49,
-      "dy": 13.45,
-      "p_vp": 0.91,
-      "market_cap": 247307000,
-      "liquidity": 202140,
-      "num_properties": 0,
-      "cap_rate": 0,
+      "ticker": "ADSH11",
+      "segment": "Multicategoria",
+      "price": 10.65,
+      "ffo_yield": 0.35,
+      "dy": 1.46,
+      "p_vp": 1.06,
+      "market_cap": 492850000,
+      "liquidity": 9220000,
+      "num_properties": 6,
+      "cap_rate": 0.29,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
-      "exposure": "REAL_ESTATE_CREDIT",
-      "classification_confidence": "MEDIUM",
+      "exposure": "HYBRID",
+      "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure inferred from type or mandate."
+        "Classified as hybrid based on external fund type: Fundo Misto"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "eligibility": "ELIGIBLE",
       "signal": "WATCHLIST",
-      "risk_level": "HIGH",
+      "risk_level": "MEDIUM",
       "data_quality": "COMPLETE",
       "pillars": {
-        "valuation": 9,
-        "income": 9,
-        "liquidity": 2,
-        "safety": 3
+        "valuation": 4,
+        "income": 4,
+        "liquidity": 10,
+        "safety": 6
       },
       "overall_score": 5.8,
       "blockers": [],
@@ -5531,16 +5910,14 @@
       "yield_is_trailing": true,
       "score": 5.8,
       "category": "STANDARD",
-      "strategies": [
-        "CREDIT_CARRY"
-      ],
+      "strategies": [],
       "selic": 14.25,
-      "magicNumber": 90,
-      "magicCost": 782.9999999999999,
-      "last_dividend": 0.1,
-      "external_segment": "Outros",
-      "data_com": "09/07/2026",
-      "data_pagamento": "21/07/2026",
+      "magicNumber": 822,
+      "magicCost": 8754.300000000001,
+      "last_dividend": 0.04,
+      "external_segment": "Shoppings / Varejo",
+      "data_com": "23/06/2026",
+      "data_pagamento": "30/06/2026",
       "data_sources": [
         "fundamentus",
         "investidor10"
@@ -5559,7 +5936,7 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FIAGRO",
       "exposure": "AGRO_CREDIT",
       "classification_confidence": "MEDIUM",
@@ -5610,12 +5987,12 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "ELIGIBLE",
@@ -5660,12 +6037,12 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "ELIGIBLE",
@@ -5698,35 +6075,35 @@
       ]
     },
     {
-      "ticker": "BCIA11",
-      "segment": "Multicategoria",
-      "price": 87.18,
-      "ffo_yield": 12.31,
-      "dy": 11.89,
-      "p_vp": 0.86,
-      "market_cap": 324226000,
-      "liquidity": 405300,
-      "num_properties": 0,
-      "cap_rate": 0,
+      "ticker": "HSRE11",
+      "segment": "Outros",
+      "price": 87.75,
+      "ffo_yield": 7.28,
+      "dy": 11.05,
+      "p_vp": 1.01,
+      "market_cap": 780863000,
+      "liquidity": 1340000,
+      "num_properties": 22,
+      "cap_rate": 9.66,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
-      "exposure": "REAL_ESTATE_CREDIT",
+      "exposure": "HYBRID",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as hybrid based on external fund type: Fundo Misto"
       ],
-      "type": "PAPEL",
+      "type": "MULTI",
       "eligibility": "ELIGIBLE",
       "signal": "WATCHLIST",
-      "risk_level": "HIGH",
+      "risk_level": "MEDIUM",
       "data_quality": "COMPLETE",
       "pillars": {
-        "valuation": 6,
-        "income": 9,
-        "liquidity": 4,
-        "safety": 4
+        "valuation": 4,
+        "income": 7,
+        "liquidity": 6,
+        "safety": 6
       },
       "overall_score": 5.75,
       "blockers": [],
@@ -5736,12 +6113,66 @@
       "category": "STANDARD",
       "strategies": [],
       "selic": 14.25,
-      "magicNumber": 101,
-      "magicCost": 8805.18,
-      "last_dividend": 0.97,
-      "external_segment": "Títulos e Valores Mobiliários",
-      "data_com": "30/06/2026",
-      "data_pagamento": "28/07/2026",
+      "magicNumber": 109,
+      "magicCost": 9564.75,
+      "last_dividend": 0.85,
+      "external_segment": "Híbrido",
+      "data_com": "29/05/2026",
+      "data_pagamento": "15/06/2026",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
+      "ticker": "BISE11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": "Títulos e valores mobiliários",
+      "price": 103.65,
+      "dy": 0,
+      "p_vp": 1.01,
+      "liquidity": 7120000,
+      "last_dividend": null,
+      "vacancy": 0,
+      "data_com": null,
+      "data_pagamento": null,
+      "divida_ebitda": null,
+      "dividends_last_3_years": 0,
+      "score": 5.75,
+      "strategies": [
+        "MISSING_MARKET_CAP"
+      ],
+      "magicNumber": null,
+      "magicCost": null,
+      "selic": 14.25,
+      "num_properties": 0,
+      "market_cap": 0,
+      "data_quality": "PARTIAL",
+      "regulatory_class": "FI_INFRA",
+      "exposure": "INFRA_CREDIT",
+      "classification_confidence": "HIGH",
+      "classification_reasons": [
+        "Regulatory class identified as infrastructure.",
+        "Classified as credit based on external fund type: Fundo de Papel"
+      ],
+      "eligibility": "ELIGIBLE",
+      "signal": "WATCHLIST",
+      "risk_level": "MEDIUM",
+      "pillars": {
+        "valuation": 9,
+        "income": 0,
+        "liquidity": 10,
+        "safety": 5
+      },
+      "overall_score": 5.75,
+      "blockers": [],
+      "warnings": [
+        "MISSING_MARKET_CAP"
+      ],
+      "yield_is_trailing": true,
+      "category": "STANDARD",
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)",
       "data_sources": [
         "fundamentus",
         "investidor10"
@@ -5760,7 +6191,7 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -5798,110 +6229,6 @@
       ]
     },
     {
-      "ticker": "VGHF11",
-      "segment": "Outros",
-      "price": 5.92,
-      "ffo_yield": 9.7,
-      "dy": 14.96,
-      "p_vp": 0.71,
-      "market_cap": 975152000,
-      "liquidity": 2620000,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
-      "regulatory_class": "FII",
-      "exposure": "REAL_ESTATE_CREDIT",
-      "classification_confidence": "MEDIUM",
-      "classification_reasons": [
-        "Credit exposure inferred from type or mandate."
-      ],
-      "type": "PAPEL",
-      "eligibility": "REVIEW",
-      "signal": "REVIEW",
-      "risk_level": "HIGH",
-      "data_quality": "COMPLETE",
-      "pillars": {
-        "valuation": 2,
-        "income": 9,
-        "liquidity": 8,
-        "safety": 4
-      },
-      "overall_score": 5.55,
-      "blockers": [],
-      "warnings": [
-        "DEEP_CREDIT_DISCOUNT"
-      ],
-      "yield_is_trailing": true,
-      "score": 5.55,
-      "category": "STANDARD",
-      "strategies": [
-        "DEEP_CREDIT_DISCOUNT"
-      ],
-      "selic": 14.25,
-      "magicNumber": 81,
-      "magicCost": 479.52,
-      "last_dividend": 0.07,
-      "external_segment": "Híbrido",
-      "data_com": "30/06/2026",
-      "data_pagamento": "07/07/2026",
-      "data_sources": [
-        "fundamentus",
-        "investidor10"
-      ]
-    },
-    {
-      "ticker": "WHGR11",
-      "segment": "Multicategoria",
-      "price": 9.09,
-      "ffo_yield": 13.27,
-      "dy": 13.59,
-      "p_vp": 0.93,
-      "market_cap": 280994000,
-      "liquidity": 263100,
-      "num_properties": 1,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
-      "regulatory_class": "FII",
-      "exposure": "HYBRID",
-      "classification_confidence": "MEDIUM",
-      "classification_reasons": [
-        "Hybrid exposure declared without a more specific segment."
-      ],
-      "type": "MULTI",
-      "eligibility": "ELIGIBLE",
-      "signal": "WATCHLIST",
-      "risk_level": "HIGH",
-      "data_quality": "COMPLETE",
-      "pillars": {
-        "valuation": 8,
-        "income": 9,
-        "liquidity": 2,
-        "safety": 3
-      },
-      "overall_score": 5.55,
-      "blockers": [],
-      "warnings": [],
-      "yield_is_trailing": true,
-      "score": 5.55,
-      "category": "STANDARD",
-      "strategies": [],
-      "selic": 14.25,
-      "magicNumber": 89,
-      "magicCost": 809.01,
-      "last_dividend": 0.1,
-      "external_segment": "Híbrido",
-      "data_com": "30/06/2026",
-      "data_pagamento": "14/07/2026",
-      "data_sources": [
-        "fundamentus",
-        "investidor10"
-      ]
-    },
-    {
       "ticker": "SNFZ11",
       "segment": "Multicategoria",
       "price": 9.3,
@@ -5914,7 +6241,7 @@
       "cap_rate": 0.97,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FIAGRO",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -5965,12 +6292,12 @@
       "cap_rate": 10.43,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -6005,6 +6332,56 @@
       ]
     },
     {
+      "ticker": "ITIT11",
+      "segment": "Outros",
+      "price": 58,
+      "ffo_yield": 5.82,
+      "dy": 12.81,
+      "p_vp": 0.74,
+      "market_cap": 52228700,
+      "liquidity": 427980,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "data_source": "fundamentus",
+      "collected_at": "2026-07-11T20:39:12.314Z",
+      "regulatory_class": "FII",
+      "exposure": "FUND_OF_FUNDS",
+      "classification_confidence": "HIGH",
+      "classification_reasons": [
+        "Classified as FOF based on external fund type: Fundo de Fundos"
+      ],
+      "type": "MULTI",
+      "eligibility": "ELIGIBLE",
+      "signal": "WATCHLIST",
+      "risk_level": "HIGH",
+      "data_quality": "COMPLETE",
+      "pillars": {
+        "valuation": 5,
+        "income": 9,
+        "liquidity": 4,
+        "safety": 4
+      },
+      "overall_score": 5.5,
+      "blockers": [],
+      "warnings": [],
+      "yield_is_trailing": true,
+      "score": 5.5,
+      "category": "STANDARD",
+      "strategies": [],
+      "selic": 14.25,
+      "magicNumber": 94,
+      "magicCost": 5452,
+      "last_dividend": 0.64,
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "30/06/2026",
+      "data_pagamento": "14/07/2026",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
       "ticker": "FGAA11",
       "segment": "Outros",
       "price": 8.29,
@@ -6017,7 +6394,7 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FIAGRO",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -6056,108 +6433,6 @@
       ]
     },
     {
-      "ticker": "HSRE11",
-      "segment": "Outros",
-      "price": 87.75,
-      "ffo_yield": 7.28,
-      "dy": 11.05,
-      "p_vp": 1.01,
-      "market_cap": 780863000,
-      "liquidity": 1340000,
-      "num_properties": 22,
-      "cap_rate": 9.66,
-      "vacancy": 0,
-      "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
-      "regulatory_class": "FII",
-      "exposure": "HYBRID",
-      "classification_confidence": "MEDIUM",
-      "classification_reasons": [
-        "Hybrid exposure declared without a more specific segment."
-      ],
-      "type": "MULTI",
-      "eligibility": "ELIGIBLE",
-      "signal": "WATCHLIST",
-      "risk_level": "MEDIUM",
-      "data_quality": "COMPLETE",
-      "pillars": {
-        "valuation": 4,
-        "income": 7,
-        "liquidity": 6,
-        "safety": 5
-      },
-      "overall_score": 5.45,
-      "blockers": [],
-      "warnings": [],
-      "yield_is_trailing": true,
-      "score": 5.45,
-      "category": "STANDARD",
-      "strategies": [],
-      "selic": 14.25,
-      "magicNumber": 109,
-      "magicCost": 9564.75,
-      "last_dividend": 0.85,
-      "external_segment": "Híbrido",
-      "data_com": "29/05/2026",
-      "data_pagamento": "15/06/2026",
-      "data_sources": [
-        "fundamentus",
-        "investidor10"
-      ]
-    },
-    {
-      "ticker": "BISE11",
-      "type": "INFRA",
-      "segment": "Infraestrutura",
-      "mandate": "Títulos e valores mobiliários",
-      "price": 103.65,
-      "dy": 0,
-      "p_vp": 1.01,
-      "liquidity": 7120000,
-      "last_dividend": null,
-      "vacancy": 0,
-      "data_com": null,
-      "data_pagamento": null,
-      "score": 5.45,
-      "strategies": [
-        "MISSING_MARKET_CAP"
-      ],
-      "magicNumber": null,
-      "magicCost": null,
-      "selic": 14.25,
-      "num_properties": 0,
-      "market_cap": 0,
-      "data_quality": "PARTIAL",
-      "regulatory_class": "FI_INFRA",
-      "exposure": "INFRA_CREDIT",
-      "classification_confidence": "MEDIUM",
-      "classification_reasons": [
-        "Regulatory class identified as infrastructure.",
-        "Credit exposure inferred from type or mandate."
-      ],
-      "eligibility": "ELIGIBLE",
-      "signal": "WATCHLIST",
-      "risk_level": "HIGH",
-      "pillars": {
-        "valuation": 9,
-        "income": 0,
-        "liquidity": 10,
-        "safety": 4
-      },
-      "overall_score": 5.45,
-      "blockers": [],
-      "warnings": [
-        "MISSING_MARKET_CAP"
-      ],
-      "yield_is_trailing": true,
-      "category": "STANDARD",
-      "external_segment": "Fundo de Infraestrutura (FI-Infra)",
-      "data_sources": [
-        "fundamentus",
-        "investidor10"
-      ]
-    },
-    {
       "ticker": "BINC11",
       "type": "INFRA",
       "segment": "Infraestrutura",
@@ -6170,6 +6445,8 @@
       "vacancy": 0,
       "data_com": "30/06/2026",
       "data_pagamento": "07/07/2026",
+      "divida_ebitda": null,
+      "dividends_last_3_years": 21,
       "score": 5.4,
       "strategies": [
         "CREDIT_CARRY",
@@ -6211,6 +6488,58 @@
       ]
     },
     {
+      "ticker": "BLMG11",
+      "segment": "Multicategoria",
+      "price": 31,
+      "ffo_yield": 14.46,
+      "dy": 14.92,
+      "p_vp": 0.66,
+      "market_cap": 144863000,
+      "liquidity": 242950,
+      "num_properties": 1,
+      "cap_rate": 18.32,
+      "vacancy": 0,
+      "data_source": "fundamentus",
+      "collected_at": "2026-07-11T20:39:12.314Z",
+      "regulatory_class": "FII",
+      "exposure": "REAL_ESTATE_PHYSICAL",
+      "classification_confidence": "HIGH",
+      "classification_reasons": [
+        "Classified as physical based on external fund type: Fundo de Tijolo"
+      ],
+      "type": "TIJOLO",
+      "eligibility": "ELIGIBLE",
+      "signal": "WATCHLIST",
+      "risk_level": "MEDIUM",
+      "data_quality": "COMPLETE",
+      "pillars": {
+        "valuation": 5,
+        "income": 9,
+        "liquidity": 2,
+        "safety": 5
+      },
+      "overall_score": 5.4,
+      "blockers": [],
+      "warnings": [],
+      "yield_is_trailing": true,
+      "score": 5.4,
+      "category": "STANDARD",
+      "strategies": [
+        "PHYSICAL_VALUE"
+      ],
+      "selic": 14.25,
+      "magicNumber": 81,
+      "magicCost": 2511,
+      "last_dividend": 0.39,
+      "external_segment": "Outros",
+      "data_com": "07/07/2026",
+      "data_pagamento": "14/07/2026",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
       "ticker": "FIIP11",
       "segment": "Log�stica",
       "price": 131.06,
@@ -6223,12 +6552,12 @@
       "cap_rate": 15.21,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -6263,106 +6592,6 @@
       ]
     },
     {
-      "ticker": "SNFF11",
-      "segment": "Outros",
-      "price": 73.01,
-      "ffo_yield": 9.92,
-      "dy": 13.5,
-      "p_vp": 0.85,
-      "market_cap": 293547000,
-      "liquidity": 307190,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
-      "regulatory_class": "FII",
-      "exposure": "REAL_ESTATE_CREDIT",
-      "classification_confidence": "HIGH",
-      "classification_reasons": [
-        "Credit exposure found in segment."
-      ],
-      "type": "PAPEL",
-      "eligibility": "ELIGIBLE",
-      "signal": "WATCHLIST",
-      "risk_level": "HIGH",
-      "data_quality": "COMPLETE",
-      "pillars": {
-        "valuation": 6,
-        "income": 9,
-        "liquidity": 2,
-        "safety": 4
-      },
-      "overall_score": 5.35,
-      "blockers": [],
-      "warnings": [],
-      "yield_is_trailing": true,
-      "score": 5.35,
-      "category": "STANDARD",
-      "strategies": [],
-      "selic": 14.25,
-      "magicNumber": 89,
-      "magicCost": 6497.89,
-      "last_dividend": 0.72,
-      "external_segment": "Títulos e Valores Mobiliários",
-      "data_com": "15/06/2026",
-      "data_pagamento": "25/06/2026",
-      "data_sources": [
-        "fundamentus",
-        "investidor10"
-      ]
-    },
-    {
-      "ticker": "RZLC11",
-      "segment": "Outros",
-      "price": 1004.57,
-      "ffo_yield": 6.99,
-      "dy": 13.47,
-      "p_vp": 1.01,
-      "market_cap": 162703000,
-      "liquidity": 1020000,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
-      "regulatory_class": "FII",
-      "exposure": "HYBRID",
-      "classification_confidence": "MEDIUM",
-      "classification_reasons": [
-        "Hybrid exposure declared without a more specific segment."
-      ],
-      "type": "MULTI",
-      "eligibility": "ELIGIBLE",
-      "signal": "WATCHLIST",
-      "risk_level": "HIGH",
-      "data_quality": "COMPLETE",
-      "pillars": {
-        "valuation": 4,
-        "income": 9,
-        "liquidity": 6,
-        "safety": 3
-      },
-      "overall_score": 5.35,
-      "blockers": [],
-      "warnings": [],
-      "yield_is_trailing": true,
-      "score": 5.35,
-      "category": "STANDARD",
-      "strategies": [],
-      "selic": 14.25,
-      "magicNumber": 90,
-      "magicCost": 90411.3,
-      "last_dividend": 12.05,
-      "external_segment": "Outros",
-      "data_com": "03/07/2026",
-      "data_pagamento": "10/07/2026",
-      "data_sources": [
-        "fundamentus",
-        "investidor10"
-      ]
-    },
-    {
       "ticker": "NUIF11",
       "type": "INFRA",
       "segment": "Infraestrutura",
@@ -6375,6 +6604,8 @@
       "vacancy": 0,
       "data_com": "30/06/2026",
       "data_pagamento": "07/07/2026",
+      "divida_ebitda": null,
+      "dividends_last_3_years": 31,
       "score": 5.35,
       "strategies": [
         "MISSING_MARKET_CAP"
@@ -6427,12 +6658,12 @@
       "cap_rate": 9.19,
       "vacancy": 18.5,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -6479,12 +6710,12 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "ELIGIBLE",
@@ -6529,7 +6760,7 @@
       "cap_rate": 21.73,
       "vacancy": 8.2,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -6579,12 +6810,12 @@
       "cap_rate": 2.51,
       "vacancy": 2.5,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "FUND_OF_FUNDS",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Fund-of-funds exposure found in segment."
+        "Classified as FOF based on external fund type: Fundo de Fundos"
       ],
       "type": "MULTI",
       "eligibility": "ELIGIBLE",
@@ -6617,24 +6848,24 @@
       ]
     },
     {
-      "ticker": "KISU11",
+      "ticker": "RPRI11",
       "segment": "Outros",
-      "price": 6.43,
-      "ffo_yield": 13.44,
-      "dy": 11.96,
-      "p_vp": 0.8,
-      "market_cap": 284181000,
-      "liquidity": 954330,
+      "price": 76.99,
+      "ffo_yield": 15.97,
+      "dy": 15.39,
+      "p_vp": 0.76,
+      "market_cap": 267288000,
+      "liquidity": 911070,
       "num_properties": 0,
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "ELIGIBLE",
@@ -6655,12 +6886,12 @@
       "category": "STANDARD",
       "strategies": [],
       "selic": 14.25,
-      "magicNumber": 101,
-      "magicCost": 649.43,
-      "last_dividend": 0.07,
-      "external_segment": "Títulos e Valores Mobiliários",
-      "data_com": "15/06/2026",
-      "data_pagamento": "25/06/2026",
+      "magicNumber": 78,
+      "magicCost": 6005.219999999999,
+      "last_dividend": 1.4,
+      "external_segment": "Híbrido",
+      "data_com": "30/06/2026",
+      "data_pagamento": "14/07/2026",
       "data_sources": [
         "fundamentus",
         "investidor10"
@@ -6679,12 +6910,12 @@
       "cap_rate": 8.66,
       "vacancy": 3.6,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -6731,7 +6962,7 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FIAGRO",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -6770,6 +7001,56 @@
       ]
     },
     {
+      "ticker": "XPSF11",
+      "segment": "Outros",
+      "price": 6.18,
+      "ffo_yield": 13.47,
+      "dy": 13.29,
+      "p_vp": 0.78,
+      "market_cap": 267607000,
+      "liquidity": 385010,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "data_source": "fundamentus",
+      "collected_at": "2026-07-11T20:39:12.314Z",
+      "regulatory_class": "FII",
+      "exposure": "FUND_OF_FUNDS",
+      "classification_confidence": "HIGH",
+      "classification_reasons": [
+        "Classified as FOF based on external fund type: Fundo de Fundos"
+      ],
+      "type": "MULTI",
+      "eligibility": "ELIGIBLE",
+      "signal": "WATCHLIST",
+      "risk_level": "HIGH",
+      "data_quality": "COMPLETE",
+      "pillars": {
+        "valuation": 5,
+        "income": 9,
+        "liquidity": 2,
+        "safety": 4
+      },
+      "overall_score": 5.1,
+      "blockers": [],
+      "warnings": [],
+      "yield_is_trailing": true,
+      "score": 5.1,
+      "category": "STANDARD",
+      "strategies": [],
+      "selic": 14.25,
+      "magicNumber": 91,
+      "magicCost": 562.38,
+      "last_dividend": 0.07,
+      "external_segment": "Títulos e Valores Mobiliários",
+      "data_com": "30/06/2026",
+      "data_pagamento": "14/07/2026",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
       "ticker": "SHPP11",
       "segment": "Multicategoria",
       "price": 10.85,
@@ -6782,7 +7063,7 @@
       "cap_rate": 1.91,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -6832,6 +7113,8 @@
       "vacancy": 0,
       "data_com": "30/06/2026",
       "data_pagamento": "10/07/2026",
+      "divida_ebitda": null,
+      "dividends_last_3_years": 20,
       "score": 5.05,
       "strategies": [
         "MISSING_MARKET_CAP"
@@ -6884,7 +7167,7 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -6934,12 +7217,12 @@
       "cap_rate": 10.22,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -6986,7 +7269,7 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "MEDIUM",
@@ -7036,12 +7319,12 @@
       "cap_rate": 9.76,
       "vacancy": 8.28,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -7088,6 +7371,8 @@
       "vacancy": 0,
       "data_com": null,
       "data_pagamento": null,
+      "divida_ebitda": null,
+      "dividends_last_3_years": 0,
       "score": 5.05,
       "strategies": [
         "MISSING_MARKET_CAP"
@@ -7140,6 +7425,8 @@
       "vacancy": 0,
       "data_com": null,
       "data_pagamento": null,
+      "divida_ebitda": null,
+      "dividends_last_3_years": 0,
       "score": 5.05,
       "strategies": [
         "MISSING_MARKET_CAP"
@@ -7192,7 +7479,7 @@
       "cap_rate": 1.3,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "LOW",
@@ -7230,6 +7517,60 @@
       ]
     },
     {
+      "ticker": "ISNN11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": "Títulos e valores mobiliários",
+      "price": 1090,
+      "dy": 0,
+      "p_vp": 1.01,
+      "liquidity": 1040000,
+      "last_dividend": null,
+      "vacancy": 0,
+      "data_com": null,
+      "data_pagamento": null,
+      "divida_ebitda": null,
+      "dividends_last_3_years": 0,
+      "score": 4.95,
+      "strategies": [
+        "MISSING_MARKET_CAP"
+      ],
+      "magicNumber": null,
+      "magicCost": null,
+      "selic": 14.25,
+      "num_properties": 0,
+      "market_cap": 0,
+      "data_quality": "PARTIAL",
+      "regulatory_class": "FI_INFRA",
+      "exposure": "INFRA_CREDIT",
+      "classification_confidence": "HIGH",
+      "classification_reasons": [
+        "Regulatory class identified as infrastructure.",
+        "Classified as credit based on external fund type: Fundo de Papel"
+      ],
+      "eligibility": "ELIGIBLE",
+      "signal": "WATCHLIST",
+      "risk_level": "MEDIUM",
+      "pillars": {
+        "valuation": 9,
+        "income": 0,
+        "liquidity": 6,
+        "safety": 5
+      },
+      "overall_score": 4.95,
+      "blockers": [],
+      "warnings": [
+        "MISSING_MARKET_CAP"
+      ],
+      "yield_is_trailing": true,
+      "category": "STANDARD",
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
       "ticker": "CXAG11",
       "segment": "Varejo",
       "price": 78,
@@ -7242,12 +7583,12 @@
       "cap_rate": 12.87,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -7282,106 +7623,6 @@
       ]
     },
     {
-      "ticker": "BROF11",
-      "segment": "Multicategoria",
-      "price": 61.8,
-      "ffo_yield": 10.85,
-      "dy": 10.36,
-      "p_vp": 0.56,
-      "market_cap": 717548000,
-      "liquidity": 355420,
-      "num_properties": 1,
-      "cap_rate": 14.38,
-      "vacancy": 10.3,
-      "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
-      "regulatory_class": "FII",
-      "exposure": "HYBRID",
-      "classification_confidence": "MEDIUM",
-      "classification_reasons": [
-        "Hybrid exposure declared without a more specific segment."
-      ],
-      "type": "MULTI",
-      "eligibility": "ELIGIBLE",
-      "signal": "WATCHLIST",
-      "risk_level": "MEDIUM",
-      "data_quality": "COMPLETE",
-      "pillars": {
-        "valuation": 5,
-        "income": 7,
-        "liquidity": 2,
-        "safety": 5
-      },
-      "overall_score": 4.9,
-      "blockers": [],
-      "warnings": [],
-      "yield_is_trailing": true,
-      "score": 4.9,
-      "category": "STANDARD",
-      "strategies": [],
-      "selic": 14.25,
-      "magicNumber": 116,
-      "magicCost": 7168.799999999999,
-      "last_dividend": 0.56,
-      "external_segment": "Híbrido",
-      "data_com": "17/06/2026",
-      "data_pagamento": "24/06/2026",
-      "data_sources": [
-        "fundamentus",
-        "investidor10"
-      ]
-    },
-    {
-      "ticker": "RPRI11",
-      "segment": "Outros",
-      "price": 76.99,
-      "ffo_yield": 15.97,
-      "dy": 15.39,
-      "p_vp": 0.76,
-      "market_cap": 267288000,
-      "liquidity": 911070,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
-      "regulatory_class": "FII",
-      "exposure": "REAL_ESTATE_CREDIT",
-      "classification_confidence": "MEDIUM",
-      "classification_reasons": [
-        "Credit exposure inferred from type or mandate."
-      ],
-      "type": "PAPEL",
-      "eligibility": "ELIGIBLE",
-      "signal": "WATCHLIST",
-      "risk_level": "HIGH",
-      "data_quality": "COMPLETE",
-      "pillars": {
-        "valuation": 2,
-        "income": 9,
-        "liquidity": 6,
-        "safety": 3
-      },
-      "overall_score": 4.85,
-      "blockers": [],
-      "warnings": [],
-      "yield_is_trailing": true,
-      "score": 4.85,
-      "category": "STANDARD",
-      "strategies": [],
-      "selic": 14.25,
-      "magicNumber": 78,
-      "magicCost": 6005.219999999999,
-      "last_dividend": 1.4,
-      "external_segment": "Híbrido",
-      "data_com": "30/06/2026",
-      "data_pagamento": "14/07/2026",
-      "data_sources": [
-        "fundamentus",
-        "investidor10"
-      ]
-    },
-    {
       "ticker": "VINF11",
       "type": "INFRA",
       "segment": "Infraestrutura",
@@ -7394,6 +7635,8 @@
       "vacancy": 0,
       "data_com": "30/06/2026",
       "data_pagamento": "15/07/2026",
+      "divida_ebitda": null,
+      "dividends_last_3_years": 9,
       "score": 4.85,
       "strategies": [
         "MISSING_MARKET_CAP"
@@ -7446,6 +7689,8 @@
       "vacancy": 0,
       "data_com": null,
       "data_pagamento": null,
+      "divida_ebitda": null,
+      "dividends_last_3_years": 0,
       "score": 4.85,
       "strategies": [
         "MISSING_MARKET_CAP"
@@ -7498,7 +7743,7 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -7536,56 +7781,6 @@
       ]
     },
     {
-      "ticker": "BLMG11",
-      "segment": "Multicategoria",
-      "price": 31,
-      "ffo_yield": 14.46,
-      "dy": 14.92,
-      "p_vp": 0.66,
-      "market_cap": 144863000,
-      "liquidity": 242950,
-      "num_properties": 1,
-      "cap_rate": 18.32,
-      "vacancy": 0,
-      "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
-      "regulatory_class": "FII",
-      "exposure": "HYBRID",
-      "classification_confidence": "MEDIUM",
-      "classification_reasons": [
-        "Hybrid exposure declared without a more specific segment."
-      ],
-      "type": "MULTI",
-      "eligibility": "ELIGIBLE",
-      "signal": "WATCHLIST",
-      "risk_level": "HIGH",
-      "data_quality": "COMPLETE",
-      "pillars": {
-        "valuation": 5,
-        "income": 9,
-        "liquidity": 2,
-        "safety": 3
-      },
-      "overall_score": 4.8,
-      "blockers": [],
-      "warnings": [],
-      "yield_is_trailing": true,
-      "score": 4.8,
-      "category": "STANDARD",
-      "strategies": [],
-      "selic": 14.25,
-      "magicNumber": 81,
-      "magicCost": 2511,
-      "last_dividend": 0.39,
-      "external_segment": "Outros",
-      "data_com": "07/07/2026",
-      "data_pagamento": "14/07/2026",
-      "data_sources": [
-        "fundamentus",
-        "investidor10"
-      ]
-    },
-    {
       "ticker": "RBIF11",
       "type": "INFRA",
       "segment": "Infraestrutura",
@@ -7598,6 +7793,8 @@
       "vacancy": 0,
       "data_com": "30/06/2026",
       "data_pagamento": "21/07/2026",
+      "divida_ebitda": null,
+      "dividends_last_3_years": 32,
       "score": 4.75,
       "strategies": [
         "MISSING_MARKET_CAP"
@@ -7650,12 +7847,12 @@
       "cap_rate": 14.77,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -7702,7 +7899,7 @@
       "cap_rate": 6.52,
       "vacancy": 0.15,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -7740,52 +7937,50 @@
       ]
     },
     {
-      "ticker": "ISNN11",
-      "type": "INFRA",
-      "segment": "Infraestrutura",
-      "mandate": "Títulos e valores mobiliários",
-      "price": 1090,
-      "dy": 0,
-      "p_vp": 1.01,
-      "liquidity": 1040000,
-      "last_dividend": null,
-      "vacancy": 0,
-      "data_com": null,
-      "data_pagamento": null,
-      "score": 4.65,
-      "strategies": [
-        "MISSING_MARKET_CAP"
-      ],
-      "magicNumber": null,
-      "magicCost": null,
-      "selic": 14.25,
+      "ticker": "RBFM11",
+      "segment": "Outros",
+      "price": 10.32,
+      "ffo_yield": 12.93,
+      "dy": 6.26,
+      "p_vp": 0.8,
+      "market_cap": 193459000,
+      "liquidity": 291420,
       "num_properties": 0,
-      "market_cap": 0,
-      "data_quality": "PARTIAL",
-      "regulatory_class": "FI_INFRA",
-      "exposure": "INFRA_CREDIT",
-      "classification_confidence": "MEDIUM",
+      "cap_rate": 0,
+      "vacancy": 0,
+      "data_source": "fundamentus",
+      "collected_at": "2026-07-11T20:39:12.314Z",
+      "regulatory_class": "FII",
+      "exposure": "HYBRID",
+      "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Regulatory class identified as infrastructure.",
-        "Credit exposure inferred from type or mandate."
+        "Classified as hybrid based on external fund type: Fundo Misto"
       ],
+      "type": "MULTI",
       "eligibility": "ELIGIBLE",
       "signal": "WATCHLIST",
       "risk_level": "HIGH",
+      "data_quality": "COMPLETE",
       "pillars": {
-        "valuation": 9,
-        "income": 0,
-        "liquidity": 6,
+        "valuation": 8,
+        "income": 4,
+        "liquidity": 2,
         "safety": 4
       },
-      "overall_score": 4.65,
+      "overall_score": 4.6,
       "blockers": [],
-      "warnings": [
-        "MISSING_MARKET_CAP"
-      ],
+      "warnings": [],
       "yield_is_trailing": true,
+      "score": 4.6,
       "category": "STANDARD",
-      "external_segment": "Fundo de Infraestrutura (FI-Infra)",
+      "strategies": [],
+      "selic": 14.25,
+      "magicNumber": 192,
+      "magicCost": 1981.44,
+      "last_dividend": 0.11,
+      "external_segment": "Híbrido",
+      "data_com": "30/06/2026",
+      "data_pagamento": "15/07/2026",
       "data_sources": [
         "fundamentus",
         "investidor10"
@@ -7804,7 +7999,7 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FIAGRO",
       "exposure": "AGRO_CREDIT",
       "classification_confidence": "MEDIUM",
@@ -7843,56 +8038,6 @@
       ]
     },
     {
-      "ticker": "RVBI11",
-      "segment": "Outros",
-      "price": 60.23,
-      "ffo_yield": 13.05,
-      "dy": 3.49,
-      "p_vp": 0.81,
-      "market_cap": 615533000,
-      "liquidity": 1180000,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
-      "regulatory_class": "FII",
-      "exposure": "REAL_ESTATE_CREDIT",
-      "classification_confidence": "HIGH",
-      "classification_reasons": [
-        "Credit exposure found in segment."
-      ],
-      "type": "PAPEL",
-      "eligibility": "ELIGIBLE",
-      "signal": "WATCHLIST",
-      "risk_level": "MEDIUM",
-      "data_quality": "COMPLETE",
-      "pillars": {
-        "valuation": 2,
-        "income": 4,
-        "liquidity": 6,
-        "safety": 6
-      },
-      "overall_score": 4.5,
-      "blockers": [],
-      "warnings": [],
-      "yield_is_trailing": true,
-      "score": 4.5,
-      "category": "STANDARD",
-      "strategies": [],
-      "selic": 14.25,
-      "magicNumber": 344,
-      "magicCost": 20719.12,
-      "last_dividend": 0.7,
-      "external_segment": "Títulos e Valores Mobiliários",
-      "data_com": "08/10/2025",
-      "data_pagamento": "15/10/2025",
-      "data_sources": [
-        "fundamentus",
-        "investidor10"
-      ]
-    },
-    {
       "ticker": "LIFE11",
       "segment": "Residencial",
       "price": 6.92,
@@ -7905,7 +8050,7 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -7957,12 +8102,12 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "REVIEW",
@@ -7999,24 +8144,24 @@
       ]
     },
     {
-      "ticker": "ITIT11",
-      "segment": "Outros",
-      "price": 58,
-      "ffo_yield": 5.82,
-      "dy": 12.81,
-      "p_vp": 0.74,
-      "market_cap": 52228700,
-      "liquidity": 427980,
+      "ticker": "OUJP11",
+      "segment": "Multicategoria",
+      "price": 70.67,
+      "ffo_yield": 18.72,
+      "dy": 19.69,
+      "p_vp": 0.7,
+      "market_cap": 229846000,
+      "liquidity": 800140,
       "num_properties": 0,
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "REVIEW",
@@ -8025,26 +8170,26 @@
       "data_quality": "COMPLETE",
       "pillars": {
         "valuation": 2,
-        "income": 9,
-        "liquidity": 4,
+        "income": 7,
+        "liquidity": 6,
         "safety": 3
       },
-      "overall_score": 4.45,
+      "overall_score": 4.35,
       "blockers": [],
       "warnings": [
         "DEEP_CREDIT_DISCOUNT"
       ],
       "yield_is_trailing": true,
-      "score": 4.45,
+      "score": 4.35,
       "category": "STANDARD",
       "strategies": [
         "DEEP_CREDIT_DISCOUNT"
       ],
       "selic": 14.25,
-      "magicNumber": 94,
-      "magicCost": 5452,
-      "last_dividend": 0.64,
-      "external_segment": "Títulos e Valores Mobiliários",
+      "magicNumber": 61,
+      "magicCost": 4310.87,
+      "last_dividend": 1.58,
+      "external_segment": "Híbrido",
       "data_com": "30/06/2026",
       "data_pagamento": "14/07/2026",
       "data_sources": [
@@ -8065,12 +8210,12 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "ELIGIBLE",
@@ -8103,106 +8248,6 @@
       ]
     },
     {
-      "ticker": "XPSF11",
-      "segment": "Outros",
-      "price": 6.18,
-      "ffo_yield": 13.47,
-      "dy": 13.29,
-      "p_vp": 0.78,
-      "market_cap": 267607000,
-      "liquidity": 385010,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
-      "regulatory_class": "FII",
-      "exposure": "REAL_ESTATE_CREDIT",
-      "classification_confidence": "HIGH",
-      "classification_reasons": [
-        "Credit exposure found in segment."
-      ],
-      "type": "PAPEL",
-      "eligibility": "ELIGIBLE",
-      "signal": "WATCHLIST",
-      "risk_level": "HIGH",
-      "data_quality": "COMPLETE",
-      "pillars": {
-        "valuation": 2,
-        "income": 9,
-        "liquidity": 2,
-        "safety": 4
-      },
-      "overall_score": 4.35,
-      "blockers": [],
-      "warnings": [],
-      "yield_is_trailing": true,
-      "score": 4.35,
-      "category": "STANDARD",
-      "strategies": [],
-      "selic": 14.25,
-      "magicNumber": 91,
-      "magicCost": 562.38,
-      "last_dividend": 0.07,
-      "external_segment": "Títulos e Valores Mobiliários",
-      "data_com": "30/06/2026",
-      "data_pagamento": "14/07/2026",
-      "data_sources": [
-        "fundamentus",
-        "investidor10"
-      ]
-    },
-    {
-      "ticker": "RBFM11",
-      "segment": "Outros",
-      "price": 10.32,
-      "ffo_yield": 12.93,
-      "dy": 6.26,
-      "p_vp": 0.8,
-      "market_cap": 193459000,
-      "liquidity": 291420,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
-      "regulatory_class": "FII",
-      "exposure": "HYBRID",
-      "classification_confidence": "MEDIUM",
-      "classification_reasons": [
-        "Hybrid exposure declared without a more specific segment."
-      ],
-      "type": "MULTI",
-      "eligibility": "ELIGIBLE",
-      "signal": "WATCHLIST",
-      "risk_level": "HIGH",
-      "data_quality": "COMPLETE",
-      "pillars": {
-        "valuation": 8,
-        "income": 4,
-        "liquidity": 2,
-        "safety": 3
-      },
-      "overall_score": 4.3,
-      "blockers": [],
-      "warnings": [],
-      "yield_is_trailing": true,
-      "score": 4.3,
-      "category": "STANDARD",
-      "strategies": [],
-      "selic": 14.25,
-      "magicNumber": 192,
-      "magicCost": 1981.44,
-      "last_dividend": 0.11,
-      "external_segment": "Híbrido",
-      "data_com": "30/06/2026",
-      "data_pagamento": "15/07/2026",
-      "data_sources": [
-        "fundamentus",
-        "investidor10"
-      ]
-    },
-    {
       "ticker": "MFII11",
       "segment": "Multicategoria",
       "price": 50.74,
@@ -8215,7 +8260,7 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -8265,12 +8310,12 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "ELIGIBLE",
@@ -8303,6 +8348,57 @@
       ]
     },
     {
+      "ticker": "NEXG11",
+      "segment": "Outros",
+      "price": 129,
+      "ffo_yield": 3.62,
+      "dy": 8.63,
+      "p_vp": 1.29,
+      "market_cap": 90106500,
+      "liquidity": 415770,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "data_source": "fundamentus",
+      "collected_at": "2026-07-11T20:39:12.314Z",
+      "regulatory_class": "FIAGRO",
+      "exposure": "AGRO_CREDIT",
+      "classification_confidence": "HIGH",
+      "classification_reasons": [
+        "Regulatory class identified as agribusiness.",
+        "Classified as credit based on external fund type: Fundo de Papel"
+      ],
+      "type": "AGRO",
+      "eligibility": "ELIGIBLE",
+      "signal": "WATCHLIST",
+      "risk_level": "HIGH",
+      "data_quality": "COMPLETE",
+      "pillars": {
+        "valuation": 5,
+        "income": 4,
+        "liquidity": 4,
+        "safety": 4
+      },
+      "overall_score": 4.25,
+      "blockers": [],
+      "warnings": [],
+      "yield_is_trailing": true,
+      "score": 4.25,
+      "category": "STANDARD",
+      "strategies": [],
+      "selic": 14.25,
+      "magicNumber": 140,
+      "magicCost": 18060,
+      "last_dividend": 0.9,
+      "external_segment": "Fiagros",
+      "data_com": "07/07/2026",
+      "data_pagamento": "14/07/2026",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
       "ticker": "BBGO11",
       "segment": "Outros",
       "price": 67,
@@ -8315,7 +8411,7 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FIAGRO",
       "exposure": "AGRO_CREDIT",
       "classification_confidence": "MEDIUM",
@@ -8358,6 +8454,61 @@
       ]
     },
     {
+      "ticker": "BROF11",
+      "segment": "Multicategoria",
+      "price": 61.8,
+      "ffo_yield": 10.85,
+      "dy": 10.36,
+      "p_vp": 0.56,
+      "market_cap": 717548000,
+      "liquidity": 355420,
+      "num_properties": 1,
+      "cap_rate": 14.38,
+      "vacancy": 10.3,
+      "data_source": "fundamentus",
+      "collected_at": "2026-07-11T20:39:12.314Z",
+      "regulatory_class": "FII",
+      "exposure": "REAL_ESTATE_PHYSICAL",
+      "classification_confidence": "HIGH",
+      "classification_reasons": [
+        "Classified as physical based on external fund type: Fundo de Tijolo"
+      ],
+      "type": "TIJOLO",
+      "eligibility": "REVIEW",
+      "signal": "REVIEW",
+      "risk_level": "HIGH",
+      "data_quality": "COMPLETE",
+      "pillars": {
+        "valuation": 2,
+        "income": 7,
+        "liquidity": 2,
+        "safety": 5
+      },
+      "overall_score": 4.15,
+      "blockers": [],
+      "warnings": [
+        "DEEP_PHYSICAL_DISCOUNT"
+      ],
+      "yield_is_trailing": true,
+      "score": 4.15,
+      "category": "STANDARD",
+      "strategies": [
+        "PHYSICAL_VALUE",
+        "DEEP_PHYSICAL_DISCOUNT"
+      ],
+      "selic": 14.25,
+      "magicNumber": 116,
+      "magicCost": 7168.799999999999,
+      "last_dividend": 0.56,
+      "external_segment": "Híbrido",
+      "data_com": "17/06/2026",
+      "data_pagamento": "24/06/2026",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
       "ticker": "MIDW11",
       "segment": "Multicategoria",
       "price": 10.7,
@@ -8370,7 +8521,7 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -8408,60 +8559,6 @@
       ]
     },
     {
-      "ticker": "OUJP11",
-      "segment": "Multicategoria",
-      "price": 70.67,
-      "ffo_yield": 18.72,
-      "dy": 19.69,
-      "p_vp": 0.7,
-      "market_cap": 229846000,
-      "liquidity": 800140,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
-      "regulatory_class": "FII",
-      "exposure": "REAL_ESTATE_CREDIT",
-      "classification_confidence": "MEDIUM",
-      "classification_reasons": [
-        "Credit exposure inferred from type or mandate."
-      ],
-      "type": "PAPEL",
-      "eligibility": "REVIEW",
-      "signal": "REVIEW",
-      "risk_level": "HIGH",
-      "data_quality": "COMPLETE",
-      "pillars": {
-        "valuation": 2,
-        "income": 7,
-        "liquidity": 6,
-        "safety": 2
-      },
-      "overall_score": 4.05,
-      "blockers": [],
-      "warnings": [
-        "DEEP_CREDIT_DISCOUNT"
-      ],
-      "yield_is_trailing": true,
-      "score": 4.05,
-      "category": "STANDARD",
-      "strategies": [
-        "DEEP_CREDIT_DISCOUNT"
-      ],
-      "selic": 14.25,
-      "magicNumber": 61,
-      "magicCost": 4310.87,
-      "last_dividend": 1.58,
-      "external_segment": "Híbrido",
-      "data_com": "30/06/2026",
-      "data_pagamento": "14/07/2026",
-      "data_sources": [
-        "fundamentus",
-        "investidor10"
-      ]
-    },
-    {
       "ticker": "GCRI11",
       "segment": "Multicategoria",
       "price": 67,
@@ -8474,12 +8571,12 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "REVIEW",
@@ -8516,60 +8613,6 @@
       ]
     },
     {
-      "ticker": "CACR11",
-      "segment": "Multicategoria",
-      "price": 21.8,
-      "ffo_yield": -20.39,
-      "dy": 54.36,
-      "p_vp": 0.22,
-      "market_cap": 105432000,
-      "liquidity": 1570000,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
-      "regulatory_class": "FII",
-      "exposure": "HYBRID",
-      "classification_confidence": "MEDIUM",
-      "classification_reasons": [
-        "Hybrid exposure declared without a more specific segment."
-      ],
-      "type": "MULTI",
-      "eligibility": "REVIEW",
-      "signal": "REVIEW",
-      "risk_level": "HIGH",
-      "data_quality": "COMPLETE",
-      "pillars": {
-        "valuation": 5,
-        "income": 2,
-        "liquidity": 8,
-        "safety": 2
-      },
-      "overall_score": 3.95,
-      "blockers": [],
-      "warnings": [
-        "EXTREME_TRAILING_YIELD"
-      ],
-      "yield_is_trailing": true,
-      "score": 3.95,
-      "category": "STANDARD",
-      "strategies": [
-        "EXTREME_TRAILING_YIELD"
-      ],
-      "selic": 14.25,
-      "magicNumber": 23,
-      "magicCost": 501.40000000000003,
-      "last_dividend": 0.23,
-      "external_segment": "Híbrido",
-      "data_com": "29/05/2026",
-      "data_pagamento": "15/06/2026",
-      "data_sources": [
-        "fundamentus",
-        "investidor10"
-      ]
-    },
-    {
       "ticker": "KIVO11",
       "segment": "Outros",
       "price": 58.68,
@@ -8582,12 +8625,12 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "REVIEW",
@@ -8636,12 +8679,12 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "REVIEW",
@@ -8690,12 +8733,12 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "ELIGIBLE",
@@ -8740,12 +8783,12 @@
       "cap_rate": 10.99,
       "vacancy": 6.31,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -8792,12 +8835,12 @@
       "cap_rate": 1.45,
       "vacancy": 8,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
@@ -8844,7 +8887,7 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FIAGRO",
       "exposure": "AGRO_CREDIT",
       "classification_confidence": "MEDIUM",
@@ -8899,7 +8942,7 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FIAGRO",
       "exposure": "AGRO_CREDIT",
       "classification_confidence": "MEDIUM",
@@ -8942,6 +8985,61 @@
       ]
     },
     {
+      "ticker": "RBRP11",
+      "segment": "Outros",
+      "price": 48.09,
+      "ffo_yield": 8.67,
+      "dy": 9.98,
+      "p_vp": 0.6,
+      "market_cap": 585697000,
+      "liquidity": 786300,
+      "num_properties": 6,
+      "cap_rate": 9.73,
+      "vacancy": 23.8,
+      "data_source": "fundamentus",
+      "collected_at": "2026-07-11T20:39:12.314Z",
+      "regulatory_class": "FII",
+      "exposure": "REAL_ESTATE_PHYSICAL",
+      "classification_confidence": "HIGH",
+      "classification_reasons": [
+        "Classified as physical based on external fund type: Fundo de Tijolo"
+      ],
+      "type": "TIJOLO",
+      "eligibility": "ELIGIBLE",
+      "signal": "WATCHLIST",
+      "risk_level": "HIGH",
+      "data_quality": "COMPLETE",
+      "pillars": {
+        "valuation": 2,
+        "income": 7,
+        "liquidity": 4,
+        "safety": 2
+      },
+      "overall_score": 3.65,
+      "blockers": [],
+      "warnings": [
+        "HIGH_VACANCY"
+      ],
+      "yield_is_trailing": true,
+      "score": 3.65,
+      "category": "STANDARD",
+      "strategies": [
+        "PHYSICAL_VALUE",
+        "HIGH_VACANCY"
+      ],
+      "selic": 14.25,
+      "magicNumber": 121,
+      "magicCost": 5818.89,
+      "last_dividend": 0.4,
+      "external_segment": "Outros",
+      "data_com": "07/07/2026",
+      "data_pagamento": "14/07/2026",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
       "ticker": "VXXV11",
       "segment": "Outros",
       "price": 780,
@@ -8954,7 +9052,7 @@
       "cap_rate": 9.25,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "LOW",
@@ -9004,12 +9102,12 @@
       "cap_rate": 16.87,
       "vacancy": 22,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "REVIEW",
@@ -9049,106 +9147,6 @@
       ]
     },
     {
-      "ticker": "VGRI11",
-      "segment": "Outros",
-      "price": 5.34,
-      "ffo_yield": 19.15,
-      "dy": 23.51,
-      "p_vp": 0.62,
-      "market_cap": 187016000,
-      "liquidity": 438390,
-      "num_properties": 5,
-      "cap_rate": 24.31,
-      "vacancy": 0,
-      "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
-      "regulatory_class": "FII",
-      "exposure": "HYBRID",
-      "classification_confidence": "MEDIUM",
-      "classification_reasons": [
-        "Hybrid exposure declared without a more specific segment."
-      ],
-      "type": "MULTI",
-      "eligibility": "ELIGIBLE",
-      "signal": "WATCHLIST",
-      "risk_level": "HIGH",
-      "data_quality": "COMPLETE",
-      "pillars": {
-        "valuation": 5,
-        "income": 2,
-        "liquidity": 4,
-        "safety": 3
-      },
-      "overall_score": 3.45,
-      "blockers": [],
-      "warnings": [],
-      "yield_is_trailing": true,
-      "score": 3.45,
-      "category": "STANDARD",
-      "strategies": [],
-      "selic": 14.25,
-      "magicNumber": 52,
-      "magicCost": 277.68,
-      "last_dividend": 0.08,
-      "external_segment": "Híbrido",
-      "data_com": "30/06/2026",
-      "data_pagamento": "07/07/2026",
-      "data_sources": [
-        "fundamentus",
-        "investidor10"
-      ]
-    },
-    {
-      "ticker": "URPR11",
-      "segment": "Outros",
-      "price": 19.77,
-      "ffo_yield": 25.89,
-      "dy": 21.39,
-      "p_vp": 0.23,
-      "market_cap": 231979000,
-      "liquidity": 549900,
-      "num_properties": 0,
-      "cap_rate": 0,
-      "vacancy": 0,
-      "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
-      "regulatory_class": "FII",
-      "exposure": "HYBRID",
-      "classification_confidence": "MEDIUM",
-      "classification_reasons": [
-        "Hybrid exposure declared without a more specific segment."
-      ],
-      "type": "MULTI",
-      "eligibility": "ELIGIBLE",
-      "signal": "WATCHLIST",
-      "risk_level": "HIGH",
-      "data_quality": "COMPLETE",
-      "pillars": {
-        "valuation": 5,
-        "income": 2,
-        "liquidity": 4,
-        "safety": 3
-      },
-      "overall_score": 3.45,
-      "blockers": [],
-      "warnings": [],
-      "yield_is_trailing": true,
-      "score": 3.45,
-      "category": "STANDARD",
-      "strategies": [],
-      "selic": 14.25,
-      "magicNumber": 57,
-      "magicCost": 1126.8899999999999,
-      "last_dividend": 0.3,
-      "external_segment": "Outros",
-      "data_com": "30/06/2026",
-      "data_pagamento": "14/07/2026",
-      "data_sources": [
-        "fundamentus",
-        "investidor10"
-      ]
-    },
-    {
       "ticker": "AAZQ11",
       "segment": "Outros",
       "price": 6.76,
@@ -9161,7 +9159,7 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FIAGRO",
       "exposure": "AGRO_CREDIT",
       "classification_confidence": "LOW",
@@ -9200,51 +9198,52 @@
       ]
     },
     {
-      "ticker": "NEXG11",
+      "ticker": "VGRI11",
       "segment": "Outros",
-      "price": 129,
-      "ffo_yield": 3.62,
-      "dy": 8.63,
-      "p_vp": 1.29,
-      "market_cap": 90106500,
-      "liquidity": 415770,
-      "num_properties": 0,
-      "cap_rate": 0,
+      "price": 5.34,
+      "ffo_yield": 19.15,
+      "dy": 23.51,
+      "p_vp": 0.62,
+      "market_cap": 187016000,
+      "liquidity": 438390,
+      "num_properties": 5,
+      "cap_rate": 24.31,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
-      "regulatory_class": "FIAGRO",
-      "exposure": "AGRO_CREDIT",
-      "classification_confidence": "LOW",
+      "collected_at": "2026-07-11T20:39:12.314Z",
+      "regulatory_class": "FII",
+      "exposure": "REAL_ESTATE_PHYSICAL",
+      "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Regulatory class identified as agribusiness.",
-        "Agribusiness credit assumed; detailed portfolio classification unavailable."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
-      "type": "AGRO",
+      "type": "TIJOLO",
       "eligibility": "ELIGIBLE",
       "signal": "WATCHLIST",
-      "risk_level": "HIGH",
+      "risk_level": "MEDIUM",
       "data_quality": "COMPLETE",
       "pillars": {
-        "valuation": 5,
-        "income": 4,
+        "valuation": 2,
+        "income": 2,
         "liquidity": 4,
-        "safety": 1
+        "safety": 5
       },
-      "overall_score": 3.35,
+      "overall_score": 3.3,
       "blockers": [],
       "warnings": [],
       "yield_is_trailing": true,
-      "score": 3.35,
+      "score": 3.3,
       "category": "STANDARD",
-      "strategies": [],
+      "strategies": [
+        "PHYSICAL_VALUE"
+      ],
       "selic": 14.25,
-      "magicNumber": 140,
-      "magicCost": 18060,
-      "last_dividend": 0.9,
-      "external_segment": "Fiagros",
-      "data_com": "07/07/2026",
-      "data_pagamento": "14/07/2026",
+      "magicNumber": 52,
+      "magicCost": 277.68,
+      "last_dividend": 0.08,
+      "external_segment": "Híbrido",
+      "data_com": "30/06/2026",
+      "data_pagamento": "07/07/2026",
       "data_sources": [
         "fundamentus",
         "investidor10"
@@ -9263,7 +9262,7 @@
       "cap_rate": 2.48,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -9301,6 +9300,62 @@
       ]
     },
     {
+      "ticker": "CACR11",
+      "segment": "Multicategoria",
+      "price": 21.8,
+      "ffo_yield": -20.39,
+      "dy": 54.36,
+      "p_vp": 0.22,
+      "market_cap": 105432000,
+      "liquidity": 1570000,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "data_source": "fundamentus",
+      "collected_at": "2026-07-11T20:39:12.314Z",
+      "regulatory_class": "FII",
+      "exposure": "REAL_ESTATE_CREDIT",
+      "classification_confidence": "HIGH",
+      "classification_reasons": [
+        "Classified as credit based on external fund type: Fundo de Papel"
+      ],
+      "type": "PAPEL",
+      "eligibility": "REVIEW",
+      "signal": "REVIEW",
+      "risk_level": "HIGH",
+      "data_quality": "COMPLETE",
+      "pillars": {
+        "valuation": 2,
+        "income": 2,
+        "liquidity": 8,
+        "safety": 2
+      },
+      "overall_score": 3.2,
+      "blockers": [],
+      "warnings": [
+        "EXTREME_TRAILING_YIELD",
+        "DEEP_CREDIT_DISCOUNT"
+      ],
+      "yield_is_trailing": true,
+      "score": 3.2,
+      "category": "STANDARD",
+      "strategies": [
+        "EXTREME_TRAILING_YIELD",
+        "DEEP_CREDIT_DISCOUNT"
+      ],
+      "selic": 14.25,
+      "magicNumber": 23,
+      "magicCost": 501.40000000000003,
+      "last_dividend": 0.23,
+      "external_segment": "Híbrido",
+      "data_com": "29/05/2026",
+      "data_pagamento": "15/06/2026",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
       "ticker": "SMRE11",
       "segment": "Multicategoria",
       "price": 53,
@@ -9313,7 +9368,7 @@
       "cap_rate": 0,
       "vacancy": 28.16,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -9351,61 +9406,6 @@
       ]
     },
     {
-      "ticker": "RBRP11",
-      "segment": "Outros",
-      "price": 48.09,
-      "ffo_yield": 8.67,
-      "dy": 9.98,
-      "p_vp": 0.6,
-      "market_cap": 585697000,
-      "liquidity": 786300,
-      "num_properties": 6,
-      "cap_rate": 9.73,
-      "vacancy": 23.8,
-      "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
-      "regulatory_class": "FII",
-      "exposure": "REAL_ESTATE_PHYSICAL",
-      "classification_confidence": "LOW",
-      "classification_reasons": [
-        "Physical exposure inferred only from reported property count."
-      ],
-      "type": "TIJOLO",
-      "eligibility": "ELIGIBLE",
-      "signal": "WATCHLIST",
-      "risk_level": "HIGH",
-      "data_quality": "COMPLETE",
-      "pillars": {
-        "valuation": 2,
-        "income": 7,
-        "liquidity": 4,
-        "safety": 0
-      },
-      "overall_score": 3.05,
-      "blockers": [],
-      "warnings": [
-        "HIGH_VACANCY"
-      ],
-      "yield_is_trailing": true,
-      "score": 3.05,
-      "category": "STANDARD",
-      "strategies": [
-        "PHYSICAL_VALUE",
-        "HIGH_VACANCY"
-      ],
-      "selic": 14.25,
-      "magicNumber": 121,
-      "magicCost": 5818.89,
-      "last_dividend": 0.4,
-      "external_segment": "Outros",
-      "data_com": "07/07/2026",
-      "data_pagamento": "14/07/2026",
-      "data_sources": [
-        "fundamentus",
-        "investidor10"
-      ]
-    },
-    {
       "ticker": "AGRX11",
       "segment": "Outros",
       "price": 8.29,
@@ -9418,7 +9418,7 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FIAGRO",
       "exposure": "AGRO_CREDIT",
       "classification_confidence": "LOW",
@@ -9469,12 +9469,12 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "REVIEW",
@@ -9511,6 +9511,60 @@
       ]
     },
     {
+      "ticker": "URPR11",
+      "segment": "Outros",
+      "price": 19.77,
+      "ffo_yield": 25.89,
+      "dy": 21.39,
+      "p_vp": 0.23,
+      "market_cap": 231979000,
+      "liquidity": 549900,
+      "num_properties": 0,
+      "cap_rate": 0,
+      "vacancy": 0,
+      "data_source": "fundamentus",
+      "collected_at": "2026-07-11T20:39:12.314Z",
+      "regulatory_class": "FII",
+      "exposure": "REAL_ESTATE_CREDIT",
+      "classification_confidence": "HIGH",
+      "classification_reasons": [
+        "Classified as credit based on external fund type: Fundo de Papel"
+      ],
+      "type": "PAPEL",
+      "eligibility": "REVIEW",
+      "signal": "REVIEW",
+      "risk_level": "HIGH",
+      "data_quality": "COMPLETE",
+      "pillars": {
+        "valuation": 2,
+        "income": 2,
+        "liquidity": 4,
+        "safety": 3
+      },
+      "overall_score": 2.7,
+      "blockers": [],
+      "warnings": [
+        "DEEP_CREDIT_DISCOUNT"
+      ],
+      "yield_is_trailing": true,
+      "score": 2.7,
+      "category": "STANDARD",
+      "strategies": [
+        "DEEP_CREDIT_DISCOUNT"
+      ],
+      "selic": 14.25,
+      "magicNumber": 57,
+      "magicCost": 1126.8899999999999,
+      "last_dividend": 0.3,
+      "external_segment": "Outros",
+      "data_com": "30/06/2026",
+      "data_pagamento": "14/07/2026",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
       "ticker": "HCTR11",
       "segment": "Multicategoria",
       "price": 16.61,
@@ -9523,12 +9577,12 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "REVIEW",
@@ -9577,7 +9631,7 @@
       "cap_rate": 10.58,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FIAGRO",
       "exposure": "AGRO_CREDIT",
       "classification_confidence": "LOW",
@@ -9632,12 +9686,12 @@
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Credit exposure found in segment."
+        "Classified as credit based on external fund type: Fundo de Papel"
       ],
       "type": "PAPEL",
       "eligibility": "REVIEW",
@@ -9686,12 +9740,12 @@
       "cap_rate": 21.5,
       "vacancy": 52,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:41:34.618Z",
+      "collected_at": "2026-07-11T20:39:12.314Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
       "classification_reasons": [
-        "Physical-asset exposure found in segment."
+        "Classified as physical based on external fund type: Fundo de Tijolo"
       ],
       "type": "TIJOLO",
       "eligibility": "ELIGIBLE",

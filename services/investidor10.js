@@ -40,7 +40,9 @@ async function getAssetMetadata(ticker) {
                 last_dividend: 0,
                 vacancy: null,
                 data_com: null,
-                data_pagamento: null
+                data_pagamento: null,
+                divida_ebitda: null,
+                dividends_last_3_years: 0
             };
 
             const parseVal = (v) => {
@@ -77,12 +79,32 @@ async function getAssetMetadata(ticker) {
                 else if (name.includes('VALOR DE MERCADO')) metadata.market_cap = parseVal(value); // Priority for market_cap
             });
 
-            // Scrape Dividend Dates from Table
+            // Scrape cell indicators for stocks (e.g. Dívida Líquida / Ebitda)
+            $('.cell').each((i, el) => {
+                const fullText = $(el).text().trim().replace(/\s+/g, ' ');
+                if (fullText.includes('Dívida Líquida / Ebitda') || fullText.includes('Dív. Líq. / Ebitda')) {
+                    const parts = fullText.split(' ');
+                    for (let j = 4; j < parts.length; j++) {
+                        const word = parts[j].trim();
+                        if (word && (word.match(/^-?[0-9,.-]+$/) || word === '-')) {
+                            let val = parseFloat(word.replace(/\./g, '').replace(',', '.'));
+                            if (!isNaN(val)) {
+                                metadata.divida_ebitda = val;
+                                break;
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Scrape Dividend Dates from Table and count dividends in last 3 years
             const dividendTable = $('table').filter((i, el) => {
                 const text = $(el).text().toUpperCase();
                 return text.includes('DATA COM') && text.includes('PAGAMENTO');
             }).first();
 
+            let dividendsLast3Years = 0;
+            const currentYear = new Date().getFullYear();
             if (dividendTable.length > 0) {
                 const firstRow = dividendTable.find('tbody tr').first();
                 const tds = firstRow.find('td');
@@ -92,7 +114,22 @@ async function getAssetMetadata(ticker) {
                     metadata.data_com = $(tds.get(1)).text().trim();
                     metadata.data_pagamento = $(tds.get(2)).text().trim();
                 }
+
+                dividendTable.find('tbody tr').each((i, tr) => {
+                    const rowTds = $(tr).find('td');
+                    if (rowTds.length >= 3) {
+                        const dateCom = $(rowTds.get(1)).text().trim();
+                        const parts = dateCom.split('/');
+                        if (parts.length === 3) {
+                            const year = parseInt(parts[2], 10);
+                            if (year >= currentYear - 2 && year <= currentYear) {
+                                dividendsLast3Years++;
+                            }
+                        }
+                    }
+                });
             }
+            metadata.dividends_last_3_years = dividendsLast3Years;
 
             // Fallback for Cards if Metadata is missing or for full data
             const parseCardValue = (label) => {
@@ -146,7 +183,8 @@ async function getAssetMetadata(ticker) {
         ticker: ticker.toUpperCase(),
         type: null, segment: null, mandate: null,
         price: 0, dy: 0, p_vp: 0, liquidity: 0, last_dividend: 0, vacancy: null,
-        data_com: null, data_pagamento: null
+        data_com: null, data_pagamento: null,
+        divida_ebitda: null, dividends_last_3_years: 0
     };
 }
 

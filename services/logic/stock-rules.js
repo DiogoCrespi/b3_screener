@@ -256,9 +256,115 @@ function analyzeStock(s, selic) {
     }
 
     const decision = buildStockDecision(s, YIELD_THRESHOLD);
-    if (decision.signal === 'TOP_PICK') category = 'STAR';
-    else if (decision.signal === 'OPPORTUNITY') category = 'OPPORTUNITY';
-    else category = null;
+
+    // Compute new Star categories
+    const isStarIncome =
+        decision.eligibility === 'ELIGIBLE' &&
+        decision.overall_score >= 6.5 &&
+        decision.pillars.quality >= 5 &&
+        decision.pillars.safety >= 5 &&
+        dividend_yield >= YIELD_THRESHOLD &&
+        s.payout > 0 && s.payout <= 100 &&
+        s.div_br_patrim >= 0 && s.div_br_patrim <= 1.5;
+
+    const isStarGrowth =
+        decision.eligibility === 'ELIGIBLE' &&
+        decision.overall_score >= 6.5 &&
+        decision.pillars.quality >= 6 &&
+        s.cresc_5a >= 8 &&
+        s.roe >= 12 &&
+        s.roic >= 10;
+
+    const isStarValue =
+        decision.eligibility === 'ELIGIBLE' &&
+        decision.overall_score >= 6.5 &&
+        decision.pillars.safety >= 5 &&
+        pl > 0 && pl <= 12 &&
+        p_vp > 0 && p_vp <= 1.5 &&
+        upside > 0 &&
+        s.div_br_patrim >= 0 && s.div_br_patrim <= 1.5;
+
+    // --- SPECIALIZED SCORE FORMULAS ---
+
+    // 1. Income Score
+    // Weight: 50% DY, 30% Bazin margin, 20% P/VP.
+    let score_dy = 0;
+    if (dividend_yield >= 12) score_dy = 10;
+    else if (dividend_yield >= 8) score_dy = 8 + (dividend_yield - 8) * 0.5;
+    else if (dividend_yield >= 6) score_dy = 6 + (dividend_yield - 6) * 1.0;
+    else score_dy = dividend_yield * 1.0;
+
+    let score_bazin_margin = 0;
+    if (bazin_upside >= 50) score_bazin_margin = 10;
+    else if (bazin_upside >= 0) score_bazin_margin = 7 + (bazin_upside / 50) * 3;
+    else if (bazin_upside >= -20) score_bazin_margin = 5 + (bazin_upside + 20) / 20 * 2;
+    else score_bazin_margin = 0;
+
+    let score_pvp_income = 0;
+    if (p_vp <= 1.0) score_pvp_income = 10;
+    else if (p_vp <= 1.5) score_pvp_income = 7 + (1.5 - p_vp) / 0.5 * 3;
+    else if (p_vp <= 2.0) score_pvp_income = 4 + (2.0 - p_vp) / 0.5 * 3;
+    else score_pvp_income = 0;
+
+    const score_income = Math.round((0.5 * score_dy + 0.3 * score_bazin_margin + 0.2 * score_pvp_income) * 100) / 100;
+
+    // 2. Growth Score
+    // Weight: 50% CAGR cresc_5a, 50% ROE. ROE >= 15% for max score.
+    const cresc5a = s.cresc_5a || 0;
+    let score_cagr = 0;
+    if (cresc5a >= 20) score_cagr = 10;
+    else if (cresc5a >= 10) score_cagr = 7 + (cresc5a - 10) * 0.3;
+    else if (cresc5a >= 5) score_cagr = 4 + (cresc5a - 5) * 0.6;
+    else score_cagr = Math.max(0, cresc5a);
+
+    const roeVal = s.roe || 0;
+    let score_roe_growth = 0;
+    if (roeVal >= 20) score_roe_growth = 10;
+    else if (roeVal >= 15) score_roe_growth = 8 + (roeVal - 15) * 0.4;
+    else if (roeVal >= 10) score_roe_growth = 5 + (roeVal - 10) * 0.6;
+    else score_roe_growth = Math.max(0, roeVal);
+
+    const score_growth = Math.round((0.5 * score_cagr + 0.5 * score_roe_growth) * 100) / 100;
+
+    // 3. Value Score
+    // Weight: 50% P/VP, 50% Graham Upside.
+    let score_pvp_value = 0;
+    if (p_vp <= 0.5) score_pvp_value = 10;
+    else if (p_vp <= 1.0) score_pvp_value = 7 + (1.0 - p_vp) / 0.5 * 3;
+    else if (p_vp <= 1.5) score_pvp_value = 4 + (1.5 - p_vp) / 0.5 * 3;
+    else score_pvp_value = 0;
+
+    let score_graham_value = 0;
+    if (upside >= 100) score_graham_value = 10;
+    else if (upside >= 50) score_graham_value = 8 + (upside - 50) * 0.04;
+    else if (upside >= 0) score_graham_value = 5 + upside * 0.06;
+    else score_graham_value = 0;
+
+    let base_value_score = 0.5 * score_pvp_value + 0.5 * score_graham_value;
+
+    // Safety lock: Se Dividendos nos últimos 3 anos == 0 OU Se Dívida/Ebitda > 3.5, aplique uma penalidade de -3.0 pontos
+    const divEbitda = s.divida_ebitda !== undefined ? s.divida_ebitda : null;
+    const div3y = s.dividends_last_3_years !== undefined ? s.dividends_last_3_years : null;
+    const hasNoRecentDividends = (div3y !== null && div3y === 0);
+    const hasHighDebtRatio = (divEbitda !== null && divEbitda > 3.5);
+
+    if (hasNoRecentDividends || hasHighDebtRatio) {
+        base_value_score = Math.max(0, base_value_score - 3.0);
+    }
+
+    const score_value = Math.round(base_value_score * 100) / 100;
+
+    let signal = decision.signal;
+    category = null;
+
+    if (isStarIncome || isStarGrowth || isStarValue) {
+        signal = 'TOP_PICK';
+        if (isStarIncome) category = 'STAR_INCOME';
+        else if (isStarGrowth) category = 'STAR_GROWTH';
+        else category = 'STAR_VALUE';
+    } else if (decision.signal === 'OPPORTUNITY') {
+        category = 'OPPORTUNITY';
+    }
 
     return {
         ...s,
@@ -269,10 +375,18 @@ function analyzeStock(s, selic) {
         selic,
         score,
         strategies,
-        category,
         peg_ratio,
-        ...decision
+        ...decision,
+        signal,
+        category,
+        is_star_income: isStarIncome,
+        is_star_growth: isStarGrowth,
+        is_star_value: isStarValue,
+        score_income,
+        score_growth,
+        score_value
     };
 }
 
 module.exports = { analyzeStock, buildStockDecision };
+

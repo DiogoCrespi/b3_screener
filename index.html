@@ -1091,22 +1091,46 @@
             };
             const getTrendArrow = window.getTrendArrow;
 
-            const stars = data.stocks.filter(s => s.category === 'STAR');
+            const starIncome = data.stocks.filter(s => s.is_star_income);
+            const starGrowth = data.stocks.filter(s => s.is_star_growth);
+            const starValue = data.stocks.filter(s => s.is_star_value);
             const opportunities = data.stocks.filter(s => s.category === 'OPPORTUNITY');
-            const reviewStocks = data.stocks.filter(s => !['STAR', 'OPPORTUNITY'].includes(s.category));
+            const reviewStocks = data.stocks.filter(s => !['STAR_INCOME', 'STAR_GROWTH', 'STAR_VALUE', 'OPPORTUNITY'].includes(s.category));
 
-            // 1. STARS SECTION
-            if (stars.length > 0) {
-                const starHeader = document.createElement('h2');
-                starHeader.innerHTML = '⭐ TOP STARS <span style="font-size:0.8rem; font-weight:normal; color:var(--text-muted)">(Ouro: Qualidade + Crescimento + Renda)</span>';
-                starHeader.style.width = '100%';
-                starHeader.style.margin = '1rem 0 1rem 0';
-                starHeader.style.color = '#FFD700'; // Gold
-                starHeader.style.gridColumn = '1 / -1'; // Spans full width
+            // 1. STARS INCOME SECTION
+            if (starIncome.length > 0) {
+                const header = document.createElement('h2');
+                header.innerHTML = '⭐ STARS - RENDA <span style="font-size:0.8rem; font-weight:normal; color:var(--text-muted)">(Ouro: Dividendos Consistentes & Segurança)</span>';
+                header.style.width = '100%';
+                header.style.margin = '1.5rem 0 1rem 0';
+                header.style.color = '#FFD700'; // Gold
+                header.style.gridColumn = '1 / -1';
+                stockContainer.appendChild(header);
+                starIncome.forEach(stock => renderStockCard(stock, stockContainer, true, 'income'));
+            }
 
-                stockContainer.appendChild(starHeader);
+            // 2. STARS GROWTH SECTION
+            if (starGrowth.length > 0) {
+                const header = document.createElement('h2');
+                header.innerHTML = '🚀 STARS - CRESCIMENTO <span style="font-size:0.8rem; font-weight:normal; color:var(--text-muted)">(Ouro: Alta Eficiência & CAGR Receita)</span>';
+                header.style.width = '100%';
+                header.style.margin = '1.5rem 0 1rem 0';
+                header.style.color = '#a855f7'; // Purple
+                header.style.gridColumn = '1 / -1';
+                stockContainer.appendChild(header);
+                starGrowth.forEach(stock => renderStockCard(stock, stockContainer, true, 'growth'));
+            }
 
-                stars.forEach(stock => renderStockCard(stock, stockContainer, true));
+            // 3. STARS VALUE SECTION
+            if (starValue.length > 0) {
+                const header = document.createElement('h2');
+                header.innerHTML = '📉 STARS - VALOR <span style="font-size:0.8rem; font-weight:normal; color:var(--text-muted)">(Ouro: Desconto Patrimonial & Upside Graham)</span>';
+                header.style.width = '100%';
+                header.style.margin = '1.5rem 0 1rem 0';
+                header.style.color = '#50fa7b'; // Neon Green
+                header.style.gridColumn = '1 / -1';
+                stockContainer.appendChild(header);
+                starValue.forEach(stock => renderStockCard(stock, stockContainer, true, 'value'));
             }
 
             // 2. OPPORTUNITIES SECTION
@@ -1225,14 +1249,36 @@
                     card.dataset.strategies = stock.strategies ? escapeHTML(stock.strategies.join(',')) : '';
                 }
 
-                if (isStar) card.style.borderLeftColor = '#FFD700'; // Gold border for stars
+                if (isStar) {
+                    if (cardType === 'income') card.style.borderLeftColor = '#FFD700'; // Gold
+                    else if (cardType === 'growth') card.style.borderLeftColor = '#a855f7'; // Purple
+                    else if (cardType === 'value') card.style.borderLeftColor = '#50fa7b'; // Neon Green
+                    else card.style.borderLeftColor = '#FFD700';
+                }
 
-                const displayedScore = stock.overall_score ?? stock.score;
+
+                let displayedScore = stock.overall_score ?? stock.score;
+                if (isStar) {
+                    if (cardType === 'income') displayedScore = stock.score_income ?? displayedScore;
+                    else if (cardType === 'growth') displayedScore = stock.score_growth ?? displayedScore;
+                    else if (cardType === 'value') displayedScore = stock.score_value ?? displayedScore;
+                }
                 const riskBadge = `<span class="badge" title="Risco e elegibilidade são avaliados separadamente">${escapeHTML(stock.risk_level || 'N/A')}</span>`;
 
                 const volBadge = (stock.strategies && stock.strategies.includes('HIGH_VOLATILITY'))
                     ? `<span class="badge" style="background:var(--danger); color:white" title="Dividend Yield > 16% (Risco de não recorrência)">⚠️ Volatilidade</span>`
                     : '';
+
+                let safetyBadge = '';
+                const hasTurnaround = stock.strategies && stock.strategies.includes('TURNAROUND');
+                const hasHighDebt = stock.divida_ebitda !== null && stock.divida_ebitda > 3.5;
+                const hasPrejuizo = stock.pl < 0;
+
+                if (hasTurnaround || hasPrejuizo) {
+                    safetyBadge = `<span class="badge" style="background:#ff9f43; color:black" title="Empresa com prejuízo ou em reestruturação operacional">⚠️ Turnaround</span>`;
+                } else if (hasHighDebt) {
+                    safetyBadge = `<span class="badge" style="background:var(--danger); color:white" title="Alavancagem elevada (Dívida Líquida/EBITDA > 3.5)">⚠️ Risco Financeiro</span>`;
+                }
 
                 card.innerHTML = `
                 <div class="card-main">
@@ -1244,6 +1290,7 @@
                                  alt="${escapeHTML(stock.ticker)}">
                             ${escapeHTML(stock.ticker)}
                             ${volBadge}
+                            ${safetyBadge}
                             ${riskBadge}
                         </h3>
                         <span style="font-size:0.8rem; color:var(--text-muted)">Graham: R$ ${escapeHTML(stock.graham_price.toFixed(2))} | Bazin: R$ ${escapeHTML(stock.bazin_price.toFixed(2))}</span>
@@ -1867,6 +1914,10 @@
                         if (fii.type === 'AGRO') card.style.borderRight = '4px solid #fba94c';
                         if (fii.type === 'INFRA') card.style.borderRight = '4px solid #00d4ff';
 
+                        const snowballText = dy > 0
+                            ? `Com <strong style="color:var(--success)">${escapeHTML(String(magicNumber))} cotas</strong>, O FII paga +1 cota`
+                            : `<strong style="color:var(--danger)">⚠️ Sem distribuição atual</strong>`;
+
                         card.innerHTML = `
                             <div class="card-main">
                                 <div class="ticker-info">
@@ -1883,8 +1934,8 @@
                                         ${fii.type === 'AGRO' ? '<span class="badge" style="background:#fba94c; color:black">🌾 AGRO</span>' : ''}
                                         ${fii.type === 'INFRA' ? '<span class="badge" style="background:#00d4ff; color:black">⚡ INFRA</span>' : ''}
                                     </h3>
-                                    <span style="font-size:0.75rem; color:var(--text-muted)">Com <strong style="color:var(--success)">${escapeHTML(String(magicNumber))} cotas</strong>, O FII paga +1 cota</span>
-                                    ${(fii.p_vp && fii.p_vp > 0) ? `<span style="font-size:0.8rem; color:var(--text-muted)">VP: R$ ${escapeHTML((fii.price / fii.p_vp).toFixed(2))} | Bazin: R$ ${escapeHTML(((fii.dy / 100 * fii.price) / 0.06).toFixed(2))}</span>` : ''}
+                                    <span style="font-size:0.75rem; color:var(--text-muted)">${snowballText}</span>
+                                    ${(fii.p_vp && fii.p_vp > 0 && dy > 0) ? `<span style="font-size:0.8rem; color:var(--text-muted)">VP: R$ ${escapeHTML((fii.price / fii.p_vp).toFixed(2))} | Bazin: R$ ${escapeHTML(((fii.dy / 100 * fii.price) / 0.06).toFixed(2))}</span>` : (fii.p_vp && fii.p_vp > 0 ? `<span style="font-size:0.8rem; color:var(--text-muted)">VP: R$ ${escapeHTML((fii.price / fii.p_vp).toFixed(2))} | Bazin: N/A</span>` : '')}
                                 </div>
                                 <div class="metrics" style="display:flex; align-items:center; gap:12px;">
                                     <div style="text-align:right">
@@ -2061,6 +2112,10 @@
                     if (fii.type === 'AGRO') card.style.borderRight = '4px solid #fba94c'; // Orange for Agro
                     if (fii.type === 'INFRA') card.style.borderRight = '4px solid #00d4ff'; // Blue for Infra
 
+                    const snowballText = dy > 0
+                        ? `Com <strong style="color:var(--success)">${escapeHTML(String(magicNumber))} cotas</strong>, o dividendo paga +1 cota`
+                        : `<strong style="color:var(--danger)">⚠️ Sem distribuição atual</strong>`;
+
                     card.innerHTML = `
                         <div class="card-main">
                             <div class="ticker-info">
@@ -2076,8 +2131,8 @@
                                     ${fii.type === 'AGRO' ? '<span class="badge" style="background:#fba94c; color:black">🌾 Agro</span>' : ''}
                                     ${fii.type === 'INFRA' ? '<span class="badge" style="background:#00d4ff; color:black">⚡ Infra</span>' : ''}
                                 </h3>
-                                <span style="font-size:0.75rem; color:var(--text-muted)">Com <strong style="color:var(--success)">${escapeHTML(String(magicNumber))} cotas</strong>, o dividendo paga +1 cota</span>
-                                ${(fii.p_vp && fii.p_vp > 0) ? `<span style="font-size:0.8rem; color:var(--text-muted)">VP: R$ ${escapeHTML((fii.price / fii.p_vp).toFixed(2))} | Bazin: R$ ${escapeHTML(((fii.dy / 100 * fii.price) / 0.06).toFixed(2))}</span>` : ''}
+                                <span style="font-size:0.75rem; color:var(--text-muted)">${snowballText}</span>
+                                ${(fii.p_vp && fii.p_vp > 0 && dy > 0) ? `<span style="font-size:0.8rem; color:var(--text-muted)">VP: R$ ${escapeHTML((fii.price / fii.p_vp).toFixed(2))} | Bazin: R$ ${escapeHTML(((fii.dy / 100 * fii.price) / 0.06).toFixed(2))}</span>` : (fii.p_vp && fii.p_vp > 0 ? `<span style="font-size:0.8rem; color:var(--text-muted)">VP: R$ ${escapeHTML((fii.price / fii.p_vp).toFixed(2))} | Bazin: N/A</span>` : '')}
                             </div>
                             <div class="metrics" style="display:flex; align-items:center; gap:12px;">
                                 <div style="text-align:right">
