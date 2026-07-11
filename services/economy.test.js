@@ -1,7 +1,7 @@
 const { test, describe, beforeEach, afterEach } = require('node:test');
 const assert = require('node:assert');
 const axios = require('axios');
-const { getDollarRate, getSelicRate, DOLLAR_RATE_API_URL, SELIC_RATE_API_URL } = require('./economy');
+const { getDollarRate, getSelicRate, DOLLAR_RATE_API_URL, DOLLAR_RATE_FALLBACK_URL, SELIC_RATE_API_URL } = require('./economy');
 
 describe('Economy Service', () => {
     let originalGet;
@@ -66,6 +66,19 @@ describe('Economy Service', () => {
             const rate = await getDollarRate();
             assert.strictEqual(rate, 5.10);
             assert.strictEqual(attempts, 2);
+        });
+
+        test('should use the fallback provider when the primary provider fails', async () => {
+            axios.get = async (url) => {
+                if (url === DOLLAR_RATE_API_URL) throw new Error('Primary unavailable');
+                if (url === DOLLAR_RATE_FALLBACK_URL) {
+                    return { data: { rates: { BRL: 5.12 } } };
+                }
+                throw new Error('Unexpected URL');
+            };
+
+            const rate = await getDollarRate();
+            assert.strictEqual(rate, 5.12);
         });
     });
 

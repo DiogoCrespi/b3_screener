@@ -1,6 +1,7 @@
 const axios = require('axios');
 
 const DOLLAR_RATE_API_URL = 'https://economia.awesomeapi.com.br/last/USD-BRL';
+const DOLLAR_RATE_FALLBACK_URL = 'https://open.er-api.com/v6/latest/USD';
 const SELIC_RATE_API_URL = 'https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados/ultimos/1?formato=json';
 
 const wait = (milliseconds) => new Promise(resolve => setTimeout(resolve, milliseconds));
@@ -23,8 +24,13 @@ async function getWithRetry(url, attempts = 3) {
 
 async function getDollarRate() {
     try {
-        const response = await getWithRetry(DOLLAR_RATE_API_URL);
-        return parseFloat(response.data.USDBRL.bid);
+        try {
+            const response = await getWithRetry(DOLLAR_RATE_API_URL);
+            return parseFloat(response.data.USDBRL.bid);
+        } catch (primaryError) {
+            const fallbackResponse = await getWithRetry(DOLLAR_RATE_FALLBACK_URL);
+            return parseFloat(fallbackResponse.data.rates.BRL);
+        }
     } catch (error) {
         console.error('Error fetching Dollar rate:', error.message);
         return null;
@@ -49,5 +55,6 @@ module.exports = {
     getDollarRate,
     getSelicRate,
     DOLLAR_RATE_API_URL,
+    DOLLAR_RATE_FALLBACK_URL,
     SELIC_RATE_API_URL
 };
