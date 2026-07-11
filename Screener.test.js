@@ -1,6 +1,7 @@
 const { test, describe, beforeEach } = require('node:test');
 const assert = require('node:assert');
 const Screener = require('./Screener');
+const { filterAssets } = require('./Screener');
 
 describe('Screener Configuration', () => {
     let screener;
@@ -120,5 +121,17 @@ describe('Screener Configuration', () => {
         assert.deepStrictEqual(screener.config.excludedStrategies, ['RISKY']);
         assert.strictEqual(screener.config.shouldSave, false);
         assert.deepStrictEqual(screener.config.economy, { dollar: 5.0, selic: 10.5 });
+    });
+});
+
+describe('Screener filtering', () => {
+    test('should filter stocks using the adapter debt-to-equity field', () => {
+        const config = new Screener().assetType('stock').maxDebtEq(1.5).config;
+        const results = filterAssets([
+            { ticker: 'SAFE3', div_br_patrim: 0.8 },
+            { ticker: 'DEBT3', div_br_patrim: 2.1 }
+        ], config);
+
+        assert.deepStrictEqual(results.map(item => item.ticker), ['SAFE3']);
     });
 });

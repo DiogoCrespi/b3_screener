@@ -92,10 +92,18 @@ async function exportData() {
 
         console.log('✅ Data exported successfully!');
         console.log(`📊 Statistics: ${stats.total} FIIs, ${stats.etfs} ETFs (${stats.tijolo} Tijolo, ${stats.papel} Papel, ${stats.agro} Agro, ${stats.infra} Infra, ${stats.multi} Multi)`);
+        return data;
 
     } catch (error) {
         console.error('❌ Error exporting data:', error);
+        throw error;
     }
 }
 
-exportData();
+if (require.main === module) {
+    exportData().catch(() => {
+        process.exitCode = 1;
+    });
+}
+
+module.exports = { exportData };

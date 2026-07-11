@@ -4,6 +4,25 @@ const { getMultipleFiiMetadata } = require('./services/investidor10');
 const { getFIInfra } = require('./services/fi_infra');
 const { saveHistory } = require('./services/storage');
 
+function filterAssets(assets, config) {
+    return assets.filter(item => {
+        const itemLiquidity = item.liq_2meses || item.liquidity || 0;
+        const itemYield = item.dividend_yield || item.dy || 0;
+        const itemP_VP = item.p_vp || 0;
+        const itemScore = item.score || 0;
+        const itemDebt = item.div_br_patrim || 0;
+        const itemStrategies = item.strategies || [item.category].filter(Boolean);
+
+        if (itemLiquidity < config.minLiquidity) return false;
+        if (itemYield < config.minYield) return false;
+        if (itemP_VP > config.maxP_VP || itemP_VP < config.minP_VP) return false;
+        if (config.assetType === 'stock' && itemDebt > config.maxDebtEq) return false;
+        if (itemScore < config.minScore) return false;
+        if (config.excludedStrategies.some(strategy => itemStrategies.includes(strategy))) return false;
+        return true;
+    });
+}
+
 class Screener {
     constructor() {
         this.config = {
@@ -114,40 +133,7 @@ class Screener {
         console.log(`\n📥 Total assets processed: ${assets.length} items.`);
 
         // Apply Filters
-        const results = assets.filter(item => {
-            // Standardize field names across stocks and FIIs where possible
-            const itemLiquidity = item.liq_2meses || item.liquidity || 0;
-            const itemYield = item.dividend_yield || item.dy || 0;
-            const itemP_VP = item.p_vp || 0;
-            const itemScore = item.score || 0;
-            const itemDebt = item.div_brut_patr || 0; // Debt/Equity for stocks
-            const itemStrategies = item.strategies || [item.category].filter(Boolean); // Strategies or Category
-
-            // 1. Liquidity
-            if (itemLiquidity < this.config.minLiquidity) return false;
-
-            // 2. Dividend Yield
-            if (itemYield < this.config.minYield) return false;
-
-            // 3. P/VP Range
-            if (itemP_VP > this.config.maxP_VP) return false;
-            if (itemP_VP < this.config.minP_VP) return false;
-
-            // 4. Debt (Stocks only usually)
-            if (this.config.assetType === 'stock' && itemDebt > this.config.maxDebtEq) return false;
-
-            // 5. Score
-            if (itemScore < this.config.minScore) return false;
-
-            // 6. Excluded Strategies
-            if (this.config.excludedStrategies.length > 0) {
-                const hasExcludedStrategy = itemStrategies.some(s => this.config.excludedStrategies.includes(s));
-                if (hasExcludedStrategy) return false;
-            }
-
-            return true;
-        });
-
+        const results = filterAssets(assets, this.config);
         console.log(`✅ Filtered down to: ${results.length} items.`);
 
         if (this.config.shouldSave) {
@@ -160,3 +146,4 @@ class Screener {
 }
 
 module.exports = Screener;
+module.exports.filterAssets = filterAssets;
