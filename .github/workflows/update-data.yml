@@ -36,6 +36,9 @@ jobs:
       - name: Generate data
         run: npm run generate
 
+      - name: Audit generated classifications
+        run: npm run audit:data
+
       - name: Commit and push if changed
         run: |
           git config user.name 'GitHub Actions Bot'
