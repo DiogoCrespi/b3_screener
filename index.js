@@ -106,7 +106,7 @@ async function main() {
                 s.bazin_price.toFixed(2).padEnd(9) +
                 (s.upside.toFixed(0) + '%').padEnd(8) +
                 (s.ev_ebit ? s.ev_ebit.toFixed(2) : 'N/A').padEnd(8) +
-                (s.score + '/9').padEnd(6) +
+                (s.score + '/10').padEnd(6) +
                 (s.psr ? s.psr.toFixed(2) : 'N/A').padEnd(6) +
                 ((s.peg_ratio && s.peg_ratio !== 999) ? s.peg_ratio.toFixed(2) : 'N/A')
             );
@@ -150,7 +150,7 @@ async function main() {
                 s.bazin_price.toFixed(2).padEnd(9) +
                 (s.upside.toFixed(0) + '%').padEnd(8) +
                 (s.ev_ebit ? s.ev_ebit.toFixed(2) : 'N/A').padEnd(8) +
-                (s.score + '/9').padEnd(6) +
+                (s.score + '/10').padEnd(6) +
                 (s.psr ? s.psr.toFixed(2) : 'N/A').padEnd(6) +
                 ((s.peg_ratio && s.peg_ratio !== 999) ? s.peg_ratio.toFixed(2) : 'N/A')
             );
@@ -203,7 +203,7 @@ async function main() {
     console.log('--- 📊 POPULAR ETFs ---');
     console.log('-'.repeat(80));
     etfs.forEach(e => {
-        console.log(`${e.ticker.padEnd(8)} | ${e.name} (${e.type})`);
+        console.log(`${e.ticker.padEnd(8)} | Price: R$ ${e.price.toFixed(2).padEnd(8)} | Vol (Yahoo): ${e.liquidity.toLocaleString('pt-BR')}`);
     });
     console.log('\n');
     console.log('================================================================================');

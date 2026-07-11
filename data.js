@@ -1,7 +1,7 @@
 window.INVEST_DATA = {
-  "updatedAt": "11/07/2026, 11:36:57",
+  "updatedAt": "11/07/2026, 11:42:12",
   "economy": {
-    "dollar": 5.114592,
+    "dollar": 5.1064,
     "selic": 14.25
   },
   "stocks": [
@@ -23,7 +23,7 @@ window.INVEST_DATA = {
       "issuer_key": "MDNE",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.336Z",
+      "collected_at": "2026-07-11T14:41:34.486Z",
       "payout": 79.84159999999999,
       "graham_price": 47.131730690315685,
       "upside": 74.43275607074644,
@@ -52,9 +52,7 @@ window.INVEST_DATA = {
       "overall_score": 9.15,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "30/12/2025",
-      "data_pagamento": "30/09/2027"
+      "payout_is_estimated": true
     },
     {
       "ticker": "RECV3",
@@ -74,7 +72,7 @@ window.INVEST_DATA = {
       "issuer_key": "RECV",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.336Z",
+      "collected_at": "2026-07-11T14:41:34.487Z",
       "payout": 74.8935,
       "graham_price": 24.290225681205506,
       "upside": 137.67344110768596,
@@ -103,9 +101,7 @@ window.INVEST_DATA = {
       "overall_score": 9.1,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "18/05/2026",
-      "data_pagamento": "28/05/2026"
+      "payout_is_estimated": true
     },
     {
       "ticker": "PLPL3",
@@ -125,7 +121,7 @@ window.INVEST_DATA = {
       "issuer_key": "PLPL",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.335Z",
+      "collected_at": "2026-07-11T14:41:34.485Z",
       "payout": 29.9475,
       "graham_price": 13.911820618227972,
       "upside": 70.69718549972973,
@@ -154,9 +150,7 @@ window.INVEST_DATA = {
       "overall_score": 8.75,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "29/12/2025",
-      "data_pagamento": "02/07/2026"
+      "payout_is_estimated": true
     },
     {
       "ticker": "CSED3",
@@ -176,7 +170,7 @@ window.INVEST_DATA = {
       "issuer_key": "CSED",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.335Z",
+      "collected_at": "2026-07-11T14:41:34.486Z",
       "payout": 65.1504,
       "graham_price": 8.725005957830437,
       "upside": 111.25922416054325,
@@ -203,9 +197,7 @@ window.INVEST_DATA = {
       "overall_score": 8.55,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "28/04/2026",
-      "data_pagamento": "30/06/2026"
+      "payout_is_estimated": true
     },
     {
       "ticker": "CYRE3",
@@ -225,7 +217,7 @@ window.INVEST_DATA = {
       "issuer_key": "CYRE",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.335Z",
+      "collected_at": "2026-07-11T14:41:34.486Z",
       "payout": 53.058699999999995,
       "graham_price": 48.04073996379983,
       "upside": 108.32931467389346,
@@ -254,9 +246,7 @@ window.INVEST_DATA = {
       "overall_score": 8.45,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "30/12/2025",
-      "data_pagamento": "06/01/2026"
+      "payout_is_estimated": true
     },
     {
       "ticker": "WIZC3",
@@ -276,7 +266,7 @@ window.INVEST_DATA = {
       "issuer_key": "WIZC",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.339Z",
+      "collected_at": "2026-07-11T14:41:34.490Z",
       "payout": 51.8039,
       "graham_price": 10.835007468846277,
       "upside": 27.32088682545566,
@@ -307,9 +297,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_OR_UNRELIABLE_DEBT_RATIO"
       ],
-      "payout_is_estimated": true,
-      "data_com": "28/04/2026",
-      "data_pagamento": "31/12/2026"
+      "payout_is_estimated": true
     },
     {
       "ticker": "PETR4",
@@ -329,7 +317,7 @@ window.INVEST_DATA = {
       "issuer_key": "PETR",
       "share_class": "4",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.334Z",
+      "collected_at": "2026-07-11T14:41:34.485Z",
       "payout": 35.5775,
       "graham_price": 80.47087538294227,
       "upside": 102.95302744752148,
@@ -358,9 +346,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": "01/06/2026",
-      "data_pagamento": "20/08/2026"
+      "payout_is_estimated": true
     },
     {
       "ticker": "OFSA3",
@@ -380,7 +366,7 @@ window.INVEST_DATA = {
       "issuer_key": "OFSA",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.337Z",
+      "collected_at": "2026-07-11T14:41:34.488Z",
       "payout": 28.8252,
       "graham_price": 39.050520181193995,
       "upside": 42.520146646693426,
@@ -407,9 +393,7 @@ window.INVEST_DATA = {
       "overall_score": 8.3,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "16/04/2026",
-      "data_pagamento": "30/04/2026"
+      "payout_is_estimated": true
     },
     {
       "ticker": "VTRU3",
@@ -429,7 +413,7 @@ window.INVEST_DATA = {
       "issuer_key": "VTRU",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.332Z",
+      "collected_at": "2026-07-11T14:41:34.482Z",
       "payout": 0.3458,
       "graham_price": 64.73758313630243,
       "upside": 378.47437646934543,
@@ -456,9 +440,7 @@ window.INVEST_DATA = {
       "overall_score": 8.25,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "30/04/2026",
-      "data_pagamento": "18/06/2026"
+      "payout_is_estimated": true
     },
     {
       "ticker": "TECN3",
@@ -478,7 +460,7 @@ window.INVEST_DATA = {
       "issuer_key": "TECN",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.340Z",
+      "collected_at": "2026-07-11T14:41:34.491Z",
       "payout": 34.705600000000004,
       "graham_price": 13.942914333865176,
       "upside": 45.23869097776225,
@@ -505,9 +487,7 @@ window.INVEST_DATA = {
       "overall_score": 8.25,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "30/12/2025",
-      "data_pagamento": "Provisionado"
+      "payout_is_estimated": true
     },
     {
       "ticker": "LEVE3",
@@ -527,7 +507,7 @@ window.INVEST_DATA = {
       "issuer_key": "LEVE",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.338Z",
+      "collected_at": "2026-07-11T14:41:34.489Z",
       "payout": 58.1875,
       "graham_price": 29.542648582374905,
       "upside": -9.378378581672072,
@@ -556,9 +536,7 @@ window.INVEST_DATA = {
       "overall_score": 8.2,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "29/04/2026",
-      "data_pagamento": "27/05/2026"
+      "payout_is_estimated": true
     },
     {
       "ticker": "MILS3",
@@ -578,7 +556,7 @@ window.INVEST_DATA = {
       "issuer_key": "MILS",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.340Z",
+      "collected_at": "2026-07-11T14:41:34.492Z",
       "payout": 57.8608,
       "graham_price": 17.72525689497222,
       "upside": 14.800886625467744,
@@ -607,9 +585,7 @@ window.INVEST_DATA = {
       "overall_score": 8.2,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "20/04/2026",
-      "data_pagamento": "30/04/2026"
+      "payout_is_estimated": true
     },
     {
       "ticker": "JHSF3",
@@ -629,7 +605,7 @@ window.INVEST_DATA = {
       "issuer_key": "JHSF",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.334Z",
+      "collected_at": "2026-07-11T14:41:34.484Z",
       "payout": 22.686,
       "graham_price": 25.510132400849624,
       "upside": 128.79042511972756,
@@ -655,9 +631,7 @@ window.INVEST_DATA = {
       "overall_score": 8.05,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "30/11/2026",
-      "data_pagamento": "09/12/2026"
+      "payout_is_estimated": true
     },
     {
       "ticker": "POMO3",
@@ -677,7 +651,7 @@ window.INVEST_DATA = {
       "issuer_key": "POMO",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.335Z",
+      "collected_at": "2026-07-11T14:41:34.486Z",
       "payout": 94.579,
       "graham_price": 8.55529199747965,
       "upside": 58.138484241768005,
@@ -707,9 +681,7 @@ window.INVEST_DATA = {
       "overall_score": 8.05,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "24/04/2026",
-      "data_pagamento": "08/05/2026"
+      "payout_is_estimated": true
     },
     {
       "ticker": "CSUD3",
@@ -729,7 +701,7 @@ window.INVEST_DATA = {
       "issuer_key": "CSUD",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.336Z",
+      "collected_at": "2026-07-11T14:41:34.487Z",
       "payout": 96.6784,
       "graham_price": 24.988590478461806,
       "upside": 76.72270493961673,
@@ -758,9 +730,7 @@ window.INVEST_DATA = {
       "overall_score": 8.05,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "02/07/2026",
-      "data_pagamento": "14/07/2026"
+      "payout_is_estimated": true
     },
     {
       "ticker": "EUCA4",
@@ -780,7 +750,7 @@ window.INVEST_DATA = {
       "issuer_key": "EUCA",
       "share_class": "4",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.335Z",
+      "collected_at": "2026-07-11T14:41:34.486Z",
       "payout": 25.4625,
       "graham_price": 56.237410854765976,
       "upside": 142.29819411790595,
@@ -806,9 +776,7 @@ window.INVEST_DATA = {
       "overall_score": 8,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "30/12/2025",
-      "data_pagamento": "Provisionado"
+      "payout_is_estimated": true
     },
     {
       "ticker": "VLID3",
@@ -828,7 +796,7 @@ window.INVEST_DATA = {
       "issuer_key": "VLID",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.336Z",
+      "collected_at": "2026-07-11T14:41:34.488Z",
       "payout": 56.54900000000001,
       "graham_price": 38.49961937007015,
       "upside": 115.08167245849248,
@@ -858,9 +826,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": "11/05/2026",
-      "data_pagamento": "29/05/2026"
+      "payout_is_estimated": true
     },
     {
       "ticker": "CPFE3",
@@ -880,7 +846,7 @@ window.INVEST_DATA = {
       "issuer_key": "CPFE",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.342Z",
+      "collected_at": "2026-07-11T14:41:34.494Z",
       "payout": 74.646,
       "graham_price": 48.71758920544706,
       "upside": 1.7706062365721014,
@@ -907,9 +873,7 @@ window.INVEST_DATA = {
       "overall_score": 7.9,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "29/04/2026",
-      "data_pagamento": "18/06/2026"
+      "payout_is_estimated": true
     },
     {
       "ticker": "EZTC3",
@@ -929,7 +893,7 @@ window.INVEST_DATA = {
       "issuer_key": "EZTC",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.338Z",
+      "collected_at": "2026-07-11T14:41:34.489Z",
       "payout": 56.8974,
       "graham_price": 29.013314334033282,
       "upside": 120.63356908010098,
@@ -957,9 +921,7 @@ window.INVEST_DATA = {
       "overall_score": 7.8,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "14/05/2026",
-      "data_pagamento": "29/05/2026"
+      "payout_is_estimated": true
     },
     {
       "ticker": "CMIG4",
@@ -979,7 +941,7 @@ window.INVEST_DATA = {
       "issuer_key": "CMIG",
       "share_class": "4",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.338Z",
+      "collected_at": "2026-07-11T14:41:34.489Z",
       "payout": 62.521699999999996,
       "graham_price": 19.574323758776966,
       "upside": 72.006359918954,
@@ -1006,9 +968,7 @@ window.INVEST_DATA = {
       "overall_score": 7.8,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "23/06/2026",
-      "data_pagamento": "30/12/2027"
+      "payout_is_estimated": true
     },
     {
       "ticker": "COGN3",
@@ -1028,7 +988,7 @@ window.INVEST_DATA = {
       "issuer_key": "COGN",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.339Z",
+      "collected_at": "2026-07-11T14:41:34.490Z",
       "payout": 36.4078,
       "graham_price": 6.989039684559485,
       "upside": 191.20998685664517,
@@ -1054,9 +1014,7 @@ window.INVEST_DATA = {
       "overall_score": 7.8,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "27/04/2026",
-      "data_pagamento": "29/05/2026"
+      "payout_is_estimated": true
     },
     {
       "ticker": "INTB3",
@@ -1076,7 +1034,7 @@ window.INVEST_DATA = {
       "issuer_key": "INTB",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.339Z",
+      "collected_at": "2026-07-11T14:41:34.490Z",
       "payout": 64.296,
       "graham_price": 19.436440212667815,
       "upside": 47.24575918687739,
@@ -1107,9 +1065,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_OR_UNRELIABLE_DEBT_RATIO"
       ],
-      "payout_is_estimated": true,
-      "data_com": "15/12/2025",
-      "data_pagamento": "23/12/2025"
+      "payout_is_estimated": true
     },
     {
       "ticker": "SEER3",
@@ -1129,7 +1085,7 @@ window.INVEST_DATA = {
       "issuer_key": "SEER",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.337Z",
+      "collected_at": "2026-07-11T14:41:34.488Z",
       "payout": 24.892,
       "graham_price": 21.743701893573768,
       "upside": 78.66640832846153,
@@ -1156,9 +1112,7 @@ window.INVEST_DATA = {
       "overall_score": 7.6,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "06/04/2026",
-      "data_pagamento": "29/05/2026"
+      "payout_is_estimated": true
     },
     {
       "ticker": "DIRR3",
@@ -1178,7 +1132,7 @@ window.INVEST_DATA = {
       "issuer_key": "DIRR",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.340Z",
+      "collected_at": "2026-07-11T14:41:34.492Z",
       "payout": 96.2775,
       "graham_price": 12.165239945724988,
       "upside": -8.394277517131112,
@@ -1207,9 +1161,7 @@ window.INVEST_DATA = {
       "overall_score": 7.55,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "16/12/2025",
-      "data_pagamento": "23/12/2025"
+      "payout_is_estimated": true
     },
     {
       "ticker": "VIVA3",
@@ -1229,7 +1181,7 @@ window.INVEST_DATA = {
       "issuer_key": "VIVA",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.342Z",
+      "collected_at": "2026-07-11T14:41:34.494Z",
       "payout": 28.12,
       "graham_price": 26.76861113032238,
       "upside": 13.76375321003986,
@@ -1257,9 +1209,7 @@ window.INVEST_DATA = {
       "overall_score": 7.45,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "19/12/2025",
-      "data_pagamento": "30/12/2025"
+      "payout_is_estimated": true
     },
     {
       "ticker": "TEND3",
@@ -1279,7 +1229,7 @@ window.INVEST_DATA = {
       "issuer_key": "TEND",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.339Z",
+      "collected_at": "2026-07-11T14:41:34.490Z",
       "payout": 25.0582,
       "graham_price": 35.0466048346931,
       "upside": -0.8862985444199674,
@@ -1306,9 +1256,7 @@ window.INVEST_DATA = {
       "overall_score": 7.4,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "23/12/2025",
-      "data_pagamento": "07/01/2026"
+      "payout_is_estimated": true
     },
     {
       "ticker": "TAEE3",
@@ -1328,7 +1276,7 @@ window.INVEST_DATA = {
       "issuer_key": "TAEE",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.341Z",
+      "collected_at": "2026-07-11T14:41:34.493Z",
       "payout": 71.91,
       "graham_price": 16.234318813693193,
       "upside": 18.84567213538208,
@@ -1354,9 +1302,7 @@ window.INVEST_DATA = {
       "overall_score": 7.3,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "11/05/2026",
-      "data_pagamento": "26/08/2026"
+      "payout_is_estimated": true
     },
     {
       "ticker": "PSSA3",
@@ -1376,7 +1322,7 @@ window.INVEST_DATA = {
       "issuer_key": "PSSA",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.342Z",
+      "collected_at": "2026-07-11T14:41:34.495Z",
       "payout": 52.882000000000005,
       "graham_price": 55.467117629153,
       "upside": 0.9043435131035162,
@@ -1405,9 +1351,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_OR_UNRELIABLE_DEBT_RATIO"
       ],
-      "payout_is_estimated": true,
-      "data_com": "22/06/2026",
-      "data_pagamento": "30/04/2027"
+      "payout_is_estimated": true
     },
     {
       "ticker": "BEEF3",
@@ -1427,7 +1371,7 @@ window.INVEST_DATA = {
       "issuer_key": "BEEF",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.335Z",
+      "collected_at": "2026-07-11T14:41:34.486Z",
       "payout": 27.447599999999998,
       "graham_price": 4.488945063475765,
       "upside": 22.6487722261138,
@@ -1454,9 +1398,7 @@ window.INVEST_DATA = {
       "overall_score": 7.1,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "28/04/2026",
-      "data_pagamento": "13/05/2026"
+      "payout_is_estimated": true
     },
     {
       "ticker": "ISAE4",
@@ -1476,7 +1418,7 @@ window.INVEST_DATA = {
       "issuer_key": "ISAE",
       "share_class": "4",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.340Z",
+      "collected_at": "2026-07-11T14:41:34.492Z",
       "payout": 52.013099999999994,
       "graham_price": 51.0981071643466,
       "upside": 70.32702388115534,
@@ -1503,9 +1445,7 @@ window.INVEST_DATA = {
       "overall_score": 7.1,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "17/04/2026",
-      "data_pagamento": "29/04/2026"
+      "payout_is_estimated": true
     },
     {
       "ticker": "GMAT3",
@@ -1525,7 +1465,7 @@ window.INVEST_DATA = {
       "issuer_key": "GMAT",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.335Z",
+      "collected_at": "2026-07-11T14:41:34.486Z",
       "payout": 15.84,
       "graham_price": 8.941804317253423,
       "upside": 125.23436567388973,
@@ -1552,9 +1492,7 @@ window.INVEST_DATA = {
       "overall_score": 7,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "19/11/2025",
-      "data_pagamento": "30/12/2025"
+      "payout_is_estimated": true
     },
     {
       "ticker": "MELK3",
@@ -1574,7 +1512,7 @@ window.INVEST_DATA = {
       "issuer_key": "MELK",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.335Z",
+      "collected_at": "2026-07-11T14:41:34.486Z",
       "payout": 69.4878,
       "graham_price": 8.370745598249139,
       "upside": 159.96104342388625,
@@ -1602,9 +1540,7 @@ window.INVEST_DATA = {
       "overall_score": 7.7,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "29/04/2026",
-      "data_pagamento": "31/12/2026"
+      "payout_is_estimated": true
     },
     {
       "ticker": "PFRM3",
@@ -1624,7 +1560,7 @@ window.INVEST_DATA = {
       "issuer_key": "PFRM",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.340Z",
+      "collected_at": "2026-07-11T14:41:34.491Z",
       "payout": 75.654,
       "graham_price": 14.375000000000002,
       "upside": 108.33333333333334,
@@ -1651,9 +1587,7 @@ window.INVEST_DATA = {
       "overall_score": 7.55,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "30/12/2025",
-      "data_pagamento": "15/01/2026"
+      "payout_is_estimated": true
     },
     {
       "ticker": "AZZA3",
@@ -1673,7 +1607,7 @@ window.INVEST_DATA = {
       "issuer_key": "AZZA",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.334Z",
+      "collected_at": "2026-07-11T14:41:34.485Z",
       "payout": 61.430400000000006,
       "graham_price": 59.44802288081691,
       "upside": 211.24619309328222,
@@ -1701,9 +1635,7 @@ window.INVEST_DATA = {
       "overall_score": 7.5,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "19/12/2025",
-      "data_pagamento": "30/12/2025"
+      "payout_is_estimated": true
     },
     {
       "ticker": "CEAB3",
@@ -1723,7 +1655,7 @@ window.INVEST_DATA = {
       "issuer_key": "CEAB",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.336Z",
+      "collected_at": "2026-07-11T14:41:34.487Z",
       "payout": 27.4744,
       "graham_price": 22.63149850737165,
       "upside": 111.90541673568961,
@@ -1749,9 +1681,7 @@ window.INVEST_DATA = {
       "overall_score": 7.45,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "23/12/2025",
-      "data_pagamento": "31/08/2026"
+      "payout_is_estimated": true
     },
     {
       "ticker": "MTRE3",
@@ -1771,7 +1701,7 @@ window.INVEST_DATA = {
       "issuer_key": "MTRE",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.336Z",
+      "collected_at": "2026-07-11T14:41:34.487Z",
       "payout": 70.5738,
       "graham_price": 11.105485545182882,
       "upside": 233.49806441990637,
@@ -1798,9 +1728,7 @@ window.INVEST_DATA = {
       "overall_score": 7.2,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "08/09/2026",
-      "data_pagamento": "18/09/2026"
+      "payout_is_estimated": true
     },
     {
       "ticker": "PGMN3",
@@ -1820,7 +1748,7 @@ window.INVEST_DATA = {
       "issuer_key": "PGMN",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.341Z",
+      "collected_at": "2026-07-11T14:41:34.493Z",
       "payout": 55.5407,
       "graham_price": 6.651194768308894,
       "upside": 77.36519382157051,
@@ -1847,9 +1775,7 @@ window.INVEST_DATA = {
       "overall_score": 7.15,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "23/12/2025",
-      "data_pagamento": "02/02/2026"
+      "payout_is_estimated": true
     },
     {
       "ticker": "ECOR3",
@@ -1869,7 +1795,7 @@ window.INVEST_DATA = {
       "issuer_key": "ECOR",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.339Z",
+      "collected_at": "2026-07-11T14:41:34.490Z",
       "payout": 58.3954,
       "graham_price": 11.776693157048198,
       "upside": 51.56619249740282,
@@ -1895,9 +1821,7 @@ window.INVEST_DATA = {
       "overall_score": 7.1,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "12/05/2026",
-      "data_pagamento": "12/06/2026"
+      "payout_is_estimated": true
     },
     {
       "ticker": "RANI3",
@@ -1917,7 +1841,7 @@ window.INVEST_DATA = {
       "issuer_key": "RANI",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.341Z",
+      "collected_at": "2026-07-11T14:41:34.493Z",
       "payout": 54.84219999999999,
       "graham_price": 11.259253055302425,
       "upside": 40.564956995036525,
@@ -1943,9 +1867,7 @@ window.INVEST_DATA = {
       "overall_score": 7.05,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "07/05/2026",
-      "data_pagamento": "20/05/2026"
+      "payout_is_estimated": true
     },
     {
       "ticker": "BLAU3",
@@ -1965,7 +1887,7 @@ window.INVEST_DATA = {
       "issuer_key": "BLAU",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.343Z",
+      "collected_at": "2026-07-11T14:41:34.495Z",
       "payout": 71.03359999999999,
       "graham_price": 15.230222454058614,
       "upside": 44.36229814273567,
@@ -1991,9 +1913,7 @@ window.INVEST_DATA = {
       "overall_score": 7.05,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "25/06/2026",
-      "data_pagamento": "07/07/2026"
+      "payout_is_estimated": true
     },
     {
       "ticker": "SMTO3",
@@ -2013,7 +1933,7 @@ window.INVEST_DATA = {
       "issuer_key": "SMTO",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.338Z",
+      "collected_at": "2026-07-11T14:41:34.489Z",
       "payout": 26.7561,
       "graham_price": 35.3780249856731,
       "upside": 116.11499685811299,
@@ -2039,9 +1959,7 @@ window.INVEST_DATA = {
       "overall_score": 7,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "03/07/2026",
-      "data_pagamento": "21/07/2026"
+      "payout_is_estimated": true
     },
     {
       "ticker": "LPSB3",
@@ -2061,7 +1979,7 @@ window.INVEST_DATA = {
       "issuer_key": "LPSB",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.335Z",
+      "collected_at": "2026-07-11T14:41:34.486Z",
       "payout": 79.6194,
       "graham_price": 3.188695033031311,
       "upside": 114.0063780557927,
@@ -2091,9 +2009,7 @@ window.INVEST_DATA = {
         "NEGATIVE_OR_UNRELIABLE_DEBT_RATIO",
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": "30/04/2026",
-      "data_pagamento": "19/06/2026"
+      "payout_is_estimated": true
     },
     {
       "ticker": "SAPR4",
@@ -2113,7 +2029,7 @@ window.INVEST_DATA = {
       "issuer_key": "SAPR",
       "share_class": "4",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.341Z",
+      "collected_at": "2026-07-11T14:41:34.493Z",
       "payout": 13.903500000000001,
       "graham_price": 12.344395344176716,
       "upside": 69.7991106489232,
@@ -2139,9 +2055,7 @@ window.INVEST_DATA = {
       "overall_score": 6.9,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "30/12/2025",
-      "data_pagamento": "26/06/2026"
+      "payout_is_estimated": true
     },
     {
       "ticker": "HYPE3",
@@ -2161,7 +2075,7 @@ window.INVEST_DATA = {
       "issuer_key": "HYPE",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.341Z",
+      "collected_at": "2026-07-11T14:41:34.493Z",
       "payout": 44.0617,
       "graham_price": 32.885503154854376,
       "upside": 55.78163503010126,
@@ -2185,9 +2099,7 @@ window.INVEST_DATA = {
       "overall_score": 6.8,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "26/06/2026",
-      "data_pagamento": "31/12/2027"
+      "payout_is_estimated": true
     },
     {
       "ticker": "LREN3",
@@ -2207,7 +2119,7 @@ window.INVEST_DATA = {
       "issuer_key": "LREN",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.343Z",
+      "collected_at": "2026-07-11T14:41:34.495Z",
       "payout": 61.365500000000004,
       "graham_price": 18.542843983247536,
       "upside": 26.832038189107642,
@@ -2236,9 +2148,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_OR_UNRELIABLE_DEBT_RATIO"
       ],
-      "payout_is_estimated": true,
-      "data_com": "23/06/2026",
-      "data_pagamento": "14/07/2026"
+      "payout_is_estimated": true
     },
     {
       "ticker": "LIGT3",
@@ -2258,7 +2168,7 @@ window.INVEST_DATA = {
       "issuer_key": "LIGT",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.331Z",
+      "collected_at": "2026-07-11T14:41:34.481Z",
       "payout": 0,
       "graham_price": 59.71838673545789,
       "upside": 1789.8223650461357,
@@ -2284,9 +2194,7 @@ window.INVEST_DATA = {
       "overall_score": 6.7,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "27/04/2022",
-      "data_pagamento": "27/04/2022"
+      "payout_is_estimated": true
     },
     {
       "ticker": "SAPR11",
@@ -2306,7 +2214,7 @@ window.INVEST_DATA = {
       "issuer_key": "SAPR",
       "share_class": "11",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.342Z",
+      "collected_at": "2026-07-11T14:41:34.494Z",
       "payout": 13.6364,
       "graham_price": 61.924491648724015,
       "upside": 63.604997750922095,
@@ -2332,9 +2240,7 @@ window.INVEST_DATA = {
       "overall_score": 6.6,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "SBFG3",
@@ -2354,7 +2260,7 @@ window.INVEST_DATA = {
       "issuer_key": "SBFG",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.339Z",
+      "collected_at": "2026-07-11T14:41:34.490Z",
       "payout": 37.3474,
       "graham_price": 20.85294565126757,
       "upside": 103.4433722074885,
@@ -2380,9 +2286,7 @@ window.INVEST_DATA = {
       "overall_score": 6.45,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "24/04/2026",
-      "data_pagamento": "31/12/2026"
+      "payout_is_estimated": true
     },
     {
       "ticker": "CLSC4",
@@ -2402,7 +2306,7 @@ window.INVEST_DATA = {
       "issuer_key": "CLSC",
       "share_class": "4",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.339Z",
+      "collected_at": "2026-07-11T14:41:34.490Z",
       "payout": 64.51859999999999,
       "graham_price": 213.50013174318303,
       "upside": 54.151719670168255,
@@ -2426,9 +2330,7 @@ window.INVEST_DATA = {
       "overall_score": 6.45,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "30/06/2026",
-      "data_pagamento": "30/12/2027"
+      "payout_is_estimated": true
     },
     {
       "ticker": "MOVI3",
@@ -2448,7 +2350,7 @@ window.INVEST_DATA = {
       "issuer_key": "MOVI",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.343Z",
+      "collected_at": "2026-07-11T14:41:34.495Z",
       "payout": 71.73949999999999,
       "graham_price": 12.434054755547363,
       "upside": 37.849830992764566,
@@ -2474,9 +2376,7 @@ window.INVEST_DATA = {
       "overall_score": 6.45,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": "19/12/2025",
-      "data_pagamento": "Provisionado"
+      "payout_is_estimated": true
     },
     {
       "ticker": "SUZB3",
@@ -2496,7 +2396,7 @@ window.INVEST_DATA = {
       "issuer_key": "SUZB",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.334Z",
+      "collected_at": "2026-07-11T14:41:34.485Z",
       "payout": 0.046200000000000005,
       "graham_price": 87.82700042048302,
       "upside": 111.37665564496515,
@@ -2520,9 +2420,7 @@ window.INVEST_DATA = {
       "overall_score": 6.35,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "COCE5",
@@ -2542,7 +2440,7 @@ window.INVEST_DATA = {
       "issuer_key": "COCE",
       "share_class": "5",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.335Z",
+      "collected_at": "2026-07-11T14:41:34.486Z",
       "payout": 25.382,
       "graham_price": 92.11282009432277,
       "upside": 204.00270658192335,
@@ -2568,9 +2466,7 @@ window.INVEST_DATA = {
       "overall_score": 6.3,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "UGPA3",
@@ -2590,7 +2486,7 @@ window.INVEST_DATA = {
       "issuer_key": "UGPA",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.345Z",
+      "collected_at": "2026-07-11T14:41:34.497Z",
       "payout": 48.391200000000005,
       "graham_price": 29.862516023431965,
       "upside": -2.7596352216477884,
@@ -2614,9 +2510,7 @@ window.INVEST_DATA = {
       "overall_score": 6.25,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "ALUP11",
@@ -2636,7 +2530,7 @@ window.INVEST_DATA = {
       "issuer_key": "ALUP",
       "share_class": "11",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.343Z",
+      "collected_at": "2026-07-11T14:41:34.495Z",
       "payout": 31.8902,
       "graham_price": 46.25235952587421,
       "upside": 35.95637720715523,
@@ -2662,9 +2556,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "EVEN3",
@@ -2684,7 +2576,7 @@ window.INVEST_DATA = {
       "issuer_key": "EVEN",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.335Z",
+      "collected_at": "2026-07-11T14:41:34.486Z",
       "payout": 84.747,
       "graham_price": 15.370285708568716,
       "upside": 168.2423334828746,
@@ -2713,9 +2605,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "SAPR3",
@@ -2735,7 +2625,7 @@ window.INVEST_DATA = {
       "issuer_key": "SAPR",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.343Z",
+      "collected_at": "2026-07-11T14:41:34.496Z",
       "payout": 12.576,
       "graham_price": 12.378203579400054,
       "upside": 45.797450876325726,
@@ -2759,9 +2649,7 @@ window.INVEST_DATA = {
       "overall_score": 6.15,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "VAMO3",
@@ -2781,7 +2669,7 @@ window.INVEST_DATA = {
       "issuer_key": "VAMO",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.345Z",
+      "collected_at": "2026-07-11T14:41:34.498Z",
       "payout": 49.491200000000006,
       "graham_price": 3.468683320838493,
       "upside": 13.355664079689314,
@@ -2807,9 +2695,7 @@ window.INVEST_DATA = {
       "overall_score": 6.1,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "MDIA3",
@@ -2829,7 +2715,7 @@ window.INVEST_DATA = {
       "issuer_key": "MDIA",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.341Z",
+      "collected_at": "2026-07-11T14:41:34.493Z",
       "payout": 51.3912,
       "graham_price": 33.745991266895295,
       "upside": 87.79071378350193,
@@ -2857,9 +2743,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_OR_UNRELIABLE_DEBT_RATIO"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "FLRY3",
@@ -2879,7 +2763,7 @@ window.INVEST_DATA = {
       "issuer_key": "FLRY",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.346Z",
+      "collected_at": "2026-07-11T14:41:34.500Z",
       "payout": 92.9655,
       "graham_price": 15.742117161998586,
       "upside": -4.128397308169403,
@@ -2906,9 +2790,7 @@ window.INVEST_DATA = {
       "overall_score": 5.9,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "PNVL3",
@@ -2928,7 +2810,7 @@ window.INVEST_DATA = {
       "issuer_key": "PNVL",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.345Z",
+      "collected_at": "2026-07-11T14:41:34.499Z",
       "payout": 37.3644,
       "graham_price": 13.069276398826668,
       "upside": 15.657313263952807,
@@ -2952,9 +2834,7 @@ window.INVEST_DATA = {
       "overall_score": 5.85,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "MATD3",
@@ -2974,7 +2854,7 @@ window.INVEST_DATA = {
       "issuer_key": "MATD",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.346Z",
+      "collected_at": "2026-07-11T14:41:34.499Z",
       "payout": 40.554399999999994,
       "graham_price": 6.11766860173501,
       "upside": 26.39811160609526,
@@ -2998,9 +2878,7 @@ window.INVEST_DATA = {
       "overall_score": 5.8,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "DEXP3",
@@ -3020,7 +2898,7 @@ window.INVEST_DATA = {
       "issuer_key": "DEXP",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.337Z",
+      "collected_at": "2026-07-11T14:41:34.488Z",
       "payout": 42.839999999999996,
       "graham_price": 14.963541125856874,
       "upside": 104.98001542269692,
@@ -3050,9 +2928,7 @@ window.INVEST_DATA = {
         "NEGATIVE_OR_UNRELIABLE_DEBT_RATIO",
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "CAML3",
@@ -3072,7 +2948,7 @@ window.INVEST_DATA = {
       "issuer_key": "CAML",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.345Z",
+      "collected_at": "2026-07-11T14:41:34.498Z",
       "payout": 69.1939,
       "graham_price": 9.057013156813074,
       "upside": 67.103563778839,
@@ -3096,9 +2972,7 @@ window.INVEST_DATA = {
       "overall_score": 5.55,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "POMO4",
@@ -3118,7 +2992,7 @@ window.INVEST_DATA = {
       "issuer_key": "POMO",
       "share_class": "4",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.336Z",
+      "collected_at": "2026-07-11T14:41:34.487Z",
       "payout": 94.575,
       "graham_price": 8.538456763927696,
       "upside": 46.961390084814056,
@@ -3150,9 +3024,7 @@ window.INVEST_DATA = {
       "warnings": [
         "DUPLICATE_ISSUER_SHARE_CLASS"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "PETR3",
@@ -3172,7 +3044,7 @@ window.INVEST_DATA = {
       "issuer_key": "PETR",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.335Z",
+      "collected_at": "2026-07-11T14:41:34.486Z",
       "payout": 35.5488,
       "graham_price": 80.55313363509433,
       "upside": 82.28815033965677,
@@ -3202,9 +3074,7 @@ window.INVEST_DATA = {
         "NEGATIVE_FIVE_YEAR_GROWTH",
         "DUPLICATE_ISSUER_SHARE_CLASS"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "CMIG3",
@@ -3224,7 +3094,7 @@ window.INVEST_DATA = {
       "issuer_key": "CMIG",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.343Z",
+      "collected_at": "2026-07-11T14:41:34.495Z",
       "payout": 62.464,
       "graham_price": 19.62259734493372,
       "upside": 18.924832393537695,
@@ -3252,9 +3122,7 @@ window.INVEST_DATA = {
       "warnings": [
         "DUPLICATE_ISSUER_SHARE_CLASS"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "CYRE4",
@@ -3274,7 +3142,7 @@ window.INVEST_DATA = {
       "issuer_key": "CYRE",
       "share_class": "4",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.335Z",
+      "collected_at": "2026-07-11T14:41:34.485Z",
       "payout": 0,
       "graham_price": 47.88242509141636,
       "upside": 122.50197533186041,
@@ -3303,9 +3171,7 @@ window.INVEST_DATA = {
       "warnings": [
         "DUPLICATE_ISSUER_SHARE_CLASS"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "TAEE11",
@@ -3325,7 +3191,7 @@ window.INVEST_DATA = {
       "issuer_key": "TAEE",
       "share_class": "11",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.342Z",
+      "collected_at": "2026-07-11T14:41:34.494Z",
       "payout": 71.9712,
       "graham_price": 48.606584640508395,
       "upside": 16.36721245034329,
@@ -3353,9 +3219,7 @@ window.INVEST_DATA = {
       "warnings": [
         "DUPLICATE_ISSUER_SHARE_CLASS"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "TAEE4",
@@ -3375,7 +3239,7 @@ window.INVEST_DATA = {
       "issuer_key": "TAEE",
       "share_class": "4",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.342Z",
+      "collected_at": "2026-07-11T14:41:34.494Z",
       "payout": 71.944,
       "graham_price": 16.227195791549025,
       "upside": 16.240657532586138,
@@ -3403,9 +3267,7 @@ window.INVEST_DATA = {
       "warnings": [
         "DUPLICATE_ISSUER_SHARE_CLASS"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "MULT3",
@@ -3425,7 +3287,7 @@ window.INVEST_DATA = {
       "issuer_key": "MULT",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.345Z",
+      "collected_at": "2026-07-11T14:41:34.498Z",
       "payout": 47.1541,
       "graham_price": 26.014299519770415,
       "upside": -14.11588141376555,
@@ -3453,9 +3315,7 @@ window.INVEST_DATA = {
       "overall_score": 6.55,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "TFCO4",
@@ -3475,7 +3335,7 @@ window.INVEST_DATA = {
       "issuer_key": "TFCO",
       "share_class": "4",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.348Z",
+      "collected_at": "2026-07-11T14:41:34.517Z",
       "payout": 33.99209999999999,
       "graham_price": 9.007653630660275,
       "upside": -40.38614407240056,
@@ -3502,9 +3362,7 @@ window.INVEST_DATA = {
       "overall_score": 6.55,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "SBSP3",
@@ -3524,7 +3382,7 @@ window.INVEST_DATA = {
       "issuer_key": "SBSP",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.345Z",
+      "collected_at": "2026-07-11T14:41:34.498Z",
       "payout": 27.2552,
       "graham_price": 26.282071334738372,
       "upside": -15.518896384640396,
@@ -3551,9 +3409,7 @@ window.INVEST_DATA = {
       "overall_score": 6.5,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "IGTI11",
@@ -3573,7 +3429,7 @@ window.INVEST_DATA = {
       "issuer_key": "IGTI",
       "share_class": "11",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.344Z",
+      "collected_at": "2026-07-11T14:41:34.497Z",
       "payout": 8.1918,
       "graham_price": 29.772473539638476,
       "upside": 12.010810909098863,
@@ -3597,9 +3453,7 @@ window.INVEST_DATA = {
       "overall_score": 6.4,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "IGTI3",
@@ -3619,7 +3473,7 @@ window.INVEST_DATA = {
       "issuer_key": "IGTI",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.343Z",
+      "collected_at": "2026-07-11T14:41:34.495Z",
       "payout": 8.112,
       "graham_price": 4.261089613625397,
       "upside": 22.445103839810255,
@@ -3643,9 +3497,7 @@ window.INVEST_DATA = {
       "overall_score": 6.25,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "TOTS3",
@@ -3665,7 +3517,7 @@ window.INVEST_DATA = {
       "issuer_key": "TOTS",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.350Z",
+      "collected_at": "2026-07-11T14:41:34.519Z",
       "payout": 43.9472,
       "graham_price": 16.970764021944298,
       "upside": -43.26056829841425,
@@ -3693,9 +3545,7 @@ window.INVEST_DATA = {
       "overall_score": 6.25,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "VBBR3",
@@ -3715,7 +3565,7 @@ window.INVEST_DATA = {
       "issuer_key": "VBBR",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.346Z",
+      "collected_at": "2026-07-11T14:41:34.499Z",
       "payout": 60.141200000000005,
       "graham_price": 31.984646877206274,
       "upside": -3.076827644829474,
@@ -3739,9 +3589,7 @@ window.INVEST_DATA = {
       "overall_score": 5.95,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "GGPS3",
@@ -3761,7 +3609,7 @@ window.INVEST_DATA = {
       "issuer_key": "GGPS",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.347Z",
+      "collected_at": "2026-07-11T14:41:34.500Z",
       "payout": 33.288,
       "graham_price": 10.403870257408158,
       "upside": -18.84656585485056,
@@ -3787,9 +3635,7 @@ window.INVEST_DATA = {
       "overall_score": 5.9,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "B3SA3",
@@ -3809,7 +3655,7 @@ window.INVEST_DATA = {
       "issuer_key": "B3SA3",
       "share_class": null,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.348Z",
+      "collected_at": "2026-07-11T14:41:34.501Z",
       "payout": 78.814,
       "graham_price": 8.943777923325252,
       "upside": -41.99884615223572,
@@ -3835,9 +3681,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_OR_UNRELIABLE_DEBT_RATIO"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "MOTV3",
@@ -3857,7 +3701,7 @@ window.INVEST_DATA = {
       "issuer_key": "MOTV",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.341Z",
+      "collected_at": "2026-07-11T14:41:34.493Z",
       "payout": 23.296,
       "graham_price": 17.420571262408593,
       "upside": 14.987269058802594,
@@ -3881,9 +3725,7 @@ window.INVEST_DATA = {
       "overall_score": 5.75,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "AURA33",
@@ -3903,7 +3745,7 @@ window.INVEST_DATA = {
       "issuer_key": "AURA",
       "share_class": "33",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.356Z",
+      "collected_at": "2026-07-11T14:41:34.523Z",
       "payout": 67.6062,
       "graham_price": 18.792870689748508,
       "upside": -81.76334722004026,
@@ -3930,9 +3772,7 @@ window.INVEST_DATA = {
       "overall_score": 5.7,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "KEPL3",
@@ -3952,7 +3792,7 @@ window.INVEST_DATA = {
       "issuer_key": "KEPL",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.340Z",
+      "collected_at": "2026-07-11T14:41:34.491Z",
       "payout": 52.647000000000006,
       "graham_price": 9.03661289813874,
       "upside": 36.50472655798701,
@@ -3981,9 +3821,7 @@ window.INVEST_DATA = {
         "NEGATIVE_OR_UNRELIABLE_DEBT_RATIO",
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "TTEN3",
@@ -4003,7 +3841,7 @@ window.INVEST_DATA = {
       "issuer_key": "TTEN",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.344Z",
+      "collected_at": "2026-07-11T14:41:34.497Z",
       "payout": 12.806399999999998,
       "graham_price": 17.459867166231554,
       "upside": 11.138556118596773,
@@ -4029,9 +3867,7 @@ window.INVEST_DATA = {
       "overall_score": 5.45,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "ABEV3",
@@ -4051,7 +3887,7 @@ window.INVEST_DATA = {
       "issuer_key": "ABEV",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.348Z",
+      "collected_at": "2026-07-11T14:41:34.502Z",
       "payout": 91.4171,
       "graham_price": 11.268398255642307,
       "upside": -28.77118675320919,
@@ -4077,9 +3913,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_OR_UNRELIABLE_DEBT_RATIO"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "BRAV3",
@@ -4099,7 +3933,7 @@ window.INVEST_DATA = {
       "issuer_key": "BRAV",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.355Z",
+      "collected_at": "2026-07-11T14:41:34.523Z",
       "payout": 24.6155,
       "graham_price": 16.637122661657,
       "upside": -12.15880326474658,
@@ -4123,9 +3957,7 @@ window.INVEST_DATA = {
       "overall_score": 5.4,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "ANIM3",
@@ -4145,7 +3977,7 @@ window.INVEST_DATA = {
       "issuer_key": "ANIM",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.341Z",
+      "collected_at": "2026-07-11T14:41:34.492Z",
       "payout": 23.387300000000003,
       "graham_price": 6.620178780934933,
       "upside": 130.66825020679207,
@@ -4171,9 +4003,7 @@ window.INVEST_DATA = {
       "overall_score": 5.35,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "DMVF3",
@@ -4193,7 +4023,7 @@ window.INVEST_DATA = {
       "issuer_key": "DMVF",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.347Z",
+      "collected_at": "2026-07-11T14:41:34.501Z",
       "payout": 0,
       "graham_price": 13.85642047934417,
       "upside": 97.10413199636086,
@@ -4217,9 +4047,7 @@ window.INVEST_DATA = {
       "overall_score": 5.35,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "ESPA3",
@@ -4239,7 +4067,7 @@ window.INVEST_DATA = {
       "issuer_key": "ESPA",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.349Z",
+      "collected_at": "2026-07-11T14:41:34.518Z",
       "payout": 86.7181,
       "graham_price": 15.418458411820186,
       "upside": 89.1835387953397,
@@ -4263,9 +4091,7 @@ window.INVEST_DATA = {
       "overall_score": 5.35,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "RADL3",
@@ -4285,7 +4111,7 @@ window.INVEST_DATA = {
       "issuer_key": "RADL",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.353Z",
+      "collected_at": "2026-07-11T14:41:34.521Z",
       "payout": 59.5764,
       "graham_price": 8.336568538042453,
       "upside": -55.58567640893738,
@@ -4311,9 +4137,7 @@ window.INVEST_DATA = {
       "overall_score": 5.35,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "SHUL4",
@@ -4333,7 +4157,7 @@ window.INVEST_DATA = {
       "issuer_key": "SHUL",
       "share_class": "4",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.337Z",
+      "collected_at": "2026-07-11T14:41:34.488Z",
       "payout": 82.9162,
       "graham_price": 8.596130823169803,
       "upside": 85.26144015452162,
@@ -4362,9 +4186,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_OR_UNRELIABLE_DEBT_RATIO"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "ROMI3",
@@ -4384,7 +4206,7 @@ window.INVEST_DATA = {
       "issuer_key": "ROMI",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.339Z",
+      "collected_at": "2026-07-11T14:41:34.490Z",
       "payout": 50.4972,
       "graham_price": 15.72076332067795,
       "upside": 153.15238841671416,
@@ -4413,9 +4235,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "VITT3",
@@ -4435,7 +4255,7 @@ window.INVEST_DATA = {
       "issuer_key": "VITT",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.341Z",
+      "collected_at": "2026-07-11T14:41:34.492Z",
       "payout": 68.42150000000001,
       "graham_price": 5.947749367899811,
       "upside": 74.93380493822974,
@@ -4464,9 +4284,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "MYPK3",
@@ -4486,7 +4304,7 @@ window.INVEST_DATA = {
       "issuer_key": "MYPK",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.347Z",
+      "collected_at": "2026-07-11T14:41:34.501Z",
       "payout": 51.711,
       "graham_price": 18.877246678347046,
       "upside": 102.54556521831593,
@@ -4512,9 +4330,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "CSMG3",
@@ -4534,7 +4350,7 @@ window.INVEST_DATA = {
       "issuer_key": "CSMG",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.350Z",
+      "collected_at": "2026-07-11T14:41:34.519Z",
       "payout": 61.30080000000001,
       "graham_price": 43.044852235251625,
       "upside": -36.18257637471961,
@@ -4560,9 +4376,7 @@ window.INVEST_DATA = {
       "overall_score": 5.25,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "FRAS3",
@@ -4582,7 +4396,7 @@ window.INVEST_DATA = {
       "issuer_key": "FRAS",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.352Z",
+      "collected_at": "2026-07-11T14:41:34.520Z",
       "payout": 40.437599999999996,
       "graham_price": 13.201079599099296,
       "upside": -37.13771619476526,
@@ -4608,9 +4422,7 @@ window.INVEST_DATA = {
       "overall_score": 5.25,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "DESK3",
@@ -4630,7 +4442,7 @@ window.INVEST_DATA = {
       "issuer_key": "DESK",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.355Z",
+      "collected_at": "2026-07-11T14:41:34.522Z",
       "payout": 27.7078,
       "graham_price": 12.0952909897588,
       "upside": -32.466270297270796,
@@ -4654,9 +4466,7 @@ window.INVEST_DATA = {
       "overall_score": 5.25,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "EGIE3",
@@ -4676,7 +4486,7 @@ window.INVEST_DATA = {
       "issuer_key": "EGIE",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.347Z",
+      "collected_at": "2026-07-11T14:41:34.501Z",
       "payout": 53.6705,
       "graham_price": 24.53165228828774,
       "upside": -26.945645359476643,
@@ -4700,9 +4510,7 @@ window.INVEST_DATA = {
       "overall_score": 5.15,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "MTSA4",
@@ -4722,7 +4530,7 @@ window.INVEST_DATA = {
       "issuer_key": "MTSA",
       "share_class": "4",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.344Z",
+      "collected_at": "2026-07-11T14:41:34.497Z",
       "payout": 79.60379999999999,
       "graham_price": 72.42639813034769,
       "upside": 50.88832943822435,
@@ -4749,9 +4557,7 @@ window.INVEST_DATA = {
         "NEGATIVE_OR_UNRELIABLE_DEBT_RATIO",
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "MGLU3",
@@ -4771,7 +4577,7 @@ window.INVEST_DATA = {
       "issuer_key": "MGLU",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.354Z",
+      "collected_at": "2026-07-11T14:41:34.521Z",
       "payout": 46.254,
       "graham_price": 7.578760149014483,
       "upside": 45.18697603476022,
@@ -4795,9 +4601,7 @@ window.INVEST_DATA = {
       "overall_score": 5.1,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "ITSA3",
@@ -4817,7 +4621,7 @@ window.INVEST_DATA = {
       "issuer_key": "ITSA",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.342Z",
+      "collected_at": "2026-07-11T14:41:34.494Z",
       "payout": 86.4896,
       "graham_price": 16.572624576282816,
       "upside": 17.453044481097216,
@@ -4845,9 +4649,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "ITSA4",
@@ -4867,7 +4669,7 @@ window.INVEST_DATA = {
       "issuer_key": "ITSA",
       "share_class": "4",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.342Z",
+      "collected_at": "2026-07-11T14:41:34.494Z",
       "payout": 86.4864,
       "graham_price": 16.5602485605248,
       "upside": 16.868373751057174,
@@ -4895,9 +4697,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "BRST3",
@@ -4917,7 +4717,7 @@ window.INVEST_DATA = {
       "issuer_key": "BRST",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.354Z",
+      "collected_at": "2026-07-11T14:41:34.521Z",
       "payout": 45.6288,
       "graham_price": 2.6992377107016545,
       "upside": -3.598653189226618,
@@ -4941,9 +4741,7 @@ window.INVEST_DATA = {
       "overall_score": 5.05,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "ASAI3",
@@ -4963,7 +4761,7 @@ window.INVEST_DATA = {
       "issuer_key": "ASAI",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.348Z",
+      "collected_at": "2026-07-11T14:41:34.518Z",
       "payout": 20.237,
       "graham_price": 7.113244438470656,
       "upside": -19.805586939451448,
@@ -4989,9 +4787,7 @@ window.INVEST_DATA = {
       "overall_score": 5,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "SMFT3",
@@ -5011,7 +4807,7 @@ window.INVEST_DATA = {
       "issuer_key": "SMFT",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.350Z",
+      "collected_at": "2026-07-11T14:41:34.519Z",
       "payout": 90.15299999999999,
       "graham_price": 15.572913617179625,
       "upside": -26.43876420793754,
@@ -5037,9 +4833,7 @@ window.INVEST_DATA = {
       "overall_score": 5,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "GOAU4",
@@ -5059,7 +4853,7 @@ window.INVEST_DATA = {
       "issuer_key": "GOAU",
       "share_class": "4",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.352Z",
+      "collected_at": "2026-07-11T14:41:34.520Z",
       "payout": 76.67519999999999,
       "graham_price": 11.768797608564801,
       "upside": 15.26736149426837,
@@ -5085,9 +4879,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "OPCT3",
@@ -5107,7 +4899,7 @@ window.INVEST_DATA = {
       "issuer_key": "OPCT",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.349Z",
+      "collected_at": "2026-07-11T14:41:34.518Z",
       "payout": 15.978799999999998,
       "graham_price": 8.290020197575576,
       "upside": -26.63698940198606,
@@ -5133,9 +4925,7 @@ window.INVEST_DATA = {
       "overall_score": 4.9,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "QUAL3",
@@ -5155,7 +4945,7 @@ window.INVEST_DATA = {
       "issuer_key": "QUAL",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.354Z",
+      "collected_at": "2026-07-11T14:41:34.521Z",
       "payout": 16.8964,
       "graham_price": 2.361714255570568,
       "upside": 38.11194477020865,
@@ -5183,9 +4973,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "VVEO3",
@@ -5205,7 +4993,7 @@ window.INVEST_DATA = {
       "issuer_key": "VVEO",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.342Z",
+      "collected_at": "2026-07-11T14:41:34.494Z",
       "payout": 0,
       "graham_price": 2.8789052151981727,
       "upside": 387.9500364742666,
@@ -5231,9 +5019,7 @@ window.INVEST_DATA = {
       "overall_score": 4.85,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "ENGI11",
@@ -5253,7 +5039,7 @@ window.INVEST_DATA = {
       "issuer_key": "ENGI",
       "share_class": "11",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.346Z",
+      "collected_at": "2026-07-11T14:41:34.500Z",
       "payout": 40.8184,
       "graham_price": 57.512352681703064,
       "upside": 10.346033541256842,
@@ -5277,9 +5063,7 @@ window.INVEST_DATA = {
       "overall_score": 4.85,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "AXIA3",
@@ -5299,7 +5083,7 @@ window.INVEST_DATA = {
       "issuer_key": "AXIA",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.348Z",
+      "collected_at": "2026-07-11T14:41:34.517Z",
       "payout": 88.18430000000001,
       "graham_price": 54.8431989532273,
       "upside": 1.5050878275537658,
@@ -5323,9 +5107,7 @@ window.INVEST_DATA = {
       "overall_score": 4.85,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "AXIA6",
@@ -5345,7 +5127,7 @@ window.INVEST_DATA = {
       "issuer_key": "AXIA",
       "share_class": "6",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.348Z",
+      "collected_at": "2026-07-11T14:41:34.518Z",
       "payout": 97.0644,
       "graham_price": 54.69024634948013,
       "upside": -1.9536637693077705,
@@ -5369,9 +5151,7 @@ window.INVEST_DATA = {
       "overall_score": 4.85,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "SAUD3",
@@ -5391,7 +5171,7 @@ window.INVEST_DATA = {
       "issuer_key": "SAUD",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.357Z",
+      "collected_at": "2026-07-11T14:41:34.525Z",
       "payout": 55.979,
       "graham_price": 1.4590041023384872,
       "upside": -90.55660775185446,
@@ -5419,9 +5199,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_OR_UNRELIABLE_DEBT_RATIO"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "GOAU3",
@@ -5441,7 +5219,7 @@ window.INVEST_DATA = {
       "issuer_key": "GOAU",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.351Z",
+      "collected_at": "2026-07-11T14:41:34.520Z",
       "payout": 76.4959,
       "graham_price": 11.850143815472487,
       "upside": 28.805911037744437,
@@ -5467,9 +5245,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "ETER3",
@@ -5489,7 +5265,7 @@ window.INVEST_DATA = {
       "issuer_key": "ETER",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.335Z",
+      "collected_at": "2026-07-11T14:41:34.485Z",
       "payout": 22.2156,
       "graham_price": 15.157671909286174,
       "upside": 307.46429863672506,
@@ -5517,9 +5293,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "PASS3",
@@ -5539,7 +5313,7 @@ window.INVEST_DATA = {
       "issuer_key": "PASS",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.347Z",
+      "collected_at": "2026-07-11T14:41:34.500Z",
       "payout": 73.2578,
       "graham_price": 17.66725745180211,
       "upside": -30.716637443913285,
@@ -5565,9 +5339,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "PRNR3",
@@ -5587,7 +5359,7 @@ window.INVEST_DATA = {
       "issuer_key": "PRNR",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.353Z",
+      "collected_at": "2026-07-11T14:41:34.521Z",
       "payout": 0,
       "graham_price": 12.722933106600985,
       "upside": -33.70019225325178,
@@ -5611,9 +5383,7 @@ window.INVEST_DATA = {
       "overall_score": 4.65,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "EMBJ3",
@@ -5633,7 +5403,7 @@ window.INVEST_DATA = {
       "issuer_key": "EMBJ",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.355Z",
+      "collected_at": "2026-07-11T14:41:34.522Z",
       "payout": 42.89679999999999,
       "graham_price": 34.58816139889248,
       "upside": -59.115648464666094,
@@ -5657,9 +5427,7 @@ window.INVEST_DATA = {
       "overall_score": 4.65,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "RAIL3",
@@ -5679,7 +5447,7 @@ window.INVEST_DATA = {
       "issuer_key": "RAIL",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.353Z",
+      "collected_at": "2026-07-11T14:41:34.521Z",
       "payout": 19.245,
       "graham_price": 9.704356861165724,
       "upside": -32.420913223079914,
@@ -5703,9 +5471,7 @@ window.INVEST_DATA = {
       "overall_score": 4.55,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "BRBI11",
@@ -5725,7 +5491,7 @@ window.INVEST_DATA = {
       "issuer_key": "BRBI",
       "share_class": "11",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.342Z",
+      "collected_at": "2026-07-11T14:41:34.494Z",
       "payout": 96.6082,
       "graham_price": 16.567321066513887,
       "upside": 8.07123983375008,
@@ -5752,9 +5518,7 @@ window.INVEST_DATA = {
         "NEGATIVE_OR_UNRELIABLE_DEBT_RATIO",
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "PRIO3",
@@ -5774,7 +5538,7 @@ window.INVEST_DATA = {
       "issuer_key": "PRIO",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.350Z",
+      "collected_at": "2026-07-11T14:41:34.519Z",
       "payout": 0,
       "graham_price": 45.109569203206206,
       "upside": -18.648207027581236,
@@ -5798,9 +5562,7 @@ window.INVEST_DATA = {
       "overall_score": 4.25,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "JALL3",
@@ -5820,7 +5582,7 @@ window.INVEST_DATA = {
       "issuer_key": "JALL",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.357Z",
+      "collected_at": "2026-07-11T14:41:34.525Z",
       "payout": 0,
       "graham_price": 2.1627172432044683,
       "upside": 4.98627394196448,
@@ -5844,9 +5606,7 @@ window.INVEST_DATA = {
       "overall_score": 4.25,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "GGBR3",
@@ -5866,7 +5626,7 @@ window.INVEST_DATA = {
       "issuer_key": "GGBR",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.352Z",
+      "collected_at": "2026-07-11T14:41:34.520Z",
       "payout": 83.22540000000001,
       "graham_price": 22.23579902128932,
       "upside": 14.49948002723645,
@@ -5892,9 +5652,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "ENEV3",
@@ -5914,7 +5672,7 @@ window.INVEST_DATA = {
       "issuer_key": "ENEV",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.355Z",
+      "collected_at": "2026-07-11T14:41:34.523Z",
       "payout": 0,
       "graham_price": 12.581112489095847,
       "upside": -54.33352998513305,
@@ -5938,9 +5696,7 @@ window.INVEST_DATA = {
       "overall_score": 4.05,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "GGBR4",
@@ -5960,7 +5716,7 @@ window.INVEST_DATA = {
       "issuer_key": "GGBR",
       "share_class": "4",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.353Z",
+      "collected_at": "2026-07-11T14:41:34.521Z",
       "payout": 83.3014,
       "graham_price": 22.169591732460457,
       "upside": -3.6523610062561684,
@@ -5986,9 +5742,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "ALPK3",
@@ -6008,7 +5762,7 @@ window.INVEST_DATA = {
       "issuer_key": "ALPK",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.357Z",
+      "collected_at": "2026-07-11T14:41:34.525Z",
       "payout": 12.287600000000001,
       "graham_price": 1.5143810403713678,
       "upside": -66.04526815310835,
@@ -6032,9 +5786,7 @@ window.INVEST_DATA = {
       "overall_score": 3.9,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "CBAV3",
@@ -6054,7 +5806,7 @@ window.INVEST_DATA = {
       "issuer_key": "CBAV",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.356Z",
+      "collected_at": "2026-07-11T14:41:34.524Z",
       "payout": 23.5586,
       "graham_price": 5.486714321156882,
       "upside": -49.24408583573653,
@@ -6078,9 +5830,7 @@ window.INVEST_DATA = {
       "overall_score": 3.8,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "ORVR3",
@@ -6100,7 +5850,7 @@ window.INVEST_DATA = {
       "issuer_key": "ORVR",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.358Z",
+      "collected_at": "2026-07-11T14:41:34.525Z",
       "payout": 0,
       "graham_price": 12.190033975879077,
       "upside": -84.4316296604354,
@@ -6124,9 +5874,7 @@ window.INVEST_DATA = {
       "overall_score": 3.8,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "MLAS3",
@@ -6146,7 +5894,7 @@ window.INVEST_DATA = {
       "issuer_key": "MLAS",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.340Z",
+      "collected_at": "2026-07-11T14:41:34.491Z",
       "payout": 22.892,
       "graham_price": 4.340604855946221,
       "upside": 153.83654128340476,
@@ -6175,9 +5923,7 @@ window.INVEST_DATA = {
         "NEGATIVE_OR_UNRELIABLE_DEBT_RATIO",
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "BIOM3",
@@ -6197,7 +5943,7 @@ window.INVEST_DATA = {
       "issuer_key": "BIOM",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.355Z",
+      "collected_at": "2026-07-11T14:41:34.522Z",
       "payout": 0,
       "graham_price": 3.0593528774609933,
       "upside": -50.65559875062914,
@@ -6221,9 +5967,7 @@ window.INVEST_DATA = {
       "overall_score": 3.7,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "LOGN3",
@@ -6243,7 +5987,7 @@ window.INVEST_DATA = {
       "issuer_key": "LOGN",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.357Z",
+      "collected_at": "2026-07-11T14:41:34.525Z",
       "payout": 0,
       "graham_price": 7.731959286969566,
       "upside": -72.38585968939441,
@@ -6267,9 +6011,7 @@ window.INVEST_DATA = {
       "overall_score": 3.55,
       "blockers": [],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "DXCO3",
@@ -6289,7 +6031,7 @@ window.INVEST_DATA = {
       "issuer_key": "DXCO",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.358Z",
+      "collected_at": "2026-07-11T14:41:34.526Z",
       "payout": 0,
       "graham_price": 1.2606670932428174,
       "upside": -74.73613039593552,
@@ -6315,9 +6057,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "LAND3",
@@ -6337,7 +6077,7 @@ window.INVEST_DATA = {
       "issuer_key": "LAND",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.358Z",
+      "collected_at": "2026-07-11T14:41:34.526Z",
       "payout": 0,
       "graham_price": 2.3104243707864525,
       "upside": -72.9141339884355,
@@ -6363,9 +6103,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "LAVV3",
@@ -6385,7 +6123,7 @@ window.INVEST_DATA = {
       "issuer_key": "LAVV",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.336Z",
+      "collected_at": "2026-07-11T14:41:34.487Z",
       "payout": 126.6102,
       "graham_price": 17.890797778782538,
       "upside": 57.7671761797402,
@@ -6415,9 +6153,7 @@ window.INVEST_DATA = {
       "warnings": [
         "UNSUSTAINABLE_OR_NON_RECURRING_PAYOUT"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "TGMA3",
@@ -6437,7 +6173,7 @@ window.INVEST_DATA = {
       "issuer_key": "TGMA",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.340Z",
+      "collected_at": "2026-07-11T14:41:34.492Z",
       "payout": 106.55260000000001,
       "graham_price": 33.4718889003472,
       "upside": 9.636059287085494,
@@ -6468,9 +6204,7 @@ window.INVEST_DATA = {
       "warnings": [
         "UNSUSTAINABLE_OR_NON_RECURRING_PAYOUT"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "VULC3",
@@ -6490,7 +6224,7 @@ window.INVEST_DATA = {
       "issuer_key": "VULC",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.334Z",
+      "collected_at": "2026-07-11T14:41:34.484Z",
       "payout": 116.076,
       "graham_price": 25.173991314642127,
       "upside": 72.1887230823675,
@@ -6522,9 +6256,7 @@ window.INVEST_DATA = {
         "EXTREME_TRAILING_YIELD",
         "UNSUSTAINABLE_OR_NON_RECURRING_PAYOUT"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "RIAA3",
@@ -6544,7 +6276,7 @@ window.INVEST_DATA = {
       "issuer_key": "RIAA",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.333Z",
+      "collected_at": "2026-07-11T14:41:34.483Z",
       "payout": 111.81299999999999,
       "graham_price": 26.79866796412021,
       "upside": 192.8816170942099,
@@ -6575,9 +6307,7 @@ window.INVEST_DATA = {
         "EXTREME_TRAILING_YIELD",
         "UNSUSTAINABLE_OR_NON_RECURRING_PAYOUT"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "FIQE3",
@@ -6597,7 +6327,7 @@ window.INVEST_DATA = {
       "issuer_key": "FIQE",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.344Z",
+      "collected_at": "2026-07-11T14:41:34.496Z",
       "payout": 126.50880000000001,
       "graham_price": 6.074538415439587,
       "upside": 2.9582782277896067,
@@ -6627,9 +6357,7 @@ window.INVEST_DATA = {
       "warnings": [
         "UNSUSTAINABLE_OR_NON_RECURRING_PAYOUT"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "HBRE3",
@@ -6649,7 +6377,7 @@ window.INVEST_DATA = {
       "issuer_key": "HBRE",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.340Z",
+      "collected_at": "2026-07-11T14:41:34.491Z",
       "payout": 401.3064,
       "graham_price": 10.751890385097257,
       "upside": 367.4734950042286,
@@ -6680,9 +6408,7 @@ window.INVEST_DATA = {
         "EXTREME_TRAILING_YIELD",
         "UNSUSTAINABLE_OR_NON_RECURRING_PAYOUT"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "TRIS3",
@@ -6702,7 +6428,7 @@ window.INVEST_DATA = {
       "issuer_key": "TRIS",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.336Z",
+      "collected_at": "2026-07-11T14:41:34.487Z",
       "payout": 108.8288,
       "graham_price": 10.412695879616452,
       "upside": 132.94621654622935,
@@ -6733,9 +6459,7 @@ window.INVEST_DATA = {
       "warnings": [
         "UNSUSTAINABLE_OR_NON_RECURRING_PAYOUT"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "CURY3",
@@ -6755,7 +6479,7 @@ window.INVEST_DATA = {
       "issuer_key": "CURY",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.343Z",
+      "collected_at": "2026-07-11T14:41:34.495Z",
       "payout": 121.473,
       "graham_price": 19.74851974852962,
       "upside": -42.27266954536796,
@@ -6787,9 +6511,7 @@ window.INVEST_DATA = {
         "UNSUSTAINABLE_OR_NON_RECURRING_PAYOUT",
         "NEGATIVE_OR_UNRELIABLE_DEBT_RATIO"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "RDOR3",
@@ -6809,7 +6531,7 @@ window.INVEST_DATA = {
       "issuer_key": "RDOR",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.349Z",
+      "collected_at": "2026-07-11T14:41:34.518Z",
       "payout": 210.80880000000002,
       "graham_price": 20.231783633342975,
       "upside": -43.831805570952326,
@@ -6839,9 +6561,7 @@ window.INVEST_DATA = {
       "warnings": [
         "UNSUSTAINABLE_OR_NON_RECURRING_PAYOUT"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "ALLD3",
@@ -6861,7 +6581,7 @@ window.INVEST_DATA = {
       "issuer_key": "ALLD",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.332Z",
+      "collected_at": "2026-07-11T14:41:34.482Z",
       "payout": 84.62599999999999,
       "graham_price": 35.93962099043388,
       "upside": 669.5850319150724,
@@ -6892,9 +6612,7 @@ window.INVEST_DATA = {
         "EXTREME_TRAILING_YIELD",
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "ALPA4",
@@ -6914,7 +6632,7 @@ window.INVEST_DATA = {
       "issuer_key": "ALPA",
       "share_class": "4",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.346Z",
+      "collected_at": "2026-07-11T14:41:34.499Z",
       "payout": 198.1056,
       "graham_price": 10.151504037942612,
       "upside": -16.65431824349251,
@@ -6942,9 +6660,7 @@ window.INVEST_DATA = {
       "warnings": [
         "UNSUSTAINABLE_OR_NON_RECURRING_PAYOUT"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "LOGG3",
@@ -6964,7 +6680,7 @@ window.INVEST_DATA = {
       "issuer_key": "LOGG",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.336Z",
+      "collected_at": "2026-07-11T14:41:34.488Z",
       "payout": 151.88039999999998,
       "graham_price": 66.34487449105778,
       "upside": 146.45198547941226,
@@ -6995,9 +6711,7 @@ window.INVEST_DATA = {
         "EXTREME_TRAILING_YIELD",
         "UNSUSTAINABLE_OR_NON_RECURRING_PAYOUT"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "CMIN3",
@@ -7017,7 +6731,7 @@ window.INVEST_DATA = {
       "issuer_key": "CMIN",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.345Z",
+      "collected_at": "2026-07-11T14:41:34.498Z",
       "payout": 265.3742,
       "graham_price": 3.4708516181685436,
       "upside": -33.63572431800108,
@@ -7047,9 +6761,7 @@ window.INVEST_DATA = {
       "warnings": [
         "UNSUSTAINABLE_OR_NON_RECURRING_PAYOUT"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "SYNE3",
@@ -7069,7 +6781,7 @@ window.INVEST_DATA = {
       "issuer_key": "SYNE",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.343Z",
+      "collected_at": "2026-07-11T14:41:34.495Z",
       "payout": 600.6469999999999,
       "graham_price": 6.611266823378179,
       "upside": 52.333336944197676,
@@ -7099,9 +6811,7 @@ window.INVEST_DATA = {
         "UNSUSTAINABLE_OR_NON_RECURRING_PAYOUT",
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "BMOB3",
@@ -7121,7 +6831,7 @@ window.INVEST_DATA = {
       "issuer_key": "BMOB",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.345Z",
+      "collected_at": "2026-07-11T14:41:34.499Z",
       "payout": 114.432,
       "graham_price": 21.838813819951394,
       "upside": -8.509368161075018,
@@ -7151,9 +6861,7 @@ window.INVEST_DATA = {
         "UNSUSTAINABLE_OR_NON_RECURRING_PAYOUT",
         "NEGATIVE_OR_UNRELIABLE_DEBT_RATIO"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "GRND3",
@@ -7173,7 +6881,7 @@ window.INVEST_DATA = {
       "issuer_key": "GRND",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.335Z",
+      "collected_at": "2026-07-11T14:41:34.486Z",
       "payout": 218.99620000000002,
       "graham_price": 7.440883220215695,
       "upside": 91.28234499269138,
@@ -7204,9 +6912,7 @@ window.INVEST_DATA = {
         "UNSUSTAINABLE_OR_NON_RECURRING_PAYOUT",
         "NEGATIVE_OR_UNRELIABLE_DEBT_RATIO"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "YDUQ3",
@@ -7226,7 +6932,7 @@ window.INVEST_DATA = {
       "issuer_key": "YDUQ",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.350Z",
+      "collected_at": "2026-07-11T14:41:34.519Z",
       "payout": 131.5884,
       "graham_price": 10.306877701166858,
       "upside": 15.160644705774958,
@@ -7252,9 +6958,7 @@ window.INVEST_DATA = {
       "warnings": [
         "UNSUSTAINABLE_OR_NON_RECURRING_PAYOUT"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "RENT3",
@@ -7274,7 +6978,7 @@ window.INVEST_DATA = {
       "issuer_key": "RENT",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.350Z",
+      "collected_at": "2026-07-11T14:41:34.519Z",
       "payout": 102.295,
       "graham_price": 32.45636034818134,
       "upside": -21.030753410750997,
@@ -7300,9 +7004,7 @@ window.INVEST_DATA = {
       "warnings": [
         "UNSUSTAINABLE_OR_NON_RECURRING_PAYOUT"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "ALOS3",
@@ -7322,7 +7024,7 @@ window.INVEST_DATA = {
       "issuer_key": "ALOS",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.349Z",
+      "collected_at": "2026-07-11T14:41:34.518Z",
       "payout": 168.3324,
       "graham_price": 30.7675865041543,
       "upside": 7.204134160816373,
@@ -7351,9 +7053,7 @@ window.INVEST_DATA = {
         "UNSUSTAINABLE_OR_NON_RECURRING_PAYOUT",
         "NEGATIVE_OR_UNRELIABLE_DEBT_RATIO"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "ARML3",
@@ -7373,7 +7073,7 @@ window.INVEST_DATA = {
       "issuer_key": "ARML",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.351Z",
+      "collected_at": "2026-07-11T14:41:34.520Z",
       "payout": 376.3725,
       "graham_price": 3.479113228892249,
       "upside": 6.0705252711051605,
@@ -7401,9 +7101,7 @@ window.INVEST_DATA = {
       "warnings": [
         "UNSUSTAINABLE_OR_NON_RECURRING_PAYOUT"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "SOJA3",
@@ -7423,7 +7121,7 @@ window.INVEST_DATA = {
       "issuer_key": "SOJA",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.355Z",
+      "collected_at": "2026-07-11T14:41:34.522Z",
       "payout": 163.07,
       "graham_price": 6.087054260952819,
       "upside": -1.1841840754412578,
@@ -7449,9 +7147,7 @@ window.INVEST_DATA = {
       "warnings": [
         "UNSUSTAINABLE_OR_NON_RECURRING_PAYOUT"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "WEGE3",
@@ -7471,7 +7167,7 @@ window.INVEST_DATA = {
       "issuer_key": "WEGE",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.354Z",
+      "collected_at": "2026-07-11T14:41:34.521Z",
       "payout": 145.314,
       "graham_price": 11.937419439401475,
       "upside": -74.33364988303273,
@@ -7500,9 +7196,7 @@ window.INVEST_DATA = {
         "UNSUSTAINABLE_OR_NON_RECURRING_PAYOUT",
         "NEGATIVE_OR_UNRELIABLE_DEBT_RATIO"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "VIVT3",
@@ -7522,7 +7216,7 @@ window.INVEST_DATA = {
       "issuer_key": "VIVT",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.349Z",
+      "collected_at": "2026-07-11T14:41:34.518Z",
       "payout": 123.32909999999998,
       "graham_price": 30.928156624345576,
       "upside": -13.487673778054335,
@@ -7550,9 +7244,7 @@ window.INVEST_DATA = {
       "warnings": [
         "UNSUSTAINABLE_OR_NON_RECURRING_PAYOUT"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "VALE3",
@@ -7572,7 +7264,7 @@ window.INVEST_DATA = {
       "issuer_key": "VALE",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.351Z",
+      "collected_at": "2026-07-11T14:41:34.519Z",
       "payout": 159.305,
       "graham_price": 58.40804055030287,
       "upside": -21.261740967507595,
@@ -7601,9 +7293,7 @@ window.INVEST_DATA = {
         "UNSUSTAINABLE_OR_NON_RECURRING_PAYOUT",
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "SLCE3",
@@ -7623,7 +7313,7 @@ window.INVEST_DATA = {
       "issuer_key": "SLCE",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.351Z",
+      "collected_at": "2026-07-11T14:41:34.520Z",
       "payout": 123.86919999999999,
       "graham_price": 12.460245148403443,
       "upside": -11.125212921516097,
@@ -7649,9 +7339,7 @@ window.INVEST_DATA = {
       "warnings": [
         "UNSUSTAINABLE_OR_NON_RECURRING_PAYOUT"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "POSI3",
@@ -7671,7 +7359,7 @@ window.INVEST_DATA = {
       "issuer_key": "POSI",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.356Z",
+      "collected_at": "2026-07-11T14:41:34.524Z",
       "payout": 258.81519999999995,
       "graham_price": 4.147676190176129,
       "upside": 4.47547078529291,
@@ -7698,9 +7386,7 @@ window.INVEST_DATA = {
         "UNSUSTAINABLE_OR_NON_RECURRING_PAYOUT",
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "SCAR3",
@@ -7720,7 +7406,7 @@ window.INVEST_DATA = {
       "issuer_key": "SCAR",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.348Z",
+      "collected_at": "2026-07-11T14:41:34.518Z",
       "payout": 914.3387999999999,
       "graham_price": 17.761949719148728,
       "upside": 36.63038245499021,
@@ -7751,9 +7437,7 @@ window.INVEST_DATA = {
         "UNSUSTAINABLE_OR_NON_RECURRING_PAYOUT",
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "CPLE3",
@@ -7773,7 +7457,7 @@ window.INVEST_DATA = {
       "issuer_key": "CPLE",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.348Z",
+      "collected_at": "2026-07-11T14:41:34.518Z",
       "payout": 116.69039999999998,
       "graham_price": 12.80478634453004,
       "upside": -17.548059597359686,
@@ -7801,9 +7485,7 @@ window.INVEST_DATA = {
       "warnings": [
         "UNSUSTAINABLE_OR_NON_RECURRING_PAYOUT"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "EQTL3",
@@ -7823,7 +7505,7 @@ window.INVEST_DATA = {
       "issuer_key": "EQTL",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.355Z",
+      "collected_at": "2026-07-11T14:41:34.522Z",
       "payout": 128.5766,
       "graham_price": 23.715669722921966,
       "upside": -42.02965112949898,
@@ -7849,9 +7531,7 @@ window.INVEST_DATA = {
       "warnings": [
         "UNSUSTAINABLE_OR_NON_RECURRING_PAYOUT"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "HBOR3",
@@ -7871,7 +7551,7 @@ window.INVEST_DATA = {
       "issuer_key": "HBOR",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.356Z",
+      "collected_at": "2026-07-11T14:41:34.523Z",
       "payout": 317.1108,
       "graham_price": 3.168859753200013,
       "upside": 56.874245207921426,
@@ -7897,9 +7577,7 @@ window.INVEST_DATA = {
       "warnings": [
         "UNSUSTAINABLE_OR_NON_RECURRING_PAYOUT"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "UNIP6",
@@ -7919,7 +7597,7 @@ window.INVEST_DATA = {
       "issuer_key": "UNIP",
       "share_class": "6",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.350Z",
+      "collected_at": "2026-07-11T14:41:34.519Z",
       "payout": 307.2862,
       "graham_price": 35.104002653566326,
       "upside": -44.14637604842272,
@@ -7948,9 +7626,7 @@ window.INVEST_DATA = {
         "UNSUSTAINABLE_OR_NON_RECURRING_PAYOUT",
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "FESA4",
@@ -7970,7 +7646,7 @@ window.INVEST_DATA = {
       "issuer_key": "FESA",
       "share_class": "4",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.346Z",
+      "collected_at": "2026-07-11T14:41:34.499Z",
       "payout": 153.5181,
       "graham_price": 9.749548078297439,
       "upside": 62.49246797162398,
@@ -7998,9 +7674,7 @@ window.INVEST_DATA = {
         "NEGATIVE_OR_UNRELIABLE_DEBT_RATIO",
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "MBRF3",
@@ -8020,7 +7694,7 @@ window.INVEST_DATA = {
       "issuer_key": "MBRF",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.356Z",
+      "collected_at": "2026-07-11T14:41:34.524Z",
       "payout": 631.8578000000001,
       "graham_price": 7.0611080432971844,
       "upside": -54.5909450591821,
@@ -8046,9 +7720,7 @@ window.INVEST_DATA = {
       "warnings": [
         "UNSUSTAINABLE_OR_NON_RECURRING_PAYOUT"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "UNIP3",
@@ -8068,7 +7740,7 @@ window.INVEST_DATA = {
       "issuer_key": "UNIP",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.349Z",
+      "collected_at": "2026-07-11T14:41:34.518Z",
       "payout": 279.4373,
       "graham_price": 35.12100509418076,
       "upside": -41.41617165274269,
@@ -8095,9 +7767,7 @@ window.INVEST_DATA = {
         "UNSUSTAINABLE_OR_NON_RECURRING_PAYOUT",
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "KLBN4",
@@ -8117,7 +7787,7 @@ window.INVEST_DATA = {
       "issuer_key": "KLBN",
       "share_class": "4",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.353Z",
+      "collected_at": "2026-07-11T14:41:34.521Z",
       "payout": 235.6128,
       "graham_price": 1.9747603781987635,
       "upside": -43.416608074534004,
@@ -8143,9 +7813,7 @@ window.INVEST_DATA = {
       "warnings": [
         "UNSUSTAINABLE_OR_NON_RECURRING_PAYOUT"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "KLBN11",
@@ -8165,7 +7833,7 @@ window.INVEST_DATA = {
       "issuer_key": "KLBN",
       "share_class": "11",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.353Z",
+      "collected_at": "2026-07-11T14:41:34.521Z",
       "payout": 235.65239999999997,
       "graham_price": 9.878824175529571,
       "upside": -43.6783114279956,
@@ -8191,9 +7859,7 @@ window.INVEST_DATA = {
       "warnings": [
         "UNSUSTAINABLE_OR_NON_RECURRING_PAYOUT"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "KLBN3",
@@ -8213,7 +7879,7 @@ window.INVEST_DATA = {
       "issuer_key": "KLBN",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.353Z",
+      "collected_at": "2026-07-11T14:41:34.521Z",
       "payout": 235.5741,
       "graham_price": 1.9750735521528473,
       "upside": -43.88995590474865,
@@ -8239,9 +7905,7 @@ window.INVEST_DATA = {
       "warnings": [
         "UNSUSTAINABLE_OR_NON_RECURRING_PAYOUT"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "TIMS3",
@@ -8261,7 +7925,7 @@ window.INVEST_DATA = {
       "issuer_key": "TIMS",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.358Z",
+      "collected_at": "2026-07-11T14:41:34.526Z",
       "payout": 19674.5798,
       "graham_price": 1.3677838670513265,
       "upside": -93.99568100504247,
@@ -8289,9 +7953,7 @@ window.INVEST_DATA = {
         "NEGATIVE_OR_UNRELIABLE_DEBT_RATIO",
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "BRSR6",
@@ -8311,7 +7973,7 @@ window.INVEST_DATA = {
       "issuer_key": "BRSR",
       "share_class": "6",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.333Z",
+      "collected_at": "2026-07-11T14:41:34.483Z",
       "payout": 40.953,
       "graham_price": 49.28584099707517,
       "upside": 240.13692889630894,
@@ -8340,9 +8002,7 @@ window.INVEST_DATA = {
         "NON_POSITIVE_MARGIN"
       ],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "BMGB4",
@@ -8362,7 +8022,7 @@ window.INVEST_DATA = {
       "issuer_key": "BMGB",
       "share_class": "4",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.336Z",
+      "collected_at": "2026-07-11T14:41:34.487Z",
       "payout": 54.126000000000005,
       "graham_price": 11.622482196229857,
       "upside": 118.46771045544844,
@@ -8391,9 +8051,7 @@ window.INVEST_DATA = {
         "NON_POSITIVE_MARGIN"
       ],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "ABCB4",
@@ -8413,7 +8071,7 @@ window.INVEST_DATA = {
       "issuer_key": "ABCB",
       "share_class": "4",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.338Z",
+      "collected_at": "2026-07-11T14:41:34.489Z",
       "payout": 65.6336,
       "graham_price": 48.792239603525545,
       "upside": 95.63849079200297,
@@ -8442,9 +8100,7 @@ window.INVEST_DATA = {
         "NON_POSITIVE_MARGIN"
       ],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "PINE4",
@@ -8464,7 +8120,7 @@ window.INVEST_DATA = {
       "issuer_key": "PINE",
       "share_class": "4",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.337Z",
+      "collected_at": "2026-07-11T14:41:34.488Z",
       "payout": 37.1931,
       "graham_price": 17.329773476487297,
       "upside": 38.97171993975378,
@@ -8492,9 +8148,7 @@ window.INVEST_DATA = {
         "NON_POSITIVE_MARGIN"
       ],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "SANB3",
@@ -8514,7 +8168,7 @@ window.INVEST_DATA = {
       "issuer_key": "SANB",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.338Z",
+      "collected_at": "2026-07-11T14:41:34.489Z",
       "payout": 53.286,
       "graham_price": 24.560631967862772,
       "upside": 85.36326013481337,
@@ -8542,9 +8196,7 @@ window.INVEST_DATA = {
         "NON_POSITIVE_MARGIN"
       ],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "SANB11",
@@ -8564,7 +8216,7 @@ window.INVEST_DATA = {
       "issuer_key": "SANB",
       "share_class": "11",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.338Z",
+      "collected_at": "2026-07-11T14:41:34.489Z",
       "payout": 55.928399999999996,
       "graham_price": 48.967731544967336,
       "upside": 77.29084556468983,
@@ -8592,9 +8244,7 @@ window.INVEST_DATA = {
         "NON_POSITIVE_MARGIN"
       ],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "SANB4",
@@ -8614,7 +8264,7 @@ window.INVEST_DATA = {
       "issuer_key": "SANB",
       "share_class": "4",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.339Z",
+      "collected_at": "2026-07-11T14:41:34.490Z",
       "payout": 58.6278,
       "graham_price": 24.56769074559977,
       "upside": 71.80203318601237,
@@ -8642,9 +8292,7 @@ window.INVEST_DATA = {
         "NON_POSITIVE_MARGIN"
       ],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "BBDC3",
@@ -8664,7 +8312,7 @@ window.INVEST_DATA = {
       "issuer_key": "BBDC",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.339Z",
+      "collected_at": "2026-07-11T14:41:34.490Z",
       "payout": 62.9647,
       "graham_price": 28.83826329272953,
       "upside": 75.20208561804087,
@@ -8692,9 +8340,7 @@ window.INVEST_DATA = {
         "NON_POSITIVE_MARGIN"
       ],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "ITUB4",
@@ -8714,7 +8360,7 @@ window.INVEST_DATA = {
       "issuer_key": "ITUB",
       "share_class": "4",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.343Z",
+      "collected_at": "2026-07-11T14:41:34.496Z",
       "payout": 82.3716,
       "graham_price": 41.39082408155307,
       "upside": -6.5669885292255685,
@@ -8743,9 +8389,7 @@ window.INVEST_DATA = {
         "NON_POSITIVE_MARGIN"
       ],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "ITUB3",
@@ -8765,7 +8409,7 @@ window.INVEST_DATA = {
       "issuer_key": "ITUB",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.344Z",
+      "collected_at": "2026-07-11T14:41:34.497Z",
       "payout": 82.2838,
       "graham_price": 41.47273967378344,
       "upside": -10.73452502414241,
@@ -8794,9 +8438,7 @@ window.INVEST_DATA = {
         "NON_POSITIVE_MARGIN"
       ],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "BBDC4",
@@ -8816,7 +8458,7 @@ window.INVEST_DATA = {
       "issuer_key": "BBDC",
       "share_class": "4",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.340Z",
+      "collected_at": "2026-07-11T14:41:34.492Z",
       "payout": 69.3,
       "graham_price": 28.783551850716012,
       "upside": 52.616923916839944,
@@ -8844,9 +8486,7 @@ window.INVEST_DATA = {
         "NON_POSITIVE_MARGIN"
       ],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "BMEB4",
@@ -8866,7 +8506,7 @@ window.INVEST_DATA = {
       "issuer_key": "BMEB",
       "share_class": "4",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.342Z",
+      "collected_at": "2026-07-11T14:41:34.494Z",
       "payout": 25.017899999999997,
       "graham_price": 58.67632930186214,
       "upside": -1.4008917797645075,
@@ -8894,60 +8534,7 @@ window.INVEST_DATA = {
         "NON_POSITIVE_MARGIN"
       ],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
-    },
-    {
-      "ticker": "AZUL3",
-      "cotacao": 23.5,
-      "pl": 1.93,
-      "p_vp": -2.29,
-      "psr": 0.399,
-      "dividend_yield": 0,
-      "ev_ebit": 7.82,
-      "mrg_ebit": 16.02,
-      "mrg_liq": 20.68,
-      "roic": 13.31,
-      "roe": -119,
-      "liq_2meses": 6391670,
-      "div_br_patrim": -4.92,
-      "cresc_5a": 15.72,
-      "issuer_key": "AZUL",
-      "share_class": "3",
-      "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.332Z",
-      "payout": 0,
-      "graham_price": 0,
-      "upside": 0,
-      "bazin_price": 0,
-      "bazin_upside": 0,
-      "selic": 14.25,
-      "score": 8,
-      "strategies": [],
-      "category": null,
-      "peg_ratio": 0.12277353689567429,
-      "eligibility": "DISTRESSED",
-      "signal": "DISTRESSED",
-      "risk_level": "CRITICAL",
-      "data_quality": "COMPLETE",
-      "pillars": {
-        "quality": 5,
-        "valuation": 9,
-        "income": 2,
-        "safety": 6
-      },
-      "overall_score": 5.75,
-      "blockers": [
-        "NON_POSITIVE_EQUITY",
-        "NON_POSITIVE_ROE"
-      ],
-      "warnings": [
-        "NEGATIVE_OR_UNRELIABLE_DEBT_RATIO"
-      ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "BMEB3",
@@ -8967,7 +8554,7 @@ window.INVEST_DATA = {
       "issuer_key": "BMEB",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.340Z",
+      "collected_at": "2026-07-11T14:41:34.491Z",
       "payout": 22.789099999999998,
       "graham_price": 58.775760784081356,
       "upside": 14.12769084287642,
@@ -8995,9 +8582,7 @@ window.INVEST_DATA = {
         "NON_POSITIVE_MARGIN"
       ],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "BAZA3",
@@ -9017,7 +8602,7 @@ window.INVEST_DATA = {
       "issuer_key": "BAZA",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.334Z",
+      "collected_at": "2026-07-11T14:41:34.484Z",
       "payout": 79.0812,
       "graham_price": 207.91983464843392,
       "upside": 247.69203118467215,
@@ -9048,9 +8633,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "HAPV3",
@@ -9070,7 +8653,7 @@ window.INVEST_DATA = {
       "issuer_key": "HAPV",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.306Z",
+      "collected_at": "2026-07-11T14:41:34.462Z",
       "payout": 0,
       "graham_price": 0,
       "upside": 0,
@@ -9100,9 +8683,7 @@ window.INVEST_DATA = {
         "NON_POSITIVE_MARGIN"
       ],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "CVCB3",
@@ -9122,7 +8703,7 @@ window.INVEST_DATA = {
       "issuer_key": "CVCB",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.307Z",
+      "collected_at": "2026-07-11T14:41:34.463Z",
       "payout": 0,
       "graham_price": 0,
       "upside": 0,
@@ -9150,9 +8731,7 @@ window.INVEST_DATA = {
         "NON_POSITIVE_MARGIN"
       ],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "NATU3",
@@ -9172,7 +8751,7 @@ window.INVEST_DATA = {
       "issuer_key": "NATU",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.308Z",
+      "collected_at": "2026-07-11T14:41:34.464Z",
       "payout": 0,
       "graham_price": 0,
       "upside": 0,
@@ -9202,9 +8781,7 @@ window.INVEST_DATA = {
         "NON_POSITIVE_MARGIN"
       ],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "BPAC11",
@@ -9224,7 +8801,7 @@ window.INVEST_DATA = {
       "issuer_key": "BPAC",
       "share_class": "11",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.346Z",
+      "collected_at": "2026-07-11T14:41:34.499Z",
       "payout": 27.587999999999997,
       "graham_price": 43.76179290275217,
       "upside": -25.486475561464033,
@@ -9250,9 +8827,7 @@ window.INVEST_DATA = {
         "NON_POSITIVE_MARGIN"
       ],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "BBSE3",
@@ -9272,7 +8847,7 @@ window.INVEST_DATA = {
       "issuer_key": "BBSE",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.341Z",
+      "collected_at": "2026-07-11T14:41:34.492Z",
       "payout": 98.66159999999999,
       "graham_price": 26.334140964721843,
       "upside": -34.7357101246051,
@@ -9300,9 +8875,7 @@ window.INVEST_DATA = {
         "NON_POSITIVE_MARGIN"
       ],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "BPAC5",
@@ -9322,7 +8895,7 @@ window.INVEST_DATA = {
       "issuer_key": "BPAC",
       "share_class": "5",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.346Z",
+      "collected_at": "2026-07-11T14:41:34.499Z",
       "payout": 27.615000000000002,
       "graham_price": 14.605387179499656,
       "upside": -25.100578566668432,
@@ -9348,9 +8921,7 @@ window.INVEST_DATA = {
         "NON_POSITIVE_MARGIN"
       ],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "BPAC3",
@@ -9370,7 +8941,7 @@ window.INVEST_DATA = {
       "issuer_key": "BPAC",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.348Z",
+      "collected_at": "2026-07-11T14:41:34.517Z",
       "payout": 27.6385,
       "graham_price": 14.588592442933017,
       "upside": -40.575998195792195,
@@ -9396,9 +8967,7 @@ window.INVEST_DATA = {
         "NON_POSITIVE_MARGIN"
       ],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "LWSA3",
@@ -9418,7 +8987,7 @@ window.INVEST_DATA = {
       "issuer_key": "LWSA",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.306Z",
+      "collected_at": "2026-07-11T14:41:34.462Z",
       "payout": 0,
       "graham_price": 0,
       "upside": 0,
@@ -9451,9 +9020,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_OR_UNRELIABLE_DEBT_RATIO"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "AMBP3",
@@ -9473,7 +9040,7 @@ window.INVEST_DATA = {
       "issuer_key": "AMBP",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.314Z",
+      "collected_at": "2026-07-11T14:41:34.468Z",
       "payout": 0,
       "graham_price": 0,
       "upside": 0,
@@ -9501,9 +9068,7 @@ window.INVEST_DATA = {
         "NON_POSITIVE_MARGIN"
       ],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "RAPT4",
@@ -9523,7 +9088,7 @@ window.INVEST_DATA = {
       "issuer_key": "RAPT",
       "share_class": "4",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.308Z",
+      "collected_at": "2026-07-11T14:41:34.463Z",
       "payout": 0,
       "graham_price": 0,
       "upside": 0,
@@ -9553,9 +9118,7 @@ window.INVEST_DATA = {
         "NON_POSITIVE_MARGIN"
       ],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "MRVE3",
@@ -9575,7 +9138,7 @@ window.INVEST_DATA = {
       "issuer_key": "MRVE",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.309Z",
+      "collected_at": "2026-07-11T14:41:34.465Z",
       "payout": 0,
       "graham_price": 0,
       "upside": 0,
@@ -9605,9 +9168,7 @@ window.INVEST_DATA = {
         "NON_POSITIVE_MARGIN"
       ],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "SIMH3",
@@ -9627,7 +9188,7 @@ window.INVEST_DATA = {
       "issuer_key": "SIMH",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.304Z",
+      "collected_at": "2026-07-11T14:41:34.459Z",
       "payout": 0,
       "graham_price": 0,
       "upside": 0,
@@ -9656,9 +9217,7 @@ window.INVEST_DATA = {
         "NON_POSITIVE_ROE"
       ],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "TUPY3",
@@ -9678,7 +9237,7 @@ window.INVEST_DATA = {
       "issuer_key": "TUPY",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.310Z",
+      "collected_at": "2026-07-11T14:41:34.465Z",
       "payout": 0,
       "graham_price": 0,
       "upside": 0,
@@ -9708,61 +9267,7 @@ window.INVEST_DATA = {
         "NON_POSITIVE_MARGIN"
       ],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
-    },
-    {
-      "ticker": "RAIZ4",
-      "cotacao": 0.35,
-      "pl": -0.13,
-      "p_vp": -0.41,
-      "psr": 0.016,
-      "dividend_yield": 0,
-      "ev_ebit": 38.04,
-      "mrg_ebit": 0.77,
-      "mrg_liq": -12.01,
-      "roic": 2.06,
-      "roe": 309.75,
-      "liq_2meses": 7264990,
-      "div_br_patrim": -7.14,
-      "cresc_5a": 3.77,
-      "issuer_key": "RAIZ",
-      "share_class": "4",
-      "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.317Z",
-      "payout": 0,
-      "graham_price": 0,
-      "upside": 0,
-      "bazin_price": 0,
-      "bazin_upside": 0,
-      "selic": 14.25,
-      "score": 5,
-      "strategies": [],
-      "category": null,
-      "peg_ratio": 999,
-      "eligibility": "DISTRESSED",
-      "signal": "DISTRESSED",
-      "risk_level": "CRITICAL",
-      "data_quality": "COMPLETE",
-      "pillars": {
-        "quality": 4,
-        "valuation": 6,
-        "income": 1,
-        "safety": 6
-      },
-      "overall_score": 4.3,
-      "blockers": [
-        "NON_POSITIVE_EARNINGS",
-        "NON_POSITIVE_EQUITY",
-        "NON_POSITIVE_MARGIN"
-      ],
-      "warnings": [
-        "NEGATIVE_OR_UNRELIABLE_DEBT_RATIO"
-      ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "AZTE3",
@@ -9782,7 +9287,7 @@ window.INVEST_DATA = {
       "issuer_key": "AZTE",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.308Z",
+      "collected_at": "2026-07-11T14:41:34.463Z",
       "payout": 0,
       "graham_price": 0,
       "upside": 0,
@@ -9810,9 +9315,7 @@ window.INVEST_DATA = {
         "NON_POSITIVE_MARGIN"
       ],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "BBAS3",
@@ -9832,7 +9335,7 @@ window.INVEST_DATA = {
       "issuer_key": "BBAS",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.340Z",
+      "collected_at": "2026-07-11T14:41:34.492Z",
       "payout": 21.894,
       "graham_price": 42.94963016962215,
       "upside": 108.69596778242054,
@@ -9862,61 +9365,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
-    },
-    {
-      "ticker": "PTBL3",
-      "cotacao": 1.75,
-      "pl": -0.82,
-      "p_vp": -6.68,
-      "psr": 0.094,
-      "dividend_yield": 0,
-      "ev_ebit": 17.62,
-      "mrg_ebit": 3.08,
-      "mrg_liq": -11.49,
-      "roic": 2.91,
-      "roe": 812.08,
-      "liq_2meses": 648850,
-      "div_br_patrim": -31.65,
-      "cresc_5a": 6.71,
-      "issuer_key": "PTBL",
-      "share_class": "3",
-      "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.314Z",
-      "payout": 0,
-      "graham_price": 0,
-      "upside": 0,
-      "bazin_price": 0,
-      "bazin_upside": 0,
-      "selic": 14.25,
-      "score": 4,
-      "strategies": [],
-      "category": null,
-      "peg_ratio": 999,
-      "eligibility": "DISTRESSED",
-      "signal": "DISTRESSED",
-      "risk_level": "CRITICAL",
-      "data_quality": "COMPLETE",
-      "pillars": {
-        "quality": 4,
-        "valuation": 6,
-        "income": 1,
-        "safety": 5
-      },
-      "overall_score": 4.15,
-      "blockers": [
-        "NON_POSITIVE_EARNINGS",
-        "NON_POSITIVE_EQUITY",
-        "NON_POSITIVE_MARGIN"
-      ],
-      "warnings": [
-        "NEGATIVE_OR_UNRELIABLE_DEBT_RATIO"
-      ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "ENJU3",
@@ -9936,7 +9385,7 @@ window.INVEST_DATA = {
       "issuer_key": "ENJU",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.307Z",
+      "collected_at": "2026-07-11T14:41:34.462Z",
       "payout": 0,
       "graham_price": 0,
       "upside": 0,
@@ -9970,61 +9419,7 @@ window.INVEST_DATA = {
         "EXTREME_TRAILING_YIELD",
         "NEGATIVE_OR_UNRELIABLE_DEBT_RATIO"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
-    },
-    {
-      "ticker": "RCSL4",
-      "cotacao": 0.43,
-      "pl": -3.28,
-      "p_vp": -4,
-      "psr": 90.62,
-      "dividend_yield": 0,
-      "ev_ebit": -35.2,
-      "mrg_ebit": -257.45,
-      "mrg_liq": -2762.42,
-      "roic": -4.98,
-      "roe": 121.91,
-      "liq_2meses": 2169870,
-      "div_br_patrim": 0,
-      "cresc_5a": -67.73,
-      "issuer_key": "RCSL",
-      "share_class": "4",
-      "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.309Z",
-      "payout": 0,
-      "graham_price": 0,
-      "upside": 0,
-      "bazin_price": 0,
-      "bazin_upside": 0,
-      "selic": 14.25,
-      "score": 1,
-      "strategies": [],
-      "category": null,
-      "peg_ratio": 999,
-      "eligibility": "DISTRESSED",
-      "signal": "DISTRESSED",
-      "risk_level": "CRITICAL",
-      "data_quality": "COMPLETE",
-      "pillars": {
-        "quality": 4,
-        "valuation": 5,
-        "income": 0,
-        "safety": 7
-      },
-      "overall_score": 3.95,
-      "blockers": [
-        "NON_POSITIVE_EARNINGS",
-        "NON_POSITIVE_EQUITY",
-        "NON_POSITIVE_MARGIN"
-      ],
-      "warnings": [
-        "NEGATIVE_FIVE_YEAR_GROWTH"
-      ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "JSLG3",
@@ -10044,7 +9439,7 @@ window.INVEST_DATA = {
       "issuer_key": "JSLG",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.305Z",
+      "collected_at": "2026-07-11T14:41:34.461Z",
       "payout": 0,
       "graham_price": 0,
       "upside": 0,
@@ -10077,9 +9472,7 @@ window.INVEST_DATA = {
       "warnings": [
         "EXTREME_TRAILING_YIELD"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "AZEV3",
@@ -10099,7 +9492,7 @@ window.INVEST_DATA = {
       "issuer_key": "AZEV",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.317Z",
+      "collected_at": "2026-07-11T14:41:34.470Z",
       "payout": 0,
       "graham_price": 0,
       "upside": 0,
@@ -10127,9 +9520,7 @@ window.INVEST_DATA = {
         "NON_POSITIVE_MARGIN"
       ],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "AZEV4",
@@ -10149,7 +9540,7 @@ window.INVEST_DATA = {
       "issuer_key": "AZEV",
       "share_class": "4",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.317Z",
+      "collected_at": "2026-07-11T14:41:34.471Z",
       "payout": 0,
       "graham_price": 0,
       "upside": 0,
@@ -10177,9 +9568,7 @@ window.INVEST_DATA = {
         "NON_POSITIVE_MARGIN"
       ],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "IRBR3",
@@ -10199,7 +9588,7 @@ window.INVEST_DATA = {
       "issuer_key": "IRBR",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.303Z",
+      "collected_at": "2026-07-11T14:41:34.459Z",
       "payout": 0,
       "graham_price": 0,
       "upside": 0,
@@ -10231,9 +9620,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "TASA4",
@@ -10253,7 +9640,7 @@ window.INVEST_DATA = {
       "issuer_key": "TASA",
       "share_class": "4",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.305Z",
+      "collected_at": "2026-07-11T14:41:34.461Z",
       "payout": 0,
       "graham_price": 0,
       "upside": 0,
@@ -10283,9 +9670,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "AMER3",
@@ -10305,7 +9690,7 @@ window.INVEST_DATA = {
       "issuer_key": "AMER",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.307Z",
+      "collected_at": "2026-07-11T14:41:34.463Z",
       "payout": 0,
       "graham_price": 0,
       "upside": 0,
@@ -10335,9 +9720,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "DASA3",
@@ -10357,7 +9740,7 @@ window.INVEST_DATA = {
       "issuer_key": "DASA",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.309Z",
+      "collected_at": "2026-07-11T14:41:34.465Z",
       "payout": 0,
       "graham_price": 0,
       "upside": 0,
@@ -10389,9 +9772,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "GFSA3",
@@ -10411,7 +9792,7 @@ window.INVEST_DATA = {
       "issuer_key": "GFSA",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.317Z",
+      "collected_at": "2026-07-11T14:41:34.471Z",
       "payout": 0,
       "graham_price": 0,
       "upside": 0,
@@ -10441,9 +9822,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "AURE3",
@@ -10463,7 +9842,7 @@ window.INVEST_DATA = {
       "issuer_key": "AURE",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.306Z",
+      "collected_at": "2026-07-11T14:41:34.462Z",
       "payout": 0,
       "graham_price": 0,
       "upside": 0,
@@ -10493,62 +9872,7 @@ window.INVEST_DATA = {
         "NON_POSITIVE_MARGIN"
       ],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
-    },
-    {
-      "ticker": "BRKM5",
-      "cotacao": 6.63,
-      "pl": -0.58,
-      "p_vp": -0.34,
-      "psr": 0.079,
-      "dividend_yield": 0,
-      "ev_ebit": -12.7,
-      "mrg_ebit": -5.7,
-      "mrg_liq": -15.5,
-      "roic": -6.49,
-      "roe": 58.03,
-      "liq_2meses": 71713400,
-      "div_br_patrim": -2.73,
-      "cresc_5a": -10.56,
-      "issuer_key": "BRKM",
-      "share_class": "5",
-      "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.315Z",
-      "payout": 0,
-      "graham_price": 0,
-      "upside": 0,
-      "bazin_price": 0,
-      "bazin_upside": 0,
-      "selic": 14.25,
-      "score": 2,
-      "strategies": [],
-      "category": null,
-      "peg_ratio": 999,
-      "eligibility": "DISTRESSED",
-      "signal": "DISTRESSED",
-      "risk_level": "CRITICAL",
-      "data_quality": "COMPLETE",
-      "pillars": {
-        "quality": 3,
-        "valuation": 7,
-        "income": 0,
-        "safety": 4
-      },
-      "overall_score": 3.75,
-      "blockers": [
-        "NON_POSITIVE_EARNINGS",
-        "NON_POSITIVE_EQUITY",
-        "NON_POSITIVE_MARGIN"
-      ],
-      "warnings": [
-        "NEGATIVE_OR_UNRELIABLE_DEBT_RATIO",
-        "NEGATIVE_FIVE_YEAR_GROWTH"
-      ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "UCAS3",
@@ -10568,7 +9892,7 @@ window.INVEST_DATA = {
       "issuer_key": "UCAS",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.308Z",
+      "collected_at": "2026-07-11T14:41:34.463Z",
       "payout": 0,
       "graham_price": 0,
       "upside": 0,
@@ -10598,9 +9922,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "BHIA3",
@@ -10620,7 +9942,7 @@ window.INVEST_DATA = {
       "issuer_key": "BHIA",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.317Z",
+      "collected_at": "2026-07-11T14:41:34.470Z",
       "payout": 0,
       "graham_price": 0,
       "upside": 0,
@@ -10650,9 +9972,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "CSAN3",
@@ -10672,7 +9992,7 @@ window.INVEST_DATA = {
       "issuer_key": "CSAN",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.312Z",
+      "collected_at": "2026-07-11T14:41:34.466Z",
       "payout": 0,
       "graham_price": 0,
       "upside": 0,
@@ -10702,62 +10022,7 @@ window.INVEST_DATA = {
         "NON_POSITIVE_MARGIN"
       ],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
-    },
-    {
-      "ticker": "BRKM3",
-      "cotacao": 5.49,
-      "pl": -0.48,
-      "p_vp": -0.28,
-      "psr": 0.066,
-      "dividend_yield": 0,
-      "ev_ebit": -12.46,
-      "mrg_ebit": -5.7,
-      "mrg_liq": -15.5,
-      "roic": -6.49,
-      "roe": 58.03,
-      "liq_2meses": 496595,
-      "div_br_patrim": -2.73,
-      "cresc_5a": -10.56,
-      "issuer_key": "BRKM",
-      "share_class": "3",
-      "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.316Z",
-      "payout": 0,
-      "graham_price": 0,
-      "upside": 0,
-      "bazin_price": 0,
-      "bazin_upside": 0,
-      "selic": 14.25,
-      "score": 1,
-      "strategies": [],
-      "category": null,
-      "peg_ratio": 999,
-      "eligibility": "DISTRESSED",
-      "signal": "DISTRESSED",
-      "risk_level": "CRITICAL",
-      "data_quality": "COMPLETE",
-      "pillars": {
-        "quality": 3,
-        "valuation": 7,
-        "income": 0,
-        "safety": 3
-      },
-      "overall_score": 3.6,
-      "blockers": [
-        "NON_POSITIVE_EARNINGS",
-        "NON_POSITIVE_EQUITY",
-        "NON_POSITIVE_MARGIN"
-      ],
-      "warnings": [
-        "NEGATIVE_OR_UNRELIABLE_DEBT_RATIO",
-        "NEGATIVE_FIVE_YEAR_GROWTH"
-      ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "ONCO3",
@@ -10777,7 +10042,7 @@ window.INVEST_DATA = {
       "issuer_key": "ONCO",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.317Z",
+      "collected_at": "2026-07-11T14:41:34.471Z",
       "payout": 0,
       "graham_price": 0,
       "upside": 0,
@@ -10805,9 +10070,7 @@ window.INVEST_DATA = {
         "NON_POSITIVE_MARGIN"
       ],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "CASH3",
@@ -10827,7 +10090,7 @@ window.INVEST_DATA = {
       "issuer_key": "CASH",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.307Z",
+      "collected_at": "2026-07-11T14:41:34.463Z",
       "payout": 0,
       "graham_price": 0,
       "upside": 0,
@@ -10857,9 +10120,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_OR_UNRELIABLE_DEBT_RATIO"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "LJQQ3",
@@ -10879,7 +10140,7 @@ window.INVEST_DATA = {
       "issuer_key": "LJQQ",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.313Z",
+      "collected_at": "2026-07-11T14:41:34.467Z",
       "payout": 0,
       "graham_price": 0,
       "upside": 0,
@@ -10909,9 +10170,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_OR_UNRELIABLE_DEBT_RATIO"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "AGRO3",
@@ -10931,7 +10190,7 @@ window.INVEST_DATA = {
       "issuer_key": "AGRO",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.303Z",
+      "collected_at": "2026-07-11T14:41:34.458Z",
       "payout": 0,
       "graham_price": 0,
       "upside": 0,
@@ -10961,9 +10220,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "NGRD3",
@@ -10983,7 +10240,7 @@ window.INVEST_DATA = {
       "issuer_key": "NGRD",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.304Z",
+      "collected_at": "2026-07-11T14:41:34.460Z",
       "payout": 0,
       "graham_price": 0,
       "upside": 0,
@@ -11013,9 +10270,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_OR_UNRELIABLE_DEBT_RATIO"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "HBSA3",
@@ -11035,7 +10290,7 @@ window.INVEST_DATA = {
       "issuer_key": "HBSA",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.305Z",
+      "collected_at": "2026-07-11T14:41:34.460Z",
       "payout": 0,
       "graham_price": 0,
       "upside": 0,
@@ -11065,62 +10320,7 @@ window.INVEST_DATA = {
         "NON_POSITIVE_MARGIN"
       ],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
-    },
-    {
-      "ticker": "PMAM3",
-      "cotacao": 0.23,
-      "pl": -0.05,
-      "p_vp": -0.01,
-      "psr": 0.122,
-      "dividend_yield": 0,
-      "ev_ebit": -17.63,
-      "mrg_ebit": -57.73,
-      "mrg_liq": -236.74,
-      "roic": -63.13,
-      "roe": 17.65,
-      "liq_2meses": 1172800,
-      "div_br_patrim": -0.75,
-      "cresc_5a": -43.59,
-      "issuer_key": "PMAM",
-      "share_class": "3",
-      "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.318Z",
-      "payout": 0,
-      "graham_price": 0,
-      "upside": 0,
-      "bazin_price": 0,
-      "bazin_upside": 0,
-      "selic": 14.25,
-      "score": 2,
-      "strategies": [],
-      "category": null,
-      "peg_ratio": 999,
-      "eligibility": "DISTRESSED",
-      "signal": "DISTRESSED",
-      "risk_level": "CRITICAL",
-      "data_quality": "COMPLETE",
-      "pillars": {
-        "quality": 2,
-        "valuation": 7,
-        "income": 0,
-        "safety": 4
-      },
-      "overall_score": 3.4,
-      "blockers": [
-        "NON_POSITIVE_EARNINGS",
-        "NON_POSITIVE_EQUITY",
-        "NON_POSITIVE_MARGIN"
-      ],
-      "warnings": [
-        "NEGATIVE_OR_UNRELIABLE_DEBT_RATIO",
-        "NEGATIVE_FIVE_YEAR_GROWTH"
-      ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "CSNA3",
@@ -11140,7 +10340,7 @@ window.INVEST_DATA = {
       "issuer_key": "CSNA",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.309Z",
+      "collected_at": "2026-07-11T14:41:34.465Z",
       "payout": 0,
       "graham_price": 0,
       "upside": 0,
@@ -11172,9 +10372,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "CXSE3",
@@ -11194,7 +10392,7 @@ window.INVEST_DATA = {
       "issuer_key": "CXSE",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.347Z",
+      "collected_at": "2026-07-11T14:41:34.501Z",
       "payout": 89.607,
       "graham_price": 12.301745788797264,
       "upside": -44.20976966531853,
@@ -11222,9 +10420,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_OR_UNRELIABLE_DEBT_RATIO"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "TPIS3",
@@ -11244,7 +10440,7 @@ window.INVEST_DATA = {
       "issuer_key": "TPIS",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.314Z",
+      "collected_at": "2026-07-11T14:41:34.468Z",
       "payout": 0,
       "graham_price": 0,
       "upside": 0,
@@ -11274,9 +10470,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "OBTC3",
@@ -11296,7 +10490,7 @@ window.INVEST_DATA = {
       "issuer_key": "OBTC",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.311Z",
+      "collected_at": "2026-07-11T14:41:34.466Z",
       "payout": 0,
       "graham_price": 0,
       "upside": 0,
@@ -11324,9 +10518,7 @@ window.INVEST_DATA = {
         "NON_POSITIVE_MARGIN"
       ],
       "warnings": [],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "AMOB3",
@@ -11346,7 +10538,7 @@ window.INVEST_DATA = {
       "issuer_key": "AMOB",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.312Z",
+      "collected_at": "2026-07-11T14:41:34.467Z",
       "payout": 0,
       "graham_price": 0,
       "upside": 0,
@@ -11378,9 +10570,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "PCAR3",
@@ -11400,7 +10590,7 @@ window.INVEST_DATA = {
       "issuer_key": "PCAR",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.315Z",
+      "collected_at": "2026-07-11T14:41:34.469Z",
       "payout": 0,
       "graham_price": 0,
       "upside": 0,
@@ -11432,9 +10622,7 @@ window.INVEST_DATA = {
       "warnings": [
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "USIM5",
@@ -11454,7 +10642,7 @@ window.INVEST_DATA = {
       "issuer_key": "USIM",
       "share_class": "5",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.308Z",
+      "collected_at": "2026-07-11T14:41:34.464Z",
       "payout": 0,
       "graham_price": 0,
       "upside": 0,
@@ -11487,9 +10675,7 @@ window.INVEST_DATA = {
         "NEGATIVE_OR_UNRELIABLE_DEBT_RATIO",
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "USIM3",
@@ -11509,7 +10695,7 @@ window.INVEST_DATA = {
       "issuer_key": "USIM",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.309Z",
+      "collected_at": "2026-07-11T14:41:34.465Z",
       "payout": 0,
       "graham_price": 0,
       "upside": 0,
@@ -11542,9 +10728,7 @@ window.INVEST_DATA = {
         "NEGATIVE_OR_UNRELIABLE_DEBT_RATIO",
         "NEGATIVE_FIVE_YEAR_GROWTH"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "BRAP3",
@@ -11564,7 +10748,7 @@ window.INVEST_DATA = {
       "issuer_key": "BRAP",
       "share_class": "3",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.342Z",
+      "collected_at": "2026-07-11T14:41:34.494Z",
       "payout": 107.6185,
       "graham_price": 29.776105870786864,
       "upside": 60.00056889192297,
@@ -11596,9 +10780,7 @@ window.INVEST_DATA = {
         "UNSUSTAINABLE_OR_NON_RECURRING_PAYOUT",
         "NEGATIVE_OR_UNRELIABLE_DEBT_RATIO"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     },
     {
       "ticker": "BRAP4",
@@ -11618,7 +10800,7 @@ window.INVEST_DATA = {
       "issuer_key": "BRAP",
       "share_class": "4",
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.344Z",
+      "collected_at": "2026-07-11T14:41:34.497Z",
       "payout": 118.48259999999999,
       "graham_price": 29.848696397474875,
       "upside": 37.551596301727535,
@@ -11649,9 +10831,7 @@ window.INVEST_DATA = {
         "UNSUSTAINABLE_OR_NON_RECURRING_PAYOUT",
         "NEGATIVE_OR_UNRELIABLE_DEBT_RATIO"
       ],
-      "payout_is_estimated": true,
-      "data_com": null,
-      "data_pagamento": null
+      "payout_is_estimated": true
     }
   ],
   "fiis": [
@@ -11668,7 +10848,7 @@ window.INVEST_DATA = {
       "cap_rate": 7.46,
       "vacancy": 0.19,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -11720,7 +10900,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -11770,7 +10950,7 @@ window.INVEST_DATA = {
       "cap_rate": 10.18,
       "vacancy": 4.8,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -11820,7 +11000,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -11872,7 +11052,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -11924,7 +11104,7 @@ window.INVEST_DATA = {
       "cap_rate": 11.28,
       "vacancy": 2.9,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -11976,7 +11156,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -12028,7 +11208,7 @@ window.INVEST_DATA = {
       "cap_rate": 10.88,
       "vacancy": 4.1,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -12080,7 +11260,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -12130,7 +11310,7 @@ window.INVEST_DATA = {
       "cap_rate": 6.66,
       "vacancy": 8.1,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -12182,7 +11362,7 @@ window.INVEST_DATA = {
       "cap_rate": 11.49,
       "vacancy": 3.8,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -12234,7 +11414,7 @@ window.INVEST_DATA = {
       "cap_rate": 6.65,
       "vacancy": 5.7,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -12284,7 +11464,7 @@ window.INVEST_DATA = {
       "cap_rate": 3.41,
       "vacancy": 0.67,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -12334,7 +11514,7 @@ window.INVEST_DATA = {
       "cap_rate": 7.54,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -12384,7 +11564,7 @@ window.INVEST_DATA = {
       "cap_rate": 8.6,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -12436,7 +11616,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -12488,7 +11668,7 @@ window.INVEST_DATA = {
       "cap_rate": 11.97,
       "vacancy": 6.5,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -12540,7 +11720,7 @@ window.INVEST_DATA = {
       "cap_rate": 9.25,
       "vacancy": 4.1,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -12590,7 +11770,7 @@ window.INVEST_DATA = {
       "cap_rate": 7.42,
       "vacancy": 3,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -12640,7 +11820,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -12690,7 +11870,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -12742,7 +11922,7 @@ window.INVEST_DATA = {
       "cap_rate": 14.12,
       "vacancy": 3.2,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -12794,7 +11974,7 @@ window.INVEST_DATA = {
       "cap_rate": 8.05,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -12844,7 +12024,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -12896,7 +12076,7 @@ window.INVEST_DATA = {
       "cap_rate": 13.67,
       "vacancy": 0.5,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -12948,7 +12128,7 @@ window.INVEST_DATA = {
       "cap_rate": 7.6,
       "vacancy": 3.9,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -12998,7 +12178,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -13050,7 +12230,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -13102,7 +12282,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "MEDIUM",
@@ -13154,7 +12334,7 @@ window.INVEST_DATA = {
       "cap_rate": 9.51,
       "vacancy": 1.51,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -13206,7 +12386,7 @@ window.INVEST_DATA = {
       "cap_rate": 7.5,
       "vacancy": 11,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -13256,7 +12436,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -13306,7 +12486,7 @@ window.INVEST_DATA = {
       "cap_rate": 7.79,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -13356,7 +12536,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -13408,7 +12588,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -13460,7 +12640,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -13512,7 +12692,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FIAGRO",
       "exposure": "AGRO_CREDIT",
       "classification_confidence": "MEDIUM",
@@ -13563,7 +12743,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -13613,7 +12793,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -13663,7 +12843,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -13713,7 +12893,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -13765,7 +12945,7 @@ window.INVEST_DATA = {
       "cap_rate": 9.97,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -13817,7 +12997,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -13867,7 +13047,7 @@ window.INVEST_DATA = {
       "cap_rate": 10.48,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -13919,7 +13099,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -13969,7 +13149,7 @@ window.INVEST_DATA = {
       "cap_rate": 8.39,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -14019,7 +13199,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 4,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -14071,7 +13251,7 @@ window.INVEST_DATA = {
       "cap_rate": 13.76,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -14123,7 +13303,7 @@ window.INVEST_DATA = {
       "cap_rate": 13.22,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -14175,7 +13355,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -14227,7 +13407,7 @@ window.INVEST_DATA = {
       "cap_rate": 9.32,
       "vacancy": 0.8,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -14277,7 +13457,7 @@ window.INVEST_DATA = {
       "cap_rate": 7.79,
       "vacancy": 4.09,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -14327,7 +13507,7 @@ window.INVEST_DATA = {
       "cap_rate": 9.65,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FIAGRO",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -14378,7 +13558,7 @@ window.INVEST_DATA = {
       "cap_rate": 9.79,
       "vacancy": 3.3,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -14430,7 +13610,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -14482,7 +13662,7 @@ window.INVEST_DATA = {
       "cap_rate": 7.21,
       "vacancy": 5.69,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -14534,7 +13714,7 @@ window.INVEST_DATA = {
       "cap_rate": 9.35,
       "vacancy": 5.8,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -14586,7 +13766,7 @@ window.INVEST_DATA = {
       "cap_rate": 8.83,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -14638,7 +13818,7 @@ window.INVEST_DATA = {
       "cap_rate": 16.9,
       "vacancy": 11.1,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -14688,7 +13868,7 @@ window.INVEST_DATA = {
       "cap_rate": 16.25,
       "vacancy": 3.64,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -14740,7 +13920,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FIAGRO",
       "exposure": "AGRO_CREDIT",
       "classification_confidence": "MEDIUM",
@@ -14793,7 +13973,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -14845,7 +14025,7 @@ window.INVEST_DATA = {
       "cap_rate": 15.5,
       "vacancy": 9.4,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -14895,7 +14075,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -14947,7 +14127,7 @@ window.INVEST_DATA = {
       "cap_rate": 4.67,
       "vacancy": 4,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -14999,7 +14179,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -15049,7 +14229,7 @@ window.INVEST_DATA = {
       "cap_rate": 62.42,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -15099,7 +14279,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -15149,7 +14329,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -15199,7 +14379,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -15355,7 +14535,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -15459,7 +14639,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 10.7,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -15564,7 +14744,7 @@ window.INVEST_DATA = {
       "cap_rate": 10.14,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -15616,7 +14796,7 @@ window.INVEST_DATA = {
       "cap_rate": 9.43,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "MEDIUM",
@@ -15668,7 +14848,7 @@ window.INVEST_DATA = {
       "cap_rate": 15.04,
       "vacancy": 6.7,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -15720,7 +14900,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -15772,7 +14952,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -15824,7 +15004,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -15876,7 +15056,7 @@ window.INVEST_DATA = {
       "cap_rate": 7.32,
       "vacancy": 1.5,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -15926,7 +15106,7 @@ window.INVEST_DATA = {
       "cap_rate": 13.67,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -15978,7 +15158,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FIAGRO",
       "exposure": "AGRO_CREDIT",
       "classification_confidence": "MEDIUM",
@@ -16082,7 +15262,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -16132,7 +15312,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -16182,7 +15362,7 @@ window.INVEST_DATA = {
       "cap_rate": 10.76,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -16285,7 +15465,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -16335,7 +15515,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -16385,7 +15565,7 @@ window.INVEST_DATA = {
       "cap_rate": 8.95,
       "vacancy": 2.3,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -16435,7 +15615,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -16487,7 +15667,7 @@ window.INVEST_DATA = {
       "cap_rate": 0.29,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -16589,7 +15769,7 @@ window.INVEST_DATA = {
       "cap_rate": 12.45,
       "vacancy": 1.2,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -16641,7 +15821,7 @@ window.INVEST_DATA = {
       "cap_rate": 17.7,
       "vacancy": 4.52,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -16693,7 +15873,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FIAGRO",
       "exposure": "AGRO_CREDIT",
       "classification_confidence": "MEDIUM",
@@ -16744,7 +15924,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -16794,7 +15974,7 @@ window.INVEST_DATA = {
       "cap_rate": 19.92,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -16896,7 +16076,7 @@ window.INVEST_DATA = {
       "cap_rate": 14.13,
       "vacancy": 4.2,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -16946,7 +16126,7 @@ window.INVEST_DATA = {
       "cap_rate": 9.88,
       "vacancy": 30,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -17000,7 +16180,7 @@ window.INVEST_DATA = {
       "cap_rate": 16.63,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -17102,7 +16282,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FIAGRO",
       "exposure": "AGRO_CREDIT",
       "classification_confidence": "MEDIUM",
@@ -17155,7 +16335,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "MEDIUM",
@@ -17207,7 +16387,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FIAGRO",
       "exposure": "AGRO_CREDIT",
       "classification_confidence": "MEDIUM",
@@ -17258,7 +16438,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -17308,7 +16488,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -17358,7 +16538,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -17408,7 +16588,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -17458,7 +16638,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "MEDIUM",
@@ -17512,7 +16692,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -17562,7 +16742,7 @@ window.INVEST_DATA = {
       "cap_rate": 0.97,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FIAGRO",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -17613,7 +16793,7 @@ window.INVEST_DATA = {
       "cap_rate": 10.43,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -17665,7 +16845,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FIAGRO",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -17716,7 +16896,7 @@ window.INVEST_DATA = {
       "cap_rate": 9.66,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -17871,7 +17051,7 @@ window.INVEST_DATA = {
       "cap_rate": 15.21,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -17923,7 +17103,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -17973,7 +17153,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -18075,7 +17255,7 @@ window.INVEST_DATA = {
       "cap_rate": 9.19,
       "vacancy": 18.5,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -18127,7 +17307,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -18177,7 +17357,7 @@ window.INVEST_DATA = {
       "cap_rate": 21.73,
       "vacancy": 8.2,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -18227,7 +17407,7 @@ window.INVEST_DATA = {
       "cap_rate": 2.51,
       "vacancy": 2.5,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "FUND_OF_FUNDS",
       "classification_confidence": "HIGH",
@@ -18277,7 +17457,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -18327,7 +17507,7 @@ window.INVEST_DATA = {
       "cap_rate": 8.66,
       "vacancy": 3.6,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -18379,7 +17559,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FIAGRO",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -18430,7 +17610,7 @@ window.INVEST_DATA = {
       "cap_rate": 1.91,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -18532,7 +17712,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -18582,7 +17762,7 @@ window.INVEST_DATA = {
       "cap_rate": 10.22,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -18634,7 +17814,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "MEDIUM",
@@ -18684,7 +17864,7 @@ window.INVEST_DATA = {
       "cap_rate": 9.76,
       "vacancy": 8.28,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -18840,7 +18020,7 @@ window.INVEST_DATA = {
       "cap_rate": 1.3,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "LOW",
@@ -18890,7 +18070,7 @@ window.INVEST_DATA = {
       "cap_rate": 12.87,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -18942,7 +18122,7 @@ window.INVEST_DATA = {
       "cap_rate": 14.38,
       "vacancy": 10.3,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -18992,7 +18172,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "MEDIUM",
@@ -19146,7 +18326,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -19196,7 +18376,7 @@ window.INVEST_DATA = {
       "cap_rate": 18.32,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -19298,7 +18478,7 @@ window.INVEST_DATA = {
       "cap_rate": 14.77,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -19350,7 +18530,7 @@ window.INVEST_DATA = {
       "cap_rate": 6.52,
       "vacancy": 0.15,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -19452,7 +18632,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FIAGRO",
       "exposure": "AGRO_CREDIT",
       "classification_confidence": "MEDIUM",
@@ -19503,7 +18683,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -19553,7 +18733,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -19605,7 +18785,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -19659,7 +18839,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -19713,7 +18893,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -19763,7 +18943,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -19813,7 +18993,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -19863,7 +19043,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -19913,7 +19093,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -19963,7 +19143,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FIAGRO",
       "exposure": "AGRO_CREDIT",
       "classification_confidence": "MEDIUM",
@@ -20018,7 +19198,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -20068,7 +19248,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "MEDIUM",
@@ -20122,7 +19302,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -20176,7 +19356,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -20230,7 +19410,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -20284,7 +19464,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -20338,7 +19518,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -20388,7 +19568,7 @@ window.INVEST_DATA = {
       "cap_rate": 10.99,
       "vacancy": 6.31,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -20440,7 +19620,7 @@ window.INVEST_DATA = {
       "cap_rate": 1.45,
       "vacancy": 8,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -20492,7 +19672,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FIAGRO",
       "exposure": "AGRO_CREDIT",
       "classification_confidence": "MEDIUM",
@@ -20547,7 +19727,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FIAGRO",
       "exposure": "AGRO_CREDIT",
       "classification_confidence": "MEDIUM",
@@ -20602,7 +19782,7 @@ window.INVEST_DATA = {
       "cap_rate": 9.25,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "LOW",
@@ -20652,7 +19832,7 @@ window.INVEST_DATA = {
       "cap_rate": 16.87,
       "vacancy": 22,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -20709,7 +19889,7 @@ window.INVEST_DATA = {
       "cap_rate": 24.31,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -20759,7 +19939,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -20809,7 +19989,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FIAGRO",
       "exposure": "AGRO_CREDIT",
       "classification_confidence": "LOW",
@@ -20860,7 +20040,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FIAGRO",
       "exposure": "AGRO_CREDIT",
       "classification_confidence": "LOW",
@@ -20911,7 +20091,7 @@ window.INVEST_DATA = {
       "cap_rate": 2.48,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -20961,7 +20141,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 28.16,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "HYBRID",
       "classification_confidence": "MEDIUM",
@@ -21011,7 +20191,7 @@ window.INVEST_DATA = {
       "cap_rate": 9.73,
       "vacancy": 23.8,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "LOW",
@@ -21066,7 +20246,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FIAGRO",
       "exposure": "AGRO_CREDIT",
       "classification_confidence": "LOW",
@@ -21117,7 +20297,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -21171,7 +20351,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -21225,7 +20405,7 @@ window.INVEST_DATA = {
       "cap_rate": 10.58,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FIAGRO",
       "exposure": "AGRO_CREDIT",
       "classification_confidence": "LOW",
@@ -21280,7 +20460,7 @@ window.INVEST_DATA = {
       "cap_rate": 0,
       "vacancy": 0,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_CREDIT",
       "classification_confidence": "HIGH",
@@ -21334,7 +20514,7 @@ window.INVEST_DATA = {
       "cap_rate": 21.5,
       "vacancy": 52,
       "data_source": "fundamentus",
-      "collected_at": "2026-07-11T14:36:10.105Z",
+      "collected_at": "2026-07-11T14:41:34.618Z",
       "regulatory_class": "FII",
       "exposure": "REAL_ESTATE_PHYSICAL",
       "classification_confidence": "HIGH",
@@ -21780,267 +20960,6 @@ window.INVEST_DATA = {
     }
   ],
   "fixedIncome": {
-    "tesouro": [
-      {
-        "name": "Tesouro Prefixado 2029",
-        "rate": "13,98%",
-        "minInvest": "14,10%",
-        "price": "R$ 725,49",
-        "maturity": "01/01/2029"
-      },
-      {
-        "name": "Tesouro Prefixado 2032",
-        "rate": "14,26%",
-        "minInvest": "14,38%",
-        "price": "R$ 484,20",
-        "maturity": "01/01/2032"
-      },
-      {
-        "name": "Tesouro Prefixado 2037\n                                            \n                                                                                            \n                                                                                    \n                                                                                    \n                                                Juros Semestrais",
-        "rate": "14,27%",
-        "minInvest": "14,39%",
-        "price": "R$ 786,67",
-        "maturity": "01/01/2037"
-      },
-      {
-        "name": "Tesouro Selic 2031",
-        "rate": "SELIC + 0,0740%",
-        "minInvest": "14,33%",
-        "price": "R$ 19.349,60",
-        "maturity": "01/03/2031"
-      },
-      {
-        "name": "Tesouro Reserva 2036",
-        "rate": "SELIC",
-        "minInvest": "14,25%",
-        "price": "R$ 10,73",
-        "maturity": "01/01/2036"
-      },
-      {
-        "name": "Tesouro Renda+ Aposentadoria Extra 2030",
-        "rate": "IPCA + 7,60%",
-        "minInvest": "12,27%",
-        "price": "R$ 1.938,93",
-        "maturity": "15/12/2049"
-      },
-      {
-        "name": "Tesouro Renda+ Aposentadoria Extra 2035",
-        "rate": "IPCA + 7,41%",
-        "minInvest": "12,08%",
-        "price": "R$ 1.386,05",
-        "maturity": "15/12/2054"
-      },
-      {
-        "name": "Tesouro Renda+ Aposentadoria Extra 2040",
-        "rate": "IPCA + 7,25%",
-        "minInvest": "11,92%",
-        "price": "R$ 1.002,56",
-        "maturity": "15/12/2059"
-      },
-      {
-        "name": "Tesouro Renda+ Aposentadoria Extra 2045",
-        "rate": "IPCA + 7,17%",
-        "minInvest": "11,84%",
-        "price": "R$ 722,03",
-        "maturity": "15/12/2064"
-      },
-      {
-        "name": "Tesouro Renda+ Aposentadoria Extra 2050",
-        "rate": "IPCA + 7,12%",
-        "minInvest": "11,79%",
-        "price": "R$ 519,27",
-        "maturity": "15/12/2069"
-      },
-      {
-        "name": "Tesouro Renda+ Aposentadoria Extra 2055",
-        "rate": "IPCA + 7,10%",
-        "minInvest": "11,77%",
-        "price": "R$ 371,41",
-        "maturity": "15/12/2074"
-      },
-      {
-        "name": "Tesouro Renda+ Aposentadoria Extra 2060",
-        "rate": "IPCA + 7,10%",
-        "minInvest": "11,77%",
-        "price": "R$ 264,10",
-        "maturity": "15/12/2079"
-      },
-      {
-        "name": "Tesouro Renda+ Aposentadoria Extra 2065",
-        "rate": "IPCA + 7,10%",
-        "minInvest": "11,77%",
-        "price": "R$ 187,81",
-        "maturity": "15/12/2084"
-      },
-      {
-        "name": "Tesouro Educa+ 2027",
-        "rate": "IPCA + 8,27%",
-        "minInvest": "12,94%",
-        "price": "R$ 3.774,26",
-        "maturity": "15/12/2031"
-      },
-      {
-        "name": "Tesouro Educa+ 2028",
-        "rate": "IPCA + 8,21%",
-        "minInvest": "12,88%",
-        "price": "R$ 3.494,88",
-        "maturity": "15/12/2032"
-      },
-      {
-        "name": "Tesouro Educa+ 2029",
-        "rate": "IPCA + 8,13%",
-        "minInvest": "12,80%",
-        "price": "R$ 3.242,70",
-        "maturity": "15/12/2033"
-      },
-      {
-        "name": "Tesouro Educa+ 2030",
-        "rate": "IPCA + 8,07%",
-        "minInvest": "12,74%",
-        "price": "R$ 3.009,33",
-        "maturity": "15/12/2034"
-      },
-      {
-        "name": "Tesouro Educa+ 2031",
-        "rate": "IPCA + 8,01%",
-        "minInvest": "12,68%",
-        "price": "R$ 2.796,00",
-        "maturity": "15/12/2035"
-      },
-      {
-        "name": "Tesouro Educa+ 2032",
-        "rate": "IPCA + 7,94%",
-        "minInvest": "12,61%",
-        "price": "R$ 2.602,74",
-        "maturity": "15/12/2036"
-      },
-      {
-        "name": "Tesouro Educa+ 2033",
-        "rate": "IPCA + 7,87%",
-        "minInvest": "12,54%",
-        "price": "R$ 2.426,17",
-        "maturity": "15/12/2037"
-      },
-      {
-        "name": "Tesouro Educa+ 2034",
-        "rate": "IPCA + 7,81%",
-        "minInvest": "12,48%",
-        "price": "R$ 2.262,87",
-        "maturity": "15/12/2038"
-      },
-      {
-        "name": "Tesouro Educa+ 2035",
-        "rate": "IPCA + 7,74%",
-        "minInvest": "12,41%",
-        "price": "R$ 2.114,98",
-        "maturity": "15/12/2039"
-      },
-      {
-        "name": "Tesouro Educa+ 2036",
-        "rate": "IPCA + 7,67%",
-        "minInvest": "12,34%",
-        "price": "R$ 1.978,83",
-        "maturity": "15/12/2040"
-      },
-      {
-        "name": "Tesouro Educa+ 2037",
-        "rate": "IPCA + 7,60%",
-        "minInvest": "12,27%",
-        "price": "R$ 1.853,79",
-        "maturity": "15/12/2041"
-      },
-      {
-        "name": "Tesouro Educa+ 2038",
-        "rate": "IPCA + 7,54%",
-        "minInvest": "12,21%",
-        "price": "R$ 1.736,71",
-        "maturity": "15/12/2042"
-      },
-      {
-        "name": "Tesouro Educa+ 2039",
-        "rate": "IPCA + 7,48%",
-        "minInvest": "12,15%",
-        "price": "R$ 1.628,69",
-        "maturity": "15/12/2043"
-      },
-      {
-        "name": "Tesouro Educa+ 2040",
-        "rate": "IPCA + 7,43%",
-        "minInvest": "12,10%",
-        "price": "R$ 1.526,98",
-        "maturity": "15/12/2044"
-      },
-      {
-        "name": "Tesouro Educa+ 2041",
-        "rate": "IPCA + 7,38%",
-        "minInvest": "12,05%",
-        "price": "R$ 1.433,07",
-        "maturity": "15/12/2045"
-      },
-      {
-        "name": "Tesouro Educa+ 2042",
-        "rate": "IPCA + 7,34%",
-        "minInvest": "12,01%",
-        "price": "R$ 1.344,05",
-        "maturity": "15/12/2046"
-      },
-      {
-        "name": "Tesouro IPCA+ 2040",
-        "rate": "IPCA + 7,53%",
-        "minInvest": "12,20%",
-        "price": "R$ 1.713,02",
-        "maturity": "15/08/2040"
-      },
-      {
-        "name": "Tesouro Educa+ 2043",
-        "rate": "IPCA + 7,31%",
-        "minInvest": "11,98%",
-        "price": "R$ 1.259,41",
-        "maturity": "15/12/2047"
-      },
-      {
-        "name": "Tesouro IPCA+ 2050",
-        "rate": "IPCA + 7,23%",
-        "minInvest": "11,90%",
-        "price": "R$ 890,77",
-        "maturity": "15/08/2050"
-      },
-      {
-        "name": "Tesouro IPCA+ 2032",
-        "rate": "IPCA + 8,08%",
-        "minInvest": "12,75%",
-        "price": "R$ 2.959,36",
-        "maturity": "15/08/2032"
-      },
-      {
-        "name": "Tesouro Educa+ 2044",
-        "rate": "IPCA + 7,29%",
-        "minInvest": "11,96%",
-        "price": "R$ 1.178,58",
-        "maturity": "15/12/2048"
-      },
-      {
-        "name": "Tesouro IPCA+ 2045\n                                            \n                                                                                            \n                                                                                    \n                                                                                    \n                                                Juros Semestrais",
-        "rate": "IPCA + 7,51%",
-        "minInvest": "12,18%",
-        "price": "R$ 4.103,16",
-        "maturity": "15/05/2045"
-      },
-      {
-        "name": "Tesouro IPCA+ 2060\n                                            \n                                                                                            \n                                                                                    \n                                                                                    \n                                                Juros Semestrais",
-        "rate": "IPCA + 7,38%",
-        "minInvest": "12,05%",
-        "price": "R$ 4.078,69",
-        "maturity": "15/08/2060"
-      },
-      {
-        "name": "Tesouro IPCA+ 2037\n                                            \n                                                                                            \n                                                                                    \n                                                                                    \n                                                Juros Semestrais",
-        "rate": "IPCA + 7,84%",
-        "minInvest": "12,51%",
-        "price": "R$ 4.186,17",
-        "maturity": "15/05/2037"
-      }
-    ],
     "private": [
       {
         "name": "CDB 100% CDI",
