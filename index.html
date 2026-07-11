@@ -981,9 +981,9 @@
 
             // Define priority columns for better organization
             const priorityKeys = type === 'stocks'
-                ? ['ticker', 'category', 'cotacao', 'dividend_yield', 'p_vp', 'score', 'upside', 'pl', 'roe', 'liq_2meses', 'graham_price', 'bazin_price', 'data_com', 'data_pagamento']
+                ? ['ticker', 'signal', 'eligibility', 'risk_level', 'data_quality', 'overall_score', 'category', 'cotacao', 'dividend_yield', 'p_vp', 'score', 'upside', 'pl', 'roe', 'liq_2meses', 'graham_price', 'bazin_price', 'data_com', 'data_pagamento']
                 : type === 'fiis'
-                    ? ['ticker', 'type', 'price', 'dy', 'p_vp', 'score', 'liquidity', 'vacancy', 'cap_rate', 'magicNumber', 'magicCost', 'last_dividend', 'segment', 'data_com', 'data_pagamento']
+                    ? ['ticker', 'regulatory_class', 'exposure', 'classification_confidence', 'signal', 'risk_level', 'overall_score', 'type', 'price', 'dy', 'p_vp', 'score', 'liquidity', 'vacancy', 'cap_rate', 'magicNumber', 'magicCost', 'last_dividend', 'segment', 'data_com', 'data_pagamento']
                     : ['ticker', 'price', 'dy', 'liquidity', 'high_52w', 'low_52w', 'variation_12m'];
 
             const allKeys = new Set(priorityKeys);
@@ -1093,6 +1093,7 @@
 
             const stars = data.stocks.filter(s => s.category === 'STAR');
             const opportunities = data.stocks.filter(s => s.category === 'OPPORTUNITY');
+            const reviewStocks = data.stocks.filter(s => !['STAR', 'OPPORTUNITY'].includes(s.category));
 
             // 1. STARS SECTION
             if (stars.length > 0) {
@@ -1152,6 +1153,17 @@
                 opportunities.forEach(stock => renderStockCard(stock, stockContainer, false));
             }
 
+            if (reviewStocks.length > 0) {
+                const reviewHeader = document.createElement('h2');
+                reviewHeader.innerHTML = '⚠️ EM ANÁLISE / RISCO <span style="font-size:0.8rem; font-weight:normal; color:var(--text-muted)">(não são recomendações; exigem validação adicional)</span>';
+                reviewHeader.style.width = '100%';
+                reviewHeader.style.margin = '2rem 0 1rem 0';
+                reviewHeader.style.color = 'var(--warning)';
+                reviewHeader.style.gridColumn = '1 / -1';
+                stockContainer.appendChild(reviewHeader);
+                reviewStocks.forEach(stock => renderStockCard(stock, stockContainer, false, 'review'));
+            }
+
             // Filter Logic Function
             window.filterOpportunities = function (strategy, btn) {
                 // Update buttons
@@ -1201,23 +1213,22 @@
                 });
             };
 
-            function renderStockCard(stock, container, isStar) {
+            function renderStockCard(stock, container, isStar, cardType = 'opportunity') {
                 const card = document.createElement('div');
                 card.className = 'stock-card high-upside';
                 card.dataset.searchTerm = `${escapeHTML(stock.ticker)} acao`.toLowerCase();
 
                 // Add attributes for filtering
                 if (!isStar) {
-                    card.dataset.type = 'opportunity';
+                    card.dataset.type = cardType;
                     // stock.strategies is an array, join it for the attribute
                     card.dataset.strategies = stock.strategies ? escapeHTML(stock.strategies.join(',')) : '';
                 }
 
                 if (isStar) card.style.borderLeftColor = '#FFD700'; // Gold border for stars
 
-                const badge = isStar
-                    ? `<span class="badge" style="background:#FFD700; color:black">⭐ ${escapeHTML(String(stock.score))}/12</span>`
-                    : `<span class="badge" style="background:var(--card-hover); color:var(--text-muted)">${escapeHTML(String(stock.score))}/12</span>`;
+                const displayedScore = stock.overall_score ?? stock.score;
+                const riskBadge = `<span class="badge" title="Risco e elegibilidade são avaliados separadamente">${escapeHTML(stock.risk_level || 'N/A')}</span>`;
 
                 const volBadge = (stock.strategies && stock.strategies.includes('HIGH_VOLATILITY'))
                     ? `<span class="badge" style="background:var(--danger); color:white" title="Dividend Yield > 16% (Risco de não recorrência)">⚠️ Volatilidade</span>`
@@ -1233,6 +1244,7 @@
                                  alt="${escapeHTML(stock.ticker)}">
                             ${escapeHTML(stock.ticker)}
                             ${volBadge}
+                            ${riskBadge}
                         </h3>
                         <span style="font-size:0.8rem; color:var(--text-muted)">Graham: R$ ${escapeHTML(stock.graham_price.toFixed(2))} | Bazin: R$ ${escapeHTML(stock.bazin_price.toFixed(2))}</span>
                     </div>
@@ -1244,8 +1256,8 @@
                                 <span class="badge ${stock.p_vp && stock.p_vp <= 1.0 ? 'price-badge' : ''}">P/VP ${escapeHTML(stock.p_vp?.toFixed(1) || 'N/A')}</span>
                             </div>
                         </div>
-                        <div class="score-indicator ${isStar ? 'score-star' : (stock.score >= 8 ? 'score-good' : stock.score >= 6 ? 'score-warning' : 'score-danger')}">
-                            ${escapeHTML(String(stock.score))}
+                        <div class="score-indicator ${isStar ? 'score-star' : (displayedScore >= 8 ? 'score-good' : displayedScore >= 6 ? 'score-warning' : 'score-danger')}" title="Score geral ponderado; consulte os pilares nos detalhes">
+                            ${escapeHTML(String(displayedScore))}
                         </div>
                     </div>
                 </div>
@@ -1288,6 +1300,12 @@
                                     <div class="detail-box"><div class="detail-row"><span class="detail-label">PEG</span><span class="detail-value">${escapeHTML((stock.peg_ratio && stock.peg_ratio < 50) ? stock.peg_ratio.toFixed(2) : 'N/A')}</span></div></div>
                                     <div class="detail-box"><div class="detail-row"><span class="detail-label">ROIC</span><span class="detail-value">${escapeHTML(stock.roic?.toFixed(1) || 'N/A')}%</span></div></div>
                                     <div class="detail-box"><div class="detail-row"><span class="detail-label">Payout</span><span class="detail-value">${escapeHTML(stock.payout ? stock.payout.toFixed(0) + '%' : 'N/A')}</span></div></div>
+                                </div>
+                                <div class="detail-grid" style="grid-template-columns: repeat(4, 1fr); gap:8px; margin-top:8px;">
+                                    <div class="detail-box"><div class="detail-row"><span class="detail-label">Qualidade</span><span class="detail-value">${escapeHTML(String(stock.pillars?.quality ?? 'N/A'))}/10</span></div></div>
+                                    <div class="detail-box"><div class="detail-row"><span class="detail-label">Valuation</span><span class="detail-value">${escapeHTML(String(stock.pillars?.valuation ?? 'N/A'))}/10</span></div></div>
+                                    <div class="detail-box"><div class="detail-row"><span class="detail-label">Renda</span><span class="detail-value">${escapeHTML(String(stock.pillars?.income ?? 'N/A'))}/10</span></div></div>
+                                    <div class="detail-box"><div class="detail-row"><span class="detail-label">Segurança</span><span class="detail-value">${escapeHTML(String(stock.pillars?.safety ?? 'N/A'))}/10</span></div></div>
                                 </div>
 
                                 <div id="chart-${escapeHTML(stock.ticker)}" class="chart-container"></div>
@@ -1456,6 +1474,9 @@
                     else if (fii.type === 'MULTI') typeBadge = `<span class="badge" style="background:${colors.MULTI}; color:white">🔄 MULTI</span>`;
                     else typeBadge = `<span class="badge" style="background:${colors.OUTROS}; color:#aaa">OUTROS</span>`;
 
+                    const exposureBadge = `<span class="badge" title="Confiança: ${escapeHTML(fii.classification_confidence || 'N/A')}">${escapeHTML(fii.exposure || 'UNKNOWN')}</span>`;
+                    const riskBadge = `<span class="badge">Risco ${escapeHTML(fii.risk_level || 'N/A')}</span>`;
+
                     card.innerHTML = `
                 <div class="card-main">
                     <div class="ticker-info">
@@ -1466,6 +1487,8 @@
                                  alt="${escapeHTML(fii.ticker)}">
                             ${escapeHTML(fii.ticker)}
                             ${typeBadge}
+                            ${exposureBadge}
+                            ${riskBadge}
                         </h3>
                         <span style="font-size:0.8rem; color:var(--text-muted)">${escapeHTML(fii.segment)}</span>
                     </div>
@@ -1484,6 +1507,18 @@
                 </div>
                 <div class="card-details">
                     <div class="detail-grid">
+                        <div class="detail-box">
+                            <div class="detail-row"><span class="detail-label">Valuation</span><span class="detail-value">${escapeHTML(String(fii.pillars?.valuation ?? 'N/A'))}/10</span></div>
+                        </div>
+                        <div class="detail-box">
+                            <div class="detail-row"><span class="detail-label">Renda</span><span class="detail-value">${escapeHTML(String(fii.pillars?.income ?? 'N/A'))}/10</span></div>
+                        </div>
+                        <div class="detail-box">
+                            <div class="detail-row"><span class="detail-label">Liquidez</span><span class="detail-value">${escapeHTML(String(fii.pillars?.liquidity ?? 'N/A'))}/10</span></div>
+                        </div>
+                        <div class="detail-box">
+                            <div class="detail-row"><span class="detail-label">Segurança</span><span class="detail-value">${escapeHTML(String(fii.pillars?.safety ?? 'N/A'))}/10</span></div>
+                        </div>
                         <div class="detail-box">
                             <div class="detail-row"><span class="detail-label">FFO Yield</span><span class="detail-value">${escapeHTML(String(fii.ffo_yield || 'N/A'))}% ${getTrendArrow(fii.ffo_yield, 'roe')}</span></div>
                         </div>

@@ -8,6 +8,12 @@ const { getTesouroDirect, getPrivateBenchmarks } = require('./services/fixed_inc
 const { getMultipleAssetMetadata } = require('./services/investidor10');
 const { saveHistory } = require('./services/storage');
 
+const countBy = (items, selector) => items.reduce((counts, item) => {
+    const key = selector(item);
+    counts[key] = (counts[key] || 0) + 1;
+    return counts;
+}, {});
+
 async function exportData() {
     console.log('🚀 Starting Data Export for B3 Screener...');
 
@@ -91,11 +97,15 @@ async function exportData() {
             papel: finalFiis.filter(f => f.type === 'PAPEL').length,
             tijolo: finalFiis.filter(f => f.type === 'TIJOLO').length,
             multi: finalFiis.filter(f => f.type === 'MULTI').length,
-            etfs: etfs.length
+            etfs: etfs.length,
+            stockSignals: countBy(finalStocks, stock => stock.signal || 'LEGACY'),
+            fundExposures: countBy(finalFiis, fund => fund.exposure || 'UNKNOWN')
         };
 
         console.log('✅ Data exported successfully!');
         console.log(`📊 Statistics: ${stats.total} FIIs, ${stats.etfs} ETFs (${stats.tijolo} Tijolo, ${stats.papel} Papel, ${stats.agro} Agro, ${stats.infra} Infra, ${stats.multi} Multi)`);
+        console.log('Stock signals:', stats.stockSignals);
+        console.log('Fund exposures:', stats.fundExposures);
         return data;
 
     } catch (error) {
