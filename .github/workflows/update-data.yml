@@ -42,14 +42,23 @@ jobs:
       - name: Generate data
         run: npm run generate
 
+      - name: Build historical dashboard data
+        run: npm run build:history
+
       - name: Audit generated classifications
         run: npm run audit:data
+
+      - name: Audit historical dashboard data
+        run: npm run audit:history
+
+      - name: Run historical dashboard smoke tests
+        run: npm run test:history-ui
 
       - name: Commit and push if changed
         run: |
           git config user.name 'GitHub Actions Bot'
           git config user.email 'actions@github.com'
-          git add data.js history/*.json
+          git add data.js history-data.js history/*.json
           if ! git diff --staged --quiet; then
             git commit -m "chore(data): update market data and history [skip ci]"
             git push

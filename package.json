@@ -7,9 +7,12 @@
     "start": "node index.js",
     "generate": "node export_data.js",
     "audit:data": "node scripts/audit-generated-data.js",
-    "test": "node --test Screener.test.js services/storage.test.js services/stocks.test.js services/fiis.test.js services/logic/stock-rules.test.js services/logic/fund-classification.test.js services/logic/fund-analysis.test.js services/fixed_income.test.js services/etfs.test.js services/economy.test.js services/adapters/brapi-stock-adapter.test.js",
+    "test": "node --test Screener.test.js services/storage.test.js services/stocks.test.js services/fiis.test.js services/logic/stock-rules.test.js services/logic/fund-classification.test.js services/logic/fund-analysis.test.js services/fixed_income.test.js services/etfs.test.js services/economy.test.js services/adapters/brapi-stock-adapter.test.js scripts/build-history-data.test.js",
     "test:ui": "node scripts/playwright-smoke.js",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "build:history": "node scripts/build-history-data.js",
+    "audit:history": "node scripts/build-history-data.js --check",
+    "test:history-ui": "node scripts/playwright-history-smoke.js"
   },
   "engines": {
     "node": ">=20"

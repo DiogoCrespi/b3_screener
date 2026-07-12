@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Análise histórica de ações e fundos da B3 a partir dos snapshots do B3 Screener.">
+  <title>Histórico | B3 Screener</title>
+  <link rel="stylesheet" href="./assets/history-dashboard.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./index.html" aria-label="Voltar ao B3 Screener">
+      <span class="brand-mark">B3</span>
+      <span><strong>Histórico</strong><small>Screener & análise temporal</small></span>
+    </a>
+    <nav class="top-actions" aria-label="Ações da página">
+      <a class="button ghost" href="./index.html">← Screener</a>
+      <button class="button ghost" id="themeToggle" type="button" aria-label="Alternar tema">◐ Tema</button>
+      <button class="button primary" id="downloadCsv" type="button">↓ Exportar série</button>
+    </nav>
+  </header>
+
+  <main class="page-shell">
+    <section class="hero" aria-labelledby="pageTitle">
+      <div>
+        <p class="eyebrow">Inteligência histórica</p>
+        <h1 id="pageTitle">Leia a trajetória, não apenas o último número.</h1>
+        <p class="hero-copy">Preço, renda, score e mudança de tese consolidados a partir dos snapshots diários do screener.</p>
+      </div>
+      <div class="freshness" id="freshness" aria-live="polite">Carregando acervo…</div>
+    </section>
+
+    <section class="summary-grid" id="summaryGrid" aria-label="Resumo do acervo"></section>
+
+    <section class="workspace">
+      <aside class="control-panel" aria-label="Controles da análise">
+        <div class="panel-heading">
+          <p class="eyebrow">Explorar</p>
+          <h2>Configure a leitura</h2>
+        </div>
+        <label class="field-label" for="assetType">Classe</label>
+        <div class="segmented" id="assetType" role="group" aria-label="Classe de ativo">
+          <button type="button" data-type="stock" class="active">Ações</button>
+          <button type="button" data-type="fund">Fundos</button>
+        </div>
+
+        <label class="field-label" for="assetSearch">Ativo principal</label>
+        <input class="control" id="assetSearch" list="assetOptions" autocomplete="off" placeholder="Digite um ticker">
+        <datalist id="assetOptions"></datalist>
+
+        <label class="field-label" for="compareAsset">Comparar com</label>
+        <select class="control" id="compareAsset"><option value="">Sem comparação</option></select>
+
+        <label class="field-label" for="metricSelect">Métrica principal</label>
+        <select class="control" id="metricSelect"></select>
+
+        <label class="field-label" for="periodSelect">Período</label>
+        <select class="control" id="periodSelect">
+          <option value="30">30 dias</option>
+          <option value="90">90 dias</option>
+          <option value="all" selected>Todo o histórico</option>
+        </select>
+
+        <div class="quality-note" id="selectionQuality"></div>
+      </aside>
+
+      <div class="analysis-column">
+        <section class="asset-header card" aria-live="polite">
+          <div>
+            <p class="eyebrow" id="assetKind">Ação</p>
+            <h2 id="assetTitle">—</h2>
+            <p class="muted" id="assetRange">—</p>
+          </div>
+          <div class="signal-stack">
+            <span class="signal" id="assetSignal">—</span>
+            <span class="muted" id="assetCategory">—</span>
+          </div>
+        </section>
+
+        <section class="kpi-grid" id="kpiGrid" aria-label="Indicadores do ativo"></section>
+
+        <section class="chart-card card">
+          <div class="card-heading">
+            <div>
+              <p class="eyebrow" id="chartEyebrow">Evolução</p>
+              <h2 id="chartTitle">—</h2>
+            </div>
+            <div class="legend" id="chartLegend"></div>
+          </div>
+          <div class="chart-wrap" id="mainChart" role="img" aria-label="Gráfico histórico principal"></div>
+        </section>
+
+        <section class="mini-grid" id="miniCharts" aria-label="Visões rápidas"></section>
+
+        <section class="split-grid">
+          <article class="card timeline-card">
+            <div class="card-heading"><div><p class="eyebrow">Tese</p><h2>Mudanças de sinal</h2></div></div>
+            <div id="timeline" class="timeline"></div>
+          </article>
+          <article class="card macro-card">
+            <div class="card-heading"><div><p class="eyebrow">Contexto</p><h2>Selic & dólar</h2></div></div>
+            <div id="macroChart" class="macro-chart"></div>
+          </article>
+        </section>
+      </div>
+    </section>
+
+    <section class="section-block" aria-labelledby="rankingTitle">
+      <div class="section-heading">
+        <div><p class="eyebrow">Radar do período</p><h2 id="rankingTitle">O que mais mudou</h2></div>
+        <p class="muted">Comparações usam o primeiro e o último ponto válido dentro do período selecionado.</p>
+      </div>
+      <div class="ranking-grid" id="rankingGrid"></div>
+    </section>
+
+    <section class="section-block quality-section" aria-labelledby="qualityTitle">
+      <div class="section-heading">
+        <div><p class="eyebrow">Confiabilidade</p><h2 id="qualityTitle">Qualidade do acervo</h2></div>
+        <button class="button ghost" id="toggleRejected" type="button" aria-expanded="false">Ver snapshots rejeitados</button>
+      </div>
+      <div class="quality-grid" id="qualityGrid"></div>
+      <div class="rejected-list" id="rejectedList" hidden></div>
+    </section>
+  </main>
+
+  <div class="chart-tooltip" id="chartTooltip" hidden></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <noscript>Esta página precisa de JavaScript para interpretar o artefato histórico.</noscript>
+  <script src="./history-data.js"></script>
+  <script src="./assets/history-dashboard.js"></script>
+</body>
+</html>

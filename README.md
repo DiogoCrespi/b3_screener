@@ -32,6 +32,22 @@ npm run generate
 
 Depois abra `index.html` no navegador. O comando `npm start` executa o dashboard de terminal e também atualiza `data.js`.
 
+## Dashboard histórico
+
+Gere o artefato consolidado a partir dos snapshots:
+
+```bash
+npm run build:history
+```
+
+Depois abra `history-dashboard.html`. A página funciona localmente e no GitHub Pages, sem backend. Ela oferece gráficos de preço, DY, score, P/VP e métricas específicas, comparação normalizada entre ativos, rankings por período, mudanças de sinal, contexto de Selic/dólar, qualidade dos snapshots e exportação CSV.
+
+Valide o artefato e a interface com:
+
+```bash
+npm run audit:history
+npm run test:history-ui
+```
 ## Testes
 
 ```bash
