@@ -22,6 +22,7 @@ const path = require('path');
     const rankingCount = await page.locator('#rankingGrid .ranking-card').count();
     const qualityCount = await page.locator('#qualityGrid .quality-card').count();
     const backHref = await page.locator('a[href="./index.html"]').first().getAttribute('href');
+    const globalAssetOptionCount = await page.locator('#assetOptions option').count();
 
     await page.locator('#assetType button[data-type="fund"]').click();
     const fundTicker = await page.locator('#assetTitle').innerText();
@@ -32,6 +33,11 @@ const path = require('path');
     await page.selectOption('#compareAsset', compareValue);
     const normalizedTitle = await page.locator('#chartTitle').innerText();
     const query = new URL(page.url()).searchParams;
+
+    await page.locator('#assetSearch').fill('PETR4');
+    await page.locator('#assetSearch').dispatchEvent('change');
+    const globalSearchSwitchesType = await page.locator('#assetType button.active').getAttribute('data-type') === 'stock'
+      && await page.locator('#assetTitle').innerText() === 'PETR4';
 
     await page.locator('#toggleRejected').click();
     const rejectedVisible = await page.locator('#rejectedList:not([hidden]) .rejected-row').count();
@@ -63,7 +69,7 @@ const path = require('path');
       rejected: window.B3_HISTORY_DATA?.meta?.rejected?.length
     }));
 
-    results.push({ name, viewport, title, summaryCount, initialTicker, initialActiveType, initialChart, rankingCount, qualityCount, backHref, fundTicker, fundTypeActive, normalizedTitle, queryType: query.get('type'), queryMetric: query.get('metric'), queryPeriod: query.get('period'), queryCompare: query.get('compare'), rejectedVisible, downloadName, darkApplied, darkPersisted, ...layout });
+    results.push({ name, viewport, title, summaryCount, initialTicker, initialActiveType, initialChart, rankingCount, qualityCount, backHref, globalAssetOptionCount, fundTicker, fundTypeActive, normalizedTitle, queryType: query.get('type'), queryMetric: query.get('metric'), queryPeriod: query.get('period'), queryCompare: query.get('compare'), globalSearchSwitchesType, rejectedVisible, downloadName, darkApplied, darkPersisted, ...layout });
     await page.close();
   }
 
@@ -83,6 +89,7 @@ const path = require('path');
     || result.rankingCount !== 4
     || result.qualityCount !== 3
     || result.backHref !== './index.html'
+    || result.globalAssetOptionCount !== 454
     || !result.fundTicker
     || result.fundTypeActive !== 'fund'
     || !result.normalizedTitle.includes('normalizado')
@@ -90,6 +97,7 @@ const path = require('path');
     || result.queryMetric !== 'dy'
     || result.queryPeriod !== '30'
     || !result.queryCompare
+    || !result.globalSearchSwitchesType
     || result.rejectedVisible <= 0
     || !/^[A-Z0-9]+-historico\.csv$/.test(result.downloadName)
     || !result.darkApplied

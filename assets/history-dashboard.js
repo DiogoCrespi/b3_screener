@@ -111,8 +111,13 @@
   function populateControls() {
     document.querySelectorAll('#assetType button').forEach(button => button.classList.toggle('active', button.dataset.type === state.type));
     const tickers = Object.keys(data.series[state.type]).sort();
-    $('#assetOptions').innerHTML = tickers.map(ticker => `<option value="${escapeHTML(ticker)}"></option>`).join('');
+    const globalAssets = [
+      ...Object.keys(data.series.stock).map(ticker => ({ ticker, type: 'stock', label: 'Ação' })),
+      ...Object.keys(data.series.fund).map(ticker => ({ ticker, type: 'fund', label: 'Fundo' }))
+    ].sort((a, b) => a.ticker.localeCompare(b.ticker));
+    $('#assetOptions').innerHTML = globalAssets.map(asset => `<option value="${escapeHTML(asset.ticker)}" label="${asset.label}"></option>`).join('');
     $('#assetSearch').value = state.ticker;
+    $('#assetSearch').placeholder = `Buscar entre ${globalAssets.length} ações e fundos`;
     $('#compareAsset').innerHTML = `<option value="">Sem comparação</option>${tickers.filter(ticker => ticker !== state.ticker).map(ticker => `<option value="${escapeHTML(ticker)}" ${ticker === state.compare ? 'selected' : ''}>${escapeHTML(ticker)}</option>`).join('')}`;
     const metrics = metricCatalog[state.type];
     if (!metrics[state.metric]) state.metric = 'price';
@@ -316,7 +321,20 @@
     document.querySelectorAll('#assetType button').forEach(button => button.addEventListener('click', () => {
       state.type = button.dataset.type; state.ticker = Object.keys(data.series[state.type]).sort((a, b) => data.series[state.type][b].d.length - data.series[state.type][a].d.length)[0]; state.compare = ''; state.metric = 'price'; update();
     }));
-    $('#assetSearch').addEventListener('change', event => { const ticker = event.target.value.trim().toUpperCase(); if (data.series[state.type][ticker]) { state.ticker = ticker; state.compare = state.compare === ticker ? '' : state.compare; update(); } else showToast('Ticker não encontrado no histórico.'); });
+    $('#assetSearch').addEventListener('change', event => {
+      const ticker = event.target.value.trim().toUpperCase();
+      const nextType = data.series.stock[ticker] ? 'stock' : data.series.fund[ticker] ? 'fund' : null;
+      if (!nextType) { showToast('Ticker não encontrado no histórico.'); return; }
+      if (nextType !== state.type) {
+        state.type = nextType;
+        state.metric = 'price';
+        state.compare = '';
+      } else if (state.compare === ticker) {
+        state.compare = '';
+      }
+      state.ticker = ticker;
+      update();
+    });
     $('#compareAsset').addEventListener('change', event => { state.compare = event.target.value; update(); });
     $('#metricSelect').addEventListener('change', event => { state.metric = event.target.value; update(); });
     $('#periodSelect').addEventListener('change', event => { state.period = event.target.value; update(); });
