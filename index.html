@@ -473,12 +473,12 @@
             gap: 4px;
             background: rgba(255, 255, 255, 0.05);
             color: var(--text-color) !important;
-            padding: 8px 6px;
+            padding: 4px 6px;
             border-radius: 8px;
             font-size: 0.8rem;
             text-decoration: none;
-            margin-top: 10px;
-            margin-bottom: 12px;
+            margin-top: 2px;
+            margin-bottom: 2px;
             transition: all 0.3s ease;
             font-weight: 500;
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -495,8 +495,8 @@
             gap: 6px;
             justify-content: stretch;
             flex-wrap: nowrap;
-            margin-bottom: 12px;
-            margin-top: 10px;
+            margin-bottom: 4px;
+            margin-top: 4px;
             width: 100%;
         }
 
@@ -758,11 +758,1167 @@
             z-index: 10;
             position: relative;
         }
+
+        /* UI_MODERN phases 1-4: themes, global layout, components and minimized stock cards */
+        body.theme-origin-dark {
+            --bg-color: #0f1011;
+            --surface-0: #0f1011;
+            --surface-1: #1b1c1e;
+            --surface-2: #262729;
+            --card-bg: #1b1c1e;
+            --card-hover: #262729;
+            --text-color: #f5f5f7;
+            --text-muted: #9f9fa0;
+            --border-color: #2e2e2e;
+            --primary: #847dff;
+            --primary-hover: #9b95ff;
+            --primary-soft: rgba(132, 125, 255, 0.16);
+            --primary-glow: rgba(132, 125, 255, 0.25);
+            --accent: #dd90d8;
+            --badge-bg: rgba(255, 255, 255, 0.08);
+            --shadow-card: 0 4px 30px rgba(0, 0, 0, 0.45);
+            --radius-card: 12px;
+            --radius-control: 18px;
+            --font-ui: 'Inter', sans-serif;
+            --font-display: 'Inter', sans-serif;
+            --card-gradient: linear-gradient(135deg, #23242a 0%, #1b1c1e 100%);
+        }
+
+        body.theme-seline-light,
+        body.light-mode {
+            --bg-color: #fafaf9;
+            --surface-0: #fafaf9;
+            --surface-1: #ffffff;
+            --surface-2: #f5f5f4;
+            --card-bg: #ffffff;
+            --card-hover: #f5f5f4;
+            --text-color: #0c0a09;
+            --text-muted: #78716c;
+            --border-color: #e8e6e5;
+            --primary: #3ba6f1;
+            --primary-hover: #3398e1;
+            --primary-soft: rgba(59, 166, 241, 0.12);
+            --primary-glow: rgba(59, 166, 241, 0.18);
+            --accent: #3ba6f1;
+            --badge-bg: #f5f5f4;
+            --shadow-card: 0 8px 24px rgba(120, 113, 108, 0.12);
+            --radius-card: 16px;
+            --radius-control: 999px;
+            --font-ui: 'Inter', sans-serif;
+            --font-display: 'Inter', sans-serif;
+            --card-gradient: linear-gradient(135deg, #ffffff 0%, #f5f5f4 100%);
+        }
+
+        body.theme-ui-neutral {
+            --bg-color: #f5f5f5;
+            --surface-0: #f5f5f5;
+            --surface-1: #ffffff;
+            --surface-2: #fafafa;
+            --card-bg: #ffffff;
+            --card-hover: #fafafa;
+            --text-color: #0a0a0a;
+            --text-muted: #737373;
+            --border-color: #e5e5e5;
+            --primary: #0a0a0a;
+            --primary-hover: #171717;
+            --primary-soft: rgba(10, 10, 10, 0.08);
+            --primary-glow: rgba(10, 10, 10, 0.12);
+            --accent: #171717;
+            --badge-bg: #f5f5f5;
+            --shadow-card: 0 0 0 1px rgba(23, 23, 23, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+            --radius-card: 24px;
+            --radius-control: 18px;
+            --font-ui: 'Inter', sans-serif;
+            --font-display: 'Inter', sans-serif;
+            --card-gradient: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        button,
+        select,
+        input,
+        a {
+            font: inherit;
+        }
+
+        button:focus-visible,
+        select:focus-visible,
+        input:focus-visible,
+        a:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: var(--font-ui, 'Inter', sans-serif);
+            background: var(--bg-color);
+            text-rendering: optimizeLegibility;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            gap: 1rem;
+            padding: 0.85rem clamp(1rem, 3vw, 2rem);
+            border-bottom: 1px solid var(--border-color);
+            background-color: color-mix(in srgb, var(--card-bg) 94%, transparent);
+            backdrop-filter: blur(14px);
+        }
+
+        h1 {
+            font-size: clamp(1.05rem, 2vw, 1.35rem);
+            line-height: 1.1;
+            font-family: var(--font-display, 'Inter', sans-serif);
+            white-space: nowrap;
+        }
+
+        .header-content {
+            min-width: 0;
+        }
+
+        .container {
+            width: min(100% - 2rem, 1200px);
+            margin: 0 auto;
+            padding: 0 0 4rem;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 300px));
+            justify-content: center;
+            gap: clamp(12px, 2vw, 20px);
+            margin: clamp(1rem, 2.5vw, 1.75rem) 0;
+        }
+
+        .metric-card {
+            position: relative;
+            overflow: hidden;
+            min-width: 0;
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-card);
+            padding: clamp(0.75rem, 2vw, 1.5rem);
+        }
+
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--primary-soft), transparent 55%);
+            pointer-events: none;
+        }
+
+        .metric-label,
+        .metric-value {
+            position: relative;
+        }
+
+        .tabs {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+            margin-bottom: clamp(1.25rem, 3vw, 2rem);
+        }
+
+        .tab-btn {
+            min-width: 0;
+            min-height: 44px;
+            border-radius: var(--radius-control);
+            white-space: nowrap;
+            background: var(--surface-1, var(--card-bg));
+            box-shadow: none;
+        }
+
+        .tab-btn:hover,
+        .tab-btn:focus-visible {
+            background: var(--primary-soft);
+        }
+
+        .tab-btn.active {
+            color: var(--text-color);
+            background: var(--card-gradient);
+            border-color: var(--primary);
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .list-container {
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr));
+            gap: clamp(14px, 2vw, 20px);
+        }
+
+        .header-actions {
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            min-width: 0;
+        }
+
+        .theme-toggle,
+        .theme-select {
+            border-radius: var(--radius-control);
+        }
+
+        .theme-dropdown-wrapper {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            flex: 0 0 40px;
+        }
+
+        .theme-dropdown-wrapper .theme-toggle-btn {
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .theme-select {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+            z-index: 2;
+            padding: 0;
+            min-width: 0;
+            border-radius: var(--radius-control);
+        }
+
+        .btn-icon {
+            flex: 0 0 40px;
+            border-radius: var(--radius-control);
+            background: var(--surface-1, var(--card-bg));
+            box-shadow: none;
+        }
+
+        .btn-icon:hover,
+        .btn-icon:focus-visible {
+            background: var(--primary-soft);
+            box-shadow: 0 0 0 3px var(--primary-soft);
+        }
+
+        .filter-btn {
+            min-height: 36px;
+            border-radius: var(--radius-control);
+            background: var(--surface-1, var(--card-bg));
+            white-space: nowrap;
+            box-shadow: none;
+        }
+
+        .filter-btn:hover,
+        .filter-btn:focus-visible {
+            background: var(--primary-soft);
+        }
+
+        .filter-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #ffffff;
+        }
+
+        .badge {
+            min-height: 20px;
+            border-radius: var(--radius-control);
+            background: var(--badge-bg, var(--card-hover));
+            line-height: 1.2;
+        }
+
+        .price-badge {
+            background: color-mix(in srgb, var(--success) 12%, transparent);
+            border-color: color-mix(in srgb, var(--success) 65%, var(--border-color));
+            color: var(--success);
+        }
+
+        .download-options,
+        .search-container {
+            background: var(--surface-1, var(--card-bg));
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-card);
+        }
+
+        .download-option {
+            min-height: 38px;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-input {
+            min-height: 38px;
+            border-radius: var(--radius-control);
+            background: var(--surface-0, var(--bg-color));
+        }
+
+        .search-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: var(--radius-control);
+        }
+
+        .search-btn:hover,
+        .search-btn:focus-visible {
+            background: var(--primary-soft);
+            color: var(--text-color);
+        }
+
+        .external-link-btn {
+            background: var(--surface-1, var(--card-bg));
+            border-color: var(--border-color);
+            border-radius: var(--radius-control);
+        }
+
+        .external-link-btn:hover,
+        .external-link-btn:focus-visible {
+            background: var(--primary-soft);
+            color: var(--text-color) !important;
+        }
+
+        .stock-card.stock-equity {
+            padding: 14px;
+        }
+
+        .stock-card.stock-equity .equity-card-main {
+            align-items: stretch;
+            gap: 14px;
+            min-height: 86px;
+        }
+
+        .equity-card-identity {
+            display: flex;
+            min-width: 0;
+            flex: 1 1 auto;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .equity-card-title-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            min-width: 0;
+        }
+
+        .equity-ticker-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            min-width: 0;
+        }
+
+        .equity-ticker {
+            margin: 0;
+            font-size: 1.25rem;
+            line-height: 1;
+            color: var(--text-color);
+            letter-spacing: 0;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .equity-badges,
+        .equity-metric-badges {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        .valuation-strip {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        .valuation-strip span {
+            display: inline-flex;
+            align-items: center;
+            min-height: 22px;
+            padding: 2px 8px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-control);
+            background: var(--surface-0, var(--bg-color));
+            white-space: nowrap;
+        }
+
+        .equity-card-metrics {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 12px;
+            flex: 0 0 auto;
+            min-width: 128px;
+        }
+
+        .equity-price-block {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 6px;
+            min-width: 0;
+        }
+
+        .stock-card.stock-equity .price {
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 720px) {
+            header {
+                align-items: center;
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+
+            .header-actions {
+                width: auto;
+                justify-content: flex-end;
+                margin-left: auto;
+            }
+
+
+
+
+
+            .search-container {
+                right: 0;
+                left: auto;
+                width: min(calc(100vw - 2rem), 360px);
+            }
+        }
+
+        @media (max-width: 520px) {
+            .stock-card.stock-equity .equity-card-main {
+                flex-direction: row;
+                align-items: flex-start;
+                justify-content: space-between;
+            }
+
+            .equity-card-metrics {
+                flex-direction: column;
+                align-items: flex-end;
+                justify-content: flex-start;
+                gap: 8px;
+                min-width: 90px;
+                width: auto;
+            }
+
+            .equity-price-block {
+                align-items: flex-end;
+            }
+
+            .badge-text {
+                display: none;
+            }
+
+            .valuation-strip span {
+                white-space: normal;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .filter-btn {
+                flex: 1 1 auto;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .search-container.show {
+                align-items: stretch;
+                flex-wrap: wrap;
+            }
+
+            .search-input {
+                flex-basis: 100%;
+            }
+        }
+
+        /* Phase 5: Expanded stock card details */
+        .stock-card.stock-equity .card-details.show {
+            max-height: 1600px;
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .stock-card.stock-equity .carousel-container {
+            margin-top: 0;
+        }
+
+        .stock-card.stock-equity .carousel-slide {
+            padding: 0;
+        }
+
+        .stock-card.stock-equity .detail-grid {
+            grid-template-columns: repeat(auto-fit, minmax(126px, 1fr)) !important;
+            gap: 8px !important;
+            margin-bottom: 10px;
+        }
+
+        .stock-card.stock-equity .detail-box {
+            background: var(--surface-0, var(--bg-color));
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 9px 10px;
+            min-width: 0;
+        }
+
+        .stock-card.stock-equity .detail-row {
+            min-width: 0;
+            gap: 4px;
+        }
+
+        .stock-card.stock-equity .detail-label {
+            color: var(--text-muted);
+            font-size: 0.68rem;
+            line-height: 1.2;
+            letter-spacing: 0.08em;
+        }
+
+        .stock-card.stock-equity .detail-value {
+            color: var(--text-color);
+            font-size: 0.88rem;
+            line-height: 1.25;
+            overflow-wrap: anywhere;
+        }
+
+        .stock-card.stock-equity .chart-container {
+            height: 300px;
+            border: 1px solid var(--border-color);
+            background: var(--surface-0, var(--bg-color));
+        }
+
+        .stock-card.stock-equity .external-links-row {
+            gap: 8px;
+        }
+
+        .stock-card.stock-equity .external-link-btn {
+            min-height: 28px;
+            margin-top: 2px;
+            margin-bottom: 2px;
+        }
+
+        .stock-card.stock-equity .carousel-controls {
+            margin-top: 10px;
+            padding-bottom: 0;
+        }
+
+        .stock-card.stock-equity .carousel-btn {
+            border-radius: var(--radius-control);
+            background: var(--surface-1, var(--card-bg));
+        }
+
+        .stock-card.stock-equity .carousel-btn:hover:not(:disabled),
+        .stock-card.stock-equity .carousel-btn:focus-visible:not(:disabled) {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: var(--primary-soft);
+        }
+
+        .stock-card.stock-equity .carousel-dot {
+            width: 8px;
+            height: 8px;
+        }
+
+        @media (max-width: 520px) {
+            .stock-card.stock-equity .detail-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            }
+
+            .stock-card.stock-equity .external-links-row {
+                flex-wrap: wrap;
+            }
+
+            .stock-card.stock-equity .external-link-btn {
+                flex-basis: 100%;
+            }
+        }
+
+        /* Phase 6: Snowball tab cards */
+        .stock-card.snowball-card {
+            padding: 14px;
+            border-left-width: 6px;
+        }
+
+        .stock-card.snowball-card .card-main {
+            align-items: stretch;
+            gap: 14px;
+            min-height: 92px;
+        }
+
+        .stock-card.snowball-card .ticker-info {
+            display: flex;
+            flex: 1 1 auto;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 8px;
+            min-width: 0;
+        }
+
+        .stock-card.snowball-card .ticker-info h3 {
+            display: flex;
+            align-items: center;
+            flex-wrap: nowrap;
+            gap: 6px;
+            margin: 0;
+            line-height: 1.15;
+        }
+
+        .stock-card.snowball-card .ticker-info>span {
+            display: block;
+            line-height: 1.35;
+            overflow-wrap: anywhere;
+        }
+
+        .stock-card.snowball-card .metrics {
+            flex: 0 0 auto;
+            min-width: 148px;
+        }
+
+        .stock-card.snowball-card .price {
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        .stock-card.snowball-card .metrics .badge {
+            white-space: nowrap;
+        }
+
+        .stock-card.snowball-card .card-details.show {
+            max-height: 1700px;
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .stock-card.snowball-card .carousel-container {
+            margin-top: 0;
+        }
+
+        .stock-card.snowball-card .carousel-slide {
+            padding: 0;
+        }
+
+        .stock-card.snowball-card .detail-grid {
+            grid-template-columns: repeat(auto-fit, minmax(132px, 1fr)) !important;
+            gap: 8px !important;
+            margin-bottom: 10px;
+        }
+
+        .stock-card.snowball-card .detail-box {
+            min-width: 0;
+            padding: 9px 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--surface-0, var(--bg-color));
+        }
+
+        .stock-card.snowball-card .detail-row {
+            min-width: 0;
+            gap: 4px;
+        }
+
+        .stock-card.snowball-card .detail-label {
+            color: var(--text-muted);
+            font-size: 0.68rem;
+            line-height: 1.2;
+            letter-spacing: 0.08em;
+        }
+
+        .stock-card.snowball-card .detail-value {
+            color: var(--text-color);
+            font-size: 0.88rem;
+            line-height: 1.25;
+            overflow-wrap: anywhere;
+        }
+
+        .stock-card.snowball-card .chart-container {
+            height: 300px;
+            border: 1px solid var(--border-color);
+            background: var(--surface-0, var(--bg-color));
+        }
+
+        .stock-card.snowball-card .external-links-row {
+            gap: 8px;
+        }
+
+        .stock-card.snowball-card .external-link-btn {
+            min-height: 28px;
+            margin-top: 2px;
+            margin-bottom: 2px;
+        }
+
+        .stock-card.snowball-card .carousel-controls {
+            margin-top: 10px;
+            padding-bottom: 0;
+        }
+
+        .stock-card.snowball-card .carousel-btn {
+            border-radius: var(--radius-control);
+            background: var(--surface-1, var(--card-bg));
+        }
+
+        .stock-card.snowball-card .carousel-btn:hover:not(:disabled),
+        .stock-card.snowball-card .carousel-btn:focus-visible:not(:disabled) {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: var(--primary-soft);
+        }
+
+        .stock-card.snowball-card .carousel-dot {
+            width: 8px;
+            height: 8px;
+        }
+
+        .stock-card.snowball-card .carousel-slide:nth-child(2) {
+            min-height: 260px;
+            border: 1px dashed var(--border-color);
+            border-radius: 8px;
+            background: var(--surface-0, var(--bg-color));
+        }
+
+        @media (max-width: 520px) {
+            .stock-card.snowball-card .card-main {
+                flex-direction: row;
+                align-items: flex-start;
+                justify-content: space-between;
+            }
+
+            .stock-card.snowball-card .metrics {
+                flex-direction: column;
+                align-items: flex-end;
+                justify-content: flex-start;
+                gap: 8px;
+                min-width: 90px;
+                width: auto;
+            }
+
+            .stock-card.snowball-card .metrics>div {
+                width: auto;
+                text-align: right !important;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+            }
+
+            .stock-card.snowball-card .metrics .price,
+            .stock-card.snowball-card .metrics div[style*="justify-content"] {
+                justify-content: flex-end !important;
+            }
+
+            .stock-card.snowball-card .detail-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            }
+
+            .stock-card.snowball-card .external-links-row {
+                flex-wrap: wrap;
+            }
+
+            .stock-card.snowball-card .external-link-btn {
+                flex-basis: 100%;
+            }
+        }
+
+        /* Phase 7: Hidden FIIs and fixed income tabs */
+        #content-fiis .group-header,
+        #content-fixed h2 {
+            align-self: end;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--border-color);
+            letter-spacing: 0;
+        }
+
+        #content-fiis .stock-card.fii,
+        #content-fixed .fixed-income-card {
+            padding: 14px;
+        }
+
+        #content-fiis .stock-card.fii .card-main,
+        #content-fixed .fixed-income-card {
+            align-items: stretch;
+            gap: 14px;
+            min-height: 88px;
+        }
+
+        #content-fiis .stock-card.fii .ticker-info,
+        #content-fixed .fixed-income-card .ticker-info {
+            display: flex;
+            flex: 1 1 auto;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 8px;
+            min-width: 0;
+        }
+
+        #content-fiis .stock-card.fii .ticker-info h3,
+        #content-fixed .fixed-income-card .ticker-info h3 {
+            display: flex;
+            align-items: center;
+            flex-wrap: nowrap;
+            gap: 6px;
+            margin: 0;
+            line-height: 1.15;
+        }
+
+        #content-fiis .stock-card.fii .ticker-info>span,
+        #content-fixed .fixed-income-card .ticker-info>span {
+            display: block;
+            color: var(--text-muted);
+            line-height: 1.35;
+            overflow-wrap: anywhere;
+        }
+
+        #content-fiis .stock-card.fii .metrics,
+        #content-fixed .fixed-income-card .metrics {
+            flex: 0 0 auto;
+            min-width: 148px;
+        }
+
+        #content-fiis .stock-card.fii .price,
+        #content-fixed .fixed-income-card .price {
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        #content-fiis .stock-card.fii .metrics .badge {
+            white-space: nowrap;
+        }
+
+        #content-fiis .stock-card.fii .card-details.show {
+            max-height: 1400px;
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        #content-fiis .stock-card.fii .detail-grid {
+            grid-template-columns: repeat(auto-fit, minmax(132px, 1fr)) !important;
+            gap: 8px !important;
+            margin-bottom: 10px;
+        }
+
+        #content-fiis .stock-card.fii .detail-box {
+            min-width: 0;
+            padding: 9px 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--surface-0, var(--bg-color));
+        }
+
+        #content-fiis .stock-card.fii .detail-row {
+            min-width: 0;
+            gap: 4px;
+        }
+
+        #content-fiis .stock-card.fii .detail-label {
+            color: var(--text-muted);
+            font-size: 0.68rem;
+            line-height: 1.2;
+            letter-spacing: 0.08em;
+        }
+
+        #content-fiis .stock-card.fii .detail-value {
+            color: var(--text-color);
+            font-size: 0.88rem;
+            line-height: 1.25;
+            overflow-wrap: anywhere;
+        }
+
+        #content-fiis .stock-card.fii .chart-container {
+            height: 300px;
+            border: 1px solid var(--border-color);
+            background: var(--surface-0, var(--bg-color));
+        }
+
+        #content-fiis .stock-card.fii .external-link-btn {
+            min-height: 28px;
+            margin-top: 2px;
+            margin-bottom: 2px;
+        }
+
+        #content-fixed .fixed-income-card {
+            display: flex;
+            justify-content: space-between;
+            border-left-width: 6px;
+        }
+
+        #content-fixed .fixed-income-card .metrics {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        @media (max-width: 520px) {
+
+            #content-fiis .stock-card.fii .card-main {
+                flex-direction: row;
+                align-items: flex-start;
+                justify-content: space-between;
+            }
+
+            #content-fixed .fixed-income-card {
+                flex-direction: column;
+            }
+
+            #content-fiis .stock-card.fii .metrics {
+                flex-direction: column;
+                align-items: flex-end;
+                justify-content: flex-start;
+                gap: 8px;
+                min-width: 90px;
+                width: auto;
+            }
+
+            #content-fixed .fixed-income-card .metrics {
+                width: 100%;
+                min-width: 0;
+                align-items: flex-start;
+            }
+
+            #content-fiis .stock-card.fii .metrics>div {
+                width: auto;
+                text-align: right !important;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+            }
+
+            #content-fixed .fixed-income-card .metrics>div {
+                width: 100%;
+                text-align: left !important;
+            }
+
+            #content-fiis .stock-card.fii .metrics .price,
+            #content-fiis .stock-card.fii .metrics div[style*="justify-content"] {
+                justify-content: flex-end !important;
+            }
+
+            #content-fixed .fixed-income-card .metrics .price,
+            #content-fixed .fixed-income-card .metrics div[style*="justify-content"] {
+                justify-content: flex-start !important;
+            }
+
+            #content-fiis .stock-card.fii .detail-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            }
+        }
+
+        /* Phase 8: ETFs and benchmarks tab */
+        #content-etfs h2 {
+            align-self: end;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--border-color);
+            letter-spacing: 0;
+        }
+
+        #content-etfs .benchmark-card,
+        #content-etfs .etf-card {
+            padding: 14px;
+            border-left-width: 6px;
+        }
+
+        #content-etfs .benchmark-card {
+            display: flex;
+            align-items: stretch;
+            justify-content: space-between;
+            gap: 14px;
+        }
+
+        #content-etfs .benchmark-card .ticker-info,
+        #content-etfs .etf-card .ticker-info {
+            display: flex;
+            flex: 1 1 auto;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 8px;
+            min-width: 0;
+        }
+
+        #content-etfs .benchmark-card .ticker-info h3,
+        #content-etfs .etf-card .ticker-info h3 {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 0;
+            line-height: 1.15;
+        }
+
+        #content-etfs .benchmark-card .ticker-info>span,
+        #content-etfs .etf-card .ticker-info>span {
+            display: block;
+            color: var(--text-muted);
+            line-height: 1.35;
+            overflow-wrap: anywhere;
+        }
+
+        #content-etfs .benchmark-card .metrics,
+        #content-etfs .etf-card .metrics {
+            flex: 0 0 auto;
+            min-width: 132px;
+        }
+
+        #content-etfs .benchmark-card .price,
+        #content-etfs .etf-card .price {
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        #content-etfs .etf-card .card-main {
+            align-items: stretch;
+            gap: 14px;
+            min-height: 88px;
+        }
+
+        #content-etfs .etf-card .metrics .badge {
+            white-space: nowrap;
+        }
+
+        #content-etfs .etf-card .card-details.show {
+            max-height: 950px;
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        #content-etfs .etf-card .detail-grid {
+            grid-template-columns: repeat(auto-fit, minmax(132px, 1fr)) !important;
+            gap: 8px !important;
+            margin-bottom: 10px;
+        }
+
+        #content-etfs .etf-card .detail-box {
+            min-width: 0;
+            padding: 9px 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--surface-0, var(--bg-color));
+        }
+
+        #content-etfs .etf-card .detail-row {
+            min-width: 0;
+            gap: 4px;
+        }
+
+        #content-etfs .etf-card .detail-label {
+            color: var(--text-muted);
+            font-size: 0.68rem;
+            line-height: 1.2;
+            letter-spacing: 0.08em;
+        }
+
+        #content-etfs .etf-card .detail-value {
+            color: var(--text-color);
+            font-size: 0.88rem;
+            line-height: 1.25;
+            overflow-wrap: anywhere;
+        }
+
+        #content-etfs .etf-card .chart-container {
+            height: 300px;
+            border: 1px solid var(--border-color);
+            background: var(--surface-0, var(--bg-color));
+        }
+
+        #content-etfs .etf-card .external-link-btn {
+            min-height: 28px;
+            margin-top: 2px;
+            margin-bottom: 2px;
+        }
+
+        @media (max-width: 520px) {
+
+            #content-etfs .benchmark-card,
+            #content-etfs .etf-card .card-main {
+                flex-direction: column;
+            }
+
+            #content-etfs .benchmark-card .metrics,
+            #content-etfs .etf-card .metrics {
+                width: 100%;
+                min-width: 0;
+                align-items: flex-start;
+            }
+
+            #content-etfs .benchmark-card .metrics>div,
+            #content-etfs .etf-card .metrics>div {
+                width: 100%;
+                text-align: left !important;
+            }
+
+            #content-etfs .etf-card .metrics .price,
+            #content-etfs .etf-card .metrics div[style*="justify-content"] {
+                justify-content: flex-start !important;
+            }
+
+            #content-etfs .etf-card .detail-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            }
+        }
+
+        @media (min-width: 721px) {
+            .equity-ticker {
+                flex-wrap: nowrap !important;
+            }
+        }
+
+        /* Back to top button */
+        .back-to-top-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            z-index: 9999;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(8px);
+        }
+
+        .back-to-top-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 16px var(--primary-glow);
+            background: var(--primary-hover);
+        }
+
+        @media (max-width: 720px) {
+            .back-to-top-btn.visible {
+                display: flex;
+            }
+        }
     </style>
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
 </head>
 
-<body>
+<body class="theme-seline-light">
+    <button id="back-to-top" aria-label="Voltar ao topo" class="back-to-top-btn">▲</button>
 
     <header>
         <div class="header-content">
@@ -792,7 +1948,15 @@
                     <div class="download-option" onclick="downloadCSV('etfs')">📈 Baixar ETFs</div>
                 </div>
             </div>
-            <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">☀️</button>
+            <div class="theme-dropdown-wrapper">
+                <button class="btn-icon theme-toggle-btn" aria-hidden="true" title="Selecionar tema visual">🔽</button>
+                <select class="theme-select" id="themeBtn" onchange="setTheme(this.value)"
+                    aria-label="Selecionar tema visual">
+                    <option value="theme-origin-dark">Origin Dark</option>
+                    <option value="theme-seline-light" selected>Seline Light</option>
+                    <option value="theme-ui-neutral">UI Neutral</option>
+                </select>
+            </div>
         </div>
     </header>
 
@@ -810,11 +1974,11 @@
         </div>
 
         <div class="tabs">
-            <button class="tab-btn active" onclick="showTab('stocks')">Ações</button>
-            <button class="tab-btn" onclick="showTab('fiis')" style="display:none">FIIs</button>
-            <button class="tab-btn" onclick="showTab('snowball')">❄️ Bola de Neve</button>
-            <button class="tab-btn" onclick="showTab('fixed')" style="display:none">Renda Fixa</button>
-            <button class="tab-btn" onclick="showTab('etfs')">ETFs</button>
+            <button class="tab-btn active" data-tab="stocks" onclick="showTab('stocks')">Ações</button>
+            <button class="tab-btn" data-tab="fiis" onclick="showTab('fiis')" style="display:none">FIIs</button>
+            <button class="tab-btn" data-tab="snowball" onclick="showTab('snowball')">FIIs</button>
+            <button class="tab-btn" data-tab="fixed" onclick="showTab('fixed')" style="display:none">Renda Fixa</button>
+            <button class="tab-btn" data-tab="etfs" onclick="showTab('etfs')">ETFs</button>
         </div>
 
         <div class="list-container" id="content-stocks">
@@ -944,20 +2108,34 @@
 
         // Theme Logic
         const themeBtn = document.getElementById('themeBtn');
-        const savedTheme = localStorage.getItem('theme');
+        const availableThemes = ['theme-origin-dark', 'theme-seline-light', 'theme-ui-neutral'];
+        const legacyThemeMap = {
+            dark: 'theme-origin-dark',
+            light: 'theme-seline-light'
+        };
 
-        if (savedTheme === 'light') {
-            document.body.classList.add('light-mode');
-            themeBtn.textContent = '🌙';
+        function normalizeTheme(theme) {
+            const mappedTheme = legacyThemeMap[theme] || theme;
+            return availableThemes.includes(mappedTheme) ? mappedTheme : 'theme-seline-light';
+        }
+
+        function setTheme(theme) {
+            const nextTheme = normalizeTheme(theme);
+            document.body.classList.remove('light-mode', ...availableThemes);
+            document.body.classList.add(nextTheme);
+            if (themeBtn) themeBtn.value = nextTheme;
+            localStorage.setItem('theme', nextTheme);
+            localStorage.setItem('b3-theme', nextTheme);
         }
 
         function toggleTheme() {
-            document.body.classList.toggle('light-mode');
-            const isLight = document.body.classList.contains('light-mode');
-            themeBtn.textContent = isLight ? '🌙' : '☀️';
-            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            const currentTheme = normalizeTheme(localStorage.getItem('theme'));
+            const currentIndex = availableThemes.indexOf(currentTheme);
+            const nextTheme = availableThemes[(currentIndex + 1) % availableThemes.length];
+            setTheme(nextTheme);
         }
 
+        setTheme(localStorage.getItem('b3-theme') || localStorage.getItem('theme'));
         // CSV Download Logic
         function toggleDownloadMenu() {
             document.getElementById('downloadOptions').classList.toggle('show');
@@ -1029,6 +2207,36 @@
             document.getElementById('downloadOptions').classList.remove('show');
         }
 
+        // Phase 9: inert contract for future charts backed by /history.
+        // This phase intentionally does not fetch snapshots or render charts.
+        window.B3_HISTORY_EXTENSION = Object.freeze({
+            version: 1,
+            directory: 'history/',
+            filePatterns: Object.freeze({ stock: '{YYYY-MM-DD}-stock-results.json', fund: '{YYYY-MM-DD}-fii-results.json' }),
+            assetTypes: Object.freeze(['stock', 'fund', 'etf']),
+            metrics: Object.freeze({
+                stock: Object.freeze(['cotacao', 'dividend_yield', 'overall_score', 'category']),
+                fund: Object.freeze(['price', 'dy', 'overall_score', 'category']),
+                etf: Object.freeze(['price', 'dy'])
+            }),
+            mountSelector: '[data-history-mount]'
+        });
+
+        function registerHistoryExtensionPoint(card, assetType, ticker) {
+            if (!card || !ticker || !window.B3_HISTORY_EXTENSION.assetTypes.includes(assetType)) return;
+            card.dataset.historyAssetType = assetType;
+            card.dataset.historyTicker = ticker;
+            const details = card.querySelector('.card-details');
+            if (!details || details.querySelector('[data-history-mount]')) return;
+            const mount = document.createElement('div');
+            mount.hidden = true;
+            mount.setAttribute('aria-hidden', 'true');
+            mount.dataset.historyMount = '';
+            mount.dataset.historyStatus = 'not-loaded';
+            mount.dataset.historyAssetType = assetType;
+            mount.dataset.historyTicker = ticker;
+            details.appendChild(mount);
+        }
         document.addEventListener('DOMContentLoaded', () => {
             if (!window.INVEST_DATA) {
                 document.querySelector('.list-container').innerHTML = '<p style="text-align:center">Nenhum dado encontrado (.js). Rode o exportador!</p>';
@@ -1097,6 +2305,32 @@
             const opportunities = data.stocks.filter(s => s.category === 'OPPORTUNITY');
             const reviewStocks = data.stocks.filter(s => !['STAR_INCOME', 'STAR_GROWTH', 'STAR_VALUE', 'OPPORTUNITY'].includes(s.category));
 
+            // --- STOCKS TOP FILTER UI ---
+            const filterContainer = document.createElement('div');
+            filterContainer.className = 'opp-filters top-stock-filters';
+            filterContainer.style.marginBottom = '1.5rem';
+            filterContainer.style.marginTop = '1rem';
+            filterContainer.style.gridColumn = '1 / -1'; // Spans full width
+
+            const stockCategories = [
+                { id: 'ALL', label: 'Ver Todas' },
+                { id: 'income', label: '💰 Renda' },
+                { id: 'growth', label: '🚀 Crescimento' },
+                { id: 'value', label: '📉 Valor' },
+                { id: 'opportunity', label: '📈 Oportunidades' },
+                { id: 'review', label: '⚠️ Risco/Revisão' }
+            ];
+
+            stockCategories.forEach(c => {
+                const btn = document.createElement('button');
+                btn.textContent = c.label;
+                btn.className = 'filter-btn ' + (c.id === 'ALL' ? 'active' : '');
+                btn.dataset.id = c.id;
+                btn.onclick = () => filterStocks(c.id, btn);
+                filterContainer.appendChild(btn);
+            });
+            stockContainer.appendChild(filterContainer);
+
             // 1. STARS INCOME SECTION
             if (starIncome.length > 0) {
                 const header = document.createElement('h2');
@@ -1105,6 +2339,7 @@
                 header.style.margin = '1.5rem 0 1rem 0';
                 header.style.color = '#FFD700'; // Gold
                 header.style.gridColumn = '1 / -1';
+                header.dataset.type = 'income';
                 stockContainer.appendChild(header);
                 starIncome.forEach(stock => renderStockCard(stock, stockContainer, true, 'income'));
             }
@@ -1117,6 +2352,7 @@
                 header.style.margin = '1.5rem 0 1rem 0';
                 header.style.color = '#a855f7'; // Purple
                 header.style.gridColumn = '1 / -1';
+                header.dataset.type = 'growth';
                 stockContainer.appendChild(header);
                 starGrowth.forEach(stock => renderStockCard(stock, stockContainer, true, 'growth'));
             }
@@ -1129,6 +2365,7 @@
                 header.style.margin = '1.5rem 0 1rem 0';
                 header.style.color = '#50fa7b'; // Neon Green
                 header.style.gridColumn = '1 / -1';
+                header.dataset.type = 'value';
                 stockContainer.appendChild(header);
                 starValue.forEach(stock => renderStockCard(stock, stockContainer, true, 'value'));
             }
@@ -1142,13 +2379,15 @@
                 oppHeader.style.margin = '2rem 0 1rem 0';
                 oppHeader.style.color = 'var(--text-color)';
                 oppHeader.style.gridColumn = '1 / -1'; // Spans full width
+                oppHeader.dataset.type = 'opportunity';
 
                 stockContainer.appendChild(oppHeader);
 
                 // --- FILTER UI ---
-                const filterContainer = document.createElement('div');
-                filterContainer.className = 'opp-filters';
-                filterContainer.style.gridColumn = '1 / -1'; // Spans full width
+                const subFilterContainer = document.createElement('div');
+                subFilterContainer.className = 'opp-filters opp-sub-filters';
+                subFilterContainer.style.gridColumn = '1 / -1'; // Spans full width
+                subFilterContainer.dataset.type = 'opportunity';
 
 
                 const strategies = [
@@ -1169,12 +2408,12 @@
                     btn.className = 'filter-btn ' + (s.id === 'ALL' ? 'active' : '');
                     btn.dataset.id = s.id;
                     btn.onclick = () => filterOpportunities(s.id, btn);
-                    filterContainer.appendChild(btn);
+                    subFilterContainer.appendChild(btn);
                 });
-                stockContainer.appendChild(filterContainer);
+                stockContainer.appendChild(subFilterContainer);
                 // -----------------
 
-                opportunities.forEach(stock => renderStockCard(stock, stockContainer, false));
+                opportunities.forEach(stock => renderStockCard(stock, stockContainer, false, 'opportunity'));
             }
 
             if (reviewStocks.length > 0) {
@@ -1184,25 +2423,62 @@
                 reviewHeader.style.margin = '2rem 0 1rem 0';
                 reviewHeader.style.color = 'var(--warning)';
                 reviewHeader.style.gridColumn = '1 / -1';
+                reviewHeader.dataset.type = 'review';
                 stockContainer.appendChild(reviewHeader);
                 reviewStocks.forEach(stock => renderStockCard(stock, stockContainer, false, 'review'));
             }
 
+            // Top Stocks Filter Logic
+            window.filterStocks = function (category, btn) {
+                // Update buttons
+                const container = btn.parentNode;
+                container.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Find active opportunity sub-filter strategy
+                const activeOppFilter = document.querySelector('.opp-sub-filters .filter-btn.active');
+                const oppStrategy = activeOppFilter ? activeOppFilter.dataset.id : 'ALL';
+
+                // Filter children of stockContainer (excluding the top filter bar)
+                Array.from(stockContainer.children).forEach(child => {
+                    if (child === filterContainer) return; // Keep the filter bar itself
+
+                    const childType = child.dataset.type;
+                    if (category === 'ALL' || childType === category) {
+                        if (child.classList.contains('stock-card') && childType === 'opportunity') {
+                            // Apply opportunity sub-filtering if strategy is active
+                            const cardStrategies = (child.dataset.strategies || '').split(',');
+                            if (oppStrategy === 'ALL' || cardStrategies.includes(oppStrategy)) {
+                                child.style.display = '';
+                            } else {
+                                child.style.display = 'none';
+                            }
+                        } else {
+                            child.style.display = ''; // Reset display to default (block/grid)
+                        }
+                    } else {
+                        child.style.display = 'none';
+                    }
+                });
+            };
+
             // Filter Logic Function
             window.filterOpportunities = function (strategy, btn) {
                 // Update buttons
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                const container = btn.parentNode;
+                container.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
 
                 // Filter cards
                 const cards = document.querySelectorAll('.stock-card[data-type="opportunity"]');
-                let visibleCount = 0;
+                const activeTopBtn = document.querySelector('.top-stock-filters .filter-btn.active');
+                const activeTopCategory = activeTopBtn ? activeTopBtn.dataset.id : 'ALL';
 
                 cards.forEach(card => {
                     const cardStrategies = (card.dataset.strategies || '').split(',');
-                    if (strategy === 'ALL' || cardStrategies.includes(strategy)) {
-                        card.style.display = 'block';
-                        visibleCount++;
+                    const match = strategy === 'ALL' || cardStrategies.includes(strategy);
+                    if (match && (activeTopCategory === 'ALL' || activeTopCategory === 'opportunity')) {
+                        card.style.display = '';
                     } else {
                         card.style.display = 'none';
                     }
@@ -1239,12 +2515,12 @@
 
             function renderStockCard(stock, container, isStar, cardType = 'opportunity') {
                 const card = document.createElement('div');
-                card.className = 'stock-card high-upside';
+                card.className = 'stock-card high-upside stock-equity';
                 card.dataset.searchTerm = `${escapeHTML(stock.ticker)} acao`.toLowerCase();
 
                 // Add attributes for filtering
+                card.dataset.type = cardType;
                 if (!isStar) {
-                    card.dataset.type = cardType;
                     // stock.strategies is an array, join it for the attribute
                     card.dataset.strategies = stock.strategies ? escapeHTML(stock.strategies.join(',')) : '';
                 }
@@ -1266,7 +2542,7 @@
                 const riskBadge = `<span class="badge" title="Risco e elegibilidade são avaliados separadamente">${escapeHTML(stock.risk_level || 'N/A')}</span>`;
 
                 const volBadge = (stock.strategies && stock.strategies.includes('HIGH_VOLATILITY'))
-                    ? `<span class="badge" style="background:var(--danger); color:white" title="Dividend Yield > 16% (Risco de não recorrência)">⚠️ Volatilidade</span>`
+                    ? `<span class="badge" style="background:var(--danger); color:white" title="Dividend Yield > 16% (Risco de não recorrência)">⚠️ Vol<span class="badge-text"></span></span>`
                     : '';
 
                 let safetyBadge = '';
@@ -1275,30 +2551,37 @@
                 const hasPrejuizo = stock.pl < 0;
 
                 if (hasTurnaround || hasPrejuizo) {
-                    safetyBadge = `<span class="badge" style="background:#ff9f43; color:black" title="Empresa com prejuízo ou em reestruturação operacional">⚠️ Turnaround</span>`;
+                    safetyBadge = `<span class="badge" style="background:#ff9f43; color:black" title="Empresa com prejuízo ou em reestruturação operacional">⚠️ Turn<span class="badge-text">around</span></span>`;
                 } else if (hasHighDebt) {
-                    safetyBadge = `<span class="badge" style="background:var(--danger); color:white" title="Alavancagem elevada (Dívida Líquida/EBITDA > 3.5)">⚠️ Risco Financeiro</span>`;
+                    safetyBadge = `<span class="badge" style="background:var(--danger); color:white" title="Alavancagem elevada (Dívida Líquida/EBITDA > 3.5)">⚠️ Risco<span class="badge-text"></span></span>`;
                 }
 
                 card.innerHTML = `
-                <div class="card-main">
-                    <div class="ticker-info">
-                        <h3>
+                <div class="card-main equity-card-main">
+                    <div class="ticker-info equity-card-identity">
+                        <div class="equity-card-title-row">
                             <img src="https://raw.githubusercontent.com/thefintz/icones-b3/main/icones/${escapeHTML(stock.ticker)}.png"
                                  class="stock-logo" 
                                  onerror="this.style.display='none'"
                                  alt="${escapeHTML(stock.ticker)}">
-                            ${escapeHTML(stock.ticker)}
-                            ${volBadge}
-                            ${safetyBadge}
-                            ${riskBadge}
-                        </h3>
-                        <span style="font-size:0.8rem; color:var(--text-muted)">Graham: R$ ${escapeHTML(stock.graham_price.toFixed(2))} | Bazin: R$ ${escapeHTML(stock.bazin_price.toFixed(2))}</span>
+                            <div class="equity-ticker-stack">
+                                <h3 class="equity-ticker">
+                                    ${escapeHTML(stock.ticker)}
+                                    ${volBadge}
+                                    ${safetyBadge}
+                                    ${riskBadge}
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="valuation-strip" aria-label="Valuation compacto">
+                            <span>Graham: R$ ${escapeHTML(stock.graham_price.toFixed(2))}</span>
+                            <span>Bazin: R$ ${escapeHTML(stock.bazin_price.toFixed(2))}</span>
+                        </div>
                     </div>
-                    <div class="metrics" style="display:flex; align-items:center; gap:12px;">
-                        <div style="text-align:right">
+                    <div class="metrics equity-card-metrics">
+                        <div class="equity-price-block">
                             <div class="price">R$ ${escapeHTML(stock.cotacao.toFixed(2))}</div>
-                            <div style="display:flex; gap:4px; justify-content:flex-end; margin-top:4px;">
+                            <div class="equity-metric-badges">
                                 <span class="badge ${stock.dividend_yield > 8 ? 'price-badge' : ''}">DY ${escapeHTML(String(stock.dividend_yield))}%</span>
                                 <span class="badge ${stock.p_vp && stock.p_vp <= 1.0 ? 'price-badge' : ''}">P/VP ${escapeHTML(stock.p_vp?.toFixed(1) || 'N/A')}</span>
                             </div>
@@ -1522,7 +2805,7 @@
                     else typeBadge = `<span class="badge" style="background:${colors.OUTROS}; color:#aaa">OUTROS</span>`;
 
                     const exposureBadge = `<span class="badge" title="Confiança: ${escapeHTML(fii.classification_confidence || 'N/A')}">${escapeHTML(fii.exposure || 'UNKNOWN')}</span>`;
-                    const riskBadge = `<span class="badge">Risco ${escapeHTML(fii.risk_level || 'N/A')}</span>`;
+                    const riskBadge = `<span class="badge"><span class="badge-text">Risco </span>${escapeHTML(fii.risk_level || 'N/A')}</span>`;
 
                     card.innerHTML = `
                 <div class="card-main">
@@ -1671,7 +2954,7 @@
 
                 data.fixedIncome.tesouro.forEach(bond => {
                     const card = document.createElement('div');
-                    card.className = 'stock-card';
+                    card.className = 'stock-card fixed-income-card';
                     card.dataset.searchTerm = `${escapeHTML(bond.name)} tesouro`.toLowerCase();
                     card.style.borderLeftColor = 'var(--text-color)';
                     card.innerHTML = `
@@ -1706,7 +2989,7 @@
 
                 data.fixedIncome.private.forEach(bench => {
                     const card = document.createElement('div');
-                    card.className = 'stock-card';
+                    card.className = 'stock-card benchmark-card';
                     card.dataset.searchTerm = `${escapeHTML(bench.name)} ${escapeHTML(bench.type)} benchmark`.toLowerCase();
                     card.style.borderLeftColor = 'var(--warning)';
                     card.innerHTML = `
@@ -1734,7 +3017,7 @@
             if (data.etfs) {
                 data.etfs.forEach(etf => {
                     const card = document.createElement('div');
-                    card.className = 'stock-card fii'; // Reuse FII styling for consistency
+                    card.className = 'stock-card fii etf-card'; // Keep .fii for compatibility; .etf-card scopes Phase 8
                     card.dataset.searchTerm = `${etf.ticker} etf`.toLowerCase();
                     card.style.borderLeftColor = 'var(--accent)';
 
@@ -1814,6 +3097,16 @@
                     etfContainer.appendChild(card);
                 });
             }
+            // Register hidden, non-functional mount points after every card is rendered.
+            document.querySelectorAll('.stock-card .card-details').forEach(details => {
+                const card = details.closest('.stock-card');
+                const ticker = card.querySelector('img.stock-logo')?.alt?.trim();
+                if (!ticker) return;
+                const assetType = card.classList.contains('stock-equity')
+                    ? 'stock'
+                    : (card.classList.contains('etf-card') ? 'etf' : 'fund');
+                registerHistoryExtensionPoint(card, assetType, ticker);
+            });
         });
 
         function renderSnowball(fiis) {
@@ -1905,7 +3198,7 @@
                         };
 
                         const card = document.createElement('div');
-                        card.className = 'stock-card';
+                        card.className = 'stock-card snowball-card';
                         card.dataset.searchTerm = `${fii.ticker} ${fii.segment} fii bola de neve`.toLowerCase();
                         card.style.borderLeftColor = '#FFD700';
                         card.style.borderLeftWidth = '6px';
@@ -2104,7 +3397,7 @@
                     };
 
                     const card = document.createElement('div');
-                    card.className = 'stock-card';
+                    card.className = 'stock-card snowball-card';
                     card.dataset.searchTerm = `${fii.ticker} ${fii.segment} fii bola de neve`.toLowerCase();
                     card.style.borderLeftColor = section.color;
 
@@ -2246,6 +3539,9 @@
         }
 
         function showTab(tabName) {
+            // Persist active tab
+            localStorage.setItem('activeTab', tabName);
+
             // Hide all
             ['stocks', 'fiis', 'snowball', 'fixed', 'etfs'].forEach(t => {
                 const el = document.getElementById(`content-${t}`);
@@ -2257,11 +3553,9 @@
             const selected = document.getElementById(`content-${tabName}`);
             if (selected) selected.classList.remove('hidden');
 
-            // Highlight active tab
+            // Highlight active tab using a stable identifier, independent of the visible label.
             document.querySelectorAll('.tab-btn').forEach(btn => {
-                if (btn.textContent.toLowerCase().includes(tabName === 'snowball' ? 'bola de neve' : tabName)) {
-                    btn.classList.add('active');
-                }
+                btn.classList.toggle('active', btn.dataset.tab === tabName);
             });
         }
 
@@ -2336,7 +3630,24 @@
         }
 
         // Initialization
-        showTab('stocks'); // Initialize the first tab to prevent blank screen
+        const savedTab = localStorage.getItem('activeTab') || 'stocks';
+        showTab(savedTab);
+
+        // Back to top scroll functionality
+        const backToTopBtn = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
     </script>
 
 </body>
