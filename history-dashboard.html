@@ -20,6 +20,7 @@
         <button class="button primary dropdown-toggle" type="button">↓ Exportar série</button>
         <div class="dropdown-menu">
           <button type="button" id="downloadCsv">Série Temporal Simples (CSV)</button>
+          <button type="button" id="downloadCsvFull">Série Temporal Completa (CSV)</button>
           <button type="button" id="exportRich">Relatório Analítico Completo (CSV)</button>
         </div>
       </div>
@@ -50,6 +51,12 @@
           <button type="button" data-type="fund">Fundos</button>
         </div>
 
+        <label class="field-label" for="historyModeToggle">Modo de Histórico</label>
+        <div class="segmented" id="historyModeToggle" role="group" aria-label="Modo de dados históricos">
+          <button type="button" data-mode="local" class="active">Local (Rico)</button>
+          <button type="button" data-mode="extended">Estendido</button>
+        </div>
+
         <label class="field-label" for="assetSearch">Ativo principal</label>
         <input class="control" id="assetSearch" list="assetOptions" autocomplete="off" placeholder="Digite um ticker">
         <datalist id="assetOptions"></datalist>
@@ -64,6 +71,7 @@
         <select class="control" id="periodSelect">
           <option value="30">30 dias</option>
           <option value="90">90 dias</option>
+          <option value="365">1 Ano</option>
           <option value="all" selected>Todo o histórico</option>
         </select>
 

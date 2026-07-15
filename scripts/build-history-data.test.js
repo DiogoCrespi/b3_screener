@@ -3,7 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
-const { buildHistoryData, validateArtifact, normalizePoint } = require('./build-history-data');
+const { buildHistoryData, validateArtifact, normalizePoint, getActualTradingDate, getTrailingYield } = require('./build-history-data');
 
 const temporaryDirectories = [];
 afterEach(() => {
@@ -35,13 +35,41 @@ function fund(index, overrides = {}) {
 }
 
 describe('history data builder', () => {
-  test('aggregates valid snapshots into ordered columnar series', () => {
+  test('date alignment logic correct', () => {
+    // Thursday -> Wednesday
+    assert.strictEqual(getActualTradingDate('2026-01-01'), '2025-12-31');
+    // Friday -> Thursday
+    assert.strictEqual(getActualTradingDate('2026-01-02'), '2026-01-01');
+    // Monday -> Friday
+    assert.strictEqual(getActualTradingDate('2026-01-05'), '2026-01-02');
+  });
+
+  test('getTrailingYield calculations correct', () => {
+    const dividends = [
+      { date: '2024-02-01', amount: 1.0 },
+      { date: '2024-06-01', amount: 2.0 },
+      { date: '2024-12-01', amount: 1.5 },
+      { date: '2025-03-01', amount: 3.0 }
+    ];
+    
+    // Trailing 12 months for 2024-12-31: 2024-02-01, 2024-06-01, 2024-12-01 are inside the window. Total = 4.5.
+    // Price = 45.0. Yield = (4.5 / 45.0) * 100 = 10.0%.
+    assert.strictEqual(getTrailingYield('2024-12-31', 45.0, dividends), 10.0);
+
+    // Trailing 12 months for 2025-04-01: 2024-06-01 (yes), 2024-12-01 (yes), 2025-03-01 (yes), 2024-02-01 (no, >365 days ago). Total = 6.5.
+    // Price = 65.0. Yield = (6.5 / 65.0) * 100 = 10.0%.
+    assert.strictEqual(getTrailingYield('2025-04-01', 65.0, dividends), 10.0);
+  });
+
+  test('aggregates valid snapshots into ordered columnar series', async () => {
     const directory = fixtureDirectory();
     writeSnapshot(directory, '2026-01-02', 'stock', 100, index => stock(index, { cotacao: 12 }));
     writeSnapshot(directory, '2026-01-01', 'stock', 100, index => stock(index, { cotacao: 10 }));
     writeSnapshot(directory, '2026-01-01', 'fii', 50, index => fund(index));
-    const data = buildHistoryData({ historyDir: directory });
-    assert.deepEqual(data.dates, ['2026-01-01', '2026-01-02']);
+    
+    const data = await buildHistoryData({ historyDir: directory, isTest: true });
+    
+    assert.deepEqual(data.dates, ['2025-12-31', '2026-01-01']);
     assert.deepEqual(data.series.stock.ST000.d, [0, 1]);
     assert.equal(data.series.stock.ST000.v[0][0], 10);
     assert.equal(data.series.stock.ST000.v[1][0], 12);
@@ -50,11 +78,12 @@ describe('history data builder', () => {
     assert.equal(validateArtifact(data), true);
   });
 
-  test('rejects incomplete snapshots without poisoning valid series', () => {
+  test('rejects incomplete snapshots without poisoning valid series', async () => {
     const directory = fixtureDirectory();
     writeSnapshot(directory, '2026-01-01', 'stock', 100, index => stock(index));
     writeSnapshot(directory, '2026-01-02', 'stock', 0, index => stock(index));
-    const data = buildHistoryData({ historyDir: directory });
+    
+    const data = await buildHistoryData({ historyDir: directory, isTest: true });
     assert.equal(data.meta.rejected.length, 1);
     assert.equal(data.meta.rejected[0].reason, 'INSUFFICIENT_ITEMS');
     assert.equal(data.series.stock.ST000.d.length, 1);
@@ -68,10 +97,14 @@ describe('history data builder', () => {
     assert.equal(point.some(value => typeof value === 'number' && !Number.isFinite(value)), false);
   });
 
-  test('rejects declared count mismatches', () => {
+  test('rejects declared count mismatches', async () => {
     const directory = fixtureDirectory();
     const items = Array.from({ length: 100 }, (_, index) => stock(index));
     fs.writeFileSync(path.join(directory, '2026-01-01-stock-results.json'), JSON.stringify({ date: '2026-01-01T12:00:00.000Z', count: 101, items }));
-    assert.throws(() => buildHistoryData({ historyDir: directory }), /No valid history snapshots/);
+    
+    await assert.rejects(
+      async () => { await buildHistoryData({ historyDir: directory, isTest: true }); },
+      /No valid history snapshots/
+    );
   });
 });

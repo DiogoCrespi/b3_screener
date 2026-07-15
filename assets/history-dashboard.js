@@ -21,7 +21,8 @@
       vacancy: ['Vacância', '%', 2], ffoYield: ['FFO Yield', '%', 2], capRate: ['Cap Rate', '%', 2]
     }
   };
-  const state = { type: 'stock', ticker: '', compare: '', metric: 'price', period: 'all' };
+  
+  const state = { type: 'stock', ticker: '', compare: '', metric: 'price', period: 'all', mode: 'local' };
   const tooltip = $('#chartTooltip');
   let toastTimer;
 
@@ -66,14 +67,43 @@
   function percentChange(first, last) { return validNumber(first) && validNumber(last) && first !== 0 ? ((last / first) - 1) * 100 : null; }
   function signed(value, suffix = '%') { return validNumber(value) ? `${value > 0 ? '+' : ''}${value.toFixed(2)}${suffix}` : 'N/D'; }
 
+  function downsample(points, maxPoints = 150) {
+    if (points.length <= maxPoints) return points;
+    const bucketSize = Math.ceil(points.length / maxPoints);
+    const result = [];
+    for (let i = 0; i < points.length; i += bucketSize) {
+      const bucket = points.slice(i, i + bucketSize);
+      const avgPoint = { ...bucket[0] };
+      const numericFields = ['price', 'dy', 'score', 'pvp', 'roe', 'roic', 'liquidity', 'graham', 'bazin', 'payout', 'growth', 'marketCap', 'vacancy', 'ffoYield', 'capRate'];
+      numericFields.forEach(field => {
+        const vals = bucket.map(b => b[field]).filter(validNumber);
+        if (vals.length > 0) {
+          avgPoint[field] = vals.reduce((a, b) => a + b, 0) / vals.length;
+        } else {
+          avgPoint[field] = null;
+        }
+      });
+      const mid = bucket[Math.floor(bucket.length / 2)];
+      avgPoint.date = mid.date;
+      avgPoint.dateIndex = mid.dateIndex;
+      result.push(avgPoint);
+    }
+    return result;
+  }
+
   function decodeSeries(type, ticker) {
     const source = data.series[type][ticker];
     if (!source) return [];
-    return source.d.map((dateIndex, index) => {
+    const points = source.d.map((dateIndex, index) => {
       const point = { dateIndex, date: data.dates[dateIndex] };
       data.fields[type].forEach((field, fieldPosition) => { point[field] = source.v[index][fieldPosition]; });
       return point;
     });
+    if (state.mode === 'local') {
+      // Local history starts on aligned March 13, 2026
+      return points.filter(p => p.date >= '2026-03-13');
+    }
+    return points;
   }
 
   function filterPeriod(points, period = state.period) {
@@ -102,19 +132,21 @@
     const params = new URLSearchParams(location.search);
     const type = params.get('type');
     if (type === 'stock' || type === 'fund') state.type = type;
+    const mode = params.get('mode');
+    if (mode === 'local' || mode === 'extended') state.mode = mode;
     const tickers = Object.keys(data.series[state.type]);
     const requested = params.get('ticker');
     state.ticker = tickers.includes(requested) ? requested : (state.type === 'stock' && tickers.includes('PETR4') ? 'PETR4' : tickers.sort((a, b) => data.series[state.type][b].d.length - data.series[state.type][a].d.length)[0]);
     const metric = params.get('metric');
     if (metricCatalog[state.type][metric]) state.metric = metric;
     const period = params.get('period');
-    if (['30', '90', 'all'].includes(period)) state.period = period;
+    if (['30', '90', '365', 'all'].includes(period)) state.period = period;
     const compare = params.get('compare');
     if (tickers.includes(compare) && compare !== state.ticker) state.compare = compare;
   }
 
   function writeQuery() {
-    const params = new URLSearchParams({ type: state.type, ticker: state.ticker, metric: state.metric, period: state.period });
+    const params = new URLSearchParams({ type: state.type, ticker: state.ticker, metric: state.metric, period: state.period, mode: state.mode });
     if (state.compare) params.set('compare', state.compare);
     history.replaceState(null, '', `${location.pathname}?${params}${location.hash}`);
   }
@@ -133,6 +165,29 @@
 
   function populateControls() {
     document.querySelectorAll('#assetType button').forEach(button => button.classList.toggle('active', button.dataset.type === state.type));
+    document.querySelectorAll('#historyModeToggle button').forEach(button => button.classList.toggle('active', button.dataset.mode === state.mode));
+    
+    // Update period select options based on history mode
+    const select = $('#periodSelect');
+    const currentValue = select.value || state.period;
+    if (state.mode === 'local') {
+      select.innerHTML = `
+        <option value="30">30 dias</option>
+        <option value="90">90 dias</option>
+        <option value="all">Todo o histórico local</option>
+      `;
+      if (currentValue === '365') {
+        state.period = 'all';
+      }
+    } else {
+      select.innerHTML = `
+        <option value="30">30 dias</option>
+        <option value="90">90 dias</option>
+        <option value="365">1 Ano</option>
+        <option value="all">Todo o histórico</option>
+      `;
+    }
+
     const tickers = Object.keys(data.series[state.type]).sort();
     const globalAssets = [
       ...Object.keys(data.series.stock).map(ticker => ({ ticker, type: 'stock', label: 'Ação' })),
@@ -145,7 +200,8 @@
     const metrics = metricCatalog[state.type];
     if (!metrics[state.metric]) state.metric = 'price';
     $('#metricSelect').innerHTML = Object.entries(metrics).map(([key, [label]]) => `<option value="${key}" ${key === state.metric ? 'selected' : ''}>${label}</option>`).join('');
-    $('#periodSelect').value = state.period;
+    
+    select.value = state.period;
   }
 
   function renderAsset() {
@@ -174,6 +230,7 @@
       [`Variação · ${metricCatalog[state.type][state.metric][0]}`, signed(variation), `${formatValue(state.type, state.metric, firstMetric?.[state.metric])} → ${formatValue(state.type, state.metric, lastMetric?.[state.metric])}`, variation > 0 ? 'positive' : variation < 0 ? 'negative' : '']
     ];
     $('#kpiGrid').innerHTML = kpis.map(([label, value, detail, css]) => `<article class="kpi"><span class="kpi-label">${escapeHTML(label)}</span><strong class="kpi-value ${css}">${escapeHTML(value)}</strong><span class="kpi-detail">${escapeHTML(detail)}</span></article>`).join('');
+    
     renderBuyMoment(allPoints, points);
     renderInsights(points);
     renderMainChart(points);
@@ -441,12 +498,14 @@
   }
 
   function renderMainChart(primaryPoints) {
+    const downsampledPrimary = downsample(primaryPoints);
     const comparisonPoints = state.compare ? filterPeriod(decodeSeries(state.type, state.compare)) : [];
+    const downsampledCompare = downsample(comparisonPoints);
     const hasCompare = Boolean(state.compare);
     const normalize = hasCompare;
     const geometry = chartGeometry([
-      { ticker: state.ticker, points: primaryPoints, secondary: false },
-      ...(hasCompare ? [{ ticker: state.compare, points: comparisonPoints, secondary: true }] : [])
+      { ticker: state.ticker, points: downsampledPrimary, secondary: false },
+      ...(hasCompare ? [{ ticker: state.compare, points: downsampledCompare, secondary: true }] : [])
     ], state.metric, normalize);
     const metricLabel = metricCatalog[state.type][state.metric][0];
     $('#chartTitle').textContent = normalize ? `${metricLabel} · retorno normalizado` : metricLabel;
@@ -484,7 +543,13 @@
     container.innerHTML = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true">
       <defs><linearGradient id="areaGradient" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="var(--accent)" stop-opacity=".22"/><stop offset="1" stop-color="var(--accent)" stop-opacity="0"/></linearGradient></defs>
       ${ticks.map(value => `<line class="chart-grid" x1="${P.l}" x2="${W - P.r}" y1="${y(value)}" y2="${y(value)}"/><text class="chart-axis-label" x="${P.l - 8}" y="${y(value) + 4}" text-anchor="end">${geometry.normalize ? signed(value) : escapeHTML(formatValue(state.type, state.metric, value))}</text>`).join('')}
-      ${dateTicks.map(index => `<text class="chart-axis-label" x="${x(index)}" y="${H - 10}" text-anchor="middle">${escapeHTML(data.dates[index]?.slice(5).replace('-', '/') || '')}</text>`).join('')}
+      ${dateTicks.map(index => {
+        const d = data.dates[index];
+        if (!d) return '';
+        const rangeDays = geometry.dateMax - geometry.dateMin;
+        const text = rangeDays > 365 ? d.slice(2, 7).replace('-', '/') : d.slice(5).replace('-', '/');
+        return `<text class="chart-axis-label" x="${x(index)}" y="${H - 10}" text-anchor="middle">${escapeHTML(text)}</text>`;
+      }).join('')}
       ${geometry.prepared.map(series => `<path class="chart-line ${series.secondary ? 'secondary' : ''}" d="${pathFor(series.values)}"/>`).join('')}
       <line class="chart-crosshair" x1="0" x2="0" y1="${P.t}" y2="${H - P.b}" visibility="hidden"/>
       <rect class="chart-hit" x="${P.l}" y="${P.t}" width="${W - P.l - P.r}" height="${H - P.t - P.b}"/>
@@ -501,6 +566,7 @@
       const svgX = ((event.clientX - rect.left) / rect.width) * W;
       const targetIndex = Math.round(geometry.dateMin + ((svgX - P.l) / (W - P.l - P.r)) * (geometry.dateMax - geometry.dateMin));
       const primary = geometry.prepared[0].values.reduce((best, point) => Math.abs(point.dateIndex - targetIndex) < Math.abs(best.dateIndex - targetIndex) ? point : best, geometry.prepared[0].values[0]);
+      if (!primary) return;
       crosshair.setAttribute('x1', x(primary.dateIndex)); crosshair.setAttribute('x2', x(primary.dateIndex)); crosshair.setAttribute('visibility', 'visible');
 
       const primaryVal = primary[state.metric];
@@ -529,10 +595,12 @@
   }
 
   function sparkline(primaryPoints, comparisonPoints, metric) {
+    const downsampledPrimary = downsample(primaryPoints, 50);
+    const downsampledCompare = comparisonPoints ? downsample(comparisonPoints, 50) : [];
     const hasCompare = comparisonPoints && comparisonPoints.length > 0;
     const seriesList = [
-      { ticker: state.ticker, points: primaryPoints, secondary: false },
-      ...(hasCompare ? [{ ticker: state.compare, points: comparisonPoints, secondary: true }] : [])
+      { ticker: state.ticker, points: downsampledPrimary, secondary: false },
+      ...(hasCompare ? [{ ticker: state.compare, points: downsampledCompare, secondary: true }] : [])
     ];
     const normalize = hasCompare;
     const geometry = chartGeometry(seriesList, metric, normalize);
@@ -812,7 +880,10 @@
   }
 
   function renderMacro() {
-    const economy = data.economy.map(([dateIndex, selic, dollar]) => ({ dateIndex, date: data.dates[dateIndex], selic, dollar }));
+    let economy = data.economy.map(([dateIndex, selic, dollar]) => ({ dateIndex, date: data.dates[dateIndex], selic, dollar }));
+    if (state.mode === 'local') {
+      economy = economy.filter(point => point.date >= '2026-03-13');
+    }
     const points = filterPeriod(economy);
     const selic = points.filter(point => validNumber(point.selic));
     const dollar = points.filter(point => validNumber(point.dollar));
@@ -926,6 +997,20 @@
     showToast(`Série de ${state.ticker} exportada.`);
   }
 
+  function downloadFullTemporal() {
+    const originalMode = state.mode;
+    state.mode = 'extended';
+    const points = decodeSeries(state.type, state.ticker);
+    state.mode = originalMode;
+
+    const fields = data.fields[state.type];
+    const rows = [['date', ...fields], ...points.map(point => [point.date, ...fields.map(field => point[field] ?? '')])];
+    const csv = rows.map(row => row.map(value => `"${String(value).replace(/"/g, '""')}"`).join(',')).join('\n');
+    const blob = new Blob([`\uFEFF${csv}`], { type: 'text/csv;charset=utf-8' });
+    const link = document.createElement('a'); link.href = URL.createObjectURL(blob); link.download = `${state.ticker}-historico-completo.csv`; link.click(); URL.revokeObjectURL(link.href);
+    showToast(`Série completa de ${state.ticker} exportada.`);
+  }
+
   function downloadRichReport() {
     const primaryStats = getPeriodStats(state.ticker, state.type);
     const primaryBuy = getBuyMomentData(state.ticker, state.type);
@@ -947,7 +1032,7 @@
       if (primaryBuy.score > compareBuy.score) {
         verdict = `${state.ticker} é a melhor opção`;
       } else if (compareBuy.score > primaryBuy.score) {
-        verdict = `${state.compare} é a melhor opção`;
+        verdict = `${state.compare} é a melhor option`;
       }
       csvLines.push(`# Veredito comparativo: ${verdict}`);
       csvLines.push(`# Ativo;Classificação;Score Atratividade;Preço Atual;Score Fundamentos;P/VP Atual;Dividend Yield`);
@@ -1049,6 +1134,10 @@
     document.querySelectorAll('#assetType button').forEach(button => button.addEventListener('click', () => {
       state.type = button.dataset.type; state.ticker = Object.keys(data.series[state.type]).sort((a, b) => data.series[state.type][b].d.length - data.series[state.type][a].d.length)[0]; state.compare = ''; state.metric = 'price'; update();
     }));
+    document.querySelectorAll('#historyModeToggle button').forEach(button => button.addEventListener('click', () => {
+      state.mode = button.dataset.mode;
+      update();
+    }));
     $('#assetSearch').addEventListener('change', event => {
       const ticker = event.target.value.trim().toUpperCase();
       const nextType = data.series.stock[ticker] ? 'stock' : data.series.fund[ticker] ? 'fund' : null;
@@ -1079,6 +1168,7 @@
     });
 
     $('#downloadCsv').addEventListener('click', downloadSimple);
+    $('#downloadCsvFull').addEventListener('click', downloadFullTemporal);
     $('#exportRich').addEventListener('click', downloadRichReport);
 
     $('#themeToggle').addEventListener('click', () => { document.body.classList.toggle('dark'); localStorage.setItem('b3-history-theme', document.body.classList.contains('dark') ? 'dark' : 'light'); });
