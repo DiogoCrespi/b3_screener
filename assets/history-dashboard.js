@@ -400,33 +400,57 @@
     hit.addEventListener('pointerleave', () => { crosshair.setAttribute('visibility', 'hidden'); tooltip.hidden = true; });
   }
 
-  function sparkline(points, metric) {
-    const valid = points.filter(point => validNumber(point[metric]));
-    if (valid.length < 2) return '<div class="chart-empty" style="height:70px">Poucos dados</div>';
-    const values = valid.map(point => point[metric]);
-    let min = Math.min(...values), max = Math.max(...values); if (min === max) { min--; max++; }
-    const path = valid.map((point, index) => `${index ? 'L' : 'M'}${(index / (valid.length - 1) * 100).toFixed(1)},${(56 - ((point[metric] - min) / (max - min) * 48)).toFixed(1)}`).join(' ');
+  function sparkline(primaryPoints, comparisonPoints, metric) {
+    const hasCompare = comparisonPoints && comparisonPoints.length > 0;
+    const seriesList = [
+      { ticker: state.ticker, points: primaryPoints, secondary: false },
+      ...(hasCompare ? [{ ticker: state.compare, points: comparisonPoints, secondary: true }] : [])
+    ];
+    const normalize = hasCompare;
+    const geometry = chartGeometry(seriesList, metric, normalize);
+    if (!geometry) return '<div class="chart-empty" style="height:70px">Poucos dados</div>';
+
+    const H = 60, W = 100, padding = 6;
+    const x = dateIndex => ((dateIndex - geometry.dateMin) / (geometry.dateMax - geometry.dateMin)) * W;
+    const y = val => padding + ((geometry.max - val) / (geometry.max - geometry.min)) * (H - padding * 2);
+
+    function pathFor(values) {
+      let started = false;
+      return values.map(point => {
+        if (!validNumber(point.chartValue)) { started = false; return ''; }
+        const command = started ? 'L' : 'M'; started = true;
+        return `${command}${x(point.dateIndex).toFixed(1)},${y(point.chartValue).toFixed(1)}`;
+      }).join(' ');
+    }
+
     return `<svg viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true">
       <line class="chart-grid" x1="0" x2="100" y1="56" y2="56"/>
-      <path d="${path}"/>
+      ${geometry.prepared.map(series => `<path class="${series.secondary ? 'secondary' : ''}" d="${pathFor(series.values)}"/>`).join('')}
       <line class="sparkline-crosshair" x1="0" x2="0" y1="0" y2="56" visibility="hidden"/>
       <rect class="sparkline-hit" x="0" y="0" width="100" height="60" fill="transparent"/>
     </svg>`;
   }
 
-  function renderMiniCharts(points) {
+  function renderMiniCharts(primaryPoints) {
+    const comparisonPoints = state.compare ? filterPeriod(decodeSeries(state.type, state.compare)) : [];
     const metrics = ['price', 'dy', 'score', 'pvp'];
     $('#miniCharts').innerHTML = metrics.map(metric => {
-      const latest = [...points].reverse().find(point => validNumber(point[metric]))?.[metric];
-      return `<article class="mini-card" data-metric="${metric}"><div class="mini-top"><span class="mini-title">${metricCatalog[state.type][metric][0]}</span><strong class="mini-value">${formatValue(state.type, metric, latest)}</strong></div><div class="sparkline">${sparkline(points, metric)}</div></article>`;
+      const latest = [...primaryPoints].reverse().find(point => validNumber(point[metric]))?.[metric];
+      return `<article class="mini-card" data-metric="${metric}"><div class="mini-top"><span class="mini-title">${metricCatalog[state.type][metric][0]}</span><strong class="mini-value">${formatValue(state.type, metric, latest)}</strong></div><div class="sparkline">${sparkline(primaryPoints, comparisonPoints, metric)}</div></article>`;
     }).join('');
 
     document.querySelectorAll('.mini-card').forEach(card => {
       const metric = card.dataset.metric;
-      const valid = points.filter(point => validNumber(point[metric]));
-      if (valid.length < 2) return;
+      const hasCompare = comparisonPoints && comparisonPoints.length > 0;
+      const seriesList = [
+        { ticker: state.ticker, points: primaryPoints, secondary: false },
+        ...(hasCompare ? [{ ticker: state.compare, points: comparisonPoints, secondary: true }] : [])
+      ];
+      const normalize = hasCompare;
+      const geometry = chartGeometry(seriesList, metric, normalize);
+      if (!geometry) return;
 
-      const latestVal = [...points].reverse().find(point => validNumber(point[metric]))?.[metric];
+      const latestVal = [...primaryPoints].reverse().find(point => validNumber(point[metric]))?.[metric];
       const latestText = formatValue(state.type, metric, latestVal);
       const valueEl = card.querySelector('.mini-value');
       const svg = card.querySelector('svg');
@@ -436,24 +460,43 @@
       hit.addEventListener('pointermove', event => {
         const rect = svg.getBoundingClientRect();
         const pct = (event.clientX - rect.left) / rect.width;
-        const targetIndex = Math.max(0, Math.min(valid.length - 1, Math.round(pct * (valid.length - 1))));
-        const point = valid[targetIndex];
+        const targetDateIndex = Math.round(geometry.dateMin + pct * (geometry.dateMax - geometry.dateMin));
+        const primaryPoint = primaryPoints.reduce((best, point) => Math.abs(point.dateIndex - targetDateIndex) < Math.abs(best.dateIndex - targetDateIndex) ? point : best, primaryPoints[0]);
+        if (!primaryPoint) return;
 
-        valueEl.textContent = formatValue(state.type, metric, point[metric]);
-
-        const xPos = (targetIndex / (valid.length - 1) * 100).toFixed(1);
+        const xPos = ((primaryPoint.dateIndex - geometry.dateMin) / (geometry.dateMax - geometry.dateMin) * 100).toFixed(1);
         crosshair.setAttribute('x1', xPos);
         crosshair.setAttribute('x2', xPos);
         crosshair.setAttribute('visibility', 'visible');
 
-        tooltip.innerHTML = `<strong>${formatDate(point.date)}</strong><div>${metricCatalog[state.type][metric][0]}: <b>${formatValue(state.type, metric, point[metric])}</b></div>`;
+        let tooltipRows = '';
+        if (hasCompare) {
+          const compPoint = comparisonPoints.reduce((best, point) => Math.abs(point.dateIndex - primaryPoint.dateIndex) < Math.abs(best.dateIndex - primaryPoint.dateIndex) ? point : best, comparisonPoints[0]);
+          const primaryVal = primaryPoint[metric];
+          const compVal = compPoint ? compPoint[metric] : null;
+
+          valueEl.innerHTML = `<span style="color: var(--accent);">${formatValue(state.type, metric, primaryVal)}</span> · <span style="color: var(--blue); font-size: 0.85em;">${formatValue(state.type, metric, compVal)}</span>`;
+
+          const pFirst = geometry.prepared[0].values.find(p => validNumber(p[metric]))?.[metric];
+          const cFirst = geometry.prepared[1].values.find(p => validNumber(p[metric]))?.[metric];
+
+          tooltipRows = `
+            <div>${escapeHTML(state.ticker)}: <b>${formatValue(state.type, metric, primaryVal)}</b> (${signed(percentChange(pFirst, primaryVal))})</div>
+            <div>${escapeHTML(state.compare)}: <b>${formatValue(state.type, metric, compVal)}</b> (${signed(percentChange(cFirst, compVal))})</div>
+          `;
+        } else {
+          valueEl.textContent = formatValue(state.type, metric, primaryPoint[metric]);
+          tooltipRows = `<div>${metricCatalog[state.type][metric][0]}: <b>${formatValue(state.type, metric, primaryPoint[metric])}</b></div>`;
+        }
+
+        tooltip.innerHTML = `<strong>${formatDate(primaryPoint.date)}</strong>${tooltipRows}`;
         tooltip.hidden = false;
         tooltip.style.left = `${Math.min(event.clientX + 14, innerWidth - 250)}px`;
         tooltip.style.top = `${Math.max(10, event.clientY - 70)}px`;
       });
 
       hit.addEventListener('pointerleave', () => {
-        valueEl.textContent = latestText;
+        valueEl.innerHTML = latestText;
         crosshair.setAttribute('visibility', 'hidden');
         tooltip.hidden = true;
       });
