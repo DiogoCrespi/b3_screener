@@ -175,6 +175,7 @@
     ];
     $('#kpiGrid').innerHTML = kpis.map(([label, value, detail, css]) => `<article class="kpi"><span class="kpi-label">${escapeHTML(label)}</span><strong class="kpi-value ${css}">${escapeHTML(value)}</strong><span class="kpi-detail">${escapeHTML(detail)}</span></article>`).join('');
     renderBuyMoment(allPoints, points);
+    renderInsights(points);
     renderMainChart(points);
     renderMiniCharts(points);
     renderTimeline(allPoints);
@@ -628,6 +629,176 @@
         tooltip.hidden = true;
       });
     });
+  }
+
+  function getPeriodStats(ticker, type) {
+    const allPoints = decodeSeries(type, ticker);
+    const points = filterPeriod(allPoints);
+    if (!points.length) return null;
+
+    const prices = points.map(p => p.price).filter(validNumber);
+    const dys = points.map(p => p.dy).filter(validNumber);
+    const scores = points.map(p => p.score).filter(validNumber);
+    const pvps = points.map(p => p.pvp).filter(validNumber);
+
+    const firstPrice = [...points].find(p => validNumber(p.price));
+    const lastPrice = [...points].reverse().find(p => validNumber(p.price));
+
+    const priceMinPoint = points.reduce((best, point) => validNumber(point.price) && (!best || point.price < best.price) ? point : best, null);
+    const priceMaxPoint = points.reduce((best, point) => validNumber(point.price) && (!best || point.price > best.price) ? point : best, null);
+
+    const dyMaxPoint = points.reduce((best, point) => validNumber(point.dy) && (!best || point.dy > best.dy) ? point : best, null);
+
+    const avgDy = dys.length ? dys.reduce((a, b) => a + b, 0) / dys.length : 0;
+    const avgPvp = pvps.length ? pvps.reduce((a, b) => a + b, 0) / pvps.length : 0;
+    const avgScore = scores.length ? scores.reduce((a, b) => a + b, 0) / scores.length : 0;
+
+    let specificStats = {};
+    if (type === 'stock') {
+      const roes = points.map(p => p.roe).filter(validNumber);
+      const roics = points.map(p => p.roic).filter(validNumber);
+      specificStats = {
+        avgRoe: roes.length ? roes.reduce((a, b) => a + b, 0) / roes.length : 0,
+        avgRoic: roics.length ? roics.reduce((a, b) => a + b, 0) / roics.length : 0,
+      };
+    } else {
+      const vacancies = points.map(p => p.vacancy).filter(validNumber);
+      const capRates = points.map(p => p.capRate).filter(validNumber);
+      specificStats = {
+        avgVacancy: vacancies.length ? vacancies.reduce((a, b) => a + b, 0) / vacancies.length : 0,
+        maxVacancy: vacancies.length ? Math.max(...vacancies) : 0,
+        avgCapRate: capRates.length ? capRates.reduce((a, b) => a + b, 0) / capRates.length : 0,
+      };
+    }
+
+    return {
+      ticker,
+      pointsCount: points.length,
+      priceChange: percentChange(firstPrice?.price, lastPrice?.price),
+      priceMinPoint,
+      priceMaxPoint,
+      dyMaxPoint,
+      avgDy,
+      avgPvp,
+      avgScore,
+      ...specificStats
+    };
+  }
+
+  function renderInsights(primaryPoints) {
+    const card = $('#insightsCard');
+    const primaryStats = getPeriodStats(state.ticker, state.type);
+    if (!primaryStats) {
+      card.style.display = 'none';
+      return;
+    }
+
+    const hasCompare = state.compare && data.series[state.type][state.compare];
+    const compareStats = hasCompare ? getPeriodStats(state.compare, state.type) : null;
+
+    if (!hasCompare) {
+      let specificHTML = '';
+      if (state.type === 'stock') {
+        specificHTML = `
+          <div class="insight-block">
+            <span class="insight-label">Rentabilidade Contábil Média</span>
+            <span class="insight-value">ROE: ${primaryStats.avgRoe.toFixed(1)}% · ROIC: ${primaryStats.avgRoic.toFixed(1)}%</span>
+            <span class="insight-detail">Média de eficiência e retorno sobre capital investido no período.</span>
+          </div>
+        `;
+      } else {
+        specificHTML = `
+          <div class="insight-block">
+            <span class="insight-label">Vacância e Retorno Imobiliário</span>
+            <span class="insight-value">Vacância Média: ${primaryStats.avgVacancy.toFixed(1)}%</span>
+            <span class="insight-detail">Pico de vacância física: <strong>${primaryStats.maxVacancy.toFixed(1)}%</strong> · Cap Rate Médio: <strong>${primaryStats.avgCapRate.toFixed(1)}%</strong></span>
+          </div>
+        `;
+      }
+
+      card.innerHTML = `
+        <h3 class="insights-title">💡 Insights Históricos do Período</h3>
+        <div class="insights-grid">
+          <div class="insight-block">
+            <span class="insight-label">Comportamento de Preço</span>
+            <span class="insight-value">${signed(primaryStats.priceChange)} no período</span>
+            <span class="insight-detail">Mín: <strong>R$ ${formatValue(state.type, 'price', primaryStats.priceMinPoint?.price)}</strong> (em ${formatDate(primaryStats.priceMinPoint?.date)})<br>Máx: <strong>R$ ${formatValue(state.type, 'price', primaryStats.priceMaxPoint?.price)}</strong> (em ${formatDate(primaryStats.priceMaxPoint?.date)})</span>
+          </div>
+          <div class="insight-block">
+            <span class="insight-label">Retorno de Dividendos (DY)</span>
+            <span class="insight-value">Yield Médio: ${primaryStats.avgDy.toFixed(2)}%</span>
+            <span class="insight-detail">Pico de Yield: <strong>${formatValue(state.type, 'dy', primaryStats.dyMaxPoint?.dy)}</strong> (em ${formatDate(primaryStats.dyMaxPoint?.date)})</span>
+          </div>
+          <div class="insight-block">
+            <span class="insight-label">Fundamentos (Score & Múltiplos)</span>
+            <span class="insight-value">Score Médio: ${primaryStats.avgScore.toFixed(1)} / P/VP Médio: ${primaryStats.avgPvp.toFixed(2)}x</span>
+            <span class="insight-detail">Demonstra a estabilidade patrimonial e de nota no período.</span>
+          </div>
+          ${specificHTML}
+        </div>
+      `;
+    } else {
+      const compareRow = (label, pVal, cVal, formatter, lowerIsBetter = false) => {
+        let winnerHTML = '';
+        if (pVal !== null && cVal !== null) {
+          const diff = pVal - cVal;
+          const pWins = lowerIsBetter ? diff < 0 : diff > 0;
+          const isDraw = Math.abs(diff) < 0.001;
+          if (isDraw) {
+            winnerHTML = `<span class="winner-badge draw">Empate</span>`;
+          } else if (pWins) {
+            winnerHTML = `<span class="winner-badge primary">${escapeHTML(state.ticker)} (+${Math.abs(diff).toFixed(1)}${label.includes('%') ? '%' : ''})</span>`;
+          } else {
+            winnerHTML = `<span class="winner-badge compare">${escapeHTML(state.compare)} (+${Math.abs(diff).toFixed(1)}${label.includes('%') ? '%' : ''})</span>`;
+          }
+        }
+        return `
+          <tr>
+            <td><strong>${label}</strong></td>
+            <td style="color: var(--accent); font-weight: 750;">${formatter(pVal)}</td>
+            <td style="color: var(--blue); font-weight: 750;">${formatter(cVal)}</td>
+            <td>${winnerHTML}</td>
+          </tr>
+        `;
+      };
+
+      let specificRows = '';
+      if (state.type === 'stock') {
+        specificRows = `
+          ${compareRow('ROE Médio', primaryStats.avgRoe, compareStats.avgRoe, v => `${v.toFixed(1)}%`)}
+          ${compareRow('ROIC Médio', primaryStats.avgRoic, compareStats.avgRoic, v => `${v.toFixed(1)}%`)}
+        `;
+      } else {
+        specificRows = `
+          ${compareRow('Vacância Média', primaryStats.avgVacancy, compareStats.avgVacancy, v => `${v.toFixed(1)}%`, true)}
+          ${compareRow('Cap Rate Médio', primaryStats.avgCapRate, compareStats.avgCapRate, v => `${v.toFixed(1)}%`)}
+        `;
+      }
+
+      card.innerHTML = `
+        <h3 class="insights-title">📊 Comparativo Médio do Período</h3>
+        <div class="insights-table-wrap">
+          <table class="insights-table">
+            <thead>
+              <tr>
+                <th>Indicador (Média do Período)</th>
+                <th style="color: var(--accent);">${escapeHTML(state.ticker)}</th>
+                <th style="color: var(--blue);">${escapeHTML(state.compare)}</th>
+                <th>Destaque</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${compareRow('Retorno Acumulado', primaryStats.priceChange, compareStats.priceChange, v => signed(v))}
+              ${compareRow('Dividend Yield Médio', primaryStats.avgDy, compareStats.avgDy, v => `${v.toFixed(2)}%`)}
+              ${compareRow('Score de Fundamentos', primaryStats.avgScore, compareStats.avgScore, v => v.toFixed(1))}
+              ${compareRow('P/VP Médio', primaryStats.avgPvp, compareStats.avgPvp, v => `${v.toFixed(2)}x`, true)}
+              ${specificRows}
+            </tbody>
+          </table>
+        </div>
+      `;
+    }
+    card.style.display = 'flex';
   }
 
   function renderTimeline(points) {
