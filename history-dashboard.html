@@ -16,7 +16,13 @@
     <nav class="top-actions" aria-label="Ações da página">
       <a class="button ghost" href="./index.html">← Screener</a>
       <button class="button ghost" id="themeToggle" type="button" aria-label="Alternar tema">◐ Tema</button>
-      <button class="button primary" id="downloadCsv" type="button">↓ Exportar série</button>
+      <div class="dropdown" id="exportDropdown">
+        <button class="button primary dropdown-toggle" type="button">↓ Exportar série</button>
+        <div class="dropdown-menu">
+          <button type="button" id="downloadCsv">Série Temporal Simples (CSV)</button>
+          <button type="button" id="exportRich">Relatório Analítico Completo (CSV)</button>
+        </div>
+      </div>
     </nav>
   </header>
 

@@ -325,7 +325,7 @@
       reasons.push(`Preço atual de R$ ${formatValue(type, 'price', currentPrice)} está na faixa intermediária histórica (entre R$ ${formatValue(type, 'price', minPrice)} e R$ ${formatValue(type, 'price', maxPrice)}).`);
     }
 
-    return { ticker, score, statusClass, statusLabel, reasons, currentPrice, currentScore };
+    return { ticker, score, statusClass, statusLabel, reasons, currentPrice, currentScore, currentPvp, currentDy };
   }
 
   function renderBuyMoment(allPoints, points) {
@@ -916,7 +916,7 @@
     $('#rejectedList').innerHTML = data.meta.rejected.map(item => `<div class="rejected-row"><span>${escapeHTML(item.date)}</span><span>${item.type === 'stock' ? 'Ação' : 'Fundo'}</span><span>${escapeHTML(item.reason)}</span><span>${item.count ?? '—'} / mín. ${item.minimum ?? '—'}</span></div>`).join('');
   }
 
-  function downloadSeries() {
+  function downloadSimple() {
     const points = decodeSeries(state.type, state.ticker);
     const fields = data.fields[state.type];
     const rows = [['date', ...fields], ...points.map(point => [point.date, ...fields.map(field => point[field] ?? '')])];
@@ -924,6 +924,125 @@
     const blob = new Blob([`\uFEFF${csv}`], { type: 'text/csv;charset=utf-8' });
     const link = document.createElement('a'); link.href = URL.createObjectURL(blob); link.download = `${state.ticker}-historico.csv`; link.click(); URL.revokeObjectURL(link.href);
     showToast(`Série de ${state.ticker} exportada.`);
+  }
+
+  function downloadRichReport() {
+    const primaryStats = getPeriodStats(state.ticker, state.type);
+    const primaryBuy = getBuyMomentData(state.ticker, state.type);
+    if (!primaryStats || !primaryBuy) return;
+
+    const hasCompare = state.compare && data.series[state.type][state.compare];
+    const compareStats = hasCompare ? getPeriodStats(state.compare, state.type) : null;
+    const compareBuy = hasCompare ? getBuyMomentData(state.compare, state.type) : null;
+
+    const csvLines = [];
+    csvLines.push(`# B3 SCREENER - RELATÓRIO ANALÍTICO HISTÓRICO`);
+    csvLines.push(`# Gerado em: ${new Date().toLocaleDateString('pt-BR')}`);
+    csvLines.push(`# Período análise: ${formatDate(primaryStats.priceMinPoint?.date)} a ${formatDate(primaryStats.priceMaxPoint?.date)}`);
+    csvLines.push(`#`);
+
+    csvLines.push(`# === AVALIAÇÃO DE MOMENTO DE COMPRA ===`);
+    if (hasCompare) {
+      let verdict = 'Empate';
+      if (primaryBuy.score > compareBuy.score) {
+        verdict = `${state.ticker} é a melhor opção`;
+      } else if (compareBuy.score > primaryBuy.score) {
+        verdict = `${state.compare} é a melhor opção`;
+      }
+      csvLines.push(`# Veredito comparativo: ${verdict}`);
+      csvLines.push(`# Ativo;Classificação;Score Atratividade;Preço Atual;Score Fundamentos;P/VP Atual;Dividend Yield`);
+      
+      const formatBuyRow = (buy) => {
+        const pvpStr = validNumber(buy.currentPvp) ? `${buy.currentPvp.toFixed(2)}x` : 'N/D';
+        const dyStr = validNumber(buy.currentDy) ? `${buy.currentDy.toFixed(2)}%` : 'N/D';
+        const priceStr = validNumber(buy.currentPrice) ? `R$ ${buy.currentPrice.toFixed(2)}` : 'N/D';
+        return `# ${buy.ticker};${buy.statusLabel};${buy.score}/100;${priceStr};${buy.currentScore};${pvpStr};${dyStr}`;
+      };
+
+      csvLines.push(formatBuyRow(primaryBuy));
+      csvLines.push(formatBuyRow(compareBuy));
+    } else {
+      csvLines.push(`# Ativo: ${state.ticker}`);
+      csvLines.push(`# Classificação: ${primaryBuy.statusLabel}`);
+      csvLines.push(`# Score de Atratividade: ${primaryBuy.score}/100`);
+      csvLines.push(`# Preço Atual: R$ ${(primaryBuy.currentPrice ?? 0).toFixed(2)}`);
+      csvLines.push(`# Score de Fundamentos: ${primaryBuy.currentScore}`);
+      csvLines.push(`# P/VP Atual: ${validNumber(primaryBuy.currentPvp) ? primaryBuy.currentPvp.toFixed(2) + 'x' : 'N/D'}`);
+      csvLines.push(`# Dividend Yield Atual: ${validNumber(primaryBuy.currentDy) ? primaryBuy.currentDy.toFixed(2) + '%' : 'N/D'}`);
+      primaryBuy.reasons.forEach(detail => {
+        const cleanDetail = detail.replace(/<\/?[^>]+(>|$)/g, "");
+        csvLines.push(`# - ${cleanDetail}`);
+      });
+    }
+    csvLines.push(`#`);
+
+    csvLines.push(`# === INSIGHTS E MÉDIAS DO PERÍODO ===`);
+    const pushRow = (label, pVal, cVal, suffix = '', lowerIsBetter = false) => {
+      if (!hasCompare) {
+        csvLines.push(`# ${label}: ${pVal.toFixed(2)}${suffix}`);
+      } else {
+        const diff = pVal - cVal;
+        const pWins = lowerIsBetter ? diff < 0 : diff > 0;
+        const isDraw = Math.abs(diff) < 0.001;
+        const winner = isDraw ? 'Empate' : (pWins ? state.ticker : state.compare);
+        csvLines.push(`# ${label};${pVal.toFixed(2)}${suffix};${cVal.toFixed(2)}${suffix};Destaque: ${winner} (dif: ${Math.abs(diff).toFixed(2)}${suffix})`);
+      }
+    };
+
+    if (hasCompare) {
+      csvLines.push(`# Indicador;${state.ticker};${state.compare};Destaque`);
+    }
+
+    pushRow('Retorno Acumulado', primaryStats.priceChange, compareStats?.priceChange || 0, '%');
+    pushRow('Dividend Yield Médio', primaryStats.avgDy, compareStats?.avgDy || 0, '%');
+    pushRow('Score de Fundamentos Médio', primaryStats.avgScore, compareStats?.avgScore || 0);
+    pushRow('P/VP Médio', primaryStats.avgPvp, compareStats?.avgPvp || 0, 'x', true);
+
+    if (state.type === 'stock') {
+      pushRow('ROE Médio', primaryStats.avgRoe, compareStats?.avgRoe || 0, '%');
+      pushRow('ROIC Médio', primaryStats.avgRoic, compareStats?.avgRoic || 0, '%');
+    } else {
+      pushRow('Vacância Média', primaryStats.avgVacancy, compareStats?.avgVacancy || 0, '%', true);
+      pushRow('Cap Rate Médio', primaryStats.avgCapRate, compareStats?.avgCapRate || 0, '%');
+    }
+    csvLines.push(`#`);
+
+    csvLines.push(`# === SÉRIE TEMPORAL DETALHADA ===`);
+    const primaryPoints = filterPeriod(decodeSeries(state.type, state.ticker));
+    const comparePoints = hasCompare ? filterPeriod(decodeSeries(state.type, state.compare)) : [];
+    
+    const fields = data.fields[state.type];
+    
+    if (hasCompare) {
+      const headers = ['Data'];
+      fields.forEach(f => headers.push(`${state.ticker}_${f}`));
+      fields.forEach(f => headers.push(`${state.compare}_${f}`));
+      csvLines.push(headers.join(';'));
+
+      primaryPoints.forEach(pPoint => {
+        const cPoint = comparePoints.find(cp => cp.dateIndex === pPoint.dateIndex) || {};
+        const row = [pPoint.date];
+        fields.forEach(f => row.push(pPoint[f] ?? ''));
+        fields.forEach(f => row.push(cPoint[f] ?? ''));
+        csvLines.push(row.map(value => `${String(value).replace(/;/g, ',')}`).join(';'));
+      });
+    } else {
+      csvLines.push(['Data', ...fields].join(';'));
+      primaryPoints.forEach(pPoint => {
+        const row = [pPoint.date];
+        fields.forEach(f => row.push(pPoint[f] ?? ''));
+        csvLines.push(row.map(value => `${String(value).replace(/;/g, ',')}`).join(';'));
+      });
+    }
+
+    const csvContent = csvLines.join('\n');
+    const blob = new Blob([`\uFEFF${csvContent}`], { type: 'text/csv;charset=utf-8' });
+    const link = document.createElement('a'); 
+    link.href = URL.createObjectURL(blob); 
+    link.download = `${state.ticker}${hasCompare ? `-vs-${state.compare}` : ''}-analise-completa.csv`; 
+    link.click(); 
+    URL.revokeObjectURL(link.href);
+    showToast(`Relatório analítico completo exportado.`);
   }
 
   function bindEvents() {
@@ -947,7 +1066,21 @@
     $('#compareAsset').addEventListener('change', event => { state.compare = event.target.value; update(); });
     $('#metricSelect').addEventListener('change', event => { state.metric = event.target.value; update(); });
     $('#periodSelect').addEventListener('change', event => { state.period = event.target.value; update(); });
-    $('#downloadCsv').addEventListener('click', downloadSeries);
+    
+    // Export Dropdown events
+    const exportDropdown = $('#exportDropdown');
+    const toggleBtn = exportDropdown.querySelector('.dropdown-toggle');
+    toggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      exportDropdown.classList.toggle('show');
+    });
+    document.addEventListener('click', () => {
+      exportDropdown.classList.remove('show');
+    });
+
+    $('#downloadCsv').addEventListener('click', downloadSimple);
+    $('#exportRich').addEventListener('click', downloadRichReport);
+
     $('#themeToggle').addEventListener('click', () => { document.body.classList.toggle('dark'); localStorage.setItem('b3-history-theme', document.body.classList.contains('dark') ? 'dark' : 'light'); });
     $('#toggleRejected').addEventListener('click', event => { const list = $('#rejectedList'); list.hidden = !list.hidden; event.currentTarget.setAttribute('aria-expanded', String(!list.hidden)); event.currentTarget.textContent = list.hidden ? 'Ver snapshots rejeitados' : 'Ocultar snapshots rejeitados'; });
   }
