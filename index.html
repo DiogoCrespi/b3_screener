@@ -1913,6 +1913,36 @@
                 display: flex;
             }
         }
+        
+        .history-dashboard-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            background: var(--surface-1, var(--card-bg));
+            color: var(--text-color) !important;
+            text-decoration: none;
+            padding: 0.85rem 1rem;
+            border-radius: var(--radius-control, 8px);
+            font-size: 0.95rem;
+            font-weight: 700;
+            box-shadow: var(--shadow-card);
+            margin-bottom: clamp(1.25rem, 3vw, 2rem);
+            margin-top: -10px;
+            transition: all 0.25s ease;
+            text-align: center;
+            box-sizing: border-box;
+            border: 1px solid var(--border-color);
+        }
+
+        .history-dashboard-btn:hover,
+        .history-dashboard-btn:focus-visible {
+            transform: translateY(-2px);
+            border-color: var(--primary);
+            background: var(--primary-soft);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
     </style>
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
 </head>
@@ -1940,8 +1970,6 @@
                 </div>
             </div>
 
-            <a class="btn-icon" href="./history-dashboard.html" title="Análise histórica" aria-label="Abrir análise histórica">📊</a>
-
             <div class="download-menu" id="downloadMenu">
                 <button class="btn-icon" onclick="toggleDownloadMenu()" title="Baixar CSV">📥</button>
                 <div class="download-options" id="downloadOptions">
@@ -1953,7 +1981,7 @@
             <div class="theme-dropdown-wrapper">
                 <button class="btn-icon theme-toggle-btn" aria-hidden="true" title="Selecionar tema visual">🔽</button>
                 <select class="theme-select" id="themeBtn" onchange="setTheme(this.value)"
-                    aria-label="Selecionar tema visual">
+                    title="Selecionar tema visual" aria-label="Selecionar tema visual">
                     <option value="theme-origin-dark">Origin Dark</option>
                     <option value="theme-seline-light" selected>Seline Light</option>
                     <option value="theme-ui-neutral">UI Neutral</option>
@@ -1982,6 +2010,10 @@
             <button class="tab-btn" data-tab="fixed" onclick="showTab('fixed')" style="display:none">Renda Fixa</button>
             <button class="tab-btn" data-tab="etfs" onclick="showTab('etfs')">ETFs</button>
         </div>
+
+        <a href="./history-dashboard.html" class="history-dashboard-btn">
+            📊 Abrir Análise Histórica & Comparador de Ativos
+        </a>
 
         <div class="list-container" id="content-stocks">
             <!-- Stock list goes here -->
