@@ -151,10 +151,183 @@
       [`Variação · ${metricCatalog[state.type][state.metric][0]}`, signed(variation), `${formatValue(state.type, state.metric, firstMetric?.[state.metric])} → ${formatValue(state.type, state.metric, lastMetric?.[state.metric])}`, variation > 0 ? 'positive' : variation < 0 ? 'negative' : '']
     ];
     $('#kpiGrid').innerHTML = kpis.map(([label, value, detail, css]) => `<article class="kpi"><span class="kpi-label">${escapeHTML(label)}</span><strong class="kpi-value ${css}">${escapeHTML(value)}</strong><span class="kpi-detail">${escapeHTML(detail)}</span></article>`).join('');
+    renderBuyMoment(allPoints, points);
     renderMainChart(points);
     renderMiniCharts(points);
     renderTimeline(allPoints);
     renderMacro();
+  }
+
+  function renderBuyMoment(allPoints, points) {
+    const card = $('#buyMomentCard');
+    if (!allPoints || !allPoints.length) {
+      card.style.display = 'none';
+      return;
+    }
+
+    const latest = allPoints.at(-1) || {};
+    const currentPrice = [...allPoints].reverse().find(p => validNumber(p.price))?.price;
+    const currentScore = [...allPoints].reverse().find(p => validNumber(p.score))?.score;
+    const currentDy = [...allPoints].reverse().find(p => validNumber(p.dy))?.dy;
+    const currentPvp = [...allPoints].reverse().find(p => validNumber(p.pvp))?.pvp;
+    const currentSignal = latest.signal || '';
+
+    if (!validNumber(currentPrice)) {
+      card.style.display = 'none';
+      return;
+    }
+
+    // 1. Preço histórico
+    const prices = allPoints.map(p => p.price).filter(validNumber);
+    const minPrice = Math.min(...prices);
+    const maxPrice = Math.max(...prices);
+    const priceRange = maxPrice - minPrice;
+    const pricePercentile = priceRange > 0 ? ((currentPrice - minPrice) / priceRange) * 100 : 50;
+
+    // 2. Dividend Yield histórico
+    const dys = allPoints.map(p => p.dy).filter(validNumber);
+    const avgDy = dys.length ? dys.reduce((a, b) => a + b, 0) / dys.length : 0;
+
+    // 3. P/VP histórico (FIIs)
+    const pvps = allPoints.map(p => p.pvp).filter(validNumber);
+    const avgPvp = pvps.length ? pvps.reduce((a, b) => a + b, 0) / pvps.length : 1;
+
+    // 4. Margem de segurança (Ações)
+    const latestGraham = [...allPoints].reverse().find(p => validNumber(p.graham))?.graham;
+    const latestBazin = [...allPoints].reverse().find(p => validNumber(p.bazin))?.bazin;
+
+    // Lógica do Scoring (Atratividade)
+    let score = 50;
+
+    // Qualidade
+    if (validNumber(currentScore)) {
+      if (currentScore >= 7.5) score += 15;
+      else if (currentScore >= 6.0) score += 5;
+      else if (currentScore < 5.0) score -= 15;
+      if (currentScore < 4.0) score -= 20;
+    }
+
+    // Posição do preço
+    score += (50 - pricePercentile) * 0.6; // Max +30 se min histórico, -30 se max histórico
+
+    // Valuation por classe de ativo
+    const reasons = [];
+    if (state.type === 'stock') {
+      let positiveMargins = 0;
+      let totalMargins = 0;
+
+      if (validNumber(latestGraham) && latestGraham > 0) {
+        totalMargins++;
+        const margin = ((latestGraham - currentPrice) / latestGraham) * 100;
+        if (margin > 0) {
+          positiveMargins++;
+          reasons.push(`Preço atual está <strong>${margin.toFixed(1)}% abaixo</strong> do preço justo da Fórmula de Graham (R$ ${formatValue(state.type, 'price', latestGraham)}).`);
+        } else {
+          reasons.push(`Preço atual está acima do preço justo de Graham (R$ ${formatValue(state.type, 'price', latestGraham)}).`);
+        }
+      }
+
+      if (validNumber(latestBazin) && latestBazin > 0) {
+        totalMargins++;
+        const margin = ((latestBazin - currentPrice) / latestBazin) * 100;
+        if (margin > 0) {
+          positiveMargins++;
+          reasons.push(`Preço atual possui uma margem de segurança de <strong>${margin.toFixed(1)}%</strong> em relação ao Preço Teto de Bazin (R$ ${formatValue(state.type, 'price', latestBazin)}).`);
+        } else {
+          reasons.push(`Preço atual ultrapassou o Preço Teto de Bazin (R$ ${formatValue(state.type, 'price', latestBazin)}).`);
+        }
+      }
+
+      if (totalMargins > 0) {
+        if (positiveMargins === totalMargins) score += 15;
+        else if (positiveMargins > 0) score += 5;
+        else score -= 15;
+      }
+    } else {
+      // FIIs
+      if (validNumber(currentPvp)) {
+        const discount = avgPvp - currentPvp;
+        if (currentPvp < 1.0) {
+          score += 10;
+          reasons.push(`P/VP atual de <strong>${currentPvp.toFixed(2)}x</strong> indica desconto patrimonial (abaixo de 1.0x).`);
+        } else if (currentPvp > 1.08) {
+          score -= 15;
+          reasons.push(`Fundo negociado com ágio patrimonial relevante (P/VP de <strong>${currentPvp.toFixed(2)}x</strong>).`);
+        }
+        if (discount > 0.05) {
+          score += 5;
+          reasons.push(`Múltiplo P/VP está descontado em relação à média histórica do fundo (Média: <strong>${avgPvp.toFixed(2)}x</strong>).`);
+        }
+      }
+    }
+
+    // Dividends
+    if (validNumber(currentDy) && avgDy > 0) {
+      if (currentDy > avgDy * 1.05 && currentDy >= 6.0) {
+        score += 10;
+        reasons.push(`Dividend Yield atual de <strong>${currentDy.toFixed(2)}%</strong> está acima da média histórica do ativo (<strong>${avgDy.toFixed(2)}%</strong>).`);
+      } else if (currentDy < avgDy * 0.8) {
+        score -= 10;
+        reasons.push(`Retorno de dividendos atual de <strong>${currentDy.toFixed(2)}%</strong> está abaixo da sua média histórica (<strong>${avgDy.toFixed(2)}%</strong>).`);
+      }
+    }
+
+    // Sinais / Tese
+    if (currentSignal.includes('COMPRA') || currentSignal.includes('STAR')) {
+      score += 10;
+    } else if (currentSignal.includes('REVISAR') || currentSignal.includes('VEND')) {
+      score -= 15;
+    }
+
+    score = Math.max(0, Math.min(100, score));
+
+    // Determina o status
+    let statusClass = 'neutro';
+    let statusLabel = 'Zona Neutra / Monitorar';
+    
+    if (validNumber(currentScore) && currentScore < 4.0) {
+      statusClass = 'evitar';
+      statusLabel = 'Alto Risco / Evitar';
+      reasons.unshift('<strong>Alerta de Qualidade:</strong> O ativo possui nota de fundamentos baixa (Score abaixo de 4.0), indicando possível armadilha de valor.');
+    } else if (score >= 65) {
+      statusClass = 'oportunidade';
+      statusLabel = 'Melhor Momento de Compra';
+    } else if (score <= 35 || pricePercentile > 80) {
+      statusClass = 'passou';
+      statusLabel = 'Momento Já Passou';
+    }
+
+    // Razão de preço geral
+    if (pricePercentile < 25) {
+      reasons.unshift(`Preço atual (R$ ${formatValue(state.type, 'price', currentPrice)}) está muito próximo da mínima histórica registrada de R$ ${formatValue(state.type, 'price', minPrice)} (percentil ${pricePercentile.toFixed(0)}%).`);
+    } else if (pricePercentile > 75) {
+      reasons.unshift(`Preço atual está próximo da máxima histórica de R$ ${formatValue(state.type, 'price', maxPrice)} (percentil ${pricePercentile.toFixed(0)}%).`);
+    } else {
+      reasons.push(`Preço atual de R$ ${formatValue(state.type, 'price', currentPrice)} está na faixa intermediária histórica (entre R$ ${formatValue(state.type, 'price', minPrice)} e R$ ${formatValue(state.type, 'price', maxPrice)}).`);
+    }
+
+    // Constrói o HTML
+    card.innerHTML = `
+      <div class="buy-moment-header">
+        <h3 class="buy-moment-title">🛍️ Momento de Compra</h3>
+        <span class="buy-moment-status ${statusClass}">${statusLabel}</span>
+      </div>
+      <div class="buy-moment-content">
+        <div class="buy-moment-metric-box">
+          <div class="buy-moment-bar-label">
+            <span>Atratividade</span>
+            <span class="buy-moment-bar-value">${score.toFixed(0)}/100</span>
+          </div>
+          <div class="buy-moment-bar-wrap" role="progressbar" aria-valuenow="${score.toFixed(0)}" aria-valuemin="0" aria-valuemax="100" aria-label="Pontuação de Atratividade de Preço">
+            <div class="buy-moment-bar-fill ${statusClass}" style="width: ${score.toFixed(0)}%;"></div>
+          </div>
+        </div>
+        <ul class="buy-moment-reasons">
+          ${reasons.map(r => `<li>${r}</li>`).join('')}
+        </ul>
+      </div>
+    `;
+    card.style.display = 'flex';
   }
 
   function chartGeometry(seriesList, metric, normalize) {
@@ -233,15 +406,58 @@
     const values = valid.map(point => point[metric]);
     let min = Math.min(...values), max = Math.max(...values); if (min === max) { min--; max++; }
     const path = valid.map((point, index) => `${index ? 'L' : 'M'}${(index / (valid.length - 1) * 100).toFixed(1)},${(56 - ((point[metric] - min) / (max - min) * 48)).toFixed(1)}`).join(' ');
-    return `<svg viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true"><line class="chart-grid" x1="0" x2="100" y1="56" y2="56"/><path d="${path}"/></svg>`;
+    return `<svg viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true">
+      <line class="chart-grid" x1="0" x2="100" y1="56" y2="56"/>
+      <path d="${path}"/>
+      <line class="sparkline-crosshair" x1="0" x2="0" y1="0" y2="56" visibility="hidden"/>
+      <rect class="sparkline-hit" x="0" y="0" width="100" height="60" fill="transparent"/>
+    </svg>`;
   }
 
   function renderMiniCharts(points) {
     const metrics = ['price', 'dy', 'score', 'pvp'];
     $('#miniCharts').innerHTML = metrics.map(metric => {
       const latest = [...points].reverse().find(point => validNumber(point[metric]))?.[metric];
-      return `<article class="mini-card"><div class="mini-top"><span class="mini-title">${metricCatalog[state.type][metric][0]}</span><strong class="mini-value">${formatValue(state.type, metric, latest)}</strong></div><div class="sparkline">${sparkline(points, metric)}</div></article>`;
+      return `<article class="mini-card" data-metric="${metric}"><div class="mini-top"><span class="mini-title">${metricCatalog[state.type][metric][0]}</span><strong class="mini-value">${formatValue(state.type, metric, latest)}</strong></div><div class="sparkline">${sparkline(points, metric)}</div></article>`;
     }).join('');
+
+    document.querySelectorAll('.mini-card').forEach(card => {
+      const metric = card.dataset.metric;
+      const valid = points.filter(point => validNumber(point[metric]));
+      if (valid.length < 2) return;
+
+      const latestVal = [...points].reverse().find(point => validNumber(point[metric]))?.[metric];
+      const latestText = formatValue(state.type, metric, latestVal);
+      const valueEl = card.querySelector('.mini-value');
+      const svg = card.querySelector('svg');
+      const hit = svg.querySelector('.sparkline-hit');
+      const crosshair = svg.querySelector('.sparkline-crosshair');
+
+      hit.addEventListener('pointermove', event => {
+        const rect = svg.getBoundingClientRect();
+        const pct = (event.clientX - rect.left) / rect.width;
+        const targetIndex = Math.max(0, Math.min(valid.length - 1, Math.round(pct * (valid.length - 1))));
+        const point = valid[targetIndex];
+
+        valueEl.textContent = formatValue(state.type, metric, point[metric]);
+
+        const xPos = (targetIndex / (valid.length - 1) * 100).toFixed(1);
+        crosshair.setAttribute('x1', xPos);
+        crosshair.setAttribute('x2', xPos);
+        crosshair.setAttribute('visibility', 'visible');
+
+        tooltip.innerHTML = `<strong>${formatDate(point.date)}</strong><div>${metricCatalog[state.type][metric][0]}: <b>${formatValue(state.type, metric, point[metric])}</b></div>`;
+        tooltip.hidden = false;
+        tooltip.style.left = `${Math.min(event.clientX + 14, innerWidth - 250)}px`;
+        tooltip.style.top = `${Math.max(10, event.clientY - 70)}px`;
+      });
+
+      hit.addEventListener('pointerleave', () => {
+        valueEl.textContent = latestText;
+        crosshair.setAttribute('visibility', 'hidden');
+        tooltip.hidden = true;
+      });
+    });
   }
 
   function renderTimeline(points) {
@@ -267,12 +483,64 @@
       ...normalize(selic.map(point => ({ dateIndex: point.dateIndex, value: point.selic }))).map(point => ({ ...point, type: 'selic' })),
       ...normalize(dollar.map(point => ({ dateIndex: point.dateIndex, value: point.dollar }))).map(point => ({ ...point, type: 'dollar' }))
     ];
-    if (!series.length) { $('#macroChart').innerHTML = '<p class="muted">Contexto macro indisponível.</p>'; return; }
+    const container = $('#macroChart');
+    if (!series.length) { container.innerHTML = '<p class="muted">Contexto macro indisponível.</p>'; return; }
+
     const minDate = Math.min(...series.map(point => point.dateIndex)), maxDate = Math.max(...series.map(point => point.dateIndex), minDate + 1);
     let min = Math.min(...series.map(point => point.normalized)), max = Math.max(...series.map(point => point.normalized)); if (min === max) { min--; max++; }
-    const path = type => series.filter(point => point.type === type).map((point, index) => `${index ? 'L' : 'M'}${((point.dateIndex - minDate) / (maxDate - minDate) * 100).toFixed(1)},${(90 - ((point.normalized - min) / (max - min) * 78)).toFixed(1)}`).join(' ');
+
+    const xCoord = dateIndex => ((dateIndex - minDate) / (maxDate - minDate) * 100).toFixed(1);
+    const path = type => series.filter(point => point.type === type).map((point, index) => `${index ? 'L' : 'M'}${xCoord(point.dateIndex)},${(90 - ((point.normalized - min) / (max - min) * 78)).toFixed(1)}`).join(' ');
+
     const latestSelic = selic.at(-1)?.selic, latestDollar = dollar.at(-1)?.dollar;
-    $('#macroChart').innerHTML = `<div class="legend"><span class="legend-item"><i class="legend-dot"></i>Selic ${formatValue('stock', 'dy', latestSelic)}</span><span class="legend-item"><i class="legend-dot secondary"></i>Dólar ${formatValue('stock', 'price', latestDollar)}</span></div><svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line class="chart-grid" x1="0" x2="100" y1="90" y2="90"/><path class="chart-line" d="${path('selic')}"/><path class="chart-line secondary" d="${path('dollar')}"/></svg>`;
+    const latestSelicText = formatValue('stock', 'dy', latestSelic);
+    const latestDollarText = formatValue('stock', 'price', latestDollar);
+
+    container.innerHTML = `<div class="legend" id="macroLegend"><span class="legend-item"><i class="legend-dot"></i>Selic <strong id="macroSelicVal">${latestSelicText}</strong></span><span class="legend-item"><i class="legend-dot secondary"></i>Dólar <strong id="macroDollarVal">${latestDollarText}</strong></span></div><svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+      <line class="chart-grid" x1="0" x2="100" y1="90" y2="90"/>
+      <path class="chart-line" d="${path('selic')}"/>
+      <path class="chart-line secondary" d="${path('dollar')}"/>
+      <line class="sparkline-crosshair" x1="0" x2="0" y1="0" y2="90" visibility="hidden"/>
+      <rect class="sparkline-hit" x="0" y="0" width="100" height="100" fill="transparent"/>
+    </svg>`;
+
+    const svg = container.querySelector('svg');
+    const hit = svg.querySelector('.sparkline-hit');
+    const crosshair = svg.querySelector('.sparkline-crosshair');
+    const selicValEl = $('#macroSelicVal');
+    const dollarValEl = $('#macroDollarVal');
+
+    hit.addEventListener('pointermove', event => {
+      const rect = svg.getBoundingClientRect();
+      const pct = (event.clientX - rect.left) / rect.width;
+      const targetDateIndex = Math.round(minDate + pct * (maxDate - minDate));
+
+      const closestPoint = points.reduce((best, point) => Math.abs(point.dateIndex - targetDateIndex) < Math.abs(best.dateIndex - targetDateIndex) ? point : best, points[0]);
+      if (!closestPoint) return;
+
+      const selicVal = formatValue('stock', 'dy', closestPoint.selic);
+      const dollarVal = formatValue('stock', 'price', closestPoint.dollar);
+
+      selicValEl.textContent = selicVal;
+      dollarValEl.textContent = dollarVal;
+
+      const xPos = xCoord(closestPoint.dateIndex);
+      crosshair.setAttribute('x1', xPos);
+      crosshair.setAttribute('x2', xPos);
+      crosshair.setAttribute('visibility', 'visible');
+
+      tooltip.innerHTML = `<strong>${formatDate(closestPoint.date)}</strong><div>Selic: <b>${selicVal}</b></div><div>Dólar: <b>${dollarVal}</b></div>`;
+      tooltip.hidden = false;
+      tooltip.style.left = `${Math.min(event.clientX + 14, innerWidth - 250)}px`;
+      tooltip.style.top = `${Math.max(10, event.clientY - 90)}px`;
+    });
+
+    hit.addEventListener('pointerleave', () => {
+      selicValEl.textContent = latestSelicText;
+      dollarValEl.textContent = latestDollarText;
+      crosshair.setAttribute('visibility', 'hidden');
+      tooltip.hidden = true;
+    });
   }
 
   function calculateRanking() {
