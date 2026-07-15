@@ -441,15 +441,29 @@
 
   function renderMainChart(primaryPoints) {
     const comparisonPoints = state.compare ? filterPeriod(decodeSeries(state.type, state.compare)) : [];
-    const normalize = Boolean(state.compare);
+    const hasCompare = Boolean(state.compare);
+    const normalize = hasCompare;
     const geometry = chartGeometry([
       { ticker: state.ticker, points: primaryPoints, secondary: false },
-      ...(state.compare ? [{ ticker: state.compare, points: comparisonPoints, secondary: true }] : [])
+      ...(hasCompare ? [{ ticker: state.compare, points: comparisonPoints, secondary: true }] : [])
     ], state.metric, normalize);
     const metricLabel = metricCatalog[state.type][state.metric][0];
     $('#chartTitle').textContent = normalize ? `${metricLabel} · retorno normalizado` : metricLabel;
     $('#chartEyebrow').textContent = state.period === 'all' ? 'Todo o histórico' : `Últimos ${state.period} dias`;
-    $('#chartLegend').innerHTML = `<span class="legend-item"><i class="legend-dot"></i>${escapeHTML(state.ticker)}</span>${state.compare ? `<span class="legend-item"><i class="legend-dot secondary"></i>${escapeHTML(state.compare)}</span>` : ''}`;
+
+    const latestPrimary = [...primaryPoints].reverse().find(point => validNumber(point[state.metric]))?.[state.metric];
+    const latestCompare = hasCompare ? [...comparisonPoints].reverse().find(point => validNumber(point[state.metric]))?.[state.metric] : null;
+
+    const formatLegendText = (ticker, value) => {
+      if (!validNumber(value)) return escapeHTML(ticker);
+      return `${escapeHTML(ticker)}: <strong>${formatValue(state.type, state.metric, value)}</strong>`;
+    };
+
+    const primaryLabel = formatLegendText(state.ticker, latestPrimary);
+    const compareLabel = hasCompare ? formatLegendText(state.compare, latestCompare) : '';
+
+    $('#chartLegend').innerHTML = `<span class="legend-item"><i class="legend-dot"></i><span id="mainLegendPrimary">${primaryLabel}</span></span>${hasCompare ? `<span class="legend-item"><i class="legend-dot secondary"></i><span id="mainLegendCompare">${compareLabel}</span></span>` : ''}`;
+
     const container = $('#mainChart');
     if (!geometry) { container.innerHTML = '<div class="chart-empty">Sem valores válidos para esta métrica.</div>'; return; }
 
@@ -477,12 +491,26 @@
     const svg = container.querySelector('svg');
     const hit = svg.querySelector('.chart-hit');
     const crosshair = svg.querySelector('.chart-crosshair');
+
+    const primaryLegendEl = $('#mainLegendPrimary');
+    const compareLegendEl = $('#mainLegendCompare');
+
     hit.addEventListener('pointermove', event => {
       const rect = svg.getBoundingClientRect();
       const svgX = ((event.clientX - rect.left) / rect.width) * W;
       const targetIndex = Math.round(geometry.dateMin + ((svgX - P.l) / (W - P.l - P.r)) * (geometry.dateMax - geometry.dateMin));
       const primary = geometry.prepared[0].values.reduce((best, point) => Math.abs(point.dateIndex - targetIndex) < Math.abs(best.dateIndex - targetIndex) ? point : best, geometry.prepared[0].values[0]);
       crosshair.setAttribute('x1', x(primary.dateIndex)); crosshair.setAttribute('x2', x(primary.dateIndex)); crosshair.setAttribute('visibility', 'visible');
+
+      const primaryVal = primary[state.metric];
+      const comparePoint = hasCompare ? geometry.prepared[1].values.reduce((best, candidate) => Math.abs(candidate.dateIndex - primary.dateIndex) < Math.abs(best.dateIndex - primary.dateIndex) ? candidate : best, geometry.prepared[1].values[0]) : null;
+      const compareVal = comparePoint ? comparePoint[state.metric] : null;
+
+      primaryLegendEl.innerHTML = formatLegendText(state.ticker, primaryVal);
+      if (hasCompare && compareLegendEl) {
+        compareLegendEl.innerHTML = formatLegendText(state.compare, compareVal);
+      }
+
       const rows = geometry.prepared.map(series => {
         const point = series.values.reduce((best, candidate) => Math.abs(candidate.dateIndex - primary.dateIndex) < Math.abs(best.dateIndex - primary.dateIndex) ? candidate : best, series.values[0]);
         return `<div>${escapeHTML(series.ticker)}: <b>${geometry.normalize ? signed(point.chartValue) : escapeHTML(formatValue(state.type, state.metric, point[state.metric]))}</b></div>`;
@@ -490,7 +518,13 @@
       tooltip.innerHTML = `<strong>${formatDate(primary.date)}</strong>${rows}`;
       tooltip.hidden = false; tooltip.style.left = `${Math.min(event.clientX + 14, innerWidth - 250)}px`; tooltip.style.top = `${Math.max(10, event.clientY - 70)}px`;
     });
-    hit.addEventListener('pointerleave', () => { crosshair.setAttribute('visibility', 'hidden'); tooltip.hidden = true; });
+    hit.addEventListener('pointerleave', () => {
+      primaryLegendEl.innerHTML = formatLegendText(state.ticker, latestPrimary);
+      if (hasCompare && compareLegendEl) {
+        compareLegendEl.innerHTML = formatLegendText(state.compare, latestCompare);
+      }
+      crosshair.setAttribute('visibility', 'hidden'); tooltip.hidden = true;
+    });
   }
 
   function sparkline(primaryPoints, comparisonPoints, metric) {
