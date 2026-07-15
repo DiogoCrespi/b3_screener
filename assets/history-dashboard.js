@@ -29,6 +29,29 @@
     return String(value ?? '').replace(/[&<>'"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[char]));
   }
 
+  const labelMap = {
+    'STAR_GROWTH': 'Estrela (Crescimento)',
+    'STAR_INCOME': 'Estrela (Dividendos)',
+    'STAR_VALUE': 'Estrela (Valor)',
+    'STAR': 'Estrela',
+    'OPPORTUNITY': 'Oportunidade',
+    'UNDER_REVIEW': 'Sob Revisão',
+    'NEUTRAL': 'Neutro',
+    'TOP_PICK': 'Top Pick',
+    'REAL_ESTATE_PHYSICAL': 'Tijolo (Físico)',
+    'REAL_ESTATE_CREDIT': 'Papel (Recebíveis)',
+    'AGRO_CREDIT': 'Fiagro (Crédito)',
+    'AGRO_LAND': 'Fiagro (Terra)',
+    'INFRA_CREDIT': 'FI-Infra',
+    'FUND_OF_FUNDS': 'Fundo de Fundos (FoF)',
+    'HYBRID': 'Híbrido',
+    'UNKNOWN': 'Não Classificado'
+  };
+
+  function translateLabel(val) {
+    return labelMap[val] || val;
+  }
+
   function fieldIndex(type, field) { return data.fields[type].indexOf(field); }
   function formatDate(date) { return new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: 'short', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${date}T12:00:00Z`)); }
   function compact(value) { return new Intl.NumberFormat('pt-BR', { notation: 'compact', maximumFractionDigits: 1 }).format(value); }
@@ -132,11 +155,11 @@
     const [firstMetric, lastMetric] = firstLastValid(points, state.metric);
     const values = metricValues(points, state.metric);
     const variation = percentChange(firstMetric?.[state.metric], lastMetric?.[state.metric]);
-    $('#assetKind').textContent = state.type === 'stock' ? 'Ação listada' : (latest.fundType || 'Fundo listado');
+    $('#assetKind').textContent = state.type === 'stock' ? 'Ação listada' : (translateLabel(latest.fundType) || 'Fundo listado');
     $('#assetTitle').textContent = state.ticker;
     $('#assetRange').textContent = points.length ? `${formatDate(points[0].date)} a ${formatDate(points.at(-1).date)} · ${points.length} observações` : 'Sem observações no período';
-    $('#assetSignal').textContent = latest.signal || 'SEM SINAL';
-    $('#assetCategory').textContent = [latest.category, latest.exposure].filter(Boolean).join(' · ') || 'Sem categoria';
+    $('#assetSignal').textContent = translateLabel(latest.signal || 'SEM SINAL');
+    $('#assetCategory').textContent = [translateLabel(latest.category), translateLabel(latest.exposure)].filter(Boolean).join(' · ') || 'Sem categoria';
     $('#selectionQuality').innerHTML = `<strong>${allPoints.length} pontos disponíveis</strong><br>${points.length} no período atual. ${allPoints.length < data.dates.length ? `${data.dates.length - allPoints.length} datas sem observação para o ativo.` : 'Série completa no calendário aceito.'}`;
 
     const latestPrice = [...allPoints].reverse().find(point => validNumber(point.price))?.price;
@@ -158,12 +181,10 @@
     renderMacro();
   }
 
-  function renderBuyMoment(allPoints, points) {
-    const card = $('#buyMomentCard');
-    if (!allPoints || !allPoints.length) {
-      card.style.display = 'none';
-      return;
-    }
+  function getBuyMomentData(ticker, type) {
+    const allPoints = decodeSeries(type, ticker);
+    const points = filterPeriod(allPoints);
+    if (!allPoints.length) return null;
 
     const latest = allPoints.at(-1) || {};
     const currentPrice = [...allPoints].reverse().find(p => validNumber(p.price))?.price;
@@ -172,10 +193,7 @@
     const currentPvp = [...allPoints].reverse().find(p => validNumber(p.pvp))?.pvp;
     const currentSignal = latest.signal || '';
 
-    if (!validNumber(currentPrice)) {
-      card.style.display = 'none';
-      return;
-    }
+    if (!validNumber(currentPrice)) return null;
 
     // 1. Preço histórico
     const prices = allPoints.map(p => p.price).filter(validNumber);
@@ -188,7 +206,7 @@
     const dys = allPoints.map(p => p.dy).filter(validNumber);
     const avgDy = dys.length ? dys.reduce((a, b) => a + b, 0) / dys.length : 0;
 
-    // 3. P/VP histórico (FIIs)
+    // 3. P/VP histórico
     const pvps = allPoints.map(p => p.pvp).filter(validNumber);
     const avgPvp = pvps.length ? pvps.reduce((a, b) => a + b, 0) / pvps.length : 1;
 
@@ -212,7 +230,7 @@
 
     // Valuation por classe de ativo
     const reasons = [];
-    if (state.type === 'stock') {
+    if (type === 'stock') {
       let positiveMargins = 0;
       let totalMargins = 0;
 
@@ -221,9 +239,9 @@
         const margin = ((latestGraham - currentPrice) / latestGraham) * 100;
         if (margin > 0) {
           positiveMargins++;
-          reasons.push(`Preço atual está <strong>${margin.toFixed(1)}% abaixo</strong> do preço justo da Fórmula de Graham (R$ ${formatValue(state.type, 'price', latestGraham)}).`);
+          reasons.push(`Preço está <strong>${margin.toFixed(1)}% abaixo</strong> do preço de Graham (R$ ${formatValue(type, 'price', latestGraham)}).`);
         } else {
-          reasons.push(`Preço atual está acima do preço justo de Graham (R$ ${formatValue(state.type, 'price', latestGraham)}).`);
+          reasons.push(`Preço está acima do preço de Graham (R$ ${formatValue(type, 'price', latestGraham)}).`);
         }
       }
 
@@ -232,9 +250,9 @@
         const margin = ((latestBazin - currentPrice) / latestBazin) * 100;
         if (margin > 0) {
           positiveMargins++;
-          reasons.push(`Preço atual possui uma margem de segurança de <strong>${margin.toFixed(1)}%</strong> em relação ao Preço Teto de Bazin (R$ ${formatValue(state.type, 'price', latestBazin)}).`);
+          reasons.push(`Margem de segurança de <strong>${margin.toFixed(1)}%</strong> sobre o Preço Bazin (R$ ${formatValue(type, 'price', latestBazin)}).`);
         } else {
-          reasons.push(`Preço atual ultrapassou o Preço Teto de Bazin (R$ ${formatValue(state.type, 'price', latestBazin)}).`);
+          reasons.push(`Preço acima do Preço Teto de Bazin (R$ ${formatValue(type, 'price', latestBazin)}).`);
         }
       }
 
@@ -256,7 +274,7 @@
         }
         if (discount > 0.05) {
           score += 5;
-          reasons.push(`Múltiplo P/VP está descontado em relação à média histórica do fundo (Média: <strong>${avgPvp.toFixed(2)}x</strong>).`);
+          reasons.push(`Múltiplo P/VP descontado em relação à média histórica (Média: <strong>${avgPvp.toFixed(2)}x</strong>).`);
         }
       }
     }
@@ -265,10 +283,10 @@
     if (validNumber(currentDy) && avgDy > 0) {
       if (currentDy > avgDy * 1.05 && currentDy >= 6.0) {
         score += 10;
-        reasons.push(`Dividend Yield atual de <strong>${currentDy.toFixed(2)}%</strong> está acima da média histórica do ativo (<strong>${avgDy.toFixed(2)}%</strong>).`);
+        reasons.push(`Dividend Yield atual de <strong>${currentDy.toFixed(2)}%</strong> está acima da média histórica (<strong>${avgDy.toFixed(2)}%</strong>).`);
       } else if (currentDy < avgDy * 0.8) {
         score -= 10;
-        reasons.push(`Retorno de dividendos atual de <strong>${currentDy.toFixed(2)}%</strong> está abaixo da sua média histórica (<strong>${avgDy.toFixed(2)}%</strong>).`);
+        reasons.push(`Yield de <strong>${currentDy.toFixed(2)}%</strong> está abaixo da sua média histórica (<strong>${avgDy.toFixed(2)}%</strong>).`);
       }
     }
 
@@ -283,50 +301,125 @@
 
     // Determina o status
     let statusClass = 'neutro';
-    let statusLabel = 'Zona Neutra / Monitorar';
+    let statusLabel = 'Zona Neutra';
     
     if (validNumber(currentScore) && currentScore < 4.0) {
       statusClass = 'evitar';
-      statusLabel = 'Alto Risco / Evitar';
-      reasons.unshift('<strong>Alerta de Qualidade:</strong> O ativo possui nota de fundamentos baixa (Score abaixo de 4.0), indicando possível armadilha de valor.');
+      statusLabel = 'Alto Risco';
+      reasons.unshift('<strong>Alerta de Qualidade:</strong> Score de fundamentos baixo (abaixo de 4.0), indicando possível armadilha.');
     } else if (score >= 65) {
       statusClass = 'oportunidade';
-      statusLabel = 'Melhor Momento de Compra';
+      statusLabel = 'Melhor Momento';
     } else if (score <= 35 || pricePercentile > 80) {
       statusClass = 'passou';
-      statusLabel = 'Momento Já Passou';
+      statusLabel = 'Momento Passou';
     }
 
     // Razão de preço geral
     if (pricePercentile < 25) {
-      reasons.unshift(`Preço atual (R$ ${formatValue(state.type, 'price', currentPrice)}) está muito próximo da mínima histórica registrada de R$ ${formatValue(state.type, 'price', minPrice)} (percentil ${pricePercentile.toFixed(0)}%).`);
+      reasons.unshift(`Preço atual (R$ ${formatValue(type, 'price', currentPrice)}) está muito próximo da mínima histórica registrada de R$ ${formatValue(type, 'price', minPrice)} (percentil ${pricePercentile.toFixed(0)}%).`);
     } else if (pricePercentile > 75) {
-      reasons.unshift(`Preço atual está próximo da máxima histórica de R$ ${formatValue(state.type, 'price', maxPrice)} (percentil ${pricePercentile.toFixed(0)}%).`);
+      reasons.unshift(`Preço atual está próximo da máxima histórica de R$ ${formatValue(type, 'price', maxPrice)} (percentil ${pricePercentile.toFixed(0)}%).`);
     } else {
-      reasons.push(`Preço atual de R$ ${formatValue(state.type, 'price', currentPrice)} está na faixa intermediária histórica (entre R$ ${formatValue(state.type, 'price', minPrice)} e R$ ${formatValue(state.type, 'price', maxPrice)}).`);
+      reasons.push(`Preço atual de R$ ${formatValue(type, 'price', currentPrice)} está na faixa intermediária histórica (entre R$ ${formatValue(type, 'price', minPrice)} e R$ ${formatValue(type, 'price', maxPrice)}).`);
     }
 
-    // Constrói o HTML
-    card.innerHTML = `
-      <div class="buy-moment-header">
-        <h3 class="buy-moment-title">🛍️ Momento de Compra</h3>
-        <span class="buy-moment-status ${statusClass}">${statusLabel}</span>
-      </div>
-      <div class="buy-moment-content">
-        <div class="buy-moment-metric-box">
-          <div class="buy-moment-bar-label">
-            <span>Atratividade</span>
-            <span class="buy-moment-bar-value">${score.toFixed(0)}/100</span>
+    return { ticker, score, statusClass, statusLabel, reasons, currentPrice, currentScore };
+  }
+
+  function renderBuyMoment(allPoints, points) {
+    const card = $('#buyMomentCard');
+    const primaryData = getBuyMomentData(state.ticker, state.type);
+    if (!primaryData) {
+      card.style.display = 'none';
+      return;
+    }
+
+    const hasCompare = state.compare && data.series[state.type][state.compare];
+    const compareData = hasCompare ? getBuyMomentData(state.compare, state.type) : null;
+
+    if (!hasCompare) {
+      card.innerHTML = `
+        <div class="buy-moment-header">
+          <h3 class="buy-moment-title">🛍️ Momento de Compra</h3>
+          <span class="buy-moment-status ${primaryData.statusClass}">${primaryData.statusLabel}</span>
+        </div>
+        <div class="buy-moment-content">
+          <div class="buy-moment-metric-box">
+            <div class="buy-moment-bar-label">
+              <span>Atratividade</span>
+              <span class="buy-moment-bar-value">${primaryData.score.toFixed(0)}/100</span>
+            </div>
+            <div class="buy-moment-bar-wrap" role="progressbar" aria-valuenow="${primaryData.score.toFixed(0)}" aria-valuemin="0" aria-valuemax="100" aria-label="Pontuação de Atratividade de Preço">
+              <div class="buy-moment-bar-fill ${primaryData.statusClass}" style="width: ${primaryData.score.toFixed(0)}%;"></div>
+            </div>
           </div>
-          <div class="buy-moment-bar-wrap" role="progressbar" aria-valuenow="${score.toFixed(0)}" aria-valuemin="0" aria-valuemax="100" aria-label="Pontuação de Atratividade de Preço">
-            <div class="buy-moment-bar-fill ${statusClass}" style="width: ${score.toFixed(0)}%;"></div>
+          <ul class="buy-moment-reasons">
+            ${primaryData.reasons.map(r => `<li>${r}</li>`).join('')}
+          </ul>
+        </div>
+      `;
+    } else {
+      let verdictText = '';
+      let verdictClass = 'equal';
+      if (primaryData.score > compareData.score + 5) {
+        verdictText = `🏆 <strong>${primaryData.ticker}</strong> é a melhor opção de compra no momento com score de atratividade de <strong>${primaryData.score.toFixed(0)}/100</strong> (contra ${compareData.score.toFixed(0)}/100 de ${compareData.ticker}).`;
+        verdictClass = 'primary-best';
+      } else if (compareData.score > primaryData.score + 5) {
+        verdictText = `🏆 <strong>${compareData.ticker}</strong> é a melhor opção de compra no momento com score de atratividade de <strong>${compareData.score.toFixed(0)}/100</strong> (contra ${primaryData.score.toFixed(0)}/100 de ${primaryData.ticker}).`;
+        verdictClass = 'compare-best';
+      } else {
+        verdictText = `⚖️ Ambos os ativos possuem atratividade semelhante no momento (<strong>${primaryData.score.toFixed(0)}/100</strong> vs <strong>${compareData.score.toFixed(0)}/100</strong>).`;
+        verdictClass = 'equal';
+      }
+
+      card.innerHTML = `
+        <div class="buy-moment-header">
+          <h3 class="buy-moment-title">🛍️ Comparativo: Momento de Compra</h3>
+        </div>
+        <div class="buy-moment-comparison-verdict ${verdictClass}">
+          ${verdictText}
+        </div>
+        <div class="buy-moment-columns">
+          <div class="buy-moment-column">
+            <div class="buy-moment-header" style="margin-bottom: 8px;">
+              <strong style="font-size: 1.05rem;">${primaryData.ticker}</strong>
+              <span class="buy-moment-status ${primaryData.statusClass}">${primaryData.statusLabel}</span>
+            </div>
+            <div class="buy-moment-metric-box" style="margin-bottom: 12px;">
+              <div class="buy-moment-bar-label">
+                <span>Atratividade</span>
+                <span class="buy-moment-bar-value">${primaryData.score.toFixed(0)}/100</span>
+              </div>
+              <div class="buy-moment-bar-wrap" role="progressbar" aria-valuenow="${primaryData.score.toFixed(0)}" aria-valuemin="0" aria-valuemax="100">
+                <div class="buy-moment-bar-fill ${primaryData.statusClass}" style="width: ${primaryData.score.toFixed(0)}%;"></div>
+              </div>
+            </div>
+            <ul class="buy-moment-reasons" style="padding-left: 15px; font-size: 0.8rem;">
+              ${primaryData.reasons.map(r => `<li>${r}</li>`).join('')}
+            </ul>
+          </div>
+          <div class="buy-moment-column">
+            <div class="buy-moment-header" style="margin-bottom: 8px;">
+              <strong style="font-size: 1.05rem;">${compareData.ticker}</strong>
+              <span class="buy-moment-status ${compareData.statusClass}">${compareData.statusLabel}</span>
+            </div>
+            <div class="buy-moment-metric-box" style="margin-bottom: 12px;">
+              <div class="buy-moment-bar-label">
+                <span>Atratividade</span>
+                <span class="buy-moment-bar-value">${compareData.score.toFixed(0)}/100</span>
+              </div>
+              <div class="buy-moment-bar-wrap" role="progressbar" aria-valuenow="${compareData.score.toFixed(0)}" aria-valuemin="0" aria-valuemax="100">
+                <div class="buy-moment-bar-fill ${compareData.statusClass}" style="width: ${compareData.score.toFixed(0)}%;"></div>
+              </div>
+            </div>
+            <ul class="buy-moment-reasons" style="padding-left: 15px; font-size: 0.8rem;">
+              ${compareData.reasons.map(r => `<li>${r}</li>`).join('')}
+            </ul>
           </div>
         </div>
-        <ul class="buy-moment-reasons">
-          ${reasons.map(r => `<li>${r}</li>`).join('')}
-        </ul>
-      </div>
-    `;
+      `;
+    }
     card.style.display = 'flex';
   }
 
@@ -507,7 +600,7 @@
     const changes = [];
     let previous = '';
     for (const point of points) {
-      const current = [point.signal, point.category].filter(Boolean).join(' · ');
+      const current = [translateLabel(point.signal), translateLabel(point.category)].filter(Boolean).join(' · ');
       if (current && current !== previous) { changes.push({ date: point.date, value: current }); previous = current; }
     }
     $('#timeline').innerHTML = changes.length ? changes.slice().reverse().map(change => `<div class="timeline-item"><span class="timeline-date">${formatDate(change.date)}</span><span class="timeline-value">${escapeHTML(change.value)}</span></div>`).join('') : '<p class="muted">Nenhuma mudança de sinal registrada.</p>';

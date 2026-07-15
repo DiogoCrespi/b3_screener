@@ -93,7 +93,7 @@ h2 { margin: 0; font-size: clamp(1.1rem, 2vw, 1.45rem); line-height: 1.15; lette
 .legend-item { display: inline-flex; align-items: center; gap: 6px; }
 .legend-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
 .legend-dot.secondary { background: var(--blue); }
-.chart-wrap { position: relative; width: 100%; min-height: 340px; margin-top: 18px; }
+.chart-wrap { position: relative; width: 100%; height: 340px; margin-top: 18px; }
 .chart-wrap svg, .sparkline svg, .macro-chart svg { display: block; width: 100%; height: 100%; overflow: visible; }
 .chart-grid { stroke: var(--line); stroke-width: 1; vector-effect: non-scaling-stroke; }
 .chart-axis-label { fill: var(--muted); font-size: 11px; font-family: var(--font); }
@@ -195,7 +195,7 @@ h2 { margin: 0; font-size: clamp(1.1rem, 2vw, 1.45rem); line-height: 1.15; lette
   .signal-stack { align-items: flex-start; text-align: left; }
   .legend { justify-content: flex-start; }
   .chart-card { padding: 14px; }
-  .chart-wrap { min-height: 290px; }
+  .chart-wrap { height: 200px; }
   .rejected-row { grid-template-columns: 1fr 1fr; }
   .rejected-row span:nth-child(n+3) { grid-column: 1 / -1; }
 }
@@ -330,4 +330,47 @@ h2 { margin: 0; font-size: clamp(1.1rem, 2vw, 1.45rem); line-height: 1.15; lette
 }
 .sparkline-hit {
   cursor: crosshair;
+}
+.buy-moment-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  width: 100%;
+}
+@media (max-width: 820px) {
+  .buy-moment-columns {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+.buy-moment-comparison-verdict {
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  background: var(--surface-alt);
+  border-left: 4px solid var(--accent);
+  margin-bottom: 15px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.buy-moment-comparison-verdict.primary-best {
+  border-left-color: var(--accent);
+}
+.buy-moment-comparison-verdict.compare-best {
+  border-left-color: var(--blue);
+}
+.buy-moment-comparison-verdict.equal {
+  border-left-color: var(--muted);
+}
+.buy-moment-column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 18px;
+  background: var(--surface-alt);
+  border-radius: 12px;
+  border: 1px solid var(--line);
 }
