@@ -66,7 +66,10 @@ const path = require('path');
       overflowX: document.documentElement.scrollWidth > document.documentElement.clientWidth + 1,
       historyVersion: window.B3_HISTORY_DATA?.meta?.version,
       dates: window.B3_HISTORY_DATA?.dates?.length,
-      rejected: window.B3_HISTORY_DATA?.meta?.rejected?.length
+      rejected: window.B3_HISTORY_DATA?.meta?.rejected?.length,
+      expectedGlobalAssetOptionCount:
+        Object.keys(window.B3_HISTORY_DATA?.series?.stock || {}).length
+        + Object.keys(window.B3_HISTORY_DATA?.series?.fund || {}).length
     }));
 
     results.push({ name, viewport, title, summaryCount, initialTicker, initialActiveType, initialChart, rankingCount, qualityCount, backHref, globalAssetOptionCount, fundTicker, fundTypeActive, normalizedTitle, queryType: query.get('type'), queryMetric: query.get('metric'), queryPeriod: query.get('period'), queryCompare: query.get('compare'), globalSearchSwitchesType, rejectedVisible, downloadName, darkApplied, darkPersisted, ...layout });
@@ -89,7 +92,7 @@ const path = require('path');
     || result.rankingCount !== 4
     || result.qualityCount !== 3
     || result.backHref !== './index.html'
-    || result.globalAssetOptionCount !== 454
+    || result.globalAssetOptionCount !== result.expectedGlobalAssetOptionCount
     || !result.fundTicker
     || result.fundTypeActive !== 'fund'
     || !result.normalizedTitle.includes('normalizado')
