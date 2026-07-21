@@ -11,6 +11,32 @@ const path = require('path');
     const page = await browser.newPage({ viewport });
     page.on('pageerror', error => errors.push(`[${name}] ${error.message}`));
     page.on('console', message => { if (message.type() === 'error') errors.push(`[${name}] ${message.text()}`); });
+    // Mock rss2json — único gateway usado pelo código de notícias
+    // Retorna JSON válido para qualquer ticker (Yahoo RSS ou Google News RSS via rss2json)
+    await page.route('https://api.rss2json.com/**', async route => {
+      const mockJson = JSON.stringify({
+        status: 'ok',
+        feed: { title: 'Mock Feed', link: 'https://example.com', author: '', description: '', image: '' },
+        items: [
+          {
+            title: 'Mock news for ticker - InfoMoney',
+            link: 'https://www.infomoney.com.br/mock-news',
+            pubDate: 'Mon, 21 Jul 2026 10:00:00 +0000',
+            author: '',
+            thumbnail: '',
+            description: 'Mock news description for smoke test.',
+            content: '',
+            enclosure: {},
+            categories: []
+          }
+        ]
+      });
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: mockJson
+      });
+    });
     await page.goto(fileUrl, { waitUntil: 'domcontentloaded' });
     await page.waitForSelector('#mainChart svg', { timeout: 15000 });
 

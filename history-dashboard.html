@@ -91,6 +91,22 @@
           </div>
         </section>
 
+        <section class="news-section card" id="newsSection" aria-live="polite" style="display: none;">
+          <div class="news-header">
+            <div>
+              <p class="eyebrow">Radar de Notícias</p>
+              <h2>Últimas do ativo em tempo real</h2>
+            </div>
+            <div class="news-nav">
+              <button type="button" class="news-nav-btn" id="newsPrevBtn" aria-label="Notícias anteriores">←</button>
+              <button type="button" class="news-nav-btn" id="newsNextBtn" aria-label="Próximas notícias">→</button>
+            </div>
+          </div>
+          <div class="news-carousel-wrap" id="newsCarouselWrap">
+            <div class="news-track" id="newsTrack"></div>
+          </div>
+        </section>
+
         <section class="buy-moment-card card" id="buyMomentCard" aria-live="polite" style="display: none;"></section>
 
         <section class="insights-card card" id="insightsCard" aria-live="polite" style="display: none;"></section>
@@ -145,6 +161,6 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <noscript>Esta página precisa de JavaScript para interpretar o artefato histórico.</noscript>
   <script src="./history-data.js"></script>
-  <script src="./assets/history-dashboard.js"></script>
+  <script src="./assets/history-dashboard.js?v=1.0.2"></script>
 </body>
 </html>

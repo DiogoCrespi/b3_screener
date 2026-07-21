@@ -25,6 +25,7 @@
   const state = { type: 'stock', ticker: '', compare: '', metric: 'price', period: 'all', mode: 'local' };
   const tooltip = $('#chartTooltip');
   let toastTimer;
+  let activeNewsAbortController = null;
 
   function escapeHTML(value) {
     return String(value ?? '').replace(/[&<>'"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[char]));
@@ -231,6 +232,7 @@
     ];
     $('#kpiGrid').innerHTML = kpis.map(([label, value, detail, css]) => `<article class="kpi"><span class="kpi-label">${escapeHTML(label)}</span><strong class="kpi-value ${css}">${escapeHTML(value)}</strong><span class="kpi-detail">${escapeHTML(detail)}</span></article>`).join('');
     
+    renderNews(state.ticker);
     renderBuyMoment(allPoints, points);
     renderInsights(points);
     renderMainChart(points);
@@ -481,6 +483,209 @@
     card.style.display = 'flex';
   }
 
+  async function renderNews(ticker) {
+    const newsSection = $('#newsSection');
+    const newsTrack = $('#newsTrack');
+    
+    if (activeNewsAbortController) {
+      activeNewsAbortController.abort();
+    }
+    activeNewsAbortController = new AbortController();
+    const { signal } = activeNewsAbortController;
+
+    newsSection.style.display = 'flex';
+    newsTrack.innerHTML = Array.from({ length: 4 }).map(() => '<div class="news-skeleton"></div>').join('');
+
+    try {
+      let newsItems = [];
+
+      // 1. Tenta obter notícias específicas do Yahoo Finance via rss2json
+      try {
+        const yahooTicker = ticker.includes('.') ? ticker : `${ticker}.SA`;
+        const yahooUrl = `https://finance.yahoo.com/rss/headline?s=${yahooTicker}`;
+        const rss2jsonUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(yahooUrl)}`;
+        
+        const fetchController = new AbortController();
+        const abortHandler = () => fetchController.abort();
+        signal.addEventListener('abort', abortHandler);
+        
+        const timeoutId = setTimeout(() => {
+          fetchController.abort();
+        }, 5000); // 5s timeout
+        
+        const response = await fetch(rss2jsonUrl, { signal: fetchController.signal });
+        clearTimeout(timeoutId);
+        signal.removeEventListener('abort', abortHandler);
+        
+        if (response.ok) {
+          const json = await response.json();
+          if (json.status === 'ok' && json.items && json.items.length > 0) {
+            newsItems = json.items.map(item => {
+              let source = 'Yahoo Finance';
+              if (item.link) {
+                try {
+                  const host = new URL(item.link).hostname;
+                  if (host.includes('bloomberg')) source = 'Bloomberg';
+                  else if (host.includes('reuters')) source = 'Reuters';
+                  else if (host.includes('infomoney')) source = 'InfoMoney';
+                  else if (host.includes('valor')) source = 'Valor Econômico';
+                  else if (host.includes('estadao')) source = 'Estadão';
+                  else if (host.includes('globo') || host.includes('g1')) source = 'O Globo';
+                  else if (host.includes('moneytimes')) source = 'Money Times';
+                  else if (host.includes('forbes')) source = 'Forbes';
+                  else if (host.includes('exame')) source = 'Exame';
+                } catch (e) {}
+              }
+              return {
+                title: item.title || '',
+                link: item.link || '#',
+                pubDate: item.pubDate || '',
+                source: source
+              };
+            });
+          }
+        }
+      } catch (yahooErr) {
+        if (signal.aborted) throw yahooErr;
+        console.warn('Yahoo Finance RSS fetch failed or empty, falling back to Google News RSS...', yahooErr);
+      }
+
+      // 2. Se falhar ou estiver vazio, faz fallback para o Google News RSS via rss2json
+      // (proxies CORS diretos estão bloqueados — rss2json funciona e tem CORS)
+      if (newsItems.length === 0) {
+        // Query inteligente: FIIs (sufixo 11) vs ações
+        const isFii = /\d{2}$/.test(ticker); // termina em 2 dígitos → provavelmente FII
+        const baseQ = isFii ? `${ticker} FII` : `${ticker} ação B3`;
+        const fallbackQ = ticker; // query mais ampla se a primeira falhar
+
+        const buildGoogleUrl = (q) =>
+          `https://news.google.com/rss/search?q=${encodeURIComponent(q)}&hl=pt-BR&gl=BR&ceid=BR:pt`;
+
+        const tryGoogleFetch = async (googleRssUrl) => {
+          const rss2jsonUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(googleRssUrl)}`;
+          const fetchController = new AbortController();
+          const abortHandler = () => fetchController.abort();
+          signal.addEventListener('abort', abortHandler);
+          const timeoutId = setTimeout(() => fetchController.abort(), 10000);
+          try {
+            const response = await fetch(rss2jsonUrl, { signal: fetchController.signal });
+            clearTimeout(timeoutId);
+            signal.removeEventListener('abort', abortHandler);
+            if (signal.aborted) return [];
+            if (!response.ok) return [];
+            const json = await response.json();
+            if (json.status === 'ok' && json.items && json.items.length > 0) {
+              return json.items.map(item => {
+                let source = 'Google News';
+                if (item.link) {
+                  try {
+                    const host = new URL(item.link).hostname;
+                    if (host.includes('infomoney')) source = 'InfoMoney';
+                    else if (host.includes('valor')) source = 'Valor Econômico';
+                    else if (host.includes('estadao')) source = 'Estadão';
+                    else if (host.includes('globo') || host.includes('g1')) source = 'O Globo';
+                    else if (host.includes('moneytimes')) source = 'Money Times';
+                    else if (host.includes('bloomberg')) source = 'Bloomberg';
+                    else if (host.includes('reuters')) source = 'Reuters';
+                    else if (host.includes('exame')) source = 'Exame';
+                    else if (host.includes('forbes')) source = 'Forbes';
+                    else if (host.includes('suno')) source = 'Suno';
+                    else if (host.includes('funds')) source = 'Funds Explorer';
+                  } catch (e) {}
+                }
+                return {
+                  title: item.title || '',
+                  link: item.link || '#',
+                  pubDate: item.pubDate || '',
+                  source: source
+                };
+              });
+            }
+            return [];
+          } catch (err) {
+            clearTimeout(timeoutId);
+            signal.removeEventListener('abort', abortHandler);
+            if (signal.aborted) throw err;
+            return [];
+          }
+        };
+
+        try {
+          // Tentativa 1: query específica (ticker FII ou ticker ação B3)
+          newsItems = await tryGoogleFetch(buildGoogleUrl(baseQ));
+
+          // Tentativa 2: só o ticker (mais ampla) se a primeira falhar
+          if (newsItems.length === 0 && !signal.aborted) {
+            newsItems = await tryGoogleFetch(buildGoogleUrl(fallbackQ));
+          }
+        } catch (googleErr) {
+          if (signal.aborted) throw googleErr;
+          console.warn('Google News via rss2json falhou:', googleErr);
+        }
+      }
+
+      if (signal.aborted) return;
+
+      if (newsItems.length === 0) {
+        newsSection.style.display = 'none';
+        return;
+      }
+
+      const cardsHTML = newsItems.slice(0, 10).map(item => {
+        const title = item.title;
+        const link = item.link;
+        const pubDateStr = item.pubDate;
+        const source = item.source;
+
+        let dateText = '—';
+        if (pubDateStr) {
+          try {
+            dateText = new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' }).format(new Date(pubDateStr));
+          } catch (e) {
+            dateText = pubDateStr;
+          }
+        }
+
+        const lowerTitle = title.toLowerCase();
+        let tagClass = 'mercado';
+        let tagLabel = 'Mercado';
+
+        if (lowerTitle.includes('fato relevante') || lowerTitle.includes('fatos relevantes') || lowerTitle.includes('comunicado ao mercado')) {
+          tagClass = 'fato-relevante';
+          tagLabel = 'Fato Relevante';
+        } else if (lowerTitle.includes('dividendo') || lowerTitle.includes('provento') || lowerTitle.includes('jcp') || lowerTitle.includes('rendimento') || lowerTitle.includes('paga')) {
+          tagClass = 'proventos';
+          tagLabel = 'Proventos';
+        }
+
+        const sourceSuffix = ` - ${source}`;
+        let cleanTitle = title;
+        if (title.endsWith(sourceSuffix)) {
+          cleanTitle = title.substring(0, title.length - sourceSuffix.length);
+        }
+
+        return `
+          <a class="news-card" href="${escapeHTML(link)}" target="_blank" rel="noopener noreferrer">
+            <div class="news-card-body">
+              <span class="news-tag ${tagClass}">${escapeHTML(tagLabel)}</span>
+              <h4 class="news-title">${escapeHTML(cleanTitle)}</h4>
+            </div>
+            <div class="news-meta">
+              <span class="news-source">${escapeHTML(source)}</span>
+              <span>${escapeHTML(dateText)}</span>
+            </div>
+          </a>
+        `;
+      }).join('');
+
+      newsTrack.innerHTML = cardsHTML;
+    } catch (error) {
+      if (error.name === 'AbortError') return;
+      console.warn('Error fetching news:', error);
+      newsSection.style.display = 'none';
+    }
+  }
+
   function chartGeometry(seriesList, metric, normalize) {
     const allDateIndexes = seriesList.flatMap(series => series.points.map(point => point.dateIndex));
     const dateMin = Math.min(...allDateIndexes), dateMax = Math.max(...allDateIndexes);
@@ -503,10 +708,20 @@
     const downsampledCompare = downsample(comparisonPoints);
     const hasCompare = Boolean(state.compare);
     const normalize = hasCompare;
-    const geometry = chartGeometry([
-      { ticker: state.ticker, points: downsampledPrimary, secondary: false },
-      ...(hasCompare ? [{ ticker: state.compare, points: downsampledCompare, secondary: true }] : [])
-    ], state.metric, normalize);
+    const showValuation = state.type === 'stock' && state.metric === 'price' && !state.compare;
+    const seriesList = [
+      { ticker: state.ticker, points: downsampledPrimary, secondary: false }
+    ];
+    if (hasCompare) {
+      seriesList.push({ ticker: state.compare, points: downsampledCompare, secondary: true });
+    } else if (showValuation) {
+      const grahamPoints = downsampledPrimary.map(p => ({ ...p, price: p.graham }));
+      const bazinPoints = downsampledPrimary.map(p => ({ ...p, price: p.bazin }));
+      seriesList.push({ ticker: 'Graham', points: grahamPoints, isValuation: true, valuationType: 'graham' });
+      seriesList.push({ ticker: 'Bazin', points: bazinPoints, isValuation: true, valuationType: 'bazin' });
+    }
+
+    const geometry = chartGeometry(seriesList, state.metric, normalize);
     const metricLabel = metricCatalog[state.type][state.metric][0];
     $('#chartTitle').textContent = normalize ? `${metricLabel} · retorno normalizado` : metricLabel;
     $('#chartEyebrow').textContent = state.period === 'all' ? 'Todo o histórico' : `Últimos ${state.period} dias`;
@@ -522,7 +737,18 @@
     const primaryLabel = formatLegendText(state.ticker, latestPrimary);
     const compareLabel = hasCompare ? formatLegendText(state.compare, latestCompare) : '';
 
-    $('#chartLegend').innerHTML = `<span class="legend-item"><i class="legend-dot"></i><span id="mainLegendPrimary">${primaryLabel}</span></span>${hasCompare ? `<span class="legend-item"><i class="legend-dot secondary"></i><span id="mainLegendCompare">${compareLabel}</span></span>` : ''}`;
+    let legendHTML = `<span class="legend-item"><i class="legend-dot"></i><span id="mainLegendPrimary">${primaryLabel}</span></span>${hasCompare ? `<span class="legend-item"><i class="legend-dot secondary"></i><span id="mainLegendCompare">${compareLabel}</span></span>` : ''}`;
+    if (showValuation) {
+      const latestGraham = [...primaryPoints].reverse().find(point => validNumber(point.graham))?.graham;
+      const latestBazin = [...primaryPoints].reverse().find(point => validNumber(point.bazin))?.bazin;
+      const grahamLabel = latestGraham ? `Justo Graham: <strong>${formatValue(state.type, 'price', latestGraham)}</strong>` : 'Justo Graham';
+      const bazinLabel = latestBazin ? `Teto Bazin: <strong>${formatValue(state.type, 'price', latestBazin)}</strong>` : 'Teto Bazin';
+      legendHTML += `
+        <span class="legend-item"><i class="legend-dot graham"></i><span>${grahamLabel}</span></span>
+        <span class="legend-item"><i class="legend-dot bazin"></i><span>${bazinLabel}</span></span>
+      `;
+    }
+    $('#chartLegend').innerHTML = legendHTML;
 
     const container = $('#mainChart');
     if (!geometry) { container.innerHTML = '<div class="chart-empty">Sem valores válidos para esta métrica.</div>'; return; }
@@ -550,7 +776,12 @@
         const text = rangeDays > 365 ? d.slice(2, 7).replace('-', '/') : d.slice(5).replace('-', '/');
         return `<text class="chart-axis-label" x="${x(index)}" y="${H - 10}" text-anchor="middle">${escapeHTML(text)}</text>`;
       }).join('')}
-      ${geometry.prepared.map(series => `<path class="chart-line ${series.secondary ? 'secondary' : ''}" d="${pathFor(series.values)}"/>`).join('')}
+      ${geometry.prepared.map(series => {
+        if (series.isValuation) {
+          return `<path class="chart-line valuation ${series.valuationType}" d="${pathFor(series.values)}"/>`;
+        }
+        return `<path class="chart-line ${series.secondary ? 'secondary' : ''}" d="${pathFor(series.values)}"/>`;
+      }).join('')}
       <line class="chart-crosshair" x1="0" x2="0" y1="${P.t}" y2="${H - P.b}" visibility="hidden"/>
       <rect class="chart-hit" x="${P.l}" y="${P.t}" width="${W - P.l - P.r}" height="${H - P.t - P.b}"/>
     </svg>`;
@@ -580,7 +811,8 @@
 
       const rows = geometry.prepared.map(series => {
         const point = series.values.reduce((best, candidate) => Math.abs(candidate.dateIndex - primary.dateIndex) < Math.abs(best.dateIndex - primary.dateIndex) ? candidate : best, series.values[0]);
-        return `<div>${escapeHTML(series.ticker)}: <b>${geometry.normalize ? signed(point.chartValue) : escapeHTML(formatValue(state.type, state.metric, point[state.metric]))}</b></div>`;
+        const name = series.valuationType === 'graham' ? 'Justo Graham' : (series.valuationType === 'bazin' ? 'Teto Bazin' : series.ticker);
+        return `<div>${escapeHTML(name)}: <b>${geometry.normalize ? signed(point.chartValue) : escapeHTML(formatValue(state.type, state.metric, point[state.metric]))}</b></div>`;
       }).join('');
       tooltip.innerHTML = `<strong>${formatDate(primary.date)}</strong>${rows}`;
       tooltip.hidden = false; tooltip.style.left = `${Math.min(event.clientX + 14, innerWidth - 250)}px`; tooltip.style.top = `${Math.max(10, event.clientY - 70)}px`;
@@ -1170,6 +1402,14 @@
     $('#downloadCsv').addEventListener('click', downloadSimple);
     $('#downloadCsvFull').addEventListener('click', downloadFullTemporal);
     $('#exportRich').addEventListener('click', downloadRichReport);
+
+    const carouselWrap = $('#newsCarouselWrap');
+    $('#newsPrevBtn').addEventListener('click', () => {
+      carouselWrap.scrollBy({ left: -260 * 2, behavior: 'smooth' });
+    });
+    $('#newsNextBtn').addEventListener('click', () => {
+      carouselWrap.scrollBy({ left: 260 * 2, behavior: 'smooth' });
+    });
 
     $('#themeToggle').addEventListener('click', () => { document.body.classList.toggle('dark'); localStorage.setItem('b3-history-theme', document.body.classList.contains('dark') ? 'dark' : 'light'); });
     $('#toggleRejected').addEventListener('click', event => { const list = $('#rejectedList'); list.hidden = !list.hidden; event.currentTarget.setAttribute('aria-expanded', String(!list.hidden)); event.currentTarget.textContent = list.hidden ? 'Ver snapshots rejeitados' : 'Ocultar snapshots rejeitados'; });
