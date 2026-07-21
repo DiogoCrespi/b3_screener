@@ -41,6 +41,41 @@ async function fetchFundamentusFunds() {
     return funds;
 }
 
+async function fetchBrapiFunds() {
+    const token = process.env.MARKET_DATA_TOKEN || process.env.BRAPI_TOKEN;
+    const tokenQuery = token ? `?token=${encodeURIComponent(token)}` : '';
+    const response = await fetch(`https://brapi.dev/api/quote/list${tokenQuery}`, {
+        signal: AbortSignal.timeout(15000)
+    });
+    if (!response.ok) throw new Error(`Brapi API error: ${response.status}`);
+
+    const data = await response.json();
+    const rawFunds = data.stocks || [];
+
+    // Filter funds that are FIIS, FIAGROS or FI-INFRAS
+    const fiiFunds = rawFunds.filter(item =>
+        item.type === 'fund' &&
+        (item.subType === 'fii' || item.subType === 'fi-agro' || item.subType === 'fi-infra')
+    );
+
+    const collectedAt = new Date().toISOString();
+    return fiiFunds.map(item => ({
+        ticker: item.stock,
+        segment: item.sector || 'Outros',
+        price: item.close || 0,
+        ffo_yield: 0,
+        dy: 0,
+        p_vp: 1.0,
+        market_cap: item.market_cap || 0,
+        liquidity: (item.volume && item.close) ? (item.volume * item.close) : 0,
+        num_properties: 0,
+        cap_rate: 0,
+        vacancy: 0,
+        data_source: 'brapi_fallback',
+        collected_at: collectedAt
+    }));
+}
+
 function enrichFund(fund, metadata) {
     return {
         ...fund,
@@ -92,7 +127,24 @@ function processFund(fund, metadata, selic) {
 
 async function getBestFIIs(externalMetadata = {}, baseList = null, selicParam = null) {
     try {
-        const funds = Array.isArray(baseList) ? baseList : await fetchFundamentusFunds();
+        let funds;
+        if (Array.isArray(baseList)) {
+            funds = baseList;
+        } else {
+            try {
+                funds = await fetchFundamentusFunds();
+            } catch (fundamentusError) {
+                console.warn('⚠️ Fundamentus FIIs failed:', fundamentusError.message);
+                console.log('🔄 Switching to Brapi.dev backup for FIIs...');
+                try {
+                    funds = await fetchBrapiFunds();
+                    console.log(`✅ Successfully fetched ${funds.length} FIIs from Brapi.dev`);
+                } catch (brapiError) {
+                    console.error('❌ Both FII data sources failed!');
+                    throw brapiError;
+                }
+            }
+        }
         const selic = selicParam ?? await getSelicRate() ?? 12.75;
 
         return funds

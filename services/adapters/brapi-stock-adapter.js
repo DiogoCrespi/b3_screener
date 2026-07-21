@@ -9,13 +9,15 @@ const { parseB3Ticker } = require('../logic/analysis-utils');
 class BrapiStockAdapter {
     constructor() {
         this.baseUrl = 'https://brapi.dev/api';
+        this.token = process.env.MARKET_DATA_TOKEN || process.env.BRAPI_TOKEN;
     }
 
     async getStocks() {
         try {
             // Brapi.dev provides a list endpoint for all stocks
             // We'll fetch the list first, then get details for each
-            const listResponse = await fetch(`${this.baseUrl}/quote/list`, {
+            const tokenQuery = this.token ? `?token=${encodeURIComponent(this.token)}` : '';
+            const listResponse = await fetch(`${this.baseUrl}/quote/list${tokenQuery}`, {
                 signal: AbortSignal.timeout(15000)
             });
 
@@ -36,7 +38,8 @@ class BrapiStockAdapter {
                 const tickerString = batch.join(',');
 
                 try {
-                    const detailsResponse = await fetch(`${this.baseUrl}/quote/${tickerString}?fundamental=true`, {
+                    const tokenParam = this.token ? `&token=${encodeURIComponent(this.token)}` : '';
+                    const detailsResponse = await fetch(`${this.baseUrl}/quote/${tickerString}?fundamental=true${tokenParam}`, {
                         signal: AbortSignal.timeout(15000)
                     });
 

@@ -1,6 +1,6 @@
-const { describe, test } = require('node:test');
+const { describe, test, before, after } = require('node:test');
 const assert = require('node:assert/strict');
-const { processFund, enrichFund } = require('./fiis');
+const { processFund, enrichFund, getBestFIIs } = require('./fiis');
 
 describe('FII processing pipeline', () => {
     test('keeps provenance while prioritizing valid external metadata', () => {
@@ -23,5 +23,95 @@ describe('FII processing pipeline', () => {
         assert.strictEqual(result.signal, 'OPPORTUNITY');
         assert.ok(result.pillars);
         assert.deepStrictEqual(result.data_sources, ['fundamentus', 'investidor10']);
+    });
+});
+
+describe('getBestFIIs service with Brapi failover', () => {
+    let originalFetch;
+
+    before(() => {
+        originalFetch = global.fetch;
+    });
+
+    after(() => {
+        global.fetch = originalFetch;
+    });
+
+    test('should fetch FIIs from Fundamentus when successful', async () => {
+        global.fetch = async (url) => {
+            if (url.includes('fii_resultado.php')) {
+                return {
+                    ok: true,
+                    text: async () => `
+                        <table id="tabelaResultado">
+                            <tbody>
+                                <tr>
+                                    <td><a href="detalhes.php?papel=MXRF11">MXRF11</a></td>
+                                    <td>Híbrido</td>
+                                    <td>10.50</td>
+                                    <td>12.0</td>
+                                    <td>12.0</td>
+                                    <td>1.02</td>
+                                    <td>1200000000</td>
+                                    <td>5000000</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    `
+                };
+            }
+            return { ok: false, status: 404 };
+        };
+
+        const result = await getBestFIIs({}, null, 10.75);
+        assert.ok(result.length > 0);
+        assert.strictEqual(result[0].ticker, 'MXRF11');
+        assert.strictEqual(result[0].data_source, 'fundamentus');
+    });
+
+    test('should fallback to Brapi when Fundamentus fails', async () => {
+        global.fetch = async (url) => {
+            if (url.includes('fii_resultado.php')) {
+                throw new Error('Fundamentus block (403)');
+            }
+            if (url.includes('api/quote/list')) {
+                return {
+                    ok: true,
+                    json: async () => ({
+                        stocks: [
+                            {
+                                stock: 'HGLG11',
+                                sector: 'Industrial',
+                                close: 160.0,
+                                volume: 2000,
+                                market_cap: 3000000000,
+                                type: 'fund',
+                                subType: 'fii'
+                            }
+                        ]
+                    })
+                };
+            }
+            return { ok: false, status: 404 };
+        };
+
+        const result = await getBestFIIs({}, null, 10.75);
+        assert.ok(result.length > 0);
+        assert.strictEqual(result[0].ticker, 'HGLG11');
+        assert.strictEqual(result[0].data_source, 'brapi_fallback');
+    });
+
+    test('should handle failures gracefully when both fail', async () => {
+        global.fetch = async (url) => {
+            throw new Error('Connection refused');
+        };
+
+        const result = await getBestFIIs({}, null, 10.75);
+        assert.deepStrictEqual(result, []);
     });
 });
