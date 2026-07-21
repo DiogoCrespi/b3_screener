@@ -1,0 +1,935 @@
+{
+  "date": "2026-07-21T13:50:15.736Z",
+  "count": 17,
+  "economy": {
+    "dollar": 5.098788,
+    "selic": 14.25
+  },
+  "type": "fii",
+  "items": [
+    {
+      "ticker": "CPTI11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": null,
+      "price": 86.29,
+      "dy": 15,
+      "p_vp": 0.95,
+      "liquidity": 2040000,
+      "last_dividend": 1.15,
+      "vacancy": 0,
+      "data_com": "30/06/2026",
+      "data_pagamento": "14/07/2026",
+      "divida_ebitda": null,
+      "dividends_last_3_years": 30,
+      "score": 6.7,
+      "strategies": [
+        "CREDIT_CARRY",
+        "MISSING_MARKET_CAP"
+      ],
+      "magicNumber": 80,
+      "magicCost": 6903.200000000001,
+      "selic": 14.25,
+      "num_properties": 0,
+      "market_cap": 0,
+      "data_quality": "PARTIAL",
+      "regulatory_class": "FI_INFRA",
+      "exposure": "INFRA_CREDIT",
+      "classification_confidence": "LOW",
+      "classification_reasons": [
+        "Regulatory class identified as infrastructure.",
+        "Infrastructure credit assumed; detailed portfolio classification unavailable."
+      ],
+      "eligibility": "ELIGIBLE",
+      "signal": "WATCHLIST",
+      "risk_level": "HIGH",
+      "pillars": {
+        "valuation": 9,
+        "income": 9,
+        "liquidity": 8,
+        "safety": 2
+      },
+      "overall_score": 6.7,
+      "blockers": [],
+      "warnings": [
+        "MISSING_MARKET_CAP"
+      ],
+      "yield_is_trailing": true,
+      "category": "STANDARD",
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
+      "ticker": "KDIF11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": null,
+      "price": 121.39,
+      "dy": 13.33,
+      "p_vp": 1.02,
+      "liquidity": 2850000,
+      "last_dividend": 1.45,
+      "vacancy": 0,
+      "data_com": "30/06/2026",
+      "data_pagamento": "07/07/2026",
+      "divida_ebitda": null,
+      "dividends_last_3_years": 30,
+      "score": 6.7,
+      "strategies": [
+        "CREDIT_CARRY",
+        "MISSING_MARKET_CAP"
+      ],
+      "magicNumber": 91,
+      "magicCost": 11046.49,
+      "selic": 14.25,
+      "num_properties": 0,
+      "market_cap": 0,
+      "data_quality": "PARTIAL",
+      "regulatory_class": "FI_INFRA",
+      "exposure": "INFRA_CREDIT",
+      "classification_confidence": "LOW",
+      "classification_reasons": [
+        "Regulatory class identified as infrastructure.",
+        "Infrastructure credit assumed; detailed portfolio classification unavailable."
+      ],
+      "eligibility": "ELIGIBLE",
+      "signal": "WATCHLIST",
+      "risk_level": "HIGH",
+      "pillars": {
+        "valuation": 9,
+        "income": 9,
+        "liquidity": 8,
+        "safety": 2
+      },
+      "overall_score": 6.7,
+      "blockers": [],
+      "warnings": [
+        "MISSING_MARKET_CAP"
+      ],
+      "yield_is_trailing": true,
+      "category": "STANDARD",
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
+      "ticker": "BODB11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": "Híbridos",
+      "price": 7.68,
+      "dy": 15.36,
+      "p_vp": 0.96,
+      "liquidity": 844430,
+      "last_dividend": 0.1,
+      "vacancy": 0,
+      "data_com": "30/06/2026",
+      "data_pagamento": "07/07/2026",
+      "divida_ebitda": null,
+      "dividends_last_3_years": 35,
+      "score": 6.65,
+      "strategies": [
+        "MISSING_MARKET_CAP"
+      ],
+      "magicNumber": 79,
+      "magicCost": 606.72,
+      "selic": 14.25,
+      "num_properties": 0,
+      "market_cap": 0,
+      "data_quality": "PARTIAL",
+      "regulatory_class": "FI_INFRA",
+      "exposure": "HYBRID",
+      "classification_confidence": "MEDIUM",
+      "classification_reasons": [
+        "Regulatory class identified as infrastructure.",
+        "Hybrid exposure declared without a more specific segment."
+      ],
+      "eligibility": "ELIGIBLE",
+      "signal": "WATCHLIST",
+      "risk_level": "HIGH",
+      "pillars": {
+        "valuation": 8,
+        "income": 9,
+        "liquidity": 6,
+        "safety": 4
+      },
+      "overall_score": 6.65,
+      "blockers": [],
+      "warnings": [
+        "MISSING_MARKET_CAP"
+      ],
+      "yield_is_trailing": true,
+      "category": "STANDARD",
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
+      "ticker": "CDII11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": null,
+      "price": 100.34,
+      "dy": 16.75,
+      "p_vp": 0.99,
+      "liquidity": 5780000,
+      "last_dividend": 1,
+      "vacancy": 0,
+      "data_com": "30/06/2026",
+      "data_pagamento": "14/07/2026",
+      "divida_ebitda": null,
+      "dividends_last_3_years": 30,
+      "score": 6.6,
+      "strategies": [
+        "CREDIT_CARRY",
+        "MISSING_MARKET_CAP"
+      ],
+      "magicNumber": 72,
+      "magicCost": 7224.4800000000005,
+      "selic": 14.25,
+      "num_properties": 0,
+      "market_cap": 0,
+      "data_quality": "PARTIAL",
+      "regulatory_class": "FI_INFRA",
+      "exposure": "INFRA_CREDIT",
+      "classification_confidence": "LOW",
+      "classification_reasons": [
+        "Regulatory class identified as infrastructure.",
+        "Infrastructure credit assumed; detailed portfolio classification unavailable."
+      ],
+      "eligibility": "ELIGIBLE",
+      "signal": "WATCHLIST",
+      "risk_level": "HIGH",
+      "pillars": {
+        "valuation": 9,
+        "income": 7,
+        "liquidity": 10,
+        "safety": 2
+      },
+      "overall_score": 6.6,
+      "blockers": [],
+      "warnings": [
+        "MISSING_MARKET_CAP"
+      ],
+      "yield_is_trailing": true,
+      "category": "STANDARD",
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
+      "ticker": "DIVS11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": "Desenvolvimento para renda",
+      "price": 96.95,
+      "dy": 14.85,
+      "p_vp": 0.99,
+      "liquidity": 957380,
+      "last_dividend": 1.2,
+      "vacancy": 0,
+      "data_com": "30/06/2026",
+      "data_pagamento": "14/07/2026",
+      "divida_ebitda": null,
+      "dividends_last_3_years": 16,
+      "score": 6.3,
+      "strategies": [
+        "CREDIT_CARRY",
+        "MISSING_MARKET_CAP"
+      ],
+      "magicNumber": 81,
+      "magicCost": 7852.95,
+      "selic": 14.25,
+      "num_properties": 0,
+      "market_cap": 0,
+      "data_quality": "PARTIAL",
+      "regulatory_class": "FI_INFRA",
+      "exposure": "INFRA_CREDIT",
+      "classification_confidence": "LOW",
+      "classification_reasons": [
+        "Regulatory class identified as infrastructure.",
+        "Infrastructure credit assumed; detailed portfolio classification unavailable."
+      ],
+      "eligibility": "ELIGIBLE",
+      "signal": "WATCHLIST",
+      "risk_level": "HIGH",
+      "pillars": {
+        "valuation": 9,
+        "income": 9,
+        "liquidity": 6,
+        "safety": 2
+      },
+      "overall_score": 6.3,
+      "blockers": [],
+      "warnings": [
+        "MISSING_MARKET_CAP"
+      ],
+      "yield_is_trailing": true,
+      "category": "STANDARD",
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
+      "ticker": "IFRA11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": null,
+      "price": 93.03,
+      "dy": 11.95,
+      "p_vp": 0.97,
+      "liquidity": 2100000,
+      "last_dividend": 0.95,
+      "vacancy": 0,
+      "data_com": "30/06/2026",
+      "data_pagamento": "07/07/2026",
+      "divida_ebitda": null,
+      "dividends_last_3_years": 30,
+      "score": 6.2,
+      "strategies": [
+        "CREDIT_CARRY",
+        "MISSING_MARKET_CAP"
+      ],
+      "magicNumber": 101,
+      "magicCost": 9396.03,
+      "selic": 14.25,
+      "num_properties": 0,
+      "market_cap": 0,
+      "data_quality": "PARTIAL",
+      "regulatory_class": "FI_INFRA",
+      "exposure": "INFRA_CREDIT",
+      "classification_confidence": "LOW",
+      "classification_reasons": [
+        "Regulatory class identified as infrastructure.",
+        "Infrastructure credit assumed; detailed portfolio classification unavailable."
+      ],
+      "eligibility": "ELIGIBLE",
+      "signal": "WATCHLIST",
+      "risk_level": "HIGH",
+      "pillars": {
+        "valuation": 9,
+        "income": 7,
+        "liquidity": 8,
+        "safety": 2
+      },
+      "overall_score": 6.2,
+      "blockers": [],
+      "warnings": [
+        "MISSING_MARKET_CAP"
+      ],
+      "yield_is_trailing": true,
+      "category": "STANDARD",
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
+      "ticker": "IFRI11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": "Híbridos",
+      "price": 101.5,
+      "dy": 15.88,
+      "p_vp": 1.03,
+      "liquidity": 1940000,
+      "last_dividend": 1.4,
+      "vacancy": 0,
+      "data_com": "30/06/2026",
+      "data_pagamento": "07/07/2026",
+      "divida_ebitda": null,
+      "dividends_last_3_years": 25,
+      "score": 6.05,
+      "strategies": [
+        "MISSING_MARKET_CAP"
+      ],
+      "magicNumber": 76,
+      "magicCost": 7714,
+      "selic": 14.25,
+      "num_properties": 0,
+      "market_cap": 0,
+      "data_quality": "PARTIAL",
+      "regulatory_class": "FI_INFRA",
+      "exposure": "HYBRID",
+      "classification_confidence": "MEDIUM",
+      "classification_reasons": [
+        "Regulatory class identified as infrastructure.",
+        "Hybrid exposure declared without a more specific segment."
+      ],
+      "eligibility": "ELIGIBLE",
+      "signal": "WATCHLIST",
+      "risk_level": "HIGH",
+      "pillars": {
+        "valuation": 4,
+        "income": 9,
+        "liquidity": 8,
+        "safety": 4
+      },
+      "overall_score": 6.05,
+      "blockers": [],
+      "warnings": [
+        "MISSING_MARKET_CAP"
+      ],
+      "yield_is_trailing": true,
+      "category": "STANDARD",
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
+      "ticker": "BDIF11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": null,
+      "price": 71.44,
+      "dy": 13.44,
+      "p_vp": 0.89,
+      "liquidity": 2190000,
+      "last_dividend": 0.85,
+      "vacancy": 0,
+      "data_com": "14/07/2026",
+      "data_pagamento": "21/07/2026",
+      "divida_ebitda": null,
+      "dividends_last_3_years": 31,
+      "score": 5.95,
+      "strategies": [
+        "MISSING_MARKET_CAP"
+      ],
+      "magicNumber": 90,
+      "magicCost": 6429.599999999999,
+      "selic": 14.25,
+      "num_properties": 0,
+      "market_cap": 0,
+      "data_quality": "PARTIAL",
+      "regulatory_class": "FI_INFRA",
+      "exposure": "INFRA_CREDIT",
+      "classification_confidence": "LOW",
+      "classification_reasons": [
+        "Regulatory class identified as infrastructure.",
+        "Infrastructure credit assumed; detailed portfolio classification unavailable."
+      ],
+      "eligibility": "ELIGIBLE",
+      "signal": "WATCHLIST",
+      "risk_level": "HIGH",
+      "pillars": {
+        "valuation": 6,
+        "income": 9,
+        "liquidity": 8,
+        "safety": 2
+      },
+      "overall_score": 5.95,
+      "blockers": [],
+      "warnings": [
+        "MISSING_MARKET_CAP"
+      ],
+      "yield_is_trailing": true,
+      "category": "STANDARD",
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
+      "ticker": "JURO11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": null,
+      "price": 97.15,
+      "dy": 10.55,
+      "p_vp": 0.96,
+      "liquidity": 5620000,
+      "last_dividend": 0.5,
+      "vacancy": 0,
+      "data_com": "29/05/2026",
+      "data_pagamento": "15/06/2026",
+      "divida_ebitda": null,
+      "dividends_last_3_years": 29,
+      "score": 5.85,
+      "strategies": [
+        "MISSING_MARKET_CAP"
+      ],
+      "magicNumber": 114,
+      "magicCost": 11075.1,
+      "selic": 14.25,
+      "num_properties": 0,
+      "market_cap": 0,
+      "data_quality": "PARTIAL",
+      "regulatory_class": "FI_INFRA",
+      "exposure": "INFRA_CREDIT",
+      "classification_confidence": "LOW",
+      "classification_reasons": [
+        "Regulatory class identified as infrastructure.",
+        "Infrastructure credit assumed; detailed portfolio classification unavailable."
+      ],
+      "eligibility": "ELIGIBLE",
+      "signal": "WATCHLIST",
+      "risk_level": "HIGH",
+      "pillars": {
+        "valuation": 9,
+        "income": 4,
+        "liquidity": 10,
+        "safety": 2
+      },
+      "overall_score": 5.85,
+      "blockers": [],
+      "warnings": [
+        "MISSING_MARKET_CAP"
+      ],
+      "yield_is_trailing": true,
+      "category": "STANDARD",
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
+      "ticker": "BISE11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": "Títulos e valores mobiliários",
+      "price": 103.98,
+      "dy": 0,
+      "p_vp": 1,
+      "liquidity": 8189999.999999999,
+      "last_dividend": null,
+      "vacancy": 0,
+      "data_com": null,
+      "data_pagamento": null,
+      "divida_ebitda": null,
+      "dividends_last_3_years": 0,
+      "score": 5.75,
+      "strategies": [
+        "MISSING_MARKET_CAP"
+      ],
+      "magicNumber": null,
+      "magicCost": null,
+      "selic": 14.25,
+      "num_properties": 0,
+      "market_cap": 0,
+      "data_quality": "PARTIAL",
+      "regulatory_class": "FI_INFRA",
+      "exposure": "INFRA_CREDIT",
+      "classification_confidence": "HIGH",
+      "classification_reasons": [
+        "Regulatory class identified as infrastructure.",
+        "Classified as credit based on external fund type: Fundo de Papel"
+      ],
+      "eligibility": "ELIGIBLE",
+      "signal": "WATCHLIST",
+      "risk_level": "MEDIUM",
+      "pillars": {
+        "valuation": 9,
+        "income": 0,
+        "liquidity": 10,
+        "safety": 5
+      },
+      "overall_score": 5.75,
+      "blockers": [],
+      "warnings": [
+        "MISSING_MARKET_CAP"
+      ],
+      "yield_is_trailing": true,
+      "category": "STANDARD",
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
+      "ticker": "BINC11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": null,
+      "price": 103.89,
+      "dy": 16.73,
+      "p_vp": 1.03,
+      "liquidity": 557310,
+      "last_dividend": 1.8,
+      "vacancy": 0,
+      "data_com": "30/06/2026",
+      "data_pagamento": "07/07/2026",
+      "divida_ebitda": null,
+      "dividends_last_3_years": 21,
+      "score": 5.4,
+      "strategies": [
+        "CREDIT_CARRY",
+        "MISSING_MARKET_CAP"
+      ],
+      "magicNumber": 72,
+      "magicCost": 7480.08,
+      "selic": 14.25,
+      "num_properties": 0,
+      "market_cap": 0,
+      "data_quality": "PARTIAL",
+      "regulatory_class": "FI_INFRA",
+      "exposure": "INFRA_CREDIT",
+      "classification_confidence": "LOW",
+      "classification_reasons": [
+        "Regulatory class identified as infrastructure.",
+        "Infrastructure credit assumed; detailed portfolio classification unavailable."
+      ],
+      "eligibility": "ELIGIBLE",
+      "signal": "WATCHLIST",
+      "risk_level": "HIGH",
+      "pillars": {
+        "valuation": 9,
+        "income": 7,
+        "liquidity": 4,
+        "safety": 2
+      },
+      "overall_score": 5.4,
+      "blockers": [],
+      "warnings": [
+        "MISSING_MARKET_CAP"
+      ],
+      "yield_is_trailing": true,
+      "category": "STANDARD",
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
+      "ticker": "ISNN11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": "Títulos e valores mobiliários",
+      "price": 1092.41,
+      "dy": 0,
+      "p_vp": 1.01,
+      "liquidity": 2690000,
+      "last_dividend": null,
+      "vacancy": 0,
+      "data_com": null,
+      "data_pagamento": null,
+      "divida_ebitda": null,
+      "dividends_last_3_years": 0,
+      "score": 5.35,
+      "strategies": [
+        "MISSING_MARKET_CAP"
+      ],
+      "magicNumber": null,
+      "magicCost": null,
+      "selic": 14.25,
+      "num_properties": 0,
+      "market_cap": 0,
+      "data_quality": "PARTIAL",
+      "regulatory_class": "FI_INFRA",
+      "exposure": "INFRA_CREDIT",
+      "classification_confidence": "HIGH",
+      "classification_reasons": [
+        "Regulatory class identified as infrastructure.",
+        "Classified as credit based on external fund type: Fundo de Papel"
+      ],
+      "eligibility": "ELIGIBLE",
+      "signal": "WATCHLIST",
+      "risk_level": "MEDIUM",
+      "pillars": {
+        "valuation": 9,
+        "income": 0,
+        "liquidity": 8,
+        "safety": 5
+      },
+      "overall_score": 5.35,
+      "blockers": [],
+      "warnings": [
+        "MISSING_MARKET_CAP"
+      ],
+      "yield_is_trailing": true,
+      "category": "STANDARD",
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
+      "ticker": "VINF11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": "Títulos e valores mobiliários",
+      "price": 87.78,
+      "dy": 11.58,
+      "p_vp": 0.89,
+      "liquidity": 463420,
+      "last_dividend": 1.15,
+      "vacancy": 0,
+      "data_com": "30/06/2026",
+      "data_pagamento": "15/07/2026",
+      "divida_ebitda": null,
+      "dividends_last_3_years": 9,
+      "score": 5.25,
+      "strategies": [
+        "MISSING_MARKET_CAP"
+      ],
+      "magicNumber": 104,
+      "magicCost": 9129.12,
+      "selic": 14.25,
+      "num_properties": 0,
+      "market_cap": 0,
+      "data_quality": "PARTIAL",
+      "regulatory_class": "FI_INFRA",
+      "exposure": "INFRA_CREDIT",
+      "classification_confidence": "MEDIUM",
+      "classification_reasons": [
+        "Regulatory class identified as infrastructure.",
+        "Credit exposure inferred from type or mandate."
+      ],
+      "eligibility": "ELIGIBLE",
+      "signal": "WATCHLIST",
+      "risk_level": "HIGH",
+      "pillars": {
+        "valuation": 6,
+        "income": 7,
+        "liquidity": 4,
+        "safety": 4
+      },
+      "overall_score": 5.25,
+      "blockers": [],
+      "warnings": [
+        "MISSING_MARKET_CAP"
+      ],
+      "yield_is_trailing": true,
+      "category": "STANDARD",
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
+      "ticker": "JMBI11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": null,
+      "price": 85.48,
+      "dy": 17.01,
+      "p_vp": 0.84,
+      "liquidity": 954830,
+      "last_dividend": 1.13,
+      "vacancy": 0,
+      "data_com": "30/06/2026",
+      "data_pagamento": "10/07/2026",
+      "divida_ebitda": null,
+      "dividends_last_3_years": 20,
+      "score": 5.05,
+      "strategies": [
+        "MISSING_MARKET_CAP"
+      ],
+      "magicNumber": 71,
+      "magicCost": 6069.08,
+      "selic": 14.25,
+      "num_properties": 0,
+      "market_cap": 0,
+      "data_quality": "PARTIAL",
+      "regulatory_class": "FI_INFRA",
+      "exposure": "INFRA_CREDIT",
+      "classification_confidence": "LOW",
+      "classification_reasons": [
+        "Regulatory class identified as infrastructure.",
+        "Infrastructure credit assumed; detailed portfolio classification unavailable."
+      ],
+      "eligibility": "ELIGIBLE",
+      "signal": "WATCHLIST",
+      "risk_level": "HIGH",
+      "pillars": {
+        "valuation": 6,
+        "income": 7,
+        "liquidity": 6,
+        "safety": 2
+      },
+      "overall_score": 5.05,
+      "blockers": [],
+      "warnings": [
+        "MISSING_MARKET_CAP"
+      ],
+      "yield_is_trailing": true,
+      "category": "STANDARD",
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
+      "ticker": "ISEN11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": "Títulos e valores mobiliários",
+      "price": 116.1,
+      "dy": 0,
+      "p_vp": 1.01,
+      "liquidity": 2830000,
+      "last_dividend": null,
+      "vacancy": 0,
+      "data_com": null,
+      "data_pagamento": null,
+      "divida_ebitda": null,
+      "dividends_last_3_years": 0,
+      "score": 5.05,
+      "strategies": [
+        "MISSING_MARKET_CAP"
+      ],
+      "magicNumber": null,
+      "magicCost": null,
+      "selic": 14.25,
+      "num_properties": 0,
+      "market_cap": 0,
+      "data_quality": "PARTIAL",
+      "regulatory_class": "FI_INFRA",
+      "exposure": "INFRA_CREDIT",
+      "classification_confidence": "MEDIUM",
+      "classification_reasons": [
+        "Regulatory class identified as infrastructure.",
+        "Credit exposure inferred from type or mandate."
+      ],
+      "eligibility": "ELIGIBLE",
+      "signal": "WATCHLIST",
+      "risk_level": "HIGH",
+      "pillars": {
+        "valuation": 9,
+        "income": 0,
+        "liquidity": 8,
+        "safety": 4
+      },
+      "overall_score": 5.05,
+      "blockers": [],
+      "warnings": [
+        "MISSING_MARKET_CAP"
+      ],
+      "yield_is_trailing": true,
+      "category": "STANDARD",
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
+      "ticker": "ISTT11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": "Títulos e valores mobiliários",
+      "price": 1129.96,
+      "dy": 0,
+      "p_vp": 1.01,
+      "liquidity": 2360000,
+      "last_dividend": null,
+      "vacancy": 0,
+      "data_com": null,
+      "data_pagamento": null,
+      "divida_ebitda": null,
+      "dividends_last_3_years": 0,
+      "score": 5.05,
+      "strategies": [
+        "MISSING_MARKET_CAP"
+      ],
+      "magicNumber": null,
+      "magicCost": null,
+      "selic": 14.25,
+      "num_properties": 0,
+      "market_cap": 0,
+      "data_quality": "PARTIAL",
+      "regulatory_class": "FI_INFRA",
+      "exposure": "INFRA_CREDIT",
+      "classification_confidence": "MEDIUM",
+      "classification_reasons": [
+        "Regulatory class identified as infrastructure.",
+        "Credit exposure inferred from type or mandate."
+      ],
+      "eligibility": "ELIGIBLE",
+      "signal": "WATCHLIST",
+      "risk_level": "HIGH",
+      "pillars": {
+        "valuation": 9,
+        "income": 0,
+        "liquidity": 8,
+        "safety": 4
+      },
+      "overall_score": 5.05,
+      "blockers": [],
+      "warnings": [
+        "MISSING_MARKET_CAP"
+      ],
+      "yield_is_trailing": true,
+      "category": "STANDARD",
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    },
+    {
+      "ticker": "ISNT11",
+      "type": "INFRA",
+      "segment": "Infraestrutura",
+      "mandate": "Renda",
+      "price": 1134.71,
+      "dy": 0,
+      "p_vp": 1.01,
+      "liquidity": 6940000,
+      "last_dividend": null,
+      "vacancy": 0,
+      "data_com": null,
+      "data_pagamento": null,
+      "divida_ebitda": null,
+      "dividends_last_3_years": 0,
+      "score": 4.85,
+      "strategies": [
+        "MISSING_MARKET_CAP"
+      ],
+      "magicNumber": null,
+      "magicCost": null,
+      "selic": 14.25,
+      "num_properties": 0,
+      "market_cap": 0,
+      "data_quality": "PARTIAL",
+      "regulatory_class": "FI_INFRA",
+      "exposure": "INFRA_CREDIT",
+      "classification_confidence": "LOW",
+      "classification_reasons": [
+        "Regulatory class identified as infrastructure.",
+        "Infrastructure credit assumed; detailed portfolio classification unavailable."
+      ],
+      "eligibility": "ELIGIBLE",
+      "signal": "WATCHLIST",
+      "risk_level": "HIGH",
+      "pillars": {
+        "valuation": 9,
+        "income": 0,
+        "liquidity": 10,
+        "safety": 2
+      },
+      "overall_score": 4.85,
+      "blockers": [],
+      "warnings": [
+        "MISSING_MARKET_CAP"
+      ],
+      "yield_is_trailing": true,
+      "category": "STANDARD",
+      "external_segment": "Fundo de Infraestrutura (FI-Infra)",
+      "data_sources": [
+        "fundamentus",
+        "investidor10"
+      ]
+    }
+  ]
+}
