@@ -1434,15 +1434,15 @@
     });
     $('#simAddAssetBtn').addEventListener('click', () => {
       const input = $('#simAssetInput');
-      const ticker = input.value.trim().toUpperCase();
-      if (!ticker) return;
-      addAssetToSimulator(ticker);
+      const val = input.value.trim();
+      if (!val) return;
+      addAssetToSimulator(val);
       input.value = '';
     });
     $('#simAssetInput').addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
-        const ticker = e.target.value.trim().toUpperCase();
-        if (ticker) { addAssetToSimulator(ticker); e.target.value = ''; }
+        const val = e.target.value.trim();
+        if (val) { addAssetToSimulator(val); e.target.value = ''; }
       }
     });
 
@@ -1502,19 +1502,46 @@
     $('#simAssetOptions').innerHTML = globalAssets.map(asset => `<option value="${escapeHTML(asset.ticker)}" label="${asset.label}"></option>`).join('');
   }
 
-  function addAssetToSimulator(ticker) {
-    const type = data.series.stock[ticker] ? 'stock' : data.series.fund[ticker] ? 'fund' : null;
-    if (!type) {
-      showToast(`Ticker ${ticker} não encontrado.`);
-      return;
+  function addAssetToSimulator(rawInput) {
+    if (!rawInput) return;
+    const tokens = String(rawInput)
+      .split(/[,;\s]+/)
+      .map(t => t.trim().toUpperCase())
+      .filter(Boolean);
+
+    if (tokens.length === 0) return;
+
+    let addedCount = 0;
+    const notFound = [];
+    const alreadyExists = [];
+
+    tokens.forEach(ticker => {
+      const type = data.series.stock[ticker] ? 'stock' : data.series.fund[ticker] ? 'fund' : null;
+      if (!type) {
+        notFound.push(ticker);
+        return;
+      }
+      if (simState.items.some(item => item.ticker === ticker)) {
+        alreadyExists.push(ticker);
+        return;
+      }
+      simState.items.push({ ticker, type, weight: 0 });
+      addedCount++;
+    });
+
+    if (addedCount > 0) {
+      rebalanceSimWeightsEqually();
+      updateSimulator();
+      if (tokens.length === 1) {
+        showToast(`${tokens[0]} adicionado à carteira.`);
+      } else {
+        showToast(`${addedCount} ativo(s) adicionado(s) à carteira.`);
+      }
+    } else if (notFound.length > 0) {
+      showToast(`Ticker(s) não encontrado(s): ${notFound.join(', ')}`);
+    } else if (alreadyExists.length > 0) {
+      showToast(`Ticker(s) já na carteira: ${alreadyExists.join(', ')}`);
     }
-    if (simState.items.some(item => item.ticker === ticker)) {
-      showToast(`${ticker} já está na carteira.`);
-      return;
-    }
-    simState.items.push({ ticker, type, weight: 0 });
-    rebalanceSimWeightsEqually();
-    updateSimulator();
   }
 
   function removeAssetFromSimulator(ticker) {
