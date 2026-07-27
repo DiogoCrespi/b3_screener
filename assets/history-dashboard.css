@@ -990,11 +990,47 @@ h2 { margin: 0; font-size: clamp(1.1rem, 2vw, 1.45rem); line-height: 1.15; lette
 .legend-dot.ifix { background: #8e44ad; }
 .legend-dot.divs { background: #e67e22; }
 
-/* KPIs Simulator */
+/* KPIs Simulator (Clean 3x2 Grid of Cards) */
 .sim-kpi-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 14px;
+}
+
+.sim-kpi-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface-alt);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.sim-kpi-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--line));
+}
+.sim-kpi-card .stat-label {
+  font-size: 0.74rem;
+  font-weight: 750;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.sim-kpi-card .stat-value {
+  font-size: 1.35rem;
+  font-weight: 850;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.sim-kpi-card .stat-detail {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-weight: 600;
 }
 
 /* Insights Section inside Modal */
@@ -1032,6 +1068,9 @@ h2 { margin: 0; font-size: clamp(1.1rem, 2vw, 1.45rem); line-height: 1.15; lette
 @media (max-width: 840px) {
   .sim-config-bar {
     grid-template-columns: 1fr 1fr;
+  }
+  .sim-kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
   .sim-toggle-field {
     grid-column: 1 / -1;

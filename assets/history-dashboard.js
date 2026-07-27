@@ -2019,32 +2019,32 @@
     const isSharpePos = res.sharpeRatio >= 0;
 
     grid.innerHTML = `
-      <article class="stat-card">
+      <article class="stat-card sim-kpi-card">
         <span class="stat-label">Patrimônio Final</span>
         <strong class="stat-value" style="color: var(--accent);">R$ ${res.finalPortfolioVal.toFixed(2)}</strong>
         <span class="stat-detail">Retorno: ${signed(res.portfolioReturnPct)}</span>
       </article>
-      <article class="stat-card">
+      <article class="stat-card sim-kpi-card">
         <span class="stat-label">Proventos Recebidos</span>
         <strong class="stat-value" style="color: var(--positive);">R$ ${res.totalDividends.toFixed(2)}</strong>
         <span class="stat-detail">${res.reinvest ? 'Reinvestimento Automático (Bola de Neve)' : 'Acumulado em Caixa'}</span>
       </article>
-      <article class="stat-card">
+      <article class="stat-card sim-kpi-card">
         <span class="stat-label">Desempenho (Alpha vs CDI)</span>
         <strong class="stat-value ${isPos ? 'positive' : 'negative'}">${signed(res.alphaVsCdi)}</strong>
         <span class="stat-detail">Diferença de capital: R$ ${res.alphaAmount.toFixed(2)}</span>
       </article>
-      <article class="stat-card">
+      <article class="stat-card sim-kpi-card">
         <span class="stat-label">Volatilidade Anualizada</span>
         <strong class="stat-value" style="color: var(--ink);">${res.volatilityAnnualized.toFixed(2)}%</strong>
         <span class="stat-detail">Oscilação histórica anual</span>
       </article>
-      <article class="stat-card">
+      <article class="stat-card sim-kpi-card">
         <span class="stat-label">Índice de Sharpe</span>
         <strong class="stat-value ${isSharpePos ? 'positive' : 'negative'}">${res.sharpeRatio.toFixed(2)}</strong>
         <span class="stat-detail">${res.sharpeRatio > 1.0 ? 'Excelente retorno por risco' : 'Retorno ajustado ao risco'}</span>
       </article>
-      <article class="stat-card">
+      <article class="stat-card sim-kpi-card">
         <span class="stat-label">Max Drawdown</span>
         <strong class="stat-value negative">-${res.maxDrawdown.toFixed(2)}%</strong>
         <span class="stat-detail">Maior queda do pico no período</span>
