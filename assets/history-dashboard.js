@@ -1432,6 +1432,17 @@
     $('#simReinvestToggle').addEventListener('change', (e) => {
       simState.reinvest = e.target.checked; updateSimulator();
     });
+    $('#simSmartAllocToggle').addEventListener('change', (e) => {
+      simState.smartAlloc = e.target.checked;
+      if (simState.smartAlloc) {
+        calculateSmartWeights();
+        showToast('Alocação Inteligente ativada (Otimização Quantitativa).');
+      } else {
+        rebalanceSimWeightsEqually();
+        showToast('Pesos rebalanceados igualmente.');
+      }
+      updateSimulator();
+    });
     $('#simAddAssetBtn').addEventListener('click', () => {
       const input = $('#simAssetInput');
       const val = input.value.trim();
@@ -1468,6 +1479,7 @@
     initialCapital: 1000,
     period: 'all',
     reinvest: true,
+    smartAlloc: false,
     items: []
   };
 
@@ -1530,7 +1542,7 @@
     });
 
     if (addedCount > 0) {
-      rebalanceSimWeightsEqually();
+      rebalanceSimWeights();
       updateSimulator();
       if (tokens.length === 1) {
         showToast(`${tokens[0]} adicionado à carteira.`);
@@ -1550,8 +1562,101 @@
       return;
     }
     simState.items = simState.items.filter(item => item.ticker !== ticker);
-    rebalanceSimWeightsEqually();
+    rebalanceSimWeights();
     updateSimulator();
+  }
+
+  function calculateSmartWeights() {
+    if (simState.items.length === 0) return;
+
+    const itemScores = simState.items.map(item => {
+      const allPoints = decodeSeries(item.type, item.ticker);
+      const points = filterPeriod(allPoints, simState.period);
+      const latest = points.at(-1) || {};
+      const first = points.find(p => validNumber(p.price));
+      const last = [...points].reverse().find(p => validNumber(p.price));
+
+      // 1. Métrica: Score de Fundamentos (0 a 10)
+      const scoreVal = validNumber(latest.score) ? Math.max(0.1, latest.score / 10) : 0.5;
+
+      // 2. Métrica: Valuation / Desconto de Margem
+      let valuationFactor = 1.0;
+      if (item.type === 'stock') {
+        const graham = validNumber(latest.graham) ? latest.graham : null;
+        const bazin = validNumber(latest.bazin) ? latest.bazin : null;
+        const curPrice = last?.price || 1;
+        if (graham && curPrice < graham && bazin && curPrice < bazin) {
+          valuationFactor = 1.35;
+        } else if ((graham && curPrice < graham) || (bazin && curPrice < bazin)) {
+          valuationFactor = 1.15;
+        } else if (graham && curPrice > graham * 1.25) {
+          valuationFactor = 0.75;
+        }
+      } else {
+        const pvp = validNumber(latest.pvp) ? latest.pvp : 1;
+        if (pvp < 1.0 && pvp > 0.6) {
+          valuationFactor = 1.0 + (1.0 - pvp) * 1.5;
+        } else if (pvp > 1.08) {
+          valuationFactor = 0.70;
+        }
+      }
+
+      // 3. Métrica: Yield de Proventos (DY %)
+      const dyVal = validNumber(latest.dy) ? latest.dy : 0;
+      const dyFactor = dyVal > 0 ? Math.min(1.4, Math.max(0.6, dyVal / 7.5)) : 0.6;
+
+      // 4. Métrica: Estabilidade de Risco / Retorno no Período
+      const pChange = percentChange(first?.price, last?.price);
+      const returnFactor = pChange !== null ? (pChange >= 0 ? 1.15 : 0.85) : 1.0;
+
+      const composite = scoreVal * valuationFactor * dyFactor * returnFactor;
+      return { ticker: item.ticker, composite };
+    });
+
+    const totalComposite = itemScores.reduce((sum, s) => sum + s.composite, 0);
+    if (totalComposite <= 0) {
+      rebalanceSimWeightsEqually();
+      return;
+    }
+
+    let rawWeights = simState.items.map(item => {
+      const match = itemScores.find(s => s.ticker === item.ticker);
+      return {
+        ticker: item.ticker,
+        weight: Math.round((match.composite / totalComposite) * 100)
+      };
+    });
+
+    const minW = simState.items.length > 1 ? 10 : 100;
+    const maxW = simState.items.length > 1 ? 65 : 100;
+
+    let clampedWeights = rawWeights.map(w => ({
+      ticker: w.ticker,
+      weight: Math.max(minW, Math.min(maxW, w.weight))
+    }));
+
+    const clampedTotal = clampedWeights.reduce((s, w) => s + w.weight, 0);
+    clampedWeights.forEach(w => {
+      w.weight = Math.round((w.weight / clampedTotal) * 100);
+    });
+
+    const finalSum = clampedWeights.reduce((s, w) => s + w.weight, 0);
+    if (finalSum !== 100 && clampedWeights.length > 0) {
+      clampedWeights[0].weight += (100 - finalSum);
+    }
+
+    clampedWeights.forEach(cw => {
+      const item = simState.items.find(i => i.ticker === cw.ticker);
+      if (item) item.weight = cw.weight;
+    });
+  }
+
+  function rebalanceSimWeights() {
+    if (simState.smartAlloc) {
+      calculateSmartWeights();
+    } else {
+      rebalanceSimWeightsEqually();
+    }
   }
 
   function rebalanceSimWeightsEqually() {
