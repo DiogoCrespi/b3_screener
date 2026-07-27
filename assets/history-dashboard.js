@@ -2119,6 +2119,38 @@
         <path class="chart-line" d="${pathPort}"/>
       </svg>
     `;
+
+    const svg = $('#simSvgChart');
+    const tooltip = $('#simChartTooltip');
+
+    if (svg && tooltip) {
+      const handleMove = (e) => {
+        const rect = svg.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const relativeX = clientX - rect.left;
+        const ratio = relativeX / rect.width;
+        if (ratio < 0 || ratio > 1) return;
+
+        const dataIdx = Math.round(ratio * (series.length - 1));
+        const point = series[dataIdx];
+        if (!point) return;
+
+        tooltip.hidden = false;
+        tooltip.style.left = `${Math.min(rect.width - 170, Math.max(10, relativeX - 85))}px`;
+        tooltip.style.top = `15px`;
+        tooltip.innerHTML = `
+          <strong>${escapeHTML(point.date)}</strong><br>
+          Carteira: <strong>R$ ${point.portfolioValue.toFixed(2)} (${signed(point.portfolioReturnPct)})</strong><br>
+          ${showCdi ? `CDI: R$ ${point.cdiValue.toFixed(2)} (+${point.cdiReturnPct.toFixed(2)}%)<br>` : ''}
+          ${showIbov ? `IBOV: ${signed(point.ibovReturnPct)}<br>` : ''}
+          ${showIfix ? `IFIX: ${signed(point.ifixReturnPct)}<br>` : ''}
+          ${showDivs ? `Proventos: R$ ${point.accumDividends.toFixed(2)}` : ''}
+        `;
+      };
+
+      svg.addEventListener('mousemove', handleMove);
+      svg.addEventListener('mouseleave', () => { if (tooltip) tooltip.hidden = true; });
+    }
   }
 
   function renderSimInsights(res) {
