@@ -1094,6 +1094,12 @@ h2 { margin: 0; font-size: clamp(1.1rem, 2vw, 1.45rem); line-height: 1.15; lette
   width: 100%;
   flex-shrink: 0;
 }
+.sim-chart-card .card-heading > div:first-child {
+  min-width: 0;
+  flex: 1;
+  word-break: normal;
+  overflow-wrap: normal;
+}
 .sim-chart-card .chart-wrap {
   position: relative;
   width: 100%;
@@ -1171,6 +1177,19 @@ h2 { margin: 0; font-size: clamp(1.1rem, 2vw, 1.45rem); line-height: 1.15; lette
   .sim-chart-card {
     padding: 18px;
     min-height: 360px;
+  }
+  .sim-chart-card .card-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .sim-chart-controls {
+    align-items: flex-start;
+    width: 100%;
+  }
+  .sim-benchmark-toggles {
+    flex-wrap: wrap;
+    gap: 8px;
   }
   .sim-chart-card .chart-wrap {
     height: 260px;
