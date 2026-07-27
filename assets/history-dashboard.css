@@ -186,11 +186,12 @@ h2 { margin: 0; font-size: clamp(1.1rem, 2vw, 1.45rem); line-height: 1.15; lette
 
 @media (max-width: 470px) {
   .page-shell { width: calc(100% - 16px); padding-top: 20px; }
-  .brand { gap: 0; }
-  .brand span:not(.brand-mark) { display: none; }
-  .topbar { min-height: 52px; padding-inline: 6px; gap: 4px; }
-  .top-actions { gap: 2px; }
-  .top-actions .button { min-height: 28px; padding: 2px 4px; font-size: 0.62rem; line-height: 1; max-width: 72px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .brand { gap: 0; min-width: 0; }
+  .brand span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .brand small { display: none !important; }
+  .topbar { min-height: 52px; padding-inline: 4px; gap: 2px; }
+  .top-actions { gap: 2px; flex-shrink: 0; }
+  .top-actions .button { min-height: 28px; padding: 2px 4px; font-size: 0.6rem; line-height: 1; max-width: 68px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   h1 { font-size: 2rem; }
   .summary-grid, .kpi-grid, .mini-grid { grid-template-columns: 1fr 1fr; }
   .control-panel { display: block; }
