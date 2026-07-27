@@ -97,8 +97,11 @@ h2 { margin: 0; font-size: clamp(1.1rem, 2vw, 1.45rem); line-height: 1.15; lette
 .chart-wrap svg, .sparkline svg, .macro-chart svg { display: block; width: 100%; height: 100%; overflow: visible; }
 .chart-grid { stroke: var(--line); stroke-width: 1; vector-effect: non-scaling-stroke; }
 .chart-axis-label { fill: var(--muted); font-size: 11px; font-family: var(--font); }
-.chart-line { fill: none; stroke: var(--accent); stroke-width: 2.2; vector-effect: non-scaling-stroke; }
-.chart-line.secondary { stroke: var(--blue); }
+.chart-line { fill: none; stroke: var(--accent); stroke-width: 2.5; vector-effect: non-scaling-stroke; }
+.chart-line.secondary { stroke: #2980b9; stroke-width: 2.2; vector-effect: non-scaling-stroke; }
+.chart-line.ibov { stroke: #27ae60; stroke-width: 2.2; vector-effect: non-scaling-stroke; }
+.chart-line.ifix { stroke: #8e44ad; stroke-width: 2.2; vector-effect: non-scaling-stroke; }
+.chart-line.divs { stroke: #d35400; stroke-width: 2.0; stroke-dasharray: 4 3; vector-effect: non-scaling-stroke; }
 .chart-area { fill: url(#areaGradient); opacity: .6; }
 .chart-empty { display: grid; place-items: center; height: 320px; color: var(--muted); }
 .chart-hit { fill: transparent; cursor: crosshair; }
