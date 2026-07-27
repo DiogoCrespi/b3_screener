@@ -1080,8 +1080,11 @@ h2 { margin: 0; font-size: clamp(1.1rem, 2vw, 1.45rem); line-height: 1.15; lette
 .sim-chart-card .chart-wrap {
   position: relative;
   width: 100%;
-  height: 260px;
+  height: 280px;
   min-height: 220px;
+  max-height: 800px;
+  resize: vertical;
+  overflow: auto;
   margin-top: 18px;
 }
 .sim-chart-card .chart-wrap svg {
