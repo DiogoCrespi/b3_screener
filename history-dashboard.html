@@ -15,6 +15,7 @@
     </a>
     <nav class="top-actions" aria-label="Ações da página">
       <a class="button ghost" href="./index.html">← Screener</a>
+      <button class="button accent" id="openSimulatorBtn" type="button">⚡ Simulador de Carteira</button>
       <button class="button ghost" id="themeToggle" type="button" aria-label="Alternar tema">◐ Tema</button>
       <div class="dropdown" id="exportDropdown">
         <button class="button primary dropdown-toggle" type="button">↓ Exportar série</button>
@@ -157,10 +158,110 @@
     </section>
   </main>
 
+  <!-- MODAL DO SIMULADOR MULTI-ATIVO -->
+  <div class="modal-overlay" id="simulatorModal" hidden>
+    <div class="modal-card" role="dialog" aria-labelledby="simModalTitle" aria-modal="true">
+      <header class="modal-header">
+        <div>
+          <p class="eyebrow">Backtest & Inteligência</p>
+          <h2 id="simModalTitle">⚡ Simulador de Carteira Multi-Ativo</h2>
+        </div>
+        <button type="button" class="modal-close-btn" id="closeSimulatorBtn" aria-label="Fechar simulador">✕</button>
+      </header>
+
+      <div class="modal-body">
+        <section class="sim-config-bar">
+          <div class="sim-field">
+            <label for="simInitialCapital">Aporte Inicial (R$)</label>
+            <input type="number" id="simInitialCapital" class="control" value="1000" min="100" step="100">
+          </div>
+          <div class="sim-field">
+            <label for="simPeriodSelect">Período</label>
+            <select id="simPeriodSelect" class="control">
+              <option value="30">30 dias</option>
+              <option value="90">90 dias</option>
+              <option value="365">1 Ano</option>
+              <option value="all" selected>Todo o Histórico</option>
+            </select>
+          </div>
+          <div class="sim-field sim-toggle-field">
+            <label>Efeito Bola de Neve</label>
+            <label class="toggle-switch">
+              <input type="checkbox" id="simReinvestToggle" checked>
+              <span class="toggle-slider"></span>
+              <span class="toggle-label">Reinvestir Proventos</span>
+            </label>
+          </div>
+        </section>
+
+        <section class="sim-assets-section">
+          <div class="sim-section-header">
+            <h3>Composição da Carteira</h3>
+            <div class="sim-add-box">
+              <input type="text" class="control" id="simAssetInput" list="simAssetOptions" placeholder="Adicionar ticker (ex: PETR4, HGLG11)">
+              <datalist id="simAssetOptions"></datalist>
+              <button type="button" class="button primary" id="simAddAssetBtn">+ Adicionar</button>
+            </div>
+          </div>
+          <div class="sim-table-wrap">
+            <table class="sim-table" id="simAssetsTable">
+              <thead>
+                <tr>
+                  <th>Ativo</th>
+                  <th>Classe</th>
+                  <th>Peso (%)</th>
+                  <th>Aporte Inicial</th>
+                  <th>Cotas Iniciais</th>
+                  <th>Preço Início</th>
+                  <th>Preço Atual</th>
+                  <th>Proventos</th>
+                  <th>Valor Final</th>
+                  <th>Ação</th>
+                </tr>
+              </thead>
+              <tbody id="simAssetsTbody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="sim-kpi-grid" id="simKpiGrid"></section>
+
+        <section class="sim-chart-card card">
+          <div class="card-heading">
+            <div>
+              <p class="eyebrow">Evolução do Patrimônio</p>
+              <h2>Carteira Simulado vs Benchmarks</h2>
+            </div>
+            <div class="legend" id="simChartLegend"></div>
+          </div>
+          <div class="chart-wrap" id="simMainChart" role="img" aria-label="Gráfico do simulador de carteira"></div>
+        </section>
+
+        <section class="sim-insights-section card" id="simInsightsSection"></section>
+      </div>
+
+      <footer class="modal-footer">
+        <div class="sim-footer-left">
+          <span class="muted" id="simFooterStatus">Pronto para simulação.</span>
+        </div>
+        <div class="sim-footer-actions">
+          <div class="dropdown" id="simExportDropdown">
+            <button class="button primary dropdown-toggle" type="button">↓ Exportar Simulação</button>
+            <div class="dropdown-menu">
+              <button type="button" id="downloadSimCsv">Planilha Completa (CSV / Excel)</button>
+              <button type="button" id="downloadSimJson">Dados da Simulação (JSON)</button>
+            </div>
+          </div>
+          <button type="button" class="button ghost" id="closeSimulatorFooterBtn">Fechar</button>
+        </div>
+      </footer>
+    </div>
+  </div>
+
   <div class="chart-tooltip" id="chartTooltip" hidden></div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <noscript>Esta página precisa de JavaScript para interpretar o artefato histórico.</noscript>
   <script src="./history-data.js"></script>
-  <script src="./assets/history-dashboard.js?v=1.0.2"></script>
+  <script src="./assets/history-dashboard.js?v=1.1.0"></script>
 </body>
 </html>

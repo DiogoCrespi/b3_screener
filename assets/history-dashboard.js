@@ -1413,6 +1413,565 @@
 
     $('#themeToggle').addEventListener('click', () => { document.body.classList.toggle('dark'); localStorage.setItem('b3-history-theme', document.body.classList.contains('dark') ? 'dark' : 'light'); });
     $('#toggleRejected').addEventListener('click', event => { const list = $('#rejectedList'); list.hidden = !list.hidden; event.currentTarget.setAttribute('aria-expanded', String(!list.hidden)); event.currentTarget.textContent = list.hidden ? 'Ver snapshots rejeitados' : 'Ocultar snapshots rejeitados'; });
+
+    // Simulator Modal events
+    $('#openSimulatorBtn').addEventListener('click', openSimulator);
+    $('#closeSimulatorBtn').addEventListener('click', closeSimulator);
+    $('#closeSimulatorFooterBtn').addEventListener('click', closeSimulator);
+    $('#simulatorModal').addEventListener('click', (e) => {
+      if (e.target === $('#simulatorModal')) closeSimulator();
+    });
+
+    $('#simInitialCapital').addEventListener('change', (e) => {
+      const val = parseFloat(e.target.value);
+      if (val > 0) { simState.initialCapital = val; updateSimulator(); }
+    });
+    $('#simPeriodSelect').addEventListener('change', (e) => {
+      simState.period = e.target.value; updateSimulator();
+    });
+    $('#simReinvestToggle').addEventListener('change', (e) => {
+      simState.reinvest = e.target.checked; updateSimulator();
+    });
+    $('#simAddAssetBtn').addEventListener('click', () => {
+      const input = $('#simAssetInput');
+      const ticker = input.value.trim().toUpperCase();
+      if (!ticker) return;
+      addAssetToSimulator(ticker);
+      input.value = '';
+    });
+    $('#simAssetInput').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const ticker = e.target.value.trim().toUpperCase();
+        if (ticker) { addAssetToSimulator(ticker); e.target.value = ''; }
+      }
+    });
+
+    // Simulator Export Dropdown
+    const simExportDropdown = $('#simExportDropdown');
+    const simExportToggleBtn = simExportDropdown.querySelector('.dropdown-toggle');
+    simExportToggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      simExportDropdown.classList.toggle('show');
+    });
+    document.addEventListener('click', () => {
+      simExportDropdown.classList.remove('show');
+    });
+    $('#downloadSimCsv').addEventListener('click', downloadSimCsv);
+    $('#downloadSimJson').addEventListener('click', downloadSimJson);
+  }
+
+  // ==========================================
+  // MULTI-ASSET SIMULATOR & BACKTEST ENGINE
+  // ==========================================
+
+  const simState = {
+    initialCapital: 1000,
+    period: 'all',
+    reinvest: true,
+    items: []
+  };
+
+  let cachedLastBacktestResult = null;
+
+  function openSimulator() {
+    if (simState.items.length === 0) {
+      simState.items = [
+        { ticker: state.ticker, type: state.type, weight: state.compare ? 50 : 100 }
+      ];
+      if (state.compare && data.series[state.type][state.compare]) {
+        simState.items.push({ ticker: state.compare, type: state.type, weight: 50 });
+      }
+    }
+    populateSimOptions();
+    $('#simulatorModal').hidden = false;
+    document.body.style.overflow = 'hidden';
+    updateSimulator();
+  }
+
+  function closeSimulator() {
+    $('#simulatorModal').hidden = true;
+    document.body.style.overflow = '';
+  }
+
+  function populateSimOptions() {
+    const globalAssets = [
+      ...Object.keys(data.series.stock).map(ticker => ({ ticker, type: 'stock', label: 'Ação' })),
+      ...Object.keys(data.series.fund).map(ticker => ({ ticker, type: 'fund', label: 'Fundo' }))
+    ].sort((a, b) => a.ticker.localeCompare(b.ticker));
+    
+    $('#simAssetOptions').innerHTML = globalAssets.map(asset => `<option value="${escapeHTML(asset.ticker)}" label="${asset.label}"></option>`).join('');
+  }
+
+  function addAssetToSimulator(ticker) {
+    const type = data.series.stock[ticker] ? 'stock' : data.series.fund[ticker] ? 'fund' : null;
+    if (!type) {
+      showToast(`Ticker ${ticker} não encontrado.`);
+      return;
+    }
+    if (simState.items.some(item => item.ticker === ticker)) {
+      showToast(`${ticker} já está na carteira.`);
+      return;
+    }
+    simState.items.push({ ticker, type, weight: 0 });
+    rebalanceSimWeightsEqually();
+    updateSimulator();
+  }
+
+  function removeAssetFromSimulator(ticker) {
+    if (simState.items.length <= 1) {
+      showToast('A carteira precisa ter ao menos 1 ativo.');
+      return;
+    }
+    simState.items = simState.items.filter(item => item.ticker !== ticker);
+    rebalanceSimWeightsEqually();
+    updateSimulator();
+  }
+
+  function rebalanceSimWeightsEqually() {
+    const n = simState.items.length;
+    if (n === 0) return;
+    const equalWeight = Math.floor(100 / n);
+    let remainder = 100 - (equalWeight * n);
+    simState.items.forEach((item, index) => {
+      item.weight = equalWeight + (index === 0 ? remainder : 0);
+    });
+  }
+
+  function runSimBacktest() {
+    if (simState.items.length === 0) return null;
+
+    // Normaliza pesos
+    const totalWeight = simState.items.reduce((a, b) => a + (b.weight || 0), 0);
+    const normalizedItems = simState.items.map(item => ({
+      ...item,
+      normalizedWeight: totalWeight > 0 ? (item.weight || 0) / totalWeight : 1 / simState.items.length
+    }));
+
+    // Carrega dados de cada ativo
+    const assetSeries = normalizedItems.map(item => {
+      const allPoints = decodeSeries(item.type, item.ticker);
+      const points = filterPeriod(allPoints, simState.period);
+      return { ...item, allPoints, points };
+    }).filter(a => a.points.length > 0);
+
+    if (assetSeries.length === 0) return null;
+
+    // Encontra intersecção de datas de pregão disponíveis
+    const dateIndexes = assetSeries[0].points.map(p => p.dateIndex);
+    const validDateIndexes = dateIndexes.filter(dIdx => {
+      return assetSeries.every(a => a.points.some(p => p.dateIndex === dIdx));
+    });
+
+    if (validDateIndexes.length < 2) return null;
+
+    const initialCapital = simState.initialCapital;
+
+    // Inicializa alocação por ativo
+    const assetStats = assetSeries.map(a => {
+      const firstPoint = a.points.find(p => p.dateIndex === validDateIndexes[0]);
+      const lastPoint = [...a.points].reverse().find(p => p.dateIndex === validDateIndexes.at(-1));
+      
+      const allocatedCapital = initialCapital * a.normalizedWeight;
+      const startPrice = firstPoint?.price || 1;
+      const endPrice = lastPoint?.price || startPrice;
+      const initialShares = allocatedCapital / startPrice;
+
+      // Calcula dividendos totais pagos no período
+      let totalDividendsReceived = 0;
+      let currentShares = initialShares;
+      let accumCashFromDivs = 0;
+
+      // Percorre pontos temporais para simular proventos e reinvestimento
+      a.points.forEach((point, idx) => {
+        if (!validNumber(point.dy) || point.dy <= 0 || !validNumber(point.price)) return;
+        // DY anualizado no snapshot -> estima rendimento mensal aproximado / frequência
+        // Proventos exatos baseados na variação de yield entre snapshots
+        if (idx > 0) {
+          const prevPoint = a.points[idx - 1];
+          // Se houve evento de provento registrado no snapshot
+          if (validNumber(prevPoint.price) && point.dy > prevPoint.dy && point.date !== prevPoint.date) {
+            const divPerShare = (point.price * (point.dy / 100)) / 12; // Estimativa conservadora por snapshot
+            const divAmount = currentShares * divPerShare;
+            totalDividendsReceived += divAmount;
+
+            if (simState.reinvest && point.price > 0) {
+              const extraShares = divAmount / point.price;
+              currentShares += extraShares;
+            } else {
+              accumCashFromDivs += divAmount;
+            }
+          }
+        }
+      });
+
+      const finalAssetValue = (currentShares * endPrice) + accumCashFromDivs;
+      const assetReturn = ((finalAssetValue - allocatedCapital) / allocatedCapital) * 100;
+
+      return {
+        ticker: a.ticker,
+        type: a.type,
+        weightPct: a.normalizedWeight * 100,
+        allocatedCapital,
+        startPrice,
+        endPrice,
+        initialShares,
+        finalShares: currentShares,
+        totalDividendsReceived,
+        finalAssetValue,
+        assetReturn,
+        category: a.points.at(-1)?.category || '',
+        score: a.points.at(-1)?.score || 0,
+        pvp: a.points.at(-1)?.pvp || 1
+      };
+    });
+
+    // Série evolutiva diária da Carteira e do CDI
+    let selicPoints = data.economy.map(([dateIndex, selic]) => ({ dateIndex, date: data.dates[dateIndex], selic }));
+    if (state.mode === 'local') {
+      selicPoints = selicPoints.filter(p => p.date >= '2026-03-13');
+    }
+    selicPoints = filterPeriod(selicPoints, simState.period);
+
+    let accumCdiFactor = 1.0;
+    let prevCdiDateIndex = null;
+
+    const portfolioTimeSeries = validDateIndexes.map(dateIdx => {
+      const dateStr = data.dates[dateIdx];
+      
+      // Atualiza rendimento acumulado do CDI
+      const selicObj = selicPoints.find(s => s.dateIndex === dateIdx);
+      if (selicObj && validNumber(selicObj.selic)) {
+        if (prevCdiDateIndex !== null) {
+          const dailySelicRate = Math.pow(1 + (selicObj.selic / 100), 1 / 252) - 1;
+          accumCdiFactor *= (1 + dailySelicRate);
+        }
+        prevCdiDateIndex = dateIdx;
+      }
+
+      let totalValAtDate = 0;
+      assetStats.forEach(ast => {
+        const seriesObj = assetSeries.find(s => s.ticker === ast.ticker);
+        const pointAtDate = seriesObj?.points.find(p => p.dateIndex === dateIdx);
+        const priceAtDate = pointAtDate?.price || ast.startPrice;
+        totalValAtDate += ast.finalShares * priceAtDate;
+      });
+
+      const cdiValAtDate = initialCapital * accumCdiFactor;
+
+      return {
+        dateIndex: dateIdx,
+        date: dateStr,
+        portfolioValue: totalValAtDate,
+        portfolioReturnPct: ((totalValAtDate - initialCapital) / initialCapital) * 100,
+        cdiValue: cdiValAtDate,
+        cdiReturnPct: ((cdiValAtDate - initialCapital) / initialCapital) * 100
+      };
+    });
+
+    const finalPortfolioVal = portfolioTimeSeries.at(-1)?.portfolioValue || initialCapital;
+    const finalCdiVal = portfolioTimeSeries.at(-1)?.cdiValue || initialCapital;
+    const totalDividends = assetStats.reduce((sum, a) => sum + a.totalDividendsReceived, 0);
+    const portfolioReturnPct = ((finalPortfolioVal - initialCapital) / initialCapital) * 100;
+    const cdiReturnPct = ((finalCdiVal - initialCapital) / initialCapital) * 100;
+    const alphaVsCdi = portfolioReturnPct - cdiReturnPct;
+    const alphaAmount = finalPortfolioVal - finalCdiVal;
+
+    const result = {
+      initialCapital,
+      period: simState.period,
+      reinvest: simState.reinvest,
+      startDate: data.dates[validDateIndexes[0]],
+      endDate: data.dates[validDateIndexes.at(-1)],
+      finalPortfolioVal,
+      finalCdiVal,
+      totalDividends,
+      portfolioReturnPct,
+      cdiReturnPct,
+      alphaVsCdi,
+      alphaAmount,
+      assetStats,
+      portfolioTimeSeries
+    };
+
+    cachedLastBacktestResult = result;
+    return result;
+  }
+
+  function updateSimulator() {
+    const res = runSimBacktest();
+    renderSimTable();
+    if (!res) {
+      $('#simKpiGrid').innerHTML = '<div class="stat-card">Sem dados suficientes para simulação no período selecionado.</div>';
+      $('#simMainChart').innerHTML = '';
+      $('#simInsightsSection').innerHTML = '';
+      return;
+    }
+    renderSimKPIs(res);
+    renderSimChart(res);
+    renderSimInsights(res);
+  }
+
+  function renderSimTable() {
+    const tbody = $('#simAssetsTbody');
+    const res = cachedLastBacktestResult;
+
+    tbody.innerHTML = simState.items.map(item => {
+      const stat = res?.assetStats.find(a => a.ticker === item.ticker);
+      return `
+        <tr>
+          <td><strong>${escapeHTML(item.ticker)}</strong></td>
+          <td><span class="news-tag ${item.type === 'stock' ? 'mercado' : 'proventos'}">${item.type === 'stock' ? 'Ação' : 'FII'}</span></td>
+          <td><input type="number" class="sim-weight-input" data-ticker="${escapeHTML(item.ticker)}" value="${Math.round(item.weight)}" min="0" max="100">%</td>
+          <td>R$ ${stat ? stat.allocatedCapital.toFixed(2) : '—'}</td>
+          <td>${stat ? stat.initialShares.toFixed(2) : '—'}</td>
+          <td>R$ ${stat ? stat.startPrice.toFixed(2) : '—'}</td>
+          <td>R$ ${stat ? stat.endPrice.toFixed(2) : '—'}</td>
+          <td style="color: var(--positive); font-weight: 750;">R$ ${stat ? stat.totalDividendsReceived.toFixed(2) : '—'}</td>
+          <td style="font-weight: 850;">R$ ${stat ? stat.finalAssetValue.toFixed(2) : '—'}</td>
+          <td><button type="button" class="sim-remove-btn" data-ticker="${escapeHTML(item.ticker)}">✕</button></td>
+        </tr>
+      `;
+    }).join('');
+
+    tbody.querySelectorAll('.sim-weight-input').forEach(input => {
+      input.addEventListener('change', (e) => {
+        const ticker = e.target.dataset.ticker;
+        const val = Math.max(0, Math.min(100, parseFloat(e.target.value) || 0));
+        const item = simState.items.find(i => i.ticker === ticker);
+        if (item) {
+          item.weight = val;
+          updateSimulator();
+        }
+      });
+    });
+
+    tbody.querySelectorAll('.sim-remove-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        removeAssetFromSimulator(e.target.dataset.ticker);
+      });
+    });
+  }
+
+  function renderSimKPIs(res) {
+    const grid = $('#simKpiGrid');
+    const isPos = res.alphaVsCdi >= 0;
+
+    grid.innerHTML = `
+      <article class="stat-card">
+        <span class="stat-label">Patrimônio Final</span>
+        <strong class="stat-value" style="color: var(--accent);">R$ ${res.finalPortfolioVal.toFixed(2)}</strong>
+        <span class="stat-detail">Retorno: ${signed(res.portfolioReturnPct)}</span>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">Proventos Recebidos</span>
+        <strong class="stat-value" style="color: var(--positive);">R$ ${res.totalDividends.toFixed(2)}</strong>
+        <span class="stat-detail">${res.reinvest ? 'Reinvestimento Automático (Bola de Neve)' : 'Acumulado em Caixa'}</span>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">Benchmark CDI</span>
+        <strong class="stat-value" style="color: var(--blue);">R$ ${res.finalCdiVal.toFixed(2)}</strong>
+        <span class="stat-detail">Rendimento CDI: +${res.cdiReturnPct.toFixed(2)}%</span>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">Desempenho Relativo (Alpha)</span>
+        <strong class="stat-value ${isPos ? 'positive' : 'negative'}">${signed(res.alphaVsCdi)}</strong>
+        <span class="stat-detail">${isPos ? 'Ganho real sobre o CDI' : 'Abaixo da renda fixa'}: R$ ${res.alphaAmount.toFixed(2)}</span>
+      </article>
+    `;
+  }
+
+  function renderSimChart(res) {
+    const container = $('#simMainChart');
+    const series = res.portfolioTimeSeries;
+    if (!series || series.length < 2) {
+      container.innerHTML = '<div class="chart-empty">Dados insuficientes para renderizar a curva da carteira.</div>';
+      return;
+    }
+
+    const W = 900, H = 300, P = { l: 65, r: 20, t: 18, b: 38 };
+    const dateMin = Math.min(...series.map(s => s.dateIndex));
+    const dateMax = Math.max(...series.map(s => s.dateIndex));
+
+    const allVals = series.flatMap(s => [s.portfolioValue, s.cdiValue]);
+    let min = Math.min(...allVals), max = Math.max(...allVals);
+    if (min === max) { min -= 10; max += 10; }
+    const pad = (max - min) * 0.1;
+    min -= pad; max += pad;
+
+    const x = dateIndex => P.l + ((dateIndex - dateMin) / Math.max(1, dateMax - dateMin)) * (W - P.l - P.r);
+    const y = val => P.t + ((max - val) / (max - min)) * (H - P.t - P.b);
+
+    const pathPort = series.map((s, i) => `${i === 0 ? 'M' : 'L'}${x(s.dateIndex).toFixed(1)},${y(s.portfolioValue).toFixed(1)}`).join(' ');
+    const pathCdi = series.map((s, i) => `${i === 0 ? 'M' : 'L'}${x(s.dateIndex).toFixed(1)},${y(s.cdiValue).toFixed(1)}`).join(' ');
+
+    $('#simChartLegend').innerHTML = `
+      <span class="legend-item"><i class="legend-dot"></i><span>Carteira: <strong>R$ ${res.finalPortfolioVal.toFixed(2)} (${signed(res.portfolioReturnPct)})</strong></span></span>
+      <span class="legend-item"><i class="legend-dot secondary"></i><span>CDI: <strong>R$ ${res.finalCdiVal.toFixed(2)} (+${res.cdiReturnPct.toFixed(2)}%)</strong></span></span>
+    `;
+
+    const ticks = Array.from({ length: 5 }, (_, index) => min + ((max - min) * index / 4));
+    const dateTicks = Array.from({ length: 4 }, (_, index) => Math.round(dateMin + ((dateMax - dateMin) * index / 3)));
+
+    container.innerHTML = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true">
+      ${ticks.map(value => `<line class="chart-grid" x1="${P.l}" x2="${W - P.r}" y1="${y(value)}" y2="${y(value)}"/><text class="chart-axis-label" x="${P.l - 8}" y="${y(value) + 4}" text-anchor="end">R$ ${Math.round(value)}</text>`).join('')}
+      ${dateTicks.map(index => {
+        const d = data.dates[index];
+        if (!d) return '';
+        return `<text class="chart-axis-label" x="${x(index)}" y="${H - 10}" text-anchor="middle">${escapeHTML(d.slice(5).replace('-', '/'))}</text>`;
+      }).join('')}
+      <path class="chart-line" d="${pathPort}"/>
+      <path class="chart-line secondary" d="${pathCdi}"/>
+    </svg>`;
+  }
+
+  function renderSimInsights(res) {
+    const card = $('#simInsightsSection');
+    const insights = [];
+
+    // 1. Bola de Neve / Compounding Check
+    const cheapestAsset = res.assetStats.reduce((best, a) => (!best || a.endPrice < best.endPrice) ? a : best, null);
+    if (cheapestAsset) {
+      const canBuyUnits = Math.floor(res.totalDividends / cheapestAsset.endPrice);
+      if (canBuyUnits >= 1) {
+        insights.push({
+          type: 'success',
+          title: '🎉 Ponto de Inflexão Atingido (Bola de Neve)',
+          text: `Os proventos acumulados (R$ ${res.totalDividends.toFixed(2)}) já foram suficientes para comprar <strong>${canBuyUnits} nova(s) cota(s) de ${cheapestAsset.ticker}</strong> sem aportes adicionais do seu bolso.`
+        });
+      } else {
+        const needed = cheapestAsset.endPrice - res.totalDividends;
+        insights.push({
+          type: 'info',
+          title: '⏳ Progresso da Bola de Neve',
+          text: `Seus proventos cobriram R$ ${res.totalDividends.toFixed(2)}. Faltam <strong>R$ ${needed.toFixed(2)}</strong> em proventos para comprar 1 cota automática de ${cheapestAsset.ticker}.`
+        });
+      }
+    }
+
+    // 2. Análise de Risco & Concentração
+    const stockPct = res.assetStats.filter(a => a.type === 'stock').reduce((s, a) => s + a.weightPct, 0);
+    const fundPct = res.assetStats.filter(a => a.type === 'fund').reduce((s, a) => s + a.weightPct, 0);
+
+    if (stockPct > 80) {
+      insights.push({
+        type: 'warning',
+        title: '⚠️ Alta Concentração em Ações',
+        text: `Sua carteira possui <strong>${stockPct.toFixed(0)}% em Ações</strong>. Considere adicionar Fundos Imobiliários (FIIs) para suavizar a volatilidade e gerar renda mensal mais estável.`
+      });
+    } else if (fundPct > 80) {
+      insights.push({
+        type: 'warning',
+        title: '⚠️ Alta Concentração em FIIs',
+        text: `Sua carteira possui <strong>${fundPct.toFixed(0)}% em FIIs</strong>. Adicionar ações perenes com desconto de valuation pode acelerar o ganho de capital no longo prazo.`
+      });
+    } else {
+      insights.push({
+        type: 'success',
+        title: '⚖️ Alocação Equilibrada de Classes',
+        text: `Sua carteira está bem distribuída entre Ações (${stockPct.toFixed(0)}%) e FIIs (${fundPct.toFixed(0)}%), proporcionando ganho de capital e geração de caixa.`
+      });
+    }
+
+    // 3. Asset Swap / Sugestão de Otimização
+    res.assetStats.forEach(ast => {
+      const candidates = Object.keys(data.series[ast.type]);
+      let bestSubstitute = null;
+      let maxDiff = 0;
+
+      candidates.forEach(candTicker => {
+        if (simState.items.some(i => i.ticker === candTicker)) return;
+        const candPoints = filterPeriod(decodeSeries(ast.type, candTicker), simState.period);
+        if (candPoints.length < 2) return;
+
+        const [cFirst, cLast] = firstLastValid(candPoints, 'price');
+        const candReturn = percentChange(cFirst?.price, cLast?.price);
+        const candScore = candPoints.at(-1)?.score || 0;
+
+        if (candReturn !== null && candReturn > ast.assetReturn + 8 && candScore >= (ast.score || 0)) {
+          const diff = candReturn - ast.assetReturn;
+          if (diff > maxDiff) {
+            maxDiff = diff;
+            bestSubstitute = { ticker: candTicker, candReturn, candScore, diff };
+          }
+        }
+      });
+
+      if (bestSubstitute) {
+        insights.push({
+          type: 'info',
+          title: `🔄 Oportunidade de Substituição: ${ast.ticker}`,
+          text: `Trocar <strong>${ast.ticker}</strong> por <strong>${bestSubstitute.ticker}</strong> teria elevado o retorno do ativo em <strong>+${bestSubstitute.diff.toFixed(1)}%</strong> no mesmo período (Score: ${bestSubstitute.candScore.toFixed(1)}).`
+        });
+      }
+    });
+
+    card.innerHTML = `
+      <h3 class="sim-insights-title">💡 Diagnósticos & Recomendações Automatizadas</h3>
+      ${insights.map(item => `
+        <div class="sim-insight-card ${item.type}">
+          <strong>${item.title}</strong>
+          <div>${item.text}</div>
+        </div>
+      `).join('')}
+    `;
+  }
+
+  function downloadSimCsv() {
+    const res = cachedLastBacktestResult;
+    if (!res) { showToast('Nenhuma simulação disponível para exportar.'); return; }
+
+    const lines = [];
+    lines.push(`# B3 SCREENER - PLANILHA DE BACKTEST DE CARTEIRA MULTI-ATIVO`);
+    lines.push(`# Data do relatório: ${new Date().toLocaleDateString('pt-BR')}`);
+    lines.push(`# Período analisado: ${formatDate(res.startDate)} a ${formatDate(res.endDate)}`);
+    lines.push(`#`);
+
+    lines.push(`# === RESUMO DA SIMULAÇÃO ===`);
+    lines.push(`Aporte Inicial (R$);${res.initialCapital.toFixed(2)}`);
+    lines.push(`Reinvestimento Proventos;${res.reinvest ? 'Sim (Bola de Neve)' : 'Não'}`);
+    lines.push(`Patrimonio Final (R$);${res.finalPortfolioVal.toFixed(2)}`);
+    lines.push(`Retorno Carteira (%);${res.portfolioReturnPct.toFixed(2)}%`);
+    lines.push(`Proventos Recebidos (R$);${res.totalDividends.toFixed(2)}`);
+    lines.push(`Patrimonio CDI (R$);${res.finalCdiVal.toFixed(2)}`);
+    lines.push(`Rendimento CDI (%);${res.cdiReturnPct.toFixed(2)}%`);
+    lines.push(`Diferencial Alpha (%);${res.alphaVsCdi.toFixed(2)}%`);
+    lines.push(`#`);
+
+    lines.push(`# === COMPOSIÇÃO DA CARTEIRA E RENTABILIDADE POR ATIVO ===`);
+    lines.push(`Ticker;Classe;Peso (%);Aporte Inicial (R$);Cotas Iniciais;Cotas Finais;Preco Inicial (R$);Preco Atual (R$);Proventos Recebidos (R$);Valor Final (R$);Retorno (%);Score`);
+    res.assetStats.forEach(a => {
+      lines.push(`${a.ticker};${a.type === 'stock' ? 'Acao' : 'FII'};${a.weightPct.toFixed(1)}%;${a.allocatedCapital.toFixed(2)};${a.initialShares.toFixed(2)};${a.finalShares.toFixed(2)};${a.startPrice.toFixed(2)};${a.endPrice.toFixed(2)};${a.totalDividendsReceived.toFixed(2)};${a.finalAssetValue.toFixed(2)};${a.assetReturn.toFixed(2)}%;${a.score.toFixed(1)}`);
+    });
+    lines.push(`#`);
+
+    lines.push(`# === SÉRIE EVOLUTIVA DIÁRIA DA CARTEIRA VS CDI ===`);
+    lines.push(`Data;Valor Carteira (R$);Retorno Carteira (%);Valor CDI (R$);Retorno CDI (%)`);
+    res.portfolioTimeSeries.forEach(pt => {
+      lines.push(`${pt.date};${pt.portfolioValue.toFixed(2)};${pt.portfolioReturnPct.toFixed(2)}%;${pt.cdiValue.toFixed(2)};${pt.cdiReturnPct.toFixed(2)}%`);
+    });
+
+    const csvContent = lines.join('\n');
+    const blob = new Blob([`\uFEFF${csvContent}`], { type: 'text/csv;charset=utf-8' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `backtest-carteira-${res.startDate}-a-${res.endDate}.csv`;
+    link.click();
+    URL.revokeObjectURL(link.href);
+    showToast('Planilha de Backtest exportada com sucesso.');
+  }
+
+  function downloadSimJson() {
+    const res = cachedLastBacktestResult;
+    if (!res) { showToast('Nenhuma simulação disponível para exportar.'); return; }
+
+    const jsonString = JSON.stringify(res, null, 2);
+    const blob = new Blob([jsonString], { type: 'application/json;charset=utf-8' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `backtest-carteira-${res.startDate}-a-${res.endDate}.json`;
+    link.click();
+    URL.revokeObjectURL(link.href);
+    showToast('Dados JSON da simulação exportados.');
   }
 
   function update() {
