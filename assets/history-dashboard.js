@@ -1720,15 +1720,15 @@
       return `
         <tr>
           <td><strong>${escapeHTML(item.ticker)}</strong></td>
-          <td><span class="news-tag ${item.type === 'stock' ? 'mercado' : 'proventos'}">${item.type === 'stock' ? 'Ação' : 'FII'}</span></td>
-          <td><input type="number" class="sim-weight-input" data-ticker="${escapeHTML(item.ticker)}" value="${Math.round(item.weight)}" min="0" max="100">%</td>
-          <td>R$ ${stat ? stat.allocatedCapital.toFixed(2) : '—'}</td>
-          <td>${stat ? stat.initialShares.toFixed(2) : '—'}</td>
-          <td>R$ ${stat ? stat.startPrice.toFixed(2) : '—'}</td>
-          <td>R$ ${stat ? stat.endPrice.toFixed(2) : '—'}</td>
-          <td style="color: var(--positive); font-weight: 750;">R$ ${stat ? stat.totalDividendsReceived.toFixed(2) : '—'}</td>
-          <td style="font-weight: 850;">R$ ${stat ? stat.finalAssetValue.toFixed(2) : '—'}</td>
-          <td><button type="button" class="sim-remove-btn" data-ticker="${escapeHTML(item.ticker)}">✕</button></td>
+          <td class="center"><span class="news-tag ${item.type === 'stock' ? 'mercado' : 'proventos'}">${item.type === 'stock' ? 'Ação' : 'FII'}</span></td>
+          <td class="center"><span class="sim-weight-cell"><input type="number" class="sim-weight-input" data-ticker="${escapeHTML(item.ticker)}" value="${Math.round(item.weight)}" min="0" max="100">%</span></td>
+          <td class="num">R$ ${stat ? stat.allocatedCapital.toFixed(2) : '—'}</td>
+          <td class="num">${stat ? stat.initialShares.toFixed(2) : '—'}</td>
+          <td class="num">R$ ${stat ? stat.startPrice.toFixed(2) : '—'}</td>
+          <td class="num">R$ ${stat ? stat.endPrice.toFixed(2) : '—'}</td>
+          <td class="num" style="color: var(--positive); font-weight: 750;">R$ ${stat ? stat.totalDividendsReceived.toFixed(2) : '—'}</td>
+          <td class="num" style="font-weight: 850;">R$ ${stat ? stat.finalAssetValue.toFixed(2) : '—'}</td>
+          <td class="center"><button type="button" class="sim-remove-btn" data-ticker="${escapeHTML(item.ticker)}">✕</button></td>
         </tr>
       `;
     }).join('');

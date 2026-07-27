@@ -842,7 +842,7 @@ h2 { margin: 0; font-size: clamp(1.1rem, 2vw, 1.45rem); line-height: 1.15; lette
 .sim-assets-section {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 }
 .sim-section-header {
   display: flex;
@@ -854,11 +854,15 @@ h2 { margin: 0; font-size: clamp(1.1rem, 2vw, 1.45rem); line-height: 1.15; lette
 .sim-section-header h3 {
   margin: 0;
   font-size: 1.15rem;
+  letter-spacing: -0.02em;
 }
 .sim-add-box {
   display: flex;
   gap: 8px;
   width: min(100%, 420px);
+}
+.sim-add-box .control {
+  flex: 1;
 }
 
 .sim-table-wrap {
@@ -874,20 +878,28 @@ h2 { margin: 0; font-size: clamp(1.1rem, 2vw, 1.45rem); line-height: 1.15; lette
   text-align: left;
 }
 .sim-table th, .sim-table td {
-  padding: 12px 14px;
+  padding: 12px 16px;
   border-bottom: 1px solid var(--line);
   white-space: nowrap;
+  vertical-align: middle;
 }
 .sim-table th {
   background: var(--surface-alt);
   color: var(--muted);
   font-size: 0.72rem;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
+.sim-table th.num, .sim-table td.num {
+  text-align: right;
+}
+.sim-table th.center, .sim-table td.center {
+  text-align: center;
+}
 .sim-table td input[type="number"] {
-  width: 70px;
-  padding: 4px 8px;
+  width: 64px;
+  padding: 4px 6px;
   border: 1px solid var(--line);
   border-radius: 6px;
   background: var(--bg);
@@ -895,44 +907,54 @@ h2 { margin: 0; font-size: clamp(1.1rem, 2vw, 1.45rem); line-height: 1.15; lette
   font-weight: 700;
   text-align: center;
 }
+.sim-weight-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
 .sim-remove-btn {
-  padding: 4px 10px;
-  border: 1px solid var(--negative);
-  border-radius: 6px;
+  padding: 5px 11px;
+  border: 1px solid color-mix(in srgb, var(--negative) 30%, var(--line));
+  border-radius: 8px;
   background: transparent;
   color: var(--negative);
-  font-weight: 700;
+  font-weight: 750;
+  font-size: 0.8rem;
   cursor: pointer;
+  transition: all .15s ease;
 }
 .sim-remove-btn:hover {
   background: var(--negative);
   color: #fff;
+  border-color: var(--negative);
 }
 
 /* KPIs Simulator */
 .sim-kpi-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
 }
 
 /* Insights Section inside Modal */
 .sim-insights-section {
-  padding: 20px;
+  padding: 22px;
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 .sim-insights-title {
-  margin: 0;
-  font-size: 1.1rem;
+  margin: 0 0 4px;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
 }
 .sim-insight-card {
-  padding: 14px 16px;
+  padding: 14px 18px;
   border-left: 4px solid var(--accent);
-  border-radius: 10px;
+  border-radius: 12px;
   background: var(--surface-alt);
   font-size: 0.88rem;
+  line-height: 1.45;
 }
 .sim-insight-card.success { border-left-color: var(--positive); }
 .sim-insight-card.warning { border-left-color: #f39c12; }
@@ -940,6 +962,53 @@ h2 { margin: 0; font-size: clamp(1.1rem, 2vw, 1.45rem); line-height: 1.15; lette
 
 .sim-insight-card strong {
   display: block;
-  margin-bottom: 4px;
-  font-size: 0.92rem;
+  margin-bottom: 5px;
+  font-size: 0.94rem;
+  color: var(--ink);
+}
+
+/* Responsive Modal Styling */
+@media (max-width: 840px) {
+  .sim-config-bar {
+    grid-template-columns: 1fr 1fr;
+  }
+  .sim-toggle-field {
+    grid-column: 1 / -1;
+  }
+  .modal-card {
+    max-height: 95vh;
+    border-radius: 16px;
+  }
+  .modal-body {
+    padding: 16px;
+    gap: 16px;
+  }
+  .modal-header, .modal-footer {
+    padding: 14px 16px;
+  }
+}
+
+@media (max-width: 520px) {
+  .sim-config-bar {
+    grid-template-columns: 1fr;
+    padding: 14px;
+  }
+  .sim-add-box {
+    width: 100%;
+  }
+  .sim-kpi-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .modal-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .sim-footer-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .sim-footer-actions .dropdown, .sim-footer-actions .button {
+    width: 100%;
+  }
 }
