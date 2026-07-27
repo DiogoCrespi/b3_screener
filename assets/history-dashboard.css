@@ -784,7 +784,7 @@ h2 { margin: 0; font-size: clamp(1.1rem, 2vw, 1.45rem); line-height: 1.15; lette
   border-radius: 14px;
   background: var(--bg);
 }
-.sim-field label {
+.sim-field label, .sim-field-label {
   display: block;
   margin-bottom: 6px;
   color: var(--muted);
@@ -796,20 +796,35 @@ h2 { margin: 0; font-size: clamp(1.1rem, 2vw, 1.45rem); line-height: 1.15; lette
 .sim-toggle-field {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 /* Toggle Switch */
 .toggle-switch {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  margin-top: 4px;
+  padding: 2px 0;
   cursor: pointer;
   user-select: none;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--ink);
+  text-transform: none;
+  letter-spacing: normal;
 }
-.toggle-switch input { display: none; }
+.toggle-switch input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
 .toggle-slider {
   position: relative;
+  display: inline-block;
+  flex-shrink: 0;
   width: 44px;
   height: 24px;
   border-radius: 999px;
@@ -836,6 +851,9 @@ h2 { margin: 0; font-size: clamp(1.1rem, 2vw, 1.45rem); line-height: 1.15; lette
 .toggle-label {
   font-size: 0.88rem;
   font-weight: 700;
+  color: var(--ink);
+  text-transform: none;
+  letter-spacing: normal;
 }
 
 /* Table Multi-Asset */
