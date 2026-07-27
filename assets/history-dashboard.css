@@ -946,12 +946,54 @@ h2 { margin: 0; font-size: clamp(1.1rem, 2vw, 1.45rem); line-height: 1.15; lette
   background: var(--negative);
   color: #fff;
   border-color: var(--negative);
+.sim-table tfoot td {
+  padding: 12px 14px;
+  border-top: 2px solid var(--line);
+  background: var(--surface-alt);
+  font-size: 0.88rem;
 }
+
+.sim-chart-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+.sim-benchmark-toggles {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.78rem;
+  font-weight: 650;
+  color: var(--ink);
+}
+.sim-benchmark-toggles label {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  user-select: none;
+}
+.bm-tag {
+  padding: 2px 7px;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.02em;
+}
+.bm-tag.cdi { background: rgba(52, 152, 219, 0.15); color: #2980b9; }
+.bm-tag.ibov { background: rgba(46, 204, 113, 0.15); color: #27ae60; }
+.bm-tag.ifix { background: rgba(155, 89, 182, 0.15); color: #8e44ad; }
+.bm-tag.divs { background: rgba(243, 156, 18, 0.15); color: #d35400; }
+
+.legend-dot.ibov { background: #27ae60; }
+.legend-dot.ifix { background: #8e44ad; }
+.legend-dot.divs { background: #e67e22; }
 
 /* KPIs Simulator */
 .sim-kpi-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 14px;
 }
 
