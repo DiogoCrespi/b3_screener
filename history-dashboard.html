@@ -169,18 +169,76 @@
       </header>
 
       <div class="modal-body">
+        <!-- Resumo Compacto Executivo -->
+        <section class="sim-exec-bar card" id="simExecBar">
+          <div class="sim-exec-item">
+            <span class="muted">Janela do Pregão:</span>
+            <strong id="simExecPeriodLabel">13/03/2026 a 24/07/2026 (133d / 96 pregões)</strong>
+          </div>
+          <div class="sim-exec-item">
+            <span class="muted">Capital Aportado:</span>
+            <strong id="simExecCapitalLabel">R$ 1.000,00</strong>
+          </div>
+          <div class="sim-exec-item">
+            <span class="muted">Patrimônio Líquido Final:</span>
+            <strong id="simExecFinalValLabel" style="color: var(--accent);">R$ 1.175,63</strong>
+          </div>
+          <div class="sim-exec-item">
+            <span class="muted">Retorno Líquido / TWR:</span>
+            <strong id="simExecReturnLabel" style="color: var(--positive);">+17,56% (TWR)</strong>
+          </div>
+        </section>
+
+        <!-- Dock 1: Parâmetros & Aportes Recorrentes (DCA) -->
         <section class="sim-config-bar">
           <div class="sim-field">
             <label for="simInitialCapital">Aporte Inicial (R$)</label>
             <input type="number" id="simInitialCapital" class="control" value="1000" min="100" step="100">
           </div>
           <div class="sim-field">
-            <label for="simPeriodSelect">Período</label>
+            <label for="simDcaCapital">Aporte Recorrente (R$)</label>
+            <input type="number" id="simDcaCapital" class="control" value="0" min="0" step="100" placeholder="Ex: 500">
+          </div>
+          <div class="sim-field">
+            <label for="simDcaFreq">Frequência DCA</label>
+            <select id="simDcaFreq" class="control">
+              <option value="none" selected>Apenas Inicial</option>
+              <option value="monthly">Mensal (Dia 5)</option>
+              <option value="quarterly">Trimestral (Dia 5)</option>
+            </select>
+          </div>
+          <div class="sim-field">
+            <label for="simDcaInflation">Correção Anual DCA (%)</label>
+            <input type="number" id="simDcaInflation" class="control" value="0" min="0" max="30" step="0.5" placeholder="Ex: 5.0%">
+          </div>
+          <div class="sim-field">
+            <label for="simPeriodSelect">Período de Backtest</label>
             <select id="simPeriodSelect" class="control">
               <option value="30">30 dias</option>
               <option value="90">90 dias</option>
               <option value="365">1 Ano</option>
-              <option value="all" selected>Todo o Histórico</option>
+              <option value="all" selected>Todo o Histórico (Histórico Comum)</option>
+            </select>
+          </div>
+        </section>
+
+        <!-- Dock 2: Rebalanceamento, Custos & Regras de Execução -->
+        <section class="sim-config-bar secondary-dock">
+          <div class="sim-field">
+            <label for="simRebalanceStrategy">Estratégia de Rebalanceamento</label>
+            <select id="simRebalanceStrategy" class="control">
+              <option value="none" selected>Nenhum (Buy & Hold)</option>
+              <option value="monthly">Mensal</option>
+              <option value="quarterly">Trimestral</option>
+              <option value="annual">Anual</option>
+              <option value="deviation">Por Desvio (> 5 p.p.)</option>
+            </select>
+          </div>
+          <div class="sim-field">
+            <label for="simTaxMode">Regime de Custos & Impostos</label>
+            <select id="simTaxMode" class="control">
+              <option value="net" selected>Líquido Estimado (IR + B3 0,03% + Slippage 0,10%)</option>
+              <option value="gross">Bruto Teórico (Sem Custos)</option>
             </select>
           </div>
           <div class="sim-field sim-toggle-field">
@@ -196,7 +254,7 @@
             <label class="toggle-switch" for="simSmartAllocToggle">
               <input type="checkbox" id="simSmartAllocToggle">
               <span class="toggle-slider"></span>
-              <span class="toggle-label">Alocação Inteligente</span>
+              <span class="toggle-label">Alocação Inteligente Quant</span>
             </label>
           </div>
           <div class="sim-field sim-toggle-field">
@@ -209,10 +267,11 @@
           </div>
         </section>
 
+        <!-- Tabela de Ativos & Atribuição de Performance -->
         <section class="sim-assets-section">
           <div class="sim-section-header">
             <div>
-              <h3>Composição da Carteira</h3>
+              <h3>Composição da Carteira & Atribuição de Performance</h3>
               <p class="muted" style="margin-top:2px;" id="simWeightAlert">Ajuste os pesos % para somar exatamente 100%.</p>
             </div>
             <div class="sim-add-box">
@@ -226,14 +285,14 @@
               <thead>
                 <tr>
                   <th>Ativo</th>
-                  <th class="center">Classe</th>
+                  <th>Setor / Classe</th>
                   <th class="center">Peso (%)</th>
                   <th class="num">Aporte Inicial</th>
                   <th class="num">Cotas Iniciais</th>
-                  <th class="num">Preço Início</th>
-                  <th class="num">Preço Atual</th>
-                  <th class="num">Proventos</th>
-                  <th class="num">Valor Final</th>
+                  <th class="num">Proventos (R$)</th>
+                  <th class="num">Ganho Capital (R$)</th>
+                  <th class="num">Contrib. Líquida (p.p.)</th>
+                  <th class="num">Valor Final (R$)</th>
                   <th class="center">Ação</th>
                 </tr>
               </thead>
@@ -243,8 +302,10 @@
                   <td colspan="2"><strong>Total da Carteira</strong></td>
                   <td class="center"><strong id="simTotalWeightLabel">100%</strong></td>
                   <td class="num" id="simTotalAllocatedLabel">R$ 1.000,00</td>
-                  <td colspan="3"></td>
+                  <td></td>
                   <td class="num" id="simTotalDividendsLabel" style="color: var(--positive); font-weight: 750;">R$ 0,00</td>
+                  <td class="num" id="simTotalCapGainLabel">R$ 0,00</td>
+                  <td class="num" id="simTotalContribLabel">100 p.p.</td>
                   <td class="num"><strong id="simTotalFinalValLabel">R$ 1.000,00</strong></td>
                   <td></td>
                 </tr>
@@ -253,8 +314,22 @@
           </div>
         </section>
 
+        <!-- Grid de Métricas de Risco Quantitativo Auditável -->
         <section class="sim-kpi-grid" id="simKpiGrid"></section>
 
+        <!-- Matriz de Correlação Diária & Concentração HHI -->
+        <section class="sim-matrix-section card" id="simMatrixSection">
+          <div class="sim-matrix-header">
+            <div>
+              <p class="eyebrow">Análise de Matriz & Risco Contextualizado</p>
+              <h3>Matriz de Correlação Diária & Índice HHI</h3>
+            </div>
+            <div id="simHhiBadgeWrap"></div>
+          </div>
+          <div class="sim-table-wrap" style="margin-top:12px;" id="simCorrelationTableWrap"></div>
+        </section>
+
+        <!-- Gráfico de Evolução com Dual Scale & Tooltip -->
         <section class="sim-chart-card card">
           <div class="card-heading">
             <div>
@@ -262,7 +337,11 @@
               <h2>Carteira vs Índices de Mercado</h2>
             </div>
             <div class="sim-chart-controls">
-              <div class="sim-benchmark-toggles">
+              <div class="sim-scale-mode-toggles">
+                <button type="button" class="button ghost compact active" id="simScaleNominalBtn">R$ Nominal</button>
+                <button type="button" class="button ghost compact" id="simScaleNormBtn">Base 100 (%)</button>
+              </div>
+              <div class="sim-benchmark-toggles" style="margin-top:6px;">
                 <label><input type="checkbox" id="simBmCdi" checked> <span class="bm-tag cdi">CDI</span></label>
                 <label><input type="checkbox" id="simBmIbov" checked> <span class="bm-tag ibov">IBOV</span></label>
                 <label><input type="checkbox" id="simBmIfix" checked> <span class="bm-tag ifix">IFIX</span></label>
@@ -275,6 +354,7 @@
           <div class="sim-chart-tooltip" id="simChartTooltip" hidden></div>
         </section>
 
+        <!-- Diagnósticos Quantitativos Ex-Post -->
         <section class="sim-insights-section card" id="simInsightsSection"></section>
       </div>
 

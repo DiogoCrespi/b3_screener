@@ -1470,7 +1470,7 @@
       }
     });
 
-    // Simulator Export Dropdown
+// Simulator Export Dropdown
     const simExportDropdown = $('#simExportDropdown');
     const simExportToggleBtn = simExportDropdown.querySelector('.dropdown-toggle');
     simExportToggleBtn.addEventListener('click', (e) => {
@@ -1480,730 +1480,996 @@
     document.addEventListener('click', () => {
       simExportDropdown.classList.remove('show');
     });
-    $('#downloadSimCsv').addEventListener('click', downloadSimCsv);
-    $('#downloadSimJson').addEventListener('click', downloadSimJson);
-  }
 
-  // ==========================================
-  // MULTI-ASSET SIMULATOR & BACKTEST ENGINE
-  // ==========================================
+    // ==========================================
+    // MULTI-ASSET SIMULATOR & BACKTEST ENGINE
+    // ==========================================
 
-  const simState = {
-    initialCapital: 1000,
-    period: 'all',
-    reinvest: true,
-    smartAlloc: false,
-    shareMode: 'fractional', // 'fractional' (Teórico) ou 'integer' (Realista)
-    items: []
-  };
-
-  let cachedLastBacktestResult = null;
-
-  function openSimulator() {
-    if (simState.items.length === 0) {
-      simState.items = [
-        { ticker: state.ticker, type: state.type, weight: state.compare ? 50 : 100 }
-      ];
-      if (state.compare && data.series[state.type][state.compare]) {
-        simState.items.push({ ticker: state.compare, type: state.type, weight: 50 });
-      }
-    }
-    populateSimOptions();
-    $('#simulatorModal').hidden = false;
-    document.body.style.overflow = 'hidden';
-    updateSimulator();
-  }
-
-  function closeSimulator() {
-    $('#simulatorModal').hidden = true;
-    document.body.style.overflow = '';
-  }
-
-  function populateSimOptions() {
-    const globalAssets = [
-      ...Object.keys(data.series.stock).map(ticker => ({ ticker, type: 'stock', label: 'Ação' })),
-      ...Object.keys(data.series.fund).map(ticker => ({ ticker, type: 'fund', label: 'Fundo' }))
-    ].sort((a, b) => a.ticker.localeCompare(b.ticker));
-    
-    $('#simAssetOptions').innerHTML = globalAssets.map(asset => `<option value="${escapeHTML(asset.ticker)}" label="${asset.label}"></option>`).join('');
-  }
-
-  function addAssetToSimulator(rawInput) {
-    if (!rawInput) return;
-    const tokens = String(rawInput)
-      .split(/[,;\s]+/)
-      .map(t => t.trim().toUpperCase())
-      .filter(Boolean);
-
-    if (tokens.length === 0) return;
-
-    let addedCount = 0;
-    const notFound = [];
-    const alreadyExists = [];
-
-    tokens.forEach(ticker => {
-      const type = data.series.stock[ticker] ? 'stock' : data.series.fund[ticker] ? 'fund' : null;
-      if (!type) {
-        notFound.push(ticker);
-        return;
-      }
-      if (simState.items.some(item => item.ticker === ticker)) {
-        alreadyExists.push(ticker);
-        return;
-      }
-      simState.items.push({ ticker, type, weight: 0 });
-      addedCount++;
-    });
-
-    if (addedCount > 0) {
-      rebalanceSimWeights();
-      updateSimulator();
-      if (tokens.length === 1) {
-        showToast(`${tokens[0]} adicionado à carteira.`);
-      } else {
-        showToast(`${addedCount} ativo(s) adicionado(s) à carteira.`);
-      }
-    } else if (notFound.length > 0) {
-      showToast(`Ticker(s) não encontrado(s): ${notFound.join(', ')}`);
-    } else if (alreadyExists.length > 0) {
-      showToast(`Ticker(s) já na carteira: ${alreadyExists.join(', ')}`);
-    }
-  }
-
-  function removeAssetFromSimulator(ticker) {
-    if (simState.items.length <= 1) {
-      showToast('A carteira precisa ter ao menos 1 ativo.');
-      return;
-    }
-    simState.items = simState.items.filter(item => item.ticker !== ticker);
-    rebalanceSimWeights();
-    updateSimulator();
-  }
-
-  function calculateSmartWeights() {
-    if (simState.items.length === 0) return;
-
-    const itemScores = simState.items.map(item => {
-      const allPoints = decodeSeries(item.type, item.ticker);
-      const points = filterPeriod(allPoints, simState.period);
-      const latest = points.at(-1) || {};
-      const first = points.find(p => validNumber(p.price));
-      const last = [...points].reverse().find(p => validNumber(p.price));
-
-      // 1. Métrica: Score de Fundamentos (0 a 10)
-      const scoreVal = validNumber(latest.score) ? Math.max(0.1, latest.score / 10) : 0.5;
-
-      // 2. Métrica: Valuation / Desconto de Margem
-      let valuationFactor = 1.0;
-      if (item.type === 'stock') {
-        const graham = validNumber(latest.graham) ? latest.graham : null;
-        const bazin = validNumber(latest.bazin) ? latest.bazin : null;
-        const curPrice = last?.price || 1;
-        if (graham && curPrice < graham && bazin && curPrice < bazin) {
-          valuationFactor = 1.35;
-        } else if ((graham && curPrice < graham) || (bazin && curPrice < bazin)) {
-          valuationFactor = 1.15;
-        } else if (graham && curPrice > graham * 1.25) {
-          valuationFactor = 0.75;
-        }
-      } else {
-        const pvp = validNumber(latest.pvp) ? latest.pvp : 1;
-        if (pvp < 1.0 && pvp > 0.6) {
-          valuationFactor = 1.0 + (1.0 - pvp) * 1.5;
-        } else if (pvp > 1.08) {
-          valuationFactor = 0.70;
-        }
-      }
-
-      // 3. Métrica: Yield de Proventos (DY %)
-      const dyVal = validNumber(latest.dy) ? latest.dy : 0;
-      const dyFactor = dyVal > 0 ? Math.min(1.4, Math.max(0.6, dyVal / 7.5)) : 0.6;
-
-      // 4. Métrica: Estabilidade de Risco / Retorno no Período
-      const pChange = percentChange(first?.price, last?.price);
-      const returnFactor = pChange !== null ? (pChange >= 0 ? 1.15 : 0.85) : 1.0;
-
-      const composite = scoreVal * valuationFactor * dyFactor * returnFactor;
-      return { ticker: item.ticker, composite };
-    });
-
-    const totalComposite = itemScores.reduce((sum, s) => sum + s.composite, 0);
-    if (totalComposite <= 0) {
-      rebalanceSimWeightsEqually();
-      return;
-    }
-
-    let rawWeights = simState.items.map(item => {
-      const match = itemScores.find(s => s.ticker === item.ticker);
-      return {
-        ticker: item.ticker,
-        weight: Math.round((match.composite / totalComposite) * 100)
-      };
-    });
-
-    const minW = simState.items.length > 1 ? 10 : 100;
-    const maxW = simState.items.length > 1 ? 65 : 100;
-
-    let clampedWeights = rawWeights.map(w => ({
-      ticker: w.ticker,
-      weight: Math.max(minW, Math.min(maxW, w.weight))
-    }));
-
-    const clampedTotal = clampedWeights.reduce((s, w) => s + w.weight, 0);
-    clampedWeights.forEach(w => {
-      w.weight = Math.round((w.weight / clampedTotal) * 100);
-    });
-
-    const finalSum = clampedWeights.reduce((s, w) => s + w.weight, 0);
-    if (finalSum !== 100 && clampedWeights.length > 0) {
-      clampedWeights[0].weight += (100 - finalSum);
-    }
-
-    clampedWeights.forEach(cw => {
-      const item = simState.items.find(i => i.ticker === cw.ticker);
-      if (item) item.weight = cw.weight;
-    });
-  }
-
-  function rebalanceSimWeights() {
-    if (simState.smartAlloc) {
-      calculateSmartWeights();
-    } else {
-      rebalanceSimWeightsEqually();
-    }
-  }
-
-  function rebalanceSimWeightsEqually() {
-    const n = simState.items.length;
-    if (n === 0) return;
-    const equalWeight = Math.floor(100 / n);
-    let remainder = 100 - (equalWeight * n);
-    simState.items.forEach((item, index) => {
-      item.weight = equalWeight + (index === 0 ? remainder : 0);
-    });
-  }
-
-  function runSimBacktest() {
-    if (simState.items.length === 0) return null;
-
-    const totalWeight = simState.items.reduce((a, b) => a + (b.weight || 0), 0);
-    const normalizedItems = simState.items.map(item => ({
-      ...item,
-      normalizedWeight: totalWeight > 0 ? (item.weight || 0) / totalWeight : 1 / simState.items.length
-    }));
-
-    const assetSeries = normalizedItems.map(item => {
-      const allPoints = decodeSeries(item.type, item.ticker);
-      const points = filterPeriod(allPoints, simState.period);
-      return { ...item, allPoints, points };
-    }).filter(a => a.points.length > 0);
-
-    if (assetSeries.length === 0) return null;
-
-    const validDateIndexes = Array.from(
-      new Set(assetSeries.flatMap(a => a.points.map(p => p.dateIndex)))
-    ).sort((a, b) => a - b);
-
-    if (validDateIndexes.length < 2) return null;
-
-    const initialCapital = simState.initialCapital;
-    const isIntegerMode = simState.shareMode === 'integer';
-
-    const priceLookups = assetSeries.map(a => {
-      const map = new Map();
-      let lastPrice = a.points.find(p => validNumber(p.price))?.price || 1;
-      a.points.forEach(p => {
-        if (validNumber(p.price)) lastPrice = p.price;
-        map.set(p.dateIndex, lastPrice);
-      });
-      return { ticker: a.ticker, map, fallbackPrice: lastPrice };
-    });
-
-    let totalUnallocatedCash = 0;
-
-    const assetStats = assetSeries.map(a => {
-      const lookup = priceLookups.find(l => l.ticker === a.ticker);
-      const startPrice = lookup?.map.get(validDateIndexes[0]) || lookup?.fallbackPrice || 1;
-      const endPrice = lookup?.map.get(validDateIndexes.at(-1)) || lookup?.fallbackPrice || startPrice;
-      
-      const allocatedCapital = initialCapital * a.normalizedWeight;
-      
-      let initialShares = 0;
-      let unallocatedCash = 0;
-      if (isIntegerMode) {
-        initialShares = Math.floor(allocatedCapital / startPrice);
-        unallocatedCash = allocatedCapital - (initialShares * startPrice);
-        totalUnallocatedCash += unallocatedCash;
-      } else {
-        initialShares = allocatedCapital / startPrice;
-      }
-
-      let totalDividendsReceived = 0;
-      let currentShares = initialShares;
-      let accumCashFromDivs = 0;
-
-      a.points.forEach((point, idx) => {
-        if (!validNumber(point.dy) || point.dy <= 0 || !validNumber(point.price)) return;
-        if (idx > 0) {
-          const prevPoint = a.points[idx - 1];
-          if (validNumber(prevPoint.price) && point.dy > prevPoint.dy && point.date !== prevPoint.date) {
-            const divPerShare = (point.price * (point.dy / 100)) / 12;
-            const divAmount = currentShares * divPerShare;
-            totalDividendsReceived += divAmount;
-
-            if (simState.reinvest && point.price > 0) {
-              if (isIntegerMode) {
-                const extraShares = Math.floor(divAmount / point.price);
-                currentShares += extraShares;
-                accumCashFromDivs += (divAmount - extraShares * point.price);
-              } else {
-                const extraShares = divAmount / point.price;
-                currentShares += extraShares;
-              }
-            } else {
-              accumCashFromDivs += divAmount;
-            }
-          }
-        }
-      });
-
-      const finalAssetValue = (currentShares * endPrice) + accumCashFromDivs + unallocatedCash;
-      const assetReturn = ((finalAssetValue - allocatedCapital) / allocatedCapital) * 100;
-
-      return {
-        ticker: a.ticker,
-        type: a.type,
-        weightPct: a.normalizedWeight * 100,
-        allocatedCapital,
-        startPrice,
-        endPrice,
-        initialShares,
-        finalShares: currentShares,
-        totalDividendsReceived,
-        finalAssetValue,
-        assetReturn,
-        unallocatedCash,
-        category: a.points.at(-1)?.category || (a.type === 'stock' ? 'Ações' : 'FIIs'),
-        score: a.points.at(-1)?.score || 0,
-        pvp: a.points.at(-1)?.pvp || 1
-      };
-    });
-
-    // Série de Benchmarks (CDI, IBOV, IFIX)
-    let selicPoints = data.economy.map(([dateIndex, selic]) => ({ dateIndex, date: data.dates[dateIndex], selic }));
-    if (state.mode === 'local') {
-      selicPoints = selicPoints.filter(p => p.date >= '2026-03-13');
-    }
-    selicPoints = filterPeriod(selicPoints, simState.period);
-
-    // Carrega Top Stocks para IBOV e Top FIIs para IFIX
-    const ibovTickers = Object.keys(data.series.stock).slice(0, 10);
-    const ifixTickers = Object.keys(data.series.fund).slice(0, 10);
-
-    const ibovSeries = ibovTickers.map(t => filterPeriod(decodeSeries('stock', t), simState.period)).filter(p => p.length > 0);
-    const ifixSeries = ifixTickers.map(t => filterPeriod(decodeSeries('fund', t), simState.period)).filter(p => p.length > 0);
-
-    let accumCdiFactor = 1.0;
-    let prevCdiDateIndex = null;
-    let accumDivsTotal = 0;
-
-    const portfolioTimeSeries = validDateIndexes.map((dateIdx, i) => {
-      const dateStr = data.dates[dateIdx];
-      
-      // CDI
-      const selicObj = selicPoints.find(s => s.dateIndex === dateIdx);
-      if (selicObj && validNumber(selicObj.selic)) {
-        if (prevCdiDateIndex !== null) {
-          const dailySelicRate = Math.pow(1 + (selicObj.selic / 100), 1 / 252) - 1;
-          accumCdiFactor *= (1 + dailySelicRate);
-        }
-        prevCdiDateIndex = dateIdx;
-      }
-
-      // Carteira
-      let totalValAtDate = 0;
-      assetStats.forEach(ast => {
-        const lookup = priceLookups.find(l => l.ticker === ast.ticker);
-        const priceAtDate = lookup ? (lookup.map.get(dateIdx) || lookup.fallbackPrice) : ast.startPrice;
-        totalValAtDate += (ast.finalShares * priceAtDate) + ast.unallocatedCash;
-      });
-
-      // Proventos Acumulados
-      const divsToday = assetStats.reduce((sum, ast) => sum + (ast.totalDividendsReceived * (i / Math.max(1, validDateIndexes.length - 1))), 0);
-
-      // Benchmark IBOV
-      let ibovVal = initialCapital;
-      if (ibovSeries.length > 0) {
-        const ibovRatios = ibovSeries.map(s => {
-          const firstP = s[0]?.price || 1;
-          const point = s.find(p => p.dateIndex === dateIdx) || s.at(-1);
-          return (point?.price || firstP) / firstP;
-        });
-        const avgIbovRatio = ibovRatios.reduce((a, b) => a + b, 0) / ibovRatios.length;
-        ibovVal = initialCapital * avgIbovRatio;
-      }
-
-      // Benchmark IFIX
-      let ifixVal = initialCapital;
-      if (ifixSeries.length > 0) {
-        const ifixRatios = ifixSeries.map(s => {
-          const firstP = s[0]?.price || 1;
-          const point = s.find(p => p.dateIndex === dateIdx) || s.at(-1);
-          return (point?.price || firstP) / firstP;
-        });
-        const avgIfixRatio = ifixRatios.reduce((a, b) => a + b, 0) / ifixSeries.length;
-        ifixVal = initialCapital * avgIfixRatio;
-      }
-
-      const cdiValAtDate = initialCapital * accumCdiFactor;
-
-      return {
-        dateIndex: dateIdx,
-        date: dateStr,
-        portfolioValue: totalValAtDate,
-        portfolioReturnPct: ((totalValAtDate - initialCapital) / initialCapital) * 100,
-        cdiValue: cdiValAtDate,
-        cdiReturnPct: ((cdiValAtDate - initialCapital) / initialCapital) * 100,
-        ibovValue: ibovVal,
-        ibovReturnPct: ((ibovVal - initialCapital) / initialCapital) * 100,
-        ifixValue: ifixVal,
-        ifixReturnPct: ((ifixVal - initialCapital) / initialCapital) * 100,
-        accumDividends: divsToday
-      };
-    });
-
-    // Métricas de Risco Quantitativo
-    const dailyReturns = [];
-    for (let i = 1; i < portfolioTimeSeries.length; i++) {
-      const prev = portfolioTimeSeries[i - 1].portfolioValue;
-      const curr = portfolioTimeSeries[i].portfolioValue;
-      if (prev > 0) dailyReturns.push((curr - prev) / prev);
-    }
-
-    let volatilityAnnualized = 0;
-    if (dailyReturns.length > 1) {
-      const meanR = dailyReturns.reduce((a, b) => a + b, 0) / dailyReturns.length;
-      const varianceR = dailyReturns.reduce((s, r) => s + Math.pow(r - meanR, 2), 0) / (dailyReturns.length - 1);
-      volatilityAnnualized = Math.sqrt(varianceR) * Math.sqrt(252) * 100;
-    }
-
-    // Max Drawdown
-    let maxPeak = -Infinity;
-    let maxDrawdown = 0;
-    portfolioTimeSeries.forEach(s => {
-      if (s.portfolioValue > maxPeak) maxPeak = s.portfolioValue;
-      const dd = maxPeak > 0 ? ((maxPeak - s.portfolioValue) / maxPeak) * 100 : 0;
-      if (dd > maxDrawdown) maxDrawdown = dd;
-    });
-
-    const finalPortfolioVal = portfolioTimeSeries.at(-1)?.portfolioValue || initialCapital;
-    const finalCdiVal = portfolioTimeSeries.at(-1)?.cdiValue || initialCapital;
-    const totalDividends = assetStats.reduce((sum, a) => sum + a.totalDividendsReceived, 0);
-    const portfolioReturnPct = ((finalPortfolioVal - initialCapital) / initialCapital) * 100;
-    const cdiReturnPct = ((finalCdiVal - initialCapital) / initialCapital) * 100;
-    const alphaVsCdi = portfolioReturnPct - cdiReturnPct;
-    const alphaAmount = finalPortfolioVal - finalCdiVal;
-
-    // Sharpe Ratio
-    const numDays = portfolioTimeSeries.length;
-    const annualizedPortReturn = (Math.pow(1 + (portfolioReturnPct / 100), 252 / Math.max(1, numDays)) - 1) * 100;
-    const annualizedCdiReturn = (Math.pow(1 + (cdiReturnPct / 100), 252 / Math.max(1, numDays)) - 1) * 100;
-    const sharpeRatio = volatilityAnnualized > 0 ? (annualizedPortReturn - annualizedCdiReturn) / volatilityAnnualized : 0;
-
-    const result = {
-      initialCapital,
-      period: simState.period,
-      reinvest: simState.reinvest,
-      smartAlloc: simState.smartAlloc,
-      shareMode: simState.shareMode,
-      startDate: data.dates[validDateIndexes[0]],
-      endDate: data.dates[validDateIndexes.at(-1)],
-      finalPortfolioVal,
-      finalCdiVal,
-      totalDividends,
-      portfolioReturnPct,
-      cdiReturnPct,
-      alphaVsCdi,
-      alphaAmount,
-      volatilityAnnualized,
-      sharpeRatio,
-      maxDrawdown,
-      assetStats,
-      portfolioTimeSeries
+    const simState = {
+      initialCapital: 1000,
+      dcaCapital: 0,
+      dcaFreq: 'none', // 'none', 'monthly', 'quarterly'
+      dcaInflation: 0,
+      period: 'all',
+      rebalanceStrategy: 'none', // 'none', 'monthly', 'quarterly', 'annual', 'deviation'
+      taxMode: 'net', // 'net' (Líquido IR + Emolumentos + Slippage) ou 'gross' (Bruto)
+      reinvest: true,
+      smartAlloc: false,
+      shareMode: 'fractional', // 'fractional' (Teórico) ou 'integer' (Realista)
+      scaleMode: 'nominal', // 'nominal' (R$) ou 'normalized' (Base 100 %)
+      items: []
     };
 
-    cachedLastBacktestResult = result;
-    return result;
-  }
+    let cachedLastBacktestResult = null;
 
-  function updateSimulator() {
-    const res = runSimBacktest();
-    renderSimTable();
-    if (!res) {
-      $('#simKpiGrid').innerHTML = '<div class="stat-card">Sem dados suficientes para simulação no período selecionado.</div>';
-      $('#simMainChart').innerHTML = '';
-      $('#simInsightsSection').innerHTML = '';
-      return;
-    }
-    renderSimKPIs(res);
-    renderSimChart(res);
-    renderSimInsights(res);
-  }
-
-  function renderSimTable() {
-    const tbody = $('#simAssetsTbody');
-    const res = cachedLastBacktestResult;
-
-    const totalWeightSum = simState.items.reduce((s, i) => s + (i.weight || 0), 0);
-    const weightLabel = $('#simTotalWeightLabel');
-    const alertBox = $('#simWeightAlert');
-
-    if (totalWeightSum !== 100) {
-      weightLabel.style.color = 'var(--negative)';
-      weightLabel.textContent = `${totalWeightSum}% ⚠️`;
-      alertBox.textContent = `Alerta: Os pesos somam ${totalWeightSum}%. Rebalanceie para 100% ou ative a Alocação Inteligente.`;
-      alertBox.style.color = 'var(--negative)';
-    } else {
-      weightLabel.style.color = 'var(--ink)';
-      weightLabel.textContent = '100%';
-      alertBox.textContent = 'Ajuste os pesos % para somar exatamente 100%.';
-      alertBox.style.color = 'var(--muted)';
+    function openSimulator() {
+      if (simState.items.length === 0) {
+        simState.items = [
+          { ticker: state.ticker, type: state.type, weight: state.compare ? 50 : 100 }
+        ];
+        if (state.compare && data.series[state.type][state.compare]) {
+          simState.items.push({ ticker: state.compare, type: state.type, weight: 50 });
+        }
+      }
+      populateSimOptions();
+      $('#simulatorModal').hidden = false;
+      document.body.style.overflow = 'hidden';
+      updateSimulator();
     }
 
-    tbody.innerHTML = simState.items.map(item => {
-      const stat = res?.assetStats.find(a => a.ticker === item.ticker);
-      return `
-        <tr>
-          <td><strong>${escapeHTML(item.ticker)}</strong></td>
-          <td class="center"><span class="news-tag ${item.type === 'stock' ? 'mercado' : 'proventos'}">${item.type === 'stock' ? 'Ação' : 'FII'}</span></td>
-          <td class="center"><span class="sim-weight-cell"><input type="number" class="sim-weight-input" data-ticker="${escapeHTML(item.ticker)}" value="${Math.round(item.weight)}" min="0" max="100">%</span></td>
-          <td class="num">R$ ${stat ? stat.allocatedCapital.toFixed(2) : '—'}</td>
-          <td class="num">${stat ? (simState.shareMode === 'integer' ? stat.initialShares.toFixed(0) : stat.initialShares.toFixed(2)) : '—'}</td>
-          <td class="num">R$ ${stat ? stat.startPrice.toFixed(2) : '—'}</td>
-          <td class="num">R$ ${stat ? stat.endPrice.toFixed(2) : '—'}</td>
-          <td class="num" style="color: var(--positive); font-weight: 750;">R$ ${stat ? stat.totalDividendsReceived.toFixed(2) : '—'}</td>
-          <td class="num" style="font-weight: 850;">R$ ${stat ? stat.finalAssetValue.toFixed(2) : '—'}</td>
-          <td class="center"><button type="button" class="sim-remove-btn" data-ticker="${escapeHTML(item.ticker)}">✕</button></td>
-        </tr>
-      `;
-    }).join('');
-
-    if (res) {
-      $('#simTotalAllocatedLabel').textContent = `R$ ${res.initialCapital.toFixed(2)}`;
-      $('#simTotalDividendsLabel').textContent = `R$ ${res.totalDividends.toFixed(2)}`;
-      $('#simTotalFinalValLabel').textContent = `R$ ${res.finalPortfolioVal.toFixed(2)}`;
+    function closeSimulator() {
+      $('#simulatorModal').hidden = true;
+      document.body.style.overflow = '';
     }
 
-    tbody.querySelectorAll('.sim-weight-input').forEach(input => {
-      input.addEventListener('change', (e) => {
-        const ticker = e.target.dataset.ticker;
-        const val = Math.max(0, Math.min(100, parseFloat(e.target.value) || 0));
-        const item = simState.items.find(i => i.ticker === ticker);
-        if (item) {
-          item.weight = val;
-          updateSimulator();
+    function populateSimOptions() {
+      const globalAssets = [
+        ...Object.keys(data.series.stock).map(ticker => ({ ticker, type: 'stock', label: 'Ação' })),
+        ...Object.keys(data.series.fund).map(ticker => ({ ticker, type: 'fund', label: 'Fundo' }))
+      ].sort((a, b) => a.ticker.localeCompare(b.ticker));
+      
+      $('#simAssetOptions').innerHTML = globalAssets.map(asset => `<option value="${escapeHTML(asset.ticker)}" label="${asset.label}"></option>`).join('');
+    }
+
+    function addAssetToSimulator(rawInput) {
+      if (!rawInput) return;
+      const tokens = String(rawInput)
+        .split(/[,;\s]+/)
+        .map(t => t.trim().toUpperCase())
+        .filter(Boolean);
+
+      if (tokens.length === 0) return;
+
+      let addedCount = 0;
+      const notFound = [];
+
+      tokens.forEach(ticker => {
+        const type = data.series.stock[ticker] ? 'stock' : data.series.fund[ticker] ? 'fund' : null;
+        if (!type) {
+          notFound.push(ticker);
+          return;
+        }
+        if (!simState.items.some(item => item.ticker === ticker)) {
+          simState.items.push({ ticker, type, weight: 0 });
+          addedCount++;
         }
       });
-    });
 
-    tbody.querySelectorAll('.sim-remove-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        removeAssetFromSimulator(e.target.dataset.ticker);
-      });
-    });
-  }
-
-  function renderSimKPIs(res) {
-    const grid = $('#simKpiGrid');
-    const isPos = res.alphaVsCdi >= 0;
-    const isSharpePos = res.sharpeRatio >= 0;
-
-    grid.innerHTML = `
-      <article class="stat-card sim-kpi-card">
-        <span class="stat-label">Patrimônio Final</span>
-        <strong class="stat-value" style="color: var(--accent);">R$ ${res.finalPortfolioVal.toFixed(2)}</strong>
-        <span class="stat-detail">Retorno: ${signed(res.portfolioReturnPct)}</span>
-      </article>
-      <article class="stat-card sim-kpi-card">
-        <span class="stat-label">Proventos Recebidos</span>
-        <strong class="stat-value" style="color: var(--positive);">R$ ${res.totalDividends.toFixed(2)}</strong>
-        <span class="stat-detail">${res.reinvest ? 'Reinvestimento Automático (Bola de Neve)' : 'Acumulado em Caixa'}</span>
-      </article>
-      <article class="stat-card sim-kpi-card">
-        <span class="stat-label">Desempenho (Alpha vs CDI)</span>
-        <strong class="stat-value ${isPos ? 'positive' : 'negative'}">${signed(res.alphaVsCdi)}</strong>
-        <span class="stat-detail">Diferença de capital: R$ ${res.alphaAmount.toFixed(2)}</span>
-      </article>
-      <article class="stat-card sim-kpi-card">
-        <span class="stat-label">Volatilidade Anualizada</span>
-        <strong class="stat-value" style="color: var(--ink);">${res.volatilityAnnualized.toFixed(2)}%</strong>
-        <span class="stat-detail">Oscilação histórica anual</span>
-      </article>
-      <article class="stat-card sim-kpi-card">
-        <span class="stat-label">Índice de Sharpe</span>
-        <strong class="stat-value ${isSharpePos ? 'positive' : 'negative'}">${res.sharpeRatio.toFixed(2)}</strong>
-        <span class="stat-detail">${res.sharpeRatio > 1.0 ? 'Excelente retorno por risco' : 'Retorno ajustado ao risco'}</span>
-      </article>
-      <article class="stat-card sim-kpi-card">
-        <span class="stat-label">Max Drawdown</span>
-        <strong class="stat-value negative">-${res.maxDrawdown.toFixed(2)}%</strong>
-        <span class="stat-detail">Maior queda do pico no período</span>
-      </article>
-    `;
-  }
-
-  function renderSimChart(res) {
-    const container = $('#simMainChart');
-    const series = res.portfolioTimeSeries;
-    if (!series || series.length < 2) {
-      container.innerHTML = '<div class="chart-empty">Dados insuficientes para renderizar a curva da carteira.</div>';
-      return;
-    }
-
-    const showCdi = $('#simBmCdi')?.checked ?? true;
-    const showIbov = $('#simBmIbov')?.checked ?? true;
-    const showIfix = $('#simBmIfix')?.checked ?? true;
-    const showDivs = $('#simBmDivs')?.checked ?? true;
-
-    const W = 900, H = 300, P = { l: 65, r: 20, t: 18, b: 38 };
-    const dateMin = Math.min(...series.map(s => s.dateIndex));
-    const dateMax = Math.max(...series.map(s => s.dateIndex));
-
-    const activeVals = series.flatMap(s => [
-      s.portfolioValue,
-      showCdi ? s.cdiValue : null,
-      showIbov ? s.ibovValue : null,
-      showIfix ? s.ifixValue : null
-    ].filter(validNumber));
-
-    let min = Math.min(...activeVals), max = Math.max(...activeVals);
-    if (min === max) { min -= 10; max += 10; }
-    const pad = (max - min) * 0.1;
-    min -= pad; max += pad;
-
-    const x = dateIndex => P.l + ((dateIndex - dateMin) / Math.max(1, dateMax - dateMin)) * (W - P.l - P.r);
-    const y = val => P.t + ((max - val) / (max - min)) * (H - P.t - P.b);
-
-    const pathPort = series.map((s, i) => `${i === 0 ? 'M' : 'L'}${x(s.dateIndex).toFixed(1)},${y(s.portfolioValue).toFixed(1)}`).join(' ');
-    const pathCdi = showCdi ? series.map((s, i) => `${i === 0 ? 'M' : 'L'}${x(s.dateIndex).toFixed(1)},${y(s.cdiValue).toFixed(1)}`).join(' ') : '';
-    const pathIbov = showIbov ? series.map((s, i) => `${i === 0 ? 'M' : 'L'}${x(s.dateIndex).toFixed(1)},${y(s.ibovValue).toFixed(1)}`).join(' ') : '';
-    const pathIfix = showIfix ? series.map((s, i) => `${i === 0 ? 'M' : 'L'}${x(s.dateIndex).toFixed(1)},${y(s.ifixValue).toFixed(1)}`).join(' ') : '';
-
-    // Proventos acumulados (linha pontilhada)
-    const maxDiv = Math.max(...series.map(s => s.accumDividends), 1);
-    const yDiv = val => H - P.b - (val / maxDiv) * (H - P.t - P.b - 60);
-    const pathDivs = showDivs ? series.map((s, i) => `${i === 0 ? 'M' : 'L'}${x(s.dateIndex).toFixed(1)},${yDiv(s.accumDividends).toFixed(1)}`).join(' ') : '';
-
-    $('#simChartLegend').innerHTML = `
-      <span class="legend-item"><i class="legend-dot"></i><span>Carteira: <strong>R$ ${res.finalPortfolioVal.toFixed(2)} (${signed(res.portfolioReturnPct)})</strong></span></span>
-      ${showCdi ? `<span class="legend-item"><i class="legend-dot secondary"></i><span>CDI: <strong>R$ ${res.finalCdiVal.toFixed(2)} (+${res.cdiReturnPct.toFixed(2)}%)</strong></span></span>` : ''}
-      ${showIbov ? `<span class="legend-item"><i class="legend-dot ibov"></i><span>IBOV: <strong>${signed(series.at(-1)?.ibovReturnPct)}</strong></span></span>` : ''}
-      ${showIfix ? `<span class="legend-item"><i class="legend-dot ifix"></i><span>IFIX: <strong>${signed(series.at(-1)?.ifixReturnPct)}</strong></span></span>` : ''}
-    `;
-
-    const ticks = Array.from({ length: 5 }, (_, index) => min + ((max - min) * index / 4));
-    const dateTicks = Array.from({ length: 4 }, (_, index) => Math.round(dateMin + ((dateMax - dateMin) * index / 3)));
-
-    container.innerHTML = `
-      <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true" id="simSvgChart">
-        ${ticks.map(value => `<line class="chart-grid" x1="${P.l}" x2="${W - P.r}" y1="${y(value)}" y2="${y(value)}"/><text class="chart-axis-label" x="${P.l - 8}" y="${y(value) + 4}" text-anchor="end">R$ ${Math.round(value)}</text>`).join('')}
-        ${dateTicks.map(index => {
-          const d = data.dates[index];
-          if (!d) return '';
-          return `<text class="chart-axis-label" x="${x(index)}" y="${H - 10}" text-anchor="middle">${escapeHTML(d.slice(5).replace('-', '/'))}</text>`;
-        }).join('')}
-        ${showDivs ? `<path class="chart-line divs" d="${pathDivs}" stroke-dasharray="4 3"/>` : ''}
-        ${showIbov ? `<path class="chart-line ibov" d="${pathIbov}"/>` : ''}
-        ${showIfix ? `<path class="chart-line ifix" d="${pathIfix}"/>` : ''}
-        ${showCdi ? `<path class="chart-line secondary" d="${pathCdi}"/>` : ''}
-        <path class="chart-line" d="${pathPort}"/>
-      </svg>
-    `;
-
-    const svg = $('#simSvgChart');
-    const tooltip = $('#simChartTooltip');
-
-    if (svg && tooltip) {
-      const handleMove = (e) => {
-        const rect = svg.getBoundingClientRect();
-        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-        const relativeX = clientX - rect.left;
-        const ratio = relativeX / rect.width;
-        if (ratio < 0 || ratio > 1) return;
-
-        const dataIdx = Math.round(ratio * (series.length - 1));
-        const point = series[dataIdx];
-        if (!point) return;
-
-        tooltip.hidden = false;
-        tooltip.style.left = `${Math.min(rect.width - 170, Math.max(10, relativeX - 85))}px`;
-        tooltip.style.top = `15px`;
-        tooltip.innerHTML = `
-          <strong>${escapeHTML(point.date)}</strong><br>
-          Carteira: <strong>R$ ${point.portfolioValue.toFixed(2)} (${signed(point.portfolioReturnPct)})</strong><br>
-          ${showCdi ? `CDI: R$ ${point.cdiValue.toFixed(2)} (+${point.cdiReturnPct.toFixed(2)}%)<br>` : ''}
-          ${showIbov ? `IBOV: ${signed(point.ibovReturnPct)}<br>` : ''}
-          ${showIfix ? `IFIX: ${signed(point.ifixReturnPct)}<br>` : ''}
-          ${showDivs ? `Proventos: R$ ${point.accumDividends.toFixed(2)}` : ''}
-        `;
-      };
-
-      svg.addEventListener('mousemove', handleMove);
-      svg.addEventListener('mouseleave', () => { if (tooltip) tooltip.hidden = true; });
-    }
-  }
-
-  function renderSimInsights(res) {
-    const card = $('#simInsightsSection');
-    const insights = [];
-
-    // 1. Bola de Neve / Compounding Check
-    const cheapestAsset = res.assetStats.reduce((best, a) => (!best || a.endPrice < best.endPrice) ? a : best, null);
-    if (cheapestAsset) {
-      const canBuyUnits = Math.floor(res.totalDividends / cheapestAsset.endPrice);
-      if (canBuyUnits >= 1) {
-        insights.push({
-          type: 'success',
-          title: '🎉 Ponto de Inflexão Atingido (Bola de Neve)',
-          text: `Os proventos acumulados (R$ ${res.totalDividends.toFixed(2)}) já foram suficientes para comprar <strong>${canBuyUnits} nova(s) cota(s) de ${cheapestAsset.ticker}</strong> sem aportes adicionais do seu bolso.`
-        });
-      } else {
-        const needed = cheapestAsset.endPrice - res.totalDividends;
-        insights.push({
-          type: 'info',
-          title: '⏳ Progresso da Bola de Neve',
-          text: `Seus proventos cobriram R$ ${res.totalDividends.toFixed(2)}. Faltam <strong>R$ ${needed.toFixed(2)}</strong> em proventos para comprar 1 cota automática de ${cheapestAsset.ticker}.`
-        });
+      if (addedCount > 0) {
+        rebalanceSimWeights();
+        showToast(`${addedCount} ativo(s) adicionado(s) à simulação.`);
+        updateSimulator();
+      }
+      if (notFound.length > 0) {
+        showToast(`Ativo(s) não encontrado(s): ${notFound.join(', ')}`, 'warning');
       }
     }
 
-    // 2. Análise de Risco & Concentração por Setor
-    const sectorMap = {};
-    res.assetStats.forEach(a => {
-      const cat = a.category || (a.type === 'stock' ? 'Ações' : 'FIIs');
-      if (!sectorMap[cat]) sectorMap[cat] = { weight: 0, tickers: [] };
-      sectorMap[cat].weight += a.weightPct;
-      sectorMap[cat].tickers.push(a.ticker);
-    });
+    function removeAssetFromSimulator(ticker) {
+      if (simState.items.length <= 1) {
+        showToast('A simulação exige pelo menos 1 ativo.', 'warning');
+        return;
+      }
+      simState.items = simState.items.filter(item => item.ticker !== ticker);
+      rebalanceSimWeights();
+      updateSimulator();
+    }
 
-    const highSector = Object.entries(sectorMap).find(([cat, val]) => val.weight > 35);
-    if (highSector) {
-      insights.push({
-        type: 'warning',
-        title: `⚠️ Concentração Setorial Elevada (${highSector[0]})`,
-        text: `Sua carteira possui <strong>${highSector[1].weight.toFixed(0)}% de peso no setor ${highSector[0]}</strong> (${highSector[1].tickers.join(', ')}). Considere diversificar entre outros segmentos para proteger o patrimônio contra choques macroeconômicos.`
+    function getHumanSector(ticker, rawCategory, type) {
+      const t = String(ticker).toUpperCase();
+      if (['PETR4', 'PETR3', 'RECV3', 'PRIO3', 'RRRP3', 'VBBR3', 'UGPA3'].includes(t)) return 'Petróleo, Gás & Biocombustíveis';
+      if (['ITUB4', 'BBDC4', 'SANB11', 'BBAS3', 'BPAC11', 'ITSA4'].includes(t)) return 'Bancos & Serviços Financeiros';
+      if (['VALE3', 'CSNA3', 'USIM5', 'GGBR4', 'GOAU4'].includes(t)) return 'Mineração, Siderurgia & Metalurgia';
+      if (['WEGE3', 'EMBR3', 'ELET3', 'CPFE3', 'TAEE11', 'EQTL3'].includes(t)) return 'Energia Elétrica & Bens Industriais';
+      if (['MGLU3', 'LREN3', 'ABEV3', 'JBSS3', 'BRFS3', 'NTCO3'].includes(t)) return 'Consumo & Alimentos';
+      if (['HGLG11', 'BTLG11', 'XPLG11', 'ALZR11'].includes(t)) return 'FII Logística & Galpões';
+      if (['KNCR11', 'KNHY11', 'HGCR11', 'CPTS11', 'RBRR11'].includes(t)) return 'FII Papel / Crédito Imobiliário';
+      if (['HGBS11', 'VISC11', 'XPML11', 'MALL11'].includes(t)) return 'FII Shoppings';
+      if (['HGRE11', 'BRCR11', 'PVBI11', 'JSRE11'].includes(t)) return 'FII Lajes Corporativas';
+      
+      if (rawCategory && !rawCategory.startsWith('STAR_')) return rawCategory;
+      return type === 'stock' ? 'Ações Diversas' : 'FIIs Diversos';
+    }
+
+    function calculateSmartWeights() {
+      if (simState.items.length === 0) return;
+      const itemScores = simState.items.map(item => {
+        const allPoints = decodeSeries(item.type, item.ticker);
+        const points = filterPeriod(allPoints, simState.period);
+        const latest = points.at(-1) || {};
+
+        const scoreVal = validNumber(latest.score) ? latest.score : 5.0;
+        let valuationFactor = 1.0;
+        if (item.type === 'stock') {
+          const graham = validNumber(latest.graham) ? latest.graham : null;
+          const bazin = validNumber(latest.bazin) ? latest.bazin : null;
+          const curPrice = latest.price || 1;
+          if (graham && curPrice < graham && bazin && curPrice < bazin) valuationFactor = 1.35;
+          else if ((graham && curPrice < graham) || (bazin && curPrice < bazin)) valuationFactor = 1.15;
+        } else {
+          const pvp = validNumber(latest.pvp) ? latest.pvp : 1;
+          if (pvp < 1.0 && pvp > 0.6) valuationFactor = 1.0 + (1.0 - pvp) * 1.5;
+        }
+
+        const dyVal = validNumber(latest.dy) ? latest.dy : 0;
+        const dyFactor = dyVal > 0 ? Math.min(1.4, Math.max(0.6, dyVal / 7.5)) : 0.6;
+
+        const composite = scoreVal * valuationFactor * dyFactor;
+        return { ticker: item.ticker, composite };
       });
-    } else {
-      insights.push({
-        type: 'success',
-        title: '🛡️ Diversificação Setorial Recomendada',
-        text: `Sua carteira apresenta boa distribuição entre setores (${Object.keys(sectorMap).join(', ')}), amortecendo a volatilidade.`
+
+      const totalComposite = itemScores.reduce((sum, s) => sum + s.composite, 0);
+      if (totalComposite <= 0) { rebalanceSimWeightsEqually(); return; }
+
+      const minW = simState.items.length > 1 ? 10 : 100;
+      const maxW = simState.items.length > 1 ? 65 : 100;
+
+      let clampedWeights = simState.items.map(item => {
+        const match = itemScores.find(s => s.ticker === item.ticker);
+        const rawW = Math.round((match.composite / totalComposite) * 100);
+        return { ticker: item.ticker, weight: Math.max(minW, Math.min(maxW, rawW)) };
+      });
+
+      const clampedTotal = clampedWeights.reduce((s, w) => s + w.weight, 0);
+      clampedWeights.forEach(w => { w.weight = Math.round((w.weight / clampedTotal) * 100); });
+
+      const finalSum = clampedWeights.reduce((s, w) => s + w.weight, 0);
+      if (finalSum !== 100 && clampedWeights.length > 0) clampedWeights[0].weight += (100 - finalSum);
+
+      clampedWeights.forEach(cw => {
+        const item = simState.items.find(i => i.ticker === cw.ticker);
+        if (item) item.weight = cw.weight;
       });
     }
 
-    // 3. Custo de Oportunidade: Ativo Estrela vs Arrasto
-    if (res.assetStats.length > 1) {
-      const star = res.assetStats.reduce((best, a) => a.assetReturn > best.assetReturn ? a : best, res.assetStats[0]);
+    function rebalanceSimWeights() {
+      if (simState.smartAlloc) calculateSmartWeights();
+      else rebalanceSimWeightsEqually();
+    }
+
+    function rebalanceSimWeightsEqually() {
+      const n = simState.items.length;
+      if (n === 0) return;
+      const equalWeight = Math.floor(100 / n);
+      let remainder = 100 - (equalWeight * n);
+      simState.items.forEach((item, index) => {
+        item.weight = equalWeight + (index === 0 ? remainder : 0);
+      });
+    }
+
+    // Newton-Raphson Solver para XIRR (Internal Rate of Return)
+    function calculateXIRR(cashflows) {
+      if (!cashflows || cashflows.length < 2) return 0;
+      const d0 = cashflows[0].date;
+
+      const npv = (rate) => {
+        return cashflows.reduce((sum, cf) => {
+          const years = (cf.date - d0) / (365 * 86400000);
+          return sum + cf.amount / Math.pow(1 + rate, years);
+        }, 0);
+      };
+
+      const derivNpv = (rate) => {
+        return cashflows.reduce((sum, cf) => {
+          const years = (cf.date - d0) / (365 * 86400000);
+          if (years === 0) return sum;
+          return sum - years * cf.amount / Math.pow(1 + rate, years + 1);
+        }, 0);
+      };
+
+      let rate = 0.10;
+      for (let i = 0; i < 50; i++) {
+        const fVal = npv(rate);
+        const fDeriv = derivNpv(rate);
+        if (Math.abs(fDeriv) < 1e-7) break;
+        const nextRate = rate - fVal / fDeriv;
+        if (Math.abs(nextRate - rate) < 1e-6) return nextRate * 100;
+        rate = nextRate;
+      }
+      return rate * 100;
+    }
+
+    function runSimBacktest() {
+      if (simState.items.length === 0) return null;
+
+      const totalWeight = simState.items.reduce((a, b) => a + (b.weight || 0), 0);
+      const normalizedItems = simState.items.map(item => ({
+        ...item,
+        normalizedWeight: totalWeight > 0 ? (item.weight || 0) / totalWeight : 1 / simState.items.length
+      }));
+
+      const assetSeries = normalizedItems.map(item => {
+        const allPoints = decodeSeries(item.type, item.ticker);
+        const points = filterPeriod(allPoints, simState.period);
+        return { ...item, allPoints, points };
+      }).filter(a => a.points.length > 0);
+
+      if (assetSeries.length === 0) return null;
+
+      // Janela Comum de datas entre todos os ativos
+      const validDateIndexes = Array.from(
+        new Set(assetSeries.flatMap(a => a.points.map(p => p.dateIndex)))
+      ).sort((a, b) => a - b);
+
+      if (validDateIndexes.length < 2) return null;
+
+      const startDateStr = data.dates[validDateIndexes[0]];
+      const endDateStr = data.dates[validDateIndexes.at(-1)];
+      const calendarDays = Math.max(1, Math.round((new Date(endDateStr) - new Date(startDateStr)) / (86400000)));
+      const tradingDays = validDateIndexes.length;
+
+      const initialCapital = simState.initialCapital;
+      const isIntegerMode = simState.shareMode === 'integer';
+      const isNetTaxMode = simState.taxMode === 'net';
+
+      const priceLookups = assetSeries.map(a => {
+        const map = new Map();
+        let lastPrice = a.points.find(p => validNumber(p.price))?.price || 1;
+        a.points.forEach(p => {
+          if (validNumber(p.price)) lastPrice = p.price;
+          map.set(p.dateIndex, lastPrice);
+        });
+        return { ticker: a.ticker, map, fallbackPrice: lastPrice };
+      });
+
+      // Posições dos ativos e caixa residual
+      let portfolioCash = 0;
+      const assetPositions = assetSeries.map(a => {
+        const lookup = priceLookups.find(l => l.ticker === a.ticker);
+        const startPrice = lookup?.map.get(validDateIndexes[0]) || lookup?.fallbackPrice || 1;
+        const allocatedCapital = initialCapital * a.normalizedWeight;
+
+        let initialShares = 0;
+        let unallocatedCash = 0;
+        if (isIntegerMode) {
+          initialShares = Math.floor(allocatedCapital / startPrice);
+          unallocatedCash = allocatedCapital - (initialShares * startPrice);
+          portfolioCash += unallocatedCash;
+        } else {
+          initialShares = allocatedCapital / startPrice;
+        }
+
+        return {
+          ticker: a.ticker,
+          type: a.type,
+          weightPct: a.normalizedWeight * 100,
+          allocatedCapital,
+          startPrice,
+          endPrice: startPrice,
+          shares: initialShares,
+          totalDividends: 0,
+          unallocatedCash,
+          category: getHumanSector(a.ticker, a.points.at(-1)?.category, a.type)
+        };
+      });
+
+      // Rastreamento de Fluxos de Caixa para XIRR e TWR
+      const cashflows = [
+        { date: new Date(startDateStr), amount: -initialCapital }
+      ];
+      let totalCapitalInvested = initialCapital;
+
+      // Selic/CDI para Renda Fixa e Caixa
+      let selicPoints = data.economy.map(([dateIndex, selic]) => ({ dateIndex, date: data.dates[dateIndex], selic }));
+      if (state.mode === 'local') selicPoints = selicPoints.filter(p => p.date >= '2026-03-13');
+      selicPoints = filterPeriod(selicPoints, simState.period);
+
+      // Benchmarks IBOV & IFIX
+      const ibovTickers = Object.keys(data.series.stock).slice(0, 10);
+      const ifixTickers = Object.keys(data.series.fund).slice(0, 10);
+      const ibovSeries = ibovTickers.map(t => filterPeriod(decodeSeries('stock', t), simState.period)).filter(p => p.length > 0);
+      const ifixSeries = ifixTickers.map(t => filterPeriod(decodeSeries('fund', t), simState.period)).filter(p => p.length > 0);
+
+      let accumCdiFactor = 1.0;
+      let prevCdiDateIndex = null;
+      let totalB3Costs = 0;
+      let rebalanceCount = 0;
+      const twrFactors = [];
+
+      const portfolioTimeSeries = [];
+
+      validDateIndexes.forEach((dateIdx, i) => {
+        const dateStr = data.dates[dateIdx];
+        const currentDateObj = new Date(dateStr);
+
+        // Rendimento do Caixa pelo CDI
+        const selicObj = selicPoints.find(s => s.dateIndex === dateIdx);
+        if (selicObj && validNumber(selicObj.selic)) {
+          const dailySelicRate = Math.pow(1 + (selicObj.selic / 100), 1 / 252) - 1;
+          if (prevCdiDateIndex !== null) {
+            accumCdiFactor *= (1 + dailySelicRate);
+            portfolioCash *= (1 + dailySelicRate);
+          }
+          prevCdiDateIndex = dateIdx;
+        }
+
+        // DCA (Aporte Recorrente)
+        let dcaAddedToday = 0;
+        if (simState.dcaCapital > 0 && simState.dcaFreq !== 'none' && i > 0) {
+          const isMonthlyDca = simState.dcaFreq === 'monthly' && i % 21 === 0;
+          const isQuarterlyDca = simState.dcaFreq === 'quarterly' && i % 63 === 0;
+
+          if (isMonthlyDca || isQuarterlyDca) {
+            const yearsElapsed = i / 252;
+            const adjustedDca = simState.dcaCapital * Math.pow(1 + (simState.dcaInflation / 100), yearsElapsed);
+            dcaAddedToday = adjustedDca;
+            totalCapitalInvested += dcaAddedToday;
+            cashflows.push({ date: currentDateObj, amount: -dcaAddedToday });
+
+            // Distribui aporte proporcional aos pesos alvo
+            assetPositions.forEach(pos => {
+              const lookup = priceLookups.find(l => l.ticker === pos.ticker);
+              const price = lookup?.map.get(dateIdx) || pos.startPrice;
+              const assetDca = dcaAddedToday * (pos.weightPct / 100);
+
+              if (isIntegerMode && price > 0) {
+                const bought = Math.floor(assetDca / price);
+                pos.shares += bought;
+                portfolioCash += (assetDca - bought * price);
+              } else if (price > 0) {
+                pos.shares += assetDca / price;
+              }
+            });
+          }
+        }
+
+        // Pagamento de Proventos nas Datas Efetivas
+        assetSeries.forEach(a => {
+          const pos = assetPositions.find(p => p.ticker === a.ticker);
+          if (!pos) return;
+          const point = a.points.find(p => p.dateIndex === dateIdx);
+          if (!point || !validNumber(point.dy) || point.dy <= 0 || !validNumber(point.price)) return;
+
+          if (i > 0) {
+            const prevPoint = a.points[a.points.indexOf(point) - 1];
+            if (prevPoint && validNumber(prevPoint.price) && point.dy > prevPoint.dy) {
+              const divPerShare = (point.price * (point.dy / 100)) / 12;
+              const grossDiv = pos.shares * divPerShare;
+              const netDiv = isNetTaxMode ? grossDiv * 0.85 : grossDiv; // 15% IR retido se Net
+              pos.totalDividends += netDiv;
+
+              if (simState.reinvest && point.price > 0) {
+                if (isIntegerMode) {
+                  const bought = Math.floor(netDiv / point.price);
+                  pos.shares += bought;
+                  portfolioCash += (netDiv - bought * point.price);
+                } else {
+                  pos.shares += netDiv / point.price;
+                }
+              } else {
+                portfolioCash += netDiv;
+              }
+            }
+          }
+        });
+
+        // Rebalanceamento periódico ou por desvio > 5 p.p.
+        let shouldRebalance = false;
+        if (simState.rebalanceStrategy === 'monthly' && i > 0 && i % 21 === 0) shouldRebalance = true;
+        else if (simState.rebalanceStrategy === 'quarterly' && i > 0 && i % 63 === 0) shouldRebalance = true;
+        else if (simState.rebalanceStrategy === 'annual' && i > 0 && i % 252 === 0) shouldRebalance = true;
+        else if (simState.rebalanceStrategy === 'deviation' && i > 0) {
+          let currentTotalVal = portfolioCash;
+          assetPositions.forEach(pos => {
+            const lookup = priceLookups.find(l => l.ticker === pos.ticker);
+            const price = lookup?.map.get(dateIdx) || pos.startPrice;
+            currentTotalVal += pos.shares * price;
+          });
+
+          const hasDeviation = assetPositions.some(pos => {
+            const lookup = priceLookups.find(l => l.ticker === pos.ticker);
+            const price = lookup?.map.get(dateIdx) || pos.startPrice;
+            const currentWeightPct = (pos.shares * price / currentTotalVal) * 100;
+            return Math.abs(currentWeightPct - pos.weightPct) > 5;
+          });
+          if (hasDeviation) shouldRebalance = true;
+        }
+
+        if (shouldRebalance) {
+          rebalanceCount++;
+          let totalValToRebalance = portfolioCash;
+          assetPositions.forEach(pos => {
+            const lookup = priceLookups.find(l => l.ticker === pos.ticker);
+            const price = lookup?.map.get(dateIdx) || pos.startPrice;
+            totalValToRebalance += pos.shares * price;
+          });
+
+          let tradedVolumeToday = 0;
+          assetPositions.forEach(pos => {
+            const lookup = priceLookups.find(l => l.ticker === pos.ticker);
+            const price = lookup?.map.get(dateIdx) || pos.startPrice;
+            const targetVal = totalValToRebalance * (pos.weightPct / 100);
+            const currentVal = pos.shares * price;
+            const deltaVal = targetVal - currentVal;
+            tradedVolumeToday += Math.abs(deltaVal);
+
+            if (isIntegerMode && price > 0) {
+              pos.shares = Math.floor(targetVal / price);
+            } else if (price > 0) {
+              pos.shares = targetVal / price;
+            }
+          });
+
+          if (isNetTaxMode) {
+            const b3Fees = tradedVolumeToday * (0.0003 + 0.0010); // 0.03% emolumentos + 0.10% slippage
+            totalB3Costs += b3Fees;
+            portfolioCash = Math.max(0, portfolioCash - b3Fees);
+          }
+        }
+
+        // Avaliação de Patrimônio no Pregão
+        let totalValAtDate = portfolioCash;
+        assetPositions.forEach(pos => {
+          const lookup = priceLookups.find(l => l.ticker === pos.ticker);
+          const priceAtDate = lookup ? (lookup.map.get(dateIdx) || lookup.fallbackPrice) : pos.startPrice;
+          pos.endPrice = priceAtDate;
+          totalValAtDate += pos.shares * priceAtDate;
+        });
+
+        // Cálculo de TWR
+        if (i > 0) {
+          const prevVal = portfolioTimeSeries[i - 1].portfolioValue;
+          const netFlow = dcaAddedToday;
+          const subPeriodReturn = (totalValAtDate - (prevVal + netFlow)) / (prevVal + netFlow);
+          twrFactors.push(1 + subPeriodReturn);
+        }
+
+        // Benchmarks
+        let ibovVal = initialCapital;
+        if (ibovSeries.length > 0) {
+          const ratios = ibovSeries.map(s => {
+            const firstP = s[0]?.price || 1;
+            const pt = s.find(p => p.dateIndex === dateIdx) || s.at(-1);
+            return (pt?.price || firstP) / firstP;
+          });
+          ibovVal = initialCapital * (ratios.reduce((a, b) => a + b, 0) / ibovSeries.length);
+        }
+
+        let ifixVal = initialCapital;
+        if (ifixSeries.length > 0) {
+          const ratios = ifixSeries.map(s => {
+            const firstP = s[0]?.price || 1;
+            const pt = s.find(p => p.dateIndex === dateIdx) || s.at(-1);
+            return (pt?.price || firstP) / ifixSeries.length;
+          });
+          ifixVal = initialCapital * ratios.reduce((a, b) => a + b, 0);
+        }
+
+        const cdiValAtDate = initialCapital * accumCdiFactor;
+
+        portfolioTimeSeries.push({
+          dateIndex: dateIdx,
+          date: dateStr,
+          portfolioValue: totalValAtDate,
+          portfolioReturnPct: ((totalValAtDate - totalCapitalInvested) / totalCapitalInvested) * 100,
+          cdiValue: cdiValAtDate,
+          cdiReturnPct: ((cdiValAtDate - initialCapital) / initialCapital) * 100,
+          ibovValue: ibovVal,
+          ibovReturnPct: ((ibovVal - initialCapital) / initialCapital) * 100,
+          ifixValue: ifixVal,
+          ifixReturnPct: ((ifixVal - initialCapital) / initialCapital) * 100,
+          accumDividends: assetPositions.reduce((sum, p) => sum + p.totalDividends, 0)
+        });
+      });
+
+      const finalPortfolioVal = portfolioTimeSeries.at(-1)?.portfolioValue || initialCapital;
+      const finalCdiVal = portfolioTimeSeries.at(-1)?.cdiValue || initialCapital;
+      const totalDividends = assetPositions.reduce((sum, a) => sum + a.totalDividends, 0);
+
+      cashflows.push({ date: new Date(endDateStr), amount: finalPortfolioVal });
+      const xirrPct = calculateXIRR(cashflows);
+      const twrPct = (twrFactors.reduce((prod, f) => prod * f, 1) - 1) * 100;
+
+      // Retorno Composto Anualizado (CAGR)
+      const cagr = (Math.pow(finalPortfolioVal / Math.max(1, totalCapitalInvested), 365 / calendarDays) - 1) * 100;
+
+      // Métricas de Risco Quantitativo
+      const dailyReturns = [];
+      for (let i = 1; i < portfolioTimeSeries.length; i++) {
+        const prev = portfolioTimeSeries[i - 1].portfolioValue;
+        const curr = portfolioTimeSeries[i].portfolioValue;
+        if (prev > 0) dailyReturns.push((curr - prev) / prev);
+      }
+
+      let volatilityAnnualized = 0;
+      let downsideDeviation = 0;
+      if (dailyReturns.length > 1) {
+        const meanR = dailyReturns.reduce((a, b) => a + b, 0) / dailyReturns.length;
+        const varR = dailyReturns.reduce((s, r) => s + Math.pow(r - meanR, 2), 0) / (dailyReturns.length - 1);
+        volatilityAnnualized = Math.sqrt(varR) * Math.sqrt(252) * 100;
+
+        const negativeReturns = dailyReturns.filter(r => r < 0);
+        if (negativeReturns.length > 0) {
+          const downsideVar = negativeReturns.reduce((s, r) => s + Math.pow(r, 2), 0) / dailyReturns.length;
+          downsideDeviation = Math.sqrt(downsideVar) * Math.sqrt(252) * 100;
+        }
+      }
+
+      // Detalhamento do Max Drawdown
+      let maxPeak = -Infinity;
+      let maxDrawdown = 0;
+      let peakDate = startDateStr;
+      let troughDate = startDateStr;
+
+      portfolioTimeSeries.forEach(s => {
+        if (s.portfolioValue > maxPeak) {
+          maxPeak = s.portfolioValue;
+          peakDate = s.date;
+        }
+        const dd = maxPeak > 0 ? ((maxPeak - s.portfolioValue) / maxPeak) * 100 : 0;
+        if (dd > maxDrawdown) {
+          maxDrawdown = dd;
+          troughDate = s.date;
+        }
+      });
+
+      const portfolioReturnPct = ((finalPortfolioVal - totalCapitalInvested) / totalCapitalInvested) * 100;
+      const cdiReturnPct = ((finalCdiVal - initialCapital) / initialCapital) * 100;
+      const excessReturnVsCdi = portfolioReturnPct - cdiReturnPct;
+
+      // Sharpe Ratio & Sortino Ratio & Calmar Ratio
+      const annualizedCdiReturn = (Math.pow(1 + (cdiReturnPct / 100), 252 / Math.max(1, tradingDays)) - 1) * 100;
+      const sharpeRatio = volatilityAnnualized > 0 ? (cagr - annualizedCdiReturn) / volatilityAnnualized : 0;
+      const sortinoRatio = downsideDeviation > 0 ? (cagr - annualizedCdiReturn) / downsideDeviation : 0;
+      const calmarRatio = maxDrawdown > 0 ? cagr / maxDrawdown : 0;
+
+      // Atribuição de Performance dos Ativos
+      const assetStats = assetPositions.map(pos => {
+        const finalAssetValue = pos.shares * pos.endPrice;
+        const capitalGain = finalAssetValue - pos.allocatedCapital;
+        const netContribPp = ((finalAssetValue + pos.totalDividends - pos.allocatedCapital) / totalCapitalInvested) * 100;
+
+        return {
+          ...pos,
+          finalAssetValue,
+          capitalGain,
+          netContribPp,
+          assetReturn: ((finalAssetValue + pos.totalDividends - pos.allocatedCapital) / pos.allocatedCapital) * 100
+        };
+      });
+
+      // Herfindahl-Hirschman Index (HHI)
+      const hhi = assetStats.reduce((sum, a) => sum + Math.pow(a.weightPct / 100, 2), 0);
+      const nEffective = hhi > 0 ? 1 / hhi : assetStats.length;
+
+      // Matriz de Correlação Diária entre Ativos
+      const correlationMatrix = assetStats.map((a1) => {
+        const s1 = assetSeries.find(s => s.ticker === a1.ticker);
+        const r1 = [];
+        for (let k = 1; k < (s1?.points.length || 0); k++) {
+          const p0 = s1.points[k - 1].price, p1 = s1.points[k].price;
+          if (p0 > 0 && p1 > 0) r1.push((p1 - p0) / p0);
+        }
+
+        const row = assetStats.map((a2) => {
+          if (a1.ticker === a2.ticker) return 1.0;
+          const s2 = assetSeries.find(s => s.ticker === a2.ticker);
+          const r2 = [];
+          for (let k = 1; k < (s2?.points.length || 0); k++) {
+            const p0 = s2.points[k - 1].price, p1 = s2.points[k].price;
+            if (p0 > 0 && p1 > 0) r2.push((p1 - p0) / p0);
+          }
+
+          const len = Math.min(r1.length, r2.length);
+          if (len < 2) return 0;
+
+          const m1 = r1.slice(0, len).reduce((a, b) => a + b, 0) / len;
+          const m2 = r2.slice(0, len).reduce((a, b) => a + b, 0) / len;
+
+          let num = 0, d1 = 0, d2 = 0;
+          for (let k = 0; k < len; k++) {
+            const diff1 = r1[k] - m1, diff2 = r2[k] - m2;
+            num += diff1 * diff2;
+            d1 += diff1 * diff1;
+            d2 += diff2 * diff2;
+          }
+          return (d1 > 0 && d2 > 0) ? num / Math.sqrt(d1 * d2) : 0;
+        });
+        return { ticker: a1.ticker, row };
+      });
+
+      const result = {
+        initialCapital,
+        totalCapitalInvested,
+        calendarDays,
+        tradingDays,
+        startDate: startDateStr,
+        endDate: endDateStr,
+        period: simState.period,
+        reinvest: simState.reinvest,
+        smartAlloc: simState.smartAlloc,
+        shareMode: simState.shareMode,
+        taxMode: simState.taxMode,
+        rebalanceStrategy: simState.rebalanceStrategy,
+        rebalanceCount,
+        totalB3Costs,
+        finalPortfolioVal,
+        finalCdiVal,
+        totalDividends,
+        portfolioReturnPct,
+        cdiReturnPct,
+        excessReturnVsCdi,
+        twrPct,
+        xirrPct,
+        cagr,
+        volatilityAnnualized,
+        downsideDeviation,
+        sharpeRatio,
+        sortinoRatio,
+        calmarRatio,
+        maxDrawdown,
+        peakDate,
+        troughDate,
+        hhi,
+        nEffective,
+        assetStats,
+        portfolioTimeSeries,
+        correlationMatrix
+      };
+
+      cachedLastBacktestResult = result;
+      return result;
+    }
+
+    function updateSimulator() {
+      const res = runSimBacktest();
+      renderSimTable();
+      if (!res) {
+        $('#simKpiGrid').innerHTML = '<div class="stat-card">Sem dados suficientes para simulação no período selecionado.</div>';
+        $('#simMainChart').innerHTML = '';
+        $('#simInsightsSection').innerHTML = '';
+        return;
+      }
+      renderSimExecSummary(res);
+      renderSimKPIs(res);
+      renderSimCorrelationMatrix(res);
+      renderSimChart(res);
+      renderSimInsights(res);
+    }
+
+    function renderSimExecSummary(res) {
+      $('#simExecPeriodLabel').textContent = `${escapeHTML(res.startDate)} a ${escapeHTML(res.endDate)} (${res.calendarDays}d / ${res.tradingDays} pregões)`;
+      $('#simExecCapitalLabel').textContent = `R$ ${res.totalCapitalInvested.toFixed(2)}`;
+      $('#simExecFinalValLabel').textContent = `R$ ${res.finalPortfolioVal.toFixed(2)}`;
+      $('#simExecReturnLabel').textContent = `${signed(res.portfolioReturnPct)} (TWR: ${signed(res.twrPct)} | XIRR: ${signed(res.xirrPct)})`;
+    }
+
+    function renderSimTable() {
+      const tbody = $('#simAssetsTbody');
+      const res = cachedLastBacktestResult;
+
+      const totalWeightSum = simState.items.reduce((s, i) => s + (i.weight || 0), 0);
+      const weightLabel = $('#simTotalWeightLabel');
+      const alertBox = $('#simWeightAlert');
+
+      if (totalWeightSum !== 100) {
+        weightLabel.style.color = 'var(--negative)';
+        weightLabel.textContent = `${totalWeightSum}% ⚠️`;
+        alertBox.textContent = `Alerta: Os pesos somam ${totalWeightSum}%. Rebalanceie para 100% ou ative a Alocação Inteligente.`;
+        alertBox.style.color = 'var(--negative)';
+      } else {
+        weightLabel.style.color = 'var(--ink)';
+        weightLabel.textContent = '100%';
+        alertBox.textContent = 'Ajuste os pesos % para somar exatamente 100%.';
+        alertBox.style.color = 'var(--muted)';
+      }
+
+      tbody.innerHTML = simState.items.map(item => {
+        const stat = res?.assetStats.find(a => a.ticker === item.ticker);
+        return `
+          <tr>
+            <td><strong>${escapeHTML(item.ticker)}</strong></td>
+            <td><span class="news-tag ${item.type === 'stock' ? 'mercado' : 'proventos'}">${escapeHTML(stat ? stat.category : (item.type === 'stock' ? 'Ação' : 'FII'))}</span></td>
+            <td class="center"><span class="sim-weight-cell"><input type="number" class="sim-weight-input" data-ticker="${escapeHTML(item.ticker)}" value="${Math.round(item.weight)}" min="0" max="100">%</span></td>
+            <td class="num">R$ ${stat ? stat.allocatedCapital.toFixed(2) : '—'}</td>
+            <td class="num">${stat ? (simState.shareMode === 'integer' ? stat.shares.toFixed(0) : stat.shares.toFixed(2)) : '—'}</td>
+            <td class="num" style="color: var(--positive); font-weight: 750;">R$ ${stat ? stat.totalDividends.toFixed(2) : '—'}</td>
+            <td class="num ${stat && stat.capitalGain >= 0 ? 'positive' : 'negative'}">R$ ${stat ? stat.capitalGain.toFixed(2) : '—'}</td>
+            <td class="num" style="font-weight: 750;">${stat ? signed(stat.netContribPp) : '—'} p.p.</td>
+            <td class="num" style="font-weight: 850;">R$ ${stat ? stat.finalAssetValue.toFixed(2) : '—'}</td>
+            <td class="center"><button type="button" class="sim-remove-btn" data-ticker="${escapeHTML(item.ticker)}">✕</button></td>
+          </tr>
+        `;
+      }).join('');
+
+      if (res) {
+        $('#simTotalAllocatedLabel').textContent = `R$ ${res.totalCapitalInvested.toFixed(2)}`;
+        $('#simTotalDividendsLabel').textContent = `R$ ${res.totalDividends.toFixed(2)}`;
+        const totalCapGain = res.assetStats.reduce((s, a) => s + a.capitalGain, 0);
+        $('#simTotalCapGainLabel').textContent = `R$ ${totalCapGain.toFixed(2)}`;
+        $('#simTotalFinalValLabel').textContent = `R$ ${res.finalPortfolioVal.toFixed(2)}`;
+      }
+
+      tbody.querySelectorAll('.sim-weight-input').forEach(input => {
+        input.addEventListener('change', (e) => {
+          const ticker = e.target.dataset.ticker;
+          const val = Math.max(0, Math.min(100, parseFloat(e.target.value) || 0));
+          const item = simState.items.find(i => i.ticker === ticker);
+          if (item) {
+            item.weight = val;
+            updateSimulator();
+          }
+        });
+      });
+
+      tbody.querySelectorAll('.sim-remove-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          removeAssetFromSimulator(e.target.dataset.ticker);
+        });
+      });
+    }
+
+    function renderSimKPIs(res) {
+      const grid = $('#simKpiGrid');
+      const isExcessPos = res.excessReturnVsCdi >= 0;
+
+      grid.innerHTML = `
+        <article class="stat-card sim-kpi-card">
+          <span class="stat-label">Patrimônio Líquido Final</span>
+          <strong class="stat-value" style="color: var(--accent);">R$ ${res.finalPortfolioVal.toFixed(2)}</strong>
+          <span class="stat-detail">Aportado: R$ ${res.totalCapitalInvested.toFixed(2)} | Retorno: ${signed(res.portfolioReturnPct)}</span>
+        </article>
+
+        <article class="stat-card sim-kpi-card">
+          <span class="stat-label">Retorno TWR vs XIRR</span>
+          <strong class="stat-value" style="color: var(--positive);">${signed(res.twrPct)}</strong>
+          <span class="stat-detail">XIRR (Efetivo): <strong>${signed(res.xirrPct)}</strong></span>
+        </article>
+
+        <article class="stat-card sim-kpi-card">
+          <span class="stat-label">Excesso vs CDI (Ex-Post)</span>
+          <strong class="stat-value ${isExcessPos ? 'positive' : 'negative'}">${signed(res.excessReturnVsCdi)} p.p.</strong>
+          <span class="stat-detail">CDI no período: +${res.cdiReturnPct.toFixed(2)}% (R$ ${res.finalCdiVal.toFixed(2)})</span>
+        </article>
+
+        <article class="stat-card sim-kpi-card">
+          <span class="stat-label">CAGR (Retorno Anualizado)</span>
+          <strong class="stat-value" style="color: var(--ink);">${signed(res.cagr)}</strong>
+          <span class="stat-detail">Taxa composta equivalente anual</span>
+        </article>
+
+        <article class="stat-card sim-kpi-card">
+          <span class="stat-label">Volatilidade & Sortino</span>
+          <strong class="stat-value" style="color: var(--ink);">${res.volatilityAnnualized.toFixed(2)}%</strong>
+          <span class="stat-detail">Sortino Ratio: <strong>${res.sortinoRatio.toFixed(2)}</strong> (Quedas: ${res.downsideDeviation.toFixed(2)}%)</span>
+        </article>
+
+        <article class="stat-card sim-kpi-card">
+          <span class="stat-label">Índice Sharpe & Calmar</span>
+          <strong class="stat-value ${res.sharpeRatio >= 0 ? 'positive' : 'negative'}">${res.sharpeRatio.toFixed(2)}</strong>
+          <span class="stat-detail">Calmar: <strong>${res.calmarRatio.toFixed(2)}</strong> (CAGR / MDD)</span>
+        </article>
+
+        <article class="stat-card sim-kpi-card">
+          <span class="stat-label">Max Drawdown</span>
+          <strong class="stat-value negative">-${res.maxDrawdown.toFixed(2)}%</strong>
+          <span class="stat-detail">Pico: ${escapeHTML(res.peakDate)} | Fundo: ${escapeHTML(res.troughDate)}</span>
+        </article>
+
+        <article class="stat-card sim-kpi-card">
+          <span class="stat-label">Proventos Brutos & Liquidos</span>
+          <strong class="stat-value" style="color: var(--positive);">R$ ${res.totalDividends.toFixed(2)}</strong>
+          <span class="stat-detail">${res.reinvest ? 'Reinvestidos via Bola de Neve' : 'Saldo Acumulado em Caixa'}</span>
+        </article>
+
+        <article class="stat-card sim-kpi-card">
+          <span class="stat-label">Custos & Rebalanceamento</span>
+          <strong class="stat-value" style="color: var(--muted);">R$ ${res.totalB3Costs.toFixed(2)}</strong>
+          <span class="stat-detail">${res.rebalanceCount} rebalanceamentos (${res.taxMode === 'net' ? 'IR + Emolumentos + Slippage' : 'Bruto Teórico'})</span>
+        </article>
+      `;
+    }
+
+    function renderSimCorrelationMatrix(res) {
+      const wrap = $('#simCorrelationTableWrap');
+      const badgeWrap = $('#simHhiBadgeWrap');
+      if (!wrap || !res.correlationMatrix || res.correlationMatrix.length === 0) return;
+
+      badgeWrap.innerHTML = `
+        <span class="news-tag ${res.nEffective >= 2 ? 'mercado' : 'proventos'}" style="font-size:0.82rem; padding: 4px 10px;">
+          HHI: ${res.hhi.toFixed(3)} | N_efetivo: ${res.nEffective.toFixed(2)} posições
+        </span>
+      `;
+
+      const matrixHtml = `
+        <table class="sim-table">
+          <thead>
+            <tr>
+              <th>Ativo</th>
+              ${res.correlationMatrix.map(m => `<th class="center">${escapeHTML(m.ticker)}</th>`).join('')}
+            </tr>
+          </thead>
+          <tbody>
+            ${res.correlationMatrix.map(m => `
+              <tr>
+                <td><strong>${escapeHTML(m.ticker)}</strong></td>
+                ${m.row.map(val => {
+                  const isDiag = val === 1.0;
+                  const isHigh = val > 0.70 && !isDiag;
+                  const isLow = val < 0.30;
+                  const bg = isDiag ? 'var(--surface-alt)' : isHigh ? 'rgba(231, 76, 60, 0.15)' : isLow ? 'rgba(46, 204, 113, 0.15)' : 'transparent';
+                  const color = isHigh ? 'var(--negative)' : isLow ? 'var(--positive)' : 'var(--ink)';
+                  return `<td class="center" style="background:${bg}; color:${color}; font-weight:750;">${val.toFixed(2)}</td>`;
+                }).join('')}
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      `;
+      wrap.innerHTML = matrixHtml;
+    }
+
+    function renderSimChart(res) {
+      const container = $('#simMainChart');
+      const series = res.portfolioTimeSeries;
+      if (!series || series.length < 2) {
+        container.innerHTML = '<div class="chart-empty">Dados insuficientes para renderizar a curva da carteira.</div>';
+        return;
+      }
+
+      const isNormalized = simState.scaleMode === 'normalized';
+
+      const showCdi = $('#simBmCdi')?.checked ?? true;
+      const showIbov = $('#simBmIbov')?.checked ?? true;
+      const showIfix = $('#simBmIfix')?.checked ?? true;
+      const showDivs = $('#simBmDivs')?.checked ?? true;
+
+      const W = 900, H = 300, P = { l: 65, r: 20, t: 18, b: 38 };
+      const dateMin = Math.min(...series.map(s => s.dateIndex));
+      const dateMax = Math.max(...series.map(s => s.dateIndex));
+
+      const getVal = (s, key) => {
+        if (!isNormalized) return s[key];
+        const baseKey = key === 'portfolioValue' ? res.totalCapitalInvested : res.initialCapital;
+        return ((s[key] - baseKey) / baseKey) * 100;
+      };
+
+      const activeVals = series.flatMap(s => [
+        getVal(s, 'portfolioValue'),
+        showCdi ? getVal(s, 'cdiValue') : null,
+        showIbov ? getVal(s, 'ibovValue') : null,
+        showIfix ? getVal(s, 'ifixValue') : null
+      ].filter(validNumber));
+
+      let min = Math.min(...activeVals), max = Math.max(...activeVals);
+      if (min === max) { min -= 10; max += 10; }
+      const pad = (max - min) * 0.1;
+      min -= pad; max += pad;
+
+      const x = dateIndex => P.l + ((dateIndex - dateMin) / Math.max(1, dateMax - dateMin)) * (W - P.l - P.r);
+      const y = val => P.t + ((max - val) / (max - min)) * (H - P.t - P.b);
+
+      const pathPort = series.map((s, i) => `${i === 0 ? 'M' : 'L'}${x(s.dateIndex).toFixed(1)},${y(getVal(s, 'portfolioValue')).toFixed(1)}`).join(' ');
+      const pathCdi = showCdi ? series.map((s, i) => `${i === 0 ? 'M' : 'L'}${x(s.dateIndex).toFixed(1)},${y(getVal(s, 'cdiValue')).toFixed(1)}`).join(' ') : '';
+      const pathIbov = showIbov ? series.map((s, i) => `${i === 0 ? 'M' : 'L'}${x(s.dateIndex).toFixed(1)},${y(getVal(s, 'ibovValue')).toFixed(1)}`).join(' ') : '';
+      const pathIfix = showIfix ? series.map((s, i) => `${i === 0 ? 'M' : 'L'}${x(s.dateIndex).toFixed(1)},${y(getVal(s, 'ifixValue')).toFixed(1)}`).join(' ') : '';
+
+      const maxDiv = Math.max(...series.map(s => s.accumDividends), 1);
+      const yDiv = val => H - P.b - (val / maxDiv) * (H - P.t - P.b - 60);
+      const pathDivs = showDivs ? series.map((s, i) => `${i === 0 ? 'M' : 'L'}${x(s.dateIndex).toFixed(1)},${yDiv(s.accumDividends).toFixed(1)}`).join(' ') : '';
+
+      $('#simChartLegend').innerHTML = `
+        <span class="legend-item"><i class="legend-dot"></i><span>Carteira: <strong>${isNormalized ? signed(res.portfolioReturnPct) : `R$ ${res.finalPortfolioVal.toFixed(2)}`}</strong></span></span>
+        ${showCdi ? `<span class="legend-item"><i class="legend-dot secondary"></i><span>CDI: <strong>${isNormalized ? `+${res.cdiReturnPct.toFixed(2)}%` : `R$ ${res.finalCdiVal.toFixed(2)}`}</strong></span></span>` : ''}
+        ${showIbov ? `<span class="legend-item"><i class="legend-dot ibov"></i><span>IBOV: <strong>${signed(series.at(-1)?.ibovReturnPct)}</strong></span></span>` : ''}
+        ${showIfix ? `<span class="legend-item"><i class="legend-dot ifix"></i><span>IFIX: <strong>${signed(series.at(-1)?.ifixReturnPct)}</strong></span></span>` : ''}
+      `;
+
+      const ticks = Array.from({ length: 5 }, (_, index) => min + ((max - min) * index / 4));
+      const dateTicks = Array.from({ length: 4 }, (_, index) => Math.round(dateMin + ((dateMax - dateMin) * index / 3)));
+
+      container.innerHTML = `
+        <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true" id="simSvgChart">
+          ${ticks.map(value => `<line class="chart-grid" x1="${P.l}" x2="${W - P.r}" y1="${y(value)}" y2="${y(value)}"/><text class="chart-axis-label" x="${P.l - 8}" y="${y(value) + 4}" text-anchor="end">${isNormalized ? `${signed(value)}%` : `R$ ${Math.round(value)}`}</text>`).join('')}
+          ${dateTicks.map(index => {
+            const d = data.dates[index];
+            if (!d) return '';
+            return `<text class="chart-axis-label" x="${x(index)}" y="${H - 10}" text-anchor="middle">${escapeHTML(d.slice(5).replace('-', '/'))}</text>`;
+          }).join('')}
+          ${showDivs ? `<path class="chart-line divs" d="${pathDivs}" stroke-dasharray="4 3"/>` : ''}
+          ${showIbov ? `<path class="chart-line ibov" d="${pathIbov}"/>` : ''}
+          ${showIfix ? `<path class="chart-line ifix" d="${pathIfix}"/>` : ''}
+          ${showCdi ? `<path class="chart-line secondary" d="${pathCdi}"/>` : ''}
+          <path class="chart-line" d="${pathPort}"/>
+        </svg>
+      `;
+
+      const svg = $('#simSvgChart');
+      const tooltip = $('#simChartTooltip');
+
+      if (svg && tooltip) {
+        const handleMove = (e) => {
+          const rect = svg.getBoundingClientRect();
+          const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+          const relativeX = clientX - rect.left;
+          const ratio = relativeX / rect.width;
+          if (ratio < 0 || ratio > 1) return;
+
+          const dataIdx = Math.round(ratio * (series.length - 1));
+          const point = series[dataIdx];
+          if (!point) return;
+
+          tooltip.hidden = false;
+          tooltip.style.left = `${Math.min(rect.width - 180, Math.max(10, relativeX - 90))}px`;
+          tooltip.style.top = `15px`;
+          tooltip.innerHTML = `
+            <strong>${escapeHTML(point.date)}</strong><br>
+            Carteira: <strong>R$ ${point.portfolioValue.toFixed(2)} (${signed(point.portfolioReturnPct)})</strong><br>
+            ${showCdi ? `CDI: R$ ${point.cdiValue.toFixed(2)} (+${point.cdiReturnPct.toFixed(2)}%)<br>` : ''}
+            ${showIbov ? `IBOV: ${signed(point.ibovReturnPct)}<br>` : ''}
+            ${showIfix ? `IFIX: ${signed(point.ifixReturnPct)}<br>` : ''}
+            ${showDivs ? `Proventos: R$ ${point.accumDividends.toFixed(2)}` : ''}
+          `;
+        };
+
+        svg.addEventListener('mousemove', handleMove);
+        svg.addEventListener('mouseleave', () => { if (tooltip) tooltip.hidden = true; });
+      }
+    }
+
+    function renderSimInsights(res) {
+      const card = $('#simInsightsSection');
+      const insights = [];
+
+      // 1. Bola de Neve / Compounding Check
+      const cheapestAsset = res.assetStats.reduce((best, a) => (!best || a.endPrice < best.endPrice) ? a : best, null);
+      if (cheapestAsset) {
+        const canBuyUnits = Math.floor(res.totalDividends / cheapestAsset.endPrice);
+        if (canBuyUnits >= 1) {
+          insights.push({
+            type: 'success',
+            title: '🎉 Ponto de Inflexão Atingido (Bola de Neve)',
+            text: `Os proventos acumulados no período (R$ ${res.totalDividends.toFixed(2)}) foram suficientes para comprar <strong>${canBuyUnits} cota(s) de ${cheapestAsset.ticker}</strong> no fechamento.`
+          });
+        } else {
+          const needed = cheapestAsset.endPrice - res.totalDividends;
+          insights.push({
+            type: 'info',
+            title: '⏳ Progresso da Bola de Neve',
+            text: `Seus proventos cobriram R$ ${res.totalDividends.toFixed(2)}. Faltam <strong>R$ ${needed.toFixed(2)}</strong> em proventos para comprar 1 cota de ${cheapestAsset.ticker}.`
+          });
+        }
+      }
+
+      // 2. Análise de Risco Setorial Real
+      const sectorMap = {};
+      res.assetStats.forEach(a => {
+        const sec = a.category;
+        if (!sectorMap[sec]) sectorMap[sec] = { weight: 0, tickers: [] };
+        sectorMap[sec].weight += a.weightPct;
+        sectorMap[sec].tickers.push(a.ticker);
+      });
+
+      const highSector = Object.entries(sectorMap).find(([sec, val]) => val.weight > 35);
+      if (highSector) {
+        insights.push({
+          type: 'warning',
+          title: `⚠️ Concentração Setorial / Fatoral Elevada (${highSector[0]})`,
+          text: `A carteira possui <strong>${highSector[1].weight.toFixed(0)}% de exposição ao setor ${highSector[0]}</strong> (${highSector[1].tickers.join(', ')}). No período analisado, a volatilidade situou-se em ${res.volatilityAnnualized.toFixed(2)}% com Max Drawdown de ${res.maxDrawdown.toFixed(2)}%.`
+        });
+      } else {
+        insights.push({
+          type: 'success',
       const drag = res.assetStats.reduce((worst, a) => a.assetReturn < worst.assetReturn ? a : worst, res.assetStats[0]);
 
       if (star && drag && star.ticker !== drag.ticker) {
