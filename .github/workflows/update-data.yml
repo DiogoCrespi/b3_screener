@@ -44,6 +44,9 @@ jobs:
       - name: Generate data
         run: npm run generate
 
+      - name: Validate generated data
+        run: npm run validate:data
+
       - name: Build historical dashboard data
         run: npm run build:history
 

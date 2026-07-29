@@ -93,8 +93,14 @@ async function exportData() {
             }
         };
 
-        if (stocks.length === 0 && finalFiis.length === 0) {
-            console.error('❌ CRITICAL: No data fetched (0 stocks, 0 FIIs). Aborting save to prevent overwriting with empty data.');
+        const MIN_STOCKS = 100;
+        const MIN_FIIS = 50;
+        if (finalStocks.length < MIN_STOCKS) {
+            console.error(`❌ CRITICAL: Only ${finalStocks.length} stocks fetched (minimum ${MIN_STOCKS}). Aborting to prevent overwriting with partial data.`);
+            process.exit(1);
+        }
+        if (finalFiis.length < MIN_FIIS) {
+            console.error(`❌ CRITICAL: Only ${finalFiis.length} FIIs fetched (minimum ${MIN_FIIS}). Aborting to prevent overwriting with partial data.`);
             process.exit(1);
         }
 
