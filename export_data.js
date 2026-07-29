@@ -20,13 +20,32 @@ async function exportData() {
 
     try {
         // 1. Initial Data Fetch
-        // Fetch Selic first to avoid redundant requests in parallel calls
+        function getPrevData() {
+            try {
+                if (fs.existsSync('data.js')) {
+                    const prevSrc = fs.readFileSync('data.js', 'utf8');
+                    const match = prevSrc.match(/window\.INVEST_DATA\s*=\s*(\{[\s\S]*?\});\s*$/m);
+                    if (match) return JSON.parse(match[1]);
+                }
+            } catch (e) {}
+            return null;
+        }
+
+        const prevData = getPrevData();
+
         let selic = await getSelicRate();
         if (selic === null || isNaN(selic)) {
-            console.warn('⚠️ Central Bank API timeout for Selic. Using default 10.75% globally.');
-            selic = 10.75;
+            const prevSelic = prevData?.economy?.selic;
+            if (typeof prevSelic === 'number' && prevSelic > 0) {
+                console.warn(`⚠️ Selic API timeout. Reusing last recorded real Selic: ${prevSelic}%`);
+                selic = prevSelic;
+            } else {
+                console.warn('⚠️ Selic API timeout and no previous data found. Defaulting to 10.75%.');
+                selic = 10.75;
+            }
         }
-        const [dollar, stocks, rawStandardFiis, rawInfraFiis, etfs, tesouro, privateFixed] = await Promise.all([
+
+        let [dollar, stocks, rawStandardFiis, rawInfraFiis, etfs, tesouro, privateFixed] = await Promise.all([
             getDollarRate(),
             getBestStocks(selic, { metadataMap: {} }),
             getBestFIIs({}, null, selic), // Pass 1: Discovery from Fundamentus
@@ -37,8 +56,13 @@ async function exportData() {
         ]);
 
         if (dollar === null || Number.isNaN(dollar)) {
-            console.warn('⚠️ Dollar rate API unavailable. Using fallback rate 5.25.');
-            dollar = 5.25;
+            const prevDollar = prevData?.economy?.dollar;
+            if (typeof prevDollar === 'number' && prevDollar > 0) {
+                console.warn(`⚠️ Dollar API unavailable. Reusing last recorded real dollar rate: R$ ${prevDollar}`);
+                dollar = prevDollar;
+            } else {
+                throw new Error('Dollar rate is unavailable and no previous valid rate exists.');
+            }
         }
 
         // 2. Combine all discovered FIIs to fetch metadata
