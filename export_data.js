@@ -20,29 +20,10 @@ async function exportData() {
 
     try {
         // 1. Initial Data Fetch
-        function getPrevData() {
-            try {
-                if (fs.existsSync('data.js')) {
-                    const prevSrc = fs.readFileSync('data.js', 'utf8');
-                    const match = prevSrc.match(/window\.INVEST_DATA\s*=\s*(\{[\s\S]*?\});\s*$/m);
-                    if (match) return JSON.parse(match[1]);
-                }
-            } catch (e) {}
-            return null;
-        }
-
-        const prevData = getPrevData();
-
         let selic = await getSelicRate();
         if (selic === null || isNaN(selic)) {
-            const prevSelic = prevData?.economy?.selic;
-            if (typeof prevSelic === 'number' && prevSelic > 0) {
-                console.warn(`⚠️ Selic API timeout. Reusing last recorded real Selic: ${prevSelic}%`);
-                selic = prevSelic;
-            } else {
-                console.warn('⚠️ Selic API timeout and no previous data found. Defaulting to 10.75%.');
-                selic = 10.75;
-            }
+            console.error('❌ Central Bank API unavailable for Selic rate. Aborting export.');
+            process.exit(1);
         }
 
         let [dollar, stocks, rawStandardFiis, rawInfraFiis, etfs, tesouro, privateFixed] = await Promise.all([
@@ -56,13 +37,8 @@ async function exportData() {
         ]);
 
         if (dollar === null || Number.isNaN(dollar)) {
-            const prevDollar = prevData?.economy?.dollar;
-            if (typeof prevDollar === 'number' && prevDollar > 0) {
-                console.warn(`⚠️ Dollar API unavailable. Reusing last recorded real dollar rate: R$ ${prevDollar}`);
-                dollar = prevDollar;
-            } else {
-                throw new Error('Dollar rate is unavailable and no previous valid rate exists.');
-            }
+            console.error('❌ Dollar rate API unavailable. Aborting export.');
+            process.exit(1);
         }
 
         // 2. Combine all discovered FIIs to fetch metadata
@@ -111,42 +87,23 @@ async function exportData() {
             return aOrder - bOrder || (b.overall_score ?? b.score) - (a.overall_score ?? a.score);
         });
 
-        // 🛡️ Fallback de segurança: Se a raspagem ao vivo retornou contagens anormais por instabilidade das fontes, recupera do data.js atual
+        // 🛡️ Validação estrita de integridade: Só grava se a raspagem ao vivo coletar dados válidos e reais
         const MIN_STOCKS = 100;
         const MIN_FIIS = 50;
 
-        if (finalStocks.length < MIN_STOCKS && fs.existsSync('data.js')) {
-            console.warn(`⚠️ Only ${finalStocks.length} stocks fetched. Recovering previous stocks from data.js...`);
-            try {
-                const prevSrc = fs.readFileSync('data.js', 'utf8');
-                const match = prevSrc.match(/window\.INVEST_DATA\s*=\s*(\{[\s\S]*?\});\s*$/m);
-                if (match) {
-                    const prevData = JSON.parse(match[1]);
-                    if (Array.isArray(prevData.stocks) && prevData.stocks.length >= MIN_STOCKS) {
-                        finalStocks = prevData.stocks;
-                        console.log(`✅ Recovered ${finalStocks.length} stocks from existing data.js.`);
-                    }
-                }
-            } catch (e) {
-                console.error('Could not recover stocks from data.js:', e.message);
-            }
+        const isStocksValid = finalStocks.length >= MIN_STOCKS;
+        const isFiisValid = finalFiis.length >= MIN_FIIS;
+
+        if (!isStocksValid) {
+            console.error(`❌ Abortando gravação: Apenas ${finalStocks.length} ações obtidas (mínimo necessário: ${MIN_STOCKS}). Nenhum histórico duplicado será criado.`);
+        }
+        if (!isFiisValid) {
+            console.error(`❌ Abortando gravação: Apenas ${finalFiis.length} FIIs obtidos (mínimo necessário: ${MIN_FIIS}). Nenhum histórico duplicado será criado.`);
         }
 
-        if (finalFiis.length < MIN_FIIS && fs.existsSync('data.js')) {
-            console.warn(`⚠️ Only ${finalFiis.length} FIIs fetched. Recovering previous FIIs from data.js...`);
-            try {
-                const prevSrc = fs.readFileSync('data.js', 'utf8');
-                const match = prevSrc.match(/window\.INVEST_DATA\s*=\s*(\{[\s\S]*?\});\s*$/m);
-                if (match) {
-                    const prevData = JSON.parse(match[1]);
-                    if (Array.isArray(prevData.fiis) && prevData.fiis.length >= MIN_FIIS) {
-                        finalFiis = prevData.fiis;
-                        console.log(`✅ Recovered ${finalFiis.length} FIIs from existing data.js.`);
-                    }
-                }
-            } catch (e) {
-                console.error('Could not recover FIIs from data.js:', e.message);
-            }
+        if (!isStocksValid || !isFiisValid) {
+            console.error('❌ Operação abortada para evitar gravação de dados repetidos ou incompletos.');
+            process.exit(1);
         }
 
         const data = {
