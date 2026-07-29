@@ -1480,10 +1480,11 @@
     document.addEventListener('click', () => {
       simExportDropdown.classList.remove('show');
     });
+  }
 
-    // ==========================================
-    // MULTI-ASSET SIMULATOR & BACKTEST ENGINE
-    // ==========================================
+  // ==========================================
+  // MULTI-ASSET SIMULATOR & BACKTEST ENGINE
+  // ==========================================
 
     const simState = {
       initialCapital: 1000,
@@ -2470,16 +2471,24 @@
       } else {
         insights.push({
           type: 'success',
-      const drag = res.assetStats.reduce((worst, a) => a.assetReturn < worst.assetReturn ? a : worst, res.assetStats[0]);
-
-      if (star && drag && star.ticker !== drag.ticker) {
-        insights.push({
-          type: 'info',
-          title: '🏆 Custo de Oportunidade (Destaques da Carteira)',
-          text: `O melhor ativo no período foi <strong>${star.ticker} (${signed(star.assetReturn)})</strong>. O maior arrasto de rentabilidade foi de <strong>${drag.ticker} (${signed(drag.assetReturn)})</strong>.`
+          title: '✅ Diversificação Setorial Equilibrada',
+          text: 'Nenhum setor da carteira ultrapassa 35% do patrimônio investido.'
         });
       }
-    }
+
+      // 3. Destacar Ativo Estrela vs Arrasto
+      if (res.assetStats.length > 1) {
+        const star = res.assetStats.reduce((best, a) => a.assetReturn > best.assetReturn ? a : best, res.assetStats[0]);
+        const drag = res.assetStats.reduce((worst, a) => a.assetReturn < worst.assetReturn ? a : worst, res.assetStats[0]);
+
+        if (star && drag && star.ticker !== drag.ticker) {
+          insights.push({
+            type: 'info',
+            title: '🏆 Custo de Oportunidade (Destaques da Carteira)',
+            text: `O melhor ativo no período foi <strong>${star.ticker} (${signed(star.assetReturn)})</strong>. O maior arrasto de rentabilidade foi de <strong>${drag.ticker} (${signed(drag.assetReturn)})</strong>.`
+          });
+        }
+      }
 
     // 4. Asset Swap / Sugestão de Otimização
     res.assetStats.forEach(ast => {
