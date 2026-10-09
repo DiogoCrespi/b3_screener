@@ -329,3 +329,36 @@ describe('US ranking', () => {
         assert.deepStrictEqual(pickTop(ranked, 'etfs').sort(), ['VOO', 'VTI'].sort());
     });
 });
+
+describe('Cheaper equivalent ETFs', () => {
+    const { addCheaperAlternatives } = require('./ranking');
+    const etf = (ticker, price, extra = {}) => ({ ticker, name: ticker, price, signal: 'TOP_PICK', conviction: 90, aum: 1e10, ...extra });
+
+    test('points an expensive ETF to a cheaper one tracking the same index', () => {
+        const out = addCheaperAlternatives([etf('VOO', 700), etf('SPYM', 90), etf('SPY', 770)]);
+        const by = t => out.find(e => e.ticker === t);
+        assert.strictEqual(by('VOO').cheaper_alternative, 'SPYM');
+        assert.strictEqual(by('SPY').cheaper_alternative, 'SPYM');
+        assert.strictEqual(by('SPYM').cheaper_alternative, undefined);
+        assert.strictEqual(by('VOO').equivalence_group, 'S&P 500');
+    });
+
+    test('ignores small price gaps, funds under review and non-curated look-alikes', () => {
+        const out = addCheaperAlternatives([
+            etf('QQQ', 600), etf('QQQM', 500),
+            etf('GLD', 380), etf('GLDM', 80, { signal: 'REVIEW' }),
+            etf('GPIQ', 50, { name: 'Goldman Sachs Nasdaq-100 Premium Income ETF' }),
+            etf('GSUS', 90, { name: 'Goldman Sachs MarketBeta US Equity ETF' })
+        ]);
+        const by = t => out.find(e => e.ticker === t);
+        assert.strictEqual(by('QQQ').cheaper_alternative, undefined, 'QQQM is not 40% cheaper');
+        assert.strictEqual(by('GLD').cheaper_alternative, undefined, 'alternative under review');
+        assert.strictEqual(by('GPIQ').cheaper_alternative, undefined);
+        assert.strictEqual(by('GSUS').equivalence_group, undefined);
+    });
+
+    test('prefers the best-ranked cheaper equivalent', () => {
+        const out = addCheaperAlternatives([etf('VTI', 380), etf('ITOT', 170, { conviction: 95 }), etf('SCHB', 30, { conviction: 80 })]);
+        assert.strictEqual(out.find(e => e.ticker === 'VTI').cheaper_alternative, 'ITOT');
+    });
+});

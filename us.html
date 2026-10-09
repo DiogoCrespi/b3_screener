@@ -102,6 +102,15 @@
         .toolbar input[type="search"] { flex: 1 1 200px; min-width: 0; }
         .chips { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
         .chip { font-size: 0.78rem; padding: 5px 10px; }
+        .price-filter { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 0 0 6px; }
+        .price-filter-label { font-size: 0.78rem; font-weight: 600; color: var(--text-muted); margin-right: 2px; }
+        .price-note { font-size: 0.74rem; color: var(--text-muted); margin: 0 0 12px; }
+        .alt-link {
+            display: block; width: 100%; margin-top: 10px; padding: 7px 10px; text-align: left; font: inherit; font-size: 0.78rem;
+            color: var(--text-color); background: var(--primary-soft); border: 0; border-radius: 10px; cursor: pointer;
+        }
+        .alt-link:hover, .alt-link:focus-visible { outline: 2px solid var(--primary); }
+        .alt-link strong { color: var(--primary); }
         .result-count { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 10px; }
 
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 12px; }
@@ -202,6 +211,10 @@
             <button class="btn tab-btn" data-tab="reits" role="tab">REITs</button>
             <button class="btn tab-btn" data-tab="etfs" role="tab">ETFs</button>
         </div>
+
+        <!-- Above the Top 10 because the price band changes both the Top 10 and the list. -->
+        <div class="price-filter" id="priceFilter" role="group" aria-label="Filtrar por preço da cota" hidden></div>
+        <p class="price-note" id="priceNote" hidden>Valores em reais pela cotação do dia. Muitas corretoras para brasileiros permitem comprar frações de ETF; nelas o preço da cota pesa menos.</p>
 
         <section class="top10" id="top10" aria-labelledby="top10Title" hidden>
             <h2 id="top10Title">🏆 Top 10</h2>
@@ -323,7 +336,7 @@
                 title: 'Top 10 ETFs',
                 label: e => CATEGORY_LABELS[e.category] || '',
                 note: 'Melhores ETFs pelo ranking (custo, tamanho, liquidez e retorno), sem repetir o mesmo índice.',
-                why: e => `Taxa ${fmtPct(e.expense_ratio, 2)} · AUM ${fmtMoneyBig(e.aum)} · 3 anos ${isNum(e.variation_3y) ? `${e.variation_3y >= 0 ? '+' : ''}${fmtNum(e.variation_3y, 0)}%` : '—'}`
+                why: e => `Cota ${fmtSharePrice(e.price)} · Taxa ${fmtPct(e.expense_ratio, 2)} · AUM ${fmtMoneyBig(e.aum)} · 3 anos ${isNum(e.variation_3y) ? `${e.variation_3y >= 0 ? '+' : ''}${fmtNum(e.variation_3y, 0)}%` : '—'}`
             }
         };
         const WARNING_LABELS = {
@@ -333,7 +346,18 @@
             SMALL_OR_UNKNOWN_COST_FOR_TOP_PICK: 'pequeno ou sem taxa informada para Top Pick'
         };
 
-        const state = { tab: 'stocks', signal: 'ALL', group: 'ALL', sector: 'ALL', sort: 'default', query: '', shown: PAGE_SIZE, currency: 'USD' };
+        // Share-price bands in reais, from the ETF price distribution (median ~R$ 230,
+        // 75% below ~R$ 370, a handful above R$ 2.000 such as VOO and SPY).
+        const PRICE_BUCKETS = [
+            { id: 'ALL', label: 'Todos' },
+            { id: 'LE250', label: 'Até R$ 250', phrase: 'até R$ 250', max: 250 },
+            { id: '250_500', label: 'R$ 250–500', phrase: 'de R$ 250 a R$ 500', min: 250, max: 500 },
+            { id: '500_1000', label: 'R$ 500–1.000', phrase: 'de R$ 500 a R$ 1.000', min: 500, max: 1000 },
+            { id: 'GT1000', label: 'Acima de R$ 1.000', phrase: 'acima de R$ 1.000', min: 1000 }
+        ];
+        const PRICE_FILTER_TABS = new Set(['etfs']);
+
+        const state = { tab: 'stocks', signal: 'ALL', group: 'ALL', sector: 'ALL', price: 'ALL', sort: 'default', query: '', shown: PAGE_SIZE, currency: 'USD' };
 
         function escapeHTML(value) {
             return String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[c]));
@@ -345,6 +369,13 @@
         const fmtPct = (v, d = 1) => (isNum(v) ? `${v.toLocaleString('pt-BR', { maximumFractionDigits: d })}%` : '—');
         const fmtSigned = (v, suffix = '%') => (isNum(v) ? `<span class="${v >= 0 ? 'pos' : 'neg'}">${v >= 0 ? '+' : ''}${v.toLocaleString('pt-BR', { maximumFractionDigits: 1 })}${suffix}</span>` : '—');
         const fmtMoney = v => (isNum(v) && v > 0 ? `${symbol()} ${(v * fx()).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` : '—');
+        // Share price in the selected currency plus the other one, since the price bands are in reais.
+        function fmtSharePrice(v) {
+            if (!isNum(v) || v <= 0 || !isNum(DATA.economy.dollar)) return fmtMoney(v);
+            const brl = `R$ ${(v * DATA.economy.dollar).toLocaleString('pt-BR', { maximumFractionDigits: 0 })}`;
+            const usd = `US$ ${v.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+            return state.currency === 'BRL' ? `${brl} (${usd})` : `${usd} (${brl})`;
+        }
         function fmtMoneyBig(v) {
             if (!isNum(v) || v <= 0) return '—';
             const x = v * fx();
@@ -376,10 +407,19 @@
             }).filter(Boolean);
         }
 
-        function filteredItems() {
+        const priceInReais = item => TABS[state.tab].price(item) * (isNum(DATA.economy.dollar) ? DATA.economy.dollar : 5);
+        function inPriceBucket(item, bucketId = state.price) {
+            const bucket = PRICE_BUCKETS.find(b => b.id === bucketId);
+            if (!bucket || bucket.id === 'ALL' || !PRICE_FILTER_TABS.has(state.tab)) return true;
+            const value = priceInReais(item);
+            return (bucket.min === undefined || value >= bucket.min) && (bucket.max === undefined || value < bucket.max);
+        }
+
+        function filteredItems({ ignorePrice = false } = {}) {
             const tab = TABS[state.tab];
             const q = state.query.trim().toLowerCase();
             let items = tab.items().filter(item =>
+                (ignorePrice || inPriceBucket(item)) &&
                 (state.signal === 'ALL' || item.signal === state.signal) &&
                 (state.group === 'ALL' || tab.groupOf(item) === state.group) &&
                 (!tab.hasSector || state.sector === 'ALL' || item.sector === state.sector) &&
@@ -459,6 +499,14 @@
             if (open) mountChart(card);
         }
 
+        function cheaperAlternativeHTML(item) {
+            const alt = item.cheaper_alternative && DATA.etfs.find(e => e.ticker === item.cheaper_alternative);
+            if (!alt) return '';
+            return `<button class="alt-link" type="button" data-alt="${escapeHTML(alt.ticker)}" title="Abrir ${escapeHTML(alt.ticker)}">
+                💡 Mesma exposição (${escapeHTML(item.equivalence_group || 'mesmo índice')}) por menos:
+                <strong>${escapeHTML(alt.ticker)}</strong> a ${fmtSharePrice(alt.price)} · taxa ${fmtPct(alt.expense_ratio, 2)}</button>`;
+        }
+
         function renderCard(item) {
             const tab = TABS[state.tab];
             const category = item.category && CATEGORY_LABELS[item.category];
@@ -477,6 +525,7 @@
                     ${item.sector ? `<span class="badge">${escapeHTML(item.sector)}</span>` : ''}
                 </div>
                 <div class="metrics">${tab.metrics(item).map(([label, value]) => `<div class="metric"><small>${label}</small><span>${value}</span></div>`).join('')}</div>
+                ${cheaperAlternativeHTML(item)}
                 <div class="details">
                     ${tab.details(item).filter(([, html]) => html).map(([label, html]) =>
                         `<div class="detail-row"><span>${label}</span><span>${html}</span></div>`).join('')}
@@ -491,12 +540,16 @@
         function renderTop10() {
             const box = document.getElementById('top10');
             const config = TOP10[state.tab];
-            const items = (DATA.highlights?.[state.tab] || [])
+            const bucket = PRICE_BUCKETS.find(b => b.id === state.price);
+            const byPrice = PRICE_FILTER_TABS.has(state.tab) && bucket && bucket.id !== 'ALL';
+            const items = byPrice ? topInPriceBand() : (DATA.highlights?.[state.tab] || [])
                 .map(ticker => TABS[state.tab].items().find(item => item.ticker === ticker)).filter(Boolean);
             box.hidden = items.length === 0;
             if (!items.length) return;
-            document.getElementById('top10Title').textContent = `🏆 ${config.title}`;
-            document.getElementById('top10Note').textContent = config.note;
+            document.getElementById('top10Title').textContent = byPrice ? `🏆 Melhores ETFs com cota ${bucket.phrase}` : `🏆 ${config.title}`;
+            document.getElementById('top10Note').textContent = byPrice
+                ? 'ETFs aprovados nas regras desta faixa de preço, pelo ranking, no máximo 2 por categoria e sem repetir ETFs equivalentes. Fundos de balcão (OTC) ficam de fora.'
+                : config.note;
             document.getElementById('top10List').innerHTML = items.map((item, i) => `<li>
                 <button class="top10-item" type="button" data-ticker="${escapeHTML(item.ticker)}" title="Ver detalhes de ${escapeHTML(item.ticker)}">
                     <span class="top10-rank">${i + 1}</span>
@@ -509,9 +562,34 @@
             </li>`).join('');
         }
 
+        const LIMIT_WARNINGS = ['TOP_PICK_LIMIT', 'SECTOR_CONCENTRATION_LIMIT'];
+        const passedRules = item => item.signal === 'TOP_PICK' || item.signal === 'OPPORTUNITY'
+            || (item.warnings || []).some(w => LIMIT_WARNINGS.includes(w));
+
+        // Best ETFs inside the selected price band, diversified like the server-side Top 10.
+        function topInPriceBand(size = 10) {
+            const perCategory = new Map();
+            const seenGroups = new Set();
+            const picked = [];
+            const candidates = TABS[state.tab].items()
+                // Funds that passed the rules (including those only held back by the Top Pick limit),
+                // no OTC listings: fewer than 10 beats padding with weak funds.
+                .filter(e => inPriceBucket(e) && e.category !== 'LEVERAGED' && e.exchange !== 'OTC' && passedRules(e))
+                .sort((a, b) => (b.conviction ?? 0) - (a.conviction ?? 0));
+            for (const etf of candidates) {
+                const count = perCategory.get(etf.category) || 0;
+                if (count >= 2 || (etf.equivalence_group && seenGroups.has(etf.equivalence_group))) continue;
+                perCategory.set(etf.category, count + 1);
+                if (etf.equivalence_group) seenGroups.add(etf.equivalence_group);
+                picked.push(etf);
+                if (picked.length === size) break;
+            }
+            return picked;
+        }
+
         // Shows one asset from the Top 10 in the grid, already expanded.
         function focusAsset(ticker) {
-            Object.assign(state, { signal: 'ALL', group: 'ALL', sector: 'ALL', query: ticker, shown: PAGE_SIZE });
+            Object.assign(state, { signal: 'ALL', group: 'ALL', sector: 'ALL', price: 'ALL', query: ticker, shown: PAGE_SIZE });
             document.getElementById('searchInput').value = ticker;
             populateControls();
             render();
@@ -522,7 +600,7 @@
             }
         }
 
-        const hasActiveFilters = () => state.signal !== 'ALL' || state.group !== 'ALL' || state.sector !== 'ALL' || state.query.trim() !== '';
+        const hasActiveFilters = () => state.signal !== 'ALL' || state.group !== 'ALL' || state.sector !== 'ALL' || state.price !== 'ALL' || state.query.trim() !== '';
 
         // When the list runs out, say so and offer to drop the filters instead of hiding the button silently.
         function renderListEnd(items) {
@@ -545,7 +623,8 @@
         }
 
         function clearFilters() {
-            Object.assign(state, { signal: 'ALL', group: 'ALL', sector: 'ALL', query: '', shown: PAGE_SIZE });
+            Object.assign(state, { signal: 'ALL', group: 'ALL', sector: 'ALL', price: 'ALL', query: '', shown: PAGE_SIZE });
+            renderTop10();
             document.getElementById('searchInput').value = '';
             populateControls();
             render();
@@ -560,6 +639,23 @@
             renderListEnd(items);
         }
 
+        function renderPriceFilter() {
+            const box = document.getElementById('priceFilter');
+            const enabled = PRICE_FILTER_TABS.has(state.tab);
+            box.hidden = !enabled;
+            document.getElementById('priceNote').hidden = !enabled;
+            if (!enabled) return;
+            // Counts follow the other active filters, so each chip says what it would show.
+            const base = filteredItems({ ignorePrice: true });
+            const fx = isNum(DATA.economy.dollar) ? DATA.economy.dollar : 5;
+            box.innerHTML = '<span class="price-filter-label">💵 Preço da cota:</span>' + PRICE_BUCKETS.map(bucket => {
+                const count = base.filter(item => inPriceBucket(item, bucket.id)).length;
+                const usd = bucket.max ? ` (~US$ ${Math.round(bucket.max / fx)})` : bucket.min ? ` (~US$ ${Math.round(bucket.min / fx)}+)` : '';
+                const title = bucket.id === 'ALL' ? 'Todas as faixas de preço' : `${bucket.label}${usd} por cota`;
+                return `<button class="btn chip${state.price === bucket.id ? ' active' : ''}" data-price="${bucket.id}" title="${escapeHTML(title)}" aria-pressed="${state.price === bucket.id}">${escapeHTML(bucket.label)} (${count})</button>`;
+            }).join('');
+        }
+
         function populateControls() {
             const tab = TABS[state.tab];
             document.querySelectorAll('.tab-btn').forEach(b => {
@@ -572,6 +668,8 @@
             document.getElementById('signalChips').innerHTML = SIGNALS
                 .filter(([id]) => id === 'ALL' || counts[id])
                 .map(([id, label]) => `<button class="btn chip${state.signal === id ? ' active' : ''}" data-signal="${id}">${label}${id === 'ALL' ? '' : ` (${counts[id]})`}</button>`).join('');
+
+            renderPriceFilter();
 
             const groupSelect = document.getElementById('groupSelect');
             groupSelect.innerHTML = tab.groups.map(([id, label]) => `<option value="${id}">${escapeHTML(label || CATEGORY_LABELS[id] || id)}</option>`).join('');
@@ -593,7 +691,7 @@
 
         function switchTab(tabName) {
             if (!TABS[tabName]) tabName = 'stocks';
-            Object.assign(state, { tab: tabName, signal: 'ALL', group: 'ALL', sector: 'ALL', sort: 'default', shown: PAGE_SIZE });
+            Object.assign(state, { tab: tabName, signal: 'ALL', group: 'ALL', sector: 'ALL', price: 'ALL', sort: 'default', shown: PAGE_SIZE });
             history.replaceState(null, '', `#${tabName}`);
             document.getElementById('searchInput').value = '';
             state.query = '';
@@ -643,6 +741,15 @@
             document.getElementById('dyVal').textContent = isNum(dyCut) ? `>${dyCut.toFixed(1)}%` : '---';
 
             document.querySelectorAll('.tab-btn').forEach(b => b.addEventListener('click', () => switchTab(b.dataset.tab)));
+            document.getElementById('priceFilter').addEventListener('click', ev => {
+                const btn = ev.target.closest('[data-price]');
+                if (!btn) return;
+                state.price = btn.dataset.price;
+                state.shown = PAGE_SIZE;
+                renderPriceFilter();
+                renderTop10();
+                render();
+            });
             document.getElementById('signalChips').addEventListener('click', ev => {
                 const btn = ev.target.closest('[data-signal]');
                 if (!btn) return;
@@ -654,6 +761,7 @@
             const onChange = (id, key) => document.getElementById(id).addEventListener(id === 'searchInput' ? 'input' : 'change', ev => {
                 state[key] = ev.target.value;
                 state.shown = PAGE_SIZE;
+                renderPriceFilter();
                 render();
             });
             onChange('searchInput', 'query');
@@ -669,6 +777,8 @@
             document.getElementById('clearFilters').addEventListener('click', clearFilters);
             document.getElementById('csvBtn').addEventListener('click', downloadCSV);
             document.getElementById('grid').addEventListener('click', ev => {
+                const alt = ev.target.closest('[data-alt]');
+                if (alt) { focusAsset(alt.dataset.alt); return; }
                 // Links and the chart area keep their own behaviour instead of collapsing the card.
                 if (ev.target.closest('a, .tv-chart')) return;
                 const card = ev.target.closest('.card');

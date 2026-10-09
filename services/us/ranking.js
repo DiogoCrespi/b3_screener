@@ -60,7 +60,7 @@ const PROFILES = Object.freeze({
 
 // ETFs tracking the same index (VOO, SPY, IVV) are one recommendation, not three.
 const INDEX_PATTERNS = [
-    [/s&p 500|core s&p us total/i, 'SP500'], [/nasdaq[- ]?100/i, 'NDX'], [/total (stock|us stock|u\.s\. stock)? ?market|total world/i, 'TOTAL'],
+    [/s&p 500|core s&p us total/i, 'SP500'], [/nasdaq[- ]?100|invesco qqq/i, 'NDX'], [/total (stock|us stock|u\.s\. stock)? ?market|total world/i, 'TOTAL'],
     [/russell 2000|small[- ]cap/i, 'SMALL'], [/mid[- ]cap|s&p mid/i, 'MID'], [/emerging/i, 'EM'], [/developed|eafe|international/i, 'DEV'],
     [/aggregate|total bond|core bond/i, 'AGG'], [/treasury|t-bill|government/i, 'TSY'], [/gold/i, 'GOLD'], [/silver/i, 'SILVER'],
     [/growth/i, 'GROWTH'], [/value/i, 'VALUE'], [/dividend/i, 'DIVIDEND'], [/technology|\btech\b/i, 'TECH']
@@ -118,4 +118,43 @@ function pickTop(items, key, size = 10, perGroup = 2) {
     return picked;
 }
 
-module.exports = { rankSection, pickTop, indexKey, stockConviction, reitConviction, etfConviction, PROFILES };
+// Curated groups of ETFs with the same index or practically the same exposure. A list
+// beats name matching here: names mislead ("Goldman" is not gold, gold miners are not
+// gold, Brazil small caps are not US small caps), and a wrong swap is worse than none.
+const EQUIVALENT_GROUPS = Object.freeze({
+    'S&P 500': ['VOO', 'SPY', 'IVV', 'SPYM', 'SPLG'],
+    'Nasdaq-100': ['QQQ', 'QQQM'],
+    'Mercado total EUA': ['VTI', 'ITOT', 'SCHB', 'SPTM'],
+    'Small caps EUA': ['IWM', 'VB', 'IJR', 'SCHA', 'VTWO', 'SPSM'],
+    'Mid caps EUA': ['IJH', 'VO', 'SCHM', 'SPMD', 'MDY', 'IVOO'],
+    'Desenvolvidos ex-EUA': ['VEA', 'IEFA', 'SCHF', 'SPDW', 'EFA'],
+    'Emergentes': ['VWO', 'IEMG', 'SCHE', 'SPEM', 'EEM'],
+    'Internacional total': ['VXUS', 'IXUS'],
+    'Títulos agregados EUA': ['BND', 'AGG', 'SCHZ', 'SPAB'],
+    'Ouro físico': ['GLD', 'IAU', 'GLDM', 'SGOL', 'IAUM', 'AAAU'],
+    'Prata física': ['SLV', 'SIVR'],
+    'Dividendos (Schwab)': ['SCHD'],
+    'Ações globais': ['VT', 'ACWI']
+});
+const GROUP_OF = new Map(Object.entries(EQUIVALENT_GROUPS).flatMap(([group, tickers]) => tickers.map(t => [t, group])));
+const MAX_PRICE_RATIO = 0.6; // the alternative must cost at most 60% of the share price
+
+/**
+ * For each ETF in a curated group, points to a cheaper equivalent (e.g. VOO -> SPYM)
+ * so an expensive share is not a reason to give up the exposure. The alternative
+ * must not be under review, and the best-ranked one wins.
+ */
+function addCheaperAlternatives(etfs) {
+    return etfs.map(etf => {
+        const group = GROUP_OF.get(etf.ticker);
+        if (!group) return etf;
+        const best = etfs
+            .filter(peer => GROUP_OF.get(peer.ticker) === group && peer.ticker !== etf.ticker)
+            .filter(peer => peer.price > 0 && peer.price <= etf.price * MAX_PRICE_RATIO)
+            .filter(peer => peer.signal !== 'REVIEW' && peer.signal !== 'DISTRESSED')
+            .sort(byConviction)[0];
+        return best ? { ...etf, cheaper_alternative: best.ticker, equivalence_group: group } : { ...etf, equivalence_group: group };
+    });
+}
+
+module.exports = { rankSection, pickTop, indexKey, addCheaperAlternatives, EQUIVALENT_GROUPS, stockConviction, reitConviction, etfConviction, PROFILES };
