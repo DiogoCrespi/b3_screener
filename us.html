@@ -27,6 +27,8 @@
         }
 
         * { box-sizing: border-box; }
+        /* Elements with a display rule (e.g. .load-more) must still obey the hidden attribute. */
+        [hidden] { display: none !important; }
         body {
             font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif; margin: 0;
             background: var(--bg-color); color: var(--text-color); -webkit-font-smoothing: antialiased;
@@ -133,6 +135,12 @@
         .warn { color: var(--warning); font-size: 0.75rem; margin-top: 6px; }
         .ext-link { display: inline-block; margin-top: 10px; color: var(--primary); font-weight: 600; text-decoration: none; }
         .load-more { display: block; margin: 16px auto; }
+        .list-end {
+            text-align: center; margin: 20px auto; padding: 16px; max-width: 520px;
+            border: 1px dashed var(--border-color); border-radius: var(--radius-card); color: var(--text-muted);
+        }
+        .list-end p { margin: 0 0 10px; font-size: 0.88rem; }
+        .list-end p:last-child { margin-bottom: 0; }
         .empty { text-align: center; color: var(--text-muted); padding: 40px 0; }
         .disclaimer { font-size: 0.72rem; color: var(--text-muted); text-align: center; margin: 24px 0 8px; }
         .source-notice {
@@ -206,6 +214,10 @@
         <div class="result-count" id="resultCount"></div>
         <div class="grid" id="grid"></div>
         <button class="btn load-more" id="loadMore" hidden>Carregar mais</button>
+        <div class="list-end" id="listEnd" role="status" hidden>
+            <p id="listEndText"></p>
+            <button class="btn" id="clearFilters" type="button">Limpar filtros e ver todos</button>
+        </div>
 
         <p class="disclaimer">Dados: TradingView (fundamentos), FRED (juros), AwesomeAPI (câmbio). Indicadores quantitativos, não constituem recomendação de investimento.</p>
     </main>
@@ -449,15 +461,42 @@
             }
         }
 
+        const hasActiveFilters = () => state.signal !== 'ALL' || state.group !== 'ALL' || state.sector !== 'ALL' || state.query.trim() !== '';
+
+        // When the list runs out, say so and offer to drop the filters instead of hiding the button silently.
+        function renderListEnd(items) {
+            const end = document.getElementById('listEnd');
+            const hasMore = items.length > state.shown;
+            document.getElementById('loadMore').hidden = !hasMore;
+            end.hidden = hasMore;
+            if (hasMore) return;
+            const filtered = hasActiveFilters();
+            const total = TABS[state.tab].items().length.toLocaleString('pt-BR');
+            const count = items.length.toLocaleString('pt-BR');
+            document.getElementById('listEndText').textContent = !filtered
+                ? `Você chegou ao fim da lista (${count} ativos).`
+                : items.length === 0
+                    ? 'Nenhum ativo encontrado com esses filtros. Deseja retirar os filtros?'
+                    : `Não há mais ativos com esses filtros: esses são todos os ${count}. Deseja retirar os filtros?`;
+            const clear = document.getElementById('clearFilters');
+            clear.hidden = !filtered;
+            clear.textContent = `Limpar filtros e ver todos (${total})`;
+        }
+
+        function clearFilters() {
+            Object.assign(state, { signal: 'ALL', group: 'ALL', sector: 'ALL', query: '', shown: PAGE_SIZE });
+            document.getElementById('searchInput').value = '';
+            populateControls();
+            render();
+            document.getElementById('resultCount').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
         function render() {
             const items = filteredItems();
-            const grid = document.getElementById('grid');
-            grid.innerHTML = items.length
-                ? items.slice(0, state.shown).map(renderCard).join('')
-                : '<p class="empty">Nenhum ativo encontrado com esses filtros.</p>';
+            document.getElementById('grid').innerHTML = items.slice(0, state.shown).map(renderCard).join('');
             document.getElementById('resultCount').textContent = `${items.length.toLocaleString('pt-BR')} ativos` +
                 (items.length > state.shown ? ` · mostrando ${state.shown.toLocaleString('pt-BR')}` : '');
-            document.getElementById('loadMore').hidden = items.length <= state.shown;
+            renderListEnd(items);
         }
 
         function populateControls() {
@@ -566,6 +605,7 @@
                 if (btn) focusAsset(btn.dataset.ticker);
             });
             document.getElementById('loadMore').addEventListener('click', () => { state.shown += PAGE_SIZE; render(); });
+            document.getElementById('clearFilters').addEventListener('click', clearFilters);
             document.getElementById('csvBtn').addEventListener('click', downloadCSV);
             document.getElementById('grid').addEventListener('click', ev => {
                 if (ev.target.closest('a')) return;
