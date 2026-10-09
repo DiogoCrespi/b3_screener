@@ -1,26 +1,56 @@
 (() => {
   'use strict';
 
-  const data = window.B3_HISTORY_DATA;
+  // Market settings. history-dashboard.html uses the B3 defaults; other markets set
+  // window.HISTORY_MARKET before loading this script (see history-dashboard-us.html).
+  const market = {
+    id: 'B3',
+    dataVar: 'B3_HISTORY_DATA',
+    buildCommand: 'npm run build:history',
+    screenerUrl: './index.html',
+    title: 'B3 SCREENER',
+    currency: 'R$',
+    localStart: '2026-03-13',
+    defaultTicker: 'PETR4',
+    fundLabel: 'Fundo',
+    fundShort: 'FII',
+    fundPlural: 'fundos',
+    rateLabel: 'Selic',
+    cashLabel: 'CDI',
+    yahooSuffix: '.SA',
+    newsLocale: 'hl=pt-BR&gl=BR&ceid=BR:pt',
+    newsQuery: ticker => (/\d{2}$/.test(ticker) ? `${ticker} FII` : `${ticker} ação B3`),
+    dividendTax: 0.15,
+    tradingCost: 0.0003 + 0.0010,
+    // null = proxy built from the first 10 assets of the class (legacy B3 behaviour).
+    benchmarks: { stock: { label: 'IBOV', tickers: null }, fund: { label: 'IFIX', tickers: null } },
+    metricCatalog: null,
+    ...(window.HISTORY_MARKET || {})
+  };
+  const CUR = market.currency;
+
+  const data = window[market.dataVar];
   if (!data) {
-    document.body.innerHTML = '<main class="page-shell"><h1>Histórico indisponível</h1><p>Execute <code>npm run build:history</code> para gerar history-data.js.</p><a href="./index.html">Voltar ao screener</a></main>';
+    document.body.innerHTML = `<main class="page-shell"><h1>Histórico indisponível</h1><p>Execute <code>${market.buildCommand}</code> para gerar o artefato histórico.</p><a href="${market.screenerUrl}">Voltar ao screener</a></main>`;
     return;
   }
 
   const $ = selector => document.querySelector(selector);
-  const metricCatalog = {
+  const metricCatalog = market.metricCatalog || {
     stock: {
-      price: ['Preço', 'R$', 2], dy: ['Dividend Yield', '%', 2], score: ['Score', '', 2],
+      price: ['Preço', CUR, 2], dy: ['Dividend Yield', '%', 2], score: ['Score', '', 2],
       pvp: ['P/VP', 'x', 2], roe: ['ROE', '%', 2], roic: ['ROIC', '%', 2],
-      liquidity: ['Liquidez', 'R$', 0], graham: ['Preço Graham', 'R$', 2], bazin: ['Preço Bazin', 'R$', 2],
+      liquidity: ['Liquidez', CUR, 0], graham: ['Preço Graham', CUR, 2], bazin: ['Preço Bazin', CUR, 2],
       payout: ['Payout', '%', 2], growth: ['Crescimento 5a', '%', 2]
     },
     fund: {
-      price: ['Preço', 'R$', 2], dy: ['Dividend Yield', '%', 2], score: ['Score', '', 2],
-      pvp: ['P/VP', 'x', 2], liquidity: ['Liquidez', 'R$', 0], marketCap: ['Valor de mercado', 'R$', 0],
+      price: ['Preço', CUR, 2], dy: ['Dividend Yield', '%', 2], score: ['Score', '', 2],
+      pvp: ['P/VP', 'x', 2], liquidity: ['Liquidez', CUR, 0], marketCap: ['Valor de mercado', CUR, 0],
       vacancy: ['Vacância', '%', 2], ffoYield: ['FFO Yield', '%', 2], capRate: ['Cap Rate', '%', 2]
     }
   };
+  // B3 funds (FIIs) report vacancy and cap rate; US REITs/ETFs do not.
+  const hasVacancyData = Boolean(metricCatalog.fund.vacancy);
   
   const state = { type: 'stock', ticker: '', compare: '', metric: 'price', period: 'all', mode: 'local' };
   const tooltip = $('#chartTooltip');
@@ -62,7 +92,11 @@
     const [, suffix, digits] = metricCatalog[type][metric] || [metric, '', 2];
     if ((metric === 'liquidity' || metric === 'marketCap') && Math.abs(value) >= 1000) return `${suffix} ${compact(value)}`.trim();
     const number = new Intl.NumberFormat('pt-BR', { minimumFractionDigits: digits, maximumFractionDigits: digits }).format(value);
-    return suffix === 'R$' ? `R$ ${number}` : suffix === 'x' ? `${number}x` : `${number}${suffix}`;
+    return suffix === CUR ? `${CUR} ${number}` : suffix === 'x' ? `${number}x` : `${number}${suffix}`;
+  }
+  // The USD/BRL rate is always quoted in reais, whatever the market's currency.
+  function formatBrlRate(value) {
+    return validNumber(value) ? `R$ ${new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value)}` : 'N/D';
   }
   function validNumber(value) { return typeof value === 'number' && Number.isFinite(value); }
   function percentChange(first, last) { return validNumber(first) && validNumber(last) && first !== 0 ? ((last / first) - 1) * 100 : null; }
@@ -75,7 +109,7 @@
     for (let i = 0; i < points.length; i += bucketSize) {
       const bucket = points.slice(i, i + bucketSize);
       const avgPoint = { ...bucket[0] };
-      const numericFields = ['price', 'dy', 'score', 'pvp', 'roe', 'roic', 'liquidity', 'graham', 'bazin', 'payout', 'growth', 'marketCap', 'vacancy', 'ffoYield', 'capRate'];
+      const numericFields = [...new Set([...Object.keys(metricCatalog.stock), ...Object.keys(metricCatalog.fund)])];
       numericFields.forEach(field => {
         const vals = bucket.map(b => b[field]).filter(validNumber);
         if (vals.length > 0) {
@@ -101,8 +135,8 @@
       return point;
     });
     if (state.mode === 'local') {
-      // Local history starts on aligned March 13, 2026
-      return points.filter(p => p.date >= '2026-03-13');
+      // Local history starts with the market's first daily snapshot.
+      return points.filter(p => p.date >= market.localStart);
     }
     return points;
   }
@@ -137,7 +171,7 @@
     if (mode === 'local' || mode === 'extended') state.mode = mode;
     const tickers = Object.keys(data.series[state.type]);
     const requested = params.get('ticker');
-    state.ticker = tickers.includes(requested) ? requested : (state.type === 'stock' && tickers.includes('PETR4') ? 'PETR4' : tickers.sort((a, b) => data.series[state.type][b].d.length - data.series[state.type][a].d.length)[0]);
+    state.ticker = tickers.includes(requested) ? requested : (state.type === 'stock' && tickers.includes(market.defaultTicker) ? market.defaultTicker : tickers.sort((a, b) => data.series[state.type][b].d.length - data.series[state.type][a].d.length)[0]);
     const metric = params.get('metric');
     if (metricCatalog[state.type][metric]) state.metric = metric;
     const period = params.get('period');
@@ -157,8 +191,8 @@
     const accepted = meta.accepted.stock + meta.accepted.fund;
     $('#summaryGrid').innerHTML = [
       ['Período', `${formatDate(meta.range.from)} → ${formatDate(meta.range.to)}`, `${data.dates.length} datas canônicas`],
-      ['Ativos', `${meta.assets.stock + meta.assets.fund}`, `${meta.assets.stock} ações · ${meta.assets.fund} fundos`],
-      ['Snapshots válidos', `${accepted}`, `${meta.accepted.stock} ações · ${meta.accepted.fund} fundos`],
+      ['Ativos', `${meta.assets.stock + meta.assets.fund}`, `${meta.assets.stock} ações · ${meta.assets.fund} ${market.fundPlural}`],
+      ['Snapshots válidos', `${accepted}`, `${meta.accepted.stock} ações · ${meta.accepted.fund} ${market.fundPlural}`],
       ['Qualidade', `${meta.rejected.length} rejeitados`, `${((accepted / meta.sourceFiles) * 100).toFixed(1)}% de aproveitamento`]
     ].map(([label, value, detail]) => `<article class="stat-card"><span class="stat-label">${label}</span><strong class="stat-value" ${label === 'Período' ? 'style="color: var(--accent);"' : ''}>${value}</strong><span class="stat-detail">${detail}</span></article>`).join('');
     $('#freshness').innerHTML = `<strong>Atualizado até ${formatDate(meta.range.to)}</strong><br>Artefato v${meta.version}, gerado a partir de ${meta.sourceFiles} snapshots.`;
@@ -192,11 +226,11 @@
     const tickers = Object.keys(data.series[state.type]).sort();
     const globalAssets = [
       ...Object.keys(data.series.stock).map(ticker => ({ ticker, type: 'stock', label: 'Ação' })),
-      ...Object.keys(data.series.fund).map(ticker => ({ ticker, type: 'fund', label: 'Fundo' }))
+      ...Object.keys(data.series.fund).map(ticker => ({ ticker, type: 'fund', label: market.fundLabel }))
     ].sort((a, b) => a.ticker.localeCompare(b.ticker));
     $('#assetOptions').innerHTML = globalAssets.map(asset => `<option value="${escapeHTML(asset.ticker)}" label="${asset.label}"></option>`).join('');
     $('#assetSearch').value = state.ticker;
-    $('#assetSearch').placeholder = `Buscar entre ${globalAssets.length} ações e fundos`;
+    $('#assetSearch').placeholder = `Buscar entre ${globalAssets.length} ações e ${market.fundPlural}`;
     $('#compareAsset').innerHTML = `<option value="">Sem comparação</option>${tickers.filter(ticker => ticker !== state.ticker).map(ticker => `<option value="${escapeHTML(ticker)}" ${ticker === state.compare ? 'selected' : ''}>${escapeHTML(ticker)}</option>`).join('')}`;
     const metrics = metricCatalog[state.type];
     if (!metrics[state.metric]) state.metric = 'price';
@@ -299,9 +333,9 @@
         const margin = ((latestGraham - currentPrice) / latestGraham) * 100;
         if (margin > 0) {
           positiveMargins++;
-          reasons.push(`Preço está <strong>${margin.toFixed(1)}% abaixo</strong> do preço de Graham (R$ ${formatValue(type, 'price', latestGraham)}).`);
+          reasons.push(`Preço está <strong>${margin.toFixed(1)}% abaixo</strong> do preço de Graham (${formatValue(type, 'price', latestGraham)}).`);
         } else {
-          reasons.push(`Preço está acima do preço de Graham (R$ ${formatValue(type, 'price', latestGraham)}).`);
+          reasons.push(`Preço está acima do preço de Graham (${formatValue(type, 'price', latestGraham)}).`);
         }
       }
 
@@ -310,9 +344,9 @@
         const margin = ((latestBazin - currentPrice) / latestBazin) * 100;
         if (margin > 0) {
           positiveMargins++;
-          reasons.push(`Margem de segurança de <strong>${margin.toFixed(1)}%</strong> sobre o Preço Bazin (R$ ${formatValue(type, 'price', latestBazin)}).`);
+          reasons.push(`Margem de segurança de <strong>${margin.toFixed(1)}%</strong> sobre o Preço Bazin (${formatValue(type, 'price', latestBazin)}).`);
         } else {
-          reasons.push(`Preço acima do Preço Teto de Bazin (R$ ${formatValue(type, 'price', latestBazin)}).`);
+          reasons.push(`Preço acima do Preço Teto de Bazin (${formatValue(type, 'price', latestBazin)}).`);
         }
       }
 
@@ -377,11 +411,11 @@
 
     // Razão de preço geral
     if (pricePercentile < 25) {
-      reasons.unshift(`Preço atual (R$ ${formatValue(type, 'price', currentPrice)}) está muito próximo da mínima histórica registrada de R$ ${formatValue(type, 'price', minPrice)} (percentil ${pricePercentile.toFixed(0)}%).`);
+      reasons.unshift(`Preço atual (${formatValue(type, 'price', currentPrice)}) está muito próximo da mínima histórica registrada de ${formatValue(type, 'price', minPrice)} (percentil ${pricePercentile.toFixed(0)}%).`);
     } else if (pricePercentile > 75) {
-      reasons.unshift(`Preço atual está próximo da máxima histórica de R$ ${formatValue(type, 'price', maxPrice)} (percentil ${pricePercentile.toFixed(0)}%).`);
+      reasons.unshift(`Preço atual está próximo da máxima histórica de ${formatValue(type, 'price', maxPrice)} (percentil ${pricePercentile.toFixed(0)}%).`);
     } else {
-      reasons.push(`Preço atual de R$ ${formatValue(type, 'price', currentPrice)} está na faixa intermediária histórica (entre R$ ${formatValue(type, 'price', minPrice)} e R$ ${formatValue(type, 'price', maxPrice)}).`);
+      reasons.push(`Preço atual de ${formatValue(type, 'price', currentPrice)} está na faixa intermediária histórica (entre ${formatValue(type, 'price', minPrice)} e ${formatValue(type, 'price', maxPrice)}).`);
     }
 
     return { ticker, score, statusClass, statusLabel, reasons, currentPrice, currentScore, currentPvp, currentDy };
@@ -501,7 +535,7 @@
 
       // 1. Tenta obter notícias específicas do Yahoo Finance via rss2json
       try {
-        const yahooTicker = ticker.includes('.') ? ticker : `${ticker}.SA`;
+        const yahooTicker = ticker.includes('.') ? ticker : `${ticker}${market.yahooSuffix}`;
         const yahooUrl = `https://finance.yahoo.com/rss/headline?s=${yahooTicker}`;
         const rss2jsonUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(yahooUrl)}`;
         
@@ -554,12 +588,11 @@
       // (proxies CORS diretos estão bloqueados — rss2json funciona e tem CORS)
       if (newsItems.length === 0) {
         // Query inteligente: FIIs (sufixo 11) vs ações
-        const isFii = /\d{2}$/.test(ticker); // termina em 2 dígitos → provavelmente FII
-        const baseQ = isFii ? `${ticker} FII` : `${ticker} ação B3`;
+        const baseQ = market.newsQuery(ticker);
         const fallbackQ = ticker; // query mais ampla se a primeira falhar
 
         const buildGoogleUrl = (q) =>
-          `https://news.google.com/rss/search?q=${encodeURIComponent(q)}&hl=pt-BR&gl=BR&ceid=BR:pt`;
+          `https://news.google.com/rss/search?q=${encodeURIComponent(q)}&${market.newsLocale}`;
 
         const tryGoogleFetch = async (googleRssUrl) => {
           const rss2jsonUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(googleRssUrl)}`;
@@ -964,10 +997,13 @@
     } else {
       const vacancies = points.map(p => p.vacancy).filter(validNumber);
       const capRates = points.map(p => p.capRate).filter(validNumber);
+      const average = values => (values.length ? values.reduce((a, b) => a + b, 0) / values.length : 0);
       specificStats = {
-        avgVacancy: vacancies.length ? vacancies.reduce((a, b) => a + b, 0) / vacancies.length : 0,
+        avgVacancy: average(vacancies),
         maxVacancy: vacancies.length ? Math.max(...vacancies) : 0,
-        avgCapRate: capRates.length ? capRates.reduce((a, b) => a + b, 0) / capRates.length : 0,
+        avgCapRate: average(capRates),
+        avgFfoYield: average(points.map(p => p.ffoYield).filter(validNumber)),
+        avgExpense: average(points.map(p => p.expenseRatio).filter(validNumber))
       };
     }
 
@@ -1006,6 +1042,14 @@
             <span class="insight-detail">Média de eficiência e retorno sobre capital investido no período.</span>
           </div>
         `;
+      } else if (!hasVacancyData) {
+        specificHTML = `
+          <div class="insight-block">
+            <span class="insight-label">Geração de caixa e custo</span>
+            <span class="insight-value">FCF Yield médio: ${primaryStats.avgFfoYield.toFixed(1)}%</span>
+            <span class="insight-detail">Taxa de administração média: <strong>${primaryStats.avgExpense.toFixed(2)}%</strong> (FCF para REITs, taxa para ETFs)</span>
+          </div>
+        `;
       } else {
         specificHTML = `
           <div class="insight-block">
@@ -1022,7 +1066,7 @@
           <div class="insight-block">
             <span class="insight-label">Comportamento de Preço</span>
             <span class="insight-value">${signed(primaryStats.priceChange)} no período</span>
-            <span class="insight-detail">Mín: <strong>R$ ${formatValue(state.type, 'price', primaryStats.priceMinPoint?.price)}</strong> (em ${formatDate(primaryStats.priceMinPoint?.date)})<br>Máx: <strong>R$ ${formatValue(state.type, 'price', primaryStats.priceMaxPoint?.price)}</strong> (em ${formatDate(primaryStats.priceMaxPoint?.date)})</span>
+            <span class="insight-detail">Mín: <strong>${formatValue(state.type, 'price', primaryStats.priceMinPoint?.price)}</strong> (em ${formatDate(primaryStats.priceMinPoint?.date)})<br>Máx: <strong>${formatValue(state.type, 'price', primaryStats.priceMaxPoint?.price)}</strong> (em ${formatDate(primaryStats.priceMaxPoint?.date)})</span>
           </div>
           <div class="insight-block">
             <span class="insight-label">Retorno de Dividendos (DY)</span>
@@ -1067,6 +1111,11 @@
         specificRows = `
           ${compareRow('ROE Médio', primaryStats.avgRoe, compareStats.avgRoe, v => `${v.toFixed(1)}%`)}
           ${compareRow('ROIC Médio', primaryStats.avgRoic, compareStats.avgRoic, v => `${v.toFixed(1)}%`)}
+        `;
+      } else if (!hasVacancyData) {
+        specificRows = `
+          ${compareRow('FCF Yield Médio', primaryStats.avgFfoYield, compareStats.avgFfoYield, v => `${v.toFixed(1)}%`)}
+          ${compareRow('Taxa de Adm. Média', primaryStats.avgExpense, compareStats.avgExpense, v => `${v.toFixed(2)}%`, true)}
         `;
       } else {
         specificRows = `
@@ -1114,7 +1163,7 @@
   function renderMacro() {
     let economy = data.economy.map(([dateIndex, selic, dollar]) => ({ dateIndex, date: data.dates[dateIndex], selic, dollar }));
     if (state.mode === 'local') {
-      economy = economy.filter(point => point.date >= '2026-03-13');
+      economy = economy.filter(point => point.date >= market.localStart);
     }
     const points = filterPeriod(economy);
     const selic = points.filter(point => validNumber(point.selic));
@@ -1138,9 +1187,9 @@
 
     const latestSelic = selic.at(-1)?.selic, latestDollar = dollar.at(-1)?.dollar;
     const latestSelicText = formatValue('stock', 'dy', latestSelic);
-    const latestDollarText = formatValue('stock', 'price', latestDollar);
+    const latestDollarText = formatBrlRate(latestDollar);
 
-    container.innerHTML = `<div class="legend" id="macroLegend"><span class="legend-item"><i class="legend-dot"></i>Selic <strong id="macroSelicVal">${latestSelicText}</strong></span><span class="legend-item"><i class="legend-dot secondary"></i>Dólar <strong id="macroDollarVal">${latestDollarText}</strong></span></div><svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+    container.innerHTML = `<div class="legend" id="macroLegend"><span class="legend-item"><i class="legend-dot"></i>${market.rateLabel} <strong id="macroSelicVal">${latestSelicText}</strong></span><span class="legend-item"><i class="legend-dot secondary"></i>Dólar <strong id="macroDollarVal">${latestDollarText}</strong></span></div><svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
       <line class="chart-grid" x1="0" x2="100" y1="90" y2="90"/>
       <path class="chart-line" d="${path('selic')}"/>
       <path class="chart-line secondary" d="${path('dollar')}"/>
@@ -1163,7 +1212,7 @@
       if (!closestPoint) return;
 
       const selicVal = formatValue('stock', 'dy', closestPoint.selic);
-      const dollarVal = formatValue('stock', 'price', closestPoint.dollar);
+      const dollarVal = formatBrlRate(closestPoint.dollar);
 
       selicValEl.textContent = selicVal;
       dollarValEl.textContent = dollarVal;
@@ -1173,7 +1222,7 @@
       crosshair.setAttribute('x2', xPos);
       crosshair.setAttribute('visibility', 'visible');
 
-      tooltip.innerHTML = `<strong>${formatDate(closestPoint.date)}</strong><div>Selic: <b>${selicVal}</b></div><div>Dólar: <b>${dollarVal}</b></div>`;
+      tooltip.innerHTML = `<strong>${formatDate(closestPoint.date)}</strong><div>${market.rateLabel}: <b>${selicVal}</b></div><div>Dólar: <b>${dollarVal}</b></div>`;
       tooltip.hidden = false;
       tooltip.style.left = `${Math.min(event.clientX + 14, innerWidth - 250)}px`;
       tooltip.style.top = `${Math.max(10, event.clientY - 90)}px`;
@@ -1205,7 +1254,7 @@
   }
 
   function renderRankings() {
-    $('#rankingGrid').innerHTML = calculateRanking().map(([title, rows, field, formatter]) => `<article class="ranking-card"><p class="eyebrow">${state.type === 'stock' ? 'Ações' : 'Fundos'}</p><h2>${title}</h2><div class="ranking-list">${rows.map((row, index) => `<button class="ranking-row" type="button" data-ticker="${escapeHTML(row.ticker)}"><span class="rank">0${index + 1}</span><span class="ranking-ticker">${escapeHTML(row.ticker)}</span><span class="ranking-value ${row[field] < 0 ? 'negative' : ''}">${formatter(row[field])}</span></button>`).join('')}</div></article>`).join('');
+    $('#rankingGrid').innerHTML = calculateRanking().map(([title, rows, field, formatter]) => `<article class="ranking-card"><p class="eyebrow">${state.type === 'stock' ? 'Ações' : market.fundPlural.charAt(0).toUpperCase() + market.fundPlural.slice(1)}</p><h2>${title}</h2><div class="ranking-list">${rows.map((row, index) => `<button class="ranking-row" type="button" data-ticker="${escapeHTML(row.ticker)}"><span class="rank">0${index + 1}</span><span class="ranking-ticker">${escapeHTML(row.ticker)}</span><span class="ranking-value ${row[field] < 0 ? 'negative' : ''}">${formatter(row[field])}</span></button>`).join('')}</div></article>`).join('');
     document.querySelectorAll('.ranking-row').forEach(button => button.addEventListener('click', () => { state.ticker = button.dataset.ticker; state.compare = ''; update(); scrollTo({ top: 0, behavior: 'smooth' }); }));
   }
 
@@ -1253,7 +1302,7 @@
     const compareBuy = hasCompare ? getBuyMomentData(state.compare, state.type) : null;
 
     const csvLines = [];
-    csvLines.push(`# B3 SCREENER - RELATÓRIO ANALÍTICO HISTÓRICO`);
+    csvLines.push(`# ${market.title} - RELATÓRIO ANALÍTICO HISTÓRICO`);
     csvLines.push(`# Gerado em: ${new Date().toLocaleDateString('pt-BR')}`);
     csvLines.push(`# Período análise: ${formatDate(primaryStats.priceMinPoint?.date)} a ${formatDate(primaryStats.priceMaxPoint?.date)}`);
     csvLines.push(`#`);
@@ -1272,7 +1321,7 @@
       const formatBuyRow = (buy) => {
         const pvpStr = validNumber(buy.currentPvp) ? `${buy.currentPvp.toFixed(2)}x` : 'N/D';
         const dyStr = validNumber(buy.currentDy) ? `${buy.currentDy.toFixed(2)}%` : 'N/D';
-        const priceStr = validNumber(buy.currentPrice) ? `R$ ${buy.currentPrice.toFixed(2)}` : 'N/D';
+        const priceStr = validNumber(buy.currentPrice) ? `${CUR} ${buy.currentPrice.toFixed(2)}` : 'N/D';
         return `# ${buy.ticker};${buy.statusLabel};${buy.score}/100;${priceStr};${buy.currentScore};${pvpStr};${dyStr}`;
       };
 
@@ -1282,7 +1331,7 @@
       csvLines.push(`# Ativo: ${state.ticker}`);
       csvLines.push(`# Classificação: ${primaryBuy.statusLabel}`);
       csvLines.push(`# Score de Atratividade: ${primaryBuy.score}/100`);
-      csvLines.push(`# Preço Atual: R$ ${(primaryBuy.currentPrice ?? 0).toFixed(2)}`);
+      csvLines.push(`# Preço Atual: ${CUR} ${(primaryBuy.currentPrice ?? 0).toFixed(2)}`);
       csvLines.push(`# Score de Fundamentos: ${primaryBuy.currentScore}`);
       csvLines.push(`# P/VP Atual: ${validNumber(primaryBuy.currentPvp) ? primaryBuy.currentPvp.toFixed(2) + 'x' : 'N/D'}`);
       csvLines.push(`# Dividend Yield Atual: ${validNumber(primaryBuy.currentDy) ? primaryBuy.currentDy.toFixed(2) + '%' : 'N/D'}`);
@@ -1319,8 +1368,13 @@
       pushRow('ROE Médio', primaryStats.avgRoe, compareStats?.avgRoe || 0, '%');
       pushRow('ROIC Médio', primaryStats.avgRoic, compareStats?.avgRoic || 0, '%');
     } else {
-      pushRow('Vacância Média', primaryStats.avgVacancy, compareStats?.avgVacancy || 0, '%', true);
-      pushRow('Cap Rate Médio', primaryStats.avgCapRate, compareStats?.avgCapRate || 0, '%');
+      if (hasVacancyData) {
+        pushRow('Vacância Média', primaryStats.avgVacancy, compareStats?.avgVacancy || 0, '%', true);
+        pushRow('Cap Rate Médio', primaryStats.avgCapRate, compareStats?.avgCapRate || 0, '%');
+      } else {
+        pushRow('FCF Yield Médio', primaryStats.avgFfoYield, compareStats?.avgFfoYield || 0, '%');
+        pushRow('Taxa de Adm. Média', primaryStats.avgExpense, compareStats?.avgExpense || 0, '%', true);
+      }
     }
     csvLines.push(`#`);
 
@@ -1526,7 +1580,7 @@
     function populateSimOptions() {
       const globalAssets = [
         ...Object.keys(data.series.stock).map(ticker => ({ ticker, type: 'stock', label: 'Ação' })),
-        ...Object.keys(data.series.fund).map(ticker => ({ ticker, type: 'fund', label: 'Fundo' }))
+        ...Object.keys(data.series.fund).map(ticker => ({ ticker, type: 'fund', label: market.fundLabel }))
       ].sort((a, b) => a.ticker.localeCompare(b.ticker));
       
       $('#simAssetOptions').innerHTML = globalAssets.map(asset => `<option value="${escapeHTML(asset.ticker)}" label="${asset.label}"></option>`).join('');
@@ -1578,6 +1632,7 @@
 
     function getHumanSector(ticker, rawCategory, type) {
       const t = String(ticker).toUpperCase();
+      if (data.meta.sectors?.[t]) return data.meta.sectors[t];
       if (['PETR4', 'PETR3', 'RECV3', 'PRIO3', 'RRRP3', 'VBBR3', 'UGPA3'].includes(t)) return 'Petróleo, Gás & Biocombustíveis';
       if (['ITUB4', 'BBDC4', 'SANB11', 'BBAS3', 'BPAC11', 'ITSA4'].includes(t)) return 'Bancos & Serviços Financeiros';
       if (['VALE3', 'CSNA3', 'USIM5', 'GGBR4', 'GOAU4'].includes(t)) return 'Mineração, Siderurgia & Metalurgia';
@@ -1589,7 +1644,7 @@
       if (['HGRE11', 'BRCR11', 'PVBI11', 'JSRE11'].includes(t)) return 'FII Lajes Corporativas';
       
       if (rawCategory && !rawCategory.startsWith('STAR_')) return rawCategory;
-      return type === 'stock' ? 'Ações Diversas' : 'FIIs Diversos';
+      return type === 'stock' ? 'Ações Diversas' : `${market.fundLabel} Diversos`;
     }
 
     function calculateSmartWeights() {
@@ -1772,14 +1827,14 @@
 
       // Selic/CDI para Renda Fixa e Caixa
       let selicPoints = data.economy.map(([dateIndex, selic]) => ({ dateIndex, date: data.dates[dateIndex], selic }));
-      if (state.mode === 'local') selicPoints = selicPoints.filter(p => p.date >= '2026-03-13');
+      if (state.mode === 'local') selicPoints = selicPoints.filter(p => p.date >= market.localStart);
       selicPoints = filterPeriod(selicPoints, simState.period);
 
       // Benchmarks IBOV & IFIX
-      const ibovTickers = Object.keys(data.series.stock).slice(0, 10);
-      const ifixTickers = Object.keys(data.series.fund).slice(0, 10);
-      const ibovSeries = ibovTickers.map(t => filterPeriod(decodeSeries('stock', t), simState.period)).filter(p => p.length > 0);
-      const ifixSeries = ifixTickers.map(t => filterPeriod(decodeSeries('fund', t), simState.period)).filter(p => p.length > 0);
+      const benchmarkSeries = (benchmark, fallbackType) => (benchmark.tickers || Object.keys(data.series[fallbackType]).slice(0, 10).map(ticker => ({ type: fallbackType, ticker })))
+        .map(({ type, ticker }) => filterPeriod(decodeSeries(type, ticker), simState.period)).filter(p => p.length > 0);
+      const ibovSeries = benchmarkSeries(market.benchmarks.stock, 'stock');
+      const ifixSeries = benchmarkSeries(market.benchmarks.fund, 'fund');
 
       let accumCdiFactor = 1.0;
       let prevCdiDateIndex = null;
@@ -1846,7 +1901,7 @@
             if (prevPoint && validNumber(prevPoint.price) && point.dy > prevPoint.dy) {
               const divPerShare = (point.price * (point.dy / 100)) / 12;
               const grossDiv = pos.shares * divPerShare;
-              const netDiv = isNetTaxMode ? grossDiv * 0.85 : grossDiv; // 15% IR retido se Net
+              const netDiv = isNetTaxMode ? grossDiv * (1 - market.dividendTax) : grossDiv; // imposto retido na fonte
               pos.totalDividends += netDiv;
 
               if (simState.reinvest && point.price > 0) {
@@ -1912,7 +1967,7 @@
           });
 
           if (isNetTaxMode) {
-            const b3Fees = tradedVolumeToday * (0.0003 + 0.0010); // 0.03% emolumentos + 0.10% slippage
+            const b3Fees = tradedVolumeToday * market.tradingCost; // custos de negociação + slippage
             totalB3Costs += b3Fees;
             portfolioCash = Math.max(0, portfolioCash - b3Fees);
           }
@@ -1951,9 +2006,9 @@
           const ratios = ifixSeries.map(s => {
             const firstP = s[0]?.price || 1;
             const pt = s.find(p => p.dateIndex === dateIdx) || s.at(-1);
-            return (pt?.price || firstP) / ifixSeries.length;
+            return (pt?.price || firstP) / firstP;
           });
-          ifixVal = initialCapital * ratios.reduce((a, b) => a + b, 0);
+          ifixVal = initialCapital * (ratios.reduce((a, b) => a + b, 0) / ifixSeries.length);
         }
 
         const cdiValAtDate = initialCapital * accumCdiFactor;
@@ -2150,8 +2205,8 @@
 
     function renderSimExecSummary(res) {
       $('#simExecPeriodLabel').textContent = `${escapeHTML(res.startDate)} a ${escapeHTML(res.endDate)} (${res.calendarDays}d / ${res.tradingDays} pregões)`;
-      $('#simExecCapitalLabel').textContent = `R$ ${res.totalCapitalInvested.toFixed(2)}`;
-      $('#simExecFinalValLabel').textContent = `R$ ${res.finalPortfolioVal.toFixed(2)}`;
+      $('#simExecCapitalLabel').textContent = `${CUR} ${res.totalCapitalInvested.toFixed(2)}`;
+      $('#simExecFinalValLabel').textContent = `${CUR} ${res.finalPortfolioVal.toFixed(2)}`;
       $('#simExecReturnLabel').textContent = `${signed(res.portfolioReturnPct)} (TWR: ${signed(res.twrPct)} | XIRR: ${signed(res.xirrPct)})`;
     }
 
@@ -2180,25 +2235,25 @@
         return `
           <tr>
             <td><strong>${escapeHTML(item.ticker)}</strong></td>
-            <td><span class="news-tag ${item.type === 'stock' ? 'mercado' : 'proventos'}">${escapeHTML(stat ? stat.category : (item.type === 'stock' ? 'Ação' : 'FII'))}</span></td>
+            <td><span class="news-tag ${item.type === 'stock' ? 'mercado' : 'proventos'}">${escapeHTML(stat ? stat.category : (item.type === 'stock' ? 'Ação' : market.fundShort))}</span></td>
             <td class="center"><span class="sim-weight-cell"><input type="number" class="sim-weight-input" data-ticker="${escapeHTML(item.ticker)}" value="${Math.round(item.weight)}" min="0" max="100">%</span></td>
-            <td class="num">R$ ${stat ? stat.allocatedCapital.toFixed(2) : '—'}</td>
+            <td class="num">${CUR} ${stat ? stat.allocatedCapital.toFixed(2) : '—'}</td>
             <td class="num">${stat ? (simState.shareMode === 'integer' ? stat.shares.toFixed(0) : stat.shares.toFixed(2)) : '—'}</td>
-            <td class="num" style="color: var(--positive); font-weight: 750;">R$ ${stat ? stat.totalDividends.toFixed(2) : '—'}</td>
-            <td class="num ${stat && stat.capitalGain >= 0 ? 'positive' : 'negative'}">R$ ${stat ? stat.capitalGain.toFixed(2) : '—'}</td>
+            <td class="num" style="color: var(--positive); font-weight: 750;">${CUR} ${stat ? stat.totalDividends.toFixed(2) : '—'}</td>
+            <td class="num ${stat && stat.capitalGain >= 0 ? 'positive' : 'negative'}">${CUR} ${stat ? stat.capitalGain.toFixed(2) : '—'}</td>
             <td class="num" style="font-weight: 750;">${stat ? signed(stat.netContribPp) : '—'} p.p.</td>
-            <td class="num" style="font-weight: 850;">R$ ${stat ? stat.finalAssetValue.toFixed(2) : '—'}</td>
+            <td class="num" style="font-weight: 850;">${CUR} ${stat ? stat.finalAssetValue.toFixed(2) : '—'}</td>
             <td class="center"><button type="button" class="sim-remove-btn" data-ticker="${escapeHTML(item.ticker)}">✕</button></td>
           </tr>
         `;
       }).join('');
 
       if (res) {
-        $('#simTotalAllocatedLabel').textContent = `R$ ${res.totalCapitalInvested.toFixed(2)}`;
-        $('#simTotalDividendsLabel').textContent = `R$ ${res.totalDividends.toFixed(2)}`;
+        $('#simTotalAllocatedLabel').textContent = `${CUR} ${res.totalCapitalInvested.toFixed(2)}`;
+        $('#simTotalDividendsLabel').textContent = `${CUR} ${res.totalDividends.toFixed(2)}`;
         const totalCapGain = res.assetStats.reduce((s, a) => s + a.capitalGain, 0);
-        $('#simTotalCapGainLabel').textContent = `R$ ${totalCapGain.toFixed(2)}`;
-        $('#simTotalFinalValLabel').textContent = `R$ ${res.finalPortfolioVal.toFixed(2)}`;
+        $('#simTotalCapGainLabel').textContent = `${CUR} ${totalCapGain.toFixed(2)}`;
+        $('#simTotalFinalValLabel').textContent = `${CUR} ${res.finalPortfolioVal.toFixed(2)}`;
       }
 
       tbody.querySelectorAll('.sim-weight-input').forEach(input => {
@@ -2227,8 +2282,8 @@
       grid.innerHTML = `
         <article class="stat-card sim-kpi-card">
           <span class="stat-label">Patrimônio Líquido Final</span>
-          <strong class="stat-value" style="color: var(--accent);">R$ ${res.finalPortfolioVal.toFixed(2)}</strong>
-          <span class="stat-detail">Aportado: R$ ${res.totalCapitalInvested.toFixed(2)} | Retorno: ${signed(res.portfolioReturnPct)}</span>
+          <strong class="stat-value" style="color: var(--accent);">${CUR} ${res.finalPortfolioVal.toFixed(2)}</strong>
+          <span class="stat-detail">Aportado: ${CUR} ${res.totalCapitalInvested.toFixed(2)} | Retorno: ${signed(res.portfolioReturnPct)}</span>
         </article>
 
         <article class="stat-card sim-kpi-card">
@@ -2238,9 +2293,9 @@
         </article>
 
         <article class="stat-card sim-kpi-card">
-          <span class="stat-label">Excesso vs CDI (Ex-Post)</span>
+          <span class="stat-label">Excesso vs ${market.cashLabel} (Ex-Post)</span>
           <strong class="stat-value ${isExcessPos ? 'positive' : 'negative'}">${signed(res.excessReturnVsCdi)} p.p.</strong>
-          <span class="stat-detail">CDI no período: +${res.cdiReturnPct.toFixed(2)}% (R$ ${res.finalCdiVal.toFixed(2)})</span>
+          <span class="stat-detail">${market.cashLabel} no período: +${res.cdiReturnPct.toFixed(2)}% (${CUR} ${res.finalCdiVal.toFixed(2)})</span>
         </article>
 
         <article class="stat-card sim-kpi-card">
@@ -2269,13 +2324,13 @@
 
         <article class="stat-card sim-kpi-card">
           <span class="stat-label">Proventos Brutos & Liquidos</span>
-          <strong class="stat-value" style="color: var(--positive);">R$ ${res.totalDividends.toFixed(2)}</strong>
+          <strong class="stat-value" style="color: var(--positive);">${CUR} ${res.totalDividends.toFixed(2)}</strong>
           <span class="stat-detail">${res.reinvest ? 'Reinvestidos via Bola de Neve' : 'Saldo Acumulado em Caixa'}</span>
         </article>
 
         <article class="stat-card sim-kpi-card">
           <span class="stat-label">Custos & Rebalanceamento</span>
-          <strong class="stat-value" style="color: var(--muted);">R$ ${res.totalB3Costs.toFixed(2)}</strong>
+          <strong class="stat-value" style="color: var(--muted);">${CUR} ${res.totalB3Costs.toFixed(2)}</strong>
           <span class="stat-detail">${res.rebalanceCount} rebalanceamentos (${res.taxMode === 'net' ? 'IR + Emolumentos + Slippage' : 'Bruto Teórico'})</span>
         </article>
       `;
@@ -2370,10 +2425,10 @@
       const pathDivs = showDivs ? series.map((s, i) => `${i === 0 ? 'M' : 'L'}${x(s.dateIndex).toFixed(1)},${yDiv(s.accumDividends).toFixed(1)}`).join(' ') : '';
 
       $('#simChartLegend').innerHTML = `
-        <span class="legend-item"><i class="legend-dot"></i><span>Carteira: <strong>${isNormalized ? signed(res.portfolioReturnPct) : `R$ ${res.finalPortfolioVal.toFixed(2)}`}</strong></span></span>
-        ${showCdi ? `<span class="legend-item"><i class="legend-dot secondary"></i><span>CDI: <strong>${isNormalized ? `+${res.cdiReturnPct.toFixed(2)}%` : `R$ ${res.finalCdiVal.toFixed(2)}`}</strong></span></span>` : ''}
-        ${showIbov ? `<span class="legend-item"><i class="legend-dot ibov"></i><span>IBOV: <strong>${signed(series.at(-1)?.ibovReturnPct)}</strong></span></span>` : ''}
-        ${showIfix ? `<span class="legend-item"><i class="legend-dot ifix"></i><span>IFIX: <strong>${signed(series.at(-1)?.ifixReturnPct)}</strong></span></span>` : ''}
+        <span class="legend-item"><i class="legend-dot"></i><span>Carteira: <strong>${isNormalized ? signed(res.portfolioReturnPct) : `${CUR} ${res.finalPortfolioVal.toFixed(2)}`}</strong></span></span>
+        ${showCdi ? `<span class="legend-item"><i class="legend-dot secondary"></i><span>${market.cashLabel}: <strong>${isNormalized ? `+${res.cdiReturnPct.toFixed(2)}%` : `${CUR} ${res.finalCdiVal.toFixed(2)}`}</strong></span></span>` : ''}
+        ${showIbov ? `<span class="legend-item"><i class="legend-dot ibov"></i><span>${market.benchmarks.stock.label}: <strong>${signed(series.at(-1)?.ibovReturnPct)}</strong></span></span>` : ''}
+        ${showIfix ? `<span class="legend-item"><i class="legend-dot ifix"></i><span>${market.benchmarks.fund.label}: <strong>${signed(series.at(-1)?.ifixReturnPct)}</strong></span></span>` : ''}
       `;
 
       const ticks = Array.from({ length: 5 }, (_, index) => min + ((max - min) * index / 4));
@@ -2381,7 +2436,7 @@
 
       container.innerHTML = `
         <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true" id="simSvgChart">
-          ${ticks.map(value => `<line class="chart-grid" x1="${P.l}" x2="${W - P.r}" y1="${y(value)}" y2="${y(value)}"/><text class="chart-axis-label" x="${P.l - 8}" y="${y(value) + 4}" text-anchor="end">${isNormalized ? `${signed(value)}%` : `R$ ${Math.round(value)}`}</text>`).join('')}
+          ${ticks.map(value => `<line class="chart-grid" x1="${P.l}" x2="${W - P.r}" y1="${y(value)}" y2="${y(value)}"/><text class="chart-axis-label" x="${P.l - 8}" y="${y(value) + 4}" text-anchor="end">${isNormalized ? `${signed(value)}%` : `${CUR} ${Math.round(value)}`}</text>`).join('')}
           ${dateTicks.map(index => {
             const d = data.dates[index];
             if (!d) return '';
@@ -2415,11 +2470,11 @@
           tooltip.style.top = `15px`;
           tooltip.innerHTML = `
             <strong>${escapeHTML(point.date)}</strong><br>
-            Carteira: <strong>R$ ${point.portfolioValue.toFixed(2)} (${signed(point.portfolioReturnPct)})</strong><br>
-            ${showCdi ? `CDI: R$ ${point.cdiValue.toFixed(2)} (+${point.cdiReturnPct.toFixed(2)}%)<br>` : ''}
-            ${showIbov ? `IBOV: ${signed(point.ibovReturnPct)}<br>` : ''}
-            ${showIfix ? `IFIX: ${signed(point.ifixReturnPct)}<br>` : ''}
-            ${showDivs ? `Proventos: R$ ${point.accumDividends.toFixed(2)}` : ''}
+            Carteira: <strong>${CUR} ${point.portfolioValue.toFixed(2)} (${signed(point.portfolioReturnPct)})</strong><br>
+            ${showCdi ? `${market.cashLabel}: ${CUR} ${point.cdiValue.toFixed(2)} (+${point.cdiReturnPct.toFixed(2)}%)<br>` : ''}
+            ${showIbov ? `${market.benchmarks.stock.label}: ${signed(point.ibovReturnPct)}<br>` : ''}
+            ${showIfix ? `${market.benchmarks.fund.label}: ${signed(point.ifixReturnPct)}<br>` : ''}
+            ${showDivs ? `Proventos: ${CUR} ${point.accumDividends.toFixed(2)}` : ''}
           `;
         };
 
@@ -2440,14 +2495,14 @@
           insights.push({
             type: 'success',
             title: '🎉 Ponto de Inflexão Atingido (Bola de Neve)',
-            text: `Os proventos acumulados no período (R$ ${res.totalDividends.toFixed(2)}) foram suficientes para comprar <strong>${canBuyUnits} cota(s) de ${cheapestAsset.ticker}</strong> no fechamento.`
+            text: `Os proventos acumulados no período (${CUR} ${res.totalDividends.toFixed(2)}) foram suficientes para comprar <strong>${canBuyUnits} cota(s) de ${cheapestAsset.ticker}</strong> no fechamento.`
           });
         } else {
           const needed = cheapestAsset.endPrice - res.totalDividends;
           insights.push({
             type: 'info',
             title: '⏳ Progresso da Bola de Neve',
-            text: `Seus proventos cobriram R$ ${res.totalDividends.toFixed(2)}. Faltam <strong>R$ ${needed.toFixed(2)}</strong> em proventos para comprar 1 cota de ${cheapestAsset.ticker}.`
+            text: `Seus proventos cobriram ${CUR} ${res.totalDividends.toFixed(2)}. Faltam <strong>${CUR} ${needed.toFixed(2)}</strong> em proventos para comprar 1 cota de ${cheapestAsset.ticker}.`
           });
         }
       }
@@ -2537,32 +2592,32 @@
     if (!res) { showToast('Nenhum resultado de simulação disponível.'); return; }
 
     const lines = [];
-    lines.push('SIMULADOR DE CARTEIRA B3 SCREENER - RELATORIO COMPLETO');
+    lines.push(`SIMULADOR DE CARTEIRA ${market.title} - RELATORIO COMPLETO`);
     lines.push(`Data de Geracao;${new Date().toLocaleString('pt-BR')}`);
     lines.push(`Periodo;${res.startDate} ate ${res.endDate}`);
-    lines.push(`Aporte Inicial;R$ ${res.initialCapital.toFixed(2)}`);
+    lines.push(`Aporte Inicial;${CUR} ${res.initialCapital.toFixed(2)}`);
     lines.push(`Modo de Cotas;${res.shareMode === 'integer' ? 'Realista (Cotas Inteiras)' : 'Teorico (Fracao)'}`);
     lines.push(`Reinvestimento;${res.reinvest ? 'Sim (Bola de Neve)' : 'Nao (Caixa)'}`);
     lines.push(`Otimizacao Quantitativa;${res.smartAlloc ? 'Ativada' : 'Desativada'}`);
     lines.push('');
     lines.push('METRICAS DE DESEMPENHO E RISCO');
-    lines.push(`Patrimonio Final;R$ ${res.finalPortfolioVal.toFixed(2)}`);
+    lines.push(`Patrimonio Final;${CUR} ${res.finalPortfolioVal.toFixed(2)}`);
     lines.push(`Retorno Acumulado;${res.portfolioReturnPct.toFixed(2)}%`);
-    lines.push(`Proventos Recebidos;R$ ${res.totalDividends.toFixed(2)}`);
-    lines.push(`Benchmark CDI;R$ ${res.finalCdiVal.toFixed(2)} (+${res.cdiReturnPct.toFixed(2)}%)`);
-    lines.push(`Alpha vs CDI;${res.alphaVsCdi.toFixed(2)}% (R$ ${res.alphaAmount.toFixed(2)})`);
+    lines.push(`Proventos Recebidos;${CUR} ${res.totalDividends.toFixed(2)}`);
+    lines.push(`Benchmark ${market.cashLabel};${CUR} ${res.finalCdiVal.toFixed(2)} (+${res.cdiReturnPct.toFixed(2)}%)`);
+    lines.push(`Alpha vs ${market.cashLabel};${res.alphaVsCdi.toFixed(2)}% (${CUR} ${res.alphaAmount.toFixed(2)})`);
     lines.push(`Volatilidade Anualizada;${res.volatilityAnnualized.toFixed(2)}%`);
     lines.push(`Indice de Sharpe;${res.sharpeRatio.toFixed(2)}`);
     lines.push(`Max Drawdown;-${res.maxDrawdown.toFixed(2)}%`);
     lines.push('');
     lines.push('COMPOSICAO DA CARTEIRA E PERFORMANCE INDIVIDUAL');
-    lines.push('Ticker;Classe;Peso (%);Aporte Inicial (R$);Cotas Iniciais;Preco Inicio (R$);Preco Atual (R$);Proventos (R$);Valor Final (R$);Retorno (%)');
+    lines.push(`Ticker;Classe;Peso (%);Aporte Inicial (${CUR});Cotas Iniciais;Preco Inicio (${CUR});Preco Atual (${CUR});Proventos (${CUR});Valor Final (${CUR});Retorno (%)`);
     res.assetStats.forEach(a => {
-      lines.push(`${a.ticker};${a.type === 'stock' ? 'Acao' : 'FII'};${a.weightPct.toFixed(2)};${a.allocatedCapital.toFixed(2)};${a.initialShares.toFixed(2)};${a.startPrice.toFixed(2)};${a.endPrice.toFixed(2)};${a.totalDividendsReceived.toFixed(2)};${a.finalAssetValue.toFixed(2)};${a.assetReturn.toFixed(2)}%`);
+      lines.push(`${a.ticker};${a.type === 'stock' ? 'Acao' : market.fundShort};${a.weightPct.toFixed(2)};${a.allocatedCapital.toFixed(2)};${a.initialShares.toFixed(2)};${a.startPrice.toFixed(2)};${a.endPrice.toFixed(2)};${a.totalDividendsReceived.toFixed(2)};${a.finalAssetValue.toFixed(2)};${a.assetReturn.toFixed(2)}%`);
     });
     lines.push('');
     lines.push('EVOLUCAO DIARIA DA CARTEIRA E BENCHMARKS');
-    lines.push('Data;Carteira (R$);Retorno Carteira (%);CDI (R$);Retorno CDI (%);IBOV (R$);IFIX (R$)');
+    lines.push(`Data;Carteira (${CUR});Retorno Carteira (%);${market.cashLabel} (${CUR});Retorno ${market.cashLabel} (%);${market.benchmarks.stock.label} (${CUR});${market.benchmarks.fund.label} (${CUR})`);
     res.portfolioTimeSeries.forEach(s => {
       lines.push(`${s.date};${s.portfolioValue.toFixed(2)};${s.portfolioReturnPct.toFixed(2)};${s.cdiValue.toFixed(2)};${s.cdiReturnPct.toFixed(2)};${s.ibovValue.toFixed(2)};${s.ifixValue.toFixed(2)}`);
     });

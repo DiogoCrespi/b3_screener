@@ -1,9 +1,18 @@
 const { chromium } = require('playwright');
 const path = require('path');
 
+// Usage: node scripts/playwright-history-smoke.js [b3|us]
+const MARKETS = {
+  b3: { file: 'history-dashboard.html', title: 'Histórico | B3 Screener', dataVar: 'B3_HISTORY_DATA', backHref: './index.html', searchTicker: 'PETR4', expectRejected: true },
+  us: { file: 'history-dashboard-us.html', title: 'Histórico EUA | US Screener', dataVar: 'US_HISTORY_DATA', backHref: './us.html', searchTicker: 'AAPL', expectRejected: false }
+};
+const market = MARKETS[process.argv[2] || 'b3'];
+if (!market) throw new Error(`Unknown market "${process.argv[2]}". Use: ${Object.keys(MARKETS).join(', ')}`);
+const ROOT = process.env.SCREENER_ROOT || path.resolve(__dirname, '..');
+
 (async () => {
   const browser = await chromium.launch({ headless: true });
-  const fileUrl = `file:///${path.resolve('history-dashboard.html').replace(/\\/g, '/')}`;
+  const fileUrl = `file:///${path.resolve(ROOT, market.file).replace(/\\/g, '/')}`;
   const results = [];
   const errors = [];
 
@@ -47,7 +56,7 @@ const path = require('path');
     const initialChart = await page.locator('#mainChart svg').count();
     const rankingCount = await page.locator('#rankingGrid .ranking-card').count();
     const qualityCount = await page.locator('#qualityGrid .quality-card').count();
-    const backHref = await page.locator('a[href="./index.html"]').first().getAttribute('href');
+    const backHref = await page.locator(`a[href="${market.backHref}"]`).first().getAttribute('href');
     const globalAssetOptionCount = await page.locator('#assetOptions option').count();
 
     await page.locator('#assetType button[data-type="fund"]').click();
@@ -60,13 +69,14 @@ const path = require('path');
     const normalizedTitle = await page.locator('#chartTitle').innerText();
     const query = new URL(page.url()).searchParams;
 
-    await page.locator('#assetSearch').fill('PETR4');
+    await page.locator('#assetSearch').fill(market.searchTicker);
     await page.locator('#assetSearch').dispatchEvent('change');
     const globalSearchSwitchesType = await page.locator('#assetType button.active').getAttribute('data-type') === 'stock'
-      && await page.locator('#assetTitle').innerText() === 'PETR4';
+      && await page.locator('#assetTitle').innerText() === market.searchTicker;
 
     await page.locator('#toggleRejected').click();
     const rejectedVisible = await page.locator('#rejectedList:not([hidden]) .rejected-row').count();
+    const doubleCurrency = await page.evaluate(() => /(R\$|US\$)\s*(R\$|US\$)/.test(document.body.innerText));
 
     const downloadName = await page.evaluate(() => {
       let name = '';
@@ -88,17 +98,18 @@ const path = require('path');
     await page.reload({ waitUntil: 'domcontentloaded' });
     await page.waitForSelector('#mainChart svg', { timeout: 15000 });
     const darkPersisted = await page.locator('body.dark').count() === 1;
-    const layout = await page.evaluate(() => ({
-      overflowX: document.documentElement.scrollWidth > document.documentElement.clientWidth + 1,
-      historyVersion: window.B3_HISTORY_DATA?.meta?.version,
-      dates: window.B3_HISTORY_DATA?.dates?.length,
-      rejected: window.B3_HISTORY_DATA?.meta?.rejected?.length,
-      expectedGlobalAssetOptionCount:
-        Object.keys(window.B3_HISTORY_DATA?.series?.stock || {}).length
-        + Object.keys(window.B3_HISTORY_DATA?.series?.fund || {}).length
-    }));
+    const layout = await page.evaluate(dataVar => {
+      const data = window[dataVar];
+      return {
+        overflowX: document.documentElement.scrollWidth > document.documentElement.clientWidth + 1,
+        historyVersion: data?.meta?.version,
+        dates: data?.dates?.length,
+        rejected: data?.meta?.rejected?.length,
+        expectedGlobalAssetOptionCount: Object.keys(data?.series?.stock || {}).length + Object.keys(data?.series?.fund || {}).length
+      };
+    }, market.dataVar);
 
-    results.push({ name, viewport, title, summaryCount, initialTicker, initialActiveType, initialChart, rankingCount, qualityCount, backHref, globalAssetOptionCount, fundTicker, fundTypeActive, normalizedTitle, queryType: query.get('type'), queryMetric: query.get('metric'), queryPeriod: query.get('period'), queryCompare: query.get('compare'), globalSearchSwitchesType, rejectedVisible, downloadName, darkApplied, darkPersisted, ...layout });
+    results.push({ name, viewport, title, summaryCount, initialTicker, initialActiveType, initialChart, rankingCount, qualityCount, backHref, globalAssetOptionCount, fundTicker, fundTypeActive, normalizedTitle, queryType: query.get('type'), queryMetric: query.get('metric'), queryPeriod: query.get('period'), queryCompare: query.get('compare'), globalSearchSwitchesType, rejectedVisible, doubleCurrency, downloadName, darkApplied, darkPersisted, ...layout });
     await page.close();
   }
 
@@ -110,14 +121,14 @@ const path = require('path');
   console.log(JSON.stringify({ results, errors }, null, 2));
   if (errors.length) process.exit(1);
   const failed = results.some(result =>
-    result.title !== 'Histórico | B3 Screener'
+    result.title !== market.title
     || result.summaryCount !== 4
     || !result.initialTicker
     || result.initialActiveType !== 'stock'
     || result.initialChart !== 1
     || result.rankingCount !== 4
     || result.qualityCount !== 3
-    || result.backHref !== './index.html'
+    || result.backHref !== market.backHref
     || result.globalAssetOptionCount !== result.expectedGlobalAssetOptionCount
     || !result.fundTicker
     || result.fundTypeActive !== 'fund'
@@ -127,14 +138,15 @@ const path = require('path');
     || result.queryPeriod !== '30'
     || !result.queryCompare
     || !result.globalSearchSwitchesType
-    || result.rejectedVisible <= 0
+    || (market.expectRejected && result.rejectedVisible <= 0)
+    || result.doubleCurrency
     || !/^[A-Z0-9]+-historico\.csv$/.test(result.downloadName)
     || !result.darkApplied
     || !result.darkPersisted
     || result.overflowX
     || result.historyVersion !== 1
     || result.dates <= 0
-    || result.rejected <= 0
+    || (market.expectRejected && result.rejected <= 0)
   );
   if (failed) process.exit(1);
 })().catch(error => { console.error(error); process.exit(1); });

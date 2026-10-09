@@ -216,10 +216,12 @@ function saveUsHistory(data) {
         date: new Date().toISOString(),
         economy: data.economy,
         source: data.source,
+        // Readers must look fields up by name: columns were appended over time.
         fields: {
-            stocks: ['ticker', 'cotacao', 'dividend_yield', 'overall_score', 'signal', 'category', 'pl', 'p_vp', 'roe', 'market_cap'],
-            reits: ['ticker', 'price', 'dy', 'overall_score', 'signal', 'p_vp', 'p_fcf', 'market_cap'],
-            etfs: ['ticker', 'price', 'dy', 'overall_score', 'signal', 'category', 'expense_ratio', 'aum']
+            stocks: ['ticker', 'cotacao', 'dividend_yield', 'overall_score', 'signal', 'category', 'pl', 'p_vp', 'roe', 'market_cap',
+                'roic', 'liq_2meses', 'graham_price', 'bazin_price', 'payout', 'cresc_5a', 'sector'],
+            reits: ['ticker', 'price', 'dy', 'overall_score', 'signal', 'p_vp', 'p_fcf', 'market_cap', 'liquidity', 'sector'],
+            etfs: ['ticker', 'price', 'dy', 'overall_score', 'signal', 'category', 'expense_ratio', 'aum', 'liquidity', 'asset_class']
         }
     };
     for (const [key, fields] of Object.entries(snapshot.fields)) {

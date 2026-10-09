@@ -56,6 +56,16 @@ Fontes gratuitas, sem chave de API, com redundância em camadas:
 
 Cada seção só é aceita de uma fonte ao vivo se atingir o volume mínimo (1.000 ações, 50 REITs, 300 ETFs). A página `us.html` mostra um aviso quando alguma reserva está em uso. O Finviz foi avaliado e descartado como reserva: a versão gratuita bloqueia após ~50 páginas, e são necessárias ~170.
 
+## Dashboard histórico dos EUA
+
+```bash
+npm run build:history:us
+```
+
+Gera `us-history-data.js` para `history-dashboard-us.html`, a partir dos snapshots de `history-us/` e de 3 anos de preços e dividendos do Yahoo Finance (cache em `history-us/cache-yahoo-prices.json`; só tickers novos são buscados). Para caber numa página estática, acompanha um universo limitado: as 250 maiores ações, TOP_PICKs acima de US$ 10 bi, os 60 maiores REITs e os 200 maiores ETFs não alavancados, além de SPY, QQQ, VNQ, SCHD e BND. O simulador usa S&P 500 (SPY) e REITs (VNQ) como benchmarks, T-Bill (Fed Funds) como caixa e 30% de imposto retido sobre dividendos.
+
+O dashboard (`assets/history-dashboard.js`) é o mesmo para os dois mercados; `history-dashboard-us.html` define `window.HISTORY_MARKET` com moeda, rótulos e benchmarks dos EUA.
+
 ## Dashboard histórico
 
 Gere o artefato consolidado a partir dos snapshots:

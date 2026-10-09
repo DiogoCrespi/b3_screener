@@ -65,13 +65,18 @@ jobs:
         continue-on-error: true
         run: npm run build:history
 
+      # Only tickers new to the tracked universe hit Yahoo; the rest comes from the cache.
+      - name: Build US historical dashboard data
+        continue-on-error: true
+        run: npm run build:history:us
+
       - name: Commit and push market data
         run: |
           git config user.name 'GitHub Actions Bot'
           git config user.email 'actions@github.com'
           git add data.js history-data.js history/*.json 2>/dev/null || true
           # Separate add so a failed US export (no matching files) never blocks B3 data.
-          git add data-us.js history-us/*.json 2>/dev/null || true
+          git add data-us.js us-history-data.js history-us/*.json 2>/dev/null || true
           if git diff --staged --quiet; then
             echo "Nenhuma mudança nos dados para commitar."
             exit 0

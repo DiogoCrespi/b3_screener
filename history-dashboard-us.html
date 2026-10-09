@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Análise histórica de ações e fundos da B3 a partir dos snapshots do B3 Screener.">
-  <title>Histórico | B3 Screener</title>
+  <meta name="description" content="Análise histórica de ações, REITs e ETFs dos EUA a partir dos snapshots do US Screener.">
+  <title>Histórico EUA | US Screener</title>
   <link rel="stylesheet" href="./assets/history-dashboard.css">
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="./index.html" aria-label="Voltar ao B3 Screener">
-      <span><strong>Histórico</strong><small>Screener & análise temporal</small></span>
+    <a class="brand" href="./us.html" aria-label="Voltar ao US Screener">
+      <span><strong>Histórico 🇺🇸</strong><small>EUA · ações, REITs & ETFs</small></span>
     </a>
     <nav class="top-actions" aria-label="Ações da página">
-      <a class="button ghost" href="./index.html">← Screener</a>
+      <a class="button ghost" href="./us.html">← Screener EUA</a>
       <button class="button accent" id="openSimulatorBtn" type="button">⚡ Simulador de Carteira</button>
       <button class="button ghost" id="themeToggle" type="button" aria-label="Alternar tema">◐ Tema</button>
       <div class="dropdown" id="exportDropdown">
@@ -47,14 +47,14 @@
         </div>
         <span class="field-label">Mercado</span>
         <nav class="segmented" aria-label="Mercado">
-          <a href="./history-dashboard.html" class="active" aria-current="page">🇧🇷 B3</a>
-          <a href="./history-dashboard-us.html">🇺🇸 EUA</a>
+          <a href="./history-dashboard.html">🇧🇷 B3</a>
+          <a href="./history-dashboard-us.html" class="active" aria-current="page">🇺🇸 EUA</a>
         </nav>
 
         <label class="field-label" for="assetType">Classe</label>
         <div class="segmented" id="assetType" role="group" aria-label="Classe de ativo">
           <button type="button" data-type="stock" class="active">Ações</button>
-          <button type="button" data-type="fund">Fundos</button>
+          <button type="button" data-type="fund">REITs & ETFs</button>
         </div>
 
         <label class="field-label" for="historyModeToggle">Modo de Histórico</label>
@@ -138,7 +138,7 @@
             <div id="timeline" class="timeline"></div>
           </article>
           <article class="card macro-card">
-            <div class="card-heading"><div><p class="eyebrow">Contexto</p><h2>Selic & dólar</h2></div></div>
+            <div class="card-heading"><div><p class="eyebrow">Contexto</p><h2>Fed Funds & dólar</h2></div></div>
             <div id="macroChart" class="macro-chart"></div>
           </article>
         </section>
@@ -183,11 +183,11 @@
           </div>
           <div class="sim-exec-item">
             <span class="muted">Capital Aportado:</span>
-            <strong id="simExecCapitalLabel">R$ 1.000,00</strong>
+            <strong id="simExecCapitalLabel">US$ 1.000,00</strong>
           </div>
           <div class="sim-exec-item">
             <span class="muted">Patrimônio Líquido Final:</span>
-            <strong id="simExecFinalValLabel" style="color: var(--accent);">R$ 1.175,63</strong>
+            <strong id="simExecFinalValLabel" style="color: var(--accent);">US$ 1.175,63</strong>
           </div>
           <div class="sim-exec-item">
             <span class="muted">Retorno Líquido / TWR:</span>
@@ -198,11 +198,11 @@
         <!-- Dock 1: Parâmetros & Aportes Recorrentes (DCA) -->
         <section class="sim-config-bar">
           <div class="sim-field">
-            <label for="simInitialCapital">Aporte Inicial (R$)</label>
+            <label for="simInitialCapital">Aporte Inicial (US$)</label>
             <input type="number" id="simInitialCapital" class="control" value="1000" min="100" step="100">
           </div>
           <div class="sim-field">
-            <label for="simDcaCapital">Aporte Recorrente (R$)</label>
+            <label for="simDcaCapital">Aporte Recorrente (US$)</label>
             <input type="number" id="simDcaCapital" class="control" value="0" min="0" step="100" placeholder="Ex: 500">
           </div>
           <div class="sim-field">
@@ -243,7 +243,7 @@
           <div class="sim-field">
             <label for="simTaxMode">Regime de Custos & Impostos</label>
             <select id="simTaxMode" class="control">
-              <option value="net" selected>Líquido Estimado (IR + B3 0,03% + Slippage 0,10%)</option>
+              <option value="net" selected>Líquido Estimado (IR 30% s/ dividendos + Slippage 0,10%)</option>
               <option value="gross">Bruto Teórico (Sem Custos)</option>
             </select>
           </div>
@@ -281,7 +281,7 @@
               <p class="muted" style="margin-top:2px;" id="simWeightAlert">Ajuste os pesos % para somar exatamente 100%.</p>
             </div>
             <div class="sim-add-box">
-              <input type="text" class="control" id="simAssetInput" list="simAssetOptions" placeholder="Adicionar ticker(s) (ex: GARRE11, JHSF3, PETR4)">
+              <input type="text" class="control" id="simAssetInput" list="simAssetOptions" placeholder="Adicionar ticker(s) (ex: AAPL, SCHD, O)">
               <datalist id="simAssetOptions"></datalist>
               <button type="button" class="button primary" id="simAddAssetBtn">+ Adicionar</button>
             </div>
@@ -295,10 +295,10 @@
                   <th class="center">Peso (%)</th>
                   <th class="num">Aporte Inicial</th>
                   <th class="num">Cotas Iniciais</th>
-                  <th class="num">Proventos (R$)</th>
-                  <th class="num">Ganho Capital (R$)</th>
+                  <th class="num">Proventos (US$)</th>
+                  <th class="num">Ganho Capital (US$)</th>
                   <th class="num">Contrib. Líquida (p.p.)</th>
-                  <th class="num">Valor Final (R$)</th>
+                  <th class="num">Valor Final (US$)</th>
                   <th class="center">Ação</th>
                 </tr>
               </thead>
@@ -307,12 +307,12 @@
                 <tr>
                   <td colspan="2"><strong>Total da Carteira</strong></td>
                   <td class="center"><strong id="simTotalWeightLabel">100%</strong></td>
-                  <td class="num" id="simTotalAllocatedLabel">R$ 1.000,00</td>
+                  <td class="num" id="simTotalAllocatedLabel">US$ 1.000,00</td>
                   <td></td>
-                  <td class="num" id="simTotalDividendsLabel" style="color: var(--positive); font-weight: 750;">R$ 0,00</td>
-                  <td class="num" id="simTotalCapGainLabel">R$ 0,00</td>
+                  <td class="num" id="simTotalDividendsLabel" style="color: var(--positive); font-weight: 750;">US$ 0,00</td>
+                  <td class="num" id="simTotalCapGainLabel">US$ 0,00</td>
                   <td class="num" id="simTotalContribLabel">100 p.p.</td>
-                  <td class="num"><strong id="simTotalFinalValLabel">R$ 1.000,00</strong></td>
+                  <td class="num"><strong id="simTotalFinalValLabel">US$ 1.000,00</strong></td>
                   <td></td>
                 </tr>
               </tfoot>
@@ -344,14 +344,14 @@
             </div>
             <div class="sim-chart-controls">
               <div class="sim-scale-mode-toggles">
-                <button type="button" class="button ghost compact active" id="simScaleNominalBtn">R$ Nominal</button>
+                <button type="button" class="button ghost compact active" id="simScaleNominalBtn">US$ Nominal</button>
                 <button type="button" class="button ghost compact" id="simScaleNormBtn">Base 100 (%)</button>
               </div>
               <div class="sim-benchmark-toggles" style="margin-top:6px;">
-                <label><input type="checkbox" id="simBmCdi" checked> <span class="bm-tag cdi">CDI</span></label>
-                <label><input type="checkbox" id="simBmIbov" checked> <span class="bm-tag ibov">IBOV</span></label>
-                <label><input type="checkbox" id="simBmIfix" checked> <span class="bm-tag ifix">IFIX</span></label>
-                <label><input type="checkbox" id="simBmDivs" checked> <span class="bm-tag divs">Proventos R$</span></label>
+                <label><input type="checkbox" id="simBmCdi" checked> <span class="bm-tag cdi">T-Bill</span></label>
+                <label><input type="checkbox" id="simBmIbov" checked> <span class="bm-tag ibov">S&amp;P 500</span></label>
+                <label><input type="checkbox" id="simBmIfix" checked> <span class="bm-tag ifix">REITs (VNQ)</span></label>
+                <label><input type="checkbox" id="simBmDivs" checked> <span class="bm-tag divs">Proventos US$</span></label>
               </div>
               <div class="legend" id="simChartLegend"></div>
             </div>
@@ -385,7 +385,50 @@
   <div class="chart-tooltip" id="chartTooltip" hidden></div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <noscript>Esta página precisa de JavaScript para interpretar o artefato histórico.</noscript>
-  <script src="./history-data.js"></script>
+  <script src="./us-history-data.js"></script>
+  <script>
+    // Market settings read by assets/history-dashboard.js (defaults are B3).
+    (() => {
+      const money = 'US$';
+      window.HISTORY_MARKET = {
+        id: 'US',
+        dataVar: 'US_HISTORY_DATA',
+        buildCommand: 'npm run build:history:us',
+        screenerUrl: './us.html',
+        title: 'US SCREENER',
+        currency: money,
+        localStart: window.US_HISTORY_DATA?.meta?.localStart || '2026-10-07',
+        defaultTicker: 'AAPL',
+        fundLabel: 'REIT/ETF',
+        fundShort: 'REIT/ETF',
+        fundPlural: 'REITs e ETFs',
+        rateLabel: 'Fed Funds',
+        cashLabel: 'T-Bill',
+        yahooSuffix: '',
+        newsLocale: 'hl=en-US&gl=US&ceid=US:en',
+        newsQuery: ticker => `${ticker} stock`,
+        dividendTax: 0.30, // retenção na fonte dos EUA para residentes no Brasil (sem tratado)
+        tradingCost: 0.0010, // corretagem zero; slippage estimado
+        benchmarks: {
+          stock: { label: 'S&P 500', tickers: [{ type: 'fund', ticker: 'SPY' }] },
+          fund: { label: 'REITs (VNQ)', tickers: [{ type: 'fund', ticker: 'VNQ' }] }
+        },
+        metricCatalog: {
+          stock: {
+            price: ['Preço', money, 2], dy: ['Dividend Yield', '%', 2], score: ['Score', '', 2],
+            pvp: ['P/VP', 'x', 2], roe: ['ROE', '%', 2], roic: ['ROIC', '%', 2],
+            liquidity: ['Volume médio/dia', money, 0], graham: ['Preço Graham', money, 2], bazin: ['Preço Bazin', money, 2],
+            payout: ['Payout', '%', 2], growth: ['Cresc. receita 5a', '%', 2]
+          },
+          fund: {
+            price: ['Preço', money, 2], dy: ['Dividend Yield', '%', 2], score: ['Score', '', 2],
+            pvp: ['P/VP (REIT)', 'x', 2], liquidity: ['Volume médio/dia', money, 0], marketCap: ['Valor de mercado / AUM', money, 0],
+            ffoYield: ['FCF Yield (REIT)', '%', 2], expenseRatio: ['Taxa de adm. (ETF)', '%', 2]
+          }
+        }
+      };
+    })();
+  </script>
   <script src="./assets/history-dashboard.js?v=1.1.0"></script>
 </body>
 </html>

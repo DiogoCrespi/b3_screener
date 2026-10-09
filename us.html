@@ -63,6 +63,12 @@
         .metric-label { font-size: 0.7rem; letter-spacing: 0.04em; color: var(--text-muted); text-transform: uppercase; }
         .metric-value { font-size: 1.25rem; font-weight: 700; margin-top: 4px; font-variant-numeric: tabular-nums; }
 
+        .history-link {
+            display: block; text-align: center; font-weight: 600; text-decoration: none; color: var(--text-color);
+            background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-card);
+            padding: 12px 16px; margin-bottom: 14px; box-shadow: var(--shadow-card);
+        }
+        .history-link:hover, .history-link:focus-visible { border-color: var(--primary); }
         .tabs { display: flex; gap: 8px; margin-bottom: 12px; overflow-x: auto; }
         .tab-btn { white-space: nowrap; }
         .toolbar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; align-items: center; }
@@ -150,6 +156,8 @@
             <div class="metric-card"><div class="metric-label">Dólar (USD/BRL)</div><div class="metric-value" id="dollarVal">---</div></div>
             <div class="metric-card"><div class="metric-label">Corte DY ações</div><div class="metric-value" id="dyVal">---</div></div>
         </section>
+
+        <a class="history-link" href="history-dashboard-us.html">📊 Abrir Análise Histórica & Comparador de Ativos</a>
 
         <div class="tabs" role="tablist">
             <button class="btn tab-btn" data-tab="stocks" role="tab">Ações</button>

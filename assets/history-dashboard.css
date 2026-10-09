@@ -75,6 +75,9 @@ h2 { margin: 0; font-size: clamp(1.1rem, 2vw, 1.45rem); line-height: 1.15; lette
 .segmented { display: grid; grid-template-columns: 1fr 1fr; padding: 3px; border: 1px solid var(--line); border-radius: 11px; background: var(--bg); }
 .segmented button { min-height: 36px; border: 0; border-radius: 8px; color: var(--muted); background: transparent; font-weight: 750; cursor: pointer; }
 .segmented button.active { background: var(--ink); color: var(--bg); }
+/* Market switch: links styled like the segmented buttons. */
+.segmented a { display: grid; place-items: center; min-height: 36px; border-radius: 8px; color: var(--muted); font-weight: 750; text-decoration: none; }
+.segmented a.active { background: var(--ink); color: var(--bg); }
 .quality-note { margin-top: 18px; padding: 12px; border-radius: 10px; background: var(--surface-alt); color: var(--muted); font-size: .76rem; }
 .analysis-column { display: grid; gap: 14px; min-width: 0; }
 .card { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow); }
