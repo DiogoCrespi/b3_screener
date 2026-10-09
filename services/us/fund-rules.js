@@ -108,8 +108,10 @@ function analyzeEtf(etf) {
 
 const SIGNAL_ORDER = Object.freeze({ TOP_PICK: 0, OPPORTUNITY: 1, WATCHLIST: 2, REVIEW: 3, DISTRESSED: 4, INSUFFICIENT_DATA: 5 });
 
+// Within a signal, the ranking's conviction (when present) orders assets; otherwise the score.
 function bySignalThenScore(a, b) {
-    return (SIGNAL_ORDER[a.signal] ?? 6) - (SIGNAL_ORDER[b.signal] ?? 6) || b.overall_score - a.overall_score;
+    return (SIGNAL_ORDER[a.signal] ?? 6) - (SIGNAL_ORDER[b.signal] ?? 6)
+        || (b.conviction ?? b.overall_score) - (a.conviction ?? a.overall_score);
 }
 
 module.exports = { analyzeReit, analyzeEtf, etfCategory, bySignalThenScore, SIGNAL_ORDER };

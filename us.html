@@ -71,6 +71,31 @@
         .history-link:hover, .history-link:focus-visible { border-color: var(--primary); }
         .tabs { display: flex; gap: 8px; margin-bottom: 12px; overflow-x: auto; }
         .tab-btn { white-space: nowrap; }
+        .top10 {
+            background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-card);
+            box-shadow: var(--shadow-card); padding: 16px; margin-bottom: 16px;
+        }
+        .top10 h2 { font-size: 1.05rem; margin: 0 0 4px; }
+        .top10-note { font-size: 0.78rem; color: var(--text-muted); margin: 0 0 12px; }
+        .top10-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr)); gap: 8px; }
+        .top10-item {
+            width: 100%; display: grid; grid-template-columns: 34px 1fr auto; gap: 10px; align-items: center; text-align: left;
+            font: inherit; color: var(--text-color); background: var(--bg-color); border: 1px solid var(--border-color);
+            border-radius: 12px; padding: 10px; cursor: pointer;
+        }
+        .top10-item:hover, .top10-item:focus-visible { border-color: var(--primary); outline: none; }
+        .top10-rank {
+            display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%;
+            background: var(--primary-soft); color: var(--primary); font-weight: 800; font-size: 0.9rem;
+        }
+        .top10-item:nth-child(-n+3) .top10-rank { background: var(--primary); color: #fff; }
+        .top10-main { min-width: 0; }
+        .top10-ticker { font-weight: 700; }
+        .top10-ticker small { font-weight: 500; color: var(--text-muted); margin-left: 4px; }
+        .top10-why { font-size: 0.74rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .top10-score { text-align: right; font-size: 0.72rem; color: var(--text-muted); }
+        .top10-score strong { display: block; font-size: 1rem; color: var(--text-color); font-variant-numeric: tabular-nums; }
+        .rank-tag { font-size: 0.7rem; color: var(--text-muted); }
         .toolbar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; align-items: center; }
         .toolbar input[type="search"] { flex: 1 1 200px; min-width: 0; }
         .chips { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
@@ -165,6 +190,12 @@
             <button class="btn tab-btn" data-tab="etfs" role="tab">ETFs</button>
         </div>
 
+        <section class="top10" id="top10" aria-labelledby="top10Title" hidden>
+            <h2 id="top10Title">🏆 Top 10</h2>
+            <p class="top10-note" id="top10Note"></p>
+            <ol class="top10-list" id="top10List"></ol>
+        </section>
+
         <div class="toolbar">
             <input type="search" id="searchInput" placeholder="Buscar ticker ou nome (ex: KO, Vanguard)" aria-label="Buscar">
             <select id="groupSelect" aria-label="Categoria"></select>
@@ -205,7 +236,7 @@
                 groups: [['ALL', 'Todas as categorias'], ['STAR_INCOME'], ['STAR_GROWTH'], ['STAR_VALUE'], ['OPPORTUNITY']],
                 groupOf: s => s.category,
                 hasSector: true,
-                sorts: [['default', 'Ordenar: sinal + score'], ['overall_score', 'Score'], ['dividend_yield', 'Dividend Yield'], ['upside', 'Upside Graham'],
+                sorts: [['default', 'Ordenar: sinal + ranking'], ['conviction', 'Ranking (convicção)'], ['overall_score', 'Score'], ['dividend_yield', 'Dividend Yield'], ['upside', 'Upside Graham'],
                     ['pl', 'P/L (menor)', true], ['roe', 'ROE'], ['market_cap', 'Valor de mercado']],
                 price: s => s.cotacao,
                 metrics: s => [['P/L', fmtNum(s.pl)], ['P/VP', fmtNum(s.p_vp)], ['DY', fmtPct(s.dividend_yield)],
@@ -224,7 +255,7 @@
                 groups: [['ALL', 'Todos os REITs']],
                 groupOf: () => null,
                 hasSector: false,
-                sorts: [['default', 'Ordenar: sinal + score'], ['overall_score', 'Score'], ['dy', 'Dividend Yield'], ['yield_spread', 'Spread s/ Treasury'],
+                sorts: [['default', 'Ordenar: sinal + ranking'], ['conviction', 'Ranking (convicção)'], ['overall_score', 'Score'], ['dy', 'Dividend Yield'], ['yield_spread', 'Spread s/ Treasury'],
                     ['p_vp', 'P/VP (menor)', true], ['market_cap', 'Valor de mercado']],
                 price: r => r.price,
                 metrics: r => [['DY', fmtPct(r.dy)], ['Spread', fmtSigned(r.yield_spread, ' p.p.')], ['P/VP', fmtNum(r.p_vp)],
@@ -239,7 +270,7 @@
                 groups: [['ALL', 'Todas as classes'], ['CORE'], ['DIVIDEND'], ['INTERNATIONAL'], ['SECTOR_THEME'], ['BOND'], ['COMMODITY'], ['LEVERAGED']],
                 groupOf: e => e.category,
                 hasSector: false,
-                sorts: [['default', 'Ordenar: sinal + score'], ['overall_score', 'Score'], ['aum', 'Patrimônio (AUM)'], ['expense_ratio', 'Taxa (menor)', true],
+                sorts: [['default', 'Ordenar: sinal + ranking'], ['conviction', 'Ranking (convicção)'], ['overall_score', 'Score'], ['aum', 'Patrimônio (AUM)'], ['expense_ratio', 'Taxa (menor)', true],
                     ['dy', 'Dividend Yield'], ['variation_3y', 'Retorno 3 anos'], ['variation_12m', 'Retorno 12m']],
                 price: e => e.price,
                 metrics: e => [['Taxa', fmtPct(e.expense_ratio, 2)], ['AUM', fmtMoneyBig(e.aum)], ['DY', fmtPct(e.dy)],
@@ -249,6 +280,40 @@
                     ['Ágio/deságio NAV', fmtSigned(e.nav_premium)]
                 ]
             }
+        };
+
+        // One-line "why" for each Top 10 entry, built from the asset's strongest points.
+        const TOP10 = {
+            stocks: {
+                title: 'Top 10 ações',
+                label: s => s.sector || '',
+                note: 'Melhores Top Picks pelo ranking de convicção (score + porte + liquidez), no máximo 2 por setor.',
+                why: s => {
+                    const pillars = Object.entries(s.pillars || {}).sort((a, b) => b[1] - a[1]).slice(0, 2)
+                        .map(([k, v]) => `${PILLAR_LABELS[k]} ${fmtNum(v, 0)}`);
+                    const extra = isNum(s.dividend_yield) && s.dividend_yield > 0 ? `DY ${fmtPct(s.dividend_yield)}` : `ROE ${fmtPct(s.roe)}`;
+                    return [...pillars, extra].join(' · ');
+                }
+            },
+            reits: {
+                title: 'Top 10 REITs',
+                // TradingView files every REIT under "Finance", so the name says more.
+                label: r => r.name || '',
+                note: 'Melhores REITs pelo ranking: renda acima do Treasury de 10 anos, preço e solidez.',
+                why: r => `DY ${fmtPct(r.dy)} · ${isNum(r.yield_spread) ? `${r.yield_spread >= 0 ? '+' : ''}${fmtNum(r.yield_spread, 1)} p.p. s/ Treasury` : ''} · P/VP ${fmtNum(r.p_vp)}`
+            },
+            etfs: {
+                title: 'Top 10 ETFs',
+                label: e => CATEGORY_LABELS[e.category] || '',
+                note: 'Melhores ETFs pelo ranking (custo, tamanho, liquidez e retorno), sem repetir o mesmo índice.',
+                why: e => `Taxa ${fmtPct(e.expense_ratio, 2)} · AUM ${fmtMoneyBig(e.aum)} · 3 anos ${isNum(e.variation_3y) ? `${e.variation_3y >= 0 ? '+' : ''}${fmtNum(e.variation_3y, 0)}%` : '—'}`
+            }
+        };
+        const WARNING_LABELS = {
+            TOP_PICK_LIMIT: 'passou nos filtros, mas ficou fora dos melhores do ranking',
+            SECTOR_CONCENTRATION_LIMIT: 'passou nos filtros, mas o setor já tem muitos Top Picks',
+            SMALL_OR_ILLIQUID_FOR_TOP_PICK: 'pequena ou pouco líquida para Top Pick',
+            SMALL_OR_UNKNOWN_COST_FOR_TOP_PICK: 'pequeno ou sem taxa informada para Top Pick'
         };
 
         const state = { tab: 'stocks', signal: 'ALL', group: 'ALL', sector: 'ALL', sort: 'default', query: '', shown: PAGE_SIZE, currency: 'USD' };
@@ -331,7 +396,7 @@
             return `<article class="card" tabindex="0" aria-expanded="false">
                 <div class="card-top">
                     <div><div class="ticker">${escapeHTML(item.ticker)}</div><div class="name" title="${escapeHTML(item.name)}">${escapeHTML(item.name)}</div></div>
-                    <div><div class="price">${fmtMoney(tab.price(item))}</div><div class="score">score ${fmtNum(item.overall_score, 1)}</div></div>
+                    <div><div class="price">${fmtMoney(tab.price(item))}</div><div class="score">score ${fmtNum(item.overall_score, 1)}${isNum(item.rank) ? ` · <span class="rank-tag">#${item.rank}</span>` : ''}</div></div>
                 </div>
                 <div class="badges">
                     <span class="badge ${escapeHTML(item.signal)}">${escapeHTML(SIGNAL_LABELS[item.signal] || item.signal)}</span>
@@ -343,10 +408,45 @@
                     ${tab.details(item).filter(([, html]) => html).map(([label, html]) =>
                         `<div class="detail-row"><span>${label}</span><span>${html}</span></div>`).join('')}
                     ${pillars}
-                    ${warnings.length ? `<div class="warn">⚠️ ${warnings.map(escapeHTML).join(', ')}</div>` : ''}
+                    ${warnings.length ? `<div class="warn">⚠️ ${warnings.map(w => escapeHTML(WARNING_LABELS[w] || w)).join(', ')}</div>` : ''}
                     <a class="ext-link" href="${tradingViewUrl(item)}" target="_blank" rel="noopener">Ver gráfico no TradingView ↗</a>
                 </div>
             </article>`;
+        }
+
+        function renderTop10() {
+            const box = document.getElementById('top10');
+            const config = TOP10[state.tab];
+            const items = (DATA.highlights?.[state.tab] || [])
+                .map(ticker => TABS[state.tab].items().find(item => item.ticker === ticker)).filter(Boolean);
+            box.hidden = items.length === 0;
+            if (!items.length) return;
+            document.getElementById('top10Title').textContent = `🏆 ${config.title}`;
+            document.getElementById('top10Note').textContent = config.note;
+            document.getElementById('top10List').innerHTML = items.map((item, i) => `<li>
+                <button class="top10-item" type="button" data-ticker="${escapeHTML(item.ticker)}" title="Ver detalhes de ${escapeHTML(item.ticker)}">
+                    <span class="top10-rank">${i + 1}</span>
+                    <span class="top10-main">
+                        <span class="top10-ticker">${escapeHTML(item.ticker)}<small>${escapeHTML(config.label(item))}</small></span>
+                        <span class="top10-why" style="display:block">${config.why(item)}</span>
+                    </span>
+                    <span class="top10-score"><strong>${fmtNum(item.conviction, 0)}</strong>convicção</span>
+                </button>
+            </li>`).join('');
+        }
+
+        // Shows one asset from the Top 10 in the grid, already expanded.
+        function focusAsset(ticker) {
+            Object.assign(state, { signal: 'ALL', group: 'ALL', sector: 'ALL', query: ticker, shown: PAGE_SIZE });
+            document.getElementById('searchInput').value = ticker;
+            populateControls();
+            render();
+            const card = [...document.querySelectorAll('#grid .card')].find(c => c.querySelector('.ticker')?.textContent === ticker);
+            if (card) {
+                card.classList.add('open');
+                card.setAttribute('aria-expanded', 'true');
+                card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
         }
 
         function render() {
@@ -395,7 +495,10 @@
             if (!TABS[tabName]) tabName = 'stocks';
             Object.assign(state, { tab: tabName, signal: 'ALL', group: 'ALL', sector: 'ALL', sort: 'default', shown: PAGE_SIZE });
             history.replaceState(null, '', `#${tabName}`);
+            document.getElementById('searchInput').value = '';
+            state.query = '';
             populateControls();
+            renderTop10();
             render();
         }
 
@@ -457,7 +560,11 @@
             onChange('groupSelect', 'group');
             onChange('sectorSelect', 'sector');
             onChange('sortSelect', 'sort');
-            document.getElementById('currencySelect').addEventListener('change', ev => { state.currency = ev.target.value; render(); });
+            document.getElementById('currencySelect').addEventListener('change', ev => { state.currency = ev.target.value; renderTop10(); render(); });
+            document.getElementById('top10List').addEventListener('click', ev => {
+                const btn = ev.target.closest('[data-ticker]');
+                if (btn) focusAsset(btn.dataset.ticker);
+            });
             document.getElementById('loadMore').addEventListener('click', () => { state.shown += PAGE_SIZE; render(); });
             document.getElementById('csvBtn').addEventListener('click', downloadCSV);
             document.getElementById('grid').addEventListener('click', ev => {

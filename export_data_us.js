@@ -8,6 +8,7 @@ const { repriceStocks, repriceEtfs } = require('./services/us/reprice');
 const { analyzeReit, analyzeEtf, bySignalThenScore } = require('./services/us/fund-rules');
 const { analyzeStock } = require('./services/logic/stock-rules');
 const { demoteDuplicateIssuerRecommendations } = require('./services/stocks');
+const { rankSection, pickTop } = require('./services/us/ranking');
 
 const OUTPUT_FILE = path.join(__dirname, 'data-us.js');
 const HISTORY_DIR = path.join(__dirname, 'history-us');
@@ -46,15 +47,21 @@ function analyzeStocks(stocks, fedFunds) {
         .map(s => analyzeStock(s, fedFunds, { market: 'US' }))
         .filter(s => s.signal !== 'INSUFFICIENT_DATA')
         .sort(bySignalThenScore);
-    return finalize(demoteDuplicateIssuerRecommendations(analyzed).sort(bySignalThenScore));
+    return finalize(rankSection(demoteDuplicateIssuerRecommendations(analyzed), 'stocks').sort(bySignalThenScore));
 }
 
 function analyzeReits(reits, treasury10y) {
-    return finalize(reits.filter(r => r.liq_2meses > MIN_FUND_DOLLAR_VOLUME).map(r => analyzeReit(r, treasury10y)).sort(bySignalThenScore));
+    const analyzed = reits.filter(r => r.liq_2meses > MIN_FUND_DOLLAR_VOLUME).map(r => analyzeReit(r, treasury10y));
+    return finalize(rankSection(analyzed, 'reits').sort(bySignalThenScore));
 }
 
 function analyzeEtfs(etfs) {
-    return finalize(etfs.filter(e => e.liquidity > MIN_FUND_DOLLAR_VOLUME).map(analyzeEtf).sort(bySignalThenScore));
+    return finalize(rankSection(etfs.filter(e => e.liquidity > MIN_FUND_DOLLAR_VOLUME).map(analyzeEtf), 'etfs').sort(bySignalThenScore));
+}
+
+// Home-screen Top 10 per section: best TOP_PICKs, at most two per sector/category.
+function buildHighlights(sections) {
+    return { stocks: pickTop(sections.stocks, 'stocks'), reits: pickTop(sections.reits, 'reits', 10, 10), etfs: pickTop(sections.etfs, 'etfs') };
 }
 
 function buildUsData({ fedFunds, treasury10y, dollar, stocks, reits, etfs }) {
@@ -64,11 +71,11 @@ function buildUsData({ fedFunds, treasury10y, dollar, stocks, reits, etfs }) {
         updatedAt: new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' }),
         source: { provider: 'tradingview', collectedAt: new Date().toISOString() },
         economy: { fedFunds, treasury10y, dollar },
-        stocks: analyzeStocks(stocks, fedFunds),
-        reits: analyzeReits(reits, treasury10y),
-        etfs: analyzeEtfs(etfs)
+        ...withHighlights({ stocks: analyzeStocks(stocks, fedFunds), reits: analyzeReits(reits, treasury10y), etfs: analyzeEtfs(etfs) })
     };
 }
+
+const withHighlights = sections => ({ ...sections, highlights: buildHighlights(sections) });
 
 function loadPreviousData(file = OUTPUT_FILE) {
     try {
@@ -202,9 +209,7 @@ async function collectUsData({ previous = loadPreviousData(), sources = {} } = {
             degraded: Object.values(sections).some(s => s.stale || s.provider !== 'tradingview')
         },
         economy,
-        stocks: result.stocks,
-        reits: result.reits,
-        etfs: result.etfs
+        ...withHighlights({ stocks: result.stocks, reits: result.reits, etfs: result.etfs })
     };
 }
 

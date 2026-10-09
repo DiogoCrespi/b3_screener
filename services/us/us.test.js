@@ -281,3 +281,51 @@ describe('collectUsData redundancy', () => {
         } })), /no previous data/);
     });
 });
+
+describe('US ranking', () => {
+    const { rankSection, pickTop, indexKey } = require('./ranking');
+    const stock = (i, extra = {}) => ({
+        ticker: `T${i}`, signal: 'TOP_PICK', overall_score: 9 - i * 0.01, market_cap: 50e9, liq_2meses: 200e6,
+        data_quality: 'COMPLETE', sector: `Sector${i % 20}`, warnings: [], ...extra
+    });
+
+    test('limits TOP_PICK to the best 50 and demotes the rest to WATCHLIST', () => {
+        const ranked = rankSection(Array.from({ length: 80 }, (_, i) => stock(i)), 'stocks');
+        const tops = ranked.filter(s => s.signal === 'TOP_PICK');
+        assert.strictEqual(tops.length, 50);
+        assert.ok(ranked.filter(s => s.signal === 'WATCHLIST').every(s => s.warnings.includes('TOP_PICK_LIMIT')));
+        assert.deepStrictEqual(ranked.map(s => s.rank), Array.from({ length: 80 }, (_, i) => i + 1));
+    });
+
+    test('caps TOP_PICKs per sector and excludes small caps', () => {
+        const banks = Array.from({ length: 12 }, (_, i) => stock(i, { sector: 'Finance' }));
+        const small = stock(99, { overall_score: 10, market_cap: 1e9 });
+        const ranked = rankSection([...banks, small], 'stocks');
+        assert.strictEqual(ranked.filter(s => s.signal === 'TOP_PICK').length, 8);
+        assert.ok(ranked.find(s => s.ticker === 'T11').warnings.includes('SECTOR_CONCENTRATION_LIMIT'));
+        const smallOut = ranked.find(s => s.ticker === 'T99');
+        assert.strictEqual(smallOut.signal, 'WATCHLIST');
+        assert.ok(smallOut.warnings.includes('SMALL_OR_ILLIQUID_FOR_TOP_PICK'));
+    });
+
+    test('conviction favours established names when scores tie', () => {
+        const [big, mid] = rankSection([stock(1, { ticker: 'MID', market_cap: 3e9, liq_2meses: 6e6 }), stock(1, { ticker: 'BIG' })], 'stocks');
+        assert.strictEqual(big.ticker, 'BIG');
+        assert.ok(big.conviction > mid.conviction);
+    });
+
+    test('Top 10 takes at most two per sector', () => {
+        const ranked = rankSection(Array.from({ length: 30 }, (_, i) => stock(i, { sector: i < 10 ? 'Finance' : `S${i}` })), 'stocks');
+        const top = pickTop(ranked, 'stocks');
+        assert.strictEqual(top.length, 10);
+        assert.strictEqual(top.filter(t => ranked.find(s => s.ticker === t).sector === 'Finance').length, 2);
+    });
+
+    test('ETF Top 10 does not repeat the same index', () => {
+        assert.strictEqual(indexKey({ name: 'Vanguard S&P 500 ETF' }), indexKey({ name: 'SPDR S&P 500 ETF Trust' }));
+        assert.strictEqual(indexKey({ name: 'Biotech ETF', ticker: 'XBI' }), 'XBI');
+        const etf = (ticker, name, category) => ({ ticker, name, category, signal: 'TOP_PICK', overall_score: 10, aum: 500e9, expense_ratio: 0.03 });
+        const ranked = rankSection([etf('VOO', 'Vanguard S&P 500 ETF', 'CORE'), etf('SPY', 'SPDR S&P 500 ETF Trust', 'CORE'), etf('VTI', 'Vanguard Total Stock Market ETF', 'CORE')], 'etfs');
+        assert.deepStrictEqual(pickTop(ranked, 'etfs').sort(), ['VOO', 'VTI'].sort());
+    });
+});
