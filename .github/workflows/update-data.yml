@@ -13,7 +13,7 @@ concurrency:
 jobs:
   update-data:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     permissions:
       contents: write
     env:
@@ -32,13 +32,34 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Generate data (Scraper)
+      # Each scraper is retried with a pause, since most source failures are transient
+      # (rate limits, timeouts). Steps keep going on failure so one market never blocks
+      # the other; the final freshness check turns the run red if anything is stale.
+      - name: Generate B3 data (Fundamentus -> Brapi)
+        id: b3
         continue-on-error: true
-        run: npm run generate
+        run: |
+          for attempt in 1 2 3; do
+            npm run generate && exit 0
+            echo "::warning::B3 export attempt $attempt failed"
+            [ "$attempt" -lt 3 ] && sleep $((attempt * 60))
+          done
+          exit 1
 
       - name: Validate generated data
         continue-on-error: true
         run: npm run validate:data
+
+      - name: Generate US data (TradingView -> Nasdaq reprice -> last good)
+        id: us
+        continue-on-error: true
+        run: |
+          for attempt in 1 2 3; do
+            npm run generate:us && exit 0
+            echo "::warning::US export attempt $attempt failed"
+            [ "$attempt" -lt 3 ] && sleep $((attempt * 60))
+          done
+          exit 1
 
       - name: Build historical dashboard data
         continue-on-error: true
@@ -49,10 +70,21 @@ jobs:
           git config user.name 'GitHub Actions Bot'
           git config user.email 'actions@github.com'
           git add data.js history-data.js history/*.json 2>/dev/null || true
-          if ! git diff --staged --quiet; then
-            git pull --rebase origin master || true
-            git commit -m "chore(data): update market data and history [skip ci]"
-            git push origin master || git push --force-with-lease origin master || true
-          else
+          # Separate add so a failed US export (no matching files) never blocks B3 data.
+          git add data-us.js history-us/*.json 2>/dev/null || true
+          if git diff --staged --quiet; then
             echo "Nenhuma mudança nos dados para commitar."
+            exit 0
           fi
+          git commit -m "chore(data): update market data and history [skip ci]"
+          # Retry instead of force-pushing, so commits made meanwhile are never overwritten.
+          for attempt in 1 2 3 4 5; do
+            git pull --rebase origin master && git push origin master && exit 0
+            echo "::warning::Push attempt $attempt failed, retrying..."
+            sleep $((attempt * 10))
+          done
+          echo "::error::Could not push market data after 5 attempts."
+          exit 1
+
+      - name: Check data freshness
+        run: node scripts/check-freshness.js

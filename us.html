@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>US Screener</title>
+    <script src="data-us.js"></script>
+    <style>
+        body.theme-seline-light {
+            --bg-color: #fafaf9; --card-bg: #ffffff; --card-hover: #f5f5f4; --text-color: #0c0a09;
+            --text-muted: #78716c; --border-color: #e8e6e5; --primary: #3ba6f1; --primary-soft: rgba(59, 166, 241, 0.12);
+            --badge-bg: #f5f5f4; --shadow-card: 0 8px 24px rgba(120, 113, 108, 0.12); --radius-card: 16px; --radius-control: 999px;
+            --success: #16a34a; --danger: #dc2626; --warning: #d97706; --gold: #b7791f;
+        }
+        body.theme-origin-dark {
+            --bg-color: #0f1011; --card-bg: #1b1c1e; --card-hover: #262729; --text-color: #f5f5f7;
+            --text-muted: #9f9fa0; --border-color: #2e2e2e; --primary: #847dff; --primary-soft: rgba(132, 125, 255, 0.16);
+            --badge-bg: rgba(255, 255, 255, 0.08); --shadow-card: 0 4px 30px rgba(0, 0, 0, 0.45); --radius-card: 12px; --radius-control: 18px;
+            --success: #04d361; --danger: #f75a68; --warning: #fba94c; --gold: #f2c94c;
+        }
+        body.theme-ui-neutral {
+            --bg-color: #f5f5f5; --card-bg: #ffffff; --card-hover: #fafafa; --text-color: #0a0a0a;
+            --text-muted: #737373; --border-color: #e5e5e5; --primary: #0a0a0a; --primary-soft: rgba(10, 10, 10, 0.08);
+            --badge-bg: #f5f5f5; --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.1); --radius-card: 24px; --radius-control: 18px;
+            --success: #15803d; --danger: #b91c1c; --warning: #b45309; --gold: #a16207;
+        }
+
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif; margin: 0;
+            background: var(--bg-color); color: var(--text-color); -webkit-font-smoothing: antialiased;
+        }
+        header {
+            position: sticky; top: 0; z-index: 20; background: var(--card-bg); border-bottom: 1px solid var(--border-color);
+            padding: 12px 16px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between;
+        }
+        header h1 { font-size: 1.15rem; margin: 0; }
+        .last-update { font-size: 0.75rem; color: var(--text-muted); }
+        .header-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+
+        .market-switch { display: inline-flex; border: 1px solid var(--border-color); border-radius: var(--radius-control); overflow: hidden; }
+        .market-switch a {
+            padding: 6px 12px; font-size: 0.8rem; font-weight: 600; text-decoration: none; color: var(--text-muted);
+        }
+        .market-switch a.active { background: var(--primary); color: #fff; }
+        body.theme-ui-neutral .market-switch a.active { color: #fff; }
+
+        select, input[type="search"], .btn {
+            font: inherit; font-size: 0.85rem; color: var(--text-color); background: var(--card-bg);
+            border: 1px solid var(--border-color); border-radius: var(--radius-control); padding: 7px 12px;
+        }
+        .btn { cursor: pointer; }
+        .btn:hover, .btn:focus-visible { border-color: var(--primary); }
+        .btn.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+
+        .container { max-width: 1280px; margin: 0 auto; padding: 16px; }
+        .dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 14px; }
+        .metric-card {
+            background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-card);
+            padding: 12px; text-align: center; box-shadow: var(--shadow-card);
+        }
+        .metric-label { font-size: 0.7rem; letter-spacing: 0.04em; color: var(--text-muted); text-transform: uppercase; }
+        .metric-value { font-size: 1.25rem; font-weight: 700; margin-top: 4px; font-variant-numeric: tabular-nums; }
+
+        .tabs { display: flex; gap: 8px; margin-bottom: 12px; overflow-x: auto; }
+        .tab-btn { white-space: nowrap; }
+        .toolbar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; align-items: center; }
+        .toolbar input[type="search"] { flex: 1 1 200px; min-width: 0; }
+        .chips { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+        .chip { font-size: 0.78rem; padding: 5px 10px; }
+        .result-count { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 10px; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 12px; }
+        .card {
+            background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-card);
+            padding: 14px; box-shadow: var(--shadow-card); cursor: pointer; transition: border-color 0.15s;
+        }
+        .card:hover, .card:focus-visible { border-color: var(--primary); outline: none; }
+        .card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+        .ticker { font-size: 1.1rem; font-weight: 700; }
+        .name { font-size: 0.75rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 190px; }
+        .price { text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+        .score { font-size: 0.75rem; color: var(--text-muted); }
+        .badges { display: flex; gap: 6px; flex-wrap: wrap; margin: 10px 0; }
+        .badge { font-size: 0.68rem; font-weight: 600; padding: 3px 8px; border-radius: 999px; background: var(--badge-bg); color: var(--text-muted); }
+        .badge.TOP_PICK { background: rgba(22, 163, 74, 0.14); color: var(--success); }
+        .badge.OPPORTUNITY { background: var(--primary-soft); color: var(--primary); }
+        .badge.REVIEW { background: rgba(217, 119, 6, 0.14); color: var(--warning); }
+        .badge.DISTRESSED { background: rgba(220, 38, 38, 0.14); color: var(--danger); }
+        .badge.star { color: var(--gold); }
+        .metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+        .metric small { display: block; font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; }
+        .metric span { font-size: 0.88rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+        .details { display: none; margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--border-color); font-size: 0.82rem; }
+        .card.open .details { display: block; }
+        .detail-row { display: flex; justify-content: space-between; padding: 3px 0; gap: 8px; }
+        .detail-row span:first-child { color: var(--text-muted); }
+        .pillar { margin: 6px 0; }
+        .pillar-bar { height: 6px; background: var(--badge-bg); border-radius: 3px; overflow: hidden; margin-top: 3px; }
+        .pillar-bar div { height: 100%; background: var(--primary); }
+        .warn { color: var(--warning); font-size: 0.75rem; margin-top: 6px; }
+        .ext-link { display: inline-block; margin-top: 10px; color: var(--primary); font-weight: 600; text-decoration: none; }
+        .load-more { display: block; margin: 16px auto; }
+        .empty { text-align: center; color: var(--text-muted); padding: 40px 0; }
+        .disclaimer { font-size: 0.72rem; color: var(--text-muted); text-align: center; margin: 24px 0 8px; }
+        .source-notice {
+            font-size: 0.8rem; padding: 10px 14px; margin-bottom: 14px; border-radius: 12px;
+            border: 1px solid var(--warning); color: var(--text-color); background: var(--card-bg);
+        }
+        .pos { color: var(--success); }
+        .neg { color: var(--danger); }
+
+        @media (max-width: 520px) {
+            .name { max-width: 150px; }
+            .metric-value { font-size: 1.05rem; }
+        }
+    </style>
+</head>
+
+<body class="theme-seline-light">
+    <header>
+        <div>
+            <h1>🇺🇸 US Screener</h1>
+            <div class="last-update" id="lastUpdate">Carregando...</div>
+        </div>
+        <div class="header-actions">
+            <nav class="market-switch" aria-label="Mercado">
+                <a href="index.html">🇧🇷 B3</a>
+                <a href="us.html" class="active" aria-current="page">🇺🇸 EUA</a>
+            </nav>
+            <select id="currencySelect" aria-label="Moeda de exibição">
+                <option value="USD">US$</option>
+                <option value="BRL">R$</option>
+            </select>
+            <button class="btn" id="csvBtn" title="Baixar CSV da aba atual">📥 CSV</button>
+            <select id="themeSelect" aria-label="Selecionar tema visual">
+                <option value="theme-origin-dark">Origin Dark</option>
+                <option value="theme-seline-light">Seline Light</option>
+                <option value="theme-ui-neutral">UI Neutral</option>
+            </select>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="source-notice" id="sourceNotice" role="status" hidden></div>
+        <section class="dashboard" aria-label="Indicadores econômicos">
+            <div class="metric-card"><div class="metric-label">Fed Funds</div><div class="metric-value" id="fedVal">---</div></div>
+            <div class="metric-card"><div class="metric-label">Treasury 10 anos</div><div class="metric-value" id="t10Val">---</div></div>
+            <div class="metric-card"><div class="metric-label">Dólar (USD/BRL)</div><div class="metric-value" id="dollarVal">---</div></div>
+            <div class="metric-card"><div class="metric-label">Corte DY ações</div><div class="metric-value" id="dyVal">---</div></div>
+        </section>
+
+        <div class="tabs" role="tablist">
+            <button class="btn tab-btn" data-tab="stocks" role="tab">Ações</button>
+            <button class="btn tab-btn" data-tab="reits" role="tab">REITs</button>
+            <button class="btn tab-btn" data-tab="etfs" role="tab">ETFs</button>
+        </div>
+
+        <div class="toolbar">
+            <input type="search" id="searchInput" placeholder="Buscar ticker ou nome (ex: KO, Vanguard)" aria-label="Buscar">
+            <select id="groupSelect" aria-label="Categoria"></select>
+            <select id="sectorSelect" aria-label="Setor"></select>
+            <select id="sortSelect" aria-label="Ordenar por"></select>
+        </div>
+        <div class="chips" id="signalChips" aria-label="Filtrar por sinal"></div>
+        <div class="result-count" id="resultCount"></div>
+        <div class="grid" id="grid"></div>
+        <button class="btn load-more" id="loadMore" hidden>Carregar mais</button>
+
+        <p class="disclaimer">Dados: TradingView (fundamentos), FRED (juros), AwesomeAPI (câmbio). Indicadores quantitativos, não constituem recomendação de investimento.</p>
+    </main>
+
+    <script>
+        const DATA = window.INVEST_DATA_US;
+        const PAGE_SIZE = 60;
+        const SIGNALS = [
+            ['ALL', 'Todos'], ['TOP_PICK', '⭐ Top Pick'], ['OPPORTUNITY', '📈 Oportunidade'],
+            ['WATCHLIST', '👀 Observar'], ['REVIEW', '⚠️ Revisar'], ['DISTRESSED', '🚫 Risco']
+        ];
+        const SIGNAL_LABELS = Object.fromEntries(SIGNALS);
+        const CATEGORY_LABELS = {
+            STAR_INCOME: '💰 Star Renda', STAR_GROWTH: '🚀 Star Crescimento', STAR_VALUE: '📉 Star Valor', OPPORTUNITY: '📈 Oportunidade',
+            CORE: '🏛️ Mercado amplo', DIVIDEND: '💰 Dividendos', INTERNATIONAL: '🌍 Internacional', SECTOR_THEME: '🧩 Setor/Tema',
+            BOND: '🏦 Renda fixa', COMMODITY: '🪙 Commodities', LEVERAGED: '⚡ Alavancado/Inverso'
+        };
+        const PILLAR_LABELS = {
+            quality: 'Qualidade', valuation: 'Valuation', income: 'Renda', safety: 'Segurança',
+            cost: 'Custo', size: 'Tamanho', liquidity: 'Liquidez', performance: 'Desempenho 3a'
+        };
+
+        // Each tab declares its data, groupings and sortable fields. metrics/details return
+        // ready HTML: formatters build it and raw text is escaped where it is read.
+        const TABS = {
+            stocks: {
+                items: () => DATA.stocks,
+                groups: [['ALL', 'Todas as categorias'], ['STAR_INCOME'], ['STAR_GROWTH'], ['STAR_VALUE'], ['OPPORTUNITY']],
+                groupOf: s => s.category,
+                hasSector: true,
+                sorts: [['default', 'Ordenar: sinal + score'], ['overall_score', 'Score'], ['dividend_yield', 'Dividend Yield'], ['upside', 'Upside Graham'],
+                    ['pl', 'P/L (menor)', true], ['roe', 'ROE'], ['market_cap', 'Valor de mercado']],
+                price: s => s.cotacao,
+                metrics: s => [['P/L', fmtNum(s.pl)], ['P/VP', fmtNum(s.p_vp)], ['DY', fmtPct(s.dividend_yield)],
+                    ['ROE', fmtPct(s.roe)], ['Marg. líq.', fmtPct(s.mrg_liq)], ['Dív/PL', fmtNum(s.div_br_patrim)]],
+                details: s => [
+                    ['Setor', escapeHTML(s.sector)], ['Indústria', escapeHTML(s.industry)], ['Valor de mercado', fmtMoneyBig(s.market_cap)],
+                    ['Volume médio/dia', fmtMoneyBig(s.liq_2meses)], ['ROIC', fmtPct(s.roic)], ['EV/EBIT', fmtNum(s.ev_ebit)],
+                    ['P/Receita', fmtNum(s.psr)], ['Cresc. receita 5a (a.a.)', fmtPct(s.cresc_5a)], ['Payout', fmtPct(s.payout)],
+                    ['Preço justo Graham', `${fmtMoney(s.graham_price)} (${fmtSigned(s.upside)})`],
+                    ['Preço teto Bazin', `${fmtMoney(s.bazin_price)} (${fmtSigned(s.bazin_upside)})`],
+                    ['Variação 12m', fmtSigned(s.variation_12m)]
+                ]
+            },
+            reits: {
+                items: () => DATA.reits,
+                groups: [['ALL', 'Todos os REITs']],
+                groupOf: () => null,
+                hasSector: false,
+                sorts: [['default', 'Ordenar: sinal + score'], ['overall_score', 'Score'], ['dy', 'Dividend Yield'], ['yield_spread', 'Spread s/ Treasury'],
+                    ['p_vp', 'P/VP (menor)', true], ['market_cap', 'Valor de mercado']],
+                price: r => r.price,
+                metrics: r => [['DY', fmtPct(r.dy)], ['Spread', fmtSigned(r.yield_spread, ' p.p.')], ['P/VP', fmtNum(r.p_vp)],
+                    ['P/FCF', fmtNum(r.p_fcf)], ['Dív/PL', fmtNum(r.div_br_patrim)], ['Mkt cap', fmtMoneyBig(r.market_cap)]],
+                details: r => [
+                    ['Volume médio/dia', fmtMoneyBig(r.liquidity)], ['Marg. líq.', fmtPct(r.mrg_liq)], ['Cresc. receita 5a (a.a.)', fmtPct(r.cresc_5a)],
+                    ['Variação 12m', fmtSigned(r.variation_12m)], ['Risco', escapeHTML(r.risk_level)]
+                ]
+            },
+            etfs: {
+                items: () => DATA.etfs,
+                groups: [['ALL', 'Todas as classes'], ['CORE'], ['DIVIDEND'], ['INTERNATIONAL'], ['SECTOR_THEME'], ['BOND'], ['COMMODITY'], ['LEVERAGED']],
+                groupOf: e => e.category,
+                hasSector: false,
+                sorts: [['default', 'Ordenar: sinal + score'], ['overall_score', 'Score'], ['aum', 'Patrimônio (AUM)'], ['expense_ratio', 'Taxa (menor)', true],
+                    ['dy', 'Dividend Yield'], ['variation_3y', 'Retorno 3 anos'], ['variation_12m', 'Retorno 12m']],
+                price: e => e.price,
+                metrics: e => [['Taxa', fmtPct(e.expense_ratio, 2)], ['AUM', fmtMoneyBig(e.aum)], ['DY', fmtPct(e.dy)],
+                    ['12m', fmtSigned(e.variation_12m)], ['3 anos', fmtSigned(e.variation_3y)], ['Vol./dia', fmtMoneyBig(e.liquidity)]],
+                details: e => [
+                    ['Gestora', escapeHTML(e.issuer)], ['Classe', escapeHTML(e.asset_class)], ['Máx. 52s', fmtMoney(e.high_52w)], ['Mín. 52s', fmtMoney(e.low_52w)],
+                    ['Ágio/deságio NAV', fmtSigned(e.nav_premium)]
+                ]
+            }
+        };
+
+        const state = { tab: 'stocks', signal: 'ALL', group: 'ALL', sector: 'ALL', sort: 'default', query: '', shown: PAGE_SIZE, currency: 'USD' };
+
+        function escapeHTML(value) {
+            return String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[c]));
+        }
+        const isNum = v => typeof v === 'number' && Number.isFinite(v);
+        const fx = () => (state.currency === 'BRL' && isNum(DATA.economy.dollar) ? DATA.economy.dollar : 1);
+        const symbol = () => (state.currency === 'BRL' ? 'R$' : 'US$');
+        const fmtNum = (v, d = 2) => (isNum(v) && v !== 0 ? v.toLocaleString('pt-BR', { maximumFractionDigits: d }) : '—');
+        const fmtPct = (v, d = 1) => (isNum(v) ? `${v.toLocaleString('pt-BR', { maximumFractionDigits: d })}%` : '—');
+        const fmtSigned = (v, suffix = '%') => (isNum(v) ? `<span class="${v >= 0 ? 'pos' : 'neg'}">${v >= 0 ? '+' : ''}${v.toLocaleString('pt-BR', { maximumFractionDigits: 1 })}${suffix}</span>` : '—');
+        const fmtMoney = v => (isNum(v) && v > 0 ? `${symbol()} ${(v * fx()).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` : '—');
+        function fmtMoneyBig(v) {
+            if (!isNum(v) || v <= 0) return '—';
+            const x = v * fx();
+            const [div, unit] = x >= 1e12 ? [1e12, 'T'] : x >= 1e9 ? [1e9, 'B'] : x >= 1e6 ? [1e6, 'M'] : [1e3, 'K'];
+            return `${symbol()} ${(x / div).toLocaleString('pt-BR', { maximumFractionDigits: 1 })}${unit}`;
+        }
+
+        // Theme shared with index.html through the same storage key.
+        function setTheme(theme) {
+            const valid = ['theme-origin-dark', 'theme-seline-light', 'theme-ui-neutral'];
+            const next = valid.includes(theme) ? theme : 'theme-seline-light';
+            document.body.classList.remove(...valid);
+            document.body.classList.add(next);
+            document.getElementById('themeSelect').value = next;
+            try { localStorage.setItem('b3-theme', next); } catch (e) { /* storage unavailable */ }
+        }
+        function storedTheme() {
+            try { return localStorage.getItem('b3-theme') || localStorage.getItem('theme'); } catch (e) { return null; }
+        }
+
+        // Explains which fallback produced each section (see collectUsData in export_data_us.js).
+        function describeSources(source) {
+            const names = { stocks: 'Ações', reits: 'REITs', etfs: 'ETFs', fedFunds: 'Fed Funds', treasury10y: 'Treasury 10a', dollar: 'Dólar' };
+            const date = iso => (iso ? new Date(iso).toLocaleDateString('pt-BR') : 'data desconhecida');
+            return Object.entries(source?.sections || {}).map(([key, s]) => {
+                if (s.stale) return `${names[key] || key}: fontes indisponíveis, exibindo dados de ${date(s.since)}`;
+                if (s.provider === 'nasdaq') return `${names[key] || key}: preços de hoje (Nasdaq) sobre fundamentos de ${date(s.fundamentalsSince)}`;
+                return null;
+            }).filter(Boolean);
+        }
+
+        function filteredItems() {
+            const tab = TABS[state.tab];
+            const q = state.query.trim().toLowerCase();
+            let items = tab.items().filter(item =>
+                (state.signal === 'ALL' || item.signal === state.signal) &&
+                (state.group === 'ALL' || tab.groupOf(item) === state.group) &&
+                (!tab.hasSector || state.sector === 'ALL' || item.sector === state.sector) &&
+                (!q || item.ticker.toLowerCase().includes(q) || String(item.name || '').toLowerCase().includes(q)));
+            const sortDef = tab.sorts.find(s => s[0] === state.sort);
+            if (sortDef && sortDef[0] !== 'default') {
+                const [key, , ascending] = sortDef;
+                items = [...items].sort((a, b) => {
+                    const va = isNum(a[key]) && (!ascending || a[key] > 0) ? a[key] : null;
+                    const vb = isNum(b[key]) && (!ascending || b[key] > 0) ? b[key] : null;
+                    if (va === null) return vb === null ? 0 : 1;
+                    if (vb === null) return -1;
+                    return ascending ? va - vb : vb - va;
+                });
+            }
+            return items;
+        }
+
+        function tradingViewUrl(item) {
+            const symbolId = item.exchange ? `${item.exchange}-${item.ticker}` : item.ticker;
+            return `https://www.tradingview.com/symbols/${encodeURIComponent(symbolId)}/`;
+        }
+
+        function renderCard(item) {
+            const tab = TABS[state.tab];
+            const category = item.category && CATEGORY_LABELS[item.category];
+            const pillars = Object.entries(item.pillars || {}).map(([k, v]) =>
+                `<div class="pillar"><div class="detail-row"><span>${escapeHTML(PILLAR_LABELS[k] || k)}</span><span>${fmtNum(v, 1)}/10</span></div>
+                 <div class="pillar-bar"><div style="width:${Math.max(0, Math.min(100, v * 10))}%"></div></div></div>`).join('');
+            const warnings = [...(item.blockers || []), ...(item.warnings || [])];
+            return `<article class="card" tabindex="0" aria-expanded="false">
+                <div class="card-top">
+                    <div><div class="ticker">${escapeHTML(item.ticker)}</div><div class="name" title="${escapeHTML(item.name)}">${escapeHTML(item.name)}</div></div>
+                    <div><div class="price">${fmtMoney(tab.price(item))}</div><div class="score">score ${fmtNum(item.overall_score, 1)}</div></div>
+                </div>
+                <div class="badges">
+                    <span class="badge ${escapeHTML(item.signal)}">${escapeHTML(SIGNAL_LABELS[item.signal] || item.signal)}</span>
+                    ${category ? `<span class="badge${item.category.startsWith('STAR') ? ' star' : ''}">${escapeHTML(category)}</span>` : ''}
+                    ${item.sector ? `<span class="badge">${escapeHTML(item.sector)}</span>` : ''}
+                </div>
+                <div class="metrics">${tab.metrics(item).map(([label, value]) => `<div class="metric"><small>${label}</small><span>${value}</span></div>`).join('')}</div>
+                <div class="details">
+                    ${tab.details(item).filter(([, html]) => html).map(([label, html]) =>
+                        `<div class="detail-row"><span>${label}</span><span>${html}</span></div>`).join('')}
+                    ${pillars}
+                    ${warnings.length ? `<div class="warn">⚠️ ${warnings.map(escapeHTML).join(', ')}</div>` : ''}
+                    <a class="ext-link" href="${tradingViewUrl(item)}" target="_blank" rel="noopener">Ver gráfico no TradingView ↗</a>
+                </div>
+            </article>`;
+        }
+
+        function render() {
+            const items = filteredItems();
+            const grid = document.getElementById('grid');
+            grid.innerHTML = items.length
+                ? items.slice(0, state.shown).map(renderCard).join('')
+                : '<p class="empty">Nenhum ativo encontrado com esses filtros.</p>';
+            document.getElementById('resultCount').textContent = `${items.length.toLocaleString('pt-BR')} ativos` +
+                (items.length > state.shown ? ` · mostrando ${state.shown.toLocaleString('pt-BR')}` : '');
+            document.getElementById('loadMore').hidden = items.length <= state.shown;
+        }
+
+        function populateControls() {
+            const tab = TABS[state.tab];
+            document.querySelectorAll('.tab-btn').forEach(b => {
+                const active = b.dataset.tab === state.tab;
+                b.classList.toggle('active', active);
+                b.setAttribute('aria-selected', active);
+            });
+            const counts = {};
+            tab.items().forEach(i => { counts[i.signal] = (counts[i.signal] || 0) + 1; });
+            document.getElementById('signalChips').innerHTML = SIGNALS
+                .filter(([id]) => id === 'ALL' || counts[id])
+                .map(([id, label]) => `<button class="btn chip${state.signal === id ? ' active' : ''}" data-signal="${id}">${label}${id === 'ALL' ? '' : ` (${counts[id]})`}</button>`).join('');
+
+            const groupSelect = document.getElementById('groupSelect');
+            groupSelect.innerHTML = tab.groups.map(([id, label]) => `<option value="${id}">${escapeHTML(label || CATEGORY_LABELS[id] || id)}</option>`).join('');
+            groupSelect.value = state.group;
+            groupSelect.hidden = tab.groups.length <= 1;
+
+            const sectorSelect = document.getElementById('sectorSelect');
+            sectorSelect.hidden = !tab.hasSector;
+            if (tab.hasSector) {
+                const sectors = [...new Set(tab.items().map(i => i.sector).filter(Boolean))].sort();
+                sectorSelect.innerHTML = '<option value="ALL">Todos os setores</option>' + sectors.map(s => `<option>${escapeHTML(s)}</option>`).join('');
+                sectorSelect.value = state.sector;
+            }
+
+            const sortSelect = document.getElementById('sortSelect');
+            sortSelect.innerHTML = tab.sorts.map(([id, label]) => `<option value="${id}">${escapeHTML(label)}</option>`).join('');
+            sortSelect.value = state.sort;
+        }
+
+        function switchTab(tabName) {
+            if (!TABS[tabName]) tabName = 'stocks';
+            Object.assign(state, { tab: tabName, signal: 'ALL', group: 'ALL', sector: 'ALL', sort: 'default', shown: PAGE_SIZE });
+            history.replaceState(null, '', `#${tabName}`);
+            populateControls();
+            render();
+        }
+
+        function downloadCSV() {
+            const items = filteredItems();
+            if (!items.length) return;
+            const keys = [...new Set(items.flatMap(i => Object.keys(i).filter(k => typeof i[k] !== 'object' || Array.isArray(i[k]))))];
+            const cell = v => {
+                const s = Array.isArray(v) ? v.join('; ') : String(v ?? '');
+                return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+            };
+            const csv = [keys.join(','), ...items.map(i => keys.map(k => cell(i[k])).join(','))].join('\n');
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8;' }));
+            link.download = `us_${state.tab}_${new Date().toISOString().split('T')[0]}.csv`;
+            link.click();
+            URL.revokeObjectURL(link.href);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setTheme(storedTheme());
+            document.getElementById('themeSelect').addEventListener('change', e => setTheme(e.target.value));
+
+            if (!DATA) {
+                document.getElementById('grid').innerHTML = '<p class="empty">Nenhum dado encontrado (data-us.js). Rode <code>npm run generate:us</code>.</p>';
+                document.getElementById('lastUpdate').textContent = 'Sem dados';
+                return;
+            }
+
+            const e = DATA.economy;
+            const dyCut = DATA.stocks.find(s => isNum(s.yield_threshold))?.yield_threshold;
+            document.getElementById('lastUpdate').textContent = `Atualizado em: ${DATA.updatedAt}`;
+            const notices = describeSources(DATA.source);
+            if (notices.length) {
+                const box = document.getElementById('sourceNotice');
+                box.innerHTML = `⚠️ Fonte principal indisponível. ${notices.map(escapeHTML).join(' · ')}.`;
+                box.hidden = false;
+            }
+            document.getElementById('fedVal').textContent = isNum(e.fedFunds) ? `${e.fedFunds.toFixed(2)}%` : '---';
+            document.getElementById('t10Val').textContent = isNum(e.treasury10y) ? `${e.treasury10y.toFixed(2)}%` : '---';
+            document.getElementById('dollarVal').textContent = isNum(e.dollar) ? `R$ ${e.dollar.toFixed(2)}` : '---';
+            document.getElementById('dyVal').textContent = isNum(dyCut) ? `>${dyCut.toFixed(1)}%` : '---';
+
+            document.querySelectorAll('.tab-btn').forEach(b => b.addEventListener('click', () => switchTab(b.dataset.tab)));
+            document.getElementById('signalChips').addEventListener('click', ev => {
+                const btn = ev.target.closest('[data-signal]');
+                if (!btn) return;
+                state.signal = btn.dataset.signal;
+                state.shown = PAGE_SIZE;
+                populateControls();
+                render();
+            });
+            const onChange = (id, key) => document.getElementById(id).addEventListener(id === 'searchInput' ? 'input' : 'change', ev => {
+                state[key] = ev.target.value;
+                state.shown = PAGE_SIZE;
+                render();
+            });
+            onChange('searchInput', 'query');
+            onChange('groupSelect', 'group');
+            onChange('sectorSelect', 'sector');
+            onChange('sortSelect', 'sort');
+            document.getElementById('currencySelect').addEventListener('change', ev => { state.currency = ev.target.value; render(); });
+            document.getElementById('loadMore').addEventListener('click', () => { state.shown += PAGE_SIZE; render(); });
+            document.getElementById('csvBtn').addEventListener('click', downloadCSV);
+            document.getElementById('grid').addEventListener('click', ev => {
+                if (ev.target.closest('a')) return;
+                const card = ev.target.closest('.card');
+                if (!card) return;
+                card.classList.toggle('open');
+                card.setAttribute('aria-expanded', card.classList.contains('open'));
+            });
+            document.getElementById('grid').addEventListener('keydown', ev => {
+                if ((ev.key === 'Enter' || ev.key === ' ') && ev.target.classList.contains('card')) {
+                    ev.preventDefault();
+                    ev.target.click();
+                }
+            });
+
+            switchTab(location.hash.slice(1));
+        });
+    </script>
+</body>
+
+</html>

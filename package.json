@@ -1,14 +1,15 @@
 {
   "name": "b3-stock-screener",
   "version": "1.0.0",
-  "description": "A simple CLI tool to screen B3 stocks using Fundamentus data.",
+  "description": "Stock, fund and ETF screener for B3 and US markets.",
   "main": "screener.js",
   "scripts": {
     "start": "node index.js",
     "generate": "node export_data.js",
+    "generate:us": "node export_data_us.js",
     "validate:data": "node scripts/validate-data.js",
     "audit:data": "node scripts/audit-generated-data.js",
-    "test": "node --test Screener.test.js services/storage.test.js services/stocks.test.js services/fiis.test.js services/logic/stock-rules.test.js services/logic/fund-classification.test.js services/logic/fund-analysis.test.js services/fixed_income.test.js services/etfs.test.js services/economy.test.js services/adapters/brapi-stock-adapter.test.js scripts/build-history-data.test.js",
+    "test": "node --test Screener.test.js services/storage.test.js services/stocks.test.js services/fiis.test.js services/logic/stock-rules.test.js services/logic/fund-classification.test.js services/logic/fund-analysis.test.js services/fixed_income.test.js services/etfs.test.js services/economy.test.js services/adapters/brapi-stock-adapter.test.js scripts/build-history-data.test.js services/us/us.test.js scripts/check-freshness.test.js",
     "test:ui": "node scripts/playwright-smoke.js",
     "test:e2e": "playwright test",
     "build:history": "node scripts/build-history-data.js",

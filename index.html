@@ -1943,6 +1943,27 @@
             background: var(--primary-soft);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
+
+        .market-switch {
+            display: inline-flex;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-control, 999px);
+            overflow: hidden;
+        }
+
+        .market-switch a {
+            padding: 6px 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        .market-switch a.active {
+            background: var(--primary);
+            color: #fff;
+        }
     </style>
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
 </head>
@@ -1956,6 +1977,10 @@
             <div class="last-update" id="lastUpdate">Atualizando...</div>
         </div>
         <div class="header-actions">
+            <nav class="market-switch" aria-label="Mercado">
+                <a href="index.html" class="active" aria-current="page">🇧🇷 B3</a>
+                <a href="us.html">🇺🇸 EUA</a>
+            </nav>
             <div style="position: relative;">
                 <button class="btn-icon" onclick="toggleSearch()" title="Pesquisar">🔍</button>
                 <div class="search-container" id="searchContainer">

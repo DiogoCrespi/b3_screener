@@ -1,6 +1,6 @@
-# B3 Screener 🇧🇷
+# B3 Screener 🇧🇷 + US Screener 🇺🇸
 
-Screener do mercado brasileiro com coleta automatizada, análise fundamentalista e dashboard responsivo.
+Screener do mercado brasileiro e americano com coleta automatizada, análise fundamentalista e dashboard responsivo. O seletor **🇧🇷 B3 / 🇺🇸 EUA** no topo alterna entre `index.html` e `us.html`.
 
 ## Funcionalidades
 
@@ -31,6 +31,30 @@ npm run generate
 ```
 
 Depois abra `index.html` no navegador. O comando `npm start` executa o dashboard de terminal e também atualiza `data.js`.
+
+## Mercado americano
+
+```bash
+npm run generate:us
+```
+
+Gera `data-us.js` e um snapshot compacto em `history-us/`. Depois abra `us.html`.
+
+- **Ações**: ~2.600 empresas listadas com valor de mercado acima de US$ 300M e volume médio acima de US$ 1M/dia, avaliadas pelas mesmas regras do B3 (`analyzeStock` com `{ market: 'US' }`). Os múltiplos são normalizados pela razão entre as medianas EUA/B3 antes das regras; Graham e Bazin usam os valores reais.
+- **REITs**: equivalente aos FIIs. Score por spread de DY sobre o Treasury de 10 anos, P/VP, P/FCF (o FFO não está disponível gratuitamente), alavancagem e porte.
+- **ETFs**: score por taxa de administração, patrimônio, liquidez e retorno de 3 anos; categorias Mercado amplo, Dividendos, Internacional, Setor/Tema, Renda fixa, Commodities e Alavancado/Inverso (sempre em revisão).
+- Exibição em US$ ou R$ (cotação do dia).
+
+Fontes gratuitas, sem chave de API, com redundância em camadas:
+
+| Dado | 1ª fonte | 2ª fonte | Última camada |
+|---|---|---|---|
+| Ações, REITs, ETFs | TradingView scanner (fundamentos de todos os ativos) | Nasdaq: preços do dia aplicados aos últimos fundamentos válidos (P/L, P/VP, DY recalculados) | Último dado válido, marcado como desatualizado |
+| Fed Funds | FRED | NY Fed | Último valor |
+| Treasury 10 anos | FRED | Treasury.gov | Último valor |
+| Dólar | AwesomeAPI | open.er-api.com | Último valor |
+
+Cada seção só é aceita de uma fonte ao vivo se atingir o volume mínimo (1.000 ações, 50 REITs, 300 ETFs). A página `us.html` mostra um aviso quando alguma reserva está em uso. O Finviz foi avaliado e descartado como reserva: a versão gratuita bloqueia após ~50 páginas, e são necessárias ~170.
 
 ## Dashboard histórico
 
@@ -66,7 +90,7 @@ As páginas externas podem mudar sem aviso. Requisições possuem timeout e a ge
 
 ## Automação
 
-O workflow diário instala dependências pelo lockfile, executa os testes, gera os dados e só então publica alterações em `data.js` e `history/`.
+O workflow diário instala dependências pelo lockfile, gera os dados do B3 e dos EUA (cada coleta com até 3 tentativas espaçadas, independentes entre si) e publica `data.js`, `history/`, `data-us.js` e `history-us/`. O push é repetido com `pull --rebase` em vez de forçado. O último passo (`scripts/check-freshness.js`) deixa o run vermelho, gerando notificação do GitHub, se algum mercado não foi atualizado no dia ou se uma seção ficou em cache.
 
 Os históricos são mantidos para auditoria. Caso o volume se torne excessivo, a retenção deve ser alterada em um PR separado para evitar exclusões acidentais.
 

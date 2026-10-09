@@ -101,13 +101,37 @@ function buildStockDecision(s, yieldThreshold) {
     };
 }
 
+// Market profiles. The rule thresholds below were calibrated for B3; other markets
+// trade at structurally different multiples, so their ratios are divided by these
+// scales before the rules run (e.g. a US P/L of 20 is judged like a B3 P/L of 10).
+// Graham and Bazin prices always use the raw values. US scales are the ratio of
+// US/B3 medians measured on 2026-10-08 (P/L 20.1 vs 11.2, P/VP 2.46 vs 1.37,
+// EV/EBIT 18.1 vs 8.9, PSR 2.52 vs 0.90, DY 2.15% vs 5.51%).
+const MARKET_PROFILES = Object.freeze({
+    B3: Object.freeze({ id: 'B3', pl: 1, p_vp: 1, ev_ebit: 1, psr: 1, dividend_yield: 1, payoutReported: false }),
+    US: Object.freeze({ id: 'US', pl: 1.8, p_vp: 1.8, ev_ebit: 2, psr: 2.5, dividend_yield: 0.4, payoutReported: true })
+});
+
+function normalizeForProfile(raw, profile) {
+    if (profile.id === 'B3') return raw;
+    const scaled = { ...raw };
+    for (const key of ['pl', 'p_vp', 'ev_ebit', 'psr', 'dividend_yield']) {
+        if (typeof raw[key] === 'number') scaled[key] = raw[key] / profile[key];
+    }
+    return scaled;
+}
+
 /**
  * Analyzes a single stock and attaches strategies, scores, and categories.
- * @param {Object} s - Raw stock data (ticker, pl, p_vp, etc.)
- * @param {number} selic - Current Selic rate
+ * @param {Object} raw - Raw stock data (ticker, pl, p_vp, etc.)
+ * @param {number} selic - Current base rate (Selic for B3, Fed Funds for US)
+ * @param {Object} [options] - { market: 'B3' | 'US' }
  * @returns {Object} Enriched stock object
  */
-function analyzeStock(s, selic) {
+function analyzeStock(raw, selic, options = {}) {
+    const profile = MARKET_PROFILES[options.market] || MARKET_PROFILES.B3;
+    const s = normalizeForProfile(raw, profile);
+
     // Robustness: Default selic if missing
     const safeSelic = (selic !== null && selic !== undefined && !isNaN(selic)) ? selic : 11.75;
     const YIELD_THRESHOLD = Math.max(6, safeSelic * 0.5);
@@ -117,17 +141,20 @@ function analyzeStock(s, selic) {
     const pl = s.pl || 0;
     const p_vp = s.p_vp || 0;
     const dividend_yield = s.dividend_yield || 0;
+    const rawPl = raw.pl || 0;
+    const rawPvp = raw.p_vp || 0;
 
     // Graham Fair Value
     let graham_fair_price = 0;
-    if (pl > 0 && p_vp > 0) {
-        graham_fair_price = cotacao * Math.sqrt(22.5 / (pl * p_vp));
+    if (rawPl > 0 && rawPvp > 0) {
+        graham_fair_price = cotacao * Math.sqrt(22.5 / (rawPl * rawPvp));
     }
     const upside = (graham_fair_price > 0 && cotacao > 0) ? ((graham_fair_price - cotacao) / cotacao) * 100 : 0;
 
-    // Bazin Price (Ceiling Price @ YIELD_THRESHOLD)
-    const dps = (dividend_yield / 100) * cotacao;
-    const bazin_price = YIELD_THRESHOLD > 0 ? dps / (YIELD_THRESHOLD / 100) : 0;
+    // Bazin Price (Ceiling Price @ YIELD_THRESHOLD, expressed in the market's own yield scale)
+    const dps = ((raw.dividend_yield || 0) / 100) * cotacao;
+    const marketYieldThreshold = YIELD_THRESHOLD * profile.dividend_yield;
+    const bazin_price = marketYieldThreshold > 0 ? dps / (marketYieldThreshold / 100) : 0;
     const bazin_upside = (bazin_price > 0 && cotacao > 0) ? ((bazin_price - cotacao) / cotacao) * 100 : 0;
 
     // --- STRATEGY CLASSIFICATION ---
@@ -366,8 +393,14 @@ function analyzeStock(s, selic) {
         category = 'OPPORTUNITY';
     }
 
+    const marketFields = profile.id === 'B3' ? {} : {
+        market: profile.id,
+        yield_threshold: marketYieldThreshold,
+        payout_is_estimated: !profile.payoutReported
+    };
+
     return {
-        ...s,
+        ...raw,
         graham_price: graham_fair_price,
         upside,
         bazin_price,
@@ -384,9 +417,10 @@ function analyzeStock(s, selic) {
         is_star_value: isStarValue,
         score_income,
         score_growth,
-        score_value
+        score_value,
+        ...marketFields
     };
 }
 
-module.exports = { analyzeStock, buildStockDecision };
+module.exports = { analyzeStock, buildStockDecision, MARKET_PROFILES };
 
