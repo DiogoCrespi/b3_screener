@@ -133,6 +133,11 @@
         .pillar-bar { height: 6px; background: var(--badge-bg); border-radius: 3px; overflow: hidden; margin-top: 3px; }
         .pillar-bar div { height: 100%; background: var(--primary); }
         .warn { color: var(--warning); font-size: 0.75rem; margin-top: 6px; }
+        .tv-chart {
+            height: 320px; margin-top: 12px; border-radius: 10px; overflow: hidden;
+            border: 1px solid var(--border-color); background: var(--bg-color);
+        }
+        .tv-chart-msg { display: grid; place-items: center; height: 100%; padding: 12px; text-align: center; font-size: 0.8rem; color: var(--text-muted); }
         .ext-link { display: inline-block; margin-top: 10px; color: var(--primary); font-weight: 600; text-decoration: none; }
         .load-more { display: block; margin: 16px auto; }
         .list-end {
@@ -398,6 +403,62 @@
             return `https://www.tradingview.com/symbols/${encodeURIComponent(symbolId)}/`;
         }
 
+        // --- Embedded TradingView chart (free widget) ---
+        // tv.js is only fetched when the first card is opened, so the list stays light.
+        const TV_SCRIPT = 'https://s3.tradingview.com/tv.js';
+        let tvLoader = null;
+        let chartSeq = 0;
+
+        const tvSymbol = item => (item.exchange ? `${item.exchange}:${item.ticker}` : item.ticker);
+
+        function loadTradingView() {
+            if (window.TradingView) return Promise.resolve();
+            tvLoader ??= new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+                script.src = TV_SCRIPT;
+                script.async = true;
+                script.onload = () => (window.TradingView ? resolve() : reject(new Error('TradingView indisponível')));
+                script.onerror = () => reject(new Error('TradingView bloqueado ou fora do ar'));
+                document.head.appendChild(script);
+            }).catch(error => { tvLoader = null; throw error; });
+            return tvLoader;
+        }
+
+        function mountChart(card) {
+            const box = card.querySelector('.tv-chart');
+            if (!box || box.dataset.mounted) return;
+            box.dataset.mounted = '1';
+            box.id = `tv-chart-${++chartSeq}`;
+            box.innerHTML = '<div class="tv-chart-msg">Carregando gráfico…</div>';
+            loadTradingView().then(() => {
+                box.innerHTML = '';
+                new window.TradingView.widget({
+                    container_id: box.id,
+                    symbol: box.dataset.symbol,
+                    autosize: true,
+                    interval: 'D',
+                    range: '12M',
+                    timezone: 'America/New_York',
+                    theme: document.body.classList.contains('theme-origin-dark') ? 'dark' : 'light',
+                    style: '3',
+                    locale: 'br',
+                    hide_top_toolbar: true,
+                    allow_symbol_change: false,
+                    save_image: false,
+                    enable_publishing: false
+                });
+            }).catch(error => {
+                delete box.dataset.mounted;
+                box.innerHTML = `<div class="tv-chart-msg">Gráfico indisponível (${escapeHTML(error.message)}). Use o link abaixo.</div>`;
+            });
+        }
+
+        function setCardOpen(card, open) {
+            card.classList.toggle('open', open);
+            card.setAttribute('aria-expanded', open);
+            if (open) mountChart(card);
+        }
+
         function renderCard(item) {
             const tab = TABS[state.tab];
             const category = item.category && CATEGORY_LABELS[item.category];
@@ -421,6 +482,7 @@
                         `<div class="detail-row"><span>${label}</span><span>${html}</span></div>`).join('')}
                     ${pillars}
                     ${warnings.length ? `<div class="warn">⚠️ ${warnings.map(w => escapeHTML(WARNING_LABELS[w] || w)).join(', ')}</div>` : ''}
+                    <div class="tv-chart" data-symbol="${escapeHTML(tvSymbol(item))}" aria-label="Gráfico de ${escapeHTML(item.ticker)}"></div>
                     <a class="ext-link" href="${tradingViewUrl(item)}" target="_blank" rel="noopener">Ver gráfico no TradingView ↗</a>
                 </div>
             </article>`;
@@ -455,8 +517,7 @@
             render();
             const card = [...document.querySelectorAll('#grid .card')].find(c => c.querySelector('.ticker')?.textContent === ticker);
             if (card) {
-                card.classList.add('open');
-                card.setAttribute('aria-expanded', 'true');
+                setCardOpen(card, true);
                 card.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         }
@@ -608,11 +669,11 @@
             document.getElementById('clearFilters').addEventListener('click', clearFilters);
             document.getElementById('csvBtn').addEventListener('click', downloadCSV);
             document.getElementById('grid').addEventListener('click', ev => {
-                if (ev.target.closest('a')) return;
+                // Links and the chart area keep their own behaviour instead of collapsing the card.
+                if (ev.target.closest('a, .tv-chart')) return;
                 const card = ev.target.closest('.card');
                 if (!card) return;
-                card.classList.toggle('open');
-                card.setAttribute('aria-expanded', card.classList.contains('open'));
+                setCardOpen(card, !card.classList.contains('open'));
             });
             document.getElementById('grid').addEventListener('keydown', ev => {
                 if ((ev.key === 'Enter' || ev.key === ' ') && ev.target.classList.contains('card')) {

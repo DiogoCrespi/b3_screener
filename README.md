@@ -44,6 +44,7 @@ Gera `data-us.js` e um snapshot compacto em `history-us/`. Depois abra `us.html`
 - **REITs**: equivalente aos FIIs. Score por spread de DY sobre o Treasury de 10 anos, P/VP, P/FCF (o FFO não está disponível gratuitamente), alavancagem e porte.
 - **ETFs**: score por taxa de administração, patrimônio, liquidez e retorno de 3 anos; categorias Mercado amplo, Dividendos, Internacional, Setor/Tema, Renda fixa, Commodities e Alavancado/Inverso (sempre em revisão).
 - Exibição em US$ ou R$ (cotação do dia).
+- Gráfico do TradingView (widget gratuito) dentro de cada card ao abri-lo, mantendo o link para o site. O script do TradingView só é baixado no primeiro card aberto; se estiver bloqueado, o card avisa e o link continua.
 - **Ranking e Top 10**: as regras sozinhas aprovavam centenas de ativos (sobretudo bancos regionais). Cada ativo recebe uma nota de convicção (0–100: score, porte e liquidez) e o selo Top Pick fica limitado aos melhores: 50 ações (máx. 8 por setor, valor de mercado ≥ US$ 2 bi), 15 REITs e 40 ETFs (≥ US$ 1 bi, taxa conhecida). Os demais que passavam nas regras viram "Observar", com o motivo. A tela inicial mostra um Top 10 por aba, com no máximo 2 por setor e sem ETFs do mesmo índice (`services/us/ranking.js`).
 
 Fontes gratuitas, sem chave de API, com redundância em camadas:
